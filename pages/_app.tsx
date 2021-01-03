@@ -5,6 +5,8 @@ import { ThemeProvider } from 'styled-components'
 import { themeForeground, themes } from '../style/theme'
 import GlobalStyle from '../style/global-style'
 import { typeBaseRegular } from '../style/typography'
+import LayoutGutter from '../components/Layout/LayoutGutter'
+import LayoutLimiter from '../components/Layout/LayoutLimiter'
 
 function App({ Component, pageProps }: AppProps): JSX.Element {
   return (
@@ -31,7 +33,9 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
             color: ${themeForeground('medium')};
           `}
         >
-          Footer
+          <LayoutGutter>
+            <LayoutLimiter>Footer</LayoutLimiter>
+          </LayoutGutter>
         </footer>
       </ThemeProvider>
     </>
