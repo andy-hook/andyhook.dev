@@ -2,6 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import GlobalStyle from '../style/global-style'
 import { themeForeground } from '../style/theme'
+import { typeBaseRegular } from '../style/typography'
 
 type LayoutProps = {
   children?: React.ReactNode
@@ -31,6 +32,7 @@ export default function Layout({ children, title }: LayoutProps): JSX.Element {
 
       <footer
         css={`
+          ${typeBaseRegular}
           color: ${themeForeground('medium')};
         `}
       >

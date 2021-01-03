@@ -158,11 +158,6 @@ const Font = createGlobalStyle`
     font-weight: 1 999;
     font-display: swap;
   }
-
-  body,
-  html {
-    font-family: 'Manrope', sans-serif !important;
-  }
 `
 
 const GlobalStyle: React.FunctionComponent = () => {
