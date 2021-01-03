@@ -52,19 +52,19 @@ export const typeBase = css`
 
 export const typeBaseRegular = css`
   ${typeBase}
-  font-weight: ${type.fontWeight.base.regular};
+  font-weight: ${type.fontWeight.regular};
   letter-spacing: ${type.letterSpacing.base.regular};
 `
 
 export const typeBaseMedium = css`
   ${typeBase}
-  font-weight: ${type.fontWeight.base.medium};
+  font-weight: ${type.fontWeight.medium};
   letter-spacing: ${type.letterSpacing.base.medium};
 `
 
 export const typeBaseSemibold = css`
   ${typeBase}
-  font-weight: ${type.fontWeight.base.semibold};
+  font-weight: ${type.fontWeight.semiBold};
   letter-spacing: ${type.letterSpacing.base.semibold};
 `
 
@@ -75,14 +75,14 @@ export const typeDisplay = css`
 
 export const typeDisplayBold = css`
   ${typeDisplay}
-  font-weight: ${type.fontWeight.display.bold};
+  font-weight: ${type.fontWeight.bold};
   letter-spacing: ${type.letterSpacing.display.bold};
 `
 
 // Button
 export const typeDisplayButton = css`
   font-family: ${type.fontFamily.display};
-  font-weight: ${type.fontWeight.display.bold};
+  font-weight: ${type.fontWeight.bold};
   letter-spacing: ${type.letterSpacing.display.button};
 `
 
