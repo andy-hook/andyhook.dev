@@ -11,6 +11,9 @@
   "rules": {
     "react/react-in-jsx-scope": "off"
   },
+  "env": {
+    "jest": true
+  },
   "globals": {
     "React": "writable"
   }
