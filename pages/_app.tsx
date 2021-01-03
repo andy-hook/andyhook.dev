@@ -1,23 +1,41 @@
 import React from 'react'
+import Head from 'next/head'
 import { AppProps } from 'next/dist/next-server/lib/router/router'
-import { createGlobalStyle, ThemeProvider } from 'styled-components'
-import { themes } from '../style/theme'
+import { ThemeProvider } from 'styled-components'
+import { themeForeground, themes } from '../style/theme'
+import GlobalStyle from '../style/global-style'
+import { typeBaseRegular } from '../style/typography'
 
-const GlobalStyle = createGlobalStyle`
-  body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-`
-
-export default function App({ Component, pageProps }: AppProps): JSX.Element {
+function App({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <>
-      <GlobalStyle />
+      <Head>
+        <meta charSet="utf-8" />
+
+        {/* Preload fonts */}
+        <link
+          rel="preload"
+          href="/manrope-variable.ttf"
+          as="font"
+          type="font/ttf"
+          crossOrigin=""
+        />
+      </Head>
+
       <ThemeProvider theme={themes.dark}>
+        <GlobalStyle />
         <Component {...pageProps} />
+        <footer
+          css={`
+            ${typeBaseRegular}
+            color: ${themeForeground('medium')};
+          `}
+        >
+          Footer
+        </footer>
       </ThemeProvider>
     </>
   )
 }
+
+export default App

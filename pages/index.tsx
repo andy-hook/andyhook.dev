@@ -1,12 +1,13 @@
 import React from 'react'
-import Layout from '../components/layout'
+import PageTitle from '../components/layout'
 
 import { themeForeground } from '../style/theme'
 import { typeDisplayBold } from '../style/typography'
 
-export default function Home(): JSX.Element {
+function Home(): JSX.Element {
   return (
-    <Layout title="Hello world">
+    <>
+      <PageTitle title="Hello world" />
       <h1
         css={`
           ${typeDisplayBold}
@@ -16,6 +17,8 @@ export default function Home(): JSX.Element {
       >
         Hello world
       </h1>
-    </Layout>
+    </>
   )
 }
+
+export default Home
