@@ -1,7 +1,7 @@
-import React, { ReactNode } from 'react'
+import React from 'react'
 
 type LayoutGutterProps = {
-  children?: ReactNode
+  children?: React.ReactNode
 }
 
 function LayoutGutter({ children }: LayoutGutterProps): JSX.Element {
