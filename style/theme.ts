@@ -4,10 +4,10 @@ import { createHsl, createHsla } from './utils'
 export type ThemeName = 'light' | 'dark'
 
 type LayerNames = 'low' | 'medium' | 'high'
-type Layers = { [key in LayerNames]: string }
+type Layers = Record<LayerNames, string>
 
 type GreyNames = 'extraLow' | 'low' | 'medium' | 'high' | 'extraHigh'
-type Greys = { [key in GreyNames]: string }
+type Greys = Record<GreyNames, string>
 
 type BrandShadeNames = 'base' | 'light' | 'dark'
 type BrandShades = { [key in BrandShadeNames]: string }
