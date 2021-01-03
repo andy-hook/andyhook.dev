@@ -6,8 +6,8 @@ import { rem } from 'polished'
 export const baseFontSize = 16
 
 const fontFamily = {
-  base: `'inter', -apple-system,BlinkMacSystemFont, "Segoe UI", Roboto,Oxygen-Sans, Ubuntu,Cantarell, "Helvetica Neue", sans-serif`,
-  display: `'maison-neue', -apple-system,BlinkMacSystemFont, "Segoe UI", Roboto,Oxygen-Sans, Ubuntu,Cantarell, "Helvetica Neue", sans-serif`,
+  base: `'Manrope', -apple-system,BlinkMacSystemFont, "Segoe UI", Roboto,Oxygen-Sans, Ubuntu,Cantarell, "Helvetica Neue", sans-serif`,
+  display: `'Manrope', -apple-system,BlinkMacSystemFont, "Segoe UI", Roboto,Oxygen-Sans, Ubuntu,Cantarell, "Helvetica Neue", sans-serif`,
 }
 
 const letterSpacing = {
@@ -38,14 +38,11 @@ const lineHeight = {
 }
 
 const fontWeight = {
-  base: {
-    regular: '400',
-    medium: '500',
-    semibold: '600',
-  },
-  display: {
-    bold: '700',
-  },
+  light: 300,
+  regular: 400,
+  medium: 500,
+  semiBold: 600,
+  bold: 700,
 }
 
 const typeScale = {
