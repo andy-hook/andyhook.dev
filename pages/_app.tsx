@@ -1,7 +1,22 @@
-import '../styles/globals.css'
+import { AppProps } from 'next/dist/next-server/lib/router/router'
+import { createGlobalStyle, ThemeProvider } from 'styled-components'
+import { themes } from '../style/theme'
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+`
+
+export default function App({ Component, pageProps }: AppProps): JSX.Element {
+  return (
+    <>
+      <GlobalStyle />
+      <ThemeProvider theme={themes.dark}>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </>
+  )
 }
-
-export default MyApp
