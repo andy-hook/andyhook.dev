@@ -145,8 +145,18 @@ const Global = createGlobalStyle`
   }
 `
 
-const GlobalPageBackground = createGlobalStyle`
+const GlobalDocumentAdjustment = createGlobalStyle`
+  html {
+    overflow: hidden
+  }
   body {
+    // Force a contained scroll view
+    height: 0px;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    
+    // Set initial background to avoid possible colour flash
     background-color: ${themeLayer('medium')}
   }
 `
@@ -165,7 +175,7 @@ const GlobalStyle: React.FunctionComponent = () => {
     <>
       <Normalize />
       <Global />
-      <GlobalPageBackground />
+      <GlobalDocumentAdjustment />
       <Font />
     </>
   )

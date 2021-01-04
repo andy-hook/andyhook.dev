@@ -1,13 +1,19 @@
 import React from 'react'
-import LayoutGutter from '../Layout/LayoutGutter'
-import LayoutLimiter from '../Layout/LayoutLimiter'
+import { themeForeground } from '../../style/theme'
+import { typeBaseSemibold, typeSizeBaseXl } from '../../style/typography'
 
 function Header(): JSX.Element {
   return (
     <header>
-      <LayoutGutter>
-        <LayoutLimiter>Header</LayoutLimiter>
-      </LayoutGutter>
+      <h2
+        css={`
+          ${typeBaseSemibold}
+          ${typeSizeBaseXl}
+          color: ${themeForeground('medium')};
+        `}
+      >
+        Andy Hook
+      </h2>
     </header>
   )
 }

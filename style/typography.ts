@@ -5,42 +5,50 @@ import { type } from './design-tokens'
 /* Base text cropping
   ------------------------------------------------- */
 const baseCropSettings = {
-  topCrop: 11,
-  bottomCrop: 15,
+  topCrop: 14,
+  bottomCrop: 10,
 }
 
-export const setBaseCropAndLineHeight = (lHeight: number): CSSProp => {
+export const setBaseCropAndLineHeight = (
+  lHeight: keyof typeof type.lineHeight
+): CSSProp => {
   return createTextCrop({
     ...baseCropSettings,
-    lHeight,
+    lHeight: type.lineHeight[lHeight],
   })
 }
 
-export const setBasePlaceholderCrop = (lHeight: number): CSSProp => {
+export const setBasePlaceholderCrop = (
+  lHeight: keyof typeof type.lineHeight
+): CSSProp => {
   return createPlaceholderCrop({
     ...baseCropSettings,
-    lHeight,
+    lHeight: type.lineHeight[lHeight],
   })
 }
 
 /* Display text cropping
   ------------------------------------------------- */
 const displayCropSettings = {
-  topCrop: 4,
-  bottomCrop: 22,
+  topCrop: 14,
+  bottomCrop: 10,
 }
 
-export const setDisplayCropAndLineHeight = (lHeight: number): CSSProp => {
+export const setDisplayCropAndLineHeight = (
+  lHeight: keyof typeof type.lineHeight
+): CSSProp => {
   return createTextCrop({
     ...displayCropSettings,
-    lHeight,
+    lHeight: type.lineHeight[lHeight],
   })
 }
 
-export const setDisplayPlaceholderCrop = (lHeight: number): CSSProp => {
+export const setDisplayPlaceholderCrop = (
+  lHeight: keyof typeof type.lineHeight
+): CSSProp => {
   return createPlaceholderCrop({
     ...displayCropSettings,
-    lHeight,
+    lHeight: type.lineHeight[lHeight],
   })
 }
 
@@ -79,11 +87,10 @@ export const typeDisplayBold = css`
   letter-spacing: ${type.letterSpacing.display.bold};
 `
 
-// Button
-export const typeDisplayButton = css`
-  font-family: ${type.fontFamily.display};
-  font-weight: ${type.fontWeight.bold};
-  letter-spacing: ${type.letterSpacing.display.button};
+export const typeDisplaySemibold = css`
+  ${typeDisplay}
+  font-weight: ${type.fontWeight.semiBold};
+  letter-spacing: ${type.letterSpacing.display.semibold};
 `
 
 /* Base type sizes
@@ -97,7 +104,11 @@ export const typeSizeBaseMd = css`
 `
 
 export const typeSizeBaseLg = css`
-  font-size: ${type.scale[2]};
+  font-size: ${type.scale[3]};
+`
+
+export const typeSizeBaseXl = css`
+  font-size: ${type.scale[4]};
 `
 
 /* Display type sizes
@@ -118,5 +129,5 @@ export const typeSizeDisplayLg = css`
 `
 
 export const typeSizeDisplayXl = css`
-  font-size: ${type.scale[9]};
+  font-size: ${type.scale[10]};
 `
