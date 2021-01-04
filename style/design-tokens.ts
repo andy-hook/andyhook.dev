@@ -112,10 +112,10 @@ const borderThickness = {
 
 const zIndex = {
   floor: 0,
-  low: 100,
-  medium: 200,
-  high: 300,
-  highest: 400,
+  low: 1,
+  medium: 2,
+  high: 3,
+  highest: 4,
 }
 
 /* Public
