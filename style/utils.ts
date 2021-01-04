@@ -77,3 +77,7 @@ export function createPlaceholderCrop(
     bottom: calc(${dynamicBottomCrop}em + ${bottomAdjustment});
   `
 }
+
+export function removeWidow(str: string): string {
+  return str.replace(/\s(?=[^\s]*$)/g, '\u00A0')
+}
