@@ -17,24 +17,17 @@ const letterSpacing = {
     semibold: '0.004em',
   },
   display: {
+    semibold: '-0.005em',
     bold: '-0.005em',
-    button: '0.01em',
   },
   uppercase: '0.06em',
 }
 
 const lineHeight = {
   flat: 1,
-  base: {
-    regular: 1.4,
-    tight: 1.2,
-    longform: 1.6,
-  },
-  display: {
-    regular: 1.4,
-    tight: 1.3,
-    longform: 1.6,
-  },
+  regular: 1.4,
+  tight: 1.3,
+  longform: 1.6,
 }
 
 const fontWeight = {
@@ -112,10 +105,10 @@ const borderThickness = {
 
 const zIndex = {
   floor: 0,
-  low: 100,
-  medium: 200,
-  high: 300,
-  highest: 400,
+  low: 1,
+  medium: 2,
+  high: 3,
+  highest: 4,
 }
 
 /* Public

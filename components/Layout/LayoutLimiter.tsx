@@ -17,6 +17,7 @@ const LIMITER_WIDTHS: Record<Sizes, string> = {
 function LayoutLimiter({
   size = 'medium',
   children,
+  ...props
 }: LayoutLimiterProps): JSX.Element {
   const width = LIMITER_WIDTHS[size]
 
@@ -27,6 +28,7 @@ function LayoutLimiter({
         margin-right: auto;
         max-width: ${width};
       `}
+      {...props}
     >
       {children}
     </div>

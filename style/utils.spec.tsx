@@ -7,6 +7,7 @@ import {
   createCubicBezier,
   createTextCrop,
   createPlaceholderCrop,
+  removeWidow,
 } from './utils'
 import { render } from '../test-utils'
 
@@ -75,5 +76,13 @@ describe('createPlaceholderCrop', () => {
     expect(container.firstChild).toHaveStyleRule('top', 'calc(0.35em + 0px)')
 
     expect(container.firstChild).toHaveStyleRule('bottom', 'calc(0.4em + 0px)')
+  })
+})
+
+describe('removeWidow', () => {
+  test('returns string with non-breaking space before last word', () => {
+    expect(removeWidow('This is a test string')).toMatch(
+      'This is a test\u00A0string'
+    )
   })
 })
