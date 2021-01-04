@@ -6,16 +6,8 @@ import {
   isDarkTheme,
   isLightTheme,
   isTheme,
-  darkThemeForeground,
-  darkThemeForegroundAlpha,
-  lightThemeForeground,
-  lightThemeForegroundAlpha,
   themeLayer,
   themeLayerAlpha,
-  darkThemeLayer,
-  darkThemeLayerAlpha,
-  lightThemeLayer,
-  lightThemeLayerAlpha,
 } from './theme'
 import styled from 'styled-components'
 import 'jest-styled-components'
@@ -51,58 +43,6 @@ const IsThemeComponent = styled.div`
 const IsNotThemeComponent = styled.div`
   ${isTheme('dark', 'color: red;', 'color: blue;')};
 `
-
-describe('darkThemeLayer', () => {
-  test('should return correct value as hsl string', () => {
-    expect(darkThemeLayer('medium')).toEqual('hsl(207, 13%, 14%)')
-  })
-})
-
-describe('darkThemeLayerAlpha', () => {
-  test('should return correct value as hsla string', () => {
-    expect(darkThemeLayerAlpha('medium', 50)).toEqual('hsla(207, 13%, 14%,50)')
-  })
-})
-
-describe('darkThemeForeground', () => {
-  test('should return correct value as hsl string', () => {
-    expect(darkThemeForeground('medium')).toEqual('hsl(206, 10%, 55%)')
-  })
-})
-
-describe('darkThemeForegroundAlpha', () => {
-  test('should return correct value as hsla string', () => {
-    expect(darkThemeForegroundAlpha('medium', 50)).toEqual(
-      'hsla(206, 10%, 55%,50)'
-    )
-  })
-})
-
-describe('lightThemeLayer', () => {
-  test('should return correct value as hsl string', () => {
-    expect(lightThemeLayer('medium')).toEqual('hsl(220, 16%, 96%)')
-  })
-})
-
-describe('lightThemeLayerAlpha', () => {
-  test('should return correct value as hsla string', () => {
-    expect(lightThemeLayerAlpha('medium', 50)).toEqual('hsla(220, 16%, 96%,50)')
-  })
-})
-
-describe('lightThemeForeground', () => {
-  test('should return correct value as hsl string', () => {
-    expect(lightThemeForeground('medium')).toEqual('hsl(206, 10%, 55%)')
-  })
-})
-
-describe('lightThemeForegroundAlpha', () => {
-  test('should return correct value as hsla string', () => {
-    expect(lightThemeForegroundAlpha('medium', 50)).toEqual(
-      'hsla(206, 10%, 55%,50)'
-    )
-  })
-})
 
 describe('darkThemeLayer', () => {
   it('renders correct hsl from given layer value', () => {
