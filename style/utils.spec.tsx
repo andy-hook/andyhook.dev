@@ -9,7 +9,7 @@ import {
   createPlaceholderCrop,
   removeWidow,
 } from './utils'
-import { render } from '../test-utils'
+import { render } from '../utils/testing'
 
 const CroppedTextComponent = styled.div`
   ${createTextCrop({
