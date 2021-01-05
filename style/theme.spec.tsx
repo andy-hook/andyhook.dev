@@ -1,5 +1,5 @@
 import React from 'react'
-import { renderLightTheme, renderDarkTheme } from '../test-utils'
+import { renderLightTheme, renderDarkTheme } from '../utils/testing'
 import {
   themeForeground,
   themeForegroundAlpha,
