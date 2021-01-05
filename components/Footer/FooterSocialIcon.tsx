@@ -1,4 +1,5 @@
 import React from 'react'
+import { SocialNetworks } from '../../meta'
 import { appearance } from '../../style/design-tokens'
 import { themeForeground } from '../../style/theme'
 import Icon from '../Icon/Icon'
@@ -6,7 +7,7 @@ import Icon from '../Icon/Icon'
 type Size = 'small' | 'medium' | 'large'
 
 type FooterSocialIconProps = {
-  icon: 'dribbble' | 'instagram' | 'linkedin' | 'twitter' | 'github'
+  icon: SocialNetworks
   href: string
   size?: Size
 }
@@ -30,21 +31,23 @@ function FooterSocialIcon({
       href={href}
       css={`
         position: relative;
-        display: inline-flex;
+        display: block;
         color: ${themeForeground('extraHigh')};
         font-size: ${iconSize};
         padding: 0.75em;
       `}
       {...props}
+      rel="noreferrer"
+      target="_blank"
     >
       <div
         css={`
           position: absolute;
 
-          top: 0.1em;
-          left: 0.1em;
-          right: 0.1em;
-          bottom: 0.1em;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
           border: ${appearance.borderThickness.regular} solid
             ${themeForeground('medium')};
 
