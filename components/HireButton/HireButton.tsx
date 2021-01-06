@@ -1,5 +1,5 @@
 import React from 'react'
-import { useFocusVisible } from '../../hooks/useFocusVisible'
+import { useFocusVisible } from '../../hooks/useFocusVisible/useFocusVisible'
 
 function HireButton(): JSX.Element {
   const { focusVisible, onFocus, onBlur } = useFocusVisible()

@@ -4,7 +4,7 @@ import { AppProps } from 'next/dist/next-server/lib/router/router'
 import { ThemeProvider } from 'styled-components'
 import { themes } from '../style/theme'
 import GlobalStyle from '../style/global-style'
-import { FocusVisibleManager } from '../hooks/useFocusVisible'
+import { FocusVisibleManager } from '../hooks/useFocusVisible/useFocusVisible'
 
 function App({ Component, pageProps }: AppProps): JSX.Element {
   return (
