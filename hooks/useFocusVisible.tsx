@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState, useContext, useCallback } from 'react'
 
 // A React hook based on: https://github.com/WICG/focus-visible
 
@@ -42,58 +42,59 @@ function FocusVisibleManager(props: {
 }): JSX.Element {
   const [hadKeyboardEvent, setHadKeyboardEvent] = useState(true)
 
-  useEffect(() => {
-    function onPointerDown() {
-      setHadKeyboardEvent(false)
+  const onPointerDown = useCallback(() => {
+    setHadKeyboardEvent(false)
+  }, [])
+
+  /**
+   * When the polfyill first loads, assume the user is in keyboard modality.
+   * If any event is received from a pointing device (e.g. mouse, pointer,
+   * touch), turn off keyboard modality.
+   * This accounts for situations where focus enters the page from the URL bar.
+   */
+  const onInitialPointerMove = useCallback((e: Event) => {
+    // Work around a Safari quirk that fires a mousemove on <html> whenever the
+    // window blurs, even if you're tabbing out of the page. ¯\_(ツ)_/¯
+    const target = e?.target as Element
+    if (target?.nodeName?.toLowerCase() === 'html') {
+      return
     }
 
-    /**
-     * When the polfyill first loads, assume the user is in keyboard modality.
-     * If any event is received from a pointing device (e.g. mouse, pointer,
-     * touch), turn off keyboard modality.
-     * This accounts for situations where focus enters the page from the URL bar.
-     */
-    function onInitialPointerMove(e: Event) {
-      // Work around a Safari quirk that fires a mousemove on <html> whenever the
-      // window blurs, even if you're tabbing out of the page. ¯\_(ツ)_/¯
-      const target = e?.target as Element
-      if (target?.nodeName?.toLowerCase() === 'html') {
-        return
-      }
+    setHadKeyboardEvent(false)
+    removeInitialPointerMoveHandlers(onInitialPointerMove)
+  }, [])
 
-      setHadKeyboardEvent(false)
-      removeInitialPointerMoveHandlers(onInitialPointerMove)
+  /**
+   * If the most recent user interaction was via the keyboard;
+   * and the key press did not include a meta, alt/option, or control key;
+   * then the modality is keyboard. Otherwise, the modality is not keyboard.
+   * Apply `focus-visible` to any current active element and keep track
+   * of our keyboard modality state with `hadKeyboardEvent`.
+   */
+  const onKeyDown = useCallback((e: KeyboardEvent) => {
+    if (e.metaKey || e.altKey || e.ctrlKey) {
+      return
     }
 
-    /**
-     * If the most recent user interaction was via the keyboard;
-     * and the key press did not include a meta, alt/option, or control key;
-     * then the modality is keyboard. Otherwise, the modality is not keyboard.
-     * Apply `focus-visible` to any current active element and keep track
-     * of our keyboard modality state with `hadKeyboardEvent`.
-     */
-    function onKeyDown(e: KeyboardEvent) {
-      if (e.metaKey || e.altKey || e.ctrlKey) {
-        return
-      }
+    setHadKeyboardEvent(true)
+  }, [])
 
+  /**
+   * If the user changes tabs, keep track of whether or not the previously
+   * focused element had .focus-visible.
+   */
+  const onVisibilityChange = useCallback(() => {
+    if (document.visibilityState === 'hidden') {
+      // If the tab becomes active again, the browser will handle calling focus
+      // on the element (Safari actually calls it twice).
+      // If this tab change caused a blur on an element with focus-visible,
+      // re-apply the class when the user switches back to the tab.
       setHadKeyboardEvent(true)
+      addInitialPointerMoveHandlers(onInitialPointerMove)
     }
-    /**
-     * If the user changes tabs, keep track of whether or not the previously
-     * focused element had .focus-visible.
-     */
-    function onVisibilityChange() {
-      if (document.visibilityState === 'hidden') {
-        // If the tab becomes active again, the browser will handle calling focus
-        // on the element (Safari actually calls it twice).
-        // If this tab change caused a blur on an element with focus-visible,
-        // re-apply the class when the user switches back to the tab.
-        setHadKeyboardEvent(true)
-        addInitialPointerMoveHandlers(onInitialPointerMove)
-      }
-    }
+  }, [])
 
+  useEffect(() => {
     // For some kinds of state, we are interested in changes at the global scope
     // only. For example, global pointer input, global key presses and global
     // visibility change should affect the state at every scope:
@@ -133,13 +134,13 @@ function useFocusVisible(): {
 
   const focusVisible = hadKeyboardEvent && isFocused
 
-  function onFocus() {
+  const onFocus = useCallback(() => {
     setIsFocused(true)
-  }
+  }, [])
 
-  function onBlur() {
+  const onBlur = useCallback(() => {
     setIsFocused(false)
-  }
+  }, [])
 
   return {
     focusVisible,
