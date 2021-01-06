@@ -2,7 +2,38 @@ import React, { useEffect, useState, useContext } from 'react'
 
 // A React hook based on: https://github.com/WICG/focus-visible
 
-export const FocusVisibleContext = React.createContext({
+/**
+ * Add a group of listeners to detect usage of any pointing devices.
+ * These listeners will be added when the polyfill first loads, and anytime
+ * the window is blurred, so that they are active when the window regains
+ * focus.
+ */
+
+const initialPointerMoveEvents = [
+  'mousemove',
+  'mousedown',
+  'mouseup',
+  'pointermove',
+  'pointerdown',
+  'pointerup',
+  'touchmove',
+  'touchstart',
+  'touchend',
+]
+
+function addInitialPointerMoveHandlers(handler: (e: Event) => void) {
+  initialPointerMoveEvents.forEach((eventName) => {
+    document.addEventListener(eventName, handler)
+  })
+}
+
+function removeInitialPointerMoveHandlers(handler: (e: Event) => void) {
+  initialPointerMoveEvents.forEach((eventName) => {
+    document.removeEventListener(eventName, handler)
+  })
+}
+
+const FocusVisibleContext = React.createContext({
   hadKeyboardEvent: true,
 })
 
@@ -31,37 +62,7 @@ function FocusVisibleManager(props: {
       }
 
       setHadKeyboardEvent(false)
-      removeInitialPointerMoveListeners()
-    }
-
-    /**
-     * Add a group of listeners to detect usage of any pointing devices.
-     * These listeners will be added when the polyfill first loads, and anytime
-     * the window is blurred, so that they are active when the window regains
-     * focus.
-     */
-    function addInitialPointerMoveListeners() {
-      document.addEventListener('mousemove', onInitialPointerMove)
-      document.addEventListener('mousedown', onInitialPointerMove)
-      document.addEventListener('mouseup', onInitialPointerMove)
-      document.addEventListener('pointermove', onInitialPointerMove)
-      document.addEventListener('pointerdown', onInitialPointerMove)
-      document.addEventListener('pointerup', onInitialPointerMove)
-      document.addEventListener('touchmove', onInitialPointerMove)
-      document.addEventListener('touchstart', onInitialPointerMove)
-      document.addEventListener('touchend', onInitialPointerMove)
-    }
-
-    function removeInitialPointerMoveListeners() {
-      document.removeEventListener('mousemove', onInitialPointerMove)
-      document.removeEventListener('mousedown', onInitialPointerMove)
-      document.removeEventListener('mouseup', onInitialPointerMove)
-      document.removeEventListener('pointermove', onInitialPointerMove)
-      document.removeEventListener('pointerdown', onInitialPointerMove)
-      document.removeEventListener('pointerup', onInitialPointerMove)
-      document.removeEventListener('touchmove', onInitialPointerMove)
-      document.removeEventListener('touchstart', onInitialPointerMove)
-      document.removeEventListener('touchend', onInitialPointerMove)
+      removeInitialPointerMoveHandlers(onInitialPointerMove)
     }
 
     /**
@@ -89,7 +90,7 @@ function FocusVisibleManager(props: {
         // If this tab change caused a blur on an element with focus-visible,
         // re-apply the class when the user switches back to the tab.
         setHadKeyboardEvent(true)
-        addInitialPointerMoveListeners()
+        addInitialPointerMoveHandlers(onInitialPointerMove)
       }
     }
 
@@ -102,7 +103,7 @@ function FocusVisibleManager(props: {
     document.addEventListener('touchstart', onPointerDown, true)
     document.addEventListener('visibilitychange', onVisibilityChange, true)
 
-    addInitialPointerMoveListeners()
+    addInitialPointerMoveHandlers(onInitialPointerMove)
 
     return () => {
       document.removeEventListener('keydown', onKeyDown, true)
@@ -111,7 +112,7 @@ function FocusVisibleManager(props: {
       document.removeEventListener('touchstart', onPointerDown, true)
       document.removeEventListener('visibilitychange', onVisibilityChange, true)
 
-      removeInitialPointerMoveListeners()
+      removeInitialPointerMoveHandlers(onInitialPointerMove)
     }
   }, [setHadKeyboardEvent])
 
