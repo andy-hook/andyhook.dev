@@ -139,3 +139,11 @@ export const appearance = {
   textShadow,
   borderThickness,
 }
+
+export const spring = {
+  bounce: {
+    type: 'spring',
+    stiffness: 260,
+    damping: 15,
+  },
+}
