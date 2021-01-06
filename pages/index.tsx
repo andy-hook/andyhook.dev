@@ -2,6 +2,7 @@ import React from 'react'
 import Footer from '../components/Footer/Footer'
 import Header from '../components/Header/Header'
 import Heading from '../components/Heading/Heading'
+import HireButton from '../components/HireButton/HireButton'
 import LayoutGutter from '../components/Layout/LayoutGutter'
 import LayoutLimiter from '../components/Layout/LayoutLimiter'
 import PageTitle from '../components/PageTitle/PageTitle'
@@ -33,21 +34,24 @@ function Home(): JSX.Element {
               padding-bottom: 100px;
             `}
           >
-            <Heading
-              css={`
-                max-width: 16em;
-              `}
-            >
-              Senior UI Engineer building{' '}
-              <span
+            <div>
+              <Heading
                 css={`
-                  white-space: nowrap;
+                  max-width: 16em;
                 `}
               >
-                next-generation
-              </span>{' '}
-              <RemoveWidow>user interfaces out of Brighton, UK.</RemoveWidow>
-            </Heading>
+                Senior UI Engineer building{' '}
+                <span
+                  css={`
+                    white-space: nowrap;
+                  `}
+                >
+                  next-generation
+                </span>{' '}
+                <RemoveWidow>user interfaces out of Brighton, UK.</RemoveWidow>
+              </Heading>
+              <HireButton />
+            </div>
           </div>
           <Footer />
         </LayoutLimiter>
