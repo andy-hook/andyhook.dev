@@ -8,7 +8,7 @@ interface LayoutLimiterProps {
   children: React.ReactNode
 }
 
-const LIMITER_WIDTHS: Record<Sizes, string> = {
+const widths: Record<Sizes, string> = {
   small: rem('900px'),
   medium: rem('1200px'),
   large: rem('1650px'),
@@ -19,7 +19,7 @@ function LayoutLimiter({
   children,
   ...props
 }: LayoutLimiterProps): JSX.Element {
-  const width = LIMITER_WIDTHS[size]
+  const width = widths[size]
 
   return (
     <div
