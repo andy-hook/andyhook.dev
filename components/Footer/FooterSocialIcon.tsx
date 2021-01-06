@@ -1,7 +1,8 @@
 import React from 'react'
 import { SocialNetworks } from '../../meta'
-import { appearance } from '../../style/design-tokens'
+import { appearance, spring } from '../../style/design-tokens'
 import { themeForeground } from '../../style/theme'
+import { motion } from 'framer-motion'
 import Icon from '../Icon/Icon'
 
 type Size = 'small' | 'medium' | 'large'
@@ -12,10 +13,21 @@ type FooterSocialIconProps = {
   size?: Size
 }
 
-const SIZES: Record<Size, string> = {
+const sizes: Record<Size, string> = {
   small: '1rem',
   medium: '1.5rem',
   large: '2rem',
+}
+
+const hoverMotion = {
+  rest: {
+    opacity: 0,
+    scale: 1.5,
+  },
+  hover: {
+    opacity: 1,
+    scale: 1,
+  },
 }
 
 function FooterSocialIcon({
@@ -24,10 +36,10 @@ function FooterSocialIcon({
   size = 'medium',
   ...props
 }: FooterSocialIconProps): JSX.Element {
-  const iconSize = SIZES[size]
+  const iconSize = sizes[size]
 
   return (
-    <a
+    <motion.a
       href={href}
       css={`
         position: relative;
@@ -39,8 +51,13 @@ function FooterSocialIcon({
       {...props}
       rel="noreferrer"
       target="_blank"
+      initial="rest"
+      animate="rest"
+      whileHover="hover"
     >
-      <div
+      <motion.div
+        variants={hoverMotion}
+        transition={spring.bounce}
         css={`
           position: absolute;
 
@@ -57,7 +74,7 @@ function FooterSocialIcon({
         `}
       />
       <Icon name={icon} />
-    </a>
+    </motion.a>
   )
 }
 
