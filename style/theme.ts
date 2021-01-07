@@ -15,6 +15,19 @@ export type Theme = {
   positive: Record<ColourRange, string>
 }
 
+const common = {
+  accent: {
+    base: hsl(16, 0.96, 0.69),
+    light: hsl(354, 0.89, 0.64),
+    dark: hsl(346, 0.91, 0.56),
+  },
+  positive: {
+    base: hsl(115, 0.64, 0.5),
+    light: hsl(115, 0.64, 0.65),
+    dark: hsl(115, 0.65, 0.3),
+  },
+}
+
 /* Light
 ------------------------------------------------- */
 export const lightTheme: Theme = {
@@ -31,16 +44,7 @@ export const lightTheme: Theme = {
     medium: hsl(220, 0.16, 0.96),
     high: hsl(220, 0.16, 0.98),
   },
-  accent: {
-    base: hsl(259, 0.78, 0.5),
-    light: hsl(281, 0.86, 0.46),
-    dark: hsl(259, 0.7, 0.35),
-  },
-  positive: {
-    base: hsl(259, 0.78, 0.5),
-    light: hsl(259, 0.78, 0.5),
-    dark: hsl(259, 0.78, 0.5),
-  },
+  ...common,
 }
 
 /* Dark
@@ -59,16 +63,7 @@ export const darkTheme: Theme = {
     medium: hsl(207, 0.13, 0.14),
     high: hsl(204, 0.13, 0.15),
   },
-  accent: {
-    base: hsl(16, 0.96, 0.69),
-    light: hsl(354, 0.89, 0.64),
-    dark: hsl(346, 0.91, 0.56),
-  },
-  positive: {
-    base: hsl(259, 0.78, 0.5),
-    light: hsl(259, 0.78, 0.5),
-    dark: hsl(259, 0.78, 0.5),
-  },
+  ...common,
 }
 
 export const themes = {
