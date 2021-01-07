@@ -77,7 +77,6 @@ export const themes = {
 }
 
 export function applyForeground(value: keyof Theme['foreground']): CSSProp {
-  console.log(darkTheme)
   return css`
     ${({ theme }: ThemeProps<DefaultTheme>): string => theme.foreground[value]}
   `
