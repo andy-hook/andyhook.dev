@@ -146,4 +146,9 @@ export const spring = {
     stiffness: 260,
     damping: 15,
   },
+  softOut: {
+    type: 'spring',
+    stiffness: 100,
+    damping: 30,
+  },
 }
