@@ -2,7 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import { AppProps } from 'next/dist/next-server/lib/router/router'
 import { ThemeProvider } from 'styled-components'
-import GlobalStyle from '../style/global-style'
+import GlobalStyle from '../style/global'
 import { FocusVisibleManager } from '../hooks/useFocusVisible/useFocusVisible'
 import { darkTheme } from '../style/theme'
 

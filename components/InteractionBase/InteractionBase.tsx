@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import React from 'react'
 import styled from 'styled-components'
 import { useFocusVisible } from '../../hooks/useFocusVisible/useFocusVisible'
-import { appearance, spring } from '../../style/design-tokens'
+import { appearance, spring } from '../../style/appearance'
 
 type InteractionBaseProps = {
   children: React.ReactNode

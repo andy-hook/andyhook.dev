@@ -16,6 +16,8 @@ type TypeSettings = {
   cropSettings: Record<'topCrop' | 'bottomCrop', number>
 }
 
+export const baseFontSize = 16
+
 /* Typescale – Applies to all variants
 ------------------------------------------------- */
 const typeScale: Record<number, string> = {
