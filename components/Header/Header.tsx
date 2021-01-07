@@ -1,5 +1,5 @@
 import React from 'react'
-import { themeForeground } from '../../style/theme'
+import { applyForeground } from '../../style/theme'
 import { typeBaseSemibold, typeSizeBaseXl } from '../../style/typography'
 
 function Header(): JSX.Element {
@@ -9,7 +9,7 @@ function Header(): JSX.Element {
         css={`
           ${typeBaseSemibold}
           ${typeSizeBaseXl}
-          color: ${themeForeground('medium')};
+          color: ${applyForeground('medium')};
         `}
       >
         Andy Hook

@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import React, { useCallback, useState } from 'react'
 import { appearance, spring } from '../../style/design-tokens'
-import { themeForeground } from '../../style/theme'
+import { applyForeground, applyPositive } from '../../style/theme'
 import {
   setBaseCropAndLineHeight,
   typeBaseMedium,
@@ -31,10 +31,10 @@ function HireButton(): JSX.Element {
           align-items: center;
           ${typeBaseMedium}
           ${typeSizeBaseLg}
-        color: ${themeForeground('extraHigh')};
+        color: ${applyForeground('extraHigh')};
           padding: 1.1em 1.75em;
           border-radius: ${appearance.radius.pill};
-          background-color: ${themeForeground('extraLow')};
+          background-color: ${applyForeground('extraLow')};
         `}
       >
         <div
@@ -80,7 +80,7 @@ function Pip({ ...props }: React.HTMLAttributes<HTMLDivElement>): JSX.Element {
       css={`
         width: 1em;
         height: 1em;
-        background-color: red;
+        background-color: ${applyPositive('light')};
         border-radius: ${appearance.radius.circle};
       `}
       {...props}

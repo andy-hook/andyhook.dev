@@ -2,9 +2,9 @@ import React from 'react'
 import Head from 'next/head'
 import { AppProps } from 'next/dist/next-server/lib/router/router'
 import { ThemeProvider } from 'styled-components'
-import { themes } from '../style/theme'
 import GlobalStyle from '../style/global-style'
 import { FocusVisibleManager } from '../hooks/useFocusVisible/useFocusVisible'
+import { darkTheme } from '../style/theme'
 
 function App({ Component, pageProps }: AppProps): JSX.Element {
   return (
@@ -23,7 +23,7 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
       </Head>
 
       <FocusVisibleManager>
-        <ThemeProvider theme={themes.dark}>
+        <ThemeProvider theme={darkTheme}>
           <GlobalStyle />
 
           <Component {...pageProps} />
