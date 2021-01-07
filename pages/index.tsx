@@ -38,6 +38,7 @@ function Home(): JSX.Element {
               <Heading
                 css={`
                   max-width: 16em;
+                  margin-bottom: 1.25em;
                 `}
               >
                 Senior UI Engineer building{' '}

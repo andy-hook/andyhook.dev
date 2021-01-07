@@ -13,7 +13,7 @@ const fontFamily = {
 const letterSpacing = {
   base: {
     regular: '0.01em',
-    medium: '0.01em',
+    medium: '0.02em',
     semibold: '0.004em',
   },
   display: {
@@ -145,5 +145,10 @@ export const spring = {
     type: 'spring',
     stiffness: 260,
     damping: 15,
+  },
+  softOut: {
+    type: 'spring',
+    stiffness: 100,
+    damping: 30,
   },
 }

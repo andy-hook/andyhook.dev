@@ -5,8 +5,8 @@ import { type } from './design-tokens'
 /* Base text cropping
   ------------------------------------------------- */
 const baseCropSettings = {
-  topCrop: 14,
-  bottomCrop: 10,
+  topCrop: 22,
+  bottomCrop: 13,
 }
 
 export const setBaseCropAndLineHeight = (
