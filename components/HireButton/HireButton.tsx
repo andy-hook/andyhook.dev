@@ -1,17 +1,33 @@
 import React from 'react'
+import { appearance } from '../../style/design-tokens'
+import { themeForeground } from '../../style/theme'
+import {
+  setBaseCropAndLineHeight,
+  typeBaseSemibold,
+  typeSizeBaseLg,
+} from '../../style/typography'
 import InteractionBase from '../InteractionBase/InteractionBase'
 
 function HireButton(): JSX.Element {
   return (
     <InteractionBase
-      offset={0.5}
       radius="pill"
       css={`
-        color: white;
-        margin-top: 50px;
+        ${typeBaseSemibold}
+        ${typeSizeBaseLg}
+        color: ${themeForeground('extraHigh')};
+        padding: 1.1em 1.75em;
+        border-radius: ${appearance.radius.pill};
+        background-color: ${themeForeground('extraLow')};
       `}
     >
-      Currently available for hire
+      <div
+        css={`
+          ${setBaseCropAndLineHeight('flat')}
+        `}
+      >
+        Currently available for hire
+      </div>
     </InteractionBase>
   )
 }

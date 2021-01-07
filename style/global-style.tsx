@@ -1,8 +1,7 @@
 import React from 'react'
 import { Normalize } from 'styled-normalize'
 import { createGlobalStyle } from 'styled-components'
-import { themeLayer, themeForeground } from './theme'
-import { appearance } from './design-tokens'
+import { themeLayer } from './theme'
 
 const Global = createGlobalStyle`
 
