@@ -1,6 +1,6 @@
 import React from 'react'
 import { SocialNetworks } from '../../meta'
-import { appearance, spring } from '../../style/design-tokens'
+import { appearance, spring } from '../../style/appearance'
 import { applyForeground } from '../../style/theme'
 import { motion } from 'framer-motion'
 import Icon from '../Icon/Icon'
@@ -68,7 +68,7 @@ function FooterSocialIcon({
             left: 0;
             right: 0;
             bottom: 0;
-            border: ${appearance.borderThickness.regular} solid
+            border: ${appearance.borderWidth.regular} solid
               ${applyForeground('medium')};
 
             border-radius: ${appearance.radius.circle};

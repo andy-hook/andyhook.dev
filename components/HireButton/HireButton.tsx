@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import React, { useCallback, useState } from 'react'
-import { appearance, spring } from '../../style/design-tokens'
+import { appearance, spring } from '../../style/appearance'
 import { applyForeground, applyPositive } from '../../style/theme'
 import {
   setCropAndLineHeight,
