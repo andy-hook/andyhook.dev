@@ -1,21 +1,18 @@
 import React from 'react'
-import { useFocusVisible } from '../../hooks/useFocusVisible/useFocusVisible'
+import InteractionBase from '../InteractionBase/InteractionBase'
 
 function HireButton(): JSX.Element {
-  const { focusVisible, onFocus, onBlur } = useFocusVisible()
-
   return (
-    <button
-      style={{ outline: focusVisible ? '2px solid white' : 'none' }}
-      onFocus={onFocus}
-      onBlur={onBlur}
+    <InteractionBase
+      offset={0.5}
+      radius="pill"
       css={`
         color: white;
         margin-top: 50px;
       `}
     >
-      hello world
-    </button>
+      Currently available for hire
+    </InteractionBase>
   )
 }
 

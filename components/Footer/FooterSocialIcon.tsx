@@ -4,6 +4,7 @@ import { appearance, spring } from '../../style/design-tokens'
 import { themeForeground } from '../../style/theme'
 import { motion } from 'framer-motion'
 import Icon from '../Icon/Icon'
+import InteractionBase from '../InteractionBase/InteractionBase'
 
 type Size = 'small' | 'medium' | 'large'
 
@@ -39,42 +40,45 @@ function FooterSocialIcon({
   const iconSize = sizes[size]
 
   return (
-    <motion.a
-      href={href}
-      css={`
-        position: relative;
-        display: block;
-        color: ${themeForeground('extraHigh')};
-        font-size: ${iconSize};
-        padding: 0.75em;
-      `}
-      {...props}
-      rel="noreferrer"
-      target="_blank"
+    <motion.div
       initial="rest"
       animate="rest"
       whileHover="hover"
+      css={`
+        position: relative;
+      `}
     >
-      <motion.div
-        variants={hoverMotion}
-        transition={spring.bounce}
+      <InteractionBase
+        href={href}
         css={`
-          position: absolute;
-
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          border: ${appearance.borderThickness.regular} solid
-            ${themeForeground('medium')};
-
-          border-radius: ${appearance.radius.circle};
-
-          pointer-events: none;
+          display: block;
+          color: ${themeForeground('extraHigh')};
+          font-size: ${iconSize};
+          padding: 0.75em;
         `}
-      />
-      <Icon name={icon} />
-    </motion.a>
+        {...props}
+      >
+        <motion.div
+          variants={hoverMotion}
+          transition={spring.bounce}
+          css={`
+            position: absolute;
+
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: ${appearance.borderThickness.regular} solid
+              ${themeForeground('medium')};
+
+            border-radius: ${appearance.radius.circle};
+
+            pointer-events: none;
+          `}
+        />
+        <Icon name={icon} />
+      </InteractionBase>
+    </motion.div>
   )
 }
 
