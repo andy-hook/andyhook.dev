@@ -52,26 +52,6 @@ const typeScale = {
   11: rem('94px'),
 }
 
-const spacingScale = {
-  px: '1px',
-  1: rem('4px'),
-  2: rem('8px'),
-  3: rem('12px'),
-  4: rem('16px'),
-  5: rem('20px'),
-  6: rem('24px'),
-  7: rem('32px'),
-  8: rem('40px'),
-  9: rem('48px'),
-  10: rem('64px'),
-  11: rem('80px'),
-  12: rem('96px'),
-  13: rem('128px'),
-  14: rem('160px'),
-  15: rem('224px'),
-  16: rem('256px'),
-}
-
 /* Border radius
   ------------------------------------------------- */
 
@@ -127,9 +107,6 @@ export const type = {
 
 export const layout = {
   zIndex,
-  scale: {
-    ...spacingScale,
-  },
 }
 
 export const appearance = {
