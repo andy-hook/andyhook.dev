@@ -40,8 +40,8 @@ function HireButton(): JSX.Element {
         <div
           css={`
             position: relative;
-            font-size: 0.7em;
-            margin-right: 1em;
+            font-size: 0.65em;
+            margin-right: 1.2em;
           `}
         >
           <Pip />
