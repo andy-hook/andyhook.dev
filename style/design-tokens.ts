@@ -13,7 +13,7 @@ const fontFamily = {
 const letterSpacing = {
   base: {
     regular: '0.01em',
-    medium: '0.01em',
+    medium: '0.02em',
     semibold: '0.004em',
   },
   display: {

@@ -3,7 +3,7 @@ import { appearance } from '../../style/design-tokens'
 import { themeForeground } from '../../style/theme'
 import {
   setBaseCropAndLineHeight,
-  typeBaseSemibold,
+  typeBaseMedium,
   typeSizeBaseLg,
 } from '../../style/typography'
 import InteractionBase from '../InteractionBase/InteractionBase'
@@ -13,7 +13,9 @@ function HireButton(): JSX.Element {
     <InteractionBase
       radius="pill"
       css={`
-        ${typeBaseSemibold}
+        display: flex;
+        align-items: center;
+        ${typeBaseMedium}
         ${typeSizeBaseLg}
         color: ${themeForeground('extraHigh')};
         padding: 1.1em 1.75em;
@@ -21,6 +23,16 @@ function HireButton(): JSX.Element {
         background-color: ${themeForeground('extraLow')};
       `}
     >
+      <div
+        css={`
+          width: 0.6em;
+          height: 0.6em;
+          background-color: red;
+          border-radius: ${appearance.radius.circle};
+
+          margin-right: 0.75em;
+        `}
+      />
       <div
         css={`
           ${setBaseCropAndLineHeight('flat')}
