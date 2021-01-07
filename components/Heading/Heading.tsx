@@ -1,7 +1,7 @@
 import React from 'react'
 import { applyForeground } from '../../style/theme'
 import {
-  setDisplayCropAndLineHeight,
+  setCropAndLineHeight,
   typeDisplaySemibold,
   typeSizeDisplayXl,
 } from '../../style/typography'
@@ -16,7 +16,7 @@ function Heading({ children, ...props }: HeadingProps): JSX.Element {
       css={`
         ${typeDisplaySemibold}
         ${typeSizeDisplayXl}
-        ${setDisplayCropAndLineHeight('tight')}
+        ${setCropAndLineHeight('display', 'tight')}
 
         color: ${applyForeground('extraHigh')};
       `}

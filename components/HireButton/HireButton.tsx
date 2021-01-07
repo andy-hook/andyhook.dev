@@ -3,7 +3,7 @@ import React, { useCallback, useState } from 'react'
 import { appearance, spring } from '../../style/design-tokens'
 import { applyForeground, applyPositive } from '../../style/theme'
 import {
-  setBaseCropAndLineHeight,
+  setCropAndLineHeight,
   typeBaseMedium,
   typeSizeBaseLg,
 } from '../../style/typography'
@@ -64,7 +64,7 @@ function HireButton(): JSX.Element {
 
         <div
           css={`
-            ${setBaseCropAndLineHeight('flat')}
+            ${setCropAndLineHeight('body', 'flat')}
           `}
         >
           Currently available for hire
