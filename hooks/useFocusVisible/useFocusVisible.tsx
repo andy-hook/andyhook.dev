@@ -37,7 +37,9 @@ const FocusVisibleContext = React.createContext({
   hadKeyboardEvent: true,
 })
 
-function FocusVisibleManager(props: {
+function FocusVisibleManager({
+  children,
+}: {
   children: React.ReactNode
 }): JSX.Element {
   const [hadKeyboardEvent, setHadKeyboardEvent] = useState(true)
@@ -118,7 +120,7 @@ function FocusVisibleManager(props: {
 
   return (
     <FocusVisibleContext.Provider value={{ hadKeyboardEvent }}>
-      {props.children}
+      {children}
     </FocusVisibleContext.Provider>
   )
 }
