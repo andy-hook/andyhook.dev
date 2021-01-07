@@ -90,7 +90,6 @@ function FocusVisibleManager(props: {
       // If this tab change caused a blur on an element with focus-visible,
       // re-apply the class when the user switches back to the tab.
       setHadKeyboardEvent(true)
-      addInitialPointerMoveHandlers(onInitialPointerMove)
     }
   }, [])
 
