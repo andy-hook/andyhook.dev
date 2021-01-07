@@ -61,7 +61,7 @@ export const bodyType: TypeSettings = {
 
 /* Display
 ------------------------------------------------- */
-export const displayType = {
+export const displayType: TypeSettings = {
   family: `'Manrope', -apple-system,BlinkMacSystemFont, "Segoe UI", Roboto,Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif`,
   letterSpace: {
     regular: '0.01em',
