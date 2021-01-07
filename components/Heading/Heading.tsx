@@ -1,5 +1,5 @@
 import React from 'react'
-import { themeForeground } from '../../style/theme'
+import { applyForeground } from '../../style/theme'
 import {
   setDisplayCropAndLineHeight,
   typeDisplaySemibold,
@@ -18,7 +18,7 @@ function Heading({ children, ...props }: HeadingProps): JSX.Element {
         ${typeSizeDisplayXl}
         ${setDisplayCropAndLineHeight('tight')}
 
-        color: ${themeForeground('extraHigh')};
+        color: ${applyForeground('extraHigh')};
       `}
       {...props}
     >

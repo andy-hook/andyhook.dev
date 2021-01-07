@@ -1,7 +1,7 @@
 import React from 'react'
 import { SocialNetworks } from '../../meta'
 import { appearance, spring } from '../../style/design-tokens'
-import { themeForeground } from '../../style/theme'
+import { applyForeground } from '../../style/theme'
 import { motion } from 'framer-motion'
 import Icon from '../Icon/Icon'
 import InteractionBase from '../InteractionBase/InteractionBase'
@@ -52,7 +52,7 @@ function FooterSocialIcon({
         href={href}
         css={`
           display: block;
-          color: ${themeForeground('extraHigh')};
+          color: ${applyForeground('extraHigh')};
           font-size: ${iconSize};
           padding: 0.75em;
         `}
@@ -69,7 +69,7 @@ function FooterSocialIcon({
             right: 0;
             bottom: 0;
             border: ${appearance.borderThickness.regular} solid
-              ${themeForeground('medium')};
+              ${applyForeground('medium')};
 
             border-radius: ${appearance.radius.circle};
 
