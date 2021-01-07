@@ -1,36 +1,40 @@
 import React from 'react'
 import { render, RenderOptions, RenderResult } from '@testing-library/react'
 import { ThemeProvider } from 'styled-components'
-import { themes } from '../style/theme'
+import { ThemeName, themes } from '../style/theme'
+import { FocusVisibleManager } from '../hooks/useFocusVisible/useFocusVisible'
 
-const DarkTheme: React.FunctionComponent = ({ children }) => {
+type ComponentProps = {
+  children?: React.ReactNode
+  theme?: ThemeName
+}
+
+interface CustomRenderOptions extends RenderOptions {
+  theme?: ThemeName
+}
+
+function RenderProviders({
+  children,
+  theme = 'dark',
+}: ComponentProps): JSX.Element {
   return (
-    <ThemeProvider theme={themes.dark}>
-      <>{children}</>
-    </ThemeProvider>
+    <FocusVisibleManager>
+      <ThemeProvider theme={themes[theme]}>{children}</ThemeProvider>
+    </FocusVisibleManager>
   )
 }
 
-const LightTheme: React.FunctionComponent = ({ children }) => {
-  return (
-    <ThemeProvider theme={themes.light}>
-      <>{children}</>
-    </ThemeProvider>
-  )
-}
-
-const renderDarkTheme = (
+const customRender = (
   ui: React.ReactElement,
-  options?: RenderOptions
-): RenderResult => render(ui, { wrapper: DarkTheme, ...options })
-
-const renderLightTheme = (
-  ui: React.ReactElement,
-  options?: RenderOptions
-): RenderResult => render(ui, { wrapper: LightTheme, ...options })
+  options?: CustomRenderOptions
+): RenderResult =>
+  render(ui, {
+    wrapper: (props) => <RenderProviders {...props} theme={options?.theme} />,
+    ...options,
+  })
 
 // re-export everything
 export * from '@testing-library/react'
 
 // override render method
-export { renderDarkTheme as render, renderDarkTheme, renderLightTheme }
+export { customRender as render }

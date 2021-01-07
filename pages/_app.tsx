@@ -4,6 +4,7 @@ import { AppProps } from 'next/dist/next-server/lib/router/router'
 import { ThemeProvider } from 'styled-components'
 import { themes } from '../style/theme'
 import GlobalStyle from '../style/global-style'
+import { FocusVisibleManager } from '../hooks/useFocusVisible/useFocusVisible'
 
 function App({ Component, pageProps }: AppProps): JSX.Element {
   return (
@@ -21,11 +22,13 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
         />
       </Head>
 
-      <ThemeProvider theme={themes.dark}>
-        <GlobalStyle />
+      <FocusVisibleManager>
+        <ThemeProvider theme={themes.dark}>
+          <GlobalStyle />
 
-        <Component {...pageProps} />
-      </ThemeProvider>
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </FocusVisibleManager>
     </>
   )
 }

@@ -88,9 +88,7 @@ const Global = createGlobalStyle`
   button,
   a {
     &:focus {
-      outline: ${appearance.borderThickness.regular} dotted ${themeForeground(
-  'medium'
-)};
+      outline: none;
     }
   }
 
