@@ -1,7 +1,11 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import React, { useCallback, useState } from 'react'
 import { appearance, spring } from '../../style/appearance'
-import { applyForeground, applyPositive } from '../../style/theme'
+import {
+  applyBackground,
+  applyForeground,
+  applyPositive,
+} from '../../style/theme'
 import {
   setCropAndLineHeight,
   typeBaseMedium,
@@ -34,7 +38,7 @@ function HireButton(): JSX.Element {
           color: ${applyForeground('extraHigh')};
           padding: 1.1em 1.75em;
           border-radius: ${appearance.radius.pill};
-          background-color: ${applyForeground('extraLow')};
+          background-color: ${applyBackground('medium')};
         `}
       >
         <div
