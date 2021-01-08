@@ -6,6 +6,8 @@ import Icon from '../Icon/Icon'
 import InteractionBase from '../InteractionBase/InteractionBase'
 import meta, { SocialNetworks } from '../../meta'
 import { keys } from '../../utils/general'
+import { typeSizeBaseLg } from '../../style/typography'
+import { inclusiveUp } from '../../style/responsive'
 
 const socialInfo: Record<SocialNetworks, [SocialNetworks, string]> = {
   twitter: ['twitter', 'https://twitter.com/'],
@@ -34,7 +36,16 @@ function SocialIcons(): JSX.Element {
       css={`
         display: inline-grid;
         grid-auto-flow: column;
-        font-size: 1.5rem;
+
+        font-size: 1.25rem;
+
+        ${inclusiveUp('sm')} {
+          font-size: 1.5rem;
+        }
+
+        ${inclusiveUp('md')} {
+          font-size: 1.7rem;
+        }
 
         margin: -${iconPadding};
       `}

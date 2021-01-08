@@ -1,17 +1,21 @@
 import React from 'react'
+import { inclusiveUp } from '../../style/responsive'
 
 type LayoutGutterProps = {
   children: React.ReactNode
 }
 
 function LayoutGutter({ children, ...props }: LayoutGutterProps): JSX.Element {
-  const paddingAmount = '5%'
-
   return (
     <div
       css={`
-        padding-left: ${paddingAmount};
-        padding-right: ${paddingAmount};
+        padding-left: 2rem;
+        padding-right: 2rem;
+
+        ${inclusiveUp('xxs')} {
+          padding-left: 7%;
+          padding-right: 7%;
+        }
       `}
       {...props}
     >

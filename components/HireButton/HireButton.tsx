@@ -31,7 +31,7 @@ function HireButton(): JSX.Element {
           align-items: center;
           ${typeBaseMedium}
           ${typeSizeBaseLg}
-        color: ${applyForeground('extraHigh')};
+          color: ${applyForeground('extraHigh')};
           padding: 1.1em 1.75em;
           border-radius: ${appearance.radius.pill};
           background-color: ${applyForeground('extraLow')};

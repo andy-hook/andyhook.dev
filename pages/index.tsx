@@ -6,9 +6,10 @@ import LayoutGutter from '../components/Layout/LayoutGutter'
 import LayoutLimiter from '../components/Layout/LayoutLimiter'
 import PageTitle from '../components/PageTitle/PageTitle'
 import RemoveWidow from '../components/RemoveWidow/RemoveWidow'
-import { typeBaseSemibold, typeSizeBaseXl } from '../style/typography'
+import { typeBaseSemibold, typeSizeBaseLg } from '../style/typography'
 import { applyForeground } from '../style/theme'
 import { css } from 'styled-components'
+import { inclusiveUp } from '../style/responsive'
 
 const bookendHeight = css`
   height: 50px;
@@ -25,8 +26,19 @@ function Home(): JSX.Element {
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            padding-top: 4rem;
-            padding-bottom: 4rem;
+
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+
+            ${inclusiveUp('sm')} {
+              padding-top: 3.5rem;
+              padding-bottom: 3.5rem;
+            }
+
+            ${inclusiveUp('md')} {
+              padding-top: 4.5rem;
+              padding-bottom: 4.5rem;
+            }
           `}
         >
           <header
@@ -37,7 +49,7 @@ function Home(): JSX.Element {
             <h2
               css={`
                 ${typeBaseSemibold}
-                ${typeSizeBaseXl}
+                ${typeSizeBaseLg}
                 color: ${applyForeground('medium')};
               `}
             >
@@ -64,7 +76,9 @@ function Home(): JSX.Element {
                 Senior UI Engineer building{' '}
                 <span
                   css={`
-                    white-space: nowrap;
+                    ${inclusiveUp('xs')} {
+                      white-space: nowrap;
+                    }
                   `}
                 >
                   next-generation
@@ -80,7 +94,10 @@ function Home(): JSX.Element {
 
               display: flex;
               align-items: flex-end;
-              justify-content: flex-end;
+
+              ${inclusiveUp('md')} {
+                justify-content: flex-end;
+              }
             `}
           >
             <SocialIcons />

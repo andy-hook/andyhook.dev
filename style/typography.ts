@@ -1,5 +1,6 @@
 import { rem } from 'polished'
 import { css, CSSProp } from 'styled-components'
+import { inclusiveUp } from './responsive'
 import { createPlaceholderCrop, createTextCrop } from './utils'
 
 type StyleName = 'body' | 'display'
@@ -31,7 +32,6 @@ const typeScale: Record<number, string> = {
   8: rem('36px'),
   9: rem('48px'),
   10: rem('64px'),
-  11: rem('94px'),
 }
 
 /* Body
@@ -189,19 +189,19 @@ export const typeSizeBaseMd = css`
 `
 
 export const typeSizeBaseLg = css`
-  font-size: ${applyTypeSize(3)};
-`
+  font-size: ${applyTypeSize(2)};
 
-export const typeSizeBaseXl = css`
-  font-size: ${applyTypeSize(4)};
+  ${inclusiveUp('sm')} {
+    font-size: ${applyTypeSize(3)};
+  }
+
+  ${inclusiveUp('md')} {
+    font-size: ${applyTypeSize(4)};
+  }
 `
 
 /* Display type sizes
   ------------------------------------------------- */
-export const typeSizeDisplayXs = css`
-  font-size: ${applyTypeSize(4)};
-`
-
 export const typeSizeDisplaySm = css`
   font-size: ${applyTypeSize(4)};
 `
@@ -211,8 +211,12 @@ export const typeSizeDisplayMd = css`
 
 export const typeSizeDisplayLg = css`
   font-size: ${applyTypeSize(8)};
-`
 
-export const typeSizeDisplayXl = css`
-  font-size: ${applyTypeSize(10)};
+  ${inclusiveUp('sm')} {
+    font-size: ${applyTypeSize(9)};
+  }
+
+  ${inclusiveUp('md')} {
+    font-size: ${applyTypeSize(10)};
+  }
 `
