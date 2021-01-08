@@ -1,4 +1,3 @@
-import 'jest-styled-components'
 import { uniformScale } from './responsive'
 
 describe('uniformScale', () => {
