@@ -6,7 +6,6 @@ import Icon from '../Icon/Icon'
 import InteractionBase from '../InteractionBase/InteractionBase'
 import meta, { SocialNetworks } from '../../meta'
 import { keys } from '../../utils/general'
-import { typeSizeBaseLg } from '../../style/typography'
 import { inclusiveUp } from '../../style/responsive'
 
 const socialInfo: Record<SocialNetworks, [SocialNetworks, string]> = {
