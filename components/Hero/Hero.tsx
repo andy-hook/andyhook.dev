@@ -81,16 +81,63 @@ function Hero(): JSX.Element {
                   margin-bottom: 1.25em;
                 `}
               >
-                Senior UI Engineer building{' '}
                 <span
                   css={`
-                    ${inclusiveUp('xs')} {
-                      white-space: nowrap;
-                    }
+                    position: relative;
+                    z-index: ${appearance.index.floor};
                   `}
                 >
-                  next-generation
+                  <span
+                    css={`
+                      position: relative;
+                      z-index: ${appearance.index.low};
+                    `}
+                  >
+                    Senior UI Engineer
+                  </span>
+                  <span
+                    css={`
+                      position: absolute;
+                      top: 0;
+                      left: -0.35em;
+                      bottom: -0.1em;
+                      right: -0.4em;
+
+                      background-color: ${applyBackground('high')};
+                      z-index: ${appearance.index.floor};
+
+                      border-radius: ${appearance.radius.base};
+                      overflow: hidden;
+                    `}
+                  >
+                    <span
+                      css={`
+                        position: absolute;
+                        top: 0em;
+                        left: 0;
+                        bottom: 0;
+                        right: 0;
+                      `}
+                    />
+                  </span>
                 </span>{' '}
+                <span
+                  css={`
+                    position: relative;
+                    z-index: ${appearance.index.low};
+                  `}
+                >
+                  building{' '}
+                  <span
+                    css={`
+                      ${inclusiveUp('xs')} {
+                        white-space: nowrap;
+                      }
+                    `}
+                  >
+                    next-generation
+                  </span>{' '}
+                </span>
                 <RemoveWidow>user interfaces out of Brighton, UK.</RemoveWidow>
               </Heading>
               <HireButton />

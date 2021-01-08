@@ -154,7 +154,7 @@ const GlobalDocumentAdjustment = createGlobalStyle`
     overflow-y: scroll;
     
     // Set initial background to avoid possible colour flash
-    background-color: ${applyBackground('medium')}
+    background-color: ${applyBackground('low')}
   }
 `
 
