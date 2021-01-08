@@ -1,12 +1,18 @@
 import React from 'react'
-import Footer from '../components/Footer/Footer'
-import Header from '../components/Header/Header'
+import SocialIcons from '../components/SocialIcons/SocialIcons'
 import Heading from '../components/Heading/Heading'
 import HireButton from '../components/HireButton/HireButton'
 import LayoutGutter from '../components/Layout/LayoutGutter'
 import LayoutLimiter from '../components/Layout/LayoutLimiter'
 import PageTitle from '../components/PageTitle/PageTitle'
 import RemoveWidow from '../components/RemoveWidow/RemoveWidow'
+import { typeBaseSemibold, typeSizeBaseXl } from '../style/typography'
+import { applyForeground } from '../style/theme'
+import { css } from 'styled-components'
+
+const bookendHeight = css`
+  height: 50px;
+`
 
 function Home(): JSX.Element {
   return (
@@ -18,13 +24,27 @@ function Home(): JSX.Element {
           css={`
             display: flex;
             flex-direction: column;
-            height: 100vh;
-            padding-top: 50px;
-            padding-bottom: 50px;
+            min-height: 100vh;
+            padding-top: 4rem;
+            padding-bottom: 4rem;
           `}
         >
-          <Header />
-          <div
+          <header
+            css={`
+              ${bookendHeight}
+            `}
+          >
+            <h2
+              css={`
+                ${typeBaseSemibold}
+                ${typeSizeBaseXl}
+                color: ${applyForeground('medium')};
+              `}
+            >
+              Andy Hook
+            </h2>
+          </header>
+          <main
             css={`
               display: flex;
               align-items: center;
@@ -53,8 +73,18 @@ function Home(): JSX.Element {
               </Heading>
               <HireButton />
             </div>
-          </div>
-          <Footer />
+          </main>
+          <footer
+            css={`
+              ${bookendHeight}
+
+              display: flex;
+              align-items: flex-end;
+              justify-content: flex-end;
+            `}
+          >
+            <SocialIcons />
+          </footer>
         </LayoutLimiter>
       </LayoutGutter>
     </>

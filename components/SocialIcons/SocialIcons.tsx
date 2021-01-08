@@ -1,24 +1,21 @@
 import React from 'react'
-import { SocialNetworks } from '../../meta'
 import { appearance, spring } from '../../style/appearance'
 import { applyForeground } from '../../style/theme'
 import { motion } from 'framer-motion'
 import Icon from '../Icon/Icon'
 import InteractionBase from '../InteractionBase/InteractionBase'
+import meta, { SocialNetworks } from '../../meta'
+import { keys } from '../../utils/general'
 
-type Size = 'small' | 'medium' | 'large'
-
-type FooterSocialIconProps = {
-  icon: SocialNetworks
-  href: string
-  size?: Size
+const socialInfo: Record<SocialNetworks, [SocialNetworks, string]> = {
+  twitter: ['twitter', 'https://twitter.com/'],
+  instagram: ['instagram', 'https://instagram.com/'],
+  linkedin: ['linkedin', 'https://www.linkedin.com/in/'],
+  dribbble: ['dribbble', 'https://dribbble.com/'],
+  github: ['github', 'https://github.com/'],
 }
 
-const sizes: Record<Size, string> = {
-  small: '1rem',
-  medium: '1.5rem',
-  large: '2rem',
-}
+const iconPadding = '0.75em'
 
 const hoverMotion = {
   rest: {
@@ -31,14 +28,40 @@ const hoverMotion = {
   },
 }
 
-function FooterSocialIcon({
+function SocialIcons(): JSX.Element {
+  return (
+    <ul
+      css={`
+        display: inline-grid;
+        grid-auto-flow: column;
+        font-size: 1.5rem;
+
+        margin: -${iconPadding};
+      `}
+    >
+      {keys(meta.social).map((key) => {
+        const [icon, url] = socialInfo[key]
+        const username = meta.social[key]
+
+        return (
+          <li key={key}>
+            <SocialIcon icon={icon} href={`${url}${username}`} />
+          </li>
+        )
+      })}
+    </ul>
+  )
+}
+
+function SocialIcon({
   icon,
   href,
-  size = 'medium',
-  ...props
-}: FooterSocialIconProps): JSX.Element {
-  const iconSize = sizes[size]
 
+  ...props
+}: {
+  icon: SocialNetworks
+  href: string
+}): JSX.Element {
   return (
     <motion.div
       initial="rest"
@@ -53,8 +76,8 @@ function FooterSocialIcon({
         css={`
           display: block;
           color: ${applyForeground('extraHigh')};
-          font-size: ${iconSize};
-          padding: 0.75em;
+          font-size: 1em;
+          padding: ${iconPadding};
         `}
         {...props}
       >
@@ -82,4 +105,4 @@ function FooterSocialIcon({
   )
 }
 
-export default FooterSocialIcon
+export default SocialIcons
