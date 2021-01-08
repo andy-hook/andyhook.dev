@@ -6711,6 +6711,11 @@ style-value-types@3.2.0, style-value-types@^3.2.0:
     hey-listen "^1.0.8"
     tslib "^1.10.0"
 
+styled-breakpoints@^9.0.8:
+  version "9.0.8"
+  resolved "https://registry.yarnpkg.com/styled-breakpoints/-/styled-breakpoints-9.0.8.tgz#4755601c7d2fb465931a7905ab86b49c8442cca5"
+  integrity sha512-b/T1aU6O9IeN4RjCAnMcDYoeWkmzN4ewPWOG26VnTTE14lSyilSS2RhIl2tvc1brQ2ZvSR7oR9Wn9fq2/dURDA==
+
 styled-components@^5.2.1:
   version "5.2.1"
   resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-5.2.1.tgz#6ed7fad2dc233825f64c719ffbdedd84ad79101a"

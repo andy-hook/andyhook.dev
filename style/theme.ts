@@ -1,5 +1,6 @@
 import { hsl } from 'polished'
 import { css, CSSProp, DefaultTheme, ThemeProps } from 'styled-components'
+import { BreakpointList, breakpoints } from './responsive'
 
 export type ThemeName = 'light' | 'dark'
 
@@ -13,6 +14,7 @@ export type Theme = {
   background: Record<LimitedShadeRange, string>
   accent: Record<ColourRange, string>
   positive: Record<ColourRange, string>
+  breakpoints: BreakpointList
 }
 
 const common = {
@@ -26,6 +28,7 @@ const common = {
     light: hsl(115, 0.64, 0.65),
     dark: hsl(115, 0.65, 0.3),
   },
+  breakpoints: breakpoints,
 }
 
 /* Light
