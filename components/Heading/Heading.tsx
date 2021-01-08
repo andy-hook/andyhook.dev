@@ -3,7 +3,7 @@ import { applyForeground } from '../../style/theme'
 import {
   setCropAndLineHeight,
   typeDisplaySemibold,
-  typeSizeDisplayXl,
+  typeSizeDisplayLg,
 } from '../../style/typography'
 
 type HeadingProps = {
@@ -15,7 +15,7 @@ function Heading({ children, ...props }: HeadingProps): JSX.Element {
     <h1
       css={`
         ${typeDisplaySemibold}
-        ${typeSizeDisplayXl}
+        ${typeSizeDisplayLg}
         ${setCropAndLineHeight('display', 'tight')}
 
         color: ${applyForeground('extraHigh')};

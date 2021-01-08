@@ -1,12 +1,19 @@
 import React from 'react'
-import Footer from '../components/Footer/Footer'
-import Header from '../components/Header/Header'
+import SocialIcons from '../components/SocialIcons/SocialIcons'
 import Heading from '../components/Heading/Heading'
 import HireButton from '../components/HireButton/HireButton'
 import LayoutGutter from '../components/Layout/LayoutGutter'
 import LayoutLimiter from '../components/Layout/LayoutLimiter'
 import PageTitle from '../components/PageTitle/PageTitle'
 import RemoveWidow from '../components/RemoveWidow/RemoveWidow'
+import { typeBaseSemibold, typeSizeBaseLg } from '../style/typography'
+import { applyForeground } from '../style/theme'
+import { css } from 'styled-components'
+import { inclusiveUp } from '../style/responsive'
+
+const bookendHeight = css`
+  height: 50px;
+`
 
 function Home(): JSX.Element {
   return (
@@ -18,13 +25,38 @@ function Home(): JSX.Element {
           css={`
             display: flex;
             flex-direction: column;
-            height: 100vh;
-            padding-top: 50px;
-            padding-bottom: 50px;
+            min-height: 100vh;
+
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+
+            ${inclusiveUp('sm')} {
+              padding-top: 3.5rem;
+              padding-bottom: 3.5rem;
+            }
+
+            ${inclusiveUp('md')} {
+              padding-top: 4.5rem;
+              padding-bottom: 4.5rem;
+            }
           `}
         >
-          <Header />
-          <div
+          <header
+            css={`
+              ${bookendHeight}
+            `}
+          >
+            <h2
+              css={`
+                ${typeBaseSemibold}
+                ${typeSizeBaseLg}
+                color: ${applyForeground('medium')};
+              `}
+            >
+              Andy Hook
+            </h2>
+          </header>
+          <main
             css={`
               display: flex;
               align-items: center;
@@ -44,7 +76,9 @@ function Home(): JSX.Element {
                 Senior UI Engineer building{' '}
                 <span
                   css={`
-                    white-space: nowrap;
+                    ${inclusiveUp('xs')} {
+                      white-space: nowrap;
+                    }
                   `}
                 >
                   next-generation
@@ -53,8 +87,21 @@ function Home(): JSX.Element {
               </Heading>
               <HireButton />
             </div>
-          </div>
-          <Footer />
+          </main>
+          <footer
+            css={`
+              ${bookendHeight}
+
+              display: flex;
+              align-items: flex-end;
+
+              ${inclusiveUp('md')} {
+                justify-content: flex-end;
+              }
+            `}
+          >
+            <SocialIcons />
+          </footer>
         </LayoutLimiter>
       </LayoutGutter>
     </>
