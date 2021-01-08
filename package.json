@@ -21,8 +21,14 @@
     "polished": "^4.0.5",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "styled-breakpoints": "^9.0.8",
     "styled-components": "^5.2.1",
     "styled-normalize": "^8.0.7"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/setupTests.ts"
+    ]
   },
   "devDependencies": {
     "@testing-library/react": "^11.2.2",
