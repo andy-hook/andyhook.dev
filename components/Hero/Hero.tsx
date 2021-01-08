@@ -12,7 +12,7 @@ import RemoveWidow from '../RemoveWidow/RemoveWidow'
 import SocialIcons from '../SocialIcons/SocialIcons'
 
 const bookendHeight = css`
-  height: 50px;
+  height: 3rem;
 `
 
 function Hero(): JSX.Element {
@@ -112,63 +112,72 @@ function Hero(): JSX.Element {
           </footer>
         </LayoutLimiter>
       </LayoutGutter>
+      <HeroBackground />
+    </div>
+  )
+}
+
+function HeroBackground() {
+  return (
+    <PatternLayer
+      css={`
+        z-index: ${appearance.index.floor};
+        background: url('/pattern.svg') repeat top left;
+        opacity: 0.15;
+      `}
+    >
+      {/* Right */}
+      <PatternLayer
+        css={`
+          z-index: ${appearance.index.high};
+
+          background: linear-gradient(
+            90deg,
+            ${applyBackground('low', 0)} 20%,
+            ${applyBackground('low', 0.95)} 110%
+          );
+        `}
+      />
+
+      {/* Left */}
+      <PatternLayer
+        css={`
+          z-index: ${appearance.index.medium};
+
+          background: linear-gradient(
+            -90deg,
+            ${applyBackground('low', 0)} 30%,
+            ${applyBackground('low', 0.95)} 100%
+          );
+        `}
+      />
+
+      {/* Top */}
+      <PatternLayer
+        css={`
+          z-index: ${appearance.index.low};
+
+          background: linear-gradient(
+            10deg,
+            ${applyBackground('low', 0)} 30%,
+            ${applyBackground('low', 0.95)} 80%
+          );
+        `}
+      />
+
+      {/* Bottom */}
       <PatternLayer
         css={`
           z-index: ${appearance.index.floor};
-          background: url('/pattern.svg') repeat top left;
-          opacity: 0.15;
+
+          background: linear-gradient(
+            175deg,
+            ${applyBackground('low', 0)} 30%,
+            ${applyBackground('low', 0.95)} 80%
+          );
         `}
-      >
-        {/* Right */}
-        <PatternLayer
-          css={`
-            z-index: ${appearance.index.high};
-
-            background: linear-gradient(
-              90deg,
-              ${applyBackground('low', 0)} 20%,
-              ${applyBackground('low', 0.95)} 110%
-            );
-          `}
-        />
-        {/* Left */}
-        <PatternLayer
-          css={`
-            z-index: ${appearance.index.medium};
-
-            background: linear-gradient(
-              -90deg,
-              ${applyBackground('low', 0)} 30%,
-              ${applyBackground('low', 0.95)} 100%
-            );
-          `}
-        />
-        {/* Top */}
-        <PatternLayer
-          css={`
-            z-index: ${appearance.index.low};
-
-            background: linear-gradient(
-              10deg,
-              ${applyBackground('low', 0)} 30%,
-              ${applyBackground('low', 0.95)} 80%
-            );
-          `}
-        />
-        {/* Bottom */}
-        <PatternLayer
-          css={`
-            z-index: ${appearance.index.floor};
-
-            background: linear-gradient(
-              175deg,
-              ${applyBackground('low', 0)} 30%,
-              ${applyBackground('low', 0.95)} 80%
-            );
-          `}
-        />
-      </PatternLayer>
-    </div>
+      />
+    </PatternLayer>
   )
 }
 
