@@ -78,6 +78,7 @@ function Hero(): JSX.Element {
               <Heading
                 css={`
                   max-width: 16em;
+                  padding-top: 0.5em;
                   margin-bottom: 1.25em;
                 `}
               >
@@ -125,6 +126,7 @@ function Hero(): JSX.Element {
                   css={`
                     position: relative;
                     z-index: ${appearance.index.low};
+                    color ${applyForeground('high')}
                   `}
                 >
                   building{' '}
@@ -137,8 +139,10 @@ function Hero(): JSX.Element {
                   >
                     next-generation
                   </span>{' '}
+                  <RemoveWidow>
+                    user interfaces out of Brighton, UK.
+                  </RemoveWidow>
                 </span>
-                <RemoveWidow>user interfaces out of Brighton, UK.</RemoveWidow>
               </Heading>
               <HireButton />
             </div>

@@ -62,8 +62,8 @@ export const darkTheme: Theme = {
   foreground: {
     extraLow: [215, 0.13, 0.2],
     low: [206, 0.11, 0.35],
-    medium: [206, 0.1, 0.55],
-    high: [206, 0.8, 0.62],
+    medium: [206, 0.1, 0.5],
+    high: [206, 0.08, 0.8],
     extraHigh: [0, 0, 1],
   },
   background: {

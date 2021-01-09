@@ -31,7 +31,8 @@ const typeScale: Record<number, string> = {
   7: rem('30px'),
   8: rem('36px'),
   9: rem('48px'),
-  10: rem('64px'),
+  10: rem('54px'),
+  11: rem('68px'),
 }
 
 /* Body
@@ -218,5 +219,9 @@ export const typeSizeDisplayLg = css`
 
   ${inclusiveUp('md')} {
     font-size: ${applyTypeSize(10)};
+  }
+
+  ${inclusiveUp('xxl')} {
+    font-size: ${applyTypeSize(11)};
   }
 `

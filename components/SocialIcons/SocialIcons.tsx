@@ -85,7 +85,7 @@ function SocialIcon({
         href={href}
         css={`
           display: block;
-          color: ${applyForeground('extraHigh')};
+          color: ${applyForeground('medium')};
           font-size: 1em;
           padding: ${iconPadding};
         `}
