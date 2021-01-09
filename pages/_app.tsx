@@ -6,6 +6,9 @@ import GlobalStyle from '../style/global'
 import { FocusVisibleManager } from '../hooks/useFocusVisible/useFocusVisible'
 import { darkTheme } from '../style/theme'
 
+// Import fonts outside of styled-components to avoid flicker on state change
+import '../style/font.css'
+
 function App({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <>
