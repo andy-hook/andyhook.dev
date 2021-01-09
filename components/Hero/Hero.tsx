@@ -1,5 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
+import meta from '../../meta'
 import { appearance } from '../../style/appearance'
 import { inclusiveUp } from '../../style/responsive'
 import { applyBackground, applyForeground } from '../../style/theme'
@@ -144,7 +145,7 @@ function Hero(): JSX.Element {
                   </RemoveWidow>
                 </span>
               </Heading>
-              <HireButton />
+              <HireButton href={`mailto:${meta.email}`} />
             </div>
           </main>
           <footer

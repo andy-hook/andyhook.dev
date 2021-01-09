@@ -13,7 +13,11 @@ import {
 } from '../../style/typography'
 import InteractionBase from '../InteractionBase/InteractionBase'
 
-function HireButton(): JSX.Element {
+type HireButtonProps = {
+  href: string
+}
+
+function HireButton({ href }: HireButtonProps): JSX.Element {
   const [pipCounter, setPipCounter] = useState(0)
 
   const incrementPulse = useCallback(() => {
@@ -30,6 +34,7 @@ function HireButton(): JSX.Element {
     >
       <InteractionBase
         radius="pill"
+        href={href}
         css={`
           display: flex;
           align-items: center;
