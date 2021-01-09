@@ -32,7 +32,7 @@ const typeScale: Record<number, string> = {
   8: rem('36px'),
   9: rem('48px'),
   10: rem('54px'),
-  11: rem('68px'),
+  11: rem('64px'),
 }
 
 /* Body
@@ -221,7 +221,7 @@ export const typeSizeDisplayLg = css`
     font-size: ${applyTypeSize(10)};
   }
 
-  ${inclusiveUp('xxl')} {
+  ${inclusiveUp('xl')} {
     font-size: ${applyTypeSize(11)};
   }
 `
