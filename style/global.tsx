@@ -158,22 +158,12 @@ const GlobalDocumentAdjustment = createGlobalStyle`
   }
 `
 
-const Font = createGlobalStyle`
-  @font-face {
-    font-family: 'Manrope';
-    src: url('/manrope-variable.ttf');
-    font-weight: 1 999;
-    font-display: swap;
-  }
-`
-
 const GlobalStyle: React.FunctionComponent = () => {
   return (
     <>
       <Normalize />
       <Global />
       <GlobalDocumentAdjustment />
-      <Font />
     </>
   )
 }
