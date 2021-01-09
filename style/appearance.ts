@@ -18,7 +18,7 @@ export const appearance = {
   },
   textShadow: {
     subtle: '0 0 0.03em rgba(0, 0, 0, 0.5)',
-    heavy: '0 0 1em rgba(0, 0, 0.6)',
+    heavy: '0 0 0.2em rgba(0, 0, 0, 0.3)',
   },
 }
 

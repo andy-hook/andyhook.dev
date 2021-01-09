@@ -1,7 +1,8 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
+import meta from '../../meta'
 import { appearance } from '../../style/appearance'
-import { inclusiveUp } from '../../style/responsive'
+import { inclusiveDown, inclusiveUp } from '../../style/responsive'
 import { applyBackground, applyForeground } from '../../style/theme'
 import { typeBaseSemibold, typeSizeBaseLg } from '../../style/typography'
 import Heading from '../Heading/Heading'
@@ -52,6 +53,10 @@ function Hero(): JSX.Element {
           <header
             css={`
               ${bookendHeight}
+
+              ${inclusiveDown('xs')} {
+                text-align: center;
+              }
             `}
           >
             <h2
@@ -72,13 +77,25 @@ function Hero(): JSX.Element {
               flex: 1;
               padding-top: 100px;
               padding-bottom: 100px;
+
+              ${inclusiveDown('xs')} {
+                justify-content: center;
+              }
             `}
           >
-            <div>
+            <div
+              css={`
+                ${inclusiveDown('xs')} {
+                  text-align: center;
+                }
+              `}
+            >
               <Heading
                 css={`
                   max-width: 16em;
+                  padding-top: 0.5em;
                   margin-bottom: 1.25em;
+                  text-shadow: ${appearance.textShadow.heavy};
                 `}
               >
                 <span
@@ -125,6 +142,7 @@ function Hero(): JSX.Element {
                   css={`
                     position: relative;
                     z-index: ${appearance.index.low};
+                    color ${applyForeground('high')}
                   `}
                 >
                   building{' '}
@@ -137,10 +155,12 @@ function Hero(): JSX.Element {
                   >
                     next-generation
                   </span>{' '}
+                  <RemoveWidow>
+                    user interfaces out of Brighton, UK.
+                  </RemoveWidow>
                 </span>
-                <RemoveWidow>user interfaces out of Brighton, UK.</RemoveWidow>
               </Heading>
-              <HireButton />
+              <HireButton href={`mailto:${meta.email}`} />
             </div>
           </main>
           <footer
@@ -149,6 +169,10 @@ function Hero(): JSX.Element {
 
               display: flex;
               align-items: flex-end;
+
+              ${inclusiveDown('xs')} {
+                justify-content: center;
+              }
 
               ${inclusiveUp('md')} {
                 justify-content: flex-end;

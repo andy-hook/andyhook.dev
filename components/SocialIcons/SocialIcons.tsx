@@ -21,11 +21,20 @@ const iconPadding = '0.75em'
 const hoverMotion = {
   rest: {
     opacity: 0,
-    scale: 1.5,
+    scale: 1.4,
   },
   hover: {
     opacity: 1,
     scale: 1,
+  },
+}
+
+const hoverIcon = {
+  rest: {
+    opacity: 0.35,
+  },
+  hover: {
+    opacity: 1,
   },
 }
 
@@ -44,6 +53,10 @@ function SocialIcons(): JSX.Element {
 
         ${inclusiveUp('md')} {
           font-size: 1.7rem;
+        }
+
+        ${inclusiveUp('xl')} {
+          font-size: 1.8rem;
         }
 
         margin: -${iconPadding};
@@ -102,14 +115,16 @@ function SocialIcon({
             right: 0;
             bottom: 0;
             border: ${appearance.borderWidth.regular} solid
-              ${applyForeground('medium')};
+              ${applyForeground('low')};
 
             border-radius: ${appearance.radius.circle};
 
             pointer-events: none;
           `}
         />
-        <Icon name={icon} />
+        <motion.div variants={hoverIcon} transition={spring.bounce}>
+          <Icon name={icon} />
+        </motion.div>
       </InteractionBase>
     </motion.div>
   )
