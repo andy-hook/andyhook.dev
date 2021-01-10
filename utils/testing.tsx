@@ -1,8 +1,8 @@
 import React from 'react'
 import { render, RenderOptions, RenderResult } from '@testing-library/react'
-import { ThemeProvider } from 'styled-components'
 import { ThemeName, themes } from '../style/theme'
 import { FocusVisibleProvider } from '../hooks/useFocusVisible/useFocusVisible'
+import { ThemeProvider } from '../hooks/useTheme/useTheme'
 
 type ComponentProps = {
   children?: React.ReactNode

@@ -1,17 +1,17 @@
-import React, { useState, useCallback } from 'react'
+import React, { useCallback } from 'react'
 import {
   ThemeProvider as StyledThemeProvider,
   useTheme as styledUseTheme,
 } from 'styled-components'
-import { applyHsl, darkTheme, Theme } from '../../style/theme'
+import { applyHsl, Theme } from '../../style/theme'
 
 function ThemeProvider({
   children,
+  theme,
 }: {
   children: React.ReactNode
+  theme: Theme
 }): JSX.Element {
-  const [theme] = useState(darkTheme)
-
   return <StyledThemeProvider theme={theme}>{children}</StyledThemeProvider>
 }
 

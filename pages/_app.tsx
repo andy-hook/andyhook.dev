@@ -7,6 +7,7 @@ import { ThemeProvider, useTheme } from '../hooks/useTheme/useTheme'
 
 // Import fonts outside of styled-components to avoid flicker on state change
 import '../style/font.css'
+import { darkTheme } from '../style/theme'
 
 function App({ Component, pageProps }: AppProps): JSX.Element {
   return (
@@ -25,7 +26,7 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
       </Head>
 
       <FocusVisibleProvider>
-        <ThemeProvider>
+        <ThemeProvider theme={darkTheme}>
           <GlobalStyle />
           <Body>
             <Component {...pageProps} />
