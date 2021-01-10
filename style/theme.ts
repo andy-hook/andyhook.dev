@@ -79,7 +79,7 @@ export const themes = {
   dark: darkTheme,
 }
 
-function applyHsl(value: ColorValue, alpha?: number): string {
+export function applyHsl(value: ColorValue, alpha?: number): string {
   const [hue, saturation, lightness] = value
 
   const props = {

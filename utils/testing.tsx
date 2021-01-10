@@ -2,7 +2,7 @@ import React from 'react'
 import { render, RenderOptions, RenderResult } from '@testing-library/react'
 import { ThemeProvider } from 'styled-components'
 import { ThemeName, themes } from '../style/theme'
-import { FocusVisibleManager } from '../hooks/useFocusVisible/useFocusVisible'
+import { FocusVisibleProvider } from '../hooks/useFocusVisible/useFocusVisible'
 
 type ComponentProps = {
   children?: React.ReactNode
@@ -18,9 +18,9 @@ function RenderProviders({
   theme = 'dark',
 }: ComponentProps): JSX.Element {
   return (
-    <FocusVisibleManager>
+    <FocusVisibleProvider>
       <ThemeProvider theme={themes[theme]}>{children}</ThemeProvider>
-    </FocusVisibleManager>
+    </FocusVisibleProvider>
   )
 }
 
@@ -29,7 +29,9 @@ const customRender = (
   options?: CustomRenderOptions
 ): RenderResult =>
   render(ui, {
-    wrapper: (props) => <RenderProviders {...props} theme={options?.theme} />,
+    wrapper: function RenderWrapper(props) {
+      return <RenderProviders {...props} theme={options?.theme} />
+    },
     ...options,
   })
 
