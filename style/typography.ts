@@ -59,7 +59,7 @@ export const bodyType: TypeSettings = {
     semiBold: 600,
     bold: 700,
   },
-  cropSettings: { topCrop: 22, bottomCrop: 13 },
+  cropSettings: { topCrop: 15, bottomCrop: 4 },
 }
 
 /* Display
@@ -80,10 +80,10 @@ export const displayType: TypeSettings = {
     longform: 1.6,
   },
   weight: {
-    light: 300,
-    regular: 400,
-    medium: 500,
-    semiBold: 600,
+    light: 320,
+    regular: 420,
+    medium: 520,
+    semiBold: 620,
     bold: 700,
   },
   cropSettings: { topCrop: 14, bottomCrop: 10 },

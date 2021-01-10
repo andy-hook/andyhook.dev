@@ -3,6 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { useFocusVisible } from '../../hooks/useFocusVisible/useFocusVisible'
 import { appearance, spring } from '../../style/appearance'
+import { applyAccent, applyForeground } from '../../style/theme'
 
 type InteractionBaseProps = {
   children: React.ReactNode
@@ -15,7 +16,7 @@ type InteractionBaseProps = {
 const focusMotion = {
   rest: {
     opacity: 0,
-    scale: 1.1,
+    scale: 1.05,
   },
   focus: {
     opacity: 1,
@@ -102,7 +103,8 @@ function InteractionBase({
               left: -${offset}em;
               right: -${offset}em;
               bottom: -${offset}em;
-              border: 2px solid white;
+              border: ${appearance.borderWidth.thick} dotted
+                ${applyAccent('base')};
               border-radius: ${appearance.radius[radius]};
             `}
           />
