@@ -36,17 +36,17 @@ function Hero(): JSX.Element {
             flex-direction: column;
             min-height: 100vh;
 
-            padding-top: 2.5rem;
-            padding-bottom: 2.5rem;
+            padding-top: 2.75rem;
+            padding-bottom: 2.75rem;
 
             ${inclusiveUp('sm')} {
-              padding-top: 3.5rem;
-              padding-bottom: 3.5rem;
+              padding-top: 3.75rem;
+              padding-bottom: 3.75rem;
             }
 
             ${inclusiveUp('md')} {
-              padding-top: 4.5rem;
-              padding-bottom: 4.5rem;
+              padding-top: 4.75rem;
+              padding-bottom: 4.75rem;
             }
           `}
         >
@@ -75,8 +75,8 @@ function Hero(): JSX.Element {
               align-items: center;
               height: 100%;
               flex: 1;
-              padding-top: 100px;
-              padding-bottom: 100px;
+              padding-top: 8rem;
+              padding-bottom: 8rem;
 
               ${inclusiveDown('xs')} {
                 justify-content: center;
@@ -194,7 +194,7 @@ function HeroBackground() {
       css={`
         z-index: ${appearance.index.floor};
         background: url('/pattern.svg') repeat top left;
-        opacity: 0.15;
+        opacity: 0.2;
       `}
     >
       {/* Right */}

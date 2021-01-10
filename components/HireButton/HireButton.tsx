@@ -2,9 +2,9 @@ import { AnimatePresence, motion } from 'framer-motion'
 import React, { useCallback, useState } from 'react'
 import { appearance, spring } from '../../style/appearance'
 import {
+  applyAccent,
   applyBackground,
   applyForeground,
-  applyPositive,
 } from '../../style/theme'
 import {
   setCropAndLineHeight,
@@ -49,7 +49,7 @@ function HireButton({ href }: HireButtonProps): JSX.Element {
         <div
           css={`
             position: relative;
-            font-size: 0.65em;
+            font-size: 0.6em;
             margin-right: 1.2em;
           `}
         >
@@ -89,7 +89,7 @@ function Pip({ ...props }: React.HTMLAttributes<HTMLDivElement>): JSX.Element {
       css={`
         width: 1em;
         height: 1em;
-        background-color: ${applyPositive('light')};
+        background-color: ${applyAccent('light')};
         border-radius: ${appearance.radius.circle};
       `}
       {...props}
