@@ -21,7 +21,7 @@ const iconPadding = '0.75em'
 const hoverMotion = {
   rest: {
     opacity: 0,
-    scale: 1.4,
+    scale: 1.35,
   },
   hover: {
     opacity: 1,
@@ -31,7 +31,7 @@ const hoverMotion = {
 
 const hoverIcon = {
   rest: {
-    opacity: 0.35,
+    opacity: 0.3,
   },
   hover: {
     opacity: 1,
@@ -122,7 +122,7 @@ function SocialIcon({
             pointer-events: none;
           `}
         />
-        <motion.div variants={hoverIcon} transition={spring.bounce}>
+        <motion.div variants={hoverIcon}>
           <Icon name={icon} />
         </motion.div>
       </InteractionBase>
