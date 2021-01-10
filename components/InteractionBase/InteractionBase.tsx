@@ -2,8 +2,8 @@ import { AnimatePresence, motion } from 'framer-motion'
 import React from 'react'
 import styled from 'styled-components'
 import { useFocusVisible } from '../../hooks/useFocusVisible/useFocusVisible'
+import { useTheme } from '../../hooks/useTheme/useTheme'
 import { appearance, spring } from '../../style/appearance'
-import { applyAccent, applyForeground } from '../../style/theme'
 
 type InteractionBaseProps = {
   children: React.ReactNode
@@ -71,6 +71,7 @@ function InteractionBase({
   ...props
 }: InteractionBaseProps): JSX.Element {
   const { focusVisible, onFocus, onBlur } = useFocusVisible()
+  const { accent } = useTheme()
 
   const [elementTag, elementProps] = getElementProps({
     isAnchor: Boolean(href),
@@ -103,8 +104,7 @@ function InteractionBase({
               left: -${offset}em;
               right: -${offset}em;
               bottom: -${offset}em;
-              border: ${appearance.borderWidth.thick} dotted
-                ${applyAccent('base')};
+              border: ${appearance.borderWidth.thick} dotted ${accent('base')};
               border-radius: ${appearance.radius[radius]};
             `}
           />

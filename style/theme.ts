@@ -1,5 +1,4 @@
 import { hsla } from 'polished'
-import { css, CSSProp, DefaultTheme, ThemeProps } from 'styled-components'
 import { BreakpointList, breakpoints } from './responsive'
 
 export type ThemeName = 'light' | 'dark'
@@ -90,44 +89,4 @@ export function applyHsl(value: ColorValue, alpha?: number): string {
   }
 
   return hsla(props)
-}
-
-export function applyForeground(
-  value: keyof Theme['foreground'],
-  alpha?: number
-): CSSProp {
-  return css`
-    ${({ theme }: ThemeProps<DefaultTheme>): string =>
-      applyHsl(theme.foreground[value], alpha)}
-  `
-}
-
-export function applyBackground(
-  value: keyof Theme['background'],
-  alpha?: number
-): CSSProp {
-  return css`
-    ${({ theme }: ThemeProps<DefaultTheme>): string =>
-      applyHsl(theme.background[value], alpha)}
-  `
-}
-
-export function applyAccent(
-  value: keyof Theme['accent'],
-  alpha?: number
-): CSSProp {
-  return css`
-    ${({ theme }: ThemeProps<DefaultTheme>): string =>
-      applyHsl(theme.accent[value], alpha)}
-  `
-}
-
-export function applyPositive(
-  value: keyof Theme['positive'],
-  alpha?: number
-): CSSProp {
-  return css`
-    ${({ theme }: ThemeProps<DefaultTheme>): string =>
-      applyHsl(theme.positive[value], alpha)}
-  `
 }

@@ -1,8 +1,9 @@
-import React, { useEffect, useState, useContext, useCallback } from 'react'
-import { ThemeProvider as StyledThemeProvider } from 'styled-components'
+import React, { useState, useCallback } from 'react'
+import {
+  ThemeProvider as StyledThemeProvider,
+  useTheme as styledUseTheme,
+} from 'styled-components'
 import { applyHsl, darkTheme, Theme } from '../../style/theme'
-
-const ThemeContext = React.createContext<Theme | null>(null)
 
 function ThemeProvider({
   children,
@@ -11,11 +12,7 @@ function ThemeProvider({
 }): JSX.Element {
   const [theme] = useState(darkTheme)
 
-  return (
-    <ThemeContext.Provider value={theme}>
-      <StyledThemeProvider theme={theme}>{children}</StyledThemeProvider>
-    </ThemeContext.Provider>
-  )
+  return <StyledThemeProvider theme={theme}>{children}</StyledThemeProvider>
 }
 
 type ThemeMethods = {
@@ -26,7 +23,7 @@ type ThemeMethods = {
 }
 
 function useTheme(): ThemeMethods {
-  const theme = useContext(ThemeContext)!
+  const theme = styledUseTheme()
 
   const foreground: ThemeMethods['foreground'] = useCallback(
     (value, alpha): string => applyHsl(theme.foreground[value], alpha),

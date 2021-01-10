@@ -1,9 +1,9 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
+import { useTheme } from '../../hooks/useTheme/useTheme'
 import meta from '../../meta'
 import { appearance } from '../../style/appearance'
 import { inclusiveDown, inclusiveUp } from '../../style/responsive'
-import { applyBackground, applyForeground } from '../../style/theme'
 import { typeBaseSemibold, typeSizeBaseLg } from '../../style/typography'
 import Heading from '../Heading/Heading'
 import HireButton from '../HireButton/HireButton'
@@ -17,6 +17,8 @@ const bookendHeight = css`
 `
 
 function Hero(): JSX.Element {
+  const { background, foreground } = useTheme()
+
   return (
     <div
       css={`
@@ -63,7 +65,7 @@ function Hero(): JSX.Element {
               css={`
                 ${typeBaseSemibold}
                 ${typeSizeBaseLg}
-                color: ${applyForeground('medium')};
+                color: ${foreground('medium')};
               `}
             >
               Andy Hook
@@ -120,7 +122,7 @@ function Hero(): JSX.Element {
                       bottom: -0.1em;
                       right: -0.4em;
 
-                      background-color: ${applyBackground('high')};
+                      background-color: ${background('high')};
                       z-index: ${appearance.index.floor};
 
                       border-radius: ${appearance.radius.base};
@@ -142,7 +144,7 @@ function Hero(): JSX.Element {
                   css={`
                     position: relative;
                     z-index: ${appearance.index.low};
-                    color ${applyForeground('high')}
+                    color ${foreground('high')}
                   `}
                 >
                   building{' '}
@@ -189,6 +191,8 @@ function Hero(): JSX.Element {
 }
 
 function HeroBackground() {
+  const { background } = useTheme()
+
   return (
     <PatternLayer
       css={`
@@ -204,8 +208,8 @@ function HeroBackground() {
 
           background: linear-gradient(
             90deg,
-            ${applyBackground('low', 0)} 20%,
-            ${applyBackground('low', 0.95)} 110%
+            ${background('low', 0)} 20%,
+            ${background('low', 0.95)} 110%
           );
         `}
       />
@@ -217,8 +221,8 @@ function HeroBackground() {
 
           background: linear-gradient(
             -90deg,
-            ${applyBackground('low', 0)} 30%,
-            ${applyBackground('low', 0.95)} 100%
+            ${background('low', 0)} 30%,
+            ${background('low', 0.95)} 100%
           );
         `}
       />
@@ -230,8 +234,8 @@ function HeroBackground() {
 
           background: linear-gradient(
             10deg,
-            ${applyBackground('low', 0)} 30%,
-            ${applyBackground('low', 0.95)} 80%
+            ${background('low', 0)} 30%,
+            ${background('low', 0.95)} 80%
           );
         `}
       />
@@ -243,8 +247,8 @@ function HeroBackground() {
 
           background: linear-gradient(
             175deg,
-            ${applyBackground('low', 0)} 30%,
-            ${applyBackground('low', 0.95)} 80%
+            ${background('low', 0)} 30%,
+            ${background('low', 0.95)} 80%
           );
         `}
       />

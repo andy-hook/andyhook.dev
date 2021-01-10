@@ -1,11 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import React, { useCallback, useState } from 'react'
+import { useTheme } from '../../hooks/useTheme/useTheme'
 import { appearance, spring } from '../../style/appearance'
-import {
-  applyAccent,
-  applyBackground,
-  applyForeground,
-} from '../../style/theme'
 import {
   setCropAndLineHeight,
   typeBaseMedium,
@@ -19,6 +15,7 @@ type HireButtonProps = {
 
 function HireButton({ href }: HireButtonProps): JSX.Element {
   const [pipCounter, setPipCounter] = useState(0)
+  const { foreground, background } = useTheme()
 
   const incrementPulse = useCallback(() => {
     setPipCounter((prevCount) => prevCount + 1)
@@ -40,10 +37,10 @@ function HireButton({ href }: HireButtonProps): JSX.Element {
           align-items: center;
           ${typeBaseMedium}
           ${typeSizeBaseLg}
-          color: ${applyForeground('extraHigh')};
+          color: ${foreground('extraHigh')};
           padding: 1.1em 1.75em;
           border-radius: ${appearance.radius.pill};
-          background-color: ${applyBackground('medium')};
+          background-color: ${background('medium')};
         `}
       >
         <div
@@ -84,12 +81,14 @@ function HireButton({ href }: HireButtonProps): JSX.Element {
 }
 
 function Pip({ ...props }: React.HTMLAttributes<HTMLDivElement>): JSX.Element {
+  const { accent } = useTheme()
+
   return (
     <div
       css={`
         width: 1em;
         height: 1em;
-        background-color: ${applyAccent('light')};
+        background-color: ${accent('light')};
         border-radius: ${appearance.radius.circle};
       `}
       {...props}

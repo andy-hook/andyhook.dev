@@ -1,7 +1,6 @@
 import React from 'react'
 import { Normalize } from 'styled-normalize'
 import { createGlobalStyle } from 'styled-components'
-import { applyBackground } from './theme'
 
 const Global = createGlobalStyle`
 
@@ -152,9 +151,6 @@ const GlobalDocumentAdjustment = createGlobalStyle`
     min-height: 100vh;
     overflow-x: hidden;
     overflow-y: scroll;
-    
-    // Set initial background to avoid possible colour flash
-    background-color: ${applyBackground('low')}
   }
 `
 
