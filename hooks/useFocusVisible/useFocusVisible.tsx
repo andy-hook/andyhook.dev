@@ -37,7 +37,7 @@ const FocusVisibleContext = React.createContext({
   hadKeyboardEvent: true,
 })
 
-function FocusVisibleManager({
+function FocusVisibleProvider({
   children,
 }: {
   children: React.ReactNode
@@ -116,7 +116,13 @@ function FocusVisibleManager({
 
       removeInitialPointerMoveHandlers(onInitialPointerMove)
     }
-  }, [setHadKeyboardEvent])
+  }, [
+    setHadKeyboardEvent,
+    onPointerDown,
+    onKeyDown,
+    onVisibilityChange,
+    onInitialPointerMove,
+  ])
 
   return (
     <FocusVisibleContext.Provider value={{ hadKeyboardEvent }}>
@@ -150,4 +156,4 @@ function useFocusVisible(): {
   }
 }
 
-export { FocusVisibleManager, useFocusVisible }
+export { FocusVisibleProvider, useFocusVisible }

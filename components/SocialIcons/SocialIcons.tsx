@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { appearance, spring } from '../../style/appearance'
-import { applyForeground } from '../../style/theme'
 import { motion } from 'framer-motion'
 import Icon from '../Icon/Icon'
 import InteractionBase from '../InteractionBase/InteractionBase'
 import meta, { SocialNetworks } from '../../meta'
 import { keys } from '../../utils/general'
 import { inclusiveUp } from '../../style/responsive'
+import { useTheme } from '../../hooks/useTheme/useTheme'
 
 const socialInfo: Record<SocialNetworks, [SocialNetworks, string]> = {
   twitter: ['twitter', 'https://twitter.com/'],
@@ -17,26 +17,6 @@ const socialInfo: Record<SocialNetworks, [SocialNetworks, string]> = {
 }
 
 const iconPadding = '0.75em'
-
-const hoverMotion = {
-  rest: {
-    opacity: 0,
-    scale: 1.35,
-  },
-  hover: {
-    opacity: 1,
-    scale: 1,
-  },
-}
-
-const hoverIcon = {
-  rest: {
-    opacity: 0.3,
-  },
-  hover: {
-    opacity: 1,
-  },
-}
 
 function SocialIcons(): JSX.Element {
   return (
@@ -85,6 +65,34 @@ function SocialIcon({
   icon: SocialNetworks
   href: string
 }): JSX.Element {
+  const { foreground } = useTheme()
+
+  const hoverIcon = useMemo(
+    () => ({
+      rest: {
+        color: foreground('low'),
+      },
+      hover: {
+        color: foreground('extraHigh'),
+      },
+    }),
+    []
+  )
+
+  const hoverMotion = useMemo(
+    () => ({
+      rest: {
+        opacity: 0,
+        scale: 1.35,
+      },
+      hover: {
+        opacity: 1,
+        scale: 1,
+      },
+    }),
+    []
+  )
+
   return (
     <motion.div
       initial="rest"
@@ -98,7 +106,7 @@ function SocialIcon({
         href={href}
         css={`
           display: block;
-          color: ${applyForeground('extraHigh')};
+          color: ${foreground('extraHigh')};
           font-size: 1em;
           padding: ${iconPadding};
         `}
@@ -114,8 +122,7 @@ function SocialIcon({
             left: 0;
             right: 0;
             bottom: 0;
-            border: ${appearance.borderWidth.regular} solid
-              ${applyForeground('low')};
+            border: ${appearance.borderWidth.regular} solid ${foreground('low')};
 
             border-radius: ${appearance.radius.circle};
 

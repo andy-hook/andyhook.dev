@@ -1,13 +1,13 @@
 import React from 'react'
 import Head from 'next/head'
 import { AppProps } from 'next/dist/next-server/lib/router/router'
-import { ThemeProvider } from 'styled-components'
 import GlobalStyle from '../style/global'
-import { FocusVisibleManager } from '../hooks/useFocusVisible/useFocusVisible'
-import { darkTheme } from '../style/theme'
+import { FocusVisibleProvider } from '../hooks/useFocusVisible/useFocusVisible'
+import { ThemeProvider, useTheme } from '../hooks/useTheme/useTheme'
 
 // Import fonts outside of styled-components to avoid flicker on state change
 import '../style/font.css'
+import { darkTheme } from '../style/theme'
 
 function App({ Component, pageProps }: AppProps): JSX.Element {
   return (
@@ -25,14 +25,30 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
         />
       </Head>
 
-      <FocusVisibleManager>
+      <FocusVisibleProvider>
         <ThemeProvider theme={darkTheme}>
           <GlobalStyle />
-
-          <Component {...pageProps} />
+          <Body>
+            <Component {...pageProps} />
+          </Body>
         </ThemeProvider>
-      </FocusVisibleManager>
+      </FocusVisibleProvider>
     </>
+  )
+}
+
+function Body({ children }: { children: React.ReactNode }): JSX.Element {
+  const { background } = useTheme()
+
+  return (
+    <div
+      css={`
+        // Set initial background to avoid possible colour flash
+        background-color: ${background('low')};
+      `}
+    >
+      {children}
+    </div>
   )
 }
 
