@@ -60,8 +60,8 @@ function Hero(): JSX.Element {
             flex-direction: column;
             min-height: 100vh;
 
-            padding-top: 6rem;
-            padding-bottom: 6rem;
+            padding-top: 4rem;
+            padding-bottom: 4rem;
 
             ${inclusiveUp('sm')} {
               padding-top: 3.75rem;
@@ -100,7 +100,7 @@ function Hero(): JSX.Element {
               padding-top: 2rem;
               padding-bottom: 2rem;
 
-              ${inclusiveUp('sm')} {
+              ${inclusiveUp('md')} {
                 padding-top: 8rem;
                 padding-bottom: 8rem;
               }
