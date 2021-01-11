@@ -5,11 +5,11 @@ import { useTheme } from '../../hooks/useTheme/useTheme'
 import meta from '../../meta'
 import { appearance, spring } from '../../style/appearance'
 import { inclusiveDown, inclusiveUp } from '../../style/responsive'
-import { typeBaseSemibold, typeSizeBaseLg } from '../../style/typography'
 import Heading from '../Heading/Heading'
 import HireButton from '../HireButton/HireButton'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
+import Logo from '../Logo/Logo'
 import RemoveWidow from '../RemoveWidow/RemoveWidow'
 import SocialIcons from '../SocialIcons/SocialIcons'
 
@@ -84,15 +84,7 @@ function Hero(): JSX.Element {
               }
             `}
           >
-            <h2
-              css={`
-                ${typeBaseSemibold}
-                ${typeSizeBaseLg}
-                color: ${foreground('medium')};
-              `}
-            >
-              Andy Hook
-            </h2>
+            <Logo />
           </motion.header>
           <main
             css={`
@@ -166,7 +158,7 @@ function Hero(): JSX.Element {
                       }}
                       initial="offset"
                       animate="rest"
-                      transition={{ delay: 1, ...spring.softOut }}
+                      transition={{ delay: 1.15, ...spring.softOut }}
                       css={`
                         position: absolute;
                         top: 0em;
@@ -265,7 +257,7 @@ function HeroBackground() {
           z-index: ${appearance.index.high};
 
           background: linear-gradient(
-            90deg,
+            85deg,
             ${background('low', 0)} 20%,
             ${background('low', 0.95)} 110%
           );
