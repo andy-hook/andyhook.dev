@@ -13,6 +13,11 @@
     "jsx": true,
     "project": "./tsconfig.json"
   },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "rules": {
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/no-non-null-assertion": "off",

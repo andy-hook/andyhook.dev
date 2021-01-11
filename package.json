@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "yarn lint && next build",
     "start": "next start",
-    "lint": "eslint --ext ts,tsx --max-warnings 0 && tsc",
+    "lint": "eslint . --ext ts,tsx --max-warnings 0 && tsc",
     "test": "jest --passWithNoTests"
   },
   "husky": {
