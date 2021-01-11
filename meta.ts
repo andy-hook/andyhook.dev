@@ -1,5 +1,6 @@
 const meta = {
   email: 'hello@andyhook.dev',
+  url: 'https://andyhook.dev',
   social: {
     twitter: 'Andy_Hook',
     instagram: 'andyhooky',

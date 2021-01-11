@@ -21,8 +21,15 @@ function MetaSocial({ title, description }: MetaSocialProps): JSX.Element {
       <title>{pageTitle}</title>
 
       {/* Opengraph */}
+      <meta property="og:url" content={meta.url} />
+      <meta property="og:locale" content="en_GB" />
+      <meta property="og:image:type" content="image/png" />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content="/images/social/og-preview.png" />
+      <meta
+        property="og:image:secure_url"
+        content={`${meta.url}/og-preview.png`}
+      />
+      <meta property="og:image" content="/og-preview.png" />
       <meta property="og:type" content="website" />
       <meta property="og:title" content={pageTitle} />
 
@@ -31,10 +38,7 @@ function MetaSocial({ title, description }: MetaSocialProps): JSX.Element {
       <meta name="twitter:creator" content={`@${meta.social.twitter}`} />
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={description} />
-      <meta
-        name="twitter:image:src"
-        content="/images/social/twitter-preview.png"
-      />
+      <meta name="twitter:image:src" content="/twitter-preview.png" />
     </Head>
   )
 }
