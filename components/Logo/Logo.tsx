@@ -1,6 +1,10 @@
 import React, { useCallback } from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
-import { typeBaseSemibold, typeSizeBaseLg } from '../../style/typography'
+import {
+  setCropAndLineHeight,
+  typeBaseSemibold,
+  typeSizeBaseLg,
+} from '../../style/typography'
 import { useRouter } from 'next/router'
 import { motion } from 'framer-motion'
 
@@ -22,7 +26,8 @@ function Logo({ ...props }: React.HTMLAttributes<HTMLElement>): JSX.Element {
         css={`
           ${typeBaseSemibold}
           ${typeSizeBaseLg}
-        
+          ${setCropAndLineHeight('body', 'flat')}
+
           margin: -0.75em;
         `}
         {...props}

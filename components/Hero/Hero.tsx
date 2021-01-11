@@ -5,7 +5,11 @@ import { useTheme } from '../../hooks/useTheme/useTheme'
 import meta from '../../meta'
 import { appearance, spring } from '../../style/appearance'
 import { inclusiveDown, inclusiveUp } from '../../style/responsive'
-import Heading from '../Heading/Heading'
+import {
+  setCropAndLineHeight,
+  typeDisplaySemibold,
+  typeSizeDisplayLg,
+} from '../../style/typography'
 import HireButton from '../HireButton/HireButton'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
@@ -111,8 +115,13 @@ function Hero(): JSX.Element {
                 }
               `}
             >
-              <Heading
+              <h1
                 css={`
+                  ${typeDisplaySemibold}
+                  ${typeSizeDisplayLg}
+                  ${setCropAndLineHeight('display', 'tight')}
+      
+                  
                   max-width: 16em;
                   padding-top: 0.5em;
                   margin-bottom: 1.25em;
@@ -125,14 +134,25 @@ function Hero(): JSX.Element {
                     z-index: ${appearance.index.floor};
                   `}
                 >
-                  <span
+                  <motion.span
+                    variants={{
+                      offset: {
+                        color: foreground('high'),
+                      },
+                      rest: {
+                        color: foreground('extraHigh'),
+                      },
+                    }}
+                    initial="offset"
+                    animate="rest"
+                    transition={{ delay: 1.15, ...spring.softOut }}
                     css={`
                       position: relative;
                       z-index: ${appearance.index.low};
                     `}
                   >
                     Senior UI Engineer
-                  </span>
+                  </motion.span>
                   <span
                     css={`
                       position: absolute;
@@ -193,7 +213,7 @@ function Hero(): JSX.Element {
                     user interfaces out of Brighton, UK.
                   </RemoveWidow>
                 </span>
-              </Heading>
+              </h1>
               <HireButton href={`mailto:${meta.email}`} />
             </motion.div>
           </main>

@@ -206,12 +206,17 @@ export const typeSizeBaseLg = css`
 export const typeSizeDisplaySm = css`
   font-size: ${applyTypeSize(4)};
 `
+
 export const typeSizeDisplayMd = css`
   font-size: ${applyTypeSize(8)};
 `
 
 export const typeSizeDisplayLg = css`
-  font-size: ${applyTypeSize(8)};
+  font-size: ${applyTypeSize(7)};
+
+  ${inclusiveUp('xs')} {
+    font-size: ${applyTypeSize(8)};
+  }
 
   ${inclusiveUp('sm')} {
     font-size: ${applyTypeSize(9)};
