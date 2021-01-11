@@ -7,13 +7,14 @@ import {
 } from '../../style/typography'
 import { useRouter } from 'next/router'
 import { motion } from 'framer-motion'
+import InteractionBase from '../InteractionBase/InteractionBase'
 
-function Logo({ ...props }: React.HTMLAttributes<HTMLElement>): JSX.Element {
+function Logo(): JSX.Element {
   const router = useRouter()
   const { foreground } = useTheme()
 
   const handleNavigate = useCallback(
-    (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
       event.preventDefault()
       router.push('/')
     },
@@ -22,7 +23,17 @@ function Logo({ ...props }: React.HTMLAttributes<HTMLElement>): JSX.Element {
 
   return (
     <>
-      <h2
+      <motion.h2
+        variants={{
+          rest: {
+            color: foreground('medium'),
+          },
+          hover: {
+            color: foreground('high'),
+          },
+        }}
+        initial="rest"
+        whileHover="hover"
         css={`
           ${typeBaseSemibold}
           ${typeSizeBaseLg}
@@ -30,19 +41,8 @@ function Logo({ ...props }: React.HTMLAttributes<HTMLElement>): JSX.Element {
 
           margin: -0.75em;
         `}
-        {...props}
       >
-        <motion.a
-          variants={{
-            rest: {
-              color: foreground('medium'),
-            },
-            hover: {
-              color: foreground('high'),
-            },
-          }}
-          initial="rest"
-          whileHover="hover"
+        <InteractionBase
           href="/"
           onClick={handleNavigate}
           css={`
@@ -51,8 +51,8 @@ function Logo({ ...props }: React.HTMLAttributes<HTMLElement>): JSX.Element {
           `}
         >
           Andy Hook
-        </motion.a>
-      </h2>
+        </InteractionBase>
+      </motion.h2>
     </>
   )
 }

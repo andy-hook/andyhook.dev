@@ -11,6 +11,7 @@ type InteractionBaseProps = {
   disabled?: boolean
   offset?: number
   radius?: keyof typeof appearance.radius
+  onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void
 }
 
 const focusMotion = {
@@ -65,6 +66,7 @@ function getElementProps({
 function InteractionBase({
   children,
   href,
+  onClick,
   disabled = false,
   offset = 0,
   radius = 'base',
@@ -82,6 +84,7 @@ function InteractionBase({
   return (
     <StyledInteractiveElement
       as={elementTag}
+      onClick={onClick && onClick}
       onFocus={onFocus}
       onBlur={onBlur}
       {...elementProps}
