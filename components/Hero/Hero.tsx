@@ -1,20 +1,42 @@
+import { motion } from 'framer-motion'
 import React from 'react'
 import styled, { css } from 'styled-components'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import meta from '../../meta'
-import { appearance } from '../../style/appearance'
+import { appearance, spring } from '../../style/appearance'
 import { inclusiveDown, inclusiveUp } from '../../style/responsive'
-import { typeBaseSemibold, typeSizeBaseLg } from '../../style/typography'
-import Heading from '../Heading/Heading'
+import {
+  setCropAndLineHeight,
+  typeDisplaySemibold,
+  typeSizeDisplayLg,
+} from '../../style/typography'
 import HireButton from '../HireButton/HireButton'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
+import Logo from '../Logo/Logo'
 import RemoveWidow from '../RemoveWidow/RemoveWidow'
 import SocialIcons from '../SocialIcons/SocialIcons'
 
 const bookendHeight = css`
   height: 3rem;
 `
+
+type SlideInMotionProps = {
+  offset: number
+  delay: number
+}
+
+const slideInMotion = {
+  offset: (props: SlideInMotionProps) => ({
+    opacity: 0,
+    y: props.offset,
+  }),
+  rest: (props: SlideInMotionProps) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: props.delay, ...spring.softOut },
+  }),
+}
 
 function Hero(): JSX.Element {
   const { background, foreground } = useTheme()
@@ -52,7 +74,12 @@ function Hero(): JSX.Element {
             }
           `}
         >
-          <header
+          <motion.header
+            variants={slideInMotion}
+            initial="offset"
+            animate="rest"
+            custom={{ offset: -75, delay: 0.25 }}
+            transition={spring.softOut}
             css={`
               ${bookendHeight}
 
@@ -61,16 +88,8 @@ function Hero(): JSX.Element {
               }
             `}
           >
-            <h2
-              css={`
-                ${typeBaseSemibold}
-                ${typeSizeBaseLg}
-                color: ${foreground('medium')};
-              `}
-            >
-              Andy Hook
-            </h2>
-          </header>
+            <Logo />
+          </motion.header>
           <main
             css={`
               display: flex;
@@ -85,15 +104,24 @@ function Hero(): JSX.Element {
               }
             `}
           >
-            <div
+            <motion.div
+              variants={slideInMotion}
+              initial="offset"
+              animate="rest"
+              custom={{ offset: 100, delay: 0.75 }}
               css={`
                 ${inclusiveDown('xs')} {
                   text-align: center;
                 }
               `}
             >
-              <Heading
+              <h1
                 css={`
+                  ${typeDisplaySemibold}
+                  ${typeSizeDisplayLg}
+                  ${setCropAndLineHeight('display', 'tight')}
+      
+                  
                   max-width: 16em;
                   padding-top: 0.5em;
                   margin-bottom: 1.25em;
@@ -106,14 +134,25 @@ function Hero(): JSX.Element {
                     z-index: ${appearance.index.floor};
                   `}
                 >
-                  <span
+                  <motion.span
+                    variants={{
+                      offset: {
+                        color: foreground('high'),
+                      },
+                      rest: {
+                        color: foreground('extraHigh'),
+                      },
+                    }}
+                    initial="offset"
+                    animate="rest"
+                    transition={{ delay: 1.15, ...spring.softOut }}
                     css={`
                       position: relative;
                       z-index: ${appearance.index.low};
                     `}
                   >
                     Senior UI Engineer
-                  </span>
+                  </motion.span>
                   <span
                     css={`
                       position: absolute;
@@ -122,20 +161,33 @@ function Hero(): JSX.Element {
                       bottom: -0.1em;
                       right: -0.4em;
 
-                      background-color: ${background('high')};
                       z-index: ${appearance.index.floor};
 
                       border-radius: ${appearance.radius.base};
                       overflow: hidden;
                     `}
                   >
-                    <span
+                    <motion.span
+                      variants={{
+                        offset: {
+                          x: '-100%',
+                        },
+                        rest: {
+                          x: '0%',
+                        },
+                      }}
+                      initial="offset"
+                      animate="rest"
+                      transition={{ delay: 1.15, ...spring.softOut }}
                       css={`
                         position: absolute;
                         top: 0em;
                         left: 0;
                         bottom: 0;
                         right: 0;
+
+                        background-color: ${background('high')};
+                        border-radius: ${appearance.radius.base};
                       `}
                     />
                   </span>
@@ -161,11 +213,15 @@ function Hero(): JSX.Element {
                     user interfaces out of Brighton, UK.
                   </RemoveWidow>
                 </span>
-              </Heading>
+              </h1>
               <HireButton href={`mailto:${meta.email}`} />
-            </div>
+            </motion.div>
           </main>
-          <footer
+          <motion.footer
+            variants={slideInMotion}
+            initial="offset"
+            animate="rest"
+            custom={{ offset: 75, delay: 0.25 }}
             css={`
               ${bookendHeight}
 
@@ -182,10 +238,24 @@ function Hero(): JSX.Element {
             `}
           >
             <SocialIcons />
-          </footer>
+          </motion.footer>
         </LayoutLimiter>
       </LayoutGutter>
-      <HeroBackground />
+      <motion.div
+        variants={{
+          out: {
+            opacity: 0,
+          },
+          rest: {
+            opacity: 1,
+          },
+        }}
+        initial="out"
+        animate="rest"
+        transition={spring.softOut}
+      >
+        <HeroBackground />
+      </motion.div>
     </div>
   )
 }
@@ -207,7 +277,7 @@ function HeroBackground() {
           z-index: ${appearance.index.high};
 
           background: linear-gradient(
-            90deg,
+            85deg,
             ${background('low', 0)} 20%,
             ${background('low', 0.95)} 110%
           );
