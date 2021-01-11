@@ -1,11 +1,14 @@
 import React from 'react'
-import PageTitle from '../components/PageTitle/PageTitle'
 import Hero from '../components/Hero/Hero'
+import MetaSocial from '../components/Meta/MetaSocial'
 
 function Home(): JSX.Element {
   return (
     <>
-      <PageTitle title="Hello world" />
+      <MetaSocial
+        title="High performance UI engineering"
+        description="Andy is a Brighton based software developer specialising in UI engineering"
+      />
       <Hero />
     </>
   )

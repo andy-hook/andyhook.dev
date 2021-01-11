@@ -55,7 +55,7 @@ function HireButton({ href }: HireButtonProps): JSX.Element {
         <div
           css={`
             position: relative;
-            font-size: 0.6em;
+            font-size: 0.65em;
             margin-right: 1.4em;
           `}
         >
@@ -82,7 +82,11 @@ function Pip({ ...props }: React.HTMLAttributes<HTMLDivElement>): JSX.Element {
       css={`
         width: 1em;
         height: 1em;
-        background-color: ${accent('light')};
+        background: linear-gradient(
+          135deg,
+          ${accent('light')} 0%,
+          ${accent('base')} 90%
+        );
         border-radius: ${appearance.radius.circle};
       `}
       {...props}
