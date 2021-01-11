@@ -60,8 +60,8 @@ function Hero(): JSX.Element {
             flex-direction: column;
             min-height: 100vh;
 
-            padding-top: 2.75rem;
-            padding-bottom: 2.75rem;
+            padding-top: 4rem;
+            padding-bottom: 4rem;
 
             ${inclusiveUp('sm')} {
               padding-top: 3.75rem;
@@ -96,8 +96,14 @@ function Hero(): JSX.Element {
               align-items: center;
               height: 100%;
               flex: 1;
-              padding-top: 8rem;
-              padding-bottom: 8rem;
+
+              padding-top: 2rem;
+              padding-bottom: 2rem;
+
+              ${inclusiveUp('md')} {
+                padding-top: 8rem;
+                padding-bottom: 8rem;
+              }
 
               ${inclusiveDown('xs')} {
                 justify-content: center;
@@ -120,7 +126,6 @@ function Hero(): JSX.Element {
                   ${typeDisplaySemibold}
                   ${typeSizeDisplayLg}
                   ${setCropAndLineHeight('display', 'tight')}
-      
                   
                   max-width: 16em;
                   padding-top: 0.5em;
@@ -181,7 +186,7 @@ function Hero(): JSX.Element {
                       transition={{ delay: 1, ...spring.softOut }}
                       css={`
                         position: absolute;
-                        top: 0em;
+                        top: 0;
                         left: 0;
                         bottom: 0;
                         right: 0;

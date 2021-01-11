@@ -1,6 +1,7 @@
 import React from 'react'
 import { Normalize } from 'styled-normalize'
 import { createGlobalStyle } from 'styled-components'
+import { applyHsl } from './theme'
 
 const Global = createGlobalStyle`
 
@@ -142,15 +143,11 @@ const Global = createGlobalStyle`
 `
 
 const GlobalDocumentAdjustment = createGlobalStyle`
-  html {
-    overflow: hidden
-  }
   body {
-    // Force a contained scroll view
-    height: 0px;
-    min-height: 100vh;
     overflow-x: hidden;
-    overflow-y: scroll;
+
+    // Match background color for bounce scroll overflow
+    background-color: ${({ theme }) => applyHsl(theme.background.low)};
   }
 `
 
