@@ -178,7 +178,7 @@ function Hero(): JSX.Element {
                       }}
                       initial="offset"
                       animate="rest"
-                      transition={{ delay: 1.15, ...spring.softOut }}
+                      transition={{ delay: 1, ...spring.softOut }}
                       css={`
                         position: absolute;
                         top: 0em;

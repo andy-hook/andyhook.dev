@@ -104,7 +104,7 @@ function InteractionBase({
               left: -${offset}em;
               right: -${offset}em;
               bottom: -${offset}em;
-              border: ${appearance.borderWidth.thick} solid ${accent('base')};
+              border: ${appearance.borderWidth.regular} solid ${accent('light')};
               border-radius: ${appearance.radius[radius]};
             `}
           />
