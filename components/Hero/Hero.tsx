@@ -1,8 +1,9 @@
+import { motion } from 'framer-motion'
 import React from 'react'
 import styled, { css } from 'styled-components'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import meta from '../../meta'
-import { appearance } from '../../style/appearance'
+import { appearance, spring } from '../../style/appearance'
 import { inclusiveDown, inclusiveUp } from '../../style/responsive'
 import { typeBaseSemibold, typeSizeBaseLg } from '../../style/typography'
 import Heading from '../Heading/Heading'
@@ -15,6 +16,23 @@ import SocialIcons from '../SocialIcons/SocialIcons'
 const bookendHeight = css`
   height: 3rem;
 `
+
+type SlideInMotionProps = {
+  offset: number
+  delay: number
+}
+
+const slideInMotion = {
+  offset: (props: SlideInMotionProps) => ({
+    opacity: 0,
+    y: props.offset,
+  }),
+  rest: (props: SlideInMotionProps) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: props.delay, ...spring.softOut },
+  }),
+}
 
 function Hero(): JSX.Element {
   const { background, foreground } = useTheme()
@@ -52,7 +70,12 @@ function Hero(): JSX.Element {
             }
           `}
         >
-          <header
+          <motion.header
+            variants={slideInMotion}
+            initial="offset"
+            animate="rest"
+            custom={{ offset: -75, delay: 0.25 }}
+            transition={spring.softOut}
             css={`
               ${bookendHeight}
 
@@ -70,7 +93,7 @@ function Hero(): JSX.Element {
             >
               Andy Hook
             </h2>
-          </header>
+          </motion.header>
           <main
             css={`
               display: flex;
@@ -85,7 +108,11 @@ function Hero(): JSX.Element {
               }
             `}
           >
-            <div
+            <motion.div
+              variants={slideInMotion}
+              initial="offset"
+              animate="rest"
+              custom={{ offset: 100, delay: 0.75 }}
               css={`
                 ${inclusiveDown('xs')} {
                   text-align: center;
@@ -122,20 +149,33 @@ function Hero(): JSX.Element {
                       bottom: -0.1em;
                       right: -0.4em;
 
-                      background-color: ${background('high')};
                       z-index: ${appearance.index.floor};
 
                       border-radius: ${appearance.radius.base};
                       overflow: hidden;
                     `}
                   >
-                    <span
+                    <motion.span
+                      variants={{
+                        offset: {
+                          x: '-100%',
+                        },
+                        rest: {
+                          x: '0%',
+                        },
+                      }}
+                      initial="offset"
+                      animate="rest"
+                      transition={{ delay: 1, ...spring.softOut }}
                       css={`
                         position: absolute;
                         top: 0em;
                         left: 0;
                         bottom: 0;
                         right: 0;
+
+                        background-color: ${background('high')};
+                        border-radius: ${appearance.radius.base};
                       `}
                     />
                   </span>
@@ -163,9 +203,13 @@ function Hero(): JSX.Element {
                 </span>
               </Heading>
               <HireButton href={`mailto:${meta.email}`} />
-            </div>
+            </motion.div>
           </main>
-          <footer
+          <motion.footer
+            variants={slideInMotion}
+            initial="offset"
+            animate="rest"
+            custom={{ offset: 75, delay: 0.25 }}
             css={`
               ${bookendHeight}
 
@@ -182,10 +226,24 @@ function Hero(): JSX.Element {
             `}
           >
             <SocialIcons />
-          </footer>
+          </motion.footer>
         </LayoutLimiter>
       </LayoutGutter>
-      <HeroBackground />
+      <motion.div
+        variants={{
+          out: {
+            opacity: 0,
+          },
+          rest: {
+            opacity: 1,
+          },
+        }}
+        initial="out"
+        animate="rest"
+        transition={spring.softOut}
+      >
+        <HeroBackground />
+      </motion.div>
     </div>
   )
 }
