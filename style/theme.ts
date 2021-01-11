@@ -18,7 +18,7 @@ type ThemeCommon = {
 export type Theme = {
   name: ThemeName
   foreground: Record<FullShadeRange, ColorValue>
-  background: Record<LimitedShadeRange, ColorValue>
+  background: Record<FullShadeRange, ColorValue>
 } & ThemeCommon
 
 const common: ThemeCommon = {
@@ -47,9 +47,11 @@ export const lightTheme: Theme = {
     extraHigh: [215, 0.13, 0.02],
   },
   background: {
+    extraLow: [223, 0.16, 0.94],
     low: [223, 0.16, 0.95],
     medium: [220, 0.16, 0.96],
     high: [220, 0.16, 0.98],
+    extraHigh: [220, 0.16, 0.99],
   },
   ...common,
 }
@@ -66,9 +68,11 @@ export const darkTheme: Theme = {
     extraHigh: [0, 0, 1],
   },
   background: {
+    extraLow: [204, 0.14, 0.06],
     low: [206, 0.14, 0.07],
     medium: [207, 0.14, 0.1],
     high: [204, 0.14, 0.11],
+    extraHigh: [204, 0.14, 0.13],
   },
   ...common,
 }

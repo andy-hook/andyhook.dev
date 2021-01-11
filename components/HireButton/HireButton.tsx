@@ -1,7 +1,7 @@
-import { AnimatePresence, motion } from 'framer-motion'
-import React, { useCallback, useState } from 'react'
+import { motion } from 'framer-motion'
+import React, { useMemo } from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
-import { appearance, spring } from '../../style/appearance'
+import { appearance } from '../../style/appearance'
 import {
   setCropAndLineHeight,
   typeBaseMedium,
@@ -14,16 +14,26 @@ type HireButtonProps = {
 }
 
 function HireButton({ href }: HireButtonProps): JSX.Element {
-  const [pipCounter, setPipCounter] = useState(0)
   const { foreground, background } = useTheme()
 
-  const incrementPulse = useCallback(() => {
-    setPipCounter((prevCount) => prevCount + 1)
-  }, [])
+  const hoverMotion = useMemo(
+    () => ({
+      rest: {
+        backgroundColor: background('medium'),
+      },
+      hover: {
+        backgroundColor: background('extraHigh'),
+      },
+    }),
+    [background]
+  )
 
   return (
-    <div
-      onMouseEnter={incrementPulse}
+    <motion.div
+      initial="rest"
+      animate="rest"
+      whileHover="hover"
+      variants={hoverMotion}
       css={`
         display: inline-flex;
         border-radius: ${appearance.radius.pill};
@@ -40,32 +50,16 @@ function HireButton({ href }: HireButtonProps): JSX.Element {
           color: ${foreground('extraHigh')};
           padding: 1.1em 1.75em;
           border-radius: ${appearance.radius.pill};
-          background-color: ${background('medium')};
         `}
       >
         <div
           css={`
             position: relative;
             font-size: 0.6em;
-            margin-right: 1.2em;
+            margin-right: 1.4em;
           `}
         >
           <Pip />
-          <AnimatePresence initial={false}>
-            <motion.div
-              key={pipCounter}
-              initial={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 4 }}
-              transition={spring.softOut}
-              css={`
-                position: absolute;
-                top: 0;
-                left: 0;
-              `}
-            >
-              <Pip />
-            </motion.div>
-          </AnimatePresence>
         </div>
 
         <div
@@ -76,7 +70,7 @@ function HireButton({ href }: HireButtonProps): JSX.Element {
           Currently available for hire
         </div>
       </InteractionBase>
-    </div>
+    </motion.div>
   )
 }
 
