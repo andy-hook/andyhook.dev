@@ -76,7 +76,7 @@ function SocialIcon({
         color: foreground('extraHigh'),
       },
     }),
-    []
+    [foreground]
   )
 
   const hoverMotion = useMemo(

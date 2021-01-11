@@ -1,11 +1,11 @@
 import React from 'react'
 import { removeWidow } from '../../style/utils'
 
-interface Props {
+interface RemoveWidowProps {
   children: string
 }
 
-const RemoveWidow: React.FunctionComponent<Props> = ({ children }) => {
+function RemoveWidow({ children }: RemoveWidowProps): JSX.Element {
   return <>{removeWidow(children)}</>
 }
 
