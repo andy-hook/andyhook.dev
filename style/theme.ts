@@ -61,18 +61,18 @@ export const lightTheme: Theme = {
 export const darkTheme: Theme = {
   name: 'dark',
   foreground: {
-    extraLow: [215, 0.13, 0.2],
-    low: [206, 0.11, 0.35],
-    medium: [206, 0.1, 0.5],
-    high: [206, 0.08, 0.8],
+    extraLow: [240, 0.13, 0.2],
+    low: [230, 0.11, 0.35],
+    medium: [230, 0.1, 0.5],
+    high: [230, 0.08, 0.8],
     extraHigh: [0, 0, 1],
   },
   background: {
-    extraLow: [204, 0.14, 0.06],
-    low: [206, 0.14, 0.07],
-    medium: [207, 0.14, 0.1],
-    high: [204, 0.14, 0.11],
-    extraHigh: [204, 0.14, 0.13],
+    extraLow: [240, 0.14, 0.05],
+    low: [240, 0.14, 0.06],
+    medium: [230, 0.14, 0.1],
+    high: [230, 0.14, 0.11],
+    extraHigh: [230, 0.14, 0.12],
   },
   ...common,
 }
