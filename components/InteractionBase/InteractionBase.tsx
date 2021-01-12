@@ -73,7 +73,7 @@ function InteractionBase({
   ...props
 }: InteractionBaseProps): JSX.Element {
   const { focusVisible, onFocus, onBlur } = useFocusVisible()
-  const { accent } = useTheme()
+  const { foreground } = useTheme()
 
   const [elementTag, elementProps] = getElementProps({
     isAnchor: Boolean(href),
@@ -107,7 +107,8 @@ function InteractionBase({
               left: -${offset}em;
               right: -${offset}em;
               bottom: -${offset}em;
-              border: ${appearance.borderWidth.regular} solid ${accent('light')};
+              border: ${appearance.borderWidth.regular} dashed
+                ${foreground('medium')};
               border-radius: ${appearance.radius[radius]};
             `}
           />
