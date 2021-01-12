@@ -8,7 +8,7 @@ type MetaSocialProps = {
 }
 
 function MetaSocial({ title, description }: MetaSocialProps): JSX.Element {
-  const pageTitle = `Andy Hook | ${title}`
+  const pageTitle = `Andy Hook – ${title}`
 
   return (
     <Head>

@@ -6,8 +6,9 @@ function Home(): JSX.Element {
   return (
     <>
       <MetaSocial
-        title="High performance UI engineering"
-        description="Andy is a Brighton based software developer specialising in UI engineering"
+        title="Next-Generation Interfaces"
+        description="Andy is a Brighton based software developer specialising in high-performance
+        UI Engineering"
       />
       <Hero />
     </>
