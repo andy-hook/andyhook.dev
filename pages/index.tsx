@@ -7,7 +7,7 @@ function Home(): JSX.Element {
     <>
       <MetaSocial
         title="Next-Generation Interfaces"
-        description="Andy is a Brighton based software developer specialising in high-performance
+        description="Brighton based software developer specialising in high-performance
         UI Engineering"
       />
       <Hero />
