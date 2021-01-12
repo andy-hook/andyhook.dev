@@ -59,7 +59,7 @@ export const bodyType: TypeSettings = {
     semiBold: 600,
     bold: 700,
   },
-  cropSettings: { topCrop: 15, bottomCrop: 4 },
+  cropSettings: { topCrop: 16, bottomCrop: 6 },
 }
 
 /* Display
@@ -204,7 +204,7 @@ export const typeSizeBaseLg = css`
 /* Display type sizes
   ------------------------------------------------- */
 export const typeSizeDisplaySm = css`
-  font-size: ${applyTypeSize(4)};
+  font-size: ${applyTypeSize(8)};
 `
 
 export const typeSizeDisplayMd = css`
