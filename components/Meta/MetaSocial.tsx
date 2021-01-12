@@ -8,7 +8,7 @@ type MetaSocialProps = {
 }
 
 function MetaSocial({ title, description }: MetaSocialProps): JSX.Element {
-  const pageTitle = `Andy Hook | ${title}`
+  const pageTitle = `Andy Hook – ${title}`
 
   return (
     <Head>
@@ -27,9 +27,9 @@ function MetaSocial({ title, description }: MetaSocialProps): JSX.Element {
       <meta property="og:description" content={description} />
       <meta
         property="og:image:secure_url"
-        content={`${meta.url}/og-preview.png`}
+        content={`${meta.url}/social-preview.png`}
       />
-      <meta property="og:image" content="/og-preview.png" />
+      <meta property="og:image" content="/social-preview.png" />
       <meta property="og:type" content="website" />
       <meta property="og:title" content={pageTitle} />
 
@@ -38,7 +38,7 @@ function MetaSocial({ title, description }: MetaSocialProps): JSX.Element {
       <meta name="twitter:creator" content={`@${meta.social.twitter}`} />
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image:src" content="/twitter-preview.png" />
+      <meta name="twitter:image:src" content="/social-preview.png" />
     </Head>
   )
 }
