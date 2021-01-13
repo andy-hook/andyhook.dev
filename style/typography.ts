@@ -216,7 +216,7 @@ export const typeSizeDisplaySm = css`
 `
 
 export const typeSizeDisplayMd = css`
-  font-size: ${applyTypeSize(8)};
+  font-size: ${applyTypeSize(9)};
 `
 
 export const typeSizeDisplayLg = css`
