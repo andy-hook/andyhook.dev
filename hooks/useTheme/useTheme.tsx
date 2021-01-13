@@ -3,16 +3,18 @@ import {
   ThemeProvider as StyledThemeProvider,
   useTheme as styledUseTheme,
 } from 'styled-components'
-import { applyHsl, Theme } from '../../style/theme'
+import { applyHsl, Theme, ThemeName, themes } from '../../style/theme'
 
 function ThemeProvider({
   children,
-  theme,
+  theme = 'dark',
 }: {
   children: React.ReactNode
-  theme: Theme
+  theme?: ThemeName
 }): JSX.Element {
-  return <StyledThemeProvider theme={theme}>{children}</StyledThemeProvider>
+  return (
+    <StyledThemeProvider theme={themes[theme]}>{children}</StyledThemeProvider>
+  )
 }
 
 type ThemeMethods = {

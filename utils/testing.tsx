@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, RenderOptions, RenderResult } from '@testing-library/react'
-import { ThemeName, themes } from '../style/theme'
+import { ThemeName } from '../style/theme'
 import { FocusVisibleProvider } from '../hooks/useFocusVisible/useFocusVisible'
 import { ThemeProvider } from '../hooks/useTheme/useTheme'
 
@@ -19,7 +19,7 @@ function RenderProviders({
 }: ComponentProps): JSX.Element {
   return (
     <FocusVisibleProvider>
-      <ThemeProvider theme={themes[theme]}>{children}</ThemeProvider>
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </FocusVisibleProvider>
   )
 }
