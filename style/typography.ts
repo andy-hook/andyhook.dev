@@ -204,7 +204,15 @@ export const typeSizeBaseLg = css`
 /* Display type sizes
   ------------------------------------------------- */
 export const typeSizeDisplaySm = css`
-  font-size: ${applyTypeSize(8)};
+  font-size: ${applyTypeSize(6)};
+
+  ${inclusiveUp('md')} {
+    font-size: ${applyTypeSize(7)};
+  }
+
+  ${inclusiveUp('lg')} {
+    font-size: ${applyTypeSize(8)};
+  }
 `
 
 export const typeSizeDisplayMd = css`

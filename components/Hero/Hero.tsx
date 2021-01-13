@@ -15,7 +15,6 @@ import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import Logo from '../Logo/Logo'
 import RemoveWidow from '../RemoveWidow/RemoveWidow'
-import SocialIcons from '../SocialIcons/SocialIcons'
 
 const bookendHeight = css`
   height: 3rem;
@@ -58,19 +57,16 @@ function Hero(): JSX.Element {
           css={`
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
+            min-height: 75vh;
 
             padding-top: 4rem;
-            padding-bottom: 4rem;
 
             ${inclusiveUp('sm')} {
               padding-top: 3.75rem;
-              padding-bottom: 3.75rem;
             }
 
             ${inclusiveUp('md')} {
               padding-top: 4.75rem;
-              padding-bottom: 4.75rem;
             }
           `}
         >
@@ -97,12 +93,12 @@ function Hero(): JSX.Element {
               height: 100%;
               flex: 1;
 
-              padding-top: 2rem;
-              padding-bottom: 2rem;
+              padding-top: 6rem;
+              padding-bottom: 6rem;
 
               ${inclusiveUp('md')} {
-                padding-top: 8rem;
-                padding-bottom: 8rem;
+                padding-top: 11rem;
+                padding-bottom: 11rem;
               }
 
               ${inclusiveDown('xs')} {
@@ -222,28 +218,6 @@ function Hero(): JSX.Element {
               <HireButton href={`mailto:${meta.email}`} />
             </motion.div>
           </main>
-          <motion.footer
-            variants={slideInMotion}
-            initial="offset"
-            animate="rest"
-            custom={{ offset: 75, delay: 0.25 }}
-            css={`
-              ${bookendHeight}
-
-              display: flex;
-              align-items: flex-end;
-
-              ${inclusiveDown('xs')} {
-                justify-content: center;
-              }
-
-              ${inclusiveUp('md')} {
-                justify-content: flex-end;
-              }
-            `}
-          >
-            <SocialIcons />
-          </motion.footer>
         </LayoutLimiter>
       </LayoutGutter>
       <motion.div

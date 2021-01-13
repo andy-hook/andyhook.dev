@@ -1,4 +1,5 @@
 import React from 'react'
+import Footer from '../components/Footer/Footer'
 import Hero from '../components/Hero/Hero'
 import MetaSocial from '../components/Meta/MetaSocial'
 import WorkGrid from '../components/WorkGrid/WorkGrid'
@@ -13,6 +14,7 @@ function Home(): JSX.Element {
       />
       <Hero />
       <WorkGrid />
+      <Footer />
     </>
   )
 }
