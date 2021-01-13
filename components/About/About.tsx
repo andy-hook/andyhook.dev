@@ -2,9 +2,7 @@ import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import {
   setCropAndLineHeight,
-  typeBaseRegular,
   typeDisplaySemibold,
-  typeSizeBaseLg,
   typeSizeDisplayMd,
 } from '../../style/typography'
 import ExpList from '../ExpList/ExpList'
@@ -12,6 +10,7 @@ import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import LayoutRow from '../Layout/LayoutRow'
 import RemoveWidow from '../RemoveWidow/RemoveWidow'
+import TypeParagraph from '../Type/TypeParagraph'
 
 function About(): JSX.Element {
   const { background, foreground } = useTheme()
@@ -45,36 +44,21 @@ function About(): JSX.Element {
               </h2>
             </div>
             <div>
-              <p
-                css={`
-                  ${typeBaseRegular}
-                  ${typeSizeBaseLg}
-                  ${setCropAndLineHeight('body', 'longform')}
-
-                  color: ${foreground('medium')};
-                `}
-              >
+              <TypeParagraph>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Vestibulum tincidunt hendrerit ex, at elementum augue malesuada
                 eu. Pellentesque habitant morbi dtristique senectus et netus et
                 malesuada fames ac turpis egestas. Nam congue maximus erat vel
                 tincidunt.
-              </p>
-              <p
-                css={`
-                  ${typeBaseRegular}
-                  ${typeSizeBaseLg}
-                  ${setCropAndLineHeight('body', 'longform')}
+              </TypeParagraph>
 
-                  color: ${foreground('medium')};
-                `}
-              >
+              <TypeParagraph>
                 Aliquam eget hendrerit elit. Donec malesuada, augue quis blandit
                 interdum, sapien tellus lacinia neque, ut varius diam nisl in
                 erat. Fusce augue turpis, sollicitudin in elit ac, tristique
                 varius ante. Nullam vel sapien id turpis iaculis fringilla eu a
                 ipsum.
-              </p>
+              </TypeParagraph>
             </div>
           </div>
           <div>
