@@ -1,4 +1,5 @@
 import React from 'react'
+import { inclusiveDown, inclusiveUp } from '../../style/responsive'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import WorkGridItem from './WorkGridItem'
@@ -10,8 +11,21 @@ function WorkGrid(): JSX.Element {
         <div
           css={`
             display: grid;
-            column-gap: 80px;
-            grid-template-columns: 1fr 1fr;
+
+            ${inclusiveDown('xs')} {
+              row-gap: 4rem;
+              grid-template-columns: 1fr;
+            }
+
+            ${inclusiveUp('sm')} {
+              grid-template-columns: 1fr 1fr;
+
+              column-gap: 6%;
+            }
+
+            ${inclusiveUp('xl')} {
+              column-gap: 4.8rem;
+            }
           `}
         >
           <div>
