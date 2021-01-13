@@ -1,11 +1,14 @@
 import React from 'react'
 import { rem } from 'polished'
+import { appearance } from '../../style/appearance'
+import { useTheme } from '../../hooks/useTheme/useTheme'
 
 type Sizes = 'small' | 'medium' | 'large'
 
 interface LayoutLimiterProps {
   size?: 'small' | 'medium' | 'large'
   children: React.ReactNode
+  divider?: boolean
 }
 
 const widths: Record<Sizes, string> = {
@@ -16,9 +19,11 @@ const widths: Record<Sizes, string> = {
 
 function LayoutLimiter({
   size = 'medium',
+  divider,
   children,
   ...props
 }: LayoutLimiterProps): JSX.Element {
+  const { foreground } = useTheme()
   const width = widths[size]
 
   return (
@@ -27,6 +32,9 @@ function LayoutLimiter({
         margin-left: auto;
         margin-right: auto;
         max-width: ${width};
+
+        border-top: ${divider ? appearance.borderWidth.regular : 0} solid
+          ${foreground('extraLow')};
       `}
       {...props}
     >
