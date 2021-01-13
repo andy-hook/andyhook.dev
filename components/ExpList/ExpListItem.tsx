@@ -31,7 +31,7 @@ function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
         padding-top: ${PADDING_AMOUNT};
         padding-bottom: ${PADDING_AMOUNT};
 
-        background-color: ${background('extraHigh')};
+        background-color: ${background('medium')};
         border-radius: ${appearance.radius.large};
       `}
     >

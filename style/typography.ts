@@ -38,7 +38,7 @@ const typeScale: Record<number, string> = {
 /* Body
 ------------------------------------------------- */
 export const bodyType: TypeSettings = {
-  family: `'Manrope', -apple-system,BlinkMacSystemFont, "Segoe UI", Roboto,Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif`,
+  family: `'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif`,
   letterSpace: {
     regular: '0.01em',
     medium: '0.02em',
@@ -48,8 +48,8 @@ export const bodyType: TypeSettings = {
   },
   lineHeight: {
     flat: 1,
-    regular: 1.4,
     tight: 1.3,
+    regular: 1.4,
     longform: 1.6,
   },
   weight: {
@@ -65,7 +65,7 @@ export const bodyType: TypeSettings = {
 /* Display
 ------------------------------------------------- */
 export const displayType: TypeSettings = {
-  family: `'Manrope', -apple-system,BlinkMacSystemFont, "Segoe UI", Roboto,Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif`,
+  family: `'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif`,
   letterSpace: {
     regular: '0.01em',
     medium: '0.02em',
@@ -75,8 +75,8 @@ export const displayType: TypeSettings = {
   },
   lineHeight: {
     flat: 1,
+    tight: 1.25,
     regular: 1.4,
-    tight: 1.3,
     longform: 1.6,
   },
   weight: {
@@ -190,10 +190,10 @@ export const typeSizeBaseMd = css`
 `
 
 export const typeSizeBaseLg = css`
-  font-size: ${applyTypeSize(2)};
+  font-size: ${applyTypeSize(3)};
 
-  ${inclusiveUp('sm')} {
-    font-size: ${applyTypeSize(3)};
+  ${inclusiveUp('xs')} {
+    font-size: ${applyTypeSize(4)};
   }
 
   ${inclusiveUp('md')} {
@@ -228,15 +228,23 @@ export const typeSizeDisplaySm = css`
 `
 
 export const typeSizeDisplayMd = css`
-  font-size: ${applyTypeSize(10)};
+  font-size: ${applyTypeSize(7)};
+
+  ${inclusiveUp('sm')} {
+    font-size: ${applyTypeSize(8)};
+  }
+
+  ${inclusiveUp('md')} {
+    font-size: ${applyTypeSize(9)};
+  }
+
+  ${inclusiveUp('xl')} {
+    font-size: ${applyTypeSize(10)};
+  }
 `
 
 export const typeSizeDisplayLg = css`
-  font-size: ${applyTypeSize(7)};
-
-  ${inclusiveUp('xs')} {
-    font-size: ${applyTypeSize(8)};
-  }
+  font-size: ${applyTypeSize(8)};
 
   ${inclusiveUp('sm')} {
     font-size: ${applyTypeSize(9)};

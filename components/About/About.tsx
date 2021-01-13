@@ -1,5 +1,6 @@
 import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
+import { inclusiveDown, inclusiveUp } from '../../style/responsive'
 import {
   setCropAndLineHeight,
   typeDisplaySemibold,
@@ -24,10 +25,13 @@ function About(): JSX.Element {
         <LayoutLimiter size="large">
           <div
             css={`
-              display: grid;
-              grid-template-columns: 0.95fr 1.05fr;
-              grid-gap: 20px;
               margin-bottom: 80px;
+
+              ${inclusiveUp('sm')} {
+                display: grid;
+                grid-template-columns: 0.95fr 1.05fr;
+                grid-gap: 20px;
+              }
             `}
           >
             <div>
@@ -38,6 +42,14 @@ function About(): JSX.Element {
                   ${setCropAndLineHeight('display', 'tight')}
 
                   color: ${foreground('extraHigh')};
+
+                  ${inclusiveDown('xs')} {
+                    margin-bottom: 0.8em;
+                  }
+
+                  ${inclusiveUp('sm')} {
+                    max-width: 8.75em;
+                  }
                 `}
               >
                 <RemoveWidow>More than 10 years in the game</RemoveWidow>
