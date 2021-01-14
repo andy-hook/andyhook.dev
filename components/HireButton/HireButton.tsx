@@ -14,7 +14,7 @@ type HireButtonProps = {
 }
 
 function HireButton({ href }: HireButtonProps): JSX.Element {
-  const { foreground, background } = useTheme()
+  const { foreground, background, shadow } = useTheme()
 
   const hoverMotion = useMemo(
     () => ({
@@ -36,6 +36,7 @@ function HireButton({ href }: HireButtonProps): JSX.Element {
       variants={hoverMotion}
       css={`
         display: inline-flex;
+        box-shadow: ${shadow('medium')};
         border-radius: ${appearance.radius.pill};
       `}
     >

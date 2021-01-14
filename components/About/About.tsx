@@ -57,19 +57,23 @@ function About(): JSX.Element {
             </div>
             <div>
               <TypeParagraph>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Vestibulum tincidunt hendrerit ex, at elementum augue malesuada
-                eu. Pellentesque habitant morbi dtristique senectus et netus et
-                malesuada fames ac turpis egestas. Nam congue maximus erat vel
-                tincidunt.
+                <RemoveWidow>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Vestibulum tincidunt hendrerit ex, at elementum augue
+                  malesuada eu. Pellentesque habitant morbi dtristique senectus
+                  et netus et malesuada fames ac turpis egestas. Nam congue
+                  maximus erat vel tincidunt.
+                </RemoveWidow>
               </TypeParagraph>
 
               <TypeParagraph>
-                Aliquam eget hendrerit elit. Donec malesuada, augue quis blandit
-                interdum, sapien tellus lacinia neque, ut varius diam nisl in
-                erat. Fusce augue turpis, sollicitudin in elit ac, tristique
-                varius ante. Nullam vel sapien id turpis iaculis fringilla eu a
-                ipsum.
+                <RemoveWidow>
+                  Aliquam eget hendrerit elit. Donec malesuada, augue quis
+                  blandit interdum, sapien tellus lacinia neque, ut varius diam
+                  nisl in erat. Fusce augue turpis, sollicitudin in elit ac,
+                  tristique varius ante. Nullam vel sapien id turpis iaculis
+                  fringilla eu a ipsum.
+                </RemoveWidow>
               </TypeParagraph>
             </div>
           </div>

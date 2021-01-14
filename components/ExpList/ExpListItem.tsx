@@ -18,7 +18,7 @@ type ExpListItemProps = {
 }
 
 function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
-  const { background, foreground } = useTheme()
+  const { background, foreground, shadow } = useTheme()
 
   return (
     <div
@@ -28,6 +28,8 @@ function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
 
         background-color: ${background('medium')};
         border-radius: ${appearance.radius.large};
+
+        box-shadow: ${shadow('medium')};
 
         padding-top: 2.1rem;
         padding-bottom: 2.1rem;

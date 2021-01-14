@@ -19,6 +19,7 @@ export type Theme = {
   name: ThemeName
   foreground: Record<FullShadeRange, ColorValue>
   background: Record<FullShadeRange, ColorValue>
+  shadow: Record<LimitedShadeRange, string>
 } & ThemeCommon
 
 const common: ThemeCommon = {
@@ -53,6 +54,26 @@ export const lightTheme: Theme = {
     high: [220, 0.16, 0.98],
     extraHigh: [220, 0.16, 0.99],
   },
+  shadow: {
+    low: `0px 1px 2px ${hsla(223, 0.16, 0.94, 0.125)}, 0px 2px 20px ${hsla(
+      223,
+      0.16,
+      0.94,
+      0.05
+    )}`,
+    medium: `0px 2px 4px ${hsla(223, 0.16, 0.94, 0.03)}, 0px 10px 20px ${hsla(
+      223,
+      0.16,
+      0.94,
+      0.06
+    )}`,
+    high: `0px 5px 10px ${hsla(223, 0.16, 0.94, 0.03)}, 0px 15px 50px ${hsla(
+      223,
+      0.16,
+      0.94,
+      0.08
+    )}`,
+  },
   ...common,
 }
 
@@ -61,18 +82,38 @@ export const lightTheme: Theme = {
 export const darkTheme: Theme = {
   name: 'dark',
   foreground: {
-    extraLow: [240, 0.13, 0.2],
+    extraLow: [240, 0.13, 0.175],
     low: [230, 0.11, 0.35],
     medium: [230, 0.1, 0.5],
     high: [230, 0.08, 0.8],
     extraHigh: [0, 0, 1],
   },
   background: {
-    extraLow: [240, 0.14, 0.05],
-    low: [240, 0.14, 0.06],
-    medium: [230, 0.14, 0.1],
-    high: [230, 0.14, 0.11],
-    extraHigh: [230, 0.14, 0.12],
+    extraLow: [240, 0.13, 0.06],
+    low: [240, 0.13, 0.07],
+    medium: [230, 0.13, 0.09],
+    high: [230, 0.13, 0.11],
+    extraHigh: [230, 0.13, 0.12],
+  },
+  shadow: {
+    low: `0px 1px 2px ${hsla(240, 0.13, 0.06, 0.125)}, 0px 2px 20px ${hsla(
+      240,
+      0.13,
+      0.06,
+      0.05
+    )}`,
+    medium: `0px 2px 4px ${hsla(240, 0.13, 0.06, 0.4)}, 0px 10px 20px ${hsla(
+      240,
+      0.13,
+      0.06,
+      0.3
+    )}`,
+    high: `0px 5px 10px ${hsla(240, 0.13, 0.06, 0.4)}, 0px 15px 50px ${hsla(
+      240,
+      0.13,
+      0.06,
+      0.2
+    )}`,
   },
   ...common,
 }
