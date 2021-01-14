@@ -27,11 +27,11 @@ function LayoutRow({
 }
 
 const topSpace = css`
-  padding-top: 150px;
+  padding-top: 12rem;
 `
 
 const bottomSpace = css`
-  padding-bottom: 150px;
+  padding-bottom: 12rem;
 `
 
 export default LayoutRow

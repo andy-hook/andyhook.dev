@@ -182,11 +182,15 @@ export const typeDisplaySemibold = css`
 /* Base type sizes
   ------------------------------------------------- */
 export const typeSizeBaseSm = css`
-  font-size: ${applyTypeSize(2)};
+  font-size: ${applyTypeSize(3)};
 `
 
 export const typeSizeBaseMd = css`
-  font-size: ${applyTypeSize(4)};
+  font-size: ${applyTypeSize(3)};
+
+  ${inclusiveUp('sm')} {
+    font-size: ${applyTypeSize(4)};
+  }
 `
 
 export const typeSizeBaseLg = css`

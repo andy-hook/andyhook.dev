@@ -16,7 +16,7 @@ function ExpList(): JSX.Element {
         <li
           css={`
             &:not(:last-child) {
-              margin-bottom: 15px;
+              margin-bottom: 1rem;
             }
           `}
           key={i}

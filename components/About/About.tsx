@@ -21,16 +21,16 @@ function About(): JSX.Element {
         background-color: ${background('low')};
       `}
     >
-      <LayoutRow>
-        <LayoutLimiter size="large">
+      <LayoutLimiter size="large" divider>
+        <LayoutRow>
           <div
             css={`
-              margin-bottom: 80px;
+              margin-bottom: 5rem;
 
               ${inclusiveUp('sm')} {
                 display: grid;
-                grid-template-columns: 0.95fr 1.05fr;
-                grid-gap: 20px;
+                grid-template-columns: 50% 50%;
+                margin-bottom: 8rem;
               }
             `}
           >
@@ -76,8 +76,8 @@ function About(): JSX.Element {
           <div>
             <ExpList />
           </div>
-        </LayoutLimiter>
-      </LayoutRow>
+        </LayoutRow>
+      </LayoutLimiter>
     </LayoutGutter>
   )
 }

@@ -4,7 +4,6 @@ import Footer from '../components/Footer/Footer'
 import Hero from '../components/Hero/Hero'
 import MetaSocial from '../components/Meta/MetaSocial'
 import WorkGrid from '../components/WorkGrid/WorkGrid'
-import { ThemeProvider } from '../hooks/useTheme/useTheme'
 
 function Home(): JSX.Element {
   return (
@@ -16,9 +15,7 @@ function Home(): JSX.Element {
       />
       <Hero />
       <WorkGrid />
-      <ThemeProvider theme="light">
-        <About />
-      </ThemeProvider>
+      <About />
       <Footer />
     </>
   )

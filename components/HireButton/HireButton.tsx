@@ -5,7 +5,7 @@ import { appearance } from '../../style/appearance'
 import {
   setCropAndLineHeight,
   typeBaseMedium,
-  typeSizeBaseLg,
+  typeSizeBaseMd,
 } from '../../style/typography'
 import InteractionBase from '../InteractionBase/InteractionBase'
 
@@ -46,7 +46,7 @@ function HireButton({ href }: HireButtonProps): JSX.Element {
           display: flex;
           align-items: center;
           ${typeBaseMedium}
-          ${typeSizeBaseLg}
+          ${typeSizeBaseMd}
           color: ${foreground('extraHigh')};
           padding: 1.1em 1.75em;
           border-radius: ${appearance.radius.pill};

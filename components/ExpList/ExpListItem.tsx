@@ -1,15 +1,15 @@
 import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { appearance } from '../../style/appearance'
+import { inclusiveDown, inclusiveUp } from '../../style/responsive'
 import {
   setCropAndLineHeight,
   typeBaseRegular,
   typeDisplaySemibold,
   typeSizeBaseMd,
+  typeSizeBaseSm,
   typeSizeDisplayXs,
 } from '../../style/typography'
-
-const PADDING_AMOUNT = '2.75rem'
 
 type ExpListItemProps = {
   year: string
@@ -24,28 +24,49 @@ function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
     <div
       css={`
         display: grid;
-        grid-template-columns: 0.95fr 1.05fr;
-
-        grid-gap: 20px;
-
-        padding-top: ${PADDING_AMOUNT};
-        padding-bottom: ${PADDING_AMOUNT};
+        grid-template-columns: 8rem 1fr 50%;
 
         background-color: ${background('medium')};
         border-radius: ${appearance.radius.large};
+
+        padding-top: 2.1rem;
+        padding-bottom: 2.1rem;
+
+        ${inclusiveDown('xs')} {
+          grid-template-columns: 6.5rem 1fr;
+          grid-template-rows: 1fr 1fr;
+        }
+
+        ${inclusiveUp('sm')} {
+          padding-top: 2.4rem;
+          padding-bottom: 2.4rem;
+        }
+
+        ${inclusiveUp('md')} {
+          padding-top: 2.75rem;
+          padding-bottom: 2.75rem;
+        }
       `}
     >
       <div
         css={`
           display: flex;
           align-items: center;
-          padding-left: ${PADDING_AMOUNT};
+          padding-left: 2.1rem;
+
+          ${inclusiveUp('sm')} {
+            padding-left: 2.4rem;
+          }
+
+          ${inclusiveUp('md')} {
+            padding-left: 2.75rem;
+          }
         `}
       >
         <span
           css={`
             ${typeBaseRegular}
-            ${typeSizeBaseMd}
+            ${typeSizeBaseSm}
             ${setCropAndLineHeight('body', 'flat')}
 
             color: ${foreground('medium')};
@@ -53,6 +74,8 @@ function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
         >
           {year}
         </span>
+      </div>
+      <div>
         <h3
           css={`
             ${typeDisplaySemibold}
@@ -60,8 +83,6 @@ function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
             ${setCropAndLineHeight('display', 'flat')}
 
             color: ${foreground('extraHigh')};
-
-            margin-left: 2.25em;
           `}
         >
           {company}
@@ -71,7 +92,11 @@ function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
         css={`
           display: flex;
           align-items: center;
-          padding-right: ${PADDING_AMOUNT};
+
+          ${inclusiveDown('xs')} {
+            grid-row-start: 2;
+            grid-column-start: 2;
+          }
         `}
       >
         <span
@@ -81,6 +106,10 @@ function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
             ${setCropAndLineHeight('body', 'flat')}
 
             color: ${foreground('medium')};
+
+            ${inclusiveDown('xs')} {
+              margin-top: 0.4em;
+            }
           `}
         >
           {title}
