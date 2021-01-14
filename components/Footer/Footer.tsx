@@ -1,5 +1,7 @@
 import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
+import meta from '../../meta'
+import { inclusiveDown, inclusiveUp } from '../../style/responsive'
 import {
   setCropAndLineHeight,
   typeBaseRegular,
@@ -7,13 +9,14 @@ import {
   typeSizeBaseLg,
   typeSizeDisplayLg,
 } from '../../style/typography'
+import InteractionBase from '../InteractionBase/InteractionBase'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import LayoutRow from '../Layout/LayoutRow'
 import SocialIcons from '../SocialIcons/SocialIcons'
 
 function Footer(): JSX.Element {
-  const { background, foreground } = useTheme()
+  const { background, foreground, accent } = useTheme()
 
   return (
     <footer
@@ -25,9 +28,11 @@ function Footer(): JSX.Element {
         <LayoutLimiter size="large" divider>
           <LayoutRow
             css={`
-              display: flex;
-              justify-content: space-between;
-              align-items: flex-end;
+              ${inclusiveUp('sm')} {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+              }
             `}
           >
             <div>
@@ -35,7 +40,7 @@ function Footer(): JSX.Element {
                 css={`
                   ${typeBaseRegular}
                   ${typeSizeBaseLg}
-                  ${setCropAndLineHeight('body', 'regular')}
+                  ${setCropAndLineHeight('body', 'flat')}
 
                   color: ${foreground('low')};
                   margin-bottom: 1.75em;
@@ -50,9 +55,30 @@ function Footer(): JSX.Element {
                   ${setCropAndLineHeight('display', 'tight')}
 
                   color: ${foreground('extraHigh')};
+
+                  ${inclusiveDown('xs')} {
+                    margin-bottom: 1.75em;
+                  }
                 `}
               >
-                Start by saying hello
+                Start by{' '}
+                <InteractionBase offset={0.1} href={`mailto:${meta.email}`}>
+                  <span
+                    css={`
+                      background: linear-gradient(
+                        160deg,
+                        ${accent('light')} 0%,
+                        ${accent('base')} 75%
+                      );
+
+                      background-clip: text;
+                      -webkit-background-clip: text;
+                      -webkit-text-fill-color: transparent;
+                    `}
+                  >
+                    saying hello
+                  </span>
+                </InteractionBase>
               </h4>
             </div>
             <SocialIcons />

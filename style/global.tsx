@@ -99,6 +99,7 @@ const Global = createGlobalStyle`
     padding: 0;
     background: none;
     cursor: pointer;
+    font-weight: inherit;
 
     &[disabled] {
       cursor: default;

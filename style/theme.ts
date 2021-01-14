@@ -24,8 +24,8 @@ export type Theme = {
 
 const common: ThemeCommon = {
   accent: {
-    base: [266, 0.72, 0.46],
-    light: [278, 0.78, 0.7],
+    base: [266, 0.92, 0.46],
+    light: [285, 1, 0.66],
     dark: [266, 0.72, 0.2],
   },
   positive: {
