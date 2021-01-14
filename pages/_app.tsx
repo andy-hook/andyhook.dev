@@ -5,7 +5,6 @@ import { FocusVisibleProvider } from '../hooks/useFocusVisible/useFocusVisible'
 import { ThemeProvider } from '../hooks/useTheme/useTheme'
 import MetaBrowser from '../components/Meta/MetaBrowser'
 import MetaIcons from '../components/Meta/MetaIcons'
-import { darkTheme } from '../style/theme'
 
 // Import fonts outside of styled-components to avoid flicker on state change
 import '../style/font.css'
@@ -23,7 +22,7 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
       <MetaBrowser />
       <MetaIcons />
       <FocusVisibleProvider>
-        <ThemeProvider theme={darkTheme}>
+        <ThemeProvider>
           <GlobalStyle />
 
           <Component {...pageProps} />

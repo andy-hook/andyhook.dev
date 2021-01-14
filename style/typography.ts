@@ -4,7 +4,7 @@ import { inclusiveUp } from './responsive'
 import { createPlaceholderCrop, createTextCrop } from './utils'
 
 type StyleName = 'body' | 'display'
-type lineHeightName = 'flat' | 'regular' | 'tight' | 'longform'
+type LineHeightName = 'flat' | 'regular' | 'tight' | 'longform'
 
 type TypeSettings = {
   family: string
@@ -12,7 +12,7 @@ type TypeSettings = {
     'regular' | 'medium' | 'semiBold' | 'bold' | 'uppercase',
     string
   >
-  lineHeight: Record<lineHeightName, number>
+  lineHeight: Record<LineHeightName, number>
   weight: Record<'light' | 'regular' | 'medium' | 'semiBold' | 'bold', number>
   cropSettings: Record<'topCrop' | 'bottomCrop', number>
 }
@@ -38,7 +38,7 @@ const typeScale: Record<number, string> = {
 /* Body
 ------------------------------------------------- */
 export const bodyType: TypeSettings = {
-  family: `'Manrope', -apple-system,BlinkMacSystemFont, "Segoe UI", Roboto,Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif`,
+  family: `'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif`,
   letterSpace: {
     regular: '0.01em',
     medium: '0.02em',
@@ -48,8 +48,8 @@ export const bodyType: TypeSettings = {
   },
   lineHeight: {
     flat: 1,
-    regular: 1.4,
     tight: 1.3,
+    regular: 1.4,
     longform: 1.6,
   },
   weight: {
@@ -59,13 +59,13 @@ export const bodyType: TypeSettings = {
     semiBold: 600,
     bold: 700,
   },
-  cropSettings: { topCrop: 16, bottomCrop: 6 },
+  cropSettings: { topCrop: 9, bottomCrop: 6 },
 }
 
 /* Display
 ------------------------------------------------- */
 export const displayType: TypeSettings = {
-  family: `'Manrope', -apple-system,BlinkMacSystemFont, "Segoe UI", Roboto,Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif`,
+  family: `'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif`,
   letterSpace: {
     regular: '0.01em',
     medium: '0.02em',
@@ -75,8 +75,8 @@ export const displayType: TypeSettings = {
   },
   lineHeight: {
     flat: 1,
+    tight: 1.25,
     regular: 1.4,
-    tight: 1.3,
     longform: 1.6,
   },
   weight: {
@@ -120,7 +120,7 @@ export function applyTypeSize(value: number): string {
   ------------------------------------------------- */
 export const setCropAndLineHeight = (
   style: StyleName,
-  lHeight: lineHeightName
+  lHeight: LineHeightName
 ): CSSProp => {
   return createTextCrop({
     ...styles[style].cropSettings,
@@ -130,7 +130,7 @@ export const setCropAndLineHeight = (
 
 export const setPlaceholderCrop = (
   style: StyleName,
-  lHeight: lineHeightName
+  lHeight: LineHeightName
 ): CSSProp => {
   return createPlaceholderCrop({
     ...styles[style].cropSettings,
@@ -182,27 +182,43 @@ export const typeDisplaySemibold = css`
 /* Base type sizes
   ------------------------------------------------- */
 export const typeSizeBaseSm = css`
-  font-size: ${applyTypeSize(1)};
+  font-size: ${applyTypeSize(3)};
 `
 
 export const typeSizeBaseMd = css`
-  font-size: ${applyTypeSize(2)};
+  font-size: ${applyTypeSize(3)};
+
+  ${inclusiveUp('sm')} {
+    font-size: ${applyTypeSize(4)};
+  }
 `
 
 export const typeSizeBaseLg = css`
-  font-size: ${applyTypeSize(2)};
+  font-size: ${applyTypeSize(3)};
 
-  ${inclusiveUp('sm')} {
-    font-size: ${applyTypeSize(3)};
+  ${inclusiveUp('xs')} {
+    font-size: ${applyTypeSize(4)};
   }
 
   ${inclusiveUp('md')} {
-    font-size: ${applyTypeSize(4)};
+    font-size: ${applyTypeSize(5)};
   }
 `
 
 /* Display type sizes
   ------------------------------------------------- */
+export const typeSizeDisplayXs = css`
+  font-size: ${applyTypeSize(5)};
+
+  ${inclusiveUp('md')} {
+    font-size: ${applyTypeSize(5)};
+  }
+
+  ${inclusiveUp('lg')} {
+    font-size: ${applyTypeSize(6)};
+  }
+`
+
 export const typeSizeDisplaySm = css`
   font-size: ${applyTypeSize(6)};
 
@@ -216,15 +232,23 @@ export const typeSizeDisplaySm = css`
 `
 
 export const typeSizeDisplayMd = css`
-  font-size: ${applyTypeSize(8)};
+  font-size: ${applyTypeSize(7)};
+
+  ${inclusiveUp('sm')} {
+    font-size: ${applyTypeSize(8)};
+  }
+
+  ${inclusiveUp('md')} {
+    font-size: ${applyTypeSize(9)};
+  }
+
+  ${inclusiveUp('xl')} {
+    font-size: ${applyTypeSize(10)};
+  }
 `
 
 export const typeSizeDisplayLg = css`
-  font-size: ${applyTypeSize(7)};
-
-  ${inclusiveUp('xs')} {
-    font-size: ${applyTypeSize(8)};
-  }
+  font-size: ${applyTypeSize(8)};
 
   ${inclusiveUp('sm')} {
     font-size: ${applyTypeSize(9)};
