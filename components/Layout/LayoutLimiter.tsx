@@ -23,7 +23,7 @@ function LayoutLimiter({
   children,
   ...props
 }: LayoutLimiterProps): JSX.Element {
-  const { foreground } = useTheme()
+  const { background } = useTheme()
   const width = widths[size]
 
   return (
@@ -34,7 +34,7 @@ function LayoutLimiter({
         max-width: ${width};
 
         border-top: ${divider ? appearance.borderWidth.regular : 0} solid
-          ${foreground('extraLow')};
+          ${background('extraHigh')};
       `}
       {...props}
     >
