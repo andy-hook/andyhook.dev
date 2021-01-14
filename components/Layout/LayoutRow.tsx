@@ -1,5 +1,6 @@
 import React from 'react'
 import { css } from 'styled-components'
+import { inclusiveUp } from '../../style/responsive'
 
 type LayoutRowProps = {
   trimTop?: boolean
@@ -27,11 +28,27 @@ function LayoutRow({
 }
 
 const topSpace = css`
-  padding-top: 12rem;
+  padding-top: 6rem;
+
+  ${inclusiveUp('sm')} {
+    padding-top: 8rem;
+  }
+
+  ${inclusiveUp('lg')} {
+    padding-top: 11rem;
+  }
 `
 
 const bottomSpace = css`
-  padding-bottom: 12rem;
+  padding-bottom: 6rem;
+
+  ${inclusiveUp('sm')} {
+    padding-bottom: 8rem;
+  }
+
+  ${inclusiveUp('lg')} {
+    padding-bottom: 11rem;
+  }
 `
 
 export default LayoutRow
