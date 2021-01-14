@@ -57,7 +57,7 @@ function Hero(): JSX.Element {
           css={`
             display: flex;
             flex-direction: column;
-            min-height: 75vh;
+            min-height: 90vh;
 
             padding-top: 4rem;
 
@@ -218,6 +218,11 @@ function Hero(): JSX.Element {
               <HireButton href={`mailto:${meta.email}`} />
             </motion.div>
           </main>
+          <div
+            css={`
+              ${bookendHeight}
+            `}
+          />
         </LayoutLimiter>
       </LayoutGutter>
       <motion.div
