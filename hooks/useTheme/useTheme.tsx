@@ -22,6 +22,7 @@ type ThemeMethods = {
   background: (value: keyof Theme['background'], alpha?: number) => string
   accent: (value: keyof Theme['accent'], alpha?: number) => string
   positive: (value: keyof Theme['positive'], alpha?: number) => string
+  shadow: (value: keyof Theme['shadow']) => string
 }
 
 function useTheme(): ThemeMethods {
@@ -47,11 +48,17 @@ function useTheme(): ThemeMethods {
     [theme]
   )
 
+  const shadow: ThemeMethods['shadow'] = useCallback(
+    (value) => theme.shadow[value],
+    [theme]
+  )
+
   return {
     foreground,
     background,
     accent,
     positive,
+    shadow,
   }
 }
 
