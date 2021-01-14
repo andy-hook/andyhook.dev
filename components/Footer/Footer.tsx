@@ -16,14 +16,10 @@ import LayoutRow from '../Layout/LayoutRow'
 import SocialIcons from '../SocialIcons/SocialIcons'
 
 function Footer(): JSX.Element {
-  const { background, foreground, accent } = useTheme()
+  const { foreground, accent } = useTheme()
 
   return (
-    <footer
-      css={`
-        /* background-color: ${background('extraLow')}; */
-      `}
-    >
+    <footer>
       <LayoutGutter>
         <LayoutLimiter size="large" divider>
           <LayoutRow
