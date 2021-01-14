@@ -75,7 +75,7 @@ export const displayType: TypeSettings = {
   },
   lineHeight: {
     flat: 1,
-    tight: 1.25,
+    tight: 1.3,
     regular: 1.4,
     longform: 1.6,
   },
