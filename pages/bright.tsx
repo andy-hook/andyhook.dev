@@ -1,13 +1,13 @@
 import React from 'react'
 import MetaSocial from '../components/Meta/MetaSocial'
 
-function Dash(): JSX.Element {
+function Bright(): JSX.Element {
   return (
     <>
-      <MetaSocial title="Dash" description="Dash description" />
+      <MetaSocial title="Bright" description="Bright description" />
       Dash
     </>
   )
 }
 
-export default Dash
+export default Bright
