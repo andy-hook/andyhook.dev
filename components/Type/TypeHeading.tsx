@@ -49,8 +49,11 @@ const Heading = styled.h1`
   ${typeSizeBaseLg}
   ${setCropAndLineHeight('body', 'longform')}
 
-  &:not(:last-child) {
+  &:not(:first-child) {
     margin-top: 2.5em;
+  }
+
+  &:not(:last-child) {
     margin-bottom: 0.9em;
   }
 `
