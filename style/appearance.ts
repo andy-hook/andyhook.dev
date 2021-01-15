@@ -21,16 +21,3 @@ export const appearance = {
     heavy: '0 0 0.2em rgba(0, 0, 0, 0.3)',
   },
 }
-
-export const spring = {
-  bounce: {
-    type: 'spring',
-    stiffness: 260,
-    damping: 15,
-  },
-  softOut: {
-    type: 'spring',
-    stiffness: 100,
-    damping: 30,
-  },
-}

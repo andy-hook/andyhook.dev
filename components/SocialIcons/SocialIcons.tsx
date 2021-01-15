@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { appearance, spring } from '../../style/appearance'
+import { appearance } from '../../style/appearance'
 import { motion } from 'framer-motion'
 import Icon from '../Icon/Icon'
 import InteractionBase from '../InteractionBase/InteractionBase'
@@ -7,6 +7,7 @@ import meta, { SocialNetworks } from '../../meta'
 import { keys } from '../../utils/general'
 import { inclusiveUp } from '../../style/responsive'
 import { useTheme } from '../../hooks/useTheme/useTheme'
+import { spring } from '../../style/motion'
 
 const socialInfo: Record<SocialNetworks, [SocialNetworks, string]> = {
   twitter: ['twitter', 'https://twitter.com/'],

@@ -5,10 +5,11 @@ import { FocusVisibleProvider } from '../hooks/useFocusVisible/useFocusVisible'
 import { ThemeProvider } from '../hooks/useTheme/useTheme'
 import MetaBrowser from '../components/Meta/MetaBrowser'
 import MetaIcons from '../components/Meta/MetaIcons'
+import { unregisterServiceWorker } from '../serviceWorker'
+import Layout from '../components/Layout/Layout'
 
 // Import fonts outside of styled-components to avoid flicker on state change
 import '../style/font.css'
-import { unregisterServiceWorker } from '../serviceWorker'
 
 function App({ Component, pageProps }: AppProps): JSX.Element {
   // Remove any previously installed service worker
@@ -25,7 +26,9 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
         <ThemeProvider>
           <GlobalStyle />
 
-          <Component {...pageProps} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
         </ThemeProvider>
       </FocusVisibleProvider>
     </>
