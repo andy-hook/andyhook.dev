@@ -15,15 +15,15 @@ describe('keys', () => {
 })
 
 describe('isExternalUrl', () => {
-  it('returns false when passing a relative url', () => {
+  it('returns falsy when passing a relative url', () => {
     expect(isExternalURL('/relative')).toBeFalsy()
   })
 
-  it('returns true when passing an external url', () => {
+  it('returns truthy when passing an external url', () => {
     expect(isExternalURL('https://google.com')).toBeTruthy()
   })
 
-  it('returns true when passing a mailto magnet', () => {
+  it('returns truthy when passing a mailto magnet', () => {
     expect(isExternalURL('mailto:hello@andyhook.dev')).toBeTruthy()
   })
 })
