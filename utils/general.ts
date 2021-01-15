@@ -6,3 +6,7 @@ export function keys<O extends Record<string, unknown>>(
 ): Array<keyof O> {
   return Object.keys(obj) as Array<keyof O>
 }
+
+export function isExternalURL(url: string): boolean {
+  return url.startsWith('https://') || url.startsWith('mailto:')
+}
