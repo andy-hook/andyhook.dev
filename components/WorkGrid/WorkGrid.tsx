@@ -9,20 +9,24 @@ const WORK_ITEMS = [
   {
     title: 'Dash',
     description: 'Description',
+    href: '/dash',
     img: { src: '/test.png', width: 565, height: 597 },
   },
   {
     title: 'Aragon',
+    href: '/aragon',
     description: 'Description',
     img: { src: '/test.png', width: 565, height: 382 },
   },
   {
     title: 'Blocks',
+    href: '/blocks',
     description: 'Description',
     img: { src: '/test.png', width: 565, height: 533 },
   },
   {
     title: 'Brandwatch',
+    href: '/brandwatch',
     description: 'Description',
     img: { src: '/test.png', width: 565, height: 703 },
   },
@@ -52,15 +56,16 @@ function WorkGrid(): JSX.Element {
               }
             `}
           >
-            {WORK_ITEMS.map(({ title, description, img }, i) => (
+            {WORK_ITEMS.map(({ title, description, img, href }, i) => (
               <div
                 key={i}
                 css={`
-                  ${i === 3 ? 'align-self: end;' : ''}
+                  ${i === 2 ? 'align-self: end;' : ''}
                 `}
               >
                 <WorkGridItem
                   src={img.src}
+                  href={href}
                   title={title}
                   description={description}
                   width={img.width}

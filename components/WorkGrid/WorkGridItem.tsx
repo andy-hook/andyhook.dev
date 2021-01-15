@@ -9,6 +9,7 @@ import {
 } from '../../style/typography'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { appearance } from '../../style/appearance'
+import InteractionBase from '../InteractionBase/InteractionBase'
 
 type WorkGridItemProps = {
   src: string
@@ -17,6 +18,7 @@ type WorkGridItemProps = {
   description: string
   width: number
   height: number
+  href: string
 }
 
 function WorkGridItem({
@@ -26,26 +28,35 @@ function WorkGridItem({
   description,
   width,
   height,
+  href,
 }: WorkGridItemProps): JSX.Element {
   const { foreground } = useTheme()
 
   return (
     <div>
-      <div
+      <InteractionBase
+        href={href}
+        offset={0.3}
         css={`
-          overflow: hidden;
-          border-radius: ${appearance.radius.base};
-          opacity: 0.02;
+          display: block;
         `}
       >
-        <Image
-          src={src}
-          alt={alt}
-          width={width}
-          height={height}
-          layout="responsive"
-        />
-      </div>
+        <div
+          css={`
+            overflow: hidden;
+            border-radius: ${appearance.radius.base};
+            opacity: 0.02;
+          `}
+        >
+          <Image
+            src={src}
+            alt={alt}
+            width={width}
+            height={height}
+            layout="responsive"
+          />
+        </div>
+      </InteractionBase>
       <h3
         css={`
           ${typeDisplaySemibold}
