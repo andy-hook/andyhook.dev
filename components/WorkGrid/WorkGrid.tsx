@@ -5,6 +5,33 @@ import LayoutLimiter from '../Layout/LayoutLimiter'
 import LayoutRow from '../Layout/LayoutRow'
 import WorkGridItem from './WorkGridItem'
 
+const WORK_ITEMS = [
+  {
+    title: 'Dash',
+    description: 'Description',
+    href: '/dash',
+    img: { src: '/test.png', width: 565, height: 597 },
+  },
+  {
+    title: 'Aragon',
+    href: '/aragon',
+    description: 'Description',
+    img: { src: '/test.png', width: 565, height: 382 },
+  },
+  {
+    title: 'Blocks',
+    href: '/blocks',
+    description: 'Description',
+    img: { src: '/test.png', width: 565, height: 533 },
+  },
+  {
+    title: 'Brandwatch',
+    href: '/brandwatch',
+    description: 'Description',
+    img: { src: '/test.png', width: 565, height: 703 },
+  },
+]
+
 function WorkGrid(): JSX.Element {
   return (
     <LayoutGutter>
@@ -21,7 +48,6 @@ function WorkGrid(): JSX.Element {
 
               ${inclusiveUp('sm')} {
                 grid-template-columns: 1fr 1fr;
-
                 column-gap: 6%;
               }
 
@@ -30,46 +56,23 @@ function WorkGrid(): JSX.Element {
               }
             `}
           >
-            <div>
-              <WorkGridItem
-                src="/test.png"
-                title="Dash"
-                description="Description"
-                width={565}
-                height={597}
-              />
-            </div>
-            <div>
-              <WorkGridItem
-                src="/test.png"
-                title="Aragon"
-                description="Description"
-                width={565}
-                height={382}
-              />
-            </div>
-            <div
-              css={`
-                align-self: end;
-              `}
-            >
-              <WorkGridItem
-                src="/test.png"
-                title="Blocks"
-                description="Description"
-                width={565}
-                height={533}
-              />
-            </div>
-            <div>
-              <WorkGridItem
-                src="/test.png"
-                title="Brandwatch"
-                description="Description"
-                width={565}
-                height={703}
-              />
-            </div>
+            {WORK_ITEMS.map(({ title, description, img, href }, i) => (
+              <div
+                key={i}
+                css={`
+                  ${i === 2 ? 'align-self: end;' : ''}
+                `}
+              >
+                <WorkGridItem
+                  src={img.src}
+                  href={href}
+                  title={title}
+                  description={description}
+                  width={img.width}
+                  height={img.height}
+                />
+              </div>
+            ))}
           </div>
         </LayoutLimiter>
       </LayoutRow>

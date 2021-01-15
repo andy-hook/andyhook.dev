@@ -1,9 +1,11 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import React from 'react'
+import React, { useCallback } from 'react'
 import styled from 'styled-components'
 import { useFocusVisible } from '../../hooks/useFocusVisible/useFocusVisible'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { appearance, spring } from '../../style/appearance'
+import { useRouter } from 'next/router'
+import { isExternalURL } from '../../utils/general'
 
 type InteractionBaseProps = {
   children: React.ReactNode
@@ -43,14 +45,16 @@ function getElementProps({
   }
 ] {
   if (isAnchor && href) {
+    const external = isExternalURL(href)
+
     return [
       'a',
       disabled
         ? {}
         : {
             href: href,
-            rel: 'noopener noreferrer',
-            target: '_blank',
+            rel: external ? 'noopener noreferrer' : '',
+            target: external ? '_blank' : '',
           },
     ]
   }
@@ -72,8 +76,24 @@ function InteractionBase({
   radius = 'base',
   ...props
 }: InteractionBaseProps): JSX.Element {
+  const router = useRouter()
   const { focusVisible, onFocus, onBlur } = useFocusVisible()
   const { foreground } = useTheme()
+
+  const handleOnClick = useCallback(
+    (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
+      // Use internal router for all relative links
+      if (href && !isExternalURL(href)) {
+        event.preventDefault()
+        router.push(href)
+      }
+
+      if (onClick) {
+        onClick(event)
+      }
+    },
+    [onClick, href, router]
+  )
 
   const [elementTag, elementProps] = getElementProps({
     isAnchor: Boolean(href),
@@ -84,7 +104,7 @@ function InteractionBase({
   return (
     <StyledInteractiveElement
       as={elementTag}
-      onClick={onClick && onClick}
+      onClick={handleOnClick}
       onFocus={onFocus}
       onBlur={onBlur}
       {...elementProps}
