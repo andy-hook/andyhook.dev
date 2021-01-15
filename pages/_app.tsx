@@ -5,13 +5,11 @@ import { FocusVisibleProvider } from '../hooks/useFocusVisible/useFocusVisible'
 import { ThemeProvider } from '../hooks/useTheme/useTheme'
 import MetaBrowser from '../components/Meta/MetaBrowser'
 import MetaIcons from '../components/Meta/MetaIcons'
+import { unregisterServiceWorker } from '../serviceWorker'
+import Layout from '../components/Layout/Layout'
 
 // Import fonts outside of styled-components to avoid flicker on state change
 import '../style/font.css'
-import { unregisterServiceWorker } from '../serviceWorker'
-import Footer from '../components/Footer/Footer'
-import Header from '../components/Header/Header'
-import { appearance } from '../style/appearance'
 
 function App({ Component, pageProps }: AppProps): JSX.Element {
   // Remove any previously installed service worker
@@ -33,30 +31,6 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
           </Layout>
         </ThemeProvider>
       </FocusVisibleProvider>
-    </>
-  )
-}
-
-function Layout({ children }: { children: React.ReactNode }) {
-  return (
-    <>
-      <Header
-        css={`
-          position: absolute;
-          top: 0;
-          left: 0;
-          z-index: ${appearance.index.highest};
-        `}
-      />
-      <main
-        css={`
-          position: relative;
-          z-index: ${appearance.index.floor};
-        `}
-      >
-        {children}
-      </main>
-      <Footer />
     </>
   )
 }
