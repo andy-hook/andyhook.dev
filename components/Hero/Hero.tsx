@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion'
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import meta from '../../meta'
-import { appearance, spring } from '../../style/appearance'
+import { appearance } from '../../style/appearance'
+import { slideInMotion, spring } from '../../style/motion'
 import { inclusiveDown, inclusiveUp } from '../../style/responsive'
 import {
   setCropAndLineHeight,
@@ -13,29 +14,7 @@ import {
 import HireButton from '../HireButton/HireButton'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
-import Logo from '../Logo/Logo'
 import RemoveWidow from '../RemoveWidow/RemoveWidow'
-
-const bookendHeight = css`
-  height: 3rem;
-`
-
-type SlideInMotionProps = {
-  offset: number
-  delay: number
-}
-
-const slideInMotion = {
-  offset: (props: SlideInMotionProps) => ({
-    opacity: 0,
-    y: props.offset,
-  }),
-  rest: (props: SlideInMotionProps) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: props.delay, ...spring.softOut },
-  }),
-}
 
 function Hero(): JSX.Element {
   const { background, foreground } = useTheme()
@@ -58,35 +37,9 @@ function Hero(): JSX.Element {
             display: flex;
             flex-direction: column;
             min-height: 90vh;
-
-            padding-top: 4rem;
-
-            ${inclusiveUp('sm')} {
-              padding-top: 3.75rem;
-            }
-
-            ${inclusiveUp('md')} {
-              padding-top: 4.75rem;
-            }
           `}
         >
-          <motion.header
-            variants={slideInMotion}
-            initial="offset"
-            animate="rest"
-            custom={{ offset: -75, delay: 0.25 }}
-            transition={spring.softOut}
-            css={`
-              ${bookendHeight}
-
-              ${inclusiveDown('xs')} {
-                text-align: center;
-              }
-            `}
-          >
-            <Logo />
-          </motion.header>
-          <main
+          <div
             css={`
               display: flex;
               align-items: center;
@@ -124,7 +77,7 @@ function Hero(): JSX.Element {
                   ${setCropAndLineHeight('display', 'tight')}
                   
                   max-width: 16em;
-                  padding-top: 0.5em;
+                  padding-top: 1.75em;
                   margin-bottom: 1.25em;
                   text-shadow: ${appearance.textShadow.heavy};
                 `}
@@ -217,12 +170,7 @@ function Hero(): JSX.Element {
               </h1>
               <HireButton href={`mailto:${meta.email}`} />
             </motion.div>
-          </main>
-          <div
-            css={`
-              ${bookendHeight}
-            `}
-          />
+          </div>
         </LayoutLimiter>
       </LayoutGutter>
       <motion.div
