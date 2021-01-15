@@ -3,14 +3,15 @@ import { useTheme } from '../../hooks/useTheme/useTheme'
 import Image from 'next/image'
 import {
   setCropAndLineHeight,
-  typeBaseMedium,
   typeDisplaySemibold,
-  typeSizeBaseXl,
   typeSizeDisplayLg,
 } from '../../style/typography'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import WorkDetailsList from './WorkDetailsList'
+import LayoutRow from '../Layout/LayoutRow'
+import { inclusiveUp } from '../../style/responsive'
+import RemoveWidow from '../RemoveWidow/RemoveWidow'
 
 type WorkTemplate = {
   children: React.ReactNode
@@ -23,15 +24,18 @@ function WorkTemplate({ children }: WorkTemplate): JSX.Element {
     <article>
       <header
         css={`
-          padding-top: 20rem;
-          margin-bottom: 10rem;
+          padding-top: 14rem;
+
+          ${inclusiveUp('sm')} {
+            padding-top: 16rem;
+          }
+
+          ${inclusiveUp('md')} {
+            padding-top: 22rem;
+          }
         `}
       >
-        <LayoutGutter
-          css={`
-            margin-bottom: 10rem;
-          `}
-        >
+        <LayoutGutter>
           <LayoutLimiter size="large">
             <h1
               css={`
@@ -39,90 +43,111 @@ function WorkTemplate({ children }: WorkTemplate): JSX.Element {
                 ${typeSizeDisplayLg}
                 ${setCropAndLineHeight('display', 'tight')}
                   
-                max-width: 16em;
-                margin-bottom: 1.25em;
+                max-width: 14em;
                 color: ${foreground('extraHigh')};
               `}
             >
-              Social listening trusted by world-leading brands
+              <RemoveWidow>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </RemoveWidow>
             </h1>
-            <p
-              css={`
-                ${typeBaseMedium}
-                ${typeSizeBaseXl}
-                ${setCropAndLineHeight('body', 'regular')}
-
-                color: ${foreground('extraLow')};
-              `}
-            >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Vestibulum tincidunt hendrerit ex, at elementum augue malesuada
-              eu..
-            </p>
           </LayoutLimiter>
         </LayoutGutter>
-        <Image src="/test.png" width={1000} height={50} layout="responsive" />
+        <div
+          css={`
+            opacity: 0.05;
+            margin-top: 5rem;
+            margin-bottom: 5rem;
+
+            ${inclusiveUp('sm')} {
+              margin-top: 6rem;
+              margin-bottom: 6rem;
+            }
+
+            ${inclusiveUp('md')} {
+              margin-top: 9rem;
+              margin-bottom: 9rem;
+            }
+          `}
+        >
+          <Image
+            src="/test.png"
+            width={1000}
+            height={500}
+            layout="responsive"
+          />
+        </div>
       </header>
       <main>
         <LayoutGutter>
-          <LayoutLimiter
-            size="large"
-            css={`
-              display: grid;
-              grid-template-columns: 1fr 30%;
-              grid-gap: 4rem;
-              width: 100%;
-            `}
-          >
-            <div
+          <LayoutRow trimTop>
+            <LayoutLimiter
+              size="large"
               css={`
-                /* background-color: red; */
-                height: 3000px;
-                flex: 1;
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-gap: 6rem;
+                width: 100%;
+
+                ${inclusiveUp('sm')} {
+                  grid-template-columns: 1fr 25%;
+                  grid-gap: 4rem;
+                }
+
+                ${inclusiveUp('md')} {
+                  grid-gap: 8rem;
+                }
               `}
             >
-              {children}
-            </div>
-            <aside>
               <div
                 css={`
-                  position: sticky;
-                  top: 4rem;
-                  padding-bottom: 10rem;
+                  flex: 1;
                 `}
               >
-                <WorkDetailsList
-                  title="Company"
-                  items={['Bright Interactive']}
-                  css={`
-                    margin-bottom: 3.5rem;
-                  `}
-                />
-                <WorkDetailsList
-                  title="Role"
-                  items={[
-                    'Internship',
-                    'Oct 2015 – Dec 2015',
-                    'Palo Alto, California',
-                  ]}
-                  css={`
-                    margin-bottom: 3.5rem;
-                  `}
-                />
-                <WorkDetailsList
-                  title="Technologies"
-                  items={[
-                    'React',
-                    'Typescript',
-                    'Ethereum',
-                    'Styled Components',
-                    'Ethers',
-                    'Jest',
-                  ]}
-                />
+                {children}
               </div>
-            </aside>
-          </LayoutLimiter>
+              <aside>
+                <div
+                  css={`
+                    ${inclusiveUp('sm')} {
+                      position: sticky;
+                      top: 4rem;
+                    }
+                  `}
+                >
+                  <WorkDetailsList
+                    title="Company"
+                    items={['Bright Interactive']}
+                    css={`
+                      margin-bottom: 3.5rem;
+                    `}
+                  />
+                  <WorkDetailsList
+                    title="Role"
+                    items={[
+                      'UI Engineer',
+                      'Sep 2018 – May 2020',
+                      'Brighton, UK',
+                    ]}
+                    css={`
+                      margin-bottom: 3.5rem;
+                    `}
+                  />
+                  <WorkDetailsList
+                    title="Technologies"
+                    items={[
+                      'React',
+                      'Typescript',
+                      'Ethereum',
+                      'Styled Components',
+                      'Ethers',
+                      'Jest',
+                    ]}
+                  />
+                </div>
+              </aside>
+            </LayoutLimiter>
+          </LayoutRow>
         </LayoutGutter>
       </main>
     </article>

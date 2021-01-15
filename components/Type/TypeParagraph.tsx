@@ -4,23 +4,26 @@ import {
   setCropAndLineHeight,
   typeBaseRegular,
   typeSizeBaseLg,
+  typeSizeBaseXl,
 } from '../../style/typography'
 
 type TypeParagraphProps = {
   children: React.ReactNode
+  impact?: boolean
 }
 
-function TypeParagraph({ children }: TypeParagraphProps): JSX.Element {
+function TypeParagraph({ children, impact }: TypeParagraphProps): JSX.Element {
   const { foreground } = useTheme()
 
   return (
     <p
       css={`
         ${typeBaseRegular}
-        ${typeSizeBaseLg}
+        ${impact ? typeSizeBaseXl : typeSizeBaseLg}
         ${setCropAndLineHeight('body', 'longform')}
 
-        color: ${foreground('medium')};
+        color: ${foreground(impact ? 'high' : 'medium')};
+        max-width: 60rem;
 
         &:not(:last-child) {
           margin-bottom: 1.8em;
