@@ -7,9 +7,9 @@ import WorkGridItem from './WorkGridItem'
 
 const WORK_ITEMS = [
   {
-    title: 'Dash',
+    title: 'Bright',
     description: 'Description',
-    href: '/dash',
+    href: '/bright',
     img: { src: '/test.png', width: 565, height: 597 },
   },
   {

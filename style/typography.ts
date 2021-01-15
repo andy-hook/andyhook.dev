@@ -205,6 +205,18 @@ export const typeSizeBaseLg = css`
   }
 `
 
+export const typeSizeBaseXl = css`
+  font-size: ${applyTypeSize(4)};
+
+  ${inclusiveUp('xs')} {
+    font-size: ${applyTypeSize(5)};
+  }
+
+  ${inclusiveUp('md')} {
+    font-size: ${applyTypeSize(6)};
+  }
+`
+
 /* Display type sizes
   ------------------------------------------------- */
 export const typeSizeDisplayXs = css`
