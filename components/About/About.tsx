@@ -1,11 +1,7 @@
 import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { inclusiveDown, inclusiveUp } from '../../style/responsive'
-import {
-  setCropAndLineHeight,
-  typeDisplaySemibold,
-  typeSizeDisplayMd,
-} from '../../style/typography'
+import { displayText, setCropAndLineHeight } from '../../style/typography'
 import ExpList from '../ExpList/ExpList'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
@@ -37,8 +33,8 @@ function About(): JSX.Element {
             <div>
               <h2
                 css={`
-                  ${typeDisplaySemibold}
-                  ${typeSizeDisplayMd}
+                  ${displayText.weight.semiBold}
+                  ${displayText.size.md}
                   ${setCropAndLineHeight('display', 'tight')}
 
                   color: ${foreground('extraHigh')};

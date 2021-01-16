@@ -1,27 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useTheme } from '../../hooks/useTheme/useTheme'
-import {
-  setCropAndLineHeight,
-  typeDisplaySemibold,
-  typeSizeBaseLg,
-  typeSizeDisplayLg,
-  typeSizeDisplayMd,
-  typeSizeDisplaySm,
-  typeSizeDisplayXs,
-} from '../../style/typography'
+import { displayText, setCropAndLineHeight } from '../../style/typography'
 
 type TypeHeadingProps = {
   children: React.ReactNode
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5'
   size?: 'xs' | 'sm' | 'md' | 'lg'
-}
-
-const TYPE_SIZE = {
-  xs: typeSizeDisplayXs,
-  sm: typeSizeDisplaySm,
-  md: typeSizeDisplayMd,
-  lg: typeSizeDisplayLg,
 }
 
 function TypeHeading({
@@ -35,7 +20,7 @@ function TypeHeading({
     <Heading
       as={as}
       css={`
-        ${TYPE_SIZE[size]}
+        ${displayText.size[size]}
         color: ${foreground('extraHigh')};
       `}
     >
@@ -45,9 +30,8 @@ function TypeHeading({
 }
 
 const Heading = styled.h1`
-  ${typeDisplaySemibold}
-  ${typeSizeBaseLg}
-  ${setCropAndLineHeight('body', 'longform')}
+  ${displayText.weight.semiBold}
+  ${setCropAndLineHeight('display', 'tight')}
 
   &:not(:first-child) {
     margin-top: 2.5em;

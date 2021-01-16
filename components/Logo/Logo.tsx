@@ -1,10 +1,6 @@
 import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
-import {
-  setCropAndLineHeight,
-  typeBaseSemibold,
-  typeSizeBaseLg,
-} from '../../style/typography'
+import { baseText, setCropAndLineHeight } from '../../style/typography'
 
 import { motion } from 'framer-motion'
 import InteractionBase from '../InteractionBase/InteractionBase'
@@ -26,9 +22,9 @@ function Logo(): JSX.Element {
         initial="rest"
         whileHover="hover"
         css={`
-          ${typeBaseSemibold}
-          ${typeSizeBaseLg}
-          ${setCropAndLineHeight('body', 'flat')}
+          ${baseText.weight.semiBold}
+          ${baseText.size.lg}
+          ${setCropAndLineHeight('base', 'flat')}
 
           margin: -0.75em;
         `}

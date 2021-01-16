@@ -3,7 +3,7 @@ import { css, CSSProp } from 'styled-components'
 import { inclusiveUp } from './responsive'
 import { createPlaceholderCrop, createTextCrop } from './utils'
 
-type StyleName = 'body' | 'display'
+type StyleName = 'base' | 'display'
 type LineHeightName = 'flat' | 'regular' | 'tight' | 'longform'
 
 type TypeSettings = {
@@ -37,7 +37,7 @@ const typeScale: Record<number, string> = {
 
 /* Body
 ------------------------------------------------- */
-export const bodyType: TypeSettings = {
+const baseType: TypeSettings = {
   family: `'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif`,
   letterSpace: {
     regular: '0.01em',
@@ -64,7 +64,7 @@ export const bodyType: TypeSettings = {
 
 /* Display
 ------------------------------------------------- */
-export const displayType: TypeSettings = {
+const displayType: TypeSettings = {
   family: `'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif`,
   letterSpace: {
     regular: '0.01em',
@@ -90,30 +90,8 @@ export const displayType: TypeSettings = {
 }
 
 const styles = {
-  body: bodyType,
+  base: baseType,
   display: displayType,
-}
-
-export function applyFamily(style: StyleName): TypeSettings['family'] {
-  return styles[style].family
-}
-
-export function applyLetterSpacing(
-  style: StyleName
-): TypeSettings['letterSpace'] {
-  return styles[style].letterSpace
-}
-
-export function applyLineHeight(style: StyleName): TypeSettings['lineHeight'] {
-  return styles[style].lineHeight
-}
-
-export function applyWeight(style: StyleName): TypeSettings['weight'] {
-  return styles[style].weight
-}
-
-export function applyTypeSize(value: number): string {
-  return typeScale[value]
 }
 
 /* Text node cropping
@@ -138,139 +116,123 @@ export const setPlaceholderCrop = (
   })
 }
 
-/* Recomposibles
+/* Responsive sizes and styles
   ------------------------------------------------- */
-export const typeBody = css`
-  font-family: ${applyFamily('body')};
-`
+export const displayText = {
+  weight: {
+    bold: css`
+      font-family: ${displayType.family};
+      font-weight: ${displayType.weight.bold};
+      letter-spacing: ${displayType.letterSpace.bold};
+    `,
+    semiBold: css`
+      font-family: ${displayType.family};
+      font-weight: ${displayType.weight.semiBold};
+      letter-spacing: ${displayType.letterSpace.semiBold};
+    `,
+  },
+  size: {
+    xs: css`
+      font-size: ${typeScale[5]};
 
-export const typeBaseRegular = css`
-  ${typeBody}
-  font-weight: ${applyWeight('body').regular};
-  letter-spacing: ${applyLetterSpacing('body').regular};
-`
+      ${inclusiveUp('lg')} {
+        font-size: ${typeScale[6]};
+      }
+    `,
+    sm: css`
+      font-size: ${typeScale[6]};
 
-export const typeBaseMedium = css`
-  ${typeBody}
-  font-weight: ${applyWeight('body').medium};
-  letter-spacing: ${applyLetterSpacing('body').medium};
-`
+      ${inclusiveUp('md')} {
+        font-size: ${typeScale[7]};
+      }
 
-export const typeBaseSemibold = css`
-  ${typeBody}
-  font-weight: ${applyWeight('body').semiBold};
-  letter-spacing: ${applyLetterSpacing('body').semiBold};
-`
+      ${inclusiveUp('lg')} {
+        font-size: ${typeScale[8]};
+      }
+    `,
+    md: css`
+      font-size: ${typeScale[7]};
 
-// Display
-export const typeDisplay = css`
-  font-family: ${applyFamily('display')};
-`
+      ${inclusiveUp('sm')} {
+        font-size: ${typeScale[8]};
+      }
 
-export const typeDisplayBold = css`
-  ${typeDisplay}
-  font-weight: ${applyWeight('display').bold};
-  letter-spacing: ${applyLetterSpacing('display').bold};
-`
+      ${inclusiveUp('md')} {
+        font-size: ${typeScale[9]};
+      }
 
-export const typeDisplaySemibold = css`
-  ${typeDisplay}
-  font-weight: ${applyWeight('display').semiBold};
-  letter-spacing: ${applyLetterSpacing('display').semiBold};
-`
+      ${inclusiveUp('xl')} {
+        font-size: ${typeScale[10]};
+      }
+    `,
+    lg: css`
+      font-size: ${typeScale[8]};
 
-/* Base type sizes
-  ------------------------------------------------- */
-export const typeSizeBaseSm = css`
-  font-size: ${applyTypeSize(3)};
-`
+      ${inclusiveUp('sm')} {
+        font-size: ${typeScale[9]};
+      }
 
-export const typeSizeBaseMd = css`
-  font-size: ${applyTypeSize(3)};
+      ${inclusiveUp('md')} {
+        font-size: ${typeScale[10]};
+      }
 
-  ${inclusiveUp('sm')} {
-    font-size: ${applyTypeSize(4)};
-  }
-`
+      ${inclusiveUp('xl')} {
+        font-size: ${typeScale[11]};
+      }
+    `,
+  },
+}
 
-export const typeSizeBaseLg = css`
-  font-size: ${applyTypeSize(3)};
+export const baseText = {
+  weight: {
+    regular: css`
+      font-family: ${baseType.family};
+      font-weight: ${baseType.weight.regular};
+      letter-spacing: ${baseType.letterSpace.regular};
+    `,
+    medium: css`
+      font-family: ${baseType.family};
+      font-weight: ${baseType.weight.medium};
+      letter-spacing: ${baseType.letterSpace.medium};
+    `,
+    semiBold: css`
+      font-family: ${baseType.family};
+      font-weight: ${baseType.weight.semiBold};
+      letter-spacing: ${baseType.letterSpace.semiBold};
+    `,
+  },
+  size: {
+    sm: css`
+      font-size: ${typeScale[3]};
+    `,
+    md: css`
+      font-size: ${typeScale[3]};
 
-  ${inclusiveUp('xs')} {
-    font-size: ${applyTypeSize(4)};
-  }
+      ${inclusiveUp('sm')} {
+        font-size: ${typeScale[4]};
+      }
+    `,
+    lg: css`
+      font-size: ${typeScale[3]};
 
-  ${inclusiveUp('md')} {
-    font-size: ${applyTypeSize(5)};
-  }
-`
+      ${inclusiveUp('xs')} {
+        font-size: ${typeScale[4]};
+      }
 
-export const typeSizeBaseXl = css`
-  font-size: ${applyTypeSize(4)};
+      ${inclusiveUp('md')} {
+        font-size: ${typeScale[5]};
+      }
+    `,
+    xl: css`
+      font-size: ${typeScale[4]};
 
-  ${inclusiveUp('xs')} {
-    font-size: ${applyTypeSize(5)};
-  }
+      ${inclusiveUp('xs')} {
+        font-size: ${typeScale[5]};
+      }
 
-  ${inclusiveUp('md')} {
-    font-size: ${applyTypeSize(6)};
-  }
-`
-
-/* Display type sizes
-  ------------------------------------------------- */
-export const typeSizeDisplayXs = css`
-  font-size: ${applyTypeSize(5)};
-
-  ${inclusiveUp('md')} {
-    font-size: ${applyTypeSize(5)};
-  }
-
-  ${inclusiveUp('lg')} {
-    font-size: ${applyTypeSize(6)};
-  }
-`
-
-export const typeSizeDisplaySm = css`
-  font-size: ${applyTypeSize(6)};
-
-  ${inclusiveUp('md')} {
-    font-size: ${applyTypeSize(7)};
-  }
-
-  ${inclusiveUp('lg')} {
-    font-size: ${applyTypeSize(8)};
-  }
-`
-
-export const typeSizeDisplayMd = css`
-  font-size: ${applyTypeSize(7)};
-
-  ${inclusiveUp('sm')} {
-    font-size: ${applyTypeSize(8)};
-  }
-
-  ${inclusiveUp('md')} {
-    font-size: ${applyTypeSize(9)};
-  }
-
-  ${inclusiveUp('xl')} {
-    font-size: ${applyTypeSize(10)};
-  }
-`
-
-export const typeSizeDisplayLg = css`
-  font-size: ${applyTypeSize(8)};
-
-  ${inclusiveUp('sm')} {
-    font-size: ${applyTypeSize(9)};
-  }
-
-  ${inclusiveUp('md')} {
-    font-size: ${applyTypeSize(10)};
-  }
-
-  ${inclusiveUp('xl')} {
-    font-size: ${applyTypeSize(11)};
-  }
-`
+      ${inclusiveUp('md')} {
+        font-size: ${typeScale[6]};
+      }
+    `,
+  },
+}
