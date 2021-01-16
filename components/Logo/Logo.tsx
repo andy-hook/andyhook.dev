@@ -22,7 +22,7 @@ function Logo(): JSX.Element {
         initial="rest"
         whileHover="hover"
         css={`
-          ${baseText.weight.semibold}
+          ${baseText.weight.semiBold}
           ${baseText.size.lg}
           ${setCropAndLineHeight('base', 'flat')}
 

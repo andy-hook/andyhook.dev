@@ -195,7 +195,7 @@ export const baseText = {
       font-weight: ${baseType.weight.medium};
       letter-spacing: ${baseType.letterSpace.medium};
     `,
-    semibold: css`
+    semiBold: css`
       font-family: ${baseType.family};
       font-weight: ${baseType.weight.semiBold};
       letter-spacing: ${baseType.letterSpace.semiBold};

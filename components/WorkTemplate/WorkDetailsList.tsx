@@ -18,7 +18,7 @@ function WorkDetailsList({
     <div {...props}>
       <h3
         css={`
-          ${baseText.weight.semibold}
+          ${baseText.weight.semiBold}
           ${baseText.size.md}
           ${setCropAndLineHeight('base', 'flat')}
           color: ${foreground('low')};
