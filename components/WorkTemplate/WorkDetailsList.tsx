@@ -1,12 +1,6 @@
 import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
-import {
-  setCropAndLineHeight,
-  typeBaseRegular,
-  typeBaseSemibold,
-  typeSizeBaseLg,
-  typeSizeBaseMd,
-} from '../../style/typography'
+import { baseText, setCropAndLineHeight } from '../../style/typography'
 
 type WorkDetailsListProps = {
   title: string
@@ -24,9 +18,9 @@ function WorkDetailsList({
     <div {...props}>
       <h3
         css={`
-          ${typeBaseSemibold}
-          ${typeSizeBaseMd}
-          ${setCropAndLineHeight('body', 'flat')}
+          ${baseText.weight.semibold}
+          ${baseText.size.md}
+          ${setCropAndLineHeight('base', 'flat')}
           color: ${foreground('low')};
           margin-bottom: 1em;
         `}
@@ -35,9 +29,9 @@ function WorkDetailsList({
       </h3>
       <ul
         css={`
-          ${typeBaseRegular}
-          ${typeSizeBaseLg}
-          ${setCropAndLineHeight('body', 'flat')}
+          ${baseText.weight.regular}
+          ${baseText.size.lg}
+          ${setCropAndLineHeight('base', 'flat')}
           color: ${foreground('high')};
         `}
       >

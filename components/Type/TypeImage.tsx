@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { typeSizeBaseMd } from '../../style/typography'
+import { baseText } from '../../style/typography'
 import { appearance } from '../../style/appearance'
 
 function TypeImage(): JSX.Element {
@@ -10,11 +10,10 @@ function TypeImage(): JSX.Element {
         overflow: hidden;
         border-radius: ${appearance.radius.base};
 
-        ${typeSizeBaseMd}
+        ${baseText.size.md}
 
         margin-top: 5em;
         margin-bottom: 5em;
-
         opacity: 0.05;
       `}
     >

@@ -1,11 +1,7 @@
 import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import Image from 'next/image'
-import {
-  setCropAndLineHeight,
-  typeDisplaySemibold,
-  typeSizeDisplayLg,
-} from '../../style/typography'
+import { displayText, setCropAndLineHeight } from '../../style/typography'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import WorkDetailsList from './WorkDetailsList'
@@ -39,8 +35,8 @@ function WorkTemplate({ children }: WorkTemplate): JSX.Element {
           <LayoutLimiter size="large">
             <h1
               css={`
-                ${typeDisplaySemibold}
-                ${typeSizeDisplayLg}
+                ${displayText.weight.semiBold}
+                ${displayText.size.lg}
                 ${setCropAndLineHeight('display', 'tight')}
                   
                 max-width: 14em;

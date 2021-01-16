@@ -3,11 +3,9 @@ import { useTheme } from '../../hooks/useTheme/useTheme'
 import meta from '../../meta'
 import { inclusiveDown, inclusiveUp } from '../../style/responsive'
 import {
+  baseText,
+  displayText,
   setCropAndLineHeight,
-  typeBaseRegular,
-  typeDisplaySemibold,
-  typeSizeBaseLg,
-  typeSizeDisplayLg,
 } from '../../style/typography'
 import InteractionBase from '../InteractionBase/InteractionBase'
 import LayoutGutter from '../Layout/LayoutGutter'
@@ -34,9 +32,9 @@ function Footer(): JSX.Element {
             <div>
               <p
                 css={`
-                  ${typeBaseRegular}
-                  ${typeSizeBaseLg}
-                  ${setCropAndLineHeight('body', 'flat')}
+                  ${baseText.weight.regular}
+                  ${baseText.size.lg}
+                  ${setCropAndLineHeight('base', 'flat')}
 
                   color: ${foreground('low')};
                   margin-bottom: 1.75em;
@@ -46,8 +44,8 @@ function Footer(): JSX.Element {
               </p>
               <h4
                 css={`
-                  ${typeDisplaySemibold}
-                  ${typeSizeDisplayLg}
+                  ${displayText.weight.semiBold}
+                  ${displayText.size.lg}
                   ${setCropAndLineHeight('display', 'tight')}
 
                   color: ${foreground('extraHigh')};

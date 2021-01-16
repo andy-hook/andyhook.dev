@@ -6,11 +6,7 @@ import meta from '../../meta'
 import { appearance } from '../../style/appearance'
 import { slideInMotion, spring } from '../../style/motion'
 import { inclusiveDown, inclusiveUp } from '../../style/responsive'
-import {
-  setCropAndLineHeight,
-  typeDisplaySemibold,
-  typeSizeDisplayLg,
-} from '../../style/typography'
+import { displayText, setCropAndLineHeight } from '../../style/typography'
 import HireButton from '../HireButton/HireButton'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
@@ -72,8 +68,8 @@ function Hero(): JSX.Element {
             >
               <h1
                 css={`
-                  ${typeDisplaySemibold}
-                  ${typeSizeDisplayLg}
+                  ${displayText.weight.semiBold}
+                  ${displayText.size.lg}
                   ${setCropAndLineHeight('display', 'tight')}
                   
                   max-width: 16em;

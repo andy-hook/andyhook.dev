@@ -3,12 +3,9 @@ import { useTheme } from '../../hooks/useTheme/useTheme'
 import { appearance } from '../../style/appearance'
 import { inclusiveDown, inclusiveUp } from '../../style/responsive'
 import {
+  baseText,
+  displayText,
   setCropAndLineHeight,
-  typeBaseRegular,
-  typeDisplaySemibold,
-  typeSizeBaseMd,
-  typeSizeBaseSm,
-  typeSizeDisplayXs,
 } from '../../style/typography'
 
 type ExpListItemProps = {
@@ -67,9 +64,9 @@ function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
       >
         <span
           css={`
-            ${typeBaseRegular}
-            ${typeSizeBaseSm}
-            ${setCropAndLineHeight('body', 'flat')}
+            ${baseText.weight.regular}
+            ${baseText.size.md}
+            ${setCropAndLineHeight('base', 'flat')}
 
             color: ${foreground('medium')};
           `}
@@ -80,8 +77,8 @@ function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
       <div>
         <h3
           css={`
-            ${typeDisplaySemibold}
-            ${typeSizeDisplayXs}
+            ${displayText.weight.semiBold}
+            ${displayText.size.xs}
             ${setCropAndLineHeight('display', 'flat')}
 
             color: ${foreground('extraHigh')};
@@ -103,9 +100,9 @@ function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
       >
         <span
           css={`
-            ${typeBaseRegular}
-            ${typeSizeBaseMd}
-            ${setCropAndLineHeight('body', 'flat')}
+            ${baseText.weight.regular}
+            ${baseText.size.md}
+            ${setCropAndLineHeight('base', 'flat')}
 
             color: ${foreground('medium')};
 

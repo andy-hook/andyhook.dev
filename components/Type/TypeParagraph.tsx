@@ -1,11 +1,6 @@
 import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
-import {
-  setCropAndLineHeight,
-  typeBaseRegular,
-  typeSizeBaseLg,
-  typeSizeBaseXl,
-} from '../../style/typography'
+import { baseText, setCropAndLineHeight } from '../../style/typography'
 
 type TypeParagraphProps = {
   children: React.ReactNode
@@ -18,9 +13,9 @@ function TypeParagraph({ children, impact }: TypeParagraphProps): JSX.Element {
   return (
     <p
       css={`
-        ${typeBaseRegular}
-        ${impact ? typeSizeBaseXl : typeSizeBaseLg}
-        ${setCropAndLineHeight('body', 'longform')}
+        ${baseText.weight.regular}
+        ${impact ? baseText.size.xl : baseText.size.lg}
+        ${setCropAndLineHeight('base', 'longform')}
 
         color: ${foreground(impact ? 'high' : 'medium')};
         max-width: 60rem;

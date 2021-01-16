@@ -1,11 +1,9 @@
 import React from 'react'
 import Image from 'next/image'
 import {
+  baseText,
+  displayText,
   setCropAndLineHeight,
-  typeBaseRegular,
-  typeDisplaySemibold,
-  typeSizeBaseLg,
-  typeSizeDisplaySm,
 } from '../../style/typography'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { appearance } from '../../style/appearance'
@@ -59,9 +57,8 @@ function WorkGridItem({
       </InteractionBase>
       <h3
         css={`
-          ${typeDisplaySemibold}
-          ${typeSizeDisplaySm}
-
+          ${displayText.weight.semiBold}
+          ${displayText.size.sm}
           ${setCropAndLineHeight('display', 'tight')}
 
           color: ${foreground('extraHigh')};
@@ -74,10 +71,9 @@ function WorkGridItem({
       </h3>
       <p
         css={`
-          ${typeBaseRegular}
-          ${typeSizeBaseLg}
-
-          ${setCropAndLineHeight('body', 'tight')}
+          ${baseText.weight.regular}
+          ${baseText.size.lg}
+          ${setCropAndLineHeight('base', 'tight')}
 
           color: ${foreground('medium')};
         `}
