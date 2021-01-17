@@ -8,145 +8,152 @@ import WorkDetailsList from './WorkDetailsList'
 import LayoutRow from '../Layout/LayoutRow'
 import { inclusiveUp } from '../../style/responsive'
 import RemoveWidow from '../RemoveWidow/RemoveWidow'
+import work, { WorkName } from '../../data/work'
+import MetaSocial from '../Meta/MetaSocial'
 
 type WorkTemplate = {
+  name: WorkName
   children: React.ReactNode
 }
 
-function WorkTemplate({ children }: WorkTemplate): JSX.Element {
+function WorkTemplate({
+  children,
+  name = 'aragon',
+}: WorkTemplate): JSX.Element {
   const { foreground } = useTheme()
 
+  const {
+    title,
+    description,
+    company,
+    tenure,
+    location,
+    role,
+    technologies,
+    heroImage,
+  } = work[name]
+
   return (
-    <article>
-      <header
-        css={`
-          padding-top: 14rem;
-
-          ${inclusiveUp('sm')} {
-            padding-top: 16rem;
-          }
-
-          ${inclusiveUp('md')} {
-            padding-top: 22rem;
-          }
-        `}
-      >
-        <LayoutGutter>
-          <LayoutLimiter size="large">
-            <h1
-              css={`
-                ${displayText.weight.semiBold}
-                ${displayText.size.lg}
-                ${setCropAndLineHeight('display', 'tight')}
-                  
-                max-width: 14em;
-                color: ${foreground('extraHigh')};
-              `}
-            >
-              <RemoveWidow>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              </RemoveWidow>
-            </h1>
-          </LayoutLimiter>
-        </LayoutGutter>
-        <div
+    <>
+      <MetaSocial title={`Case study – ${title}`} description={description} />
+      <article>
+        <header
           css={`
-            opacity: 0.05;
-            margin-top: 5rem;
-            margin-bottom: 5rem;
+            padding-top: 14rem;
 
             ${inclusiveUp('sm')} {
-              margin-top: 6rem;
-              margin-bottom: 6rem;
+              padding-top: 16rem;
             }
 
             ${inclusiveUp('md')} {
-              margin-top: 9rem;
-              margin-bottom: 9rem;
+              padding-top: 22rem;
             }
           `}
         >
-          <Image
-            src="/test.png"
-            width={1000}
-            height={500}
-            layout="responsive"
-          />
-        </div>
-      </header>
-      <main>
-        <LayoutGutter>
-          <LayoutRow trimTop>
-            <LayoutLimiter
-              size="large"
-              css={`
-                display: grid;
-                grid-template-columns: 1fr;
-                grid-gap: 6rem;
-                width: 100%;
-
-                ${inclusiveUp('sm')} {
-                  grid-template-columns: 1fr 25%;
-                  grid-gap: 4rem;
-                }
-
-                ${inclusiveUp('md')} {
-                  grid-gap: 8rem;
-                }
-              `}
-            >
-              <div
+          <LayoutGutter>
+            <LayoutLimiter size="large">
+              <h1
                 css={`
-                  flex: 1;
+                  ${displayText.weight.semiBold}
+                  ${displayText.size.lg}
+                  ${setCropAndLineHeight('display', 'tight')}
+                  
+                  max-width: 14em;
+                  color: ${foreground('extraHigh')};
                 `}
               >
-                {children}
-              </div>
-              <aside>
+                <RemoveWidow>{description}</RemoveWidow>
+              </h1>
+            </LayoutLimiter>
+          </LayoutGutter>
+          <div
+            css={`
+              opacity: 0.05;
+              margin-top: 5rem;
+              margin-bottom: 5rem;
+
+              ${inclusiveUp('sm')} {
+                margin-top: 6rem;
+                margin-bottom: 6rem;
+              }
+
+              ${inclusiveUp('md')} {
+                margin-top: 9rem;
+                margin-bottom: 9rem;
+              }
+            `}
+          >
+            <Image
+              src={heroImage.src}
+              width={heroImage.width}
+              height={heroImage.height}
+              layout="responsive"
+            />
+          </div>
+        </header>
+        <main>
+          <LayoutGutter>
+            <LayoutRow trimTop>
+              <LayoutLimiter
+                size="large"
+                css={`
+                  display: grid;
+                  grid-template-columns: 1fr;
+                  grid-gap: 6rem;
+                  width: 100%;
+
+                  ${inclusiveUp('sm')} {
+                    grid-template-columns: 1fr 25%;
+                    grid-gap: 4rem;
+                  }
+
+                  ${inclusiveUp('md')} {
+                    grid-gap: 8rem;
+                  }
+                `}
+              >
                 <div
                   css={`
-                    ${inclusiveUp('sm')} {
-                      position: sticky;
-                      top: 4rem;
-                    }
+                    flex: 1;
                   `}
                 >
-                  <WorkDetailsList
-                    title="Company"
-                    items={['Bright Interactive']}
-                    css={`
-                      margin-bottom: 3.5rem;
-                    `}
-                  />
-                  <WorkDetailsList
-                    title="Role"
-                    items={[
-                      'UI Engineer',
-                      'Sep 2018 – May 2020',
-                      'Brighton, UK',
-                    ]}
-                    css={`
-                      margin-bottom: 3.5rem;
-                    `}
-                  />
-                  <WorkDetailsList
-                    title="Technologies"
-                    items={[
-                      'React',
-                      'Typescript',
-                      'Ethereum',
-                      'Styled Components',
-                      'Ethers',
-                      'Jest',
-                    ]}
-                  />
+                  {children}
                 </div>
-              </aside>
-            </LayoutLimiter>
-          </LayoutRow>
-        </LayoutGutter>
-      </main>
-    </article>
+                <aside>
+                  <div
+                    css={`
+                      ${inclusiveUp('sm')} {
+                        position: sticky;
+                        top: 4rem;
+                      }
+                    `}
+                  >
+                    <WorkDetailsList
+                      title="Company"
+                      items={[company]}
+                      css={`
+                        margin-bottom: 3.5rem;
+                      `}
+                    />
+                    <WorkDetailsList
+                      title="Role"
+                      items={[role, tenure, location]}
+                      css={`
+                        margin-bottom: 3.5rem;
+                      `}
+                    />
+                    <WorkDetailsList
+                      title="Technologies"
+                      items={technologies}
+                    />
+                  </div>
+                </aside>
+              </LayoutLimiter>
+            </LayoutRow>
+          </LayoutGutter>
+        </main>
+      </article>
+    </>
   )
 }
 

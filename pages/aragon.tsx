@@ -1,13 +1,8 @@
 import React from 'react'
-import MetaSocial from '../components/Meta/MetaSocial'
+import WorkTemplate from '../components/WorkTemplate/WorkTemplate'
 
 function Aragon(): JSX.Element {
-  return (
-    <>
-      <MetaSocial title="Aragon" description="Aragon description" />
-      Aragon
-    </>
-  )
+  return <WorkTemplate name="aragon">Aragon</WorkTemplate>
 }
 
 export default Aragon

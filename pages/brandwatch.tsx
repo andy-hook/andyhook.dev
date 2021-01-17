@@ -1,13 +1,8 @@
 import React from 'react'
-import MetaSocial from '../components/Meta/MetaSocial'
+import WorkTemplate from '../components/WorkTemplate/WorkTemplate'
 
 function Brandwatch(): JSX.Element {
-  return (
-    <>
-      <MetaSocial title="Brandwatch" description="Brandwatch description" />
-      Brandwatch
-    </>
-  )
+  return <WorkTemplate name="brandwatch">Brandwatch</WorkTemplate>
 }
 
 export default Brandwatch

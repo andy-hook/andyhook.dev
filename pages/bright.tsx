@@ -1,13 +1,8 @@
 import React from 'react'
-import MetaSocial from '../components/Meta/MetaSocial'
+import WorkTemplate from '../components/WorkTemplate/WorkTemplate'
 
 function Bright(): JSX.Element {
-  return (
-    <>
-      <MetaSocial title="Bright" description="Bright description" />
-      Dash
-    </>
-  )
+  return <WorkTemplate name="bright">Dash</WorkTemplate>
 }
 
 export default Bright
