@@ -1,36 +1,12 @@
 import React from 'react'
+import work, { WorkName } from '../../data/work'
 import { inclusiveDown, inclusiveUp } from '../../style/responsive'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import LayoutRow from '../Layout/LayoutRow'
 import WorkGridItem from './WorkGridItem'
 
-const WORK_ITEMS = [
-  {
-    title: 'Bright',
-    description: 'Description',
-    href: '/bright',
-    img: { src: '/test.png', width: 565, height: 597 },
-  },
-  {
-    title: 'Aragon',
-    href: '/aragon',
-    description: 'Description',
-    img: { src: '/test.png', width: 565, height: 382 },
-  },
-  {
-    title: 'Blocks',
-    href: '/blocks',
-    description: 'Description',
-    img: { src: '/test.png', width: 565, height: 533 },
-  },
-  {
-    title: 'Brandwatch',
-    href: '/brandwatch',
-    description: 'Description',
-    img: { src: '/test.png', width: 565, height: 703 },
-  },
-]
+const WORK_ORDER: WorkName[] = ['bright', 'aragon', 'blocks', 'brandwatch']
 
 function WorkGrid(): JSX.Element {
   return (
@@ -56,23 +32,32 @@ function WorkGrid(): JSX.Element {
               }
             `}
           >
-            {WORK_ITEMS.map(({ title, description, img, href }, i) => (
-              <div
-                key={i}
-                css={`
-                  ${i === 2 ? 'align-self: end;' : ''}
-                `}
-              >
-                <WorkGridItem
-                  src={img.src}
-                  href={href}
-                  title={title}
-                  description={description}
-                  width={img.width}
-                  height={img.height}
-                />
-              </div>
-            ))}
+            {WORK_ORDER.map((key) => {
+              const { thumbnailImage, route, title, description } = work[key]
+
+              return (
+                <div
+                  key={key}
+                  css={`
+                    ${inclusiveUp('sm')} {
+                      &:nth-child(4n),
+                      &:nth-child(4n-1) {
+                        align-self: end;
+                      }
+                    }
+                  `}
+                >
+                  <WorkGridItem
+                    src={thumbnailImage.src}
+                    href={route}
+                    title={title}
+                    description={description}
+                    width={thumbnailImage.width}
+                    height={thumbnailImage.height}
+                  />
+                </div>
+              )
+            })}
           </div>
         </LayoutLimiter>
       </LayoutRow>

@@ -7,6 +7,7 @@ type ImageData = {
 }
 
 type WorkDetails = {
+  route: string
   title: string
   description: string
   role: string
@@ -20,6 +21,7 @@ type WorkDetails = {
 
 const work: Record<WorkName, WorkDetails> = {
   aragon: {
+    route: '/aragon',
     title: 'Aragon',
     description: 'This is a description',
     role: 'Senior UI Engineer',
@@ -46,6 +48,7 @@ const work: Record<WorkName, WorkDetails> = {
     },
   },
   bright: {
+    route: '/bright',
     title: 'Bright',
     description: 'This is a description',
     role: 'UI Engineer',
@@ -71,6 +74,7 @@ const work: Record<WorkName, WorkDetails> = {
     },
   },
   brandwatch: {
+    route: '/brandwatch',
     title: 'Brandwatch',
     description: 'This is a description',
     role: 'Senior Front-End Developer',
@@ -90,6 +94,7 @@ const work: Record<WorkName, WorkDetails> = {
     },
   },
   blocks: {
+    route: '/blocks',
     title: 'Blocks',
     description: 'This is a description',
     role: 'Front-End Developer',
