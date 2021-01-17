@@ -1,6 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
-import meta from '../../meta'
+import meta from '../../data/meta'
 
 type MetaSocialProps = {
   title: string

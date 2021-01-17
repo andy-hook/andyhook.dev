@@ -1,6 +1,6 @@
 import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
-import meta from '../../meta'
+import meta from '../../data/meta'
 import { inclusiveDown, inclusiveUp } from '../../style/responsive'
 import {
   baseText,
