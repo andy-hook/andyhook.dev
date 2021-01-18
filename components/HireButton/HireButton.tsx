@@ -40,10 +40,11 @@ function HireButton({ href }: HireButtonProps): JSX.Element {
         radius="pill"
         href={href}
         css={`
+          ${baseText.weight.medium}
+          ${baseText.size.sm}
+
           display: flex;
           align-items: center;
-          ${baseText.weight.medium}
-          ${baseText.size.md}
           color: ${foreground('extraHigh')};
           padding: 1.1em 1.75em;
           border-radius: ${appearance.radius.pill};

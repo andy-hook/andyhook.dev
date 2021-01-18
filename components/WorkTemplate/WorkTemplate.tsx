@@ -8,8 +8,9 @@ import WorkDetailsList from './WorkDetailsList'
 import LayoutRow from '../Layout/LayoutRow'
 import { inclusiveUp } from '../../style/responsive'
 import RemoveWidow from '../RemoveWidow/RemoveWidow'
-import work, { WorkName } from '../../data/work'
+import { WORK, WorkName } from '../../data/work'
 import MetaSocial from '../Meta/MetaSocial'
+import MoreWork from '../MoreWork/MoreWork'
 
 type WorkTemplate = {
   name: WorkName
@@ -31,7 +32,7 @@ function WorkTemplate({
     role,
     technologies,
     heroImage,
-  } = work[name]
+  } = WORK[name]
 
   return (
     <>
@@ -168,6 +169,7 @@ function WorkTemplate({
           </LayoutGutter>
         </main>
       </article>
+      <MoreWork currentWorkName={name} />
     </>
   )
 }

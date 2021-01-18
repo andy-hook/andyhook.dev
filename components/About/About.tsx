@@ -2,12 +2,12 @@ import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { inclusiveDown, inclusiveUp } from '../../style/responsive'
 import { displayText, setCropAndLineHeight } from '../../style/typography'
+import ArticleParagraph from '../Article/ArticleParagraph'
 import ExpList from '../ExpList/ExpList'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import LayoutRow from '../Layout/LayoutRow'
 import RemoveWidow from '../RemoveWidow/RemoveWidow'
-import TypeParagraph from '../Type/TypeParagraph'
 
 function About(): JSX.Element {
   const { background, foreground } = useTheme()
@@ -52,25 +52,26 @@ function About(): JSX.Element {
               </h2>
             </div>
             <div>
-              <TypeParagraph>
+              <ArticleParagraph>
                 <RemoveWidow>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Vestibulum tincidunt hendrerit ex, at elementum augue
-                  malesuada eu. Pellentesque habitant morbi dtristique senectus
-                  et netus et malesuada fames ac turpis egestas. Nam congue
-                  maximus erat vel tincidunt.
+                  I'm Andy, a web professional who's been working in the web
+                  industry for more than 10 years. I'm formally educated in
+                  visual design, digital graphics and GUI. My strong design
+                  foundations and history collaborating with design teams
+                  enables me to build quality front-ends that meet the high
+                  expectations of modern users while operating within technical
+                  and product constraints.
                 </RemoveWidow>
-              </TypeParagraph>
+              </ArticleParagraph>
 
-              <TypeParagraph>
+              <ArticleParagraph>
                 <RemoveWidow>
-                  Aliquam eget hendrerit elit. Donec malesuada, augue quis
-                  blandit interdum, sapien tellus lacinia neque, ut varius diam
-                  nisl in erat. Fusce augue turpis, sollicitudin in elit ac,
-                  tristique varius ante. Nullam vel sapien id turpis iaculis
-                  fringilla eu a ipsum.
+                  As a specialist in user interfaces, I have extensive
+                  experience building modular design systems, component
+                  libraries and scalable design solutions, this helps foster and
+                  support fast, iterative processes within agile product teams.
                 </RemoveWidow>
-              </TypeParagraph>
+              </ArticleParagraph>
             </div>
           </div>
           <div>

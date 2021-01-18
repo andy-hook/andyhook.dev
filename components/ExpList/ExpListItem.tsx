@@ -65,7 +65,7 @@ function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
         <span
           css={`
             ${baseText.weight.regular}
-            ${baseText.size.md}
+            ${baseText.size.sm}
             ${setCropAndLineHeight('base', 'flat')}
 
             color: ${foreground('medium')};
@@ -101,7 +101,7 @@ function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
         <span
           css={`
             ${baseText.weight.regular}
-            ${baseText.size.md}
+            ${baseText.size.sm}
             ${setCropAndLineHeight('base', 'flat')}
 
             color: ${foreground('medium')};

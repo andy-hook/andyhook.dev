@@ -19,7 +19,14 @@ type WorkDetails = {
   thumbnailImage: ImageData
 }
 
-const work: Record<WorkName, WorkDetails> = {
+export const WORK_ORDER: WorkName[] = [
+  'bright',
+  'aragon',
+  'blocks',
+  'brandwatch',
+]
+
+export const WORK: Record<WorkName, WorkDetails> = {
   aragon: {
     route: '/aragon',
     title: 'Aragon',
@@ -121,5 +128,3 @@ const work: Record<WorkName, WorkDetails> = {
     },
   },
 }
-
-export default work

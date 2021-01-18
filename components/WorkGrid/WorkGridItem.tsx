@@ -34,7 +34,7 @@ function WorkGridItem({
     <div>
       <InteractionBase
         href={href}
-        offset={0.3}
+        offset={0.75}
         css={`
           display: block;
         `}
@@ -54,32 +54,33 @@ function WorkGridItem({
             layout="responsive"
           />
         </div>
-      </InteractionBase>
-      <h3
-        css={`
-          ${displayText.weight.semiBold}
-          ${displayText.size.sm}
+
+        <h3
+          css={`
+            ${displayText.weight.semiBold}
+            ${displayText.size.sm}
           ${setCropAndLineHeight('display', 'tight')}
 
           color: ${foreground('extraHigh')};
 
-          margin-top: 1.25em;
-          margin-bottom: 0.4em;
-        `}
-      >
-        {title}
-      </h3>
-      <p
-        css={`
-          ${baseText.weight.regular}
-          ${baseText.size.lg}
+            margin-top: 1.25em;
+            margin-bottom: 0.4em;
+          `}
+        >
+          {title}
+        </h3>
+        <p
+          css={`
+            ${baseText.weight.regular}
+            ${baseText.size.md}
           ${setCropAndLineHeight('base', 'tight')}
 
           color: ${foreground('medium')};
-        `}
-      >
-        {description}
-      </p>
+          `}
+        >
+          {description}
+        </p>
+      </InteractionBase>
     </div>
   )
 }
