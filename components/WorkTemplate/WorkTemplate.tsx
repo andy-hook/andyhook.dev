@@ -10,6 +10,7 @@ import { inclusiveUp } from '../../style/responsive'
 import RemoveWidow from '../RemoveWidow/RemoveWidow'
 import { WORK, WorkName } from '../../data/work'
 import MetaSocial from '../Meta/MetaSocial'
+import MoreWork from '../MoreWork/MoreWork'
 
 type WorkTemplate = {
   name: WorkName
@@ -168,6 +169,7 @@ function WorkTemplate({
           </LayoutGutter>
         </main>
       </article>
+      <MoreWork currentWorkName={name} />
     </>
   )
 }
