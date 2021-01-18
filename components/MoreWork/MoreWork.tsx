@@ -1,20 +1,18 @@
 import React, { useMemo } from 'react'
 import { WORK, WorkName, WORK_ORDER } from '../../data/work'
-import { useTheme } from '../../hooks/useTheme/useTheme'
-import ArticleHeading from '../Article/ArticleHeading'
 import ContentImage from '../ContentImage/ContentImage'
 import InteractionBase from '../InteractionBase/InteractionBase'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import LayoutRow from '../Layout/LayoutRow'
+import TextHeading from '../Text/TextHeading'
+import TextParagraph from '../Text/TextParagraph'
 
 type MoreWorkProps = {
   currentWorkName: WorkName
 }
 
 function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
-  const { foreground } = useTheme()
-
   const items = useMemo(() => {
     return WORK_ORDER.filter((value) => value !== currentWorkName).map(
       (key) => WORK[key]
@@ -25,7 +23,15 @@ function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
     <LayoutGutter>
       <LayoutLimiter size="large" divider>
         <LayoutRow>
-          <ArticleHeading>More Work</ArticleHeading>
+          <TextHeading
+            level="h3"
+            size="sm"
+            css={`
+              margin-bottom: 1.75em;
+            `}
+          >
+            More Work
+          </TextHeading>
           <div
             css={`
               display: grid;
@@ -42,21 +48,27 @@ function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
                     display: block;
                   `}
                 >
-                  <ContentImage src="/test.png" width={500} height={300} />
-                  <h4
+                  <ContentImage
+                    src="/test.png"
+                    width={500}
+                    height={300}
                     css={`
-                      color: ${foreground('high')};
+                      opacity: 0.05;
+                    `}
+                  />
+                  <TextHeading
+                    size="xs"
+                    level="h4"
+                    css={`
+                      margin-top: 1.25em;
+                      margin-bottom: 0.4em;
                     `}
                   >
                     {title}
-                  </h4>
-                  <p
-                    css={`
-                      color: ${foreground('high')};
-                    `}
-                  >
+                  </TextHeading>
+                  <TextParagraph size="sm" color="medium">
                     {description}
-                  </p>
+                  </TextParagraph>
                 </InteractionBase>
               </div>
             ))}
