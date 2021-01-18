@@ -21,8 +21,6 @@ function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
     )
   }, [currentWorkName])
 
-  console.log('items', items)
-
   return (
     <LayoutGutter>
       <LayoutLimiter size="large" divider>
