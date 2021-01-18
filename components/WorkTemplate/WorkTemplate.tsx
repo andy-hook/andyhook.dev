@@ -52,18 +52,33 @@ function WorkTemplate({
         >
           <LayoutGutter>
             <LayoutLimiter size="large">
-              <h1
+              <div
                 css={`
-                  ${displayText.weight.semiBold}
-                  ${displayText.size.lg}
-                  ${setCropAndLineHeight('display', 'tight')}
-                  
-                  max-width: 14em;
-                  color: ${foreground('extraHigh')};
+                  ${displayText.size.lg}/* max-width: 18em; */
                 `}
               >
-                <RemoveWidow>{description}</RemoveWidow>
-              </h1>
+                <h1
+                  css={`
+                    ${displayText.weight.semiBold}
+                    ${setCropAndLineHeight('display', 'tight')}
+                  
+                    color: ${foreground('extraHigh')};
+                    margin-bottom: 0.2em;
+                  `}
+                >
+                  {title}
+                </h1>
+                <h2
+                  css={`
+                    ${displayText.weight.medium}
+                    ${setCropAndLineHeight('display', 'tight')}
+
+                    color: ${foreground('medium')};
+                  `}
+                >
+                  <RemoveWidow>{description}</RemoveWidow>
+                </h2>
+              </div>
             </LayoutLimiter>
           </LayoutGutter>
           <div
