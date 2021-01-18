@@ -23,7 +23,7 @@ const work: Record<WorkName, WorkDetails> = {
   aragon: {
     route: '/aragon',
     title: 'Aragon',
-    description: 'This is a description',
+    description: 'Collaboration without borders',
     role: 'Senior UI Engineer',
     company: 'Aragon',
     location: 'Remote',
@@ -50,7 +50,7 @@ const work: Record<WorkName, WorkDetails> = {
   bright: {
     route: '/bright',
     title: 'Bright',
-    description: 'This is a description',
+    description: 'Realise your brand potential',
     role: 'UI Engineer',
     company: 'Bright',
     location: 'Brighton, UK',
@@ -76,7 +76,7 @@ const work: Record<WorkName, WorkDetails> = {
   brandwatch: {
     route: '/brandwatch',
     title: 'Brandwatch',
-    description: 'This is a description',
+    description: 'Understand your customers',
     role: 'Senior Front-End Developer',
     company: 'Brandwatch',
     location: 'Brighton, UK',
@@ -96,7 +96,7 @@ const work: Record<WorkName, WorkDetails> = {
   blocks: {
     route: '/blocks',
     title: 'Blocks',
-    description: 'This is a description',
+    description: 'Ethereum inside your browser',
     role: 'Front-End Developer',
     company: 'Side Project',
     location: 'Remote',

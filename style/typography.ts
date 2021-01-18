@@ -130,6 +130,11 @@ export const displayText = {
       font-weight: ${displayType.weight.semiBold};
       letter-spacing: ${displayType.letterSpace.semiBold};
     `,
+    medium: css`
+      font-family: ${displayType.family};
+      font-weight: ${displayType.weight.medium};
+      letter-spacing: ${displayType.letterSpace.medium};
+    `,
   },
   size: {
     xs: css`
