@@ -7,7 +7,10 @@ type TypeParagraphProps = {
   impact?: boolean
 }
 
-function TypeParagraph({ children, impact }: TypeParagraphProps): JSX.Element {
+function ArticleParagraph({
+  children,
+  impact,
+}: TypeParagraphProps): JSX.Element {
   const { foreground } = useTheme()
 
   return (
@@ -30,4 +33,4 @@ function TypeParagraph({ children, impact }: TypeParagraphProps): JSX.Element {
   )
 }
 
-export default TypeParagraph
+export default ArticleParagraph

@@ -9,7 +9,7 @@ type TypeHeadingProps = {
   size?: 'xs' | 'sm' | 'md' | 'lg'
 }
 
-function TypeHeading({
+function ArticleHeading({
   children,
   as = 'h2',
   size = 'sm',
@@ -42,4 +42,4 @@ const Heading = styled.h1`
   }
 `
 
-export default TypeHeading
+export default ArticleHeading

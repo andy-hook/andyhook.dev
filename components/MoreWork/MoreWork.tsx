@@ -1,12 +1,12 @@
 import React, { useMemo } from 'react'
 import { WORK, WorkName, WORK_ORDER } from '../../data/work'
 import { useTheme } from '../../hooks/useTheme/useTheme'
+import ArticleHeading from '../Article/ArticleHeading'
 import ContentImage from '../ContentImage/ContentImage'
 import InteractionBase from '../InteractionBase/InteractionBase'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import LayoutRow from '../Layout/LayoutRow'
-import TypeHeading from '../Type/TypeHeading'
 
 type MoreWorkProps = {
   currentWorkName: WorkName
@@ -27,7 +27,7 @@ function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
     <LayoutGutter>
       <LayoutLimiter size="large" divider>
         <LayoutRow>
-          <TypeHeading>More Work</TypeHeading>
+          <ArticleHeading>More Work</ArticleHeading>
           <div
             css={`
               display: grid;

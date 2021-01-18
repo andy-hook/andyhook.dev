@@ -1,125 +1,125 @@
 import React from 'react'
-import TypeHeading from '../components/Type/TypeHeading'
-import TypeImage from '../components/Type/TypeImage'
-import TypeParagraph from '../components/Type/TypeParagraph'
+import ArticleHeading from '../components/Article/ArticleHeading'
+import ArticleImage from '../components/Article/ArticleImage'
+import ArticleParagraph from '../components/Article/ArticleParagraph'
 import WorkTemplate from '../components/WorkTemplate/WorkTemplate'
 
 function Bright(): JSX.Element {
   return (
     <WorkTemplate name="bright">
-      <TypeParagraph impact>
+      <ArticleParagraph impact>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
         tincidunt hendrerit ex, at elementum augue malesuada eu. Pellentesque
         habitant morbi dtristique senectus et netus et malesuada fames ac turpis
         egestas. Nam congue maximus erat vel tincidunt.
-      </TypeParagraph>
-      <TypeParagraph>
+      </ArticleParagraph>
+      <ArticleParagraph>
         Aliquam eget hendrerit elit. Donec malesuada, augue quis blandit
         interdum, sapien tellus lacinia neque, ut varius diam nisl in erat.
         Fusce augue turpis, sollicitudin in elit ac, tristique varius ante.
         Nullam vel sapien id turpis iaculis fringilla eu a ipsum.
-      </TypeParagraph>
-      <TypeHeading>Aliquam eget hendrerit elit.</TypeHeading>
-      <TypeParagraph>
+      </ArticleParagraph>
+      <ArticleHeading>Aliquam eget hendrerit elit.</ArticleHeading>
+      <ArticleParagraph>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
         tincidunt hendrerit ex, at elementum augue malesuada eu. Pellentesque
         habitant morbi dtristique senectus et netus et malesuada fames ac turpis
         egestas. Nam congue maximus erat vel tincidunt.
-      </TypeParagraph>
-      <TypeImage />
-      <TypeParagraph>
+      </ArticleParagraph>
+      <ArticleImage />
+      <ArticleParagraph>
         Aliquam eget hendrerit elit. Donec malesuada, augue quis blandit
         interdum, sapien tellus lacinia neque, ut varius diam nisl in erat.
         Fusce augue turpis, sollicitudin in elit ac, tristique varius ante.
         Nullam vel sapien id turpis iaculis fringilla eu a ipsum.
-      </TypeParagraph>
-      <TypeHeading>Aliquam eget hendrerit elit.</TypeHeading>
-      <TypeParagraph>
+      </ArticleParagraph>
+      <ArticleHeading>Aliquam eget hendrerit elit.</ArticleHeading>
+      <ArticleParagraph>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
         tincidunt hendrerit ex, at elementum augue malesuada eu. Pellentesque
         habitant morbi dtristique senectus et netus et malesuada fames ac turpis
         egestas. Nam congue maximus erat vel tincidunt.
-      </TypeParagraph>
-      <TypeParagraph>
+      </ArticleParagraph>
+      <ArticleParagraph>
         Aliquam eget hendrerit elit. Donec malesuada, augue quis blandit
         interdum, sapien tellus lacinia neque, ut varius diam nisl in erat.
         Fusce augue turpis, sollicitudin in elit ac, tristique varius ante.
         Nullam vel sapien id turpis iaculis fringilla eu a ipsum.
-      </TypeParagraph>
-      <TypeParagraph>
+      </ArticleParagraph>
+      <ArticleParagraph>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
         tincidunt hendrerit ex, at elementum augue malesuada eu. Pellentesque
         habitant morbi dtristique senectus et netus et malesuada fames ac turpis
         egestas. Nam congue maximus erat vel tincidunt.
-      </TypeParagraph>
-      <TypeParagraph>
+      </ArticleParagraph>
+      <ArticleParagraph>
         Aliquam eget hendrerit elit. Donec malesuada, augue quis blandit
         interdum, sapien tellus lacinia neque, ut varius diam nisl in erat.
         Fusce augue turpis, sollicitudin in elit ac, tristique varius ante.
         Nullam vel sapien id turpis iaculis fringilla eu a ipsum.
-      </TypeParagraph>
-      <TypeImage />
-      <TypeParagraph>
+      </ArticleParagraph>
+      <ArticleImage />
+      <ArticleParagraph>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
         tincidunt hendrerit ex, at elementum augue malesuada eu. Pellentesque
         habitant morbi dtristique senectus et netus et malesuada fames ac turpis
         egestas. Nam congue maximus erat vel tincidunt.
-      </TypeParagraph>
-      <TypeParagraph>
+      </ArticleParagraph>
+      <ArticleParagraph>
         Aliquam eget hendrerit elit. Donec malesuada, augue quis blandit
         interdum, sapien tellus lacinia neque, ut varius diam nisl in erat.
         Fusce augue turpis, sollicitudin in elit ac, tristique varius ante.
         Nullam vel sapien id turpis iaculis fringilla eu a ipsum.
-      </TypeParagraph>
-      <TypeParagraph>
+      </ArticleParagraph>
+      <ArticleParagraph>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
         tincidunt hendrerit ex, at elementum augue malesuada eu. Pellentesque
         habitant morbi dtristique senectus et netus et malesuada fames ac turpis
         egestas. Nam congue maximus erat vel tincidunt.
-      </TypeParagraph>
-      <TypeHeading>Aliquam eget hendrerit elit.</TypeHeading>
-      <TypeParagraph>
+      </ArticleParagraph>
+      <ArticleHeading>Aliquam eget hendrerit elit.</ArticleHeading>
+      <ArticleParagraph>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
         tincidunt hendrerit ex, at elementum augue malesuada eu. Pellentesque
         habitant morbi dtristique senectus et netus et malesuada fames ac turpis
         egestas. Nam congue maximus erat vel tincidunt.
-      </TypeParagraph>
-      <TypeParagraph>
+      </ArticleParagraph>
+      <ArticleParagraph>
         Aliquam eget hendrerit elit. Donec malesuada, augue quis blandit
         interdum, sapien tellus lacinia neque, ut varius diam nisl in erat.
         Fusce augue turpis, sollicitudin in elit ac, tristique varius ante.
         Nullam vel sapien id turpis iaculis fringilla eu a ipsum.
-      </TypeParagraph>
-      <TypeParagraph>
+      </ArticleParagraph>
+      <ArticleParagraph>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
         tincidunt hendrerit ex, at elementum augue malesuada eu. Pellentesque
         habitant morbi dtristique senectus et netus et malesuada fames ac turpis
         egestas. Nam congue maximus erat vel tincidunt.
-      </TypeParagraph>
-      <TypeParagraph>
+      </ArticleParagraph>
+      <ArticleParagraph>
         Aliquam eget hendrerit elit. Donec malesuada, augue quis blandit
         interdum, sapien tellus lacinia neque, ut varius diam nisl in erat.
         Fusce augue turpis, sollicitudin in elit ac, tristique varius ante.
         Nullam vel sapien id turpis iaculis fringilla eu a ipsum.
-      </TypeParagraph>
-      <TypeParagraph>
+      </ArticleParagraph>
+      <ArticleParagraph>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
         tincidunt hendrerit ex, at elementum augue malesuada eu. Pellentesque
         habitant morbi dtristique senectus et netus et malesuada fames ac turpis
         egestas. Nam congue maximus erat vel tincidunt.
-      </TypeParagraph>
-      <TypeParagraph>
+      </ArticleParagraph>
+      <ArticleParagraph>
         Aliquam eget hendrerit elit. Donec malesuada, augue quis blandit
         interdum, sapien tellus lacinia neque, ut varius diam nisl in erat.
         Fusce augue turpis, sollicitudin in elit ac, tristique varius ante.
         Nullam vel sapien id turpis iaculis fringilla eu a ipsum.
-      </TypeParagraph>
-      <TypeParagraph>
+      </ArticleParagraph>
+      <ArticleParagraph>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
         tincidunt hendrerit ex, at elementum augue malesuada eu. Pellentesque
         habitant morbi dtristique senectus et netus et malesuada fames ac turpis
         egestas. Nam congue maximus erat vel tincidunt.
-      </TypeParagraph>
+      </ArticleParagraph>
     </WorkTemplate>
   )
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import { baseText } from '../../style/typography'
 import ContentImage from '../ContentImage/ContentImage'
 
-function TypeImage(): JSX.Element {
+function ArticleImage(): JSX.Element {
   return (
     <ContentImage
       src={'/test.png'}
@@ -19,4 +19,4 @@ function TypeImage(): JSX.Element {
   )
 }
 
-export default TypeImage
+export default ArticleImage

@@ -2,12 +2,12 @@ import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { inclusiveDown, inclusiveUp } from '../../style/responsive'
 import { displayText, setCropAndLineHeight } from '../../style/typography'
+import ArticleParagraph from '../Article/ArticleParagraph'
 import ExpList from '../ExpList/ExpList'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import LayoutRow from '../Layout/LayoutRow'
 import RemoveWidow from '../RemoveWidow/RemoveWidow'
-import TypeParagraph from '../Type/TypeParagraph'
 
 function About(): JSX.Element {
   const { background, foreground } = useTheme()
@@ -52,7 +52,7 @@ function About(): JSX.Element {
               </h2>
             </div>
             <div>
-              <TypeParagraph>
+              <ArticleParagraph>
                 <RemoveWidow>
                   I'm Andy, a web professional who's been working in the web
                   industry for more than 10 years. I'm formally educated in
@@ -62,16 +62,16 @@ function About(): JSX.Element {
                   expectations of modern users while operating within technical
                   and product constraints.
                 </RemoveWidow>
-              </TypeParagraph>
+              </ArticleParagraph>
 
-              <TypeParagraph>
+              <ArticleParagraph>
                 <RemoveWidow>
                   As a specialist in user interfaces, I have extensive
                   experience building modular design systems, component
                   libraries and scalable design solutions, this helps foster and
                   support fast, iterative processes within agile product teams.
                 </RemoveWidow>
-              </TypeParagraph>
+              </ArticleParagraph>
             </div>
           </div>
           <div>
