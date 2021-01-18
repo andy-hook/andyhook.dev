@@ -8,7 +8,7 @@ import WorkDetailsList from './WorkDetailsList'
 import LayoutRow from '../Layout/LayoutRow'
 import { inclusiveUp } from '../../style/responsive'
 import RemoveWidow from '../RemoveWidow/RemoveWidow'
-import work, { WorkName } from '../../data/work'
+import { WORK, WorkName } from '../../data/work'
 import MetaSocial from '../Meta/MetaSocial'
 
 type WorkTemplate = {
@@ -31,7 +31,7 @@ function WorkTemplate({
     role,
     technologies,
     heroImage,
-  } = work[name]
+  } = WORK[name]
 
   return (
     <>

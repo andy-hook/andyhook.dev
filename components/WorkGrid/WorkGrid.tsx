@@ -1,12 +1,10 @@
 import React from 'react'
-import work, { WorkName } from '../../data/work'
+import { WORK, WORK_ORDER } from '../../data/work'
 import { inclusiveDown, inclusiveUp } from '../../style/responsive'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import LayoutRow from '../Layout/LayoutRow'
 import WorkGridItem from './WorkGridItem'
-
-const WORK_ORDER: WorkName[] = ['bright', 'aragon', 'blocks', 'brandwatch']
 
 function WorkGrid(): JSX.Element {
   return (
@@ -33,7 +31,7 @@ function WorkGrid(): JSX.Element {
             `}
           >
             {WORK_ORDER.map((key) => {
-              const { thumbnailImage, route, title, description } = work[key]
+              const { thumbnailImage, route, title, description } = WORK[key]
 
               return (
                 <div
