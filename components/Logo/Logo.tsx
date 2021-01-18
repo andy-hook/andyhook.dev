@@ -23,7 +23,7 @@ function Logo(): JSX.Element {
         whileHover="hover"
         css={`
           ${baseText.weight.semiBold}
-          ${baseText.size.lg}
+          ${baseText.size.md}
           ${setCropAndLineHeight('base', 'flat')}
 
           margin: -0.75em;

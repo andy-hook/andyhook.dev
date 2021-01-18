@@ -19,7 +19,7 @@ function WorkDetailsList({
       <h3
         css={`
           ${baseText.weight.semiBold}
-          ${baseText.size.md}
+          ${baseText.size.sm}
           ${setCropAndLineHeight('base', 'flat')}
           color: ${foreground('low')};
           margin-bottom: 1em;
@@ -30,7 +30,7 @@ function WorkDetailsList({
       <ul
         css={`
           ${baseText.weight.regular}
-          ${baseText.size.lg}
+          ${baseText.size.md}
           ${setCropAndLineHeight('base', 'flat')}
           color: ${foreground('high')};
         `}

@@ -72,7 +72,7 @@ function WorkGridItem({
         <p
           css={`
             ${baseText.weight.regular}
-            ${baseText.size.lg}
+            ${baseText.size.md}
           ${setCropAndLineHeight('base', 'tight')}
 
           color: ${foreground('medium')};

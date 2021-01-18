@@ -9,7 +9,7 @@ function ArticleImage(): JSX.Element {
       width={500}
       height={250}
       css={`
-        ${baseText.size.md}
+        ${baseText.size.sm}
 
         margin-top: 5em;
         margin-bottom: 5em;

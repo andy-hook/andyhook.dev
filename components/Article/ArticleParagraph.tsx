@@ -1,6 +1,5 @@
 import React from 'react'
-import { useTheme } from '../../hooks/useTheme/useTheme'
-import { baseText, setCropAndLineHeight } from '../../style/typography'
+import TextParagraph from '../Text/TextParagraph'
 
 type TypeParagraphProps = {
   children: React.ReactNode
@@ -11,16 +10,11 @@ function ArticleParagraph({
   children,
   impact,
 }: TypeParagraphProps): JSX.Element {
-  const { foreground } = useTheme()
-
   return (
-    <p
+    <TextParagraph
+      color={impact ? 'high' : 'medium'}
+      size={impact ? 'lg' : 'md'}
       css={`
-        ${baseText.weight.regular}
-        ${impact ? baseText.size.xl : baseText.size.lg}
-        ${setCropAndLineHeight('base', 'longform')}
-
-        color: ${foreground(impact ? 'high' : 'medium')};
         max-width: 60rem;
 
         &:not(:last-child) {
@@ -29,7 +23,7 @@ function ArticleParagraph({
       `}
     >
       {children}
-    </p>
+    </TextParagraph>
   )
 }
 

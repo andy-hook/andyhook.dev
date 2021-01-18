@@ -33,7 +33,7 @@ function Footer(): JSX.Element {
               <p
                 css={`
                   ${baseText.weight.regular}
-                  ${baseText.size.lg}
+                  ${baseText.size.md}
                   ${setCropAndLineHeight('base', 'flat')}
 
                   color: ${foreground('low')};
