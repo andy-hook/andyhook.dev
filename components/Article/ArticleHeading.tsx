@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { SupportedHeadingLevels, TextSize } from '../../style/typography'
+import RemoveWidow from '../RemoveWidow/RemoveWidow'
 import TextHeading from '../Text/TextHeading'
 
 type TypeHeadingProps = {
@@ -13,6 +14,14 @@ function ArticleHeading({
   level = 'h2',
   size = 'sm',
 }: TypeHeadingProps): JSX.Element {
+  const wrappedChildren = useMemo(() => {
+    if (typeof children === 'string') {
+      return <RemoveWidow>{children}</RemoveWidow>
+    }
+
+    return children
+  }, [children])
+
   return (
     <TextHeading
       level={level}
@@ -28,7 +37,7 @@ function ArticleHeading({
         }
       `}
     >
-      {children}
+      {wrappedChildren}
     </TextHeading>
   )
 }
