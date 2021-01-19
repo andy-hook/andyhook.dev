@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useMemo } from 'react'
+import RemoveWidow from '../RemoveWidow/RemoveWidow'
 import TextParagraph from '../Text/TextParagraph'
 
 type TypeParagraphProps = {
@@ -10,6 +11,14 @@ function ArticleParagraph({
   children,
   impact,
 }: TypeParagraphProps): JSX.Element {
+  const wrappedChildren = useMemo(() => {
+    if (typeof children === 'string') {
+      return <RemoveWidow>{children}</RemoveWidow>
+    }
+
+    return children
+  }, [children])
+
   return (
     <TextParagraph
       color={impact ? 'high' : 'medium'}
@@ -22,7 +31,7 @@ function ArticleParagraph({
         }
       `}
     >
-      {children}
+      {wrappedChildren}
     </TextParagraph>
   )
 }
