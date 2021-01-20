@@ -8,10 +8,9 @@ function Brandwatch(): JSX.Element {
   return (
     <WorkTemplate name="brandwatch">
       <ArticleParagraph impact>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-        tincidunt hendrerit ex, at elementum augue malesuada eu. Pellentesque
-        habitant morbi dtristique senectus et netus et malesuada fames ac turpis
-        egestas. Nam congue maximus erat vel tincidunt.
+        Brandwatch is the world’s leading digital consumer intelligence company,
+        allowing users to analyze and utilize conversations from across the web
+        and social media.
       </ArticleParagraph>
       <ArticleParagraph>
         Aliquam eget hendrerit elit. Donec malesuada, augue quis blandit
