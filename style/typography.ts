@@ -38,6 +38,14 @@ const typeScale: Record<number, string> = {
   11: rem('64px'),
 }
 
+const fontWeight = {
+  light: 320,
+  regular: 420,
+  medium: 520,
+  semiBold: 600,
+  bold: 720,
+}
+
 /* Body
 ------------------------------------------------- */
 const baseType: TypeSettings = {
@@ -55,13 +63,7 @@ const baseType: TypeSettings = {
     regular: 1.4,
     longform: 1.6,
   },
-  weight: {
-    light: 300,
-    regular: 400,
-    medium: 500,
-    semiBold: 600,
-    bold: 700,
-  },
+  weight: fontWeight,
   cropSettings: { topCrop: 9, bottomCrop: 6 },
 }
 
@@ -82,13 +84,7 @@ const displayType: TypeSettings = {
     regular: 1.4,
     longform: 1.6,
   },
-  weight: {
-    light: 320,
-    regular: 420,
-    medium: 520,
-    semiBold: 620,
-    bold: 700,
-  },
+  weight: fontWeight,
   cropSettings: { topCrop: 14, bottomCrop: 10 },
 }
 

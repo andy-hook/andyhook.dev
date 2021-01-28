@@ -49,39 +49,38 @@ function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
               }
             `}
           >
-            {items.map(({ title, description, route }, i) => (
-              <div key={i}>
-                <InteractionBase
-                  href={route}
-                  offset={1}
-                  css={`
-                    display: block;
-                  `}
-                >
-                  <ContentImage
-                    src="/test.png"
-                    width={500}
-                    height={300}
+            {items.map(
+              ({ title, description, route, thumbnailImageSmall }, i) => (
+                <div key={i}>
+                  <InteractionBase
+                    href={route}
+                    offset={1}
                     css={`
-                      opacity: 0.05;
-                    `}
-                  />
-                  <TextHeading
-                    size="xs"
-                    level="h4"
-                    css={`
-                      margin-top: 1.5em;
-                      margin-bottom: 0.4em;
+                      display: block;
                     `}
                   >
-                    {title}
-                  </TextHeading>
-                  <TextParagraph size="sm" color="medium">
-                    {description}
-                  </TextParagraph>
-                </InteractionBase>
-              </div>
-            ))}
+                    <ContentImage
+                      src={thumbnailImageSmall.src}
+                      width={thumbnailImageSmall.width}
+                      height={thumbnailImageSmall.height}
+                    />
+                    <TextHeading
+                      size="xs"
+                      level="h4"
+                      css={`
+                        margin-top: 1.5em;
+                        margin-bottom: 0.4em;
+                      `}
+                    >
+                      {title}
+                    </TextHeading>
+                    <TextParagraph size="sm" color="medium">
+                      {description}
+                    </TextParagraph>
+                  </InteractionBase>
+                </div>
+              )
+            )}
           </div>
         </LayoutRow>
       </LayoutLimiter>

@@ -43,10 +43,10 @@ function WorkGridItem({
           css={`
             overflow: hidden;
             border-radius: ${appearance.radius.base};
-            opacity: 0.02;
           `}
         >
           <Image
+            quality={100}
             src={src}
             alt={alt}
             width={width}

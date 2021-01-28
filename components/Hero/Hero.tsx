@@ -32,7 +32,7 @@ function Hero(): JSX.Element {
           css={`
             display: flex;
             flex-direction: column;
-            min-height: 90vh;
+            min-height: 80vh;
           `}
         >
           <div
@@ -46,8 +46,8 @@ function Hero(): JSX.Element {
               padding-bottom: 6rem;
 
               ${inclusiveUp('md')} {
-                padding-top: 11rem;
-                padding-bottom: 11rem;
+                padding-top: 12rem;
+                padding-bottom: 12rem;
               }
 
               ${inclusiveDown('xs')} {

@@ -17,6 +17,7 @@ type WorkDetails = {
   technologies: string[]
   heroImage: ImageData
   thumbnailImage: ImageData
+  thumbnailImageSmall: ImageData
 }
 
 export const WORK_ORDER: WorkName[] = [
@@ -44,14 +45,19 @@ export const WORK: Record<WorkName, WorkDetails> = {
       'Jest / Testing Library',
     ],
     heroImage: {
-      src: '/test.png',
-      width: 1000,
-      height: 500,
+      src: '/images/aragon-hero.png',
+      width: 3136,
+      height: 1435,
     },
     thumbnailImage: {
-      src: '/test.png',
-      width: 565,
-      height: 382,
+      src: '/images/aragon-thumb.png',
+      width: 1986,
+      height: 1451,
+    },
+    thumbnailImageSmall: {
+      src: '/images/aragon-thumb-small.png',
+      width: 1985,
+      height: 1304,
     },
   },
   bright: {
@@ -70,14 +76,19 @@ export const WORK: Record<WorkName, WorkDetails> = {
       'Karma / Jasmine',
     ],
     heroImage: {
-      src: '/test.png',
-      width: 1000,
-      height: 500,
+      src: '/images/bright-hero.png',
+      width: 3136,
+      height: 1435,
     },
     thumbnailImage: {
-      src: '/test.png',
-      width: 565,
-      height: 597,
+      src: '/images/bright-thumb.png',
+      width: 1986,
+      height: 2131,
+    },
+    thumbnailImageSmall: {
+      src: '/images/bright-thumb-small.png',
+      width: 1985,
+      height: 1304,
     },
   },
   brandwatch: {
@@ -90,14 +101,19 @@ export const WORK: Record<WorkName, WorkDetails> = {
     tenure: 'Apr 2016 – May 2018',
     technologies: ['JavaScript', 'HTML5', 'CSS3', 'PHP', 'GSAP'],
     heroImage: {
-      src: '/test.png',
-      width: 1000,
-      height: 500,
+      src: '/images/brandwatch-hero.png',
+      width: 3136,
+      height: 1435,
     },
     thumbnailImage: {
-      src: '/test.png',
-      width: 565,
-      height: 703,
+      src: '/images/brandwatch-thumb.png',
+      width: 1986,
+      height: 2489,
+    },
+    thumbnailImageSmall: {
+      src: '/images/brandwatch-thumb-small.png',
+      width: 1985,
+      height: 1304,
     },
   },
   blocks: {
@@ -117,14 +133,19 @@ export const WORK: Record<WorkName, WorkDetails> = {
       'Jest / Testing Library',
     ],
     heroImage: {
-      src: '/test.png',
-      width: 1000,
-      height: 500,
+      src: '/images/blocks-hero.png',
+      width: 3136,
+      height: 1435,
     },
     thumbnailImage: {
-      src: '/test.png',
-      width: 565,
-      height: 533,
+      src: '/images/blocks-thumb.png',
+      width: 1986,
+      height: 1889,
+    },
+    thumbnailImageSmall: {
+      src: '/images/blocks-thumb-small.png',
+      width: 1985,
+      height: 1304,
     },
   },
 }
