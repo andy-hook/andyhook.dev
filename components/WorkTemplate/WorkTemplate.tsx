@@ -84,7 +84,6 @@ function WorkTemplate({
           </LayoutGutter>
           <div
             css={`
-              opacity: 0.05;
               margin-top: 5rem;
               margin-bottom: 5rem;
 
@@ -104,6 +103,7 @@ function WorkTemplate({
               width={heroImage.width}
               height={heroImage.height}
               layout="responsive"
+              quality={100}
             />
           </div>
         </header>
