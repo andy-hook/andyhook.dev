@@ -24,7 +24,7 @@ function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
         grid-template-columns: 8rem 1fr 50%;
 
         background-color: ${background('medium')};
-        border-radius: ${appearance.radius.large};
+        border-radius: ${appearance.radius.base};
 
         box-shadow: ${shadow('medium')};
 
