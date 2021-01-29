@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 import {
   baseText,
   displayText,
@@ -8,7 +7,7 @@ import {
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { appearance } from '../../style/appearance'
 import InteractionBase from '../InteractionBase/InteractionBase'
-import { scaleImageSizeAtBreakpoint } from '../../style/responsive'
+import ImageBase from '../ImageBase/ImageBase'
 
 type WorkGridItemProps = {
   src: string
@@ -46,15 +45,12 @@ function WorkGridItem({
             border-radius: ${appearance.radius.base};
           `}
         >
-          <Image
-            priority
-            quality={100}
+          <ImageBase
             src={src}
             alt={alt}
             width={width}
             height={height}
-            layout="responsive"
-            sizes={scaleImageSizeAtBreakpoint('sm', 70)}
+            scaleRenderFromBp={['sm', 70]}
           />
         </div>
 

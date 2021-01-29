@@ -1,6 +1,6 @@
 import React from 'react'
-import Image from 'next/image'
 import { appearance } from '../../style/appearance'
+import ImageBase from '../ImageBase/ImageBase'
 
 type ContentImageProps = {
   src: string
@@ -22,14 +22,7 @@ function ContentImage({
       `}
       {...props}
     >
-      <Image
-        priority
-        src={src}
-        width={width}
-        height={height}
-        layout="responsive"
-        quality={100}
-      />
+      <ImageBase src={src} width={width} height={height} />
     </div>
   )
 }

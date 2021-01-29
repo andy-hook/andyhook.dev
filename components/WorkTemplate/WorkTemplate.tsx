@@ -1,6 +1,5 @@
 import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
-import Image from 'next/image'
 import { displayText, setCropAndLineHeight } from '../../style/typography'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
@@ -11,6 +10,7 @@ import RemoveWidow from '../RemoveWidow/RemoveWidow'
 import { WORK, WorkName } from '../../data/work'
 import MetaSocial from '../Meta/MetaSocial'
 import MoreWork from '../MoreWork/MoreWork'
+import ImageBase from '../ImageBase/ImageBase'
 
 type WorkTemplate = {
   name: WorkName
@@ -98,13 +98,10 @@ function WorkTemplate({
               }
             `}
           >
-            <Image
-              priority
+            <ImageBase
               src={heroImage.src}
               width={heroImage.width}
               height={heroImage.height}
-              layout="responsive"
-              quality={100}
             />
           </div>
         </header>
