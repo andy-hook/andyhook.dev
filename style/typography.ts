@@ -38,6 +38,13 @@ const typeScale: Record<number, string> = {
   11: rem('64px'),
 }
 
+const lineHeight = {
+  flat: 1,
+  tight: 1.2,
+  regular: 1.3,
+  longform: 1.6,
+}
+
 const fontWeight = {
   light: 320,
   regular: 420,
@@ -57,12 +64,7 @@ const baseType: TypeSettings = {
     bold: '0.004em',
     uppercase: '0.06em',
   },
-  lineHeight: {
-    flat: 1,
-    tight: 1.3,
-    regular: 1.4,
-    longform: 1.6,
-  },
+  lineHeight: lineHeight,
   weight: fontWeight,
   cropSettings: { topCrop: 9, bottomCrop: 6 },
 }
@@ -78,12 +80,7 @@ const displayType: TypeSettings = {
     bold: '-0.005em',
     uppercase: '0.06em',
   },
-  lineHeight: {
-    flat: 1,
-    tight: 1.3,
-    regular: 1.4,
-    longform: 1.6,
-  },
+  lineHeight: lineHeight,
   weight: fontWeight,
   cropSettings: { topCrop: 14, bottomCrop: 10 },
 }
@@ -119,20 +116,21 @@ export const setPlaceholderCrop = (
   ------------------------------------------------- */
 export const displayText = {
   weight: {
-    bold: css`
+    medium: css`
       font-family: ${displayType.family};
-      font-weight: ${displayType.weight.bold};
-      letter-spacing: ${displayType.letterSpace.bold};
+      font-weight: ${displayType.weight.medium};
+      letter-spacing: ${displayType.letterSpace.medium};
     `,
     semiBold: css`
       font-family: ${displayType.family};
       font-weight: ${displayType.weight.semiBold};
       letter-spacing: ${displayType.letterSpace.semiBold};
     `,
-    medium: css`
+
+    bold: css`
       font-family: ${displayType.family};
-      font-weight: ${displayType.weight.medium};
-      letter-spacing: ${displayType.letterSpace.medium};
+      font-weight: ${displayType.weight.bold};
+      letter-spacing: ${displayType.letterSpace.bold};
     `,
   },
   size: {

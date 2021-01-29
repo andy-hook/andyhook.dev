@@ -2,17 +2,17 @@ import React from 'react'
 import ExpListItem from './ExpListItem'
 
 const EXPERIENCE_ENTRIES = [
-  ['2020', 'Aragon', 'Senior UI Engineer'],
-  ['2018', 'Bright Interactive', 'UI Engineer'],
-  ['2016', 'Brandwatch', 'Senior Front-End Developer'],
-  ['2012', 'Jamieson Consultancy', 'Front-End Developer'],
-  ['2009', 'Freelance', 'Digital Designer'],
+  ['2020', 'Senior UI Engineer', 'Aragon'],
+  ['2018', 'UI Engineer', 'Bright Interactive'],
+  ['2016', 'Senior Front-End Developer', 'Brandwatch'],
+  ['2012', 'Front-End Developer', 'Jamieson Consultancy'],
+  ['2009', 'Digital Designer', 'Freelance'],
 ]
 
 function ExpList(): JSX.Element {
   return (
     <ul>
-      {EXPERIENCE_ENTRIES.map(([year, company, title], i) => (
+      {EXPERIENCE_ENTRIES.map(([year, title, company], i) => (
         <li
           css={`
             &:not(:last-child) {

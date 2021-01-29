@@ -84,7 +84,7 @@ function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
             color: ${foreground('extraHigh')};
           `}
         >
-          {company}
+          {title}
         </h3>
       </div>
       <div
@@ -111,7 +111,7 @@ function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
             }
           `}
         >
-          {title}
+          {company}
         </span>
       </div>
     </div>

@@ -73,7 +73,7 @@ function HireButton({ href }: HireButtonProps): JSX.Element {
 }
 
 function Pip({ ...props }: React.HTMLAttributes<HTMLDivElement>): JSX.Element {
-  const { accent } = useTheme()
+  const { positive } = useTheme()
 
   return (
     <div
@@ -82,8 +82,8 @@ function Pip({ ...props }: React.HTMLAttributes<HTMLDivElement>): JSX.Element {
         height: 1em;
         background: linear-gradient(
           135deg,
-          ${accent('light')} 0%,
-          ${accent('base')} 90%
+          ${positive('light')} 0%,
+          ${positive('base')} 90%
         );
         border-radius: ${appearance.radius.circle};
       `}

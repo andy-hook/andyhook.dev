@@ -11,12 +11,14 @@ type TextParagraphProps = {
   children: React.ReactNode
   color?: keyof Theme['foreground']
   size: TextSize
+  weight?: 'regular' | 'medium' | 'semiBold'
 }
 
 function TextParagraph({
   children,
   color = 'medium',
   size = 'md',
+  weight = 'regular',
   ...props
 }: TextParagraphProps): JSX.Element {
   const { foreground } = useTheme()
@@ -25,7 +27,7 @@ function TextParagraph({
     <p
       css={`
         ${baseText.size[size]}
-        ${baseText.weight.regular}
+        ${baseText.weight[weight]}
         ${setCropAndLineHeight('base', 'longform')}
 
         color: ${foreground(color)};

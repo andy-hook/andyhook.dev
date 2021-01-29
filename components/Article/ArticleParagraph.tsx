@@ -23,6 +23,7 @@ function ArticleParagraph({
     <TextParagraph
       color={impact ? 'high' : 'medium'}
       size={impact ? 'lg' : 'md'}
+      weight={impact ? 'medium' : 'regular'}
       css={`
         max-width: 60rem;
 
