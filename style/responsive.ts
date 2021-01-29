@@ -52,3 +52,10 @@ export function inclusiveBetween(
 ): () => (props: Props) => string {
   return () => between(minWidth, maxWidth, orientation)
 }
+
+export function scaleImageSizeAtBreakpoint(
+  breakpointWidth: BreakpointName,
+  imageSizePercentage: number
+): string {
+  return `(min-width: ${breakpoints[breakpointWidth]}) ${imageSizePercentage}vw, 100vw`
+}
