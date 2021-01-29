@@ -10,15 +10,11 @@ import LayoutRow from '../Layout/LayoutRow'
 import RemoveWidow from '../RemoveWidow/RemoveWidow'
 
 function About(): JSX.Element {
-  const { background, foreground } = useTheme()
+  const { foreground } = useTheme()
   return (
-    <LayoutGutter
-      css={`
-        background-color: ${background('low')};
-      `}
-    >
-      <LayoutLimiter size="large" divider>
-        <LayoutRow>
+    <LayoutRow bordered>
+      <LayoutGutter>
+        <LayoutLimiter size="large">
           <div
             css={`
               margin-bottom: 5rem;
@@ -77,9 +73,9 @@ function About(): JSX.Element {
           <div>
             <ExpList />
           </div>
-        </LayoutRow>
-      </LayoutLimiter>
-    </LayoutGutter>
+        </LayoutLimiter>
+      </LayoutGutter>
+    </LayoutRow>
   )
 }
 
