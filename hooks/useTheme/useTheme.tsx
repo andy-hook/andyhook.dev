@@ -44,7 +44,7 @@ function useTheme(): ThemeMethods {
   )
 
   const positive: ThemeMethods['positive'] = useCallback(
-    (value, alpha): string => applyHsl(theme.accent[value], alpha),
+    (value, alpha): string => applyHsl(theme.positive[value], alpha),
     [theme]
   )
 
