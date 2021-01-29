@@ -65,7 +65,7 @@ export const WORK: Record<WorkName, WorkDetails> = {
     title: 'Bright Interactive',
     description: 'Realise your brand potential',
     role: 'UI Engineer',
-    company: 'Bright',
+    company: 'Bright Interactive',
     location: 'Brighton, UK',
     tenure: 'Sep 2018 – May 2020',
     technologies: [

@@ -8,6 +8,7 @@ import {
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { appearance } from '../../style/appearance'
 import InteractionBase from '../InteractionBase/InteractionBase'
+import { scaleImageSizeAtBreakpoint } from '../../style/responsive'
 
 type WorkGridItemProps = {
   src: string
@@ -46,12 +47,14 @@ function WorkGridItem({
           `}
         >
           <Image
+            priority
             quality={100}
             src={src}
             alt={alt}
             width={width}
             height={height}
             layout="responsive"
+            sizes={scaleImageSizeAtBreakpoint('sm', 70)}
           />
         </div>
 

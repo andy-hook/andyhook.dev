@@ -1,13 +1,14 @@
 import React, { useMemo } from 'react'
 import { WORK, WorkName, WORK_ORDER } from '../../data/work'
-import { inclusiveUp } from '../../style/responsive'
-import ContentImage from '../ContentImage/ContentImage'
+import { inclusiveUp, scaleImageSizeAtBreakpoint } from '../../style/responsive'
 import InteractionBase from '../InteractionBase/InteractionBase'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import LayoutRow from '../Layout/LayoutRow'
 import TextHeading from '../Text/TextHeading'
 import TextParagraph from '../Text/TextParagraph'
+import Image from 'next/image'
+import { appearance } from '../../style/appearance'
 
 type MoreWorkProps = {
   currentWorkName: WorkName
@@ -59,11 +60,22 @@ function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
                       display: block;
                     `}
                   >
-                    <ContentImage
-                      src={thumbnailImageSmall.src}
-                      width={thumbnailImageSmall.width}
-                      height={thumbnailImageSmall.height}
-                    />
+                    <div
+                      css={`
+                        overflow: hidden;
+                        border-radius: ${appearance.radius.base};
+                      `}
+                    >
+                      <Image
+                        priority
+                        src={thumbnailImageSmall.src}
+                        width={thumbnailImageSmall.width}
+                        height={thumbnailImageSmall.height}
+                        layout="responsive"
+                        quality={100}
+                        sizes={scaleImageSizeAtBreakpoint('sm', 50)}
+                      />
+                    </div>
                     <TextHeading
                       size="xs"
                       level="h4"

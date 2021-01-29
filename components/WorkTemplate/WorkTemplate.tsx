@@ -99,6 +99,7 @@ function WorkTemplate({
             `}
           >
             <Image
+              priority
               src={heroImage.src}
               width={heroImage.width}
               height={heroImage.height}

@@ -22,7 +22,14 @@ function ContentImage({
       `}
       {...props}
     >
-      <Image src={src} width={width} height={height} layout="responsive" />
+      <Image
+        priority
+        src={src}
+        width={width}
+        height={height}
+        layout="responsive"
+        quality={100}
+      />
     </div>
   )
 }
