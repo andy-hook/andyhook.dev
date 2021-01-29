@@ -62,7 +62,7 @@ export const WORK: Record<WorkName, WorkDetails> = {
   },
   bright: {
     route: '/bright',
-    title: 'Bright',
+    title: 'Bright Interactive',
     description: 'Realise your brand potential',
     role: 'UI Engineer',
     company: 'Bright',

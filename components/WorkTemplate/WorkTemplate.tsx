@@ -47,7 +47,7 @@ function WorkTemplate({
             }
 
             ${inclusiveUp('md')} {
-              padding-top: 22rem;
+              padding-top: 18rem;
             }
           `}
         >
