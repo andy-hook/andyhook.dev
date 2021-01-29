@@ -22,9 +22,9 @@ function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
   }, [currentWorkName])
 
   return (
-    <LayoutGutter>
-      <LayoutLimiter size="large" divider>
-        <LayoutRow>
+    <LayoutRow bordered>
+      <LayoutGutter>
+        <LayoutLimiter size="large">
           <TextHeading
             level="h3"
             size="sm"
@@ -91,9 +91,9 @@ function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
               )
             )}
           </div>
-        </LayoutRow>
-      </LayoutLimiter>
-    </LayoutGutter>
+        </LayoutLimiter>
+      </LayoutGutter>
+    </LayoutRow>
   )
 }
 
