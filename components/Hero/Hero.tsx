@@ -70,7 +70,7 @@ function Hero(): JSX.Element {
                 css={`
                   ${displayText.weight.semiBold}
                   ${displayText.size.lg}
-                  ${setCropAndLineHeight('display', 'tight')}
+                  ${setCropAndLineHeight('display', 'regular')}
                   
                   max-width: 16em;
                   padding-top: 1.75em;

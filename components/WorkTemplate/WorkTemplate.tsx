@@ -64,7 +64,7 @@ function WorkTemplate({
                     ${setCropAndLineHeight('display', 'tight')}
                   
                     color: ${foreground('extraHigh')};
-                    margin-bottom: 0.2em;
+                    margin-bottom: 0.25em;
                   `}
                 >
                   {title}
