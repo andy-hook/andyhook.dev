@@ -1,7 +1,9 @@
-import React, { useMemo, useState } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { BreakpointName, breakpoints } from '../../style/responsive'
+import { useTheme } from '../../hooks/useTheme/useTheme'
+import { spring } from '../../style/motion'
 
 type ImageBaseProps = {
   src: string
@@ -20,6 +22,7 @@ function ImageBase({
   scaleRender = 100,
   scaleRenderFromBp,
 }: ImageBaseProps): JSX.Element {
+  const { background } = useTheme()
   const [loading, setLoading] = useState(true)
 
   const visibleMotion = useMemo(
@@ -44,17 +47,29 @@ function ImageBase({
     return `(min-width: ${breakpoints[breakpointName]}) ${breakpointScaleValue}vw, ${scaleRender}vw`
   }, [scaleRender, scaleRenderFromBp])
 
+  const handleOnLoad = useCallback((e) => {
+    // The next/image placeholder image triggers a duplicate event
+    // We only want to trigger the load handler when the actual image is loaded, hence making sure the source of the target element triggering the event is not base64.
+    // See https://github.com/vercel/next.js/issues/20368#issuecomment-757446007
+    e.target.src.indexOf('data:image/gif;base64') < 0 && setLoading(false)
+  }, [])
+
   return (
-    <div>
+    <div
+      css={`
+        background-color: ${background('medium')};
+      `}
+    >
       <motion.div
         initial="hidden"
         animate={loading ? 'hidden' : 'visible'}
         variants={visibleMotion}
+        transition={spring.softOut}
       >
         <Image
           loading="lazy"
           quality={100}
-          onLoad={() => setLoading(false)}
+          onLoad={handleOnLoad}
           src={src}
           sizes={sizesMediaString}
           width={width}
