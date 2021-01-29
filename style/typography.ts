@@ -7,7 +7,7 @@ export type TextSize = 'xs' | 'sm' | 'md' | 'lg'
 export type SupportedHeadingLevels = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 
 type StyleName = 'base' | 'display'
-export type LineHeightName = 'flat' | 'regular' | 'tight' | 'longform'
+type LineHeightName = 'flat' | 'regular' | 'tight' | 'longform'
 
 type TypeSettings = {
   family: string
