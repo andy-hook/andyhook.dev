@@ -50,7 +50,7 @@ const fontWeight = {
   regular: 420,
   medium: 520,
   semiBold: 590,
-  bold: 720,
+  bold: 680,
 }
 
 /* Body

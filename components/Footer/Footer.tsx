@@ -59,6 +59,7 @@ function Footer(): JSX.Element {
                 <InteractionBase offset={0.1} href={`mailto:${meta.email}`}>
                   <span
                     css={`
+                      ${displayText.weight.bold}
                       background: linear-gradient(
                         160deg,
                         ${accent('light')} 0%,
