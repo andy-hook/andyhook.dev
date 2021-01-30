@@ -4,6 +4,7 @@ type ImageData = {
   src: string
   width: number
   height: number
+  dominantColor: string
 }
 
 type WorkDetails = {
@@ -48,16 +49,19 @@ export const WORK: Record<WorkName, WorkDetails> = {
       src: '/images/aragon-hero.png',
       width: 3136,
       height: 1435,
+      dominantColor: '#00C1F0',
     },
     thumbnailImage: {
       src: '/images/aragon-thumb.png',
       width: 1986,
       height: 1451,
+      dominantColor: '#00C1F0',
     },
     thumbnailImageSmall: {
       src: '/images/aragon-thumb-small.png',
       width: 1985,
       height: 1304,
+      dominantColor: '#00C1F0',
     },
   },
   bright: {
@@ -79,16 +83,19 @@ export const WORK: Record<WorkName, WorkDetails> = {
       src: '/images/bright-hero.png',
       width: 3136,
       height: 1435,
+      dominantColor: '#7500BF',
     },
     thumbnailImage: {
       src: '/images/bright-thumb.png',
       width: 1986,
       height: 2131,
+      dominantColor: '#7500BF',
     },
     thumbnailImageSmall: {
       src: '/images/bright-thumb-small.png',
       width: 1985,
       height: 1304,
+      dominantColor: '#7500BF',
     },
   },
   brandwatch: {
@@ -104,16 +111,19 @@ export const WORK: Record<WorkName, WorkDetails> = {
       src: '/images/brandwatch-hero.png',
       width: 3136,
       height: 1435,
+      dominantColor: '#762D82',
     },
     thumbnailImage: {
       src: '/images/brandwatch-thumb.png',
       width: 1986,
       height: 2489,
+      dominantColor: '#762D82',
     },
     thumbnailImageSmall: {
       src: '/images/brandwatch-thumb-small.png',
       width: 1985,
       height: 1304,
+      dominantColor: '#762D82',
     },
   },
   blocks: {
@@ -136,16 +146,19 @@ export const WORK: Record<WorkName, WorkDetails> = {
       src: '/images/blocks-hero.png',
       width: 3136,
       height: 1435,
+      dominantColor: '#1F2428',
     },
     thumbnailImage: {
       src: '/images/blocks-thumb.png',
       width: 1986,
       height: 1889,
+      dominantColor: '#1F2428',
     },
     thumbnailImageSmall: {
       src: '/images/blocks-thumb-small.png',
       width: 1985,
       height: 1304,
+      dominantColor: '#1F2428',
     },
   },
 }
