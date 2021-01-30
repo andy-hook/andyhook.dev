@@ -165,30 +165,17 @@ function Hero(): JSX.Element {
           </div>
         </LayoutLimiter>
       </LayoutGutter>
-      <motion.div
-        variants={{
-          out: {
-            opacity: 0,
-          },
-          rest: {
-            opacity: 1,
-          },
-        }}
-        initial="out"
-        animate="rest"
-        transition={spring.softOut}
-      >
-        <BackgroundTexture
-          css={`
-            position: absolute;
 
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-          `}
-        />
-      </motion.div>
+      <BackgroundTexture
+        css={`
+          position: absolute;
+
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+        `}
+      />
     </div>
   )
 }

@@ -14,7 +14,7 @@ function BackgroundTexture({
         css={`
           z-index: ${appearance.index.floor};
           background: url('/pattern.svg') repeat top left;
-          opacity: 0.2;
+          opacity: 0.3;
         `}
       >
         {/* Right */}
@@ -50,8 +50,8 @@ function BackgroundTexture({
 
             background: linear-gradient(
               10deg,
-              ${background('low', 0)} 20%,
-              ${background('low', 0.95)} 80%
+              ${background('low', 0)} 0%,
+              ${background('low', 1)} 75%
             );
           `}
         />
