@@ -65,7 +65,6 @@ function Hero(): JSX.Element {
                   max-width: 16em;
 
                   margin-bottom: 1.25em;
-                  text-shadow: ${appearance.textShadow.heavy};
                 `}
               >
                 <span
