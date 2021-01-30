@@ -74,7 +74,7 @@ function WorkTemplate({
                     ${displayText.weight.regular}
                     ${setCropAndLineHeight('display', 'tight')}
 
-                    color: ${foreground('medium')};
+                    color: ${foreground('low')};
                   `}
                 >
                   <RemoveWidow>{description}</RemoveWidow>

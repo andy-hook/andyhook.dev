@@ -49,7 +49,7 @@ const fontWeight = {
   light: 320,
   regular: 420,
   medium: 520,
-  semiBold: 600,
+  semiBold: 590,
   bold: 720,
 }
 
@@ -74,7 +74,7 @@ const baseType: TypeSettings = {
 const displayType: TypeSettings = {
   family: `'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif`,
   letterSpace: {
-    regular: '-0.007em',
+    regular: '-0.01em',
     medium: '-0.005em',
     semiBold: '-0.003em',
     bold: '-0.005em',

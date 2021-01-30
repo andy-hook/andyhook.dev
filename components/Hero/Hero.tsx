@@ -126,6 +126,12 @@ function Hero(): JSX.Element {
                         bottom: 0;
                         right: 0;
 
+                        background: linear-gradient(
+                          -20deg,
+                          ${foreground('extraLow', 0)} 40%,
+                          ${foreground('extraLow', 0.1)} 100%
+                        );
+
                         background-color: ${background('high')};
                         border-radius: ${appearance.radius.base};
                       `}
