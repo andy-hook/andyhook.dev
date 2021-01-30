@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import React from 'react'
 import { slideInMotion } from '../../style/motion'
-import { inclusiveDown, inclusiveUp } from '../../style/responsive'
+import { inclusiveUp } from '../../style/responsive'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import Logo from '../Logo/Logo'
@@ -31,10 +31,6 @@ function Footer({
 
             ${inclusiveUp('md')} {
               padding-top: 4.75rem;
-            }
-
-            ${inclusiveDown('xs')} {
-              text-align: center;
             }
           `}
         >
