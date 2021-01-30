@@ -11,6 +11,7 @@ import { WORK, WorkName } from '../../data/work'
 import MetaSocial from '../Meta/MetaSocial'
 import MoreWork from '../MoreWork/MoreWork'
 import ImageBase from '../ImageBase/ImageBase'
+import BackgroundTexture from '../BackgroundTexture/BackgroundTexture'
 
 type WorkTemplate = {
   name: WorkName
@@ -38,62 +39,76 @@ function WorkTemplate({
     <>
       <MetaSocial title={`Case study – ${title}`} description={description} />
       <article>
-        <header
-          css={`
-            padding-top: 14rem;
-
-            ${inclusiveUp('sm')} {
-              padding-top: 16rem;
-            }
-
-            ${inclusiveUp('md')} {
-              padding-top: 18rem;
-            }
-          `}
-        >
-          <LayoutGutter>
-            <LayoutLimiter size="large">
-              <div
-                css={`
-                  ${displayText.size.lg}/* max-width: 18em; */
-                `}
-              >
-                <h1
-                  css={`
-                    ${displayText.weight.semiBold}
-                    ${setCropAndLineHeight('display', 'tight')}
-                  
-                    color: ${foreground('extraHigh')};
-                    margin-bottom: 0.25em;
-                  `}
-                >
-                  {title}
-                </h1>
-                <h2
-                  css={`
-                    ${displayText.weight.regular}
-                    ${setCropAndLineHeight('display', 'tight')}
-
-                    color: ${foreground('low')};
-                  `}
-                >
-                  <RemoveWidow>{description}</RemoveWidow>
-                </h2>
-              </div>
-            </LayoutLimiter>
-          </LayoutGutter>
+        <header>
           <div
             css={`
-              margin-top: 5rem;
+              position: relative;
+
+              padding-top: 14rem;
+              padding-bottom: 5rem;
+
+              ${inclusiveUp('sm')} {
+                padding-top: 16rem;
+                padding-bottom: 6rem;
+              }
+
+              ${inclusiveUp('md')} {
+                padding-top: 18rem;
+                padding-bottom: 9rem;
+              }
+            `}
+          >
+            <LayoutGutter>
+              <LayoutLimiter size="large">
+                <div
+                  css={`
+                    ${displayText.size.lg}/* max-width: 18em; */
+                  `}
+                >
+                  <h1
+                    css={`
+                      ${displayText.weight.semiBold}
+                      ${setCropAndLineHeight('display', 'tight')}
+                  
+                    color: ${foreground('extraHigh')};
+                      margin-bottom: 0.25em;
+                    `}
+                  >
+                    {title}
+                  </h1>
+                  <h2
+                    css={`
+                      ${displayText.weight.regular}
+                      ${setCropAndLineHeight('display', 'tight')}
+
+                    color: ${foreground('low')};
+                    `}
+                  >
+                    <RemoveWidow>{description}</RemoveWidow>
+                  </h2>
+                </div>
+              </LayoutLimiter>
+            </LayoutGutter>
+            <BackgroundTexture
+              css={`
+                position: absolute;
+
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+              `}
+            />
+          </div>
+          <div
+            css={`
               margin-bottom: 5rem;
 
               ${inclusiveUp('sm')} {
-                margin-top: 6rem;
                 margin-bottom: 6rem;
               }
 
               ${inclusiveUp('md')} {
-                margin-top: 9rem;
                 margin-bottom: 9rem;
               }
             `}
