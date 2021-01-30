@@ -64,11 +64,11 @@ function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
       >
         <span
           css={`
-            ${baseText.weight.regular}
-            ${baseText.size.sm}
+            ${baseText.weight.semiBold}
+            ${baseText.size.xs}
             ${setCropAndLineHeight('base', 'flat')}
 
-            color: ${foreground('medium')};
+            color: ${foreground('extraLow')};
           `}
         >
           {year}

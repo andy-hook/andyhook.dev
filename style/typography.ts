@@ -60,7 +60,7 @@ const baseType: TypeSettings = {
   letterSpace: {
     regular: '0.01em',
     medium: '0.02em',
-    semiBold: '0.004em',
+    semiBold: '-0.02em',
     bold: '0.004em',
     uppercase: '0.06em',
   },
@@ -74,9 +74,9 @@ const baseType: TypeSettings = {
 const displayType: TypeSettings = {
   family: `'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif`,
   letterSpace: {
-    regular: '0.01em',
-    medium: '0.02em',
-    semiBold: '-0.005em',
+    regular: '-0.007em',
+    medium: '-0.005em',
+    semiBold: '-0.003em',
     bold: '-0.005em',
     uppercase: '0.06em',
   },
@@ -116,6 +116,11 @@ export const setPlaceholderCrop = (
   ------------------------------------------------- */
 export const displayText = {
   weight: {
+    regular: css`
+      font-family: ${displayType.family};
+      font-weight: ${displayType.weight.regular};
+      letter-spacing: ${displayType.letterSpace.regular};
+    `,
     medium: css`
       font-family: ${displayType.family};
       font-weight: ${displayType.weight.medium};
@@ -126,7 +131,6 @@ export const displayText = {
       font-weight: ${displayType.weight.semiBold};
       letter-spacing: ${displayType.letterSpace.semiBold};
     `,
-
     bold: css`
       font-family: ${displayType.family};
       font-weight: ${displayType.weight.bold};

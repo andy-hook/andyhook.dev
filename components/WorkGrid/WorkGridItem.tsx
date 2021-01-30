@@ -58,10 +58,9 @@ function WorkGridItem({
           css={`
             ${displayText.weight.semiBold}
             ${displayText.size.sm}
-          ${setCropAndLineHeight('display', 'tight')}
+            ${setCropAndLineHeight('display', 'tight')}
 
-          color: ${foreground('extraHigh')};
-
+            color: ${foreground('extraHigh')};
             margin-top: 1.25em;
             margin-bottom: 0.4em;
           `}
@@ -72,9 +71,9 @@ function WorkGridItem({
           css={`
             ${baseText.weight.regular}
             ${baseText.size.md}
-          ${setCropAndLineHeight('base', 'tight')}
+            ${setCropAndLineHeight('base', 'tight')}
 
-          color: ${foreground('medium')};
+            color: ${foreground('low')};
           `}
         >
           {description}

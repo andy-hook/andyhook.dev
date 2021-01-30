@@ -71,7 +71,7 @@ function WorkTemplate({
                 </h1>
                 <h2
                   css={`
-                    ${displayText.weight.medium}
+                    ${displayText.weight.regular}
                     ${setCropAndLineHeight('display', 'tight')}
 
                     color: ${foreground('medium')};

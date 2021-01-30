@@ -82,9 +82,9 @@ export const lightTheme: Theme = {
 export const darkTheme: Theme = {
   name: 'dark',
   foreground: {
-    extraLow: [240, 0.13, 0.3],
-    low: [230, 0.11, 0.35],
-    medium: [230, 0.1, 0.5],
+    extraLow: [240, 0.11, 0.375],
+    low: [230, 0.11, 0.45],
+    medium: [230, 0.1, 0.575],
     high: [230, 0.08, 0.8],
     extraHigh: [0, 0, 1],
   },
