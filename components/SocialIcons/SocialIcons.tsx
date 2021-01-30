@@ -71,7 +71,7 @@ function SocialIcon({
   const hoverIcon = useMemo(
     () => ({
       rest: {
-        color: foreground('low'),
+        color: foreground('extraLow'),
       },
       hover: {
         color: foreground('extraHigh'),
@@ -107,7 +107,6 @@ function SocialIcon({
         href={href}
         css={`
           display: block;
-          color: ${foreground('extraHigh')};
           font-size: 1em;
           padding: ${iconPadding};
         `}

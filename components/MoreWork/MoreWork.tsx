@@ -29,7 +29,7 @@ function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
             level="h3"
             size="sm"
             css={`
-              margin-bottom: 1.75em;
+              margin-bottom: 1.25em;
             `}
           >
             More Work
@@ -78,12 +78,12 @@ function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
                       level="h4"
                       css={`
                         margin-top: 1.5em;
-                        margin-bottom: 0.4em;
+                        margin-bottom: 0.45em;
                       `}
                     >
                       {title}
                     </TextHeading>
-                    <TextParagraph size="sm" color="medium">
+                    <TextParagraph size="md" color="low">
                       {description}
                     </TextParagraph>
                   </InteractionBase>

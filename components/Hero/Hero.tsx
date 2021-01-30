@@ -5,7 +5,7 @@ import { useTheme } from '../../hooks/useTheme/useTheme'
 import meta from '../../data/meta'
 import { appearance } from '../../style/appearance'
 import { slideInMotion, spring } from '../../style/motion'
-import { inclusiveDown, inclusiveUp } from '../../style/responsive'
+import { inclusiveUp } from '../../style/responsive'
 import { displayText, setCropAndLineHeight } from '../../style/typography'
 import HireButton from '../HireButton/HireButton'
 import LayoutGutter from '../Layout/LayoutGutter'
@@ -32,26 +32,21 @@ function Hero(): JSX.Element {
           css={`
             display: flex;
             flex-direction: column;
-            min-height: 80vh;
           `}
         >
           <div
             css={`
               display: flex;
-              align-items: center;
+
               height: 100%;
               flex: 1;
 
-              padding-top: 6rem;
-              padding-bottom: 6rem;
+              padding-top: 14rem;
+              padding-bottom: 7rem;
 
               ${inclusiveUp('md')} {
-                padding-top: 12rem;
+                padding-top: 20rem;
                 padding-bottom: 12rem;
-              }
-
-              ${inclusiveDown('xs')} {
-                justify-content: center;
               }
             `}
           >
@@ -60,11 +55,6 @@ function Hero(): JSX.Element {
               initial="offset"
               animate="rest"
               custom={{ offset: 100, delay: 0.75 }}
-              css={`
-                ${inclusiveDown('xs')} {
-                  text-align: center;
-                }
-              `}
             >
               <h1
                 css={`
@@ -73,7 +63,7 @@ function Hero(): JSX.Element {
                   ${setCropAndLineHeight('display', 'regular')}
                   
                   max-width: 16em;
-                  padding-top: 1.75em;
+
                   margin-bottom: 1.25em;
                   text-shadow: ${appearance.textShadow.heavy};
                 `}
@@ -135,6 +125,12 @@ function Hero(): JSX.Element {
                         left: 0;
                         bottom: 0;
                         right: 0;
+
+                        background: linear-gradient(
+                          -20deg,
+                          ${foreground('extraLow', 0)} 40%,
+                          ${foreground('extraLow', 0.1)} 100%
+                        );
 
                         background-color: ${background('high')};
                         border-radius: ${appearance.radius.base};

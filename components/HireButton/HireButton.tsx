@@ -83,7 +83,7 @@ function Pip({ ...props }: React.HTMLAttributes<HTMLDivElement>): JSX.Element {
         background: linear-gradient(
           135deg,
           ${positive('light')} 0%,
-          ${positive('base')} 90%
+          ${positive('dark')} 100%
         );
         border-radius: ${appearance.radius.circle};
       `}
