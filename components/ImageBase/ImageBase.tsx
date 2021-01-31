@@ -12,6 +12,7 @@ type ImageBaseProps = {
   alt?: string
   scaleRender?: number
   scaleRenderFromBp?: [BreakpointName, number]
+  backgroundColor?: string
 }
 
 function ImageBase({
@@ -20,6 +21,7 @@ function ImageBase({
   height,
   alt,
   scaleRender = 100,
+  backgroundColor,
   scaleRenderFromBp,
 }: ImageBaseProps): JSX.Element {
   const { background } = useTheme()
@@ -57,7 +59,7 @@ function ImageBase({
   return (
     <div
       css={`
-        background-color: ${background('medium')};
+        background-color: ${backgroundColor || background('medium')};
       `}
     >
       <motion.div

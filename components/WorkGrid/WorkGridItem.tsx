@@ -17,6 +17,7 @@ type WorkGridItemProps = {
   width: number
   height: number
   href: string
+  backgroundColor: string
 }
 
 function WorkGridItem({
@@ -27,6 +28,7 @@ function WorkGridItem({
   width,
   height,
   href,
+  backgroundColor,
 }: WorkGridItemProps): JSX.Element {
   const { foreground } = useTheme()
 
@@ -51,6 +53,7 @@ function WorkGridItem({
             width={width}
             height={height}
             scaleRenderFromBp={['sm', 70]}
+            backgroundColor={backgroundColor}
           />
         </div>
 

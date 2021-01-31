@@ -125,6 +125,7 @@ function WorkTemplate({
               src={heroImage.src}
               width={heroImage.width}
               height={heroImage.height}
+              backgroundColor={heroImage.dominantColor}
             />
           </div>
         </header>

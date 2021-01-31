@@ -70,6 +70,7 @@ function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
                         src={thumbnailImageSmall.src}
                         width={thumbnailImageSmall.width}
                         height={thumbnailImageSmall.height}
+                        backgroundColor={thumbnailImageSmall.dominantColor}
                         scaleRenderFromBp={['sm', 50]}
                       />
                     </div>
