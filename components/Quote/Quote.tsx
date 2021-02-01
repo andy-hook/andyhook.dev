@@ -11,73 +11,18 @@ import { useBreakpoint } from 'styled-breakpoints/react-styled'
 import { inclusiveUp } from '../../style/responsive'
 import RemoveWidow from '../RemoveWidow/RemoveWidow'
 
-type AuthorName = 'brett' | 'mikey' | 'jo' | 'ze' | 'ben' | 'andrew' | 'yohan'
-
 export type QuoteProps = {
   text: string
-  author: AuthorName
-}
-
-type AuthorDetails = {
   avatar: string
-  name: string
-  title: string
-  company: string
-}
-
-const AUTHORS: Record<AuthorName, AuthorDetails> = {
-  brett: {
-    avatar: 'brett',
-    name: 'Brett Sun',
-    title: 'CTO',
-    company: 'Aragon One',
-  },
-  mikey: {
-    avatar: 'mikey',
-    name: 'Mikey Allan',
-    title: 'Head of Design',
-    company: 'Brandwatch',
-  },
-  jo: {
-    avatar: 'jo',
-    name: 'Jo Petty',
-    title: 'Digital Project Manager',
-    company: 'Brandwatch',
-  },
-  ze: {
-    avatar: 'ze',
-    name: 'Zé Meirinhos',
-    title: 'Javascript Developer',
-    company: 'Bright Interactive',
-  },
-  ben: {
-    avatar: 'ben',
-    name: 'Ben Browning',
-    title: 'UI/UX Developer',
-    company: 'Bright Interactive',
-  },
-  andrew: {
-    avatar: 'andrew',
-    name: 'Andrew Khan',
-    title: 'Lead Software Architect',
-    company: 'Opia',
-  },
-  yohan: {
-    avatar: 'yohan',
-    name: 'Yohan Fernando',
-    title: 'Senior Software Engineer',
-    company: 'Brandwatch',
-  },
+  subline: string
 }
 
 const RENDER_AVATAR_BP = 'sm'
 
-function Quote({ text, author, ...props }: QuoteProps): JSX.Element {
+function Quote({ text, avatar, subline, ...props }: QuoteProps): JSX.Element {
   const renderAvatar = useBreakpoint(inclusiveUp(RENDER_AVATAR_BP))
 
   const { background, foreground, shadow } = useTheme()
-
-  const { avatar, name, title, company } = AUTHORS[author]
 
   return (
     <figure
@@ -137,11 +82,7 @@ function Quote({ text, author, ...props }: QuoteProps): JSX.Element {
               border-radius: ${appearance.radius.circle};
             `}
           >
-            <ImageBase
-              width={300}
-              height={300}
-              src={`/avatars/${avatar}.jpg`}
-            />
+            <ImageBase width={300} height={300} src={avatar} />
           </div>
         </div>
       )}
@@ -198,7 +139,7 @@ function Quote({ text, author, ...props }: QuoteProps): JSX.Element {
             color: ${foreground('low')};
           `}
         >
-          – {name}, {title}, {company}
+          – {subline}
         </figcaption>
       </div>
     </figure>

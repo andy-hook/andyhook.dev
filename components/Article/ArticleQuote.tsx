@@ -1,14 +1,20 @@
 import React from 'react'
+import { AuthorName, AUTHORS } from '../../data/testimonials'
 import { baseText } from '../../style/typography'
-import Quote, { QuoteProps } from '../Quote/Quote'
+import Quote from '../Quote/Quote'
 
-type ArticleQuoteProps = QuoteProps
+type ArticleQuoteProps = {
+  author: AuthorName
+}
 
-function ArticleQuote({ text, author }: ArticleQuoteProps): JSX.Element {
+function ArticleQuote({ author }: ArticleQuoteProps): JSX.Element {
+  const { title, testimonial, name, avatar, company } = AUTHORS[author]
+
   return (
     <Quote
-      text={text}
-      author={author}
+      avatar={`/avatars/${avatar}.jpg`}
+      subline={`${name}, ${title}, ${company}`}
+      text={testimonial}
       css={`
         ${baseText.size.sm}
 
