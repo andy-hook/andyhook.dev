@@ -103,19 +103,20 @@ function Quote({ text, avatar, subline, ...props }: QuoteProps): JSX.Element {
 
               &::before,
               &::after {
+                ${displayText.weight.bold}
                 color: ${foreground('medium')};
               }
 
               &::before {
                 content: open-quote;
-                font-weight: bold;
+
                 margin-left: -0.6em;
                 margin-right: 0.2em;
               }
 
               &::after {
                 content: close-quote;
-                font-weight: bold;
+
                 margin-left: 0.2em;
               }
             `}
