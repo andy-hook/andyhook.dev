@@ -73,6 +73,7 @@ function Quote({ text, avatar, subline, ...props }: QuoteProps): JSX.Element {
         >
           <div
             css={`
+              position: relative;
               overflow: hidden;
               font-size: 0.75em;
               width: 1em;
@@ -80,6 +81,9 @@ function Quote({ text, avatar, subline, ...props }: QuoteProps): JSX.Element {
               background-color: ${background('high')};
               box-shadow: ${shadow('medium')};
               border-radius: ${appearance.radius.circle};
+
+              // We must set this index to correctly clip the overflow on Safari
+              z-index: ${appearance.index.floor};
             `}
           >
             <ImageBase width={300} height={300} src={avatar} />
