@@ -5,7 +5,7 @@ import { BreakpointName, breakpoints } from '../../style/responsive'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { spring } from '../../style/motion'
 import { css, keyframes } from 'styled-components'
-import { adjustHue, lighten, rgba } from 'polished'
+import { adjustHue, darken, lighten, rgba } from 'polished'
 
 const shimmerAnimation = css`
   background-size: 500% 500%;
@@ -13,13 +13,13 @@ const shimmerAnimation = css`
   animation: ${keyframes`
     0%{
       background-position: 100% 100%;
-      opacity: 1;
+      opacity: 0.75;
     }
     100%{
       background-position: 0% 0%;
       opacity: 0;
     }
-  `} 2s ease infinite;
+  `} 2s linear infinite;
 `
 
 type ImageBaseProps = {
@@ -74,16 +74,17 @@ function ImageBase({
   }, [])
 
   const { centerStop, edgeStop, backboardColor } = useMemo(() => {
-    const hueRotation = 60
+    const hueRotation = 70
     const backboardColor = backgroundColor || background('medium')
-    const centerStop = lighten(0.2, adjustHue(hueRotation, backboardColor))
-    const edgeStop = rgba(adjustHue(hueRotation, backboardColor), 0)
+    const centerStop = lighten(0.5, adjustHue(hueRotation, backboardColor))
+    const edgeStop = rgba(darken(1, adjustHue(hueRotation, backboardColor)), 0)
 
     return { centerStop, edgeStop, backboardColor }
   }, [background, backgroundColor])
 
   return (
     <div
+      onClick={() => setLoading(!loading)}
       css={`
         position: relative;
         background-color: ${backboardColor};
@@ -94,7 +95,9 @@ function ImageBase({
           <motion.div
             variants={visibleMotion}
             initial="visible"
+            animate="visible"
             exit="hidden"
+            transition={spring.softOut}
             css={`
               position: absolute;
 
