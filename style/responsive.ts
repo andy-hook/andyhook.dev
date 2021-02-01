@@ -34,21 +34,21 @@ export function uniformScale(
 export function inclusiveDown(
   maxWidth: Exclude<BreakpointName, 'xxl'>,
   orientation?: Orientation
-): () => (props: Props) => string {
-  return () => down(maxWidth, orientation)
+): (props: Props) => string {
+  return down(maxWidth, orientation)
 }
 
 export function inclusiveUp(
   minWidth: BreakpointName,
   orientation?: Orientation
-): () => (props: Props) => string {
-  return () => up(minWidth, orientation)
+): (props: Props) => string {
+  return up(minWidth, orientation)
 }
 
 export function inclusiveBetween(
   minWidth: BreakpointName,
   maxWidth: Exclude<BreakpointName, 'xxl'>,
   orientation?: Orientation
-): () => (props: Props) => string {
-  return () => between(minWidth, maxWidth, orientation)
+): (props: Props) => string {
+  return between(minWidth, maxWidth, orientation)
 }

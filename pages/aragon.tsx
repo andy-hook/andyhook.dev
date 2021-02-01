@@ -2,6 +2,7 @@ import React from 'react'
 import ArticleHeading from '../components/Article/ArticleHeading'
 import ArticleImage from '../components/Article/ArticleImage'
 import ArticleParagraph from '../components/Article/ArticleParagraph'
+import ArticleQuote from '../components/Article/ArticleQuote'
 import WorkTemplate from '../components/WorkTemplate/WorkTemplate'
 
 function Aragon(): JSX.Element {
@@ -14,6 +15,25 @@ function Aragon(): JSX.Element {
         intermediaries, creating global and bureaucracy-free organizations and
         communities
       </ArticleParagraph>
+      <ArticleParagraph>
+        Aliquam eget hendrerit elit. Donec malesuada, augue quis blandit
+        interdum, sapien tellus lacinia neque, ut varius diam nisl in erat.
+        Fusce augue turpis, sollicitudin in elit ac, tristique varius ante.
+        Nullam vel sapien id turpis iaculis fringilla eu a ipsum.
+      </ArticleParagraph>
+      <ArticleParagraph>
+        Aliquam eget hendrerit elit. Donec malesuada, augue quis blandit
+        interdum, sapien tellus lacinia neque, ut varius diam nisl in erat.
+        Fusce augue turpis, sollicitudin in elit ac, tristique varius ante.
+        Nullam vel sapien id turpis iaculis fringilla eu a ipsum.
+      </ArticleParagraph>
+      <ArticleQuote author="brett" />
+      <ArticleQuote author="mikey" />
+      <ArticleQuote author="jo" />
+      <ArticleQuote author="ze" />
+      <ArticleQuote author="ben" />
+      <ArticleQuote author="andrew" />
+      <ArticleQuote author="yohan" />
       <ArticleParagraph>
         Aliquam eget hendrerit elit. Donec malesuada, augue quis blandit
         interdum, sapien tellus lacinia neque, ut varius diam nisl in erat.
