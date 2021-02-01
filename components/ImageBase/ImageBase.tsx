@@ -94,7 +94,6 @@ function ImageBase({
           <motion.div
             variants={visibleMotion}
             initial="visible"
-            animate="hidden"
             exit="hidden"
             css={`
               position: absolute;
