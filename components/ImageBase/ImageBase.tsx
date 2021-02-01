@@ -1,9 +1,26 @@
 import React, { useCallback, useMemo, useState } from 'react'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { BreakpointName, breakpoints } from '../../style/responsive'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { spring } from '../../style/motion'
+import { css, keyframes } from 'styled-components'
+import { adjustHue, darken, lighten, rgba } from 'polished'
+
+const shimmerAnimation = css`
+  background-size: 500% 500%;
+
+  animation: ${keyframes`
+    0%{
+      background-position: 100% 100%;
+      opacity: 0.75;
+    }
+    100%{
+      background-position: 0% 0%;
+      opacity: 0;
+    }
+  `} 2s linear infinite;
+`
 
 type ImageBaseProps = {
   src: string
@@ -56,12 +73,61 @@ function ImageBase({
     e.target.src.indexOf('data:image/gif;base64') < 0 && setLoading(false)
   }, [])
 
+  const { centerStop, edgeStop, backboardColor } = useMemo(() => {
+    const hueRotation = 70
+    const backboardColor = backgroundColor || background('medium')
+    const centerStop = lighten(0.3, adjustHue(hueRotation, backboardColor))
+    const edgeStop = rgba(darken(1, adjustHue(hueRotation, backboardColor)), 0)
+
+    return { centerStop, edgeStop, backboardColor }
+  }, [background, backgroundColor])
+
   return (
     <div
+      onClick={() => setLoading(!loading)}
       css={`
-        background-color: ${backgroundColor || background('medium')};
+        position: relative;
+        background-color: ${backboardColor};
       `}
     >
+      <AnimatePresence>
+        {loading && (
+          <motion.div
+            variants={visibleMotion}
+            initial="visible"
+            animate="visible"
+            exit="hidden"
+            transition={spring.softOut}
+            css={`
+              position: absolute;
+
+              top: 0;
+              left: 0;
+              bottom: 0;
+              right: 0;
+            `}
+          >
+            <div
+              css={`
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+
+                background: linear-gradient(
+                  143deg,
+                  ${edgeStop} 20%,
+                  ${centerStop},
+                  ${edgeStop} 80%
+                );
+
+                ${shimmerAnimation}
+              `}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
       <motion.div
         initial="hidden"
         animate={loading ? 'hidden' : 'visible'}

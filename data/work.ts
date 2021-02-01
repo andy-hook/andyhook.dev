@@ -49,19 +49,19 @@ export const WORK: Record<WorkName, WorkDetails> = {
       src: '/images/aragon-hero.png',
       width: 3136,
       height: 1435,
-      dominantColor: '#00C1F0',
+      dominantColor: '#1093b4',
     },
     thumbnailImage: {
       src: '/images/aragon-thumb.png',
       width: 1986,
       height: 1451,
-      dominantColor: '#00C1F0',
+      dominantColor: '#1093b4',
     },
     thumbnailImageSmall: {
       src: '/images/aragon-thumb-small.png',
       width: 1985,
       height: 1304,
-      dominantColor: '#00C1F0',
+      dominantColor: '#1093b4',
     },
   },
   bright: {
