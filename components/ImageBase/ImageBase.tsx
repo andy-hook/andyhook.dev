@@ -76,7 +76,7 @@ function ImageBase({
   const { centerStop, edgeStop, backboardColor } = useMemo(() => {
     const hueRotation = 70
     const backboardColor = backgroundColor || background('medium')
-    const centerStop = lighten(0.5, adjustHue(hueRotation, backboardColor))
+    const centerStop = lighten(0.3, adjustHue(hueRotation, backboardColor))
     const edgeStop = rgba(darken(1, adjustHue(hueRotation, backboardColor)), 0)
 
     return { centerStop, edgeStop, backboardColor }
