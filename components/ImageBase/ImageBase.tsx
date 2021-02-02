@@ -84,7 +84,6 @@ function ImageBase({
 
   return (
     <div
-      onClick={() => setLoading(!loading)}
       css={`
         position: relative;
         background-color: ${backboardColor};
