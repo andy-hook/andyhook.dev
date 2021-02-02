@@ -2,7 +2,7 @@ import React from 'react'
 import { css, keyframes } from 'styled-components'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 
-const shimmerAnimation = css`
+const textShimmerAnimation = css`
   background-size: 500% 500%;
 
   animation: ${keyframes`
@@ -36,7 +36,7 @@ function GradientText({ children, ...props }: GradientTextProps): JSX.Element {
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
 
-        ${shimmerAnimation}
+        ${textShimmerAnimation}
       `}
       {...props}
     >
