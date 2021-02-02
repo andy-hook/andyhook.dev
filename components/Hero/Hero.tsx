@@ -163,8 +163,10 @@ function Hero(): JSX.Element {
         />
         <ImageBase
           src="/images/home-bg.jpg"
+          backgroundColor={background('low')}
           width={6059}
           height={5941}
+          quality={60}
           css={`
             opacity: 0.04;
             z-index: ${appearance.index.floor};
