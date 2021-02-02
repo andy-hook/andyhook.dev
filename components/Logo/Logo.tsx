@@ -9,14 +9,18 @@ function Logo(): JSX.Element {
   const { foreground } = useTheme()
 
   return (
-    <>
+    <div
+      css={`
+        display: inline-flex;
+      `}
+    >
       <motion.h2
         variants={{
           rest: {
-            color: foreground('extraLow'),
+            color: foreground('medium'),
           },
           hover: {
-            color: foreground('high'),
+            color: foreground('extraHigh'),
           },
         }}
         initial="rest"
@@ -33,13 +37,12 @@ function Logo(): JSX.Element {
           href="/"
           css={`
             padding: 0.75em;
-            display: inline-flex;
           `}
         >
           Andy Hook
         </InteractionBase>
       </motion.h2>
-    </>
+    </div>
   )
 }
 

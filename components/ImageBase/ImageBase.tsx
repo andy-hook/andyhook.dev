@@ -30,6 +30,7 @@ type ImageBaseProps = {
   scaleRender?: number
   scaleRenderFromBp?: [BreakpointName, number]
   backgroundColor?: string
+  quality?: number
 }
 
 function ImageBase({
@@ -38,8 +39,10 @@ function ImageBase({
   height,
   alt,
   scaleRender = 100,
+  quality = 100,
   backgroundColor,
   scaleRenderFromBp,
+  ...props
 }: ImageBaseProps): JSX.Element {
   const { background } = useTheme()
   const [loading, setLoading] = useState(true)
@@ -88,6 +91,7 @@ function ImageBase({
         position: relative;
         background-color: ${backboardColor};
       `}
+      {...props}
     >
       <AnimatePresence>
         {loading && (
@@ -135,7 +139,7 @@ function ImageBase({
       >
         <Image
           loading="lazy"
-          quality={100}
+          quality={quality}
           onLoad={handleOnLoad}
           src={src}
           sizes={sizesMediaString}

@@ -35,12 +35,12 @@ const typeScale: Record<number, string> = {
   8: rem('36px'),
   9: rem('48px'),
   10: rem('54px'),
-  11: rem('64px'),
+  11: rem('66px'),
 }
 
 const lineHeight = {
   flat: 1,
-  tight: 1.2,
+  tight: 1.225,
   regular: 1.3,
   longform: 1.6,
 }

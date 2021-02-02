@@ -162,7 +162,7 @@ function WorkTemplate({
                     css={`
                       ${inclusiveUp('sm')} {
                         position: sticky;
-                        top: 4rem;
+                        top: 6rem;
                       }
                     `}
                   >

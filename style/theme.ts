@@ -25,7 +25,7 @@ export type Theme = {
 const common: ThemeCommon = {
   accent: {
     base: [266, 0.92, 0.46],
-    light: [285, 1, 0.66],
+    light: [285, 1, 0.725],
     dark: [266, 0.72, 0.2],
   },
   positive: {
@@ -82,7 +82,7 @@ export const lightTheme: Theme = {
 export const darkTheme: Theme = {
   name: 'dark',
   foreground: {
-    extraLow: [240, 0.11, 0.375],
+    extraLow: [240, 0.11, 0.3],
     low: [230, 0.11, 0.45],
     medium: [230, 0.1, 0.575],
     high: [230, 0.08, 0.8],

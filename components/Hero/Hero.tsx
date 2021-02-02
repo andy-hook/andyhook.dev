@@ -3,17 +3,17 @@ import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import meta from '../../data/meta'
 import { appearance } from '../../style/appearance'
-import { slideInMotion, spring } from '../../style/motion'
+import { slideInMotion } from '../../style/motion'
 import { inclusiveUp } from '../../style/responsive'
 import { displayText, setCropAndLineHeight } from '../../style/typography'
 import HireButton from '../HireButton/HireButton'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import RemoveWidow from '../RemoveWidow/RemoveWidow'
-import BackgroundTexture from '../BackgroundTexture/BackgroundTexture'
+import ImageBase from '../ImageBase/ImageBase'
 
 function Hero(): JSX.Element {
-  const { background, foreground } = useTheme()
+  const { accent, foreground, background } = useTheme()
 
   return (
     <div
@@ -37,6 +37,7 @@ function Hero(): JSX.Element {
           <div
             css={`
               display: flex;
+              justify-content: center;
 
               height: 100%;
               flex: 1;
@@ -46,7 +47,7 @@ function Hero(): JSX.Element {
 
               ${inclusiveUp('md')} {
                 padding-top: 20rem;
-                padding-bottom: 12rem;
+                padding-bottom: 14rem;
               }
             `}
           >
@@ -55,12 +56,15 @@ function Hero(): JSX.Element {
               initial="offset"
               animate="rest"
               custom={{ offset: 100, delay: 0.75 }}
+              css={`
+                text-align: center;
+              `}
             >
               <h1
                 css={`
                   ${displayText.weight.semiBold}
                   ${displayText.size.lg}
-                  ${setCropAndLineHeight('display', 'regular')}
+                  ${setCropAndLineHeight('display', 'tight')}
                   
                   max-width: 16em;
 
@@ -73,68 +77,21 @@ function Hero(): JSX.Element {
                     z-index: ${appearance.index.floor};
                   `}
                 >
-                  <motion.span
-                    variants={{
-                      offset: {
-                        color: foreground('high'),
-                      },
-                      rest: {
-                        color: foreground('extraHigh'),
-                      },
-                    }}
-                    initial="offset"
-                    animate="rest"
-                    transition={{ delay: 1.15, ...spring.softOut }}
+                  <span
                     css={`
-                      position: relative;
-                      z-index: ${appearance.index.low};
+                      ${displayText.weight.bold}
+                      background: linear-gradient(
+                      160deg,
+                      ${accent('light')} 0%,
+                      ${accent('base')} 90%
+                    );
+
+                      background-clip: text;
+                      -webkit-background-clip: text;
+                      -webkit-text-fill-color: transparent;
                     `}
                   >
                     Senior UI Engineer
-                  </motion.span>
-                  <span
-                    css={`
-                      position: absolute;
-                      top: 0;
-                      left: -0.35em;
-                      bottom: -0.1em;
-                      right: -0.4em;
-
-                      z-index: ${appearance.index.floor};
-
-                      border-radius: ${appearance.radius.base};
-                      overflow: hidden;
-                    `}
-                  >
-                    <motion.span
-                      variants={{
-                        offset: {
-                          x: '-100%',
-                        },
-                        rest: {
-                          x: '0%',
-                        },
-                      }}
-                      initial="offset"
-                      animate="rest"
-                      transition={{ delay: 1, ...spring.softOut }}
-                      css={`
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        bottom: 0;
-                        right: 0;
-
-                        background: linear-gradient(
-                          -20deg,
-                          ${foreground('extraLow', 0)} 40%,
-                          ${foreground('extraLow', 0.1)} 100%
-                        );
-
-                        background-color: ${background('high')};
-                        border-radius: ${appearance.radius.base};
-                      `}
-                    />
                   </span>
                 </span>{' '}
                 <span
@@ -165,16 +122,57 @@ function Hero(): JSX.Element {
         </LayoutLimiter>
       </LayoutGutter>
 
-      <BackgroundTexture
+      <div
         css={`
           position: absolute;
-
           top: 0;
           left: 0;
-          bottom: 0;
-          right: 0;
+          width: 100%;
+          z-index: ${appearance.index.floor};
         `}
-      />
+      >
+        <div
+          css={`
+            position: absolute;
+            background: linear-gradient(
+              ${background('low', 0.6)} 0%,
+              ${background('low', 0)} 70%
+            );
+
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 20%;
+            z-index: ${appearance.index.low};
+          `}
+        />
+        <div
+          css={`
+            position: absolute;
+            background: linear-gradient(
+              ${background('low', 0)} 0%,
+              ${background('low', 1)} 100%
+            );
+
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            z-index: ${appearance.index.low};
+          `}
+        />
+        <ImageBase
+          src="/images/home-bg.jpg"
+          backgroundColor={background('low')}
+          width={6059}
+          height={5941}
+          quality={60}
+          css={`
+            opacity: 0.04;
+            z-index: ${appearance.index.floor};
+          `}
+        />
+      </div>
     </div>
   )
 }
