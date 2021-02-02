@@ -12,9 +12,10 @@ import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import LayoutRow from '../Layout/LayoutRow'
 import SocialIcons from '../SocialIcons/SocialIcons'
+import GradientText from '../GradientText/GradientText'
 
 function Footer(): JSX.Element {
-  const { foreground, accent } = useTheme()
+  const { foreground } = useTheme()
 
   return (
     <footer>
@@ -57,22 +58,13 @@ function Footer(): JSX.Element {
               >
                 Start by{' '}
                 <InteractionBase offset={0.1} href={`mailto:${meta.email}`}>
-                  <span
+                  <GradientText
                     css={`
                       ${displayText.weight.bold}
-                      background: linear-gradient(
-                        160deg,
-                        ${accent('light')} 0%,
-                        ${accent('base')} 75%
-                      );
-
-                      background-clip: text;
-                      -webkit-background-clip: text;
-                      -webkit-text-fill-color: transparent;
                     `}
                   >
                     saying hello
-                  </span>
+                  </GradientText>
                 </InteractionBase>
               </h4>
             </div>
