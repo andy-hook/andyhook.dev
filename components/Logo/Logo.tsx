@@ -13,10 +13,10 @@ function Logo(): JSX.Element {
       <motion.h2
         variants={{
           rest: {
-            color: foreground('extraLow'),
+            color: foreground('medium'),
           },
           hover: {
-            color: foreground('high'),
+            color: foreground('extraHigh'),
           },
         }}
         initial="rest"

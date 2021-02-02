@@ -46,7 +46,7 @@ function Hero(): JSX.Element {
               padding-bottom: 7rem;
 
               ${inclusiveUp('md')} {
-                padding-top: 19rem;
+                padding-top: 20rem;
                 padding-bottom: 14rem;
               }
             `}
@@ -135,8 +135,23 @@ function Hero(): JSX.Element {
           css={`
             position: absolute;
             background: linear-gradient(
+              ${background('low', 0.6)} 0%,
+              ${background('low', 0)} 70%
+            );
+
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 20%;
+            z-index: ${appearance.index.low};
+          `}
+        />
+        <div
+          css={`
+            position: absolute;
+            background: linear-gradient(
               ${background('low', 0)} 0%,
-              ${background('low', 0.95)} 100%
+              ${background('low', 1)} 100%
             );
 
             bottom: 0;
@@ -151,7 +166,7 @@ function Hero(): JSX.Element {
           width={6059}
           height={5941}
           css={`
-            opacity: 0.03;
+            opacity: 0.04;
             z-index: ${appearance.index.floor};
           `}
         />
