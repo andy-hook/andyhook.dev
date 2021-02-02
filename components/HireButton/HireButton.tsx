@@ -35,11 +35,12 @@ function HireButton({ href }: HireButtonProps): JSX.Element {
         box-shadow: ${shadow('medium')};
         border-radius: ${appearance.radius.pill};
 
-        border-width: ${appearance.borderWidth.regular};
+        border-width: ${appearance.borderWidth.thick};
         border-style: solid;
       `}
     >
       <InteractionBase
+        offset={0.5}
         radius="pill"
         href={href}
         css={`

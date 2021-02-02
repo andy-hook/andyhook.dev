@@ -11,9 +11,10 @@ import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import RemoveWidow from '../RemoveWidow/RemoveWidow'
 import ImageBase from '../ImageBase/ImageBase'
+import GradientText from '../GradientText/GradientText'
 
 function Hero(): JSX.Element {
-  const { accent, foreground, background } = useTheme()
+  const { foreground, background } = useTheme()
 
   return (
     <div
@@ -71,34 +72,21 @@ function Hero(): JSX.Element {
                   margin-bottom: 1.25em;
                 `}
               >
-                <span
+                <GradientText
                   css={`
                     position: relative;
                     z-index: ${appearance.index.floor};
+                    ${displayText.weight.bold}
                   `}
                 >
-                  <span
-                    css={`
-                      ${displayText.weight.bold}
-                      background: linear-gradient(
-                      160deg,
-                      ${accent('light')} 0%,
-                      ${accent('base')} 90%
-                    );
-
-                      background-clip: text;
-                      -webkit-background-clip: text;
-                      -webkit-text-fill-color: transparent;
-                    `}
-                  >
-                    Senior UI Engineer
-                  </span>
-                </span>{' '}
+                  Senior UI Engineer
+                </GradientText>{' '}
                 <span
                   css={`
                     position: relative;
                     z-index: ${appearance.index.low};
-                    color ${foreground('high')}
+                    color ${foreground('high')};
+                    text-shadow: ${appearance.textShadow.heavy};
                   `}
                 >
                   building{' '}
