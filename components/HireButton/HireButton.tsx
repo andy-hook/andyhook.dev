@@ -10,18 +10,18 @@ type HireButtonProps = {
 }
 
 function HireButton({ href }: HireButtonProps): JSX.Element {
-  const { foreground, background, shadow } = useTheme()
+  const { foreground, shadow } = useTheme()
 
   const hoverMotion = useMemo(
     () => ({
       rest: {
-        backgroundColor: background('medium'),
+        borderColor: foreground('extraLow'),
       },
       hover: {
-        backgroundColor: background('extraHigh'),
+        borderColor: foreground('low'),
       },
     }),
-    [background]
+    [foreground]
   )
 
   return (
@@ -34,6 +34,9 @@ function HireButton({ href }: HireButtonProps): JSX.Element {
         display: inline-flex;
         box-shadow: ${shadow('medium')};
         border-radius: ${appearance.radius.pill};
+
+        border-width: ${appearance.borderWidth.regular};
+        border-style: solid;
       `}
     >
       <InteractionBase
@@ -73,7 +76,7 @@ function HireButton({ href }: HireButtonProps): JSX.Element {
 }
 
 function Pip({ ...props }: React.HTMLAttributes<HTMLDivElement>): JSX.Element {
-  const { positive } = useTheme()
+  const { accent } = useTheme()
 
   return (
     <div
@@ -82,8 +85,8 @@ function Pip({ ...props }: React.HTMLAttributes<HTMLDivElement>): JSX.Element {
         height: 1em;
         background: linear-gradient(
           135deg,
-          ${positive('light')} 0%,
-          ${positive('dark')} 100%
+          ${accent('light')} 0%,
+          ${accent('base')} 100%
         );
         border-radius: ${appearance.radius.circle};
       `}

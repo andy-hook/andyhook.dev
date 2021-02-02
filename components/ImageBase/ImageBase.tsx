@@ -40,6 +40,7 @@ function ImageBase({
   scaleRender = 100,
   backgroundColor,
   scaleRenderFromBp,
+  ...props
 }: ImageBaseProps): JSX.Element {
   const { background } = useTheme()
   const [loading, setLoading] = useState(true)
@@ -88,6 +89,7 @@ function ImageBase({
         position: relative;
         background-color: ${backboardColor};
       `}
+      {...props}
     >
       <AnimatePresence>
         {loading && (
