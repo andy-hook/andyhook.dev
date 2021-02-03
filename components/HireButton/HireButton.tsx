@@ -10,7 +10,7 @@ type HireButtonProps = {
 }
 
 function HireButton({ href }: HireButtonProps): JSX.Element {
-  const { foreground, shadow } = useTheme()
+  const { foreground, shadow, background } = useTheme()
 
   const hoverMotion = useMemo(
     () => ({
@@ -37,6 +37,7 @@ function HireButton({ href }: HireButtonProps): JSX.Element {
 
         border-width: ${appearance.borderWidth.thick};
         border-style: solid;
+        background-color: ${background('low', 0.5)};
       `}
     >
       <InteractionBase
