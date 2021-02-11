@@ -59,7 +59,6 @@ function Home(): JSX.Element {
 
           <ImageBase
             src="/images/home-bg.jpg"
-            backgroundColor={background('low')}
             width={2606}
             height={3892}
             quality={60}
