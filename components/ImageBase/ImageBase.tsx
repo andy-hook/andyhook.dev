@@ -5,7 +5,7 @@ import { BreakpointName, breakpoints } from '../../style/responsive'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { spring } from '../../style/motion'
 import { css, keyframes } from 'styled-components'
-import { adjustHue, darken, lighten, rgba } from 'polished'
+import { lighten, rgba } from 'polished'
 
 const shimmerAnimation = css`
   background-size: 500% 500%;
@@ -29,7 +29,6 @@ type ImageBaseProps = {
   alt?: string
   scaleRender?: number
   scaleRenderFromBp?: [BreakpointName, number]
-  backgroundColor?: string
   quality?: number
 }
 
@@ -40,7 +39,6 @@ function ImageBase({
   alt,
   scaleRender = 100,
   quality = 100,
-  backgroundColor,
   scaleRenderFromBp,
   ...props
 }: ImageBaseProps): JSX.Element {
@@ -77,13 +75,12 @@ function ImageBase({
   }, [])
 
   const { centerStop, edgeStop, backboardColor } = useMemo(() => {
-    const hueRotation = 70
-    const backboardColor = backgroundColor || background('medium')
-    const centerStop = lighten(0.3, adjustHue(hueRotation, backboardColor))
-    const edgeStop = rgba(darken(1, adjustHue(hueRotation, backboardColor)), 0)
+    const backboardColor = background('medium')
+    const centerStop = lighten(0.2, backboardColor)
+    const edgeStop = rgba(centerStop, 0)
 
     return { centerStop, edgeStop, backboardColor }
-  }, [background, backgroundColor])
+  }, [background])
 
   return (
     <div

@@ -52,7 +52,6 @@ function WorkGrid(): JSX.Element {
                     description={description}
                     width={thumbnailImage.width}
                     height={thumbnailImage.height}
-                    backgroundColor={thumbnailImage.dominantColor}
                   />
                 </div>
               )
