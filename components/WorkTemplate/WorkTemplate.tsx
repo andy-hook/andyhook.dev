@@ -141,7 +141,7 @@ function WorkTemplate({
                   width: 100%;
 
                   ${inclusiveUp('sm')} {
-                    grid-template-columns: 1fr 25%;
+                    grid-template-columns: 1fr 20%;
                     grid-gap: 4rem;
                   }
 

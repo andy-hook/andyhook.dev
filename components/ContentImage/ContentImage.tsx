@@ -6,12 +6,14 @@ type ContentImageProps = {
   src: string
   width: number
   height: number
+  backgroundColor?: string
 }
 
 function ContentImage({
   src,
   width,
   height,
+  backgroundColor,
   ...props
 }: ContentImageProps): JSX.Element {
   return (
@@ -22,7 +24,12 @@ function ContentImage({
       `}
       {...props}
     >
-      <ImageBase src={src} width={width} height={height} />
+      <ImageBase
+        src={src}
+        width={width}
+        height={height}
+        backgroundColor={backgroundColor}
+      />
     </div>
   )
 }
