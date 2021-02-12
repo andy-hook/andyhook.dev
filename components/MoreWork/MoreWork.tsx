@@ -1,14 +1,11 @@
 import React, { useMemo } from 'react'
 import { WORK, WorkName, WORK_ORDER } from '../../data/work'
 import { inclusiveUp } from '../../style/responsive'
-import InteractionBase from '../InteractionBase/InteractionBase'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import LayoutRow from '../Layout/LayoutRow'
 import TextHeading from '../Text/TextHeading'
-import TextParagraph from '../Text/TextParagraph'
-import { appearance } from '../../style/appearance'
-import ImageBase from '../ImageBase/ImageBase'
+import WorkCard from '../WorkCard/WorkCard'
 
 type MoreWorkProps = {
   currentWorkName: WorkName
@@ -51,43 +48,21 @@ function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
             `}
           >
             {items.map(
-              ({ title, description, route, thumbnailImageSmall }, i) => (
-                <div key={i}>
-                  <InteractionBase
-                    href={route}
-                    offset={1}
-                    css={`
-                      display: block;
-                    `}
-                  >
-                    <div
-                      css={`
-                        overflow: hidden;
-                        border-radius: ${appearance.radius.base};
-                      `}
-                    >
-                      <ImageBase
-                        src={thumbnailImageSmall.src}
-                        width={thumbnailImageSmall.width}
-                        height={thumbnailImageSmall.height}
-                        scaleRenderFromBp={['sm', 50]}
-                      />
-                    </div>
-                    <TextHeading
-                      size="xs"
-                      level="h4"
-                      css={`
-                        margin-top: 1.5em;
-                        margin-bottom: 0.45em;
-                      `}
-                    >
-                      {title}
-                    </TextHeading>
-                    <TextParagraph size="md" color="low">
-                      {description}
-                    </TextParagraph>
-                  </InteractionBase>
-                </div>
+              (
+                { title, description, route, thumbnailImageSmall, disabled },
+                i
+              ) => (
+                <WorkCard
+                  key={i}
+                  description={description}
+                  href={route}
+                  src={thumbnailImageSmall.src}
+                  width={thumbnailImageSmall.width}
+                  title={title}
+                  height={thumbnailImageSmall.height}
+                  disabled={disabled}
+                  size="small"
+                />
               )
             )}
           </div>

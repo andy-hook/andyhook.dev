@@ -4,7 +4,7 @@ import { inclusiveDown, inclusiveUp } from '../../style/responsive'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import LayoutRow from '../Layout/LayoutRow'
-import WorkGridItem from './WorkGridItem'
+import WorkCard from '../WorkCard/WorkCard'
 
 function WorkGrid(): JSX.Element {
   return (
@@ -31,7 +31,13 @@ function WorkGrid(): JSX.Element {
             `}
           >
             {WORK_ORDER.map((key) => {
-              const { thumbnailImage, route, title, description } = WORK[key]
+              const {
+                thumbnailImage,
+                route,
+                title,
+                description,
+                disabled,
+              } = WORK[key]
 
               return (
                 <div
@@ -45,8 +51,10 @@ function WorkGrid(): JSX.Element {
                     }
                   `}
                 >
-                  <WorkGridItem
+                  <WorkCard
+                    size="large"
                     src={thumbnailImage.src}
+                    disabled={disabled}
                     href={route}
                     title={title}
                     description={description}

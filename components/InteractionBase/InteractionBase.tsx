@@ -5,7 +5,7 @@ import { useFocusVisible } from '../../hooks/useFocusVisible/useFocusVisible'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { appearance } from '../../style/appearance'
 import { useRouter } from 'next/router'
-import { isExternalURL } from '../../utils/general'
+import { isExternalURL, noop } from '../../utils/general'
 import { spring } from '../../style/motion'
 
 type InteractionBaseProps = {
@@ -105,7 +105,7 @@ function InteractionBase({
   return (
     <StyledInteractiveElement
       as={elementTag}
-      onClick={handleOnClick}
+      onClick={!disabled ? handleOnClick : noop}
       onFocus={onFocus}
       onBlur={onBlur}
       {...elementProps}
