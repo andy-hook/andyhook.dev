@@ -25,15 +25,18 @@ const CARD_PROPERTIES: Record<
   {
     titleSize: TextSize
     lockIconSize: TextSize
+    imageRenderScale: number
   }
 > = {
   small: {
     titleSize: 'xs' as const,
     lockIconSize: 'sm' as const,
+    imageRenderScale: 50,
   },
   large: {
     titleSize: 'sm' as const,
     lockIconSize: 'lg' as const,
+    imageRenderScale: 70,
   },
 }
 
@@ -50,7 +53,7 @@ function WorkCard({
 }: WorkCardProps): JSX.Element {
   const { foreground, background } = useTheme()
 
-  const { titleSize, lockIconSize } = CARD_PROPERTIES[size]
+  const { titleSize, lockIconSize, imageRenderScale } = CARD_PROPERTIES[size]
 
   return (
     <InteractionBase
@@ -117,7 +120,7 @@ function WorkCard({
           alt={alt}
           width={width}
           height={height}
-          scaleRenderFromBp={['sm', 70]}
+          scaleRenderFromBp={['sm', imageRenderScale]}
         />
       </div>
       <div
