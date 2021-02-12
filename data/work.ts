@@ -18,6 +18,7 @@ type WorkDetails = {
   heroImage: ImageData
   thumbnailImage: ImageData
   thumbnailImageSmall: ImageData
+  disabled?: boolean
 }
 
 export const WORK_ORDER: WorkName[] = [
@@ -115,6 +116,7 @@ export const WORK: Record<WorkName, WorkDetails> = {
       width: 1985,
       height: 1304,
     },
+    disabled: true,
   },
   blocks: {
     route: '/blocks',
@@ -147,5 +149,6 @@ export const WORK: Record<WorkName, WorkDetails> = {
       width: 1985,
       height: 1304,
     },
+    disabled: true,
   },
 }
