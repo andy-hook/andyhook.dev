@@ -4,7 +4,7 @@ import { inclusiveDown, inclusiveUp } from '../../style/responsive'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import LayoutRow from '../Layout/LayoutRow'
-import WorkGridItem from './WorkGridItem'
+import WorkCard from '../WorkCard/WorkCard'
 
 function WorkGrid(): JSX.Element {
   return (
@@ -51,7 +51,7 @@ function WorkGrid(): JSX.Element {
                     }
                   `}
                 >
-                  <WorkGridItem
+                  <WorkCard
                     src={thumbnailImage.src}
                     disabled={disabled}
                     href={route}
