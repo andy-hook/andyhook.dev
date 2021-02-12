@@ -1,14 +1,12 @@
 import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { appearance } from '../../style/appearance'
-import {
-  baseText,
-  displayText,
-  setCropAndLineHeight,
-} from '../../style/typography'
+import { baseText, TextSize } from '../../style/typography'
 import Icon from '../Icon/Icon'
 import ImageBase from '../ImageBase/ImageBase'
 import InteractionBase from '../InteractionBase/InteractionBase'
+import TextHeading from '../Text/TextHeading'
+import TextParagraph from '../Text/TextParagraph'
 
 export type WorkCardProps = {
   src: string
@@ -19,6 +17,24 @@ export type WorkCardProps = {
   width: number
   height: number
   href: string
+  size: 'large' | 'small'
+}
+
+const CARD_PROPERTIES: Record<
+  WorkCardProps['size'],
+  {
+    titleSize: TextSize
+    lockIconSize: TextSize
+  }
+> = {
+  small: {
+    titleSize: 'xs' as const,
+    lockIconSize: 'sm' as const,
+  },
+  large: {
+    titleSize: 'sm' as const,
+    lockIconSize: 'lg' as const,
+  },
 }
 
 function WorkCard({
@@ -30,8 +46,11 @@ function WorkCard({
   width,
   height,
   href,
+  size = 'large',
 }: WorkCardProps): JSX.Element {
   const { foreground, background } = useTheme()
+
+  const { titleSize, lockIconSize } = CARD_PROPERTIES[size]
 
   return (
     <InteractionBase
@@ -57,10 +76,10 @@ function WorkCard({
                 align-items: center;
                 justify-content: center;
                 position: absolute;
-                top: 2.1em;
-                left: 2.1em;
+                top: 1.9em;
+                left: 1.9em;
 
-                ${baseText.size.lg}
+                ${baseText.size[lockIconSize]}
                 padding: 0.75em;
 
                 color: ${foreground('extraHigh')};
@@ -106,31 +125,25 @@ function WorkCard({
           opacity: ${disabled ? 0.4 : 1};
         `}
       >
-        <h3
+        <TextHeading
+          size={titleSize}
+          level="h3"
           css={`
-            ${displayText.weight.semiBold}
-            ${displayText.size.sm}
-              ${setCropAndLineHeight('display', 'tight')}
-
-              color: ${foreground('extraHigh')};
-
-            margin-top: 1.25em;
-            margin-bottom: 0.4em;
+            margin-top: 1.4em;
           `}
         >
           {title}
-        </h3>
-        <p
-          css={`
-            ${baseText.weight.regular}
-            ${baseText.size.md}
-              ${setCropAndLineHeight('base', 'tight')}
+        </TextHeading>
 
-              color: ${foreground('low')};
+        <TextParagraph
+          size="md"
+          color="low"
+          css={`
+            margin-top: 0.55em;
           `}
         >
           {description}
-        </p>
+        </TextParagraph>
       </div>
     </InteractionBase>
   )
