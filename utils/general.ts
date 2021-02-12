@@ -10,3 +10,6 @@ export function keys<O extends Record<string, unknown>>(
 export function isExternalURL(url: string): boolean {
   return url.startsWith('https://') || url.startsWith('mailto:')
 }
+
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+export function noop(): void {}
