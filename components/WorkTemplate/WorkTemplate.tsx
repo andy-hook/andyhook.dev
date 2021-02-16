@@ -10,8 +10,6 @@ import { WORK, WorkName } from '../../data/work'
 import MetaSocial from '../Meta/MetaSocial'
 import MoreWork from '../MoreWork/MoreWork'
 import ImageBase from '../ImageBase/ImageBase'
-import BackgroundTexture from '../BackgroundTexture/BackgroundTexture'
-import { appearance } from '../../style/appearance'
 
 type WorkTemplate = {
   name: WorkName
@@ -41,8 +39,6 @@ function WorkTemplate({
         <header>
           <div
             css={`
-              position: relative;
-
               padding-top: 14rem;
               padding-bottom: 5rem;
 
@@ -57,12 +53,7 @@ function WorkTemplate({
               }
             `}
           >
-            <LayoutGutter
-              css={`
-                position: relative;
-                z-index: ${appearance.index.low};
-              `}
-            >
+            <LayoutGutter>
               <LayoutLimiter size="large">
                 <div
                   css={`
@@ -93,18 +84,6 @@ function WorkTemplate({
                 </div>
               </LayoutLimiter>
             </LayoutGutter>
-            <BackgroundTexture
-              css={`
-                position: absolute;
-
-                top: 0;
-                left: 0;
-                bottom: 0;
-                right: 0;
-
-                z-index: ${appearance.index.floor};
-              `}
-            />
           </div>
 
           <ImageBase
