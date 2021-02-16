@@ -7,12 +7,6 @@ import WorkTemplate from '../components/WorkTemplate/WorkTemplate'
 function Bright(): JSX.Element {
   return (
     <WorkTemplate name="bright">
-      <ArticleParagraph impact>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-        tincidunt hendrerit ex, at elementum augue malesuada eu. Pellentesque
-        habitant morbi dtristique senectus et netus et malesuada fames ac turpis
-        egestas. Nam congue maximus erat vel tincidunt.
-      </ArticleParagraph>
       <ArticleParagraph>
         Aliquam eget hendrerit elit. Donec malesuada, augue quis blandit
         interdum, sapien tellus lacinia neque, ut varius diam nisl in erat.

@@ -3,7 +3,6 @@ import { useTheme } from '../../hooks/useTheme/useTheme'
 import { displayText, setCropAndLineHeight } from '../../style/typography'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
-import WorkDetailsList from './WorkDetailsList'
 import LayoutRow from '../Layout/LayoutRow'
 import { inclusiveUp } from '../../style/responsive'
 import RemoveWidow from '../RemoveWidow/RemoveWidow'
@@ -28,9 +27,8 @@ function WorkTemplate({
   const {
     title,
     description,
-    company,
+    intro,
     tenure,
-    location,
     role,
     technologies,
     heroImage,
@@ -108,84 +106,96 @@ function WorkTemplate({
               `}
             />
           </div>
-          <div
-            css={`
-              margin-bottom: 5rem;
 
-              ${inclusiveUp('sm')} {
-                margin-bottom: 6rem;
-              }
-
-              ${inclusiveUp('md')} {
-                margin-bottom: 9rem;
-              }
-            `}
-          >
-            <ImageBase
-              src={heroImage.src}
-              width={heroImage.width}
-              height={heroImage.height}
-            />
-          </div>
+          <ImageBase
+            src={heroImage.src}
+            width={heroImage.width}
+            height={heroImage.height}
+          />
         </header>
         <main>
           <LayoutGutter>
-            <LayoutRow trimTop>
+            <LayoutRow>
               <LayoutLimiter
                 size="large"
                 css={`
                   display: grid;
                   grid-template-columns: 1fr;
-                  grid-gap: 6rem;
+                  grid-gap: 4rem;
                   width: 100%;
 
                   ${inclusiveUp('sm')} {
-                    grid-template-columns: 1fr 20%;
+                    grid-template-columns: 25% 1fr;
                     grid-gap: 4rem;
-                  }
-
-                  ${inclusiveUp('md')} {
-                    grid-gap: 8rem;
                   }
                 `}
               >
                 <div
                   css={`
-                    flex: 1;
+                    ${inclusiveUp('sm')} {
+                      order: 2;
+                    }
                   `}
                 >
-                  {children}
-                </div>
-                <aside>
-                  <div
+                  <p
                     css={`
-                      ${inclusiveUp('sm')} {
-                        position: sticky;
-                        top: 6rem;
-                      }
+                      ${displayText.size.sm}
+                      ${displayText.weight.medium}
+                      ${setCropAndLineHeight('display', 'longform')}
+
+                      margin-bottom: 3em;
+
+                      color: ${foreground('high')};
                     `}
                   >
-                    <WorkDetailsList
-                      title="Company"
-                      items={[company]}
-                      css={`
-                        margin-bottom: 3.5rem;
-                      `}
-                    />
-                    <WorkDetailsList
-                      title="Role"
-                      items={[role, tenure, location]}
-                      css={`
-                        margin-bottom: 3.5rem;
-                      `}
-                    />
-                    <WorkDetailsList
-                      title="Technologies"
-                      items={technologies}
-                    />
+                    <RemoveWidow>{intro}</RemoveWidow>
+                  </p>
+                  <div
+                    css={`
+                      ${displayText.size.xs}
+                      ${displayText.weight.regular}
+                      ${setCropAndLineHeight('display', 'longform')}
+                        
+                      color: ${foreground('low')};
+                    `}
+                  >
+                    <div>{role}</div>
+                    <div>{tenure}</div>
                   </div>
-                </aside>
+                </div>
+
+                <ul
+                  css={`
+                    ${inclusiveUp('sm')} {
+                      order: 1;
+                    }
+                  `}
+                >
+                  {technologies.map((item, i) => (
+                    <li
+                      key={i}
+                      css={`
+                        ${displayText.size.xs}
+                        ${displayText.weight.regular}
+                        ${setCropAndLineHeight('display', 'flat')}
+                        
+                        color: ${foreground('medium')};
+
+                        &:not(:last-child) {
+                          margin-bottom: 1.1em;
+                        }
+                      `}
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </LayoutLimiter>
+            </LayoutRow>
+          </LayoutGutter>
+          <LayoutGutter>
+            <LayoutRow>
+              <LayoutLimiter size="large">{children}</LayoutLimiter>
             </LayoutRow>
           </LayoutGutter>
         </main>

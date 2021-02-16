@@ -15,6 +15,7 @@ type WorkDetails = {
   location: string
   tenure: string
   technologies: string[]
+  intro: string
   heroImage: ImageData
   thumbnailImage: ImageData
   thumbnailImageSmall: ImageData
@@ -45,6 +46,8 @@ export const WORK: Record<WorkName, WorkDetails> = {
       'Ethers',
       'Jest / Testing Library',
     ],
+    intro:
+      'Aragon is an open source software project that allows for the creation and management of decentralized organizations, the project empowers users to freely organize and collaborate without borders or intermediaries, creating global and bureaucracy-free organizations and communities.',
     heroImage: {
       src: '/images/aragon-hero.png',
       width: 3136,
@@ -76,6 +79,8 @@ export const WORK: Record<WorkName, WorkDetails> = {
       'Playground',
       'Karma / Jasmine',
     ],
+    intro:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In luctus leo vitae posuere varius. Donec massa neque, rutrum vestibulum pulvinar sed, laoreet sit amet ipsum. Integer in lorem sed orci tincidunt pulvinar nec fringilla orci. Nullam urna quam, tincidunt eu enim ut, condimentum vehicula tortor.',
     heroImage: {
       src: '/images/bright-hero.png',
       width: 3136,
@@ -101,6 +106,8 @@ export const WORK: Record<WorkName, WorkDetails> = {
     location: 'Brighton, UK',
     tenure: 'Apr 2016 – May 2018',
     technologies: ['JavaScript', 'HTML5', 'CSS3', 'PHP', 'GSAP'],
+    intro:
+      'Brandwatch is the world’s leading digital consumer intelligence company, allowing users to analyze and utilize conversations from across the web and social media. Enabling brands and companies to understand consumer insights, trends, influencers, and brand perception.',
     heroImage: {
       src: '/images/brandwatch-hero.png',
       width: 3136,
@@ -134,6 +141,8 @@ export const WORK: Record<WorkName, WorkDetails> = {
       'Styled Components',
       'Jest / Testing Library',
     ],
+    intro:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In luctus leo vitae posuere varius. Donec massa neque, rutrum vestibulum pulvinar sed, laoreet sit amet ipsum. Integer in lorem sed orci tincidunt pulvinar nec fringilla orci. Nullam urna quam, tincidunt eu enim ut, condimentum vehicula tortor.',
     heroImage: {
       src: '/images/blocks-hero.png',
       width: 3136,
