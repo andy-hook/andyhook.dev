@@ -8,13 +8,6 @@ import WorkTemplate from '../components/WorkTemplate/WorkTemplate'
 function Aragon(): JSX.Element {
   return (
     <WorkTemplate name="aragon">
-      <ArticleParagraph impact>
-        Aragon is an open source software project that allows for the creation
-        and management of decentralized organizations, the project empowers
-        users to freely organize and collaborate without borders or
-        intermediaries, creating global and bureaucracy-free organizations and
-        communities
-      </ArticleParagraph>
       <ArticleParagraph>
         Aliquam eget hendrerit elit. Donec malesuada, augue quis blandit
         interdum, sapien tellus lacinia neque, ut varius diam nisl in erat.

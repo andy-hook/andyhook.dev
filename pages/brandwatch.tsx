@@ -7,11 +7,6 @@ import WorkTemplate from '../components/WorkTemplate/WorkTemplate'
 function Brandwatch(): JSX.Element {
   return (
     <WorkTemplate name="brandwatch">
-      <ArticleParagraph impact>
-        Brandwatch is the world’s leading digital consumer intelligence company,
-        allowing users to analyze and utilize conversations from across the web
-        and social media.
-      </ArticleParagraph>
       <ArticleParagraph>
         Aliquam eget hendrerit elit. Donec malesuada, augue quis blandit
         interdum, sapien tellus lacinia neque, ut varius diam nisl in erat.
