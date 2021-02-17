@@ -2,7 +2,7 @@ import React from 'react'
 import ExpListItem from './ExpListItem'
 
 const EXPERIENCE_ENTRIES = [
-  ['2020', 'Senior UI Engineer', 'Aragon'],
+  ['2021', 'Senior UI Engineer', 'Aragon'],
   ['2018', 'UI Engineer', 'Bright Interactive'],
   ['2016', 'Senior Front-End Developer', 'Brandwatch'],
   ['2012', 'Front-End Developer', 'Jamieson Consultancy'],
