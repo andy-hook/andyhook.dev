@@ -6,7 +6,9 @@ import { ThemeProvider } from '../hooks/useTheme/useTheme'
 import MetaBrowser from '../components/Meta/MetaBrowser'
 import MetaIcons from '../components/Meta/MetaIcons'
 import { unregisterServiceWorker } from '../serviceWorker'
-import Layout from '../components/Layout/Layout'
+import { appearance } from '../style/appearance'
+import Footer from '../components/Footer/Footer'
+import Header from '../components/Header/Header'
 
 // Import fonts outside of styled-components to avoid flicker on state change
 import '../style/font.css'
@@ -26,9 +28,23 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
         <ThemeProvider>
           <GlobalStyle />
 
-          <Layout>
+          <Header
+            css={`
+              position: absolute;
+              top: 0;
+              left: 0;
+              z-index: ${appearance.index.highest};
+            `}
+          />
+          <main
+            css={`
+              position: relative;
+              z-index: ${appearance.index.floor};
+            `}
+          >
             <Component {...pageProps} />
-          </Layout>
+          </main>
+          <Footer />
         </ThemeProvider>
       </FocusVisibleProvider>
     </>
