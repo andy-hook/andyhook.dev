@@ -3,7 +3,7 @@ import { css, CSSProp } from 'styled-components'
 import { inclusiveUp } from './responsive'
 import { createPlaceholderCrop, createTextCrop } from './utils'
 
-export type TextSize = 'xs' | 'sm' | 'md' | 'lg'
+export type TextSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg'
 export type SupportedHeadingLevels = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 
 type StyleName = 'base' | 'display'
@@ -138,6 +138,9 @@ export const displayText = {
     `,
   },
   size: {
+    xxs: css`
+      font-size: ${typeScale[4]};
+    `,
     xs: css`
       font-size: ${typeScale[5]};
 
@@ -208,6 +211,9 @@ export const baseText = {
     `,
   },
   size: {
+    xxs: css`
+      font-size: ${typeScale[2]};
+    `,
     xs: css`
       font-size: ${typeScale[3]};
     `,

@@ -30,12 +30,12 @@ const CARD_PROPERTIES: Record<
 > = {
   small: {
     titleSize: 'xs' as const,
-    lockIconSize: 'sm' as const,
+    lockIconSize: 'xxs' as const,
     imageRenderScale: 50,
   },
   large: {
     titleSize: 'sm' as const,
-    lockIconSize: 'lg' as const,
+    lockIconSize: 'xs' as const,
     imageRenderScale: 70,
   },
 }
@@ -75,27 +75,40 @@ function WorkCard({
           <>
             <div
               css={`
+                ${baseText.size[lockIconSize]}
+
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 position: absolute;
-                top: 1.9em;
-                left: 1.9em;
+                top: 2.5em;
+                left: 2.5em;
 
-                ${baseText.size[lockIconSize]}
-                padding: 0.75em;
-
+                padding: 0.7em 1.4em;
                 color: ${foreground('extraHigh')};
 
                 border: ${appearance.borderWidth.thick} solid
                   ${foreground('extraHigh', 0.2)};
+                border-radius: ${appearance.radius.pill};
 
-                border-radius: ${appearance.radius.circle};
+                background-color: ${foreground('extraHigh', 0.025)};
 
                 z-index: ${appearance.index.medium};
               `}
             >
-              <Icon name="lock" />
+              <Icon
+                name="lock"
+                css={`
+                  margin-right: 0.5em;
+                `}
+              />
+              <span
+                css={`
+                  ${baseText.weight.regular}
+                `}
+              >
+                Coming Soon
+              </span>
             </div>
             <div
               css={`
