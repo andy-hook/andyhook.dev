@@ -96,11 +96,11 @@ export const darkTheme: Theme = {
     extraHigh: [230, 0.13, 0.12],
   },
   shadow: {
-    low: `0px 1px 2px ${hsla(240, 0.13, 0.06, 0.125)}, 0px 2px 20px ${hsla(
+    low: `0px 1px 2px ${hsla(240, 0.13, 0.06, 0.2)}, 0px 4px 20px ${hsla(
       240,
       0.13,
       0.06,
-      0.05
+      0.125
     )}`,
     medium: `0px 2px 4px ${hsla(240, 0.13, 0.06, 0.4)}, 0px 10px 20px ${hsla(
       240,

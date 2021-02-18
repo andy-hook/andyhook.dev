@@ -1,31 +1,15 @@
 import React from 'react'
-import { baseText } from '../../style/typography'
-import ContentImage from '../ContentImage/ContentImage'
+import ImageBase, { ImageProperties } from '../ImageBase/ImageBase'
 
-type ArticleImageProps = {
-  src?: string
-  width?: number
-  height?: number
-}
+type ArticleImageProps = Partial<ImageProperties>
 
 function ArticleImage({
   src = '/test.png',
   width = 500,
   height = 250,
+  alt,
 }: ArticleImageProps): JSX.Element {
-  return (
-    <ContentImage
-      src={src}
-      width={width}
-      height={height}
-      css={`
-        ${baseText.size.sm}
-
-        margin-top: 5em;
-        margin-bottom: 5em;
-      `}
-    />
-  )
+  return <ImageBase src={src} width={width} height={height} alt={alt} />
 }
 
 export default ArticleImage

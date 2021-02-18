@@ -22,15 +22,18 @@ const shimmerAnimation = css`
   `} 2s linear infinite;
 `
 
-type ImageBaseProps = {
+export type ImageProperties = {
   src: string
   width: number
   height: number
   alt?: string
+}
+
+type ImageBaseProps = {
   scaleRender?: number
   scaleRenderFromBp?: [BreakpointName, number]
   quality?: number
-}
+} & ImageProperties
 
 function ImageBase({
   src,

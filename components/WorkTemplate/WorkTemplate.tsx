@@ -54,7 +54,7 @@ function WorkTemplate({
             `}
           >
             <LayoutGutter>
-              <LayoutLimiter size="large">
+              <LayoutLimiter>
                 <div
                   css={`
                     ${displayText.size.lg}/* max-width: 18em; */
@@ -65,7 +65,7 @@ function WorkTemplate({
                       ${displayText.weight.semiBold}
                       ${setCropAndLineHeight('display', 'tight')}
                   
-                    color: ${foreground('extraHigh')};
+                      color: ${foreground('extraHigh')};
                       margin-bottom: 0.25em;
                     `}
                   >
@@ -73,10 +73,10 @@ function WorkTemplate({
                   </h1>
                   <h2
                     css={`
-                      ${displayText.weight.regular}
+                      ${displayText.weight.semiBold}
                       ${setCropAndLineHeight('display', 'tight')}
 
-                    color: ${foreground('low')};
+                      color: ${foreground('extraLow')};
                     `}
                   >
                     <RemoveWidow>{description}</RemoveWidow>
@@ -96,7 +96,6 @@ function WorkTemplate({
           <LayoutGutter>
             <LayoutRow>
               <LayoutLimiter
-                size="large"
                 css={`
                   display: grid;
                   grid-template-columns: 1fr;
@@ -124,7 +123,7 @@ function WorkTemplate({
 
                       margin-bottom: 3em;
 
-                      color: ${foreground('high')};
+                      color: ${foreground('extraHigh')};
                     `}
                   >
                     <RemoveWidow>{intro}</RemoveWidow>
@@ -172,11 +171,7 @@ function WorkTemplate({
               </LayoutLimiter>
             </LayoutRow>
           </LayoutGutter>
-          <LayoutGutter>
-            <LayoutRow>
-              <LayoutLimiter size="large">{children}</LayoutLimiter>
-            </LayoutRow>
-          </LayoutGutter>
+          {children}
         </main>
       </article>
       <MoreWork currentWorkName={name} />

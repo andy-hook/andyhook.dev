@@ -10,7 +10,7 @@ function WorkGrid(): JSX.Element {
   return (
     <LayoutGutter>
       <LayoutRow trimTop>
-        <LayoutLimiter size="large">
+        <LayoutLimiter>
           <div
             css={`
               display: grid;

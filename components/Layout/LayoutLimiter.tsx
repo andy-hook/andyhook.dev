@@ -13,8 +13,8 @@ interface LayoutLimiterProps {
 
 const widths: Record<Sizes, string> = {
   small: rem('900px'),
-  medium: rem('1200px'),
-  large: rem('1600px'),
+  medium: rem('1550px'),
+  large: rem('1850px'),
 }
 
 function LayoutLimiter({

@@ -20,7 +20,7 @@ function Footer(): JSX.Element {
   return (
     <footer>
       <LayoutGutter>
-        <LayoutLimiter size="large">
+        <LayoutLimiter>
           <LayoutRow
             css={`
               ${inclusiveUp('sm')} {

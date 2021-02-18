@@ -23,7 +23,6 @@ function Hero(): JSX.Element {
       `}
     >
       <LayoutLimiter
-        size="large"
         css={`
           display: flex;
           flex-direction: column;
