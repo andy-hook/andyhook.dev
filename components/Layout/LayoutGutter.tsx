@@ -18,13 +18,13 @@ function LayoutGutter({ children, ...props }: LayoutGutterProps): JSX.Element {
         }
 
         ${inclusiveUp('sm')} {
-          padding-left: 5%;
-          padding-right: 5%;
+          padding-left: 9%;
+          padding-right: 9%;
         }
 
         ${inclusiveUp('xl')} {
-          padding-left: 4%;
-          padding-right: 4%;
+          padding-left: 11%;
+          padding-right: 11%;
         }
       `}
       {...props}

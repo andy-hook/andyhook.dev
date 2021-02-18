@@ -14,7 +14,7 @@ function About(): JSX.Element {
   return (
     <LayoutRow bordered>
       <LayoutGutter>
-        <LayoutLimiter size="large">
+        <LayoutLimiter>
           <div
             css={`
               margin-bottom: 5rem;

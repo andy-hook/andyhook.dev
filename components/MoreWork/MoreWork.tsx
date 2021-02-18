@@ -21,7 +21,7 @@ function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
   return (
     <LayoutRow bordered>
       <LayoutGutter>
-        <LayoutLimiter size="large">
+        <LayoutLimiter>
           <TextHeading
             level="h3"
             size="sm"
