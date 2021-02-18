@@ -3,7 +3,11 @@ import ArticleDescribe from '../components/Article/ArticleDescribe'
 import ArticleImage from '../components/Article/ArticleImage'
 import ArticleImageSet from '../components/Article/ArticleImageSet'
 import ArticleParagraph from '../components/Article/ArticleParagraph'
+import ArticleQuote from '../components/Article/ArticleQuote'
 import WorkTemplate from '../components/WorkTemplate/WorkTemplate'
+import { TESTIMONIALS } from '../data/testimonials'
+
+const TESTIMONIAL = TESTIMONIALS.brett
 
 function Aragon(): JSX.Element {
   return (
@@ -79,6 +83,12 @@ function Aragon(): JSX.Element {
           { src: '/test.png', width: 500, height: 250 },
           { src: '/test.png', width: 500, height: 250 },
         ]}
+      />
+      <ArticleQuote
+        name={TESTIMONIAL.name}
+        title={TESTIMONIAL.title}
+        company={TESTIMONIAL.company}
+        testimonial={TESTIMONIAL.longTestimonial}
       />
     </WorkTemplate>
   )
