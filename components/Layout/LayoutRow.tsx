@@ -56,11 +56,11 @@ const topSpaceStyle = css`
   padding-top: 6rem;
 
   ${inclusiveUp('sm')} {
-    padding-top: 8rem;
+    padding-top: 9rem;
   }
 
   ${inclusiveUp('lg')} {
-    padding-top: 11rem;
+    padding-top: 12rem;
   }
 `
 
@@ -68,11 +68,11 @@ const bottomSpaceStyle = css`
   padding-bottom: 6rem;
 
   ${inclusiveUp('sm')} {
-    padding-bottom: 8rem;
+    padding-bottom: 9rem;
   }
 
   ${inclusiveUp('lg')} {
-    padding-bottom: 11rem;
+    padding-bottom: 12rem;
   }
 `
 
