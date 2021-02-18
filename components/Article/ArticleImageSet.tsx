@@ -2,6 +2,7 @@ import React from 'react'
 import { css } from 'styled-components'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { appearance } from '../../style/appearance'
+import { inclusiveUp } from '../../style/responsive'
 import ImageBase, { ImageProperties } from '../ImageBase/ImageBase'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
@@ -58,13 +59,31 @@ function ArticleImageSet({
 
 const standardSpacing = css`
   &:not(:last-child) {
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
+
+    ${inclusiveUp('sm')} {
+      margin-bottom: 5%;
+    }
+
+    ${inclusiveUp('xxl')} {
+      margin-bottom: 6rem;
+    }
   }
 `
 
 const framedAppearance = css`
-  padding-top: 8rem;
-  padding-bottom: 8rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+
+  ${inclusiveUp('sm')} {
+    padding-top: 8%;
+    padding-bottom: 8%;
+  }
+
+  ${inclusiveUp('xxl')} {
+    padding-top: 9rem;
+    padding-bottom: 9rem;
+  }
 
   &:nth-child(even) {
     background: linear-gradient(
