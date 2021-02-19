@@ -14,6 +14,7 @@ type TypeSettings = {
   lineHeight: Record<LineHeightName, number>
   weight: Record<TextWeight, number>
   cropSettings: Record<'topCrop' | 'bottomCrop', number>
+  sizes: Record<ResponsiveTextSize, CSSProp>
 }
 
 export const baseFontSize = 16
@@ -58,6 +59,43 @@ const typeSettings: Record<TextStyleType, TypeSettings> = {
       bold: 710,
     },
     cropSettings: { topCrop: 9, bottomCrop: 6 },
+    sizes: {
+      xxs: css`
+        font-size: ${typeScale[2]};
+      `,
+      xs: css`
+        font-size: ${typeScale[3]};
+      `,
+      sm: css`
+        font-size: ${typeScale[3]};
+
+        ${inclusiveUp('sm')} {
+          font-size: ${typeScale[4]};
+        }
+      `,
+      md: css`
+        font-size: ${typeScale[3]};
+
+        ${inclusiveUp('xs')} {
+          font-size: ${typeScale[4]};
+        }
+
+        ${inclusiveUp('md')} {
+          font-size: ${typeScale[5]};
+        }
+      `,
+      lg: css`
+        font-size: ${typeScale[4]};
+
+        ${inclusiveUp('xs')} {
+          font-size: ${typeScale[5]};
+        }
+
+        ${inclusiveUp('md')} {
+          font-size: ${typeScale[6]};
+        }
+      `,
+    },
   },
   display: {
     family: `'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif`,
@@ -80,104 +118,59 @@ const typeSettings: Record<TextStyleType, TypeSettings> = {
       bold: 710,
     },
     cropSettings: { topCrop: 14, bottomCrop: 10 },
-  },
-}
-
-/* Responsive sizes - Uniform responsive text sizing
-------------------------------------------------- */
-const responsiveSizes: Record<
-  TextStyleType,
-  Record<ResponsiveTextSize, CSSProp>
-> = {
-  body: {
-    xxs: css`
-      font-size: ${typeScale[2]};
-    `,
-    xs: css`
-      font-size: ${typeScale[3]};
-    `,
-    sm: css`
-      font-size: ${typeScale[3]};
-
-      ${inclusiveUp('sm')} {
+    sizes: {
+      xxs: css`
         font-size: ${typeScale[4]};
-      }
-    `,
-    md: css`
-      font-size: ${typeScale[3]};
-
-      ${inclusiveUp('xs')} {
-        font-size: ${typeScale[4]};
-      }
-
-      ${inclusiveUp('md')} {
+      `,
+      xs: css`
         font-size: ${typeScale[5]};
-      }
-    `,
-    lg: css`
-      font-size: ${typeScale[4]};
 
-      ${inclusiveUp('xs')} {
-        font-size: ${typeScale[5]};
-      }
-
-      ${inclusiveUp('md')} {
+        ${inclusiveUp('lg')} {
+          font-size: ${typeScale[6]};
+        }
+      `,
+      sm: css`
         font-size: ${typeScale[6]};
-      }
-    `,
-  },
-  display: {
-    xxs: css`
-      font-size: ${typeScale[4]};
-    `,
-    xs: css`
-      font-size: ${typeScale[5]};
 
-      ${inclusiveUp('lg')} {
-        font-size: ${typeScale[6]};
-      }
-    `,
-    sm: css`
-      font-size: ${typeScale[6]};
+        ${inclusiveUp('md')} {
+          font-size: ${typeScale[7]};
+        }
 
-      ${inclusiveUp('md')} {
+        ${inclusiveUp('lg')} {
+          font-size: ${typeScale[8]};
+        }
+      `,
+      md: css`
         font-size: ${typeScale[7]};
-      }
 
-      ${inclusiveUp('lg')} {
+        ${inclusiveUp('sm')} {
+          font-size: ${typeScale[8]};
+        }
+
+        ${inclusiveUp('md')} {
+          font-size: ${typeScale[9]};
+        }
+
+        ${inclusiveUp('xl')} {
+          font-size: ${typeScale[10]};
+        }
+      `,
+      lg: css`
         font-size: ${typeScale[8]};
-      }
-    `,
-    md: css`
-      font-size: ${typeScale[7]};
 
-      ${inclusiveUp('sm')} {
-        font-size: ${typeScale[8]};
-      }
+        ${inclusiveUp('sm')} {
+          font-size: ${typeScale[9]};
+        }
 
-      ${inclusiveUp('md')} {
-        font-size: ${typeScale[9]};
-      }
+        ${inclusiveUp('md')} {
+          font-size: ${typeScale[10]};
+        }
 
-      ${inclusiveUp('xl')} {
-        font-size: ${typeScale[10]};
-      }
-    `,
-    lg: css`
-      font-size: ${typeScale[8]};
-
-      ${inclusiveUp('sm')} {
-        font-size: ${typeScale[9]};
-      }
-
-      ${inclusiveUp('md')} {
-        font-size: ${typeScale[10]};
-      }
-
-      ${inclusiveUp('xl')} {
-        font-size: ${typeScale[11]};
-      }
-    `,
+        ${inclusiveUp('xl')} {
+          font-size: ${typeScale[11]};
+        }
+      `,
+    },
   },
 }
 
@@ -224,5 +217,5 @@ export function setResponsiveTextSize(
   type: TextStyleType,
   size: ResponsiveTextSize
 ): CSSProp {
-  return responsiveSizes[type][size]
+  return typeSettings[type].sizes[size]
 }
