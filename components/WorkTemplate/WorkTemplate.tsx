@@ -1,8 +1,8 @@
 import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import {
-  displayText,
   setCropAndLineHeight,
+  setResponsiveTextSize,
   setTextStyle,
 } from '../../style/typography'
 import LayoutGutter from '../Layout/LayoutGutter'
@@ -61,7 +61,7 @@ function WorkTemplate({
               <LayoutLimiter>
                 <div
                   css={`
-                    ${displayText.size.lg}/* max-width: 18em; */
+                    ${setResponsiveTextSize('display', 'lg')}
                   `}
                 >
                   <h1
@@ -121,7 +121,7 @@ function WorkTemplate({
                 >
                   <p
                     css={`
-                      ${displayText.size.sm}
+                      ${setResponsiveTextSize('display', 'sm')}
                       ${setTextStyle('display', 'medium')}
                       ${setCropAndLineHeight('display', 'longform')}
 
@@ -134,7 +134,7 @@ function WorkTemplate({
                   </p>
                   <div
                     css={`
-                      ${displayText.size.xs}
+                      ${setResponsiveTextSize('display', 'xs')}
                       ${setTextStyle('display', 'regular')}
                       ${setCropAndLineHeight('display', 'longform')}
                         
@@ -157,7 +157,7 @@ function WorkTemplate({
                     <li
                       key={i}
                       css={`
-                        ${displayText.size.xs}
+                        ${setResponsiveTextSize('display', 'xs')}
                         ${setTextStyle('display', 'regular')}
                         ${setCropAndLineHeight('display', 'flat')}
                         

@@ -3,9 +3,8 @@ import { useTheme } from '../../hooks/useTheme/useTheme'
 import { appearance } from '../../style/appearance'
 import { inclusiveDown, inclusiveUp } from '../../style/responsive'
 import {
-  baseText,
-  displayText,
   setCropAndLineHeight,
+  setResponsiveTextSize,
   setTextStyle,
 } from '../../style/typography'
 
@@ -66,7 +65,7 @@ function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
         <span
           css={`
             ${setTextStyle('display', 'semiBold')}
-            ${baseText.size.xs}
+            ${setResponsiveTextSize('body', 'xs')}
             ${setCropAndLineHeight('body', 'flat')}
 
             color: ${foreground('extraLow')};
@@ -79,7 +78,7 @@ function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
         <h3
           css={`
             ${setTextStyle('display', 'semiBold')}
-            ${displayText.size.xs}
+            ${setResponsiveTextSize('body', 'xs')}
             ${setCropAndLineHeight('display', 'flat')}
 
             color: ${foreground('extraHigh')};
@@ -102,7 +101,7 @@ function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
         <span
           css={`
             ${setTextStyle('display', 'regular')}
-            ${baseText.size.sm}
+            ${setResponsiveTextSize('body', 'sm')}
             ${setCropAndLineHeight('body', 'flat')}
 
             color: ${foreground('medium')};

@@ -2,9 +2,8 @@ import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { inclusiveUp } from '../../style/responsive'
 import {
-  baseText,
-  displayText,
   setCropAndLineHeight,
+  setResponsiveTextSize,
   setTextStyle,
 } from '../../style/typography'
 import LayoutGutter from '../Layout/LayoutGutter'
@@ -52,7 +51,7 @@ function ArticleQuote({
               <div
                 css={`
                   ${setTextStyle('display', 'semiBold')}
-                  ${displayText.size.sm}
+                  ${setResponsiveTextSize('display', 'sm')}
                   ${setCropAndLineHeight('display', 'longform')}
                 `}
               >
@@ -93,7 +92,7 @@ function ArticleQuote({
             </div>
             <div
               css={`
-                ${baseText.size.md}
+                ${setResponsiveTextSize('body', 'md')}
 
                 ${inclusiveUp('sm')} {
                   order: 1;

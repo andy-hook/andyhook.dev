@@ -2,8 +2,8 @@ import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { inclusiveDown, inclusiveUp } from '../../style/responsive'
 import {
-  displayText,
   setCropAndLineHeight,
+  setResponsiveTextSize,
   setTextStyle,
 } from '../../style/typography'
 import ArticleParagraph from '../Article/ArticleParagraph'
@@ -29,7 +29,7 @@ function About(): JSX.Element {
           <h2
             css={`
               ${setTextStyle('display', 'semiBold')}
-              ${displayText.size.md}
+              ${setResponsiveTextSize('display', 'md')}
               ${setCropAndLineHeight('display', 'tight')}
 
               color: ${foreground('extraHigh')};

@@ -3,17 +3,17 @@ import styled from 'styled-components'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { Theme } from '../../style/theme'
 import {
-  displayText,
   setCropAndLineHeight,
   setTextStyle,
   SupportedHeadingLevels,
-  TextSize,
+  ResponsiveTextSize,
+  setResponsiveTextSize,
 } from '../../style/typography'
 
 type TextHeadingProps = {
   children: React.ReactNode
   level: SupportedHeadingLevels
-  size: TextSize
+  size: ResponsiveTextSize
   color?: keyof Theme['foreground']
 }
 
@@ -29,7 +29,7 @@ function TextHeading({
   return (
     <div
       css={`
-        ${displayText.size[size]}
+        ${setResponsiveTextSize('display', size)}
         ${setTextStyle('display', 'semiBold')}
         ${setCropAndLineHeight('display', 'tight')}
 

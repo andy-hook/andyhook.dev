@@ -3,9 +3,8 @@ import { TESTIMONIALS } from '../../data/testimonials'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { inclusiveUp } from '../../style/responsive'
 import {
-  baseText,
-  displayText,
   setCropAndLineHeight,
+  setResponsiveTextSize,
   setTextStyle,
 } from '../../style/typography'
 import { keys } from '../../utils/general'
@@ -37,7 +36,7 @@ function TestimonialGrid(): JSX.Element {
       <h2
         css={`
           ${setTextStyle('display', 'semiBold')}
-          ${displayText.size.md}
+          ${setResponsiveTextSize('display', 'md')}
           ${setCropAndLineHeight('display', 'tight')}
 
           color: ${foreground('extraHigh')};
@@ -50,7 +49,7 @@ function TestimonialGrid(): JSX.Element {
       <p
         css={`
           ${setTextStyle('body', 'regular')}
-          ${baseText.size.md}
+          ${setResponsiveTextSize('body', 'md')}
           ${setCropAndLineHeight('body', 'regular')}
 
           color: ${foreground('medium')};

@@ -1,12 +1,15 @@
 import React, { useMemo } from 'react'
-import { SupportedHeadingLevels, TextSize } from '../../style/typography'
+import {
+  SupportedHeadingLevels,
+  ResponsiveTextSize,
+} from '../../style/typography'
 import RemoveWidow from '../RemoveWidow/RemoveWidow'
 import TextHeading from '../Text/TextHeading'
 
 type TypeHeadingProps = {
   children: React.ReactNode
   level?: SupportedHeadingLevels
-  size?: TextSize
+  size?: ResponsiveTextSize
 }
 
 function ArticleHeading({

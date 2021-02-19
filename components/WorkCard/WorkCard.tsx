@@ -1,7 +1,11 @@
 import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { appearance } from '../../style/appearance'
-import { baseText, setTextStyle, TextSize } from '../../style/typography'
+import {
+  setTextStyle,
+  ResponsiveTextSize,
+  setResponsiveTextSize,
+} from '../../style/typography'
 import Icon from '../Icon/Icon'
 import ImageBase from '../ImageBase/ImageBase'
 import InteractionBase from '../InteractionBase/InteractionBase'
@@ -23,8 +27,8 @@ export type WorkCardProps = {
 const CARD_PROPERTIES: Record<
   WorkCardProps['size'],
   {
-    titleSize: TextSize
-    lockIconSize: TextSize
+    titleSize: ResponsiveTextSize
+    lockIconSize: ResponsiveTextSize
     imageRenderScale: number
   }
 > = {
@@ -75,7 +79,7 @@ function WorkCard({
           <>
             <div
               css={`
-                ${baseText.size[lockIconSize]}
+                ${setResponsiveTextSize('body', lockIconSize)}
 
                 display: flex;
                 align-items: center;

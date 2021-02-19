@@ -2,16 +2,16 @@ import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { Theme } from '../../style/theme'
 import {
-  baseText,
   setCropAndLineHeight,
   setTextStyle,
-  TextSize,
+  ResponsiveTextSize,
+  setResponsiveTextSize,
 } from '../../style/typography'
 
 type TextParagraphProps = {
   children: React.ReactNode
   color?: keyof Theme['foreground']
-  size: TextSize
+  size: ResponsiveTextSize
   weight?: 'regular' | 'medium' | 'semiBold'
 }
 
@@ -27,7 +27,7 @@ function TextParagraph({
   return (
     <p
       css={`
-        ${baseText.size[size]}
+        ${setResponsiveTextSize('body', size)}
         ${setTextStyle('body', weight)}
         ${setCropAndLineHeight('body', 'longform')}
 

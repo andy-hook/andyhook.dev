@@ -3,8 +3,8 @@ import React, { useMemo } from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { appearance } from '../../style/appearance'
 import {
-  baseText,
   setCropAndLineHeight,
+  setResponsiveTextSize,
   setTextStyle,
 } from '../../style/typography'
 import InteractionBase from '../InteractionBase/InteractionBase'
@@ -50,7 +50,7 @@ function HireButton({ href }: HireButtonProps): JSX.Element {
         href={href}
         css={`
           ${setTextStyle('body', 'medium')}
-          ${baseText.size.sm}
+          ${setResponsiveTextSize('body', 'sm')}
 
           display: flex;
           align-items: center;

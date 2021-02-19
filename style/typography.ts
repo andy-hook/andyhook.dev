@@ -3,7 +3,7 @@ import { css, CSSProp } from 'styled-components'
 import { inclusiveUp } from './responsive'
 import { createPlaceholderCrop, createTextCrop } from './utils'
 
-export type TextSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg'
+export type ResponsiveTextSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg'
 export type SupportedHeadingLevels = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 
 type StyleType = 'body' | 'display'
@@ -20,7 +20,7 @@ type TypeSettings = {
 
 export const baseFontSize = 16
 
-/* Typescale – Applies to all variants
+/* Base scale
 ------------------------------------------------- */
 const typeScale: Record<number, string> = {
   1: rem('12px'),
@@ -36,6 +36,8 @@ const typeScale: Record<number, string> = {
   11: rem('66px'),
 }
 
+/* Settings - Useful for pairing typeface dimensions with the best display properties
+------------------------------------------------- */
 const typeSettings: Record<StyleType, TypeSettings> = {
   body: {
     family: `'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif`,
@@ -83,44 +85,50 @@ const typeSettings: Record<StyleType, TypeSettings> = {
   },
 }
 
-/* Text node cropping
-  ------------------------------------------------- */
-export function setCropAndLineHeight(
-  type: StyleType,
-  lHeight: LineHeightName
-): CSSProp {
-  return createTextCrop({
-    ...typeSettings[type].cropSettings,
-    lHeight: typeSettings[type].lineHeight[lHeight],
-  })
-}
+/* Responsive sizes - Uniform responsive text sizing
+------------------------------------------------- */
+const responsiveSizes: Record<
+  StyleType,
+  Record<ResponsiveTextSize, CSSProp>
+> = {
+  body: {
+    xxs: css`
+      font-size: ${typeScale[2]};
+    `,
+    xs: css`
+      font-size: ${typeScale[3]};
+    `,
+    sm: css`
+      font-size: ${typeScale[3]};
 
-export function setPlaceholderCrop(
-  type: StyleType,
-  lHeight: LineHeightName
-): CSSProp {
-  return createPlaceholderCrop({
-    ...typeSettings[type].cropSettings,
-    lHeight: typeSettings[type].lineHeight[lHeight],
-  })
-}
+      ${inclusiveUp('sm')} {
+        font-size: ${typeScale[4]};
+      }
+    `,
+    md: css`
+      font-size: ${typeScale[3]};
 
-/* Text Style
-  ------------------------------------------------- */
-export function setTextStyle(type: StyleType, weightName: TextWeight): CSSProp {
-  const { family, weight, letterSpace } = typeSettings[type]
+      ${inclusiveUp('xs')} {
+        font-size: ${typeScale[4]};
+      }
 
-  return css`
-    font-family: ${family};
-    font-weight: ${weight[weightName]};
-    letter-spacing: ${letterSpace[weightName]};
-  `
-}
+      ${inclusiveUp('md')} {
+        font-size: ${typeScale[5]};
+      }
+    `,
+    lg: css`
+      font-size: ${typeScale[4]};
 
-/* Responsive sizes and styles
-  ------------------------------------------------- */
-export const displayText = {
-  size: {
+      ${inclusiveUp('xs')} {
+        font-size: ${typeScale[5]};
+      }
+
+      ${inclusiveUp('md')} {
+        font-size: ${typeScale[6]};
+      }
+    `,
+  },
+  display: {
     xxs: css`
       font-size: ${typeScale[4]};
     `,
@@ -175,42 +183,47 @@ export const displayText = {
   },
 }
 
-export const baseText = {
-  size: {
-    xxs: css`
-      font-size: ${typeScale[2]};
-    `,
-    xs: css`
-      font-size: ${typeScale[3]};
-    `,
-    sm: css`
-      font-size: ${typeScale[3]};
+/* Text node cropping
+  ------------------------------------------------- */
+export function setCropAndLineHeight(
+  type: StyleType,
+  lHeight: LineHeightName
+): CSSProp {
+  return createTextCrop({
+    ...typeSettings[type].cropSettings,
+    lHeight: typeSettings[type].lineHeight[lHeight],
+  })
+}
 
-      ${inclusiveUp('sm')} {
-        font-size: ${typeScale[4]};
-      }
-    `,
-    md: css`
-      font-size: ${typeScale[3]};
+export function setPlaceholderCrop(
+  type: StyleType,
+  lHeight: LineHeightName
+): CSSProp {
+  return createPlaceholderCrop({
+    ...typeSettings[type].cropSettings,
+    lHeight: typeSettings[type].lineHeight[lHeight],
+  })
+}
 
-      ${inclusiveUp('xs')} {
-        font-size: ${typeScale[4]};
-      }
+/* Text Style
+  ------------------------------------------------- */
+export function setTextStyle(type: StyleType, weightName: TextWeight): CSSProp {
+  const { family, weight, letterSpace } = typeSettings[type]
 
-      ${inclusiveUp('md')} {
-        font-size: ${typeScale[5]};
-      }
-    `,
-    lg: css`
-      font-size: ${typeScale[4]};
+  return css`
+    font-family: ${family};
+    font-weight: ${weight[weightName]};
+    letter-spacing: ${letterSpace[weightName]};
+  `
+}
 
-      ${inclusiveUp('xs')} {
-        font-size: ${typeScale[5]};
-      }
-
-      ${inclusiveUp('md')} {
-        font-size: ${typeScale[6]};
-      }
-    `,
-  },
+/* Responsive text size
+  ------------------------------------------------- */
+export function setResponsiveTextSize(
+  type: StyleType,
+  size: ResponsiveTextSize
+): CSSProp {
+  return css`
+    font-size: ${responsiveSizes[type][size]};
+  `
 }

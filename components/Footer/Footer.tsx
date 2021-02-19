@@ -3,9 +3,8 @@ import { useTheme } from '../../hooks/useTheme/useTheme'
 import meta from '../../data/meta'
 import { inclusiveDown, inclusiveUp } from '../../style/responsive'
 import {
-  baseText,
-  displayText,
   setCropAndLineHeight,
+  setResponsiveTextSize,
   setTextStyle,
 } from '../../style/typography'
 import InteractionBase from '../InteractionBase/InteractionBase'
@@ -35,7 +34,7 @@ function Footer(): JSX.Element {
               <p
                 css={`
                   ${setTextStyle('body', 'regular')}
-                  ${baseText.size.md}
+                  ${setResponsiveTextSize('body', 'md')}
                   ${setCropAndLineHeight('body', 'flat')}
 
                   color: ${foreground('low')};
@@ -47,7 +46,7 @@ function Footer(): JSX.Element {
               <h4
                 css={`
                   ${setTextStyle('display', 'semiBold')}
-                  ${displayText.size.lg}
+                  ${setResponsiveTextSize('display', 'lg')}
                   ${setCropAndLineHeight('display', 'tight')}
 
                   color: ${foreground('extraHigh')};

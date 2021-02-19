@@ -2,8 +2,8 @@ import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { inclusiveDown, inclusiveUp } from '../../style/responsive'
 import {
-  displayText,
   setCropAndLineHeight,
+  setResponsiveTextSize,
   setTextStyle,
 } from '../../style/typography'
 import LayoutGutter from '../Layout/LayoutGutter'
@@ -44,10 +44,10 @@ function ArticleDescribe({
                 <h2
                   css={`
                     ${setTextStyle('display', 'semiBold')}
-                    ${displayText.size.md}
-                ${setCropAndLineHeight('display', 'tight')}
+                    ${setResponsiveTextSize('display', 'md')}
+                    ${setCropAndLineHeight('display', 'tight')}
 
-                color: ${foreground('extraHigh')};
+                    color: ${foreground('extraHigh')};
 
                     ${inclusiveDown('xs')} {
                       margin-bottom: 1em;

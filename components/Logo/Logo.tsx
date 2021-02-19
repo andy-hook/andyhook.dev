@@ -1,8 +1,8 @@
 import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import {
-  baseText,
   setCropAndLineHeight,
+  setResponsiveTextSize,
   setTextStyle,
 } from '../../style/typography'
 
@@ -31,7 +31,7 @@ function Logo(): JSX.Element {
         whileHover="hover"
         css={`
           ${setTextStyle('body', 'semiBold')}
-          ${baseText.size.sm}
+          ${setResponsiveTextSize('body', 'sm')}
           ${setCropAndLineHeight('body', 'flat')}
 
           margin: -0.75em;

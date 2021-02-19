@@ -6,8 +6,8 @@ import { appearance } from '../../style/appearance'
 import { slideInMotion } from '../../style/motion'
 import { inclusiveUp } from '../../style/responsive'
 import {
-  displayText,
   setCropAndLineHeight,
+  setResponsiveTextSize,
   setTextStyle,
 } from '../../style/typography'
 import HireButton from '../HireButton/HireButton'
@@ -61,11 +61,10 @@ function Hero(): JSX.Element {
             <h1
               css={`
                 ${setTextStyle('display', 'semiBold')}
-                ${displayText.size.lg}
-                  ${setCropAndLineHeight('display', 'tight')}
+                ${setResponsiveTextSize('display', 'lg')}
+                ${setCropAndLineHeight('display', 'tight')}
                   
-                  max-width: 16em;
-
+                max-width: 16em;
                 margin-bottom: 1.25em;
               `}
             >

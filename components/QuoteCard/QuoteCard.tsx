@@ -2,9 +2,8 @@ import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { appearance } from '../../style/appearance'
 import {
-  baseText,
-  displayText,
   setCropAndLineHeight,
+  setResponsiveTextSize,
   setTextStyle,
 } from '../../style/typography'
 import ImageBase from '../ImageBase/ImageBase'
@@ -91,8 +90,7 @@ function QuoteCard({
       <div
         css={`
           ${setTextStyle('display', 'semiBold')}
-          ${displayText.size.xs}
-           
+          ${setResponsiveTextSize('display', 'xs')}
           ${setCropAndLineHeight('display', 'longform')}
             
           text-align: center;
@@ -138,7 +136,7 @@ function QuoteCard({
         css={`
           text-align: center;
 
-          ${baseText.size.sm}
+          ${setResponsiveTextSize('body', 'sm')}
         `}
       >
         <div
