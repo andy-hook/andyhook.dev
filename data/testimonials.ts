@@ -17,6 +17,15 @@ type AuthorDetails = {
 }
 
 export const TESTIMONIALS: Record<AuthorName, AuthorDetails> = {
+  mikey: {
+    avatar: 'mikey',
+    name: 'Mikey Allan',
+    title: 'Head of Design',
+    company: 'Brandwatch',
+    shortTestimonial:
+      "Andy is hands down one of the most talented people I've worked with in the web industry. It's rare to see a talent in design matched so equally by competency in development",
+    longTestimonial: '',
+  },
   brett: {
     avatar: 'brett',
     name: 'Brett Sun',
@@ -27,22 +36,22 @@ export const TESTIMONIALS: Record<AuthorName, AuthorDetails> = {
     longTestimonial:
       'I have seldom met an individual who personifies the senior UI/UX engineer as well as Andy. He not only drives to personally deliver to the highest of standards, but goes the distance to improve the work of everyone around him. He produces well-crafted, precise, and polished interfaces, but more importantly as a senior engineer, demonstrates a strong ability to pass on his own strengths to others to help them mature',
   },
-  mikey: {
-    avatar: 'mikey',
-    name: 'Mikey Allan',
-    title: 'Head of Design',
-    company: 'Brandwatch',
-    shortTestimonial:
-      "Andy is hands down one of the most talented people I've worked with in the web industry. It's rare to see a talent in design matched so equally by competency in development",
-    longTestimonial: '',
-  },
   jo: {
     avatar: 'jo',
     name: 'Jo Petty',
-    title: 'Digital Project Manager',
-    company: 'Brandwatch',
+    title: 'Documentation Lead',
+    company: 'Unity Technologies',
     shortTestimonial:
       "Andy is one of the most creative and talented people I've had the pleasure of working with. Collaborating with him on the Brandwatch website was a rewarding experience: he strived for perfection, had a very detail-orientated approach to design, and was constantly trying new and better techniques.",
+    longTestimonial: '',
+  },
+  ben: {
+    avatar: 'ben',
+    name: 'Ben Browning',
+    title: 'UI/UX Developer',
+    company: 'Bright Interactive',
+    shortTestimonial:
+      'Andy is a rare find in UI development. He is equally brilliant at the creative visual design side as he is with the technical side of engineering a modern web app. Whatever task he is working on he will go above and beyond to deliver at a very high quality level.',
     longTestimonial: '',
   },
   ze: {
@@ -54,15 +63,6 @@ export const TESTIMONIALS: Record<AuthorName, AuthorDetails> = {
       'Andy is inspiring, supportive, curious, always looking to expand his skills, and generally a great person to be around with. Working in a team he understands the importance of clear goals and how to best achieve the team’s aims. His attention to detail makes everything he touches look incredibly polished, and affirms his elegant simplicity.',
     longTestimonial:
       'Andy is inspiring, supportive, curious, always looking to expand his skills, and generally a great person to be around. Working in a team he understands the importance of clear goals and how to best achieve the team’s aims. His attention to detail makes everything he touches look incredibly polished, and affirms his elegant simplicity',
-  },
-  ben: {
-    avatar: 'ben',
-    name: 'Ben Browning',
-    title: 'UI/UX Developer',
-    company: 'Bright Interactive',
-    shortTestimonial:
-      'Andy is a rare find in UI development. He is equally brilliant at the creative visual design side as he is with the technical side of engineering a modern web app. Whatever task he is working on he will go above and beyond to deliver at a very high quality level.',
-    longTestimonial: '',
   },
   andrew: {
     avatar: 'andrew',

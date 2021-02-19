@@ -2,7 +2,12 @@ import React from 'react'
 import About from '../components/About/About'
 import Hero from '../components/Hero/Hero'
 import ImageBase from '../components/ImageBase/ImageBase'
+import LayoutGutter from '../components/Layout/LayoutGutter'
+import LayoutLimiter from '../components/Layout/LayoutLimiter'
+import LayoutRow from '../components/Layout/LayoutRow'
+import LayoutShade from '../components/Layout/LayoutShade'
 import MetaSocial from '../components/Meta/MetaSocial'
+import TestimonialGrid from '../components/TestimonialGrid/TestimonialGrid'
 import WorkGrid from '../components/WorkGrid/WorkGrid'
 import { useTheme } from '../hooks/useTheme/useTheme'
 import { appearance } from '../style/appearance'
@@ -84,7 +89,16 @@ function Home(): JSX.Element {
           `}
         />
       </div>
-      <About />
+      <LayoutShade borderTop borderBottom>
+        <LayoutRow>
+          <LayoutGutter>
+            <LayoutLimiter>
+              <About />
+              <TestimonialGrid />
+            </LayoutLimiter>
+          </LayoutGutter>
+        </LayoutRow>
+      </LayoutShade>
     </>
   )
 }

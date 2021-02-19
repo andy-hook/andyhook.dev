@@ -4,6 +4,7 @@ import { inclusiveUp } from '../../style/responsive'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import LayoutRow from '../Layout/LayoutRow'
+import LayoutShade from '../Layout/LayoutShade'
 import TextHeading from '../Text/TextHeading'
 import WorkCard from '../WorkCard/WorkCard'
 
@@ -19,56 +20,58 @@ function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
   }, [currentWorkName])
 
   return (
-    <LayoutRow bordered>
-      <LayoutGutter>
-        <LayoutLimiter>
-          <TextHeading
-            level="h3"
-            size="sm"
-            css={`
-              margin-bottom: 1.25em;
-            `}
-          >
-            More Work
-          </TextHeading>
-          <div
-            css={`
-              display: grid;
-              grid-template-columns: 1fr;
-              grid-gap: 6rem;
+    <LayoutShade borderTop borderBottom>
+      <LayoutRow>
+        <LayoutGutter>
+          <LayoutLimiter>
+            <TextHeading
+              level="h3"
+              size="sm"
+              css={`
+                margin-bottom: 1.25em;
+              `}
+            >
+              More Work
+            </TextHeading>
+            <div
+              css={`
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-gap: 6rem;
 
-              ${inclusiveUp('sm')} {
-                grid-template-columns: 1fr 1fr 1fr;
-                grid-gap: 3%;
-              }
+                ${inclusiveUp('sm')} {
+                  grid-template-columns: 1fr 1fr 1fr;
+                  grid-gap: 3%;
+                }
 
-              ${inclusiveUp('xl')} {
-                grid-gap: 3rem;
-              }
-            `}
-          >
-            {items.map(
-              (
-                { title, description, route, thumbnailImageSmall, disabled },
-                i
-              ) => (
-                <WorkCard
-                  key={i}
-                  description={description}
-                  href={route}
-                  src={thumbnailImageSmall.src}
-                  width={thumbnailImageSmall.width}
-                  title={title}
-                  height={thumbnailImageSmall.height}
-                  disabled={disabled}
-                  size="small"
-                />
-              )
-            )}
-          </div>
-        </LayoutLimiter>
-      </LayoutGutter>
-    </LayoutRow>
+                ${inclusiveUp('xl')} {
+                  grid-gap: 3rem;
+                }
+              `}
+            >
+              {items.map(
+                (
+                  { title, description, route, thumbnailImageSmall, disabled },
+                  i
+                ) => (
+                  <WorkCard
+                    key={i}
+                    description={description}
+                    href={route}
+                    src={thumbnailImageSmall.src}
+                    width={thumbnailImageSmall.width}
+                    title={title}
+                    height={thumbnailImageSmall.height}
+                    disabled={disabled}
+                    size="small"
+                  />
+                )
+              )}
+            </div>
+          </LayoutLimiter>
+        </LayoutGutter>
+      </LayoutRow>
+    </LayoutShade>
   )
 }
 
