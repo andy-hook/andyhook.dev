@@ -7,6 +7,8 @@ import {
   setResponsiveTextSize,
   setTextStyle,
 } from '../../style/typography'
+import TextBase from '../Text/TextBase'
+import TextHeading from '../Text/TextHeading'
 
 type ExpListItemProps = {
   year: string
@@ -74,19 +76,11 @@ function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
           {year}
         </span>
       </div>
-      <div>
-        <h3
-          css={`
-            ${setTextStyle('display', 'semiBold')}
-            ${setResponsiveTextSize('body', 'xs')}
-            ${setCropAndLineHeight('display', 'flat')}
 
-            color: ${foreground('extraHigh')};
-          `}
-        >
-          {title}
-        </h3>
-      </div>
+      <TextHeading size="xs" lineHeight="flat">
+        {title}
+      </TextHeading>
+
       <div
         css={`
           display: flex;
@@ -98,21 +92,19 @@ function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
           }
         `}
       >
-        <span
+        <TextBase
+          textStyle="body"
+          size="sm"
+          lineHeight="flat"
+          color="low"
           css={`
-            ${setTextStyle('display', 'regular')}
-            ${setResponsiveTextSize('body', 'sm')}
-            ${setCropAndLineHeight('body', 'flat')}
-
-            color: ${foreground('medium')};
-
             ${inclusiveDown('xs')} {
               margin-top: 0.4em;
             }
           `}
         >
           {company}
-        </span>
+        </TextBase>
       </div>
     </div>
   )

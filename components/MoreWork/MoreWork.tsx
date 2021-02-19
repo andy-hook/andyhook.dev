@@ -25,7 +25,7 @@ function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
         <LayoutGutter>
           <LayoutLimiter>
             <TextHeading
-              level="h3"
+              tag="h3"
               size="sm"
               css={`
                 margin-bottom: 1.25em;

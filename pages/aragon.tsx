@@ -2,8 +2,8 @@ import React from 'react'
 import ArticleDescribe from '../components/Article/ArticleDescribe'
 import ArticleImage from '../components/Article/ArticleImage'
 import ArticleImageSet from '../components/Article/ArticleImageSet'
-import ArticleParagraph from '../components/Article/ArticleParagraph'
 import ArticleQuote from '../components/Article/ArticleQuote'
+import TextParagraph from '../components/Text/TextParagraph'
 import WorkTemplate from '../components/WorkTemplate/WorkTemplate'
 import { TESTIMONIALS } from '../data/testimonials'
 
@@ -13,45 +13,45 @@ function Aragon(): JSX.Element {
   return (
     <WorkTemplate name="aragon">
       <ArticleDescribe title="Overview" bordered>
-        <ArticleParagraph>
+        <TextParagraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
           tincidunt hendrerit ex, at elementum augue malesuada eu. Pellentesque
           habitant morbi dtristique senectus et netus et malesuada fames ac
           turpis egestas. Nam congue maximus erat vel. Aliquam eget hendrerit
           elit.
-        </ArticleParagraph>
+        </TextParagraph>
 
-        <ArticleParagraph>
+        <TextParagraph>
           Donec malesuada, augue quis blandit interdum, sapien tellus lacinia
           neque, ut varius diam nisl in erat. Fusce augue turpis, sollicitudin
           in elit ac, tristique varius ante. Nullam vel sapien id turpis iaculis
           fringilla eu a ipsum.
-        </ArticleParagraph>
+        </TextParagraph>
       </ArticleDescribe>
       <ArticleImage />
       <ArticleDescribe title="Upgrading the network token">
-        <ArticleParagraph>
+        <TextParagraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
           tincidunt hendrerit ex, at elementum augue malesuada eu. Pellentesque
           habitant morbi dtristique senectus et netus et malesuada fames ac
           turpis egestas. Nam congue maximus erat vel. Aliquam eget hendrerit
           elit.
-        </ArticleParagraph>
+        </TextParagraph>
 
-        <ArticleParagraph>
+        <TextParagraph>
           Donec malesuada, augue quis blandit interdum, sapien tellus lacinia
           neque, ut varius diam nisl in erat. Fusce augue turpis, sollicitudin
           in elit ac, tristique varius ante. Nullam vel sapien id turpis iaculis
           fringilla eu a ipsum.
-        </ArticleParagraph>
+        </TextParagraph>
 
-        <ArticleParagraph>
+        <TextParagraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
           tincidunt hendrerit ex, at elementum augue malesuada eu. Pellentesque
           habitant morbi dtristique senectus et netus et malesuada fames ac
           turpis egestas. Nam congue maximus erat vel. Aliquam eget hendrerit
           elit.
-        </ArticleParagraph>
+        </TextParagraph>
       </ArticleDescribe>
       <ArticleImageSet
         items={[
@@ -60,20 +60,20 @@ function Aragon(): JSX.Element {
         ]}
       />
       <ArticleDescribe title="Road to the Aragon Network DAO">
-        <ArticleParagraph>
+        <TextParagraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
           tincidunt hendrerit ex, at elementum augue malesuada eu. Pellentesque
           habitant morbi dtristique senectus et netus et malesuada fames ac
           turpis egestas. Nam congue maximus erat vel. Aliquam eget hendrerit
           elit.
-        </ArticleParagraph>
+        </TextParagraph>
 
-        <ArticleParagraph>
+        <TextParagraph>
           Donec malesuada, augue quis blandit interdum, sapien tellus lacinia
           neque, ut varius diam nisl in erat. Fusce augue turpis, sollicitudin
           in elit ac, tristique varius ante. Nullam vel sapien id turpis iaculis
           fringilla eu a ipsum.
-        </ArticleParagraph>
+        </TextParagraph>
       </ArticleDescribe>
       <ArticleImageSet
         framed

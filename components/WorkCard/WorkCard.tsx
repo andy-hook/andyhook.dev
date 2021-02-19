@@ -147,7 +147,7 @@ function WorkCard({
       >
         <TextHeading
           size={titleSize}
-          level="h3"
+          tag="h3"
           css={`
             margin-top: 1.4em;
           `}

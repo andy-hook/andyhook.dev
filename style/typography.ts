@@ -5,10 +5,9 @@ import { createPlaceholderCrop, createTextCrop } from './utils'
 
 export type ResponsiveTextSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg'
 export type SupportedHeadingLevels = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
-
-type StyleType = 'body' | 'display'
-type LineHeightName = 'flat' | 'regular' | 'tight' | 'longform'
-type TextWeight = 'regular' | 'medium' | 'semiBold' | 'bold'
+export type TextStyleType = 'body' | 'display'
+export type LineHeightName = 'flat' | 'regular' | 'tight' | 'longform'
+export type TextWeight = 'regular' | 'medium' | 'semiBold' | 'bold'
 
 type TypeSettings = {
   family: string
@@ -38,7 +37,7 @@ const typeScale: Record<number, string> = {
 
 /* Settings - Useful for pairing typeface dimensions with the best display properties
 ------------------------------------------------- */
-const typeSettings: Record<StyleType, TypeSettings> = {
+const typeSettings: Record<TextStyleType, TypeSettings> = {
   body: {
     family: `'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif`,
     letterSpace: {
@@ -88,7 +87,7 @@ const typeSettings: Record<StyleType, TypeSettings> = {
 /* Responsive sizes - Uniform responsive text sizing
 ------------------------------------------------- */
 const responsiveSizes: Record<
-  StyleType,
+  TextStyleType,
   Record<ResponsiveTextSize, CSSProp>
 > = {
   body: {
@@ -186,7 +185,7 @@ const responsiveSizes: Record<
 /* Text node cropping
   ------------------------------------------------- */
 export function setCropAndLineHeight(
-  type: StyleType,
+  type: TextStyleType,
   lHeight: LineHeightName
 ): CSSProp {
   return createTextCrop({
@@ -196,7 +195,7 @@ export function setCropAndLineHeight(
 }
 
 export function setPlaceholderCrop(
-  type: StyleType,
+  type: TextStyleType,
   lHeight: LineHeightName
 ): CSSProp {
   return createPlaceholderCrop({
@@ -207,7 +206,10 @@ export function setPlaceholderCrop(
 
 /* Text Style
   ------------------------------------------------- */
-export function setTextStyle(type: StyleType, weightName: TextWeight): CSSProp {
+export function setTextStyle(
+  type: TextStyleType,
+  weightName: TextWeight
+): CSSProp {
   const { family, weight, letterSpace } = typeSettings[type]
 
   return css`
@@ -220,10 +222,8 @@ export function setTextStyle(type: StyleType, weightName: TextWeight): CSSProp {
 /* Responsive text size
   ------------------------------------------------- */
 export function setResponsiveTextSize(
-  type: StyleType,
+  type: TextStyleType,
   size: ResponsiveTextSize
 ): CSSProp {
-  return css`
-    font-size: ${responsiveSizes[type][size]};
-  `
+  return responsiveSizes[type][size]
 }
