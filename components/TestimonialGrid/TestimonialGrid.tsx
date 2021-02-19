@@ -1,20 +1,13 @@
 import React, { useMemo } from 'react'
 import { TESTIMONIALS } from '../../data/testimonials'
-import { useTheme } from '../../hooks/useTheme/useTheme'
 import { inclusiveUp } from '../../style/responsive'
-import {
-  baseText,
-  displayText,
-  setCropAndLineHeight,
-} from '../../style/typography'
 import { keys } from '../../utils/general'
 import LayoutRow from '../Layout/LayoutRow'
 import QuoteCard from '../QuoteCard/QuoteCard'
-import RemoveWidow from '../RemoveWidow/RemoveWidow'
+import TextBase from '../Text/TextBase'
+import TextHeading from '../Text/TextHeading'
 
 function TestimonialGrid(): JSX.Element {
-  const { foreground } = useTheme()
-
   const items = useMemo(() => {
     const list = keys(TESTIMONIALS)
     const half = Math.ceil(list.length / 2)
@@ -33,35 +26,24 @@ function TestimonialGrid(): JSX.Element {
         }
       `}
     >
-      <h2
+      <TextHeading
         css={`
-          ${displayText.weight.semiBold}
-          ${displayText.size.md}
-          ${setCropAndLineHeight('display', 'tight')}
-
-          color: ${foreground('extraHigh')};
           margin-bottom: 0.6em;
           text-align: center;
         `}
       >
-        <RemoveWidow>Kind words from great teams</RemoveWidow>
-      </h2>
-      <p
+        Kind words from great teams
+      </TextHeading>
+
+      <TextBase
         css={`
-          ${baseText.weight.regular}
-          ${baseText.size.md}
-          ${setCropAndLineHeight('base', 'regular')}
-
-          color: ${foreground('medium')};
-
           text-align: center;
         `}
       >
-        <RemoveWidow>
-          I’ve worked with some amazing people over the years, here is what they
-          have to say
-        </RemoveWidow>
-      </p>
+        I’ve worked with some amazing people over the years, here is what they
+        have to say
+      </TextBase>
+
       <div
         css={`
           display: grid;

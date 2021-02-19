@@ -4,7 +4,7 @@ import { BreakpointList, breakpoints } from './responsive'
 export type ThemeName = 'light' | 'dark'
 
 type LimitedShadeRange = 'low' | 'medium' | 'high'
-type FullShadeRange = LimitedShadeRange | 'extraLow' | 'extraHigh'
+export type FullShadeRange = LimitedShadeRange | 'extraLow' | 'extraHigh'
 type ColourRange = 'base' | 'light' | 'dark'
 
 type ColorValue = [number, number, number]

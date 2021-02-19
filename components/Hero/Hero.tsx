@@ -5,12 +5,13 @@ import meta from '../../data/meta'
 import { appearance } from '../../style/appearance'
 import { slideInMotion } from '../../style/motion'
 import { inclusiveUp } from '../../style/responsive'
-import { displayText, setCropAndLineHeight } from '../../style/typography'
+import { setTextStyle } from '../../style/typography'
 import HireButton from '../HireButton/HireButton'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import RemoveWidow from '../RemoveWidow/RemoveWidow'
 import GradientText from '../GradientText/GradientText'
+import TextHeading from '../Text/TextHeading'
 
 function Hero(): JSX.Element {
   const { foreground } = useTheme()
@@ -54,14 +55,10 @@ function Hero(): JSX.Element {
               text-align: center;
             `}
           >
-            <h1
+            <TextHeading
+              size="lg"
               css={`
-                ${displayText.weight.semiBold}
-                ${displayText.size.lg}
-                  ${setCropAndLineHeight('display', 'tight')}
-                  
-                  max-width: 16em;
-
+                max-width: 16em;
                 margin-bottom: 1.25em;
               `}
             >
@@ -69,7 +66,7 @@ function Hero(): JSX.Element {
                 css={`
                   position: relative;
                   z-index: ${appearance.index.floor};
-                  ${displayText.weight.bold}
+                  ${setTextStyle('display', 'bold')}
                 `}
               >
                 Senior UI Engineer
@@ -94,7 +91,8 @@ function Hero(): JSX.Element {
                 </span>{' '}
                 <RemoveWidow>user interfaces out of Brighton, UK.</RemoveWidow>
               </span>
-            </h1>
+            </TextHeading>
+
             <HireButton href={`mailto:${meta.email}`} />
           </motion.div>
         </div>

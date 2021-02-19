@@ -1,41 +1,33 @@
 import React from 'react'
-import { useTheme } from '../../hooks/useTheme/useTheme'
-import { Theme } from '../../style/theme'
-import {
-  baseText,
-  setCropAndLineHeight,
-  TextSize,
-} from '../../style/typography'
+import TextBase, { TextBaseProps } from './TextBase'
 
-type TextParagraphProps = {
-  children: React.ReactNode
-  color?: keyof Theme['foreground']
-  size: TextSize
-  weight?: 'regular' | 'medium' | 'semiBold'
-}
+type TextParagraphProps = Omit<TextBaseProps, 'textStyle'>
 
 function TextParagraph({
   children,
+  tag = 'p',
   color = 'medium',
   size = 'md',
   weight = 'regular',
+  lineHeight = 'longform',
   ...props
 }: TextParagraphProps): JSX.Element {
-  const { foreground } = useTheme()
-
   return (
-    <p
+    <TextBase
+      tag={tag}
+      color={color}
+      size={size}
+      lineHeight={lineHeight}
+      weight={weight}
       css={`
-        ${baseText.size[size]}
-        ${baseText.weight[weight]}
-        ${setCropAndLineHeight('base', 'longform')}
-
-        color: ${foreground(color)};
+        &:not(:last-child) {
+          margin-bottom: 1.8em;
+        }
       `}
       {...props}
     >
       {children}
-    </p>
+    </TextBase>
   )
 }
 

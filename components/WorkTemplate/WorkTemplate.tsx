@@ -1,15 +1,14 @@
 import React from 'react'
-import { useTheme } from '../../hooks/useTheme/useTheme'
-import { displayText, setCropAndLineHeight } from '../../style/typography'
+import { setResponsiveTextSize } from '../../style/typography'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import LayoutRow from '../Layout/LayoutRow'
 import { inclusiveUp } from '../../style/responsive'
-import RemoveWidow from '../RemoveWidow/RemoveWidow'
 import { WORK, WorkName } from '../../data/work'
 import MetaSocial from '../Meta/MetaSocial'
 import MoreWork from '../MoreWork/MoreWork'
 import ImageBase from '../ImageBase/ImageBase'
+import TextHeading from '../Text/TextHeading'
 
 type WorkTemplate = {
   name: WorkName
@@ -20,8 +19,6 @@ function WorkTemplate({
   children,
   name = 'aragon',
 }: WorkTemplate): JSX.Element {
-  const { foreground } = useTheme()
-
   const {
     title,
     description,
@@ -57,30 +54,21 @@ function WorkTemplate({
               <LayoutLimiter>
                 <div
                   css={`
-                    ${displayText.size.lg}/* max-width: 18em; */
+                    ${setResponsiveTextSize('display', 'lg')}
                   `}
                 >
-                  <h1
+                  <TextHeading
+                    size="lg"
                     css={`
-                      ${displayText.weight.semiBold}
-                      ${setCropAndLineHeight('display', 'tight')}
-                  
-                      color: ${foreground('extraHigh')};
                       margin-bottom: 0.25em;
                     `}
                   >
                     {title}
-                  </h1>
-                  <h2
-                    css={`
-                      ${displayText.weight.semiBold}
-                      ${setCropAndLineHeight('display', 'tight')}
+                  </TextHeading>
 
-                      color: ${foreground('extraLow')};
-                    `}
-                  >
-                    <RemoveWidow>{description}</RemoveWidow>
-                  </h2>
+                  <TextHeading size="lg" tag="h2" color="extraLow">
+                    {description}
+                  </TextHeading>
                 </div>
               </LayoutLimiter>
             </LayoutGutter>
@@ -115,31 +103,28 @@ function WorkTemplate({
                     }
                   `}
                 >
-                  <p
+                  <TextHeading
+                    tag="p"
+                    size="sm"
+                    lineHeight="longform"
+                    weight="medium"
                     css={`
-                      ${displayText.size.sm}
-                      ${displayText.weight.medium}
-                      ${setCropAndLineHeight('display', 'longform')}
-
                       margin-bottom: 3em;
-
-                      color: ${foreground('extraHigh')};
                     `}
                   >
-                    <RemoveWidow>{intro}</RemoveWidow>
-                  </p>
-                  <div
-                    css={`
-                      ${displayText.size.xs}
-                      ${displayText.weight.regular}
-                      ${setCropAndLineHeight('display', 'longform')}
-                        
-                      color: ${foreground('low')};
-                    `}
+                    {intro}
+                  </TextHeading>
+
+                  <TextHeading
+                    tag="div"
+                    size="xs"
+                    lineHeight="longform"
+                    weight="regular"
+                    color="low"
                   >
                     <div>{role}</div>
                     <div>{tenure}</div>
-                  </div>
+                  </TextHeading>
                 </div>
 
                 <ul
@@ -150,22 +135,21 @@ function WorkTemplate({
                   `}
                 >
                   {technologies.map((item, i) => (
-                    <li
+                    <TextHeading
                       key={i}
+                      tag="li"
+                      size="xs"
+                      weight="regular"
+                      lineHeight="flat"
+                      color="medium"
                       css={`
-                        ${displayText.size.xs}
-                        ${displayText.weight.regular}
-                        ${setCropAndLineHeight('display', 'flat')}
-                        
-                        color: ${foreground('medium')};
-
                         &:not(:last-child) {
                           margin-bottom: 1.1em;
                         }
                       `}
                     >
                       {item}
-                    </li>
+                    </TextHeading>
                   ))}
                 </ul>
               </LayoutLimiter>

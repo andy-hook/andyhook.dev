@@ -2,11 +2,8 @@ import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { appearance } from '../../style/appearance'
 import { inclusiveDown, inclusiveUp } from '../../style/responsive'
-import {
-  baseText,
-  displayText,
-  setCropAndLineHeight,
-} from '../../style/typography'
+import TextBase from '../Text/TextBase'
+import TextHeading from '../Text/TextHeading'
 
 type ExpListItemProps = {
   year: string
@@ -15,7 +12,7 @@ type ExpListItemProps = {
 }
 
 function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
-  const { background, foreground, shadow } = useTheme()
+  const { background, shadow } = useTheme()
 
   return (
     <div
@@ -62,31 +59,21 @@ function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
           }
         `}
       >
-        <span
-          css={`
-            ${baseText.weight.semiBold}
-            ${baseText.size.xs}
-            ${setCropAndLineHeight('base', 'flat')}
-
-            color: ${foreground('extraLow')};
-          `}
+        <TextBase
+          tag="span"
+          lineHeight="flat"
+          weight="semiBold"
+          size="xs"
+          color="extraLow"
         >
           {year}
-        </span>
+        </TextBase>
       </div>
-      <div>
-        <h3
-          css={`
-            ${displayText.weight.semiBold}
-            ${displayText.size.xs}
-            ${setCropAndLineHeight('display', 'flat')}
 
-            color: ${foreground('extraHigh')};
-          `}
-        >
-          {title}
-        </h3>
-      </div>
+      <TextHeading size="xs" lineHeight="flat">
+        {title}
+      </TextHeading>
+
       <div
         css={`
           display: flex;
@@ -98,21 +85,19 @@ function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
           }
         `}
       >
-        <span
+        <TextBase
+          textStyle="body"
+          size="sm"
+          lineHeight="flat"
+          color="low"
           css={`
-            ${baseText.weight.regular}
-            ${baseText.size.sm}
-            ${setCropAndLineHeight('base', 'flat')}
-
-            color: ${foreground('medium')};
-
             ${inclusiveDown('xs')} {
               margin-top: 0.4em;
             }
           `}
         >
           {company}
-        </span>
+        </TextBase>
       </div>
     </div>
   )

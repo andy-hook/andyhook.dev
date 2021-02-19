@@ -1,15 +1,13 @@
 import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { inclusiveUp } from '../../style/responsive'
-import {
-  baseText,
-  displayText,
-  setCropAndLineHeight,
-} from '../../style/typography'
+import { setResponsiveTextSize, setTextStyle } from '../../style/typography'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import LayoutRow from '../Layout/LayoutRow'
 import RemoveWidow from '../RemoveWidow/RemoveWidow'
+import TextBase from '../Text/TextBase'
+import TextHeading from '../Text/TextHeading'
 
 type ArticleQuoteProps = {
   name: string
@@ -48,20 +46,14 @@ function ArticleQuote({
                 }
               `}
             >
-              <div
-                css={`
-                  ${displayText.weight.semiBold}
-                  ${displayText.size.sm}
-                  ${setCropAndLineHeight('display', 'longform')}
-                `}
-              >
+              <TextHeading tag="div" size="sm" lineHeight="longform">
                 <blockquote
                   css={`
                     quotes: '“' '”';
 
                     &::before,
                     &::after {
-                      ${displayText.weight.bold}
+                      ${setTextStyle('display', 'bold')}
                       color: ${foreground('medium')};
                     }
 
@@ -82,56 +74,46 @@ function ArticleQuote({
                   <p
                     css={`
                       display: inline;
-                      color: ${foreground('extraHigh')};
                     `}
                   >
                     <RemoveWidow>{testimonial}</RemoveWidow>
                   </p>
                 </blockquote>
-              </div>
+              </TextHeading>
             </div>
             <div
               css={`
-                ${baseText.size.md}
+                ${setResponsiveTextSize('body', 'md')}
 
                 ${inclusiveUp('sm')} {
                   order: 1;
                 }
               `}
             >
-              <h3
-                css={`
-                  ${displayText.weight.medium}
-
-                  ${setCropAndLineHeight('base', 'flat')}
-                    color: ${foreground('extraHigh')};
-                `}
+              <TextBase
+                tag="h3"
+                lineHeight="flat"
+                weight="medium"
+                color="extraHigh"
               >
                 {name}
-              </h3>
-              <div
-                css={`
-                  ${displayText.weight.regular}
-                  ${setCropAndLineHeight('base', 'flat')}
-            
-                  color: ${foreground('low')};
+              </TextBase>
 
+              <TextBase
+                tag="div"
+                lineHeight="flat"
+                color="low"
+                css={`
                   margin-top: 0.5em;
                   margin-bottom: 0.5em;
                 `}
               >
                 {title}
-              </div>
-              <div
-                css={`
-                  ${displayText.weight.regular}
-                  ${setCropAndLineHeight('base', 'flat')}
+              </TextBase>
 
-                  color: ${foreground('low')};
-                `}
-              >
+              <TextBase tag="div" lineHeight="flat" color="low">
                 {company}
-              </div>
+              </TextBase>
             </div>
           </div>
         </LayoutLimiter>

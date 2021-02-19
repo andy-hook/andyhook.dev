@@ -1,7 +1,11 @@
 import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { appearance } from '../../style/appearance'
-import { baseText, TextSize } from '../../style/typography'
+import {
+  setTextStyle,
+  ResponsiveTextSize,
+  setResponsiveTextSize,
+} from '../../style/typography'
 import Icon from '../Icon/Icon'
 import ImageBase from '../ImageBase/ImageBase'
 import InteractionBase from '../InteractionBase/InteractionBase'
@@ -23,19 +27,19 @@ export type WorkCardProps = {
 const CARD_PROPERTIES: Record<
   WorkCardProps['size'],
   {
-    titleSize: TextSize
-    lockIconSize: TextSize
+    titleSize: ResponsiveTextSize
+    soonTagSize: ResponsiveTextSize
     imageRenderScale: number
   }
 > = {
   small: {
     titleSize: 'xs' as const,
-    lockIconSize: 'xxs' as const,
+    soonTagSize: 'xxs' as const,
     imageRenderScale: 50,
   },
   large: {
     titleSize: 'sm' as const,
-    lockIconSize: 'xs' as const,
+    soonTagSize: 'xs' as const,
     imageRenderScale: 70,
   },
 }
@@ -53,7 +57,7 @@ function WorkCard({
 }: WorkCardProps): JSX.Element {
   const { foreground, background } = useTheme()
 
-  const { titleSize, lockIconSize, imageRenderScale } = CARD_PROPERTIES[size]
+  const { titleSize, soonTagSize, imageRenderScale } = CARD_PROPERTIES[size]
 
   return (
     <InteractionBase
@@ -75,8 +79,9 @@ function WorkCard({
           <>
             <div
               css={`
-                ${baseText.size[lockIconSize]}
-
+                ${setResponsiveTextSize('body', soonTagSize)}
+                ${setTextStyle('body', 'regular')}
+              
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -102,13 +107,7 @@ function WorkCard({
                   margin-right: 0.5em;
                 `}
               />
-              <span
-                css={`
-                  ${baseText.weight.regular}
-                `}
-              >
-                Coming Soon
-              </span>
+              Coming Soon
             </div>
             <div
               css={`
@@ -143,7 +142,7 @@ function WorkCard({
       >
         <TextHeading
           size={titleSize}
-          level="h3"
+          tag="h3"
           css={`
             margin-top: 1.4em;
           `}

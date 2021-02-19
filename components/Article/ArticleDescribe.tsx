@@ -1,12 +1,10 @@
 import React from 'react'
-import { useTheme } from '../../hooks/useTheme/useTheme'
 import { inclusiveDown, inclusiveUp } from '../../style/responsive'
-import { displayText, setCropAndLineHeight } from '../../style/typography'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import LayoutRow from '../Layout/LayoutRow'
 import LayoutShade from '../Layout/LayoutShade'
-import RemoveWidow from '../RemoveWidow/RemoveWidow'
+import TextHeading from '../Text/TextHeading'
 
 type ArticleDescribeProps = {
   children?: React.ReactNode
@@ -20,8 +18,6 @@ function ArticleDescribe({
   bordered,
   ...props
 }: ArticleDescribeProps): JSX.Element {
-  const { foreground } = useTheme()
-
   return (
     <ConditionalBorder bordered={bordered}>
       <LayoutRow>
@@ -37,14 +33,8 @@ function ArticleDescribe({
               {...props}
             >
               <div>
-                <h2
+                <TextHeading
                   css={`
-                    ${displayText.weight.semiBold}
-                    ${displayText.size.md}
-                ${setCropAndLineHeight('display', 'tight')}
-
-                color: ${foreground('extraHigh')};
-
                     ${inclusiveDown('xs')} {
                       margin-bottom: 1em;
                     }
@@ -54,8 +44,8 @@ function ArticleDescribe({
                     }
                   `}
                 >
-                  <RemoveWidow>{title}</RemoveWidow>
-                </h2>
+                  {title}
+                </TextHeading>
               </div>
               <div>{children}</div>
             </div>

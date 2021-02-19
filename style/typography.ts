@@ -3,26 +3,23 @@ import { css, CSSProp } from 'styled-components'
 import { inclusiveUp } from './responsive'
 import { createPlaceholderCrop, createTextCrop } from './utils'
 
-export type TextSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg'
-export type SupportedHeadingLevels = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
-
-type StyleName = 'base' | 'display'
-type LineHeightName = 'flat' | 'regular' | 'tight' | 'longform'
+export type ResponsiveTextSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg'
+export type TextStyleType = 'body' | 'display'
+export type LineHeightName = 'flat' | 'regular' | 'tight' | 'longform'
+export type TextWeight = 'regular' | 'medium' | 'semiBold' | 'bold'
 
 type TypeSettings = {
   family: string
-  letterSpace: Record<
-    'regular' | 'medium' | 'semiBold' | 'bold' | 'uppercase',
-    string
-  >
+  letterSpace: Record<TextWeight, string>
   lineHeight: Record<LineHeightName, number>
-  weight: Record<'light' | 'regular' | 'medium' | 'semiBold' | 'bold', number>
+  weight: Record<TextWeight, number>
   cropSettings: Record<'topCrop' | 'bottomCrop', number>
+  sizes: Record<ResponsiveTextSize, CSSProp>
 }
 
 export const baseFontSize = 16
 
-/* Typescale – Applies to all variants
+/* Base scale
 ------------------------------------------------- */
 const typeScale: Record<number, string> = {
   1: rem('12px'),
@@ -38,213 +35,187 @@ const typeScale: Record<number, string> = {
   11: rem('66px'),
 }
 
-const lineHeight = {
-  flat: 1,
-  tight: 1.225,
-  regular: 1.3,
-  longform: 1.6,
-}
-
-const fontWeight = {
-  light: 320,
-  regular: 420,
-  medium: 520,
-  semiBold: 590,
-  bold: 710,
-}
-
-/* Body
+/* Settings - Useful for pairing typeface dimensions with the best display properties
 ------------------------------------------------- */
-const baseType: TypeSettings = {
-  family: `'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif`,
-  letterSpace: {
-    regular: '0.01em',
-    medium: '0.02em',
-    semiBold: '-0.02em',
-    bold: '0.004em',
-    uppercase: '0.06em',
-  },
-  lineHeight: lineHeight,
-  weight: fontWeight,
-  cropSettings: { topCrop: 9, bottomCrop: 6 },
-}
+const typeSettings: Record<TextStyleType, TypeSettings> = {
+  body: {
+    family: `'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif`,
+    letterSpace: {
+      regular: '0.01em',
+      medium: '0.02em',
+      semiBold: '-0.02em',
+      bold: '0.004em',
+    },
+    lineHeight: {
+      flat: 1,
+      tight: 1.225,
+      regular: 1.3,
+      longform: 1.6,
+    },
+    weight: {
+      regular: 420,
+      medium: 520,
+      semiBold: 590,
+      bold: 710,
+    },
+    cropSettings: { topCrop: 9, bottomCrop: 6 },
+    sizes: {
+      xxs: css`
+        font-size: ${typeScale[2]};
+      `,
+      xs: css`
+        font-size: ${typeScale[3]};
+      `,
+      sm: css`
+        font-size: ${typeScale[3]};
 
-/* Display
-------------------------------------------------- */
-const displayType: TypeSettings = {
-  family: `'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif`,
-  letterSpace: {
-    regular: '-0.01em',
-    medium: '-0.005em',
-    semiBold: '-0.003em',
-    bold: '-0.005em',
-    uppercase: '0.06em',
-  },
-  lineHeight: lineHeight,
-  weight: fontWeight,
-  cropSettings: { topCrop: 14, bottomCrop: 10 },
-}
+        ${inclusiveUp('sm')} {
+          font-size: ${typeScale[4]};
+        }
+      `,
+      md: css`
+        font-size: ${typeScale[3]};
 
-const styles = {
-  base: baseType,
-  display: displayType,
+        ${inclusiveUp('xs')} {
+          font-size: ${typeScale[4]};
+        }
+
+        ${inclusiveUp('md')} {
+          font-size: ${typeScale[5]};
+        }
+      `,
+      lg: css`
+        font-size: ${typeScale[4]};
+
+        ${inclusiveUp('xs')} {
+          font-size: ${typeScale[5]};
+        }
+
+        ${inclusiveUp('md')} {
+          font-size: ${typeScale[6]};
+        }
+      `,
+    },
+  },
+  display: {
+    family: `'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif`,
+    letterSpace: {
+      regular: '-0.01em',
+      medium: '-0.005em',
+      semiBold: '-0.003em',
+      bold: '-0.005em',
+    },
+    lineHeight: {
+      flat: 1,
+      tight: 1.225,
+      regular: 1.3,
+      longform: 1.6,
+    },
+    weight: {
+      regular: 420,
+      medium: 520,
+      semiBold: 590,
+      bold: 710,
+    },
+    cropSettings: { topCrop: 14, bottomCrop: 10 },
+    sizes: {
+      xxs: css`
+        font-size: ${typeScale[4]};
+      `,
+      xs: css`
+        font-size: ${typeScale[5]};
+
+        ${inclusiveUp('lg')} {
+          font-size: ${typeScale[6]};
+        }
+      `,
+      sm: css`
+        font-size: ${typeScale[6]};
+
+        ${inclusiveUp('md')} {
+          font-size: ${typeScale[7]};
+        }
+
+        ${inclusiveUp('lg')} {
+          font-size: ${typeScale[8]};
+        }
+      `,
+      md: css`
+        font-size: ${typeScale[7]};
+
+        ${inclusiveUp('sm')} {
+          font-size: ${typeScale[8]};
+        }
+
+        ${inclusiveUp('md')} {
+          font-size: ${typeScale[9]};
+        }
+
+        ${inclusiveUp('xl')} {
+          font-size: ${typeScale[10]};
+        }
+      `,
+      lg: css`
+        font-size: ${typeScale[8]};
+
+        ${inclusiveUp('sm')} {
+          font-size: ${typeScale[9]};
+        }
+
+        ${inclusiveUp('md')} {
+          font-size: ${typeScale[10]};
+        }
+
+        ${inclusiveUp('xl')} {
+          font-size: ${typeScale[11]};
+        }
+      `,
+    },
+  },
 }
 
 /* Text node cropping
   ------------------------------------------------- */
-export const setCropAndLineHeight = (
-  style: StyleName,
+export function setCropAndLineHeight(
+  type: TextStyleType,
   lHeight: LineHeightName
-): CSSProp => {
+): CSSProp {
   return createTextCrop({
-    ...styles[style].cropSettings,
-    lHeight: styles[style].lineHeight[lHeight],
+    ...typeSettings[type].cropSettings,
+    lHeight: typeSettings[type].lineHeight[lHeight],
   })
 }
 
-export const setPlaceholderCrop = (
-  style: StyleName,
+export function setPlaceholderCrop(
+  type: TextStyleType,
   lHeight: LineHeightName
-): CSSProp => {
+): CSSProp {
   return createPlaceholderCrop({
-    ...styles[style].cropSettings,
-    lHeight: styles[style].lineHeight[lHeight],
+    ...typeSettings[type].cropSettings,
+    lHeight: typeSettings[type].lineHeight[lHeight],
   })
 }
 
-/* Responsive sizes and styles
+/* Text Style
   ------------------------------------------------- */
-export const displayText = {
-  weight: {
-    regular: css`
-      font-family: ${displayType.family};
-      font-weight: ${displayType.weight.regular};
-      letter-spacing: ${displayType.letterSpace.regular};
-    `,
-    medium: css`
-      font-family: ${displayType.family};
-      font-weight: ${displayType.weight.medium};
-      letter-spacing: ${displayType.letterSpace.medium};
-    `,
-    semiBold: css`
-      font-family: ${displayType.family};
-      font-weight: ${displayType.weight.semiBold};
-      letter-spacing: ${displayType.letterSpace.semiBold};
-    `,
-    bold: css`
-      font-family: ${displayType.family};
-      font-weight: ${displayType.weight.bold};
-      letter-spacing: ${displayType.letterSpace.bold};
-    `,
-  },
-  size: {
-    xxs: css`
-      font-size: ${typeScale[4]};
-    `,
-    xs: css`
-      font-size: ${typeScale[5]};
+export function setTextStyle(
+  type: TextStyleType,
+  weightName: TextWeight
+): CSSProp {
+  const { family, weight, letterSpace } = typeSettings[type]
 
-      ${inclusiveUp('lg')} {
-        font-size: ${typeScale[6]};
-      }
-    `,
-    sm: css`
-      font-size: ${typeScale[6]};
-
-      ${inclusiveUp('md')} {
-        font-size: ${typeScale[7]};
-      }
-
-      ${inclusiveUp('lg')} {
-        font-size: ${typeScale[8]};
-      }
-    `,
-    md: css`
-      font-size: ${typeScale[7]};
-
-      ${inclusiveUp('sm')} {
-        font-size: ${typeScale[8]};
-      }
-
-      ${inclusiveUp('md')} {
-        font-size: ${typeScale[9]};
-      }
-
-      ${inclusiveUp('xl')} {
-        font-size: ${typeScale[10]};
-      }
-    `,
-    lg: css`
-      font-size: ${typeScale[8]};
-
-      ${inclusiveUp('sm')} {
-        font-size: ${typeScale[9]};
-      }
-
-      ${inclusiveUp('md')} {
-        font-size: ${typeScale[10]};
-      }
-
-      ${inclusiveUp('xl')} {
-        font-size: ${typeScale[11]};
-      }
-    `,
-  },
+  return css`
+    font-family: ${family};
+    font-weight: ${weight[weightName]};
+    letter-spacing: ${letterSpace[weightName]};
+  `
 }
 
-export const baseText = {
-  weight: {
-    regular: css`
-      font-family: ${baseType.family};
-      font-weight: ${baseType.weight.regular};
-      letter-spacing: ${baseType.letterSpace.regular};
-    `,
-    medium: css`
-      font-family: ${baseType.family};
-      font-weight: ${baseType.weight.medium};
-      letter-spacing: ${baseType.letterSpace.medium};
-    `,
-    semiBold: css`
-      font-family: ${baseType.family};
-      font-weight: ${baseType.weight.semiBold};
-      letter-spacing: ${baseType.letterSpace.semiBold};
-    `,
-  },
-  size: {
-    xxs: css`
-      font-size: ${typeScale[2]};
-    `,
-    xs: css`
-      font-size: ${typeScale[3]};
-    `,
-    sm: css`
-      font-size: ${typeScale[3]};
-
-      ${inclusiveUp('sm')} {
-        font-size: ${typeScale[4]};
-      }
-    `,
-    md: css`
-      font-size: ${typeScale[3]};
-
-      ${inclusiveUp('xs')} {
-        font-size: ${typeScale[4]};
-      }
-
-      ${inclusiveUp('md')} {
-        font-size: ${typeScale[5]};
-      }
-    `,
-    lg: css`
-      font-size: ${typeScale[4]};
-
-      ${inclusiveUp('xs')} {
-        font-size: ${typeScale[5]};
-      }
-
-      ${inclusiveUp('md')} {
-        font-size: ${typeScale[6]};
-      }
-    `,
-  },
+/* Responsive text size
+  ------------------------------------------------- */
+export function setResponsiveTextSize(
+  type: TextStyleType,
+  size: ResponsiveTextSize
+): CSSProp {
+  return typeSettings[type].sizes[size]
 }

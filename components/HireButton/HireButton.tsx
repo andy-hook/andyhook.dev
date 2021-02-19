@@ -2,7 +2,11 @@ import { motion } from 'framer-motion'
 import React, { useMemo } from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { appearance } from '../../style/appearance'
-import { baseText, setCropAndLineHeight } from '../../style/typography'
+import {
+  setCropAndLineHeight,
+  setResponsiveTextSize,
+  setTextStyle,
+} from '../../style/typography'
 import InteractionBase from '../InteractionBase/InteractionBase'
 
 type HireButtonProps = {
@@ -45,8 +49,8 @@ function HireButton({ href }: HireButtonProps): JSX.Element {
         radius="pill"
         href={href}
         css={`
-          ${baseText.weight.medium}
-          ${baseText.size.sm}
+          ${setTextStyle('body', 'medium')}
+          ${setResponsiveTextSize('body', 'sm')}
 
           display: flex;
           align-items: center;
@@ -67,7 +71,7 @@ function HireButton({ href }: HireButtonProps): JSX.Element {
 
         <div
           css={`
-            ${setCropAndLineHeight('base', 'flat')}
+            ${setCropAndLineHeight('body', 'flat')}
           `}
         >
           Currently available for hire

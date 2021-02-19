@@ -1,46 +1,30 @@
 import React from 'react'
-import styled from 'styled-components'
-import { useTheme } from '../../hooks/useTheme/useTheme'
-import { Theme } from '../../style/theme'
-import {
-  displayText,
-  setCropAndLineHeight,
-  SupportedHeadingLevels,
-  TextSize,
-} from '../../style/typography'
+import TextBase, { TextBaseProps } from './TextBase'
 
-type TextHeadingProps = {
-  children: React.ReactNode
-  level: SupportedHeadingLevels
-  size: TextSize
-  color?: keyof Theme['foreground']
-}
+type TextHeadingProps = Omit<TextBaseProps, 'textStyle'>
 
 function TextHeading({
   children,
-  level,
-  size,
+  tag = 'h1',
+  size = 'md',
+  weight = 'semiBold',
   color = 'extraHigh',
+  lineHeight = 'tight',
   ...props
 }: TextHeadingProps): JSX.Element {
-  const { foreground } = useTheme()
-
   return (
-    <div
-      css={`
-        ${displayText.size[size]}
-        ${displayText.weight.semiBold}
-        ${setCropAndLineHeight('display', 'tight')}
-
-        color: ${foreground(color)};
-      `}
+    <TextBase
+      textStyle="display"
+      tag={tag}
+      color={color}
+      size={size}
+      lineHeight={lineHeight}
+      weight={weight}
       {...props}
     >
-      <Heading as={level}>{children}</Heading>
-    </div>
+      {children}
+    </TextBase>
   )
 }
-
-const Heading = styled.h1``
 
 export default TextHeading
