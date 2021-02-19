@@ -20,6 +20,7 @@ function About(): JSX.Element {
       >
         <div>
           <TextHeading
+            tag="h2"
             css={`
               ${inclusiveDown('xs')} {
                 margin-bottom: 0.8em;

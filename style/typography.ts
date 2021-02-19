@@ -4,7 +4,6 @@ import { inclusiveUp } from './responsive'
 import { createPlaceholderCrop, createTextCrop } from './utils'
 
 export type ResponsiveTextSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg'
-export type SupportedHeadingLevels = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 export type TextStyleType = 'body' | 'display'
 export type LineHeightName = 'flat' | 'regular' | 'tight' | 'longform'
 export type TextWeight = 'regular' | 'medium' | 'semiBold' | 'bold'

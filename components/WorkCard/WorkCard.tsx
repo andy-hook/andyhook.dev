@@ -28,18 +28,18 @@ const CARD_PROPERTIES: Record<
   WorkCardProps['size'],
   {
     titleSize: ResponsiveTextSize
-    lockIconSize: ResponsiveTextSize
+    soonTagSize: ResponsiveTextSize
     imageRenderScale: number
   }
 > = {
   small: {
     titleSize: 'xs' as const,
-    lockIconSize: 'xxs' as const,
+    soonTagSize: 'xxs' as const,
     imageRenderScale: 50,
   },
   large: {
     titleSize: 'sm' as const,
-    lockIconSize: 'xs' as const,
+    soonTagSize: 'xs' as const,
     imageRenderScale: 70,
   },
 }
@@ -57,7 +57,7 @@ function WorkCard({
 }: WorkCardProps): JSX.Element {
   const { foreground, background } = useTheme()
 
-  const { titleSize, lockIconSize, imageRenderScale } = CARD_PROPERTIES[size]
+  const { titleSize, soonTagSize, imageRenderScale } = CARD_PROPERTIES[size]
 
   return (
     <InteractionBase
@@ -79,8 +79,9 @@ function WorkCard({
           <>
             <div
               css={`
-                ${setResponsiveTextSize('body', lockIconSize)}
-
+                ${setResponsiveTextSize('body', soonTagSize)}
+                ${setTextStyle('body', 'regular')}
+              
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -106,13 +107,7 @@ function WorkCard({
                   margin-right: 0.5em;
                 `}
               />
-              <span
-                css={`
-                  ${setTextStyle('body', 'regular')}
-                `}
-              >
-                Coming Soon
-              </span>
+              Coming Soon
             </div>
             <div
               css={`

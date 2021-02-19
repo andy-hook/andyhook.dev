@@ -1,51 +1,47 @@
 import React from 'react'
-import { useTheme } from '../../hooks/useTheme/useTheme'
-import {
-  setCropAndLineHeight,
-  setResponsiveTextSize,
-  setTextStyle,
-} from '../../style/typography'
-
 import { motion } from 'framer-motion'
 import InteractionBase from '../InteractionBase/InteractionBase'
+import TextBase from '../Text/TextBase'
 
 function Logo(): JSX.Element {
-  const { foreground } = useTheme()
-
   return (
     <div
       css={`
         display: inline-flex;
       `}
     >
-      <motion.h2
+      <motion.div
         variants={{
           rest: {
-            color: foreground('medium'),
+            opacity: 0.3,
           },
           hover: {
-            color: foreground('extraHigh'),
+            opacity: 1,
           },
         }}
         initial="rest"
         whileHover="hover"
-        css={`
-          ${setTextStyle('body', 'semiBold')}
-          ${setResponsiveTextSize('body', 'sm')}
-          ${setCropAndLineHeight('body', 'flat')}
-
-          margin: -0.75em;
-        `}
       >
-        <InteractionBase
-          href="/"
+        <TextBase
+          tag="h1"
+          size="sm"
+          weight="semiBold"
+          color="extraHigh"
+          lineHeight="flat"
           css={`
-            padding: 0.75em;
+            margin: -0.75em;
           `}
         >
-          Andy Hook
-        </InteractionBase>
-      </motion.h2>
+          <InteractionBase
+            href="/"
+            css={`
+              padding: 0.75em;
+            `}
+          >
+            Andy Hook
+          </InteractionBase>
+        </TextBase>
+      </motion.div>
     </div>
   )
 }

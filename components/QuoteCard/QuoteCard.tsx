@@ -1,14 +1,11 @@
 import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { appearance } from '../../style/appearance'
-import {
-  setCropAndLineHeight,
-  setResponsiveTextSize,
-  setTextStyle,
-} from '../../style/typography'
+import { setTextStyle } from '../../style/typography'
 import ImageBase from '../ImageBase/ImageBase'
 import { inclusiveUp } from '../../style/responsive'
 import RemoveWidow from '../RemoveWidow/RemoveWidow'
+import TextBase from '../Text/TextBase'
 
 export type QuoteCardProps = {
   quote: string
@@ -87,12 +84,14 @@ function QuoteCard({
         </div>
       </div>
 
-      <div
+      <TextBase
+        tag="div"
+        textStyle="display"
+        weight="semiBold"
+        size="xs"
+        lineHeight="longform"
+        color="extraHigh"
         css={`
-          ${setTextStyle('display', 'semiBold')}
-          ${setResponsiveTextSize('display', 'xs')}
-          ${setCropAndLineHeight('display', 'longform')}
-            
           text-align: center;
           margin-top: 1.5em;
           margin-bottom: 2.5em;
@@ -125,40 +124,40 @@ function QuoteCard({
           <p
             css={`
               display: inline;
-              color: ${foreground('extraHigh')};
             `}
           >
             <RemoveWidow>{quote}</RemoveWidow>
           </p>
         </blockquote>
-      </div>
+      </TextBase>
+
       <figcaption
         css={`
           text-align: center;
-
-          ${setResponsiveTextSize('body', 'sm')}
         `}
       >
-        <div
+        <TextBase
+          tag="div"
+          size="sm"
+          weight="medium"
+          color="extraHigh"
           css={`
-            ${setTextStyle('body', 'medium')}
-            ${setCropAndLineHeight('body', 'regular')}
-
-            color: ${foreground('extraHigh')};
             margin-bottom: 0.5em;
           `}
         >
           {name}
-        </div>
-        <div
+        </TextBase>
+
+        <TextBase
+          tag="div"
+          size="sm"
+          color="low"
           css={`
-            ${setCropAndLineHeight('body', 'regular')}
-            ${setTextStyle('body', 'regular')}
-            color: ${foreground('low')};
+            margin-bottom: 0.5em;
           `}
         >
           {title}, {company}
-        </div>
+        </TextBase>
       </figcaption>
     </figure>
   )

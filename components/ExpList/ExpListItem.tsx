@@ -2,11 +2,6 @@ import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { appearance } from '../../style/appearance'
 import { inclusiveDown, inclusiveUp } from '../../style/responsive'
-import {
-  setCropAndLineHeight,
-  setResponsiveTextSize,
-  setTextStyle,
-} from '../../style/typography'
 import TextBase from '../Text/TextBase'
 import TextHeading from '../Text/TextHeading'
 
@@ -17,7 +12,7 @@ type ExpListItemProps = {
 }
 
 function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
-  const { background, foreground, shadow } = useTheme()
+  const { background, shadow } = useTheme()
 
   return (
     <div
@@ -64,17 +59,15 @@ function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
           }
         `}
       >
-        <span
-          css={`
-            ${setTextStyle('display', 'semiBold')}
-            ${setResponsiveTextSize('body', 'xs')}
-            ${setCropAndLineHeight('body', 'flat')}
-
-            color: ${foreground('extraLow')};
-          `}
+        <TextBase
+          tag="span"
+          lineHeight="flat"
+          weight="semiBold"
+          size="xs"
+          color="extraLow"
         >
           {year}
-        </span>
+        </TextBase>
       </div>
 
       <TextHeading size="xs" lineHeight="flat">
