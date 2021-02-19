@@ -35,31 +35,32 @@ function About(): JSX.Element {
               }
 
               ${inclusiveUp('sm')} {
-                max-width: 8.75em;
+                max-width: 9.5em;
               }
             `}
           >
-            <RemoveWidow>More than 10 years in the game</RemoveWidow>
+            <RemoveWidow>More than 10 years doing work I love</RemoveWidow>
           </h2>
         </div>
         <div>
           <ArticleParagraph>
             <RemoveWidow>
-              I'm Andy, a web professional who's been working in the web
-              industry for more than 10 years. I'm formally educated in visual
-              design, digital graphics and GUI. My strong design foundations and
-              history collaborating with design teams enables me to build
-              quality front-ends that meet the high expectations of modern users
-              while operating within technical and product constraints.
+              User experience is at the heart of everything I do, I believe that
+              a close relationship between design, user needs and front-end
+              engineering expertise leads to a superior customer experience
+              within digital products.
             </RemoveWidow>
           </ArticleParagraph>
 
           <ArticleParagraph>
             <RemoveWidow>
-              As a specialist in user interfaces, I have extensive experience
-              building modular design systems, component libraries and scalable
-              design solutions, this helps foster and support fast, iterative
-              processes within agile product teams.
+              As a specialist in modular design systems and component libraries,
+              I work to bridge the gap between design and engineering disiplines
+              and am a catalyst for fast, iterative design processes within
+              agile product teams. My technical experience spans a wealth of
+              front-end technologies ranging from modern SPA frameworks to
+              run-time performance profiling and testing. Some of my preferred
+              tools include React, TypeScript, Styled Components and Jest.
             </RemoveWidow>
           </ArticleParagraph>
         </div>
