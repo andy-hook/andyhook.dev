@@ -6,6 +6,7 @@ import {
   baseText,
   displayText,
   setCropAndLineHeight,
+  setTextStyle,
 } from '../../style/typography'
 
 type ExpListItemProps = {
@@ -64,9 +65,9 @@ function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
       >
         <span
           css={`
-            ${baseText.weight.semiBold}
+            ${setTextStyle('display', 'semiBold')}
             ${baseText.size.xs}
-            ${setCropAndLineHeight('base', 'flat')}
+            ${setCropAndLineHeight('body', 'flat')}
 
             color: ${foreground('extraLow')};
           `}
@@ -77,7 +78,7 @@ function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
       <div>
         <h3
           css={`
-            ${displayText.weight.semiBold}
+            ${setTextStyle('display', 'semiBold')}
             ${displayText.size.xs}
             ${setCropAndLineHeight('display', 'flat')}
 
@@ -100,9 +101,9 @@ function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
       >
         <span
           css={`
-            ${baseText.weight.regular}
+            ${setTextStyle('display', 'regular')}
             ${baseText.size.sm}
-            ${setCropAndLineHeight('base', 'flat')}
+            ${setCropAndLineHeight('body', 'flat')}
 
             color: ${foreground('medium')};
 

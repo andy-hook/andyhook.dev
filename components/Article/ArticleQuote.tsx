@@ -5,6 +5,7 @@ import {
   baseText,
   displayText,
   setCropAndLineHeight,
+  setTextStyle,
 } from '../../style/typography'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
@@ -50,7 +51,7 @@ function ArticleQuote({
             >
               <div
                 css={`
-                  ${displayText.weight.semiBold}
+                  ${setTextStyle('display', 'semiBold')}
                   ${displayText.size.sm}
                   ${setCropAndLineHeight('display', 'longform')}
                 `}
@@ -61,7 +62,7 @@ function ArticleQuote({
 
                     &::before,
                     &::after {
-                      ${displayText.weight.bold}
+                      ${setTextStyle('display', 'bold')}
                       color: ${foreground('medium')};
                     }
 
@@ -101,9 +102,9 @@ function ArticleQuote({
             >
               <h3
                 css={`
-                  ${displayText.weight.medium}
+                  ${setTextStyle('display', 'medium')}
 
-                  ${setCropAndLineHeight('base', 'flat')}
+                  ${setCropAndLineHeight('body', 'flat')}
                     color: ${foreground('extraHigh')};
                 `}
               >
@@ -111,8 +112,8 @@ function ArticleQuote({
               </h3>
               <div
                 css={`
-                  ${displayText.weight.regular}
-                  ${setCropAndLineHeight('base', 'flat')}
+                  ${setTextStyle('display', 'regular')}
+                  ${setCropAndLineHeight('body', 'flat')}
             
                   color: ${foreground('low')};
 
@@ -124,8 +125,8 @@ function ArticleQuote({
               </div>
               <div
                 css={`
-                  ${displayText.weight.regular}
-                  ${setCropAndLineHeight('base', 'flat')}
+                  ${setTextStyle('display', 'regular')}
+                  ${setCropAndLineHeight('body', 'flat')}
 
                   color: ${foreground('low')};
                 `}

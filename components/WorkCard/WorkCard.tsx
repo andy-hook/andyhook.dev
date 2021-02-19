@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { appearance } from '../../style/appearance'
-import { baseText, TextSize } from '../../style/typography'
+import { baseText, setTextStyle, TextSize } from '../../style/typography'
 import Icon from '../Icon/Icon'
 import ImageBase from '../ImageBase/ImageBase'
 import InteractionBase from '../InteractionBase/InteractionBase'
@@ -104,7 +104,7 @@ function WorkCard({
               />
               <span
                 css={`
-                  ${baseText.weight.regular}
+                  ${setTextStyle('body', 'regular')}
                 `}
               >
                 Coming Soon

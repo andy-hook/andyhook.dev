@@ -5,7 +5,11 @@ import meta from '../../data/meta'
 import { appearance } from '../../style/appearance'
 import { slideInMotion } from '../../style/motion'
 import { inclusiveUp } from '../../style/responsive'
-import { displayText, setCropAndLineHeight } from '../../style/typography'
+import {
+  displayText,
+  setCropAndLineHeight,
+  setTextStyle,
+} from '../../style/typography'
 import HireButton from '../HireButton/HireButton'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
@@ -56,7 +60,7 @@ function Hero(): JSX.Element {
           >
             <h1
               css={`
-                ${displayText.weight.semiBold}
+                ${setTextStyle('display', 'semiBold')}
                 ${displayText.size.lg}
                   ${setCropAndLineHeight('display', 'tight')}
                   
@@ -69,7 +73,7 @@ function Hero(): JSX.Element {
                 css={`
                   position: relative;
                   z-index: ${appearance.index.floor};
-                  ${displayText.weight.bold}
+                  ${setTextStyle('display', 'bold')}
                 `}
               >
                 Senior UI Engineer

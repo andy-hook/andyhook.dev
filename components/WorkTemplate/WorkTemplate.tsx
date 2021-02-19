@@ -1,6 +1,10 @@
 import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
-import { displayText, setCropAndLineHeight } from '../../style/typography'
+import {
+  displayText,
+  setCropAndLineHeight,
+  setTextStyle,
+} from '../../style/typography'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import LayoutRow from '../Layout/LayoutRow'
@@ -62,7 +66,7 @@ function WorkTemplate({
                 >
                   <h1
                     css={`
-                      ${displayText.weight.semiBold}
+                      ${setTextStyle('display', 'semiBold')}
                       ${setCropAndLineHeight('display', 'tight')}
                   
                       color: ${foreground('extraHigh')};
@@ -73,7 +77,7 @@ function WorkTemplate({
                   </h1>
                   <h2
                     css={`
-                      ${displayText.weight.semiBold}
+                      ${setTextStyle('display', 'semiBold')}
                       ${setCropAndLineHeight('display', 'tight')}
 
                       color: ${foreground('extraLow')};
@@ -118,7 +122,7 @@ function WorkTemplate({
                   <p
                     css={`
                       ${displayText.size.sm}
-                      ${displayText.weight.medium}
+                      ${setTextStyle('display', 'medium')}
                       ${setCropAndLineHeight('display', 'longform')}
 
                       margin-bottom: 3em;
@@ -131,7 +135,7 @@ function WorkTemplate({
                   <div
                     css={`
                       ${displayText.size.xs}
-                      ${displayText.weight.regular}
+                      ${setTextStyle('display', 'regular')}
                       ${setCropAndLineHeight('display', 'longform')}
                         
                       color: ${foreground('low')};
@@ -154,7 +158,7 @@ function WorkTemplate({
                       key={i}
                       css={`
                         ${displayText.size.xs}
-                        ${displayText.weight.regular}
+                        ${setTextStyle('display', 'regular')}
                         ${setCropAndLineHeight('display', 'flat')}
                         
                         color: ${foreground('medium')};

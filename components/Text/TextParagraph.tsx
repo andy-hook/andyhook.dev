@@ -4,6 +4,7 @@ import { Theme } from '../../style/theme'
 import {
   baseText,
   setCropAndLineHeight,
+  setTextStyle,
   TextSize,
 } from '../../style/typography'
 
@@ -27,8 +28,8 @@ function TextParagraph({
     <p
       css={`
         ${baseText.size[size]}
-        ${baseText.weight[weight]}
-        ${setCropAndLineHeight('base', 'longform')}
+        ${setTextStyle('body', weight)}
+        ${setCropAndLineHeight('body', 'longform')}
 
         color: ${foreground(color)};
       `}

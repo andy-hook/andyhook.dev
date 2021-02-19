@@ -5,6 +5,7 @@ import { Theme } from '../../style/theme'
 import {
   displayText,
   setCropAndLineHeight,
+  setTextStyle,
   SupportedHeadingLevels,
   TextSize,
 } from '../../style/typography'
@@ -29,7 +30,7 @@ function TextHeading({
     <div
       css={`
         ${displayText.size[size]}
-        ${displayText.weight.semiBold}
+        ${setTextStyle('display', 'semiBold')}
         ${setCropAndLineHeight('display', 'tight')}
 
         color: ${foreground(color)};

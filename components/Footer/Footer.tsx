@@ -6,6 +6,7 @@ import {
   baseText,
   displayText,
   setCropAndLineHeight,
+  setTextStyle,
 } from '../../style/typography'
 import InteractionBase from '../InteractionBase/InteractionBase'
 import LayoutGutter from '../Layout/LayoutGutter'
@@ -33,9 +34,9 @@ function Footer(): JSX.Element {
             <div>
               <p
                 css={`
-                  ${baseText.weight.regular}
+                  ${setTextStyle('body', 'regular')}
                   ${baseText.size.md}
-                  ${setCropAndLineHeight('base', 'flat')}
+                  ${setCropAndLineHeight('body', 'flat')}
 
                   color: ${foreground('low')};
                   margin-bottom: 1.75em;
@@ -45,7 +46,7 @@ function Footer(): JSX.Element {
               </p>
               <h4
                 css={`
-                  ${displayText.weight.semiBold}
+                  ${setTextStyle('display', 'semiBold')}
                   ${displayText.size.lg}
                   ${setCropAndLineHeight('display', 'tight')}
 
@@ -60,7 +61,7 @@ function Footer(): JSX.Element {
                 <InteractionBase offset={0.1} href={`mailto:${meta.email}`}>
                   <GradientText
                     css={`
-                      ${displayText.weight.bold}
+                      ${setTextStyle('display', 'bold')}
                     `}
                   >
                     saying hello

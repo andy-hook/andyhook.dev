@@ -6,6 +6,7 @@ import {
   baseText,
   displayText,
   setCropAndLineHeight,
+  setTextStyle,
 } from '../../style/typography'
 import { keys } from '../../utils/general'
 import LayoutRow from '../Layout/LayoutRow'
@@ -35,7 +36,7 @@ function TestimonialGrid(): JSX.Element {
     >
       <h2
         css={`
-          ${displayText.weight.semiBold}
+          ${setTextStyle('display', 'semiBold')}
           ${displayText.size.md}
           ${setCropAndLineHeight('display', 'tight')}
 
@@ -48,9 +49,9 @@ function TestimonialGrid(): JSX.Element {
       </h2>
       <p
         css={`
-          ${baseText.weight.regular}
+          ${setTextStyle('body', 'regular')}
           ${baseText.size.md}
-          ${setCropAndLineHeight('base', 'regular')}
+          ${setCropAndLineHeight('body', 'regular')}
 
           color: ${foreground('medium')};
 

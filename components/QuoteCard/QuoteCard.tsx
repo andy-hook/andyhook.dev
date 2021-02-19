@@ -5,6 +5,7 @@ import {
   baseText,
   displayText,
   setCropAndLineHeight,
+  setTextStyle,
 } from '../../style/typography'
 import ImageBase from '../ImageBase/ImageBase'
 import { inclusiveUp } from '../../style/responsive'
@@ -89,7 +90,7 @@ function QuoteCard({
 
       <div
         css={`
-          ${displayText.weight.semiBold}
+          ${setTextStyle('display', 'semiBold')}
           ${displayText.size.xs}
            
           ${setCropAndLineHeight('display', 'longform')}
@@ -105,7 +106,7 @@ function QuoteCard({
 
             &::before,
             &::after {
-              ${displayText.weight.bold}
+              ${setTextStyle('display', 'bold')}
               color: ${foreground('medium')};
             }
 
@@ -142,8 +143,8 @@ function QuoteCard({
       >
         <div
           css={`
-            ${baseText.weight.medium}
-            ${setCropAndLineHeight('display', 'regular')}
+            ${setTextStyle('body', 'medium')}
+            ${setCropAndLineHeight('body', 'regular')}
 
             color: ${foreground('extraHigh')};
             margin-bottom: 0.5em;
@@ -153,8 +154,8 @@ function QuoteCard({
         </div>
         <div
           css={`
-            ${setCropAndLineHeight('display', 'regular')}
-            ${baseText.weight.regular}
+            ${setCropAndLineHeight('body', 'regular')}
+            ${setTextStyle('body', 'regular')}
             color: ${foreground('low')};
           `}
         >

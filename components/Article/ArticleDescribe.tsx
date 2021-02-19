@@ -1,7 +1,11 @@
 import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { inclusiveDown, inclusiveUp } from '../../style/responsive'
-import { displayText, setCropAndLineHeight } from '../../style/typography'
+import {
+  displayText,
+  setCropAndLineHeight,
+  setTextStyle,
+} from '../../style/typography'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import LayoutRow from '../Layout/LayoutRow'
@@ -39,7 +43,7 @@ function ArticleDescribe({
               <div>
                 <h2
                   css={`
-                    ${displayText.weight.semiBold}
+                    ${setTextStyle('display', 'semiBold')}
                     ${displayText.size.md}
                 ${setCropAndLineHeight('display', 'tight')}
 

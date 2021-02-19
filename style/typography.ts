@@ -6,17 +6,15 @@ import { createPlaceholderCrop, createTextCrop } from './utils'
 export type TextSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg'
 export type SupportedHeadingLevels = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 
-type StyleName = 'base' | 'display'
+type StyleType = 'body' | 'display'
 type LineHeightName = 'flat' | 'regular' | 'tight' | 'longform'
+type TextWeight = 'regular' | 'medium' | 'semiBold' | 'bold'
 
 type TypeSettings = {
   family: string
-  letterSpace: Record<
-    'regular' | 'medium' | 'semiBold' | 'bold' | 'uppercase',
-    string
-  >
+  letterSpace: Record<TextWeight, string>
   lineHeight: Record<LineHeightName, number>
-  weight: Record<'light' | 'regular' | 'medium' | 'semiBold' | 'bold', number>
+  weight: Record<TextWeight, number>
   cropSettings: Record<'topCrop' | 'bottomCrop', number>
 }
 
@@ -38,105 +36,90 @@ const typeScale: Record<number, string> = {
   11: rem('66px'),
 }
 
-const lineHeight = {
-  flat: 1,
-  tight: 1.225,
-  regular: 1.3,
-  longform: 1.6,
-}
-
-const fontWeight = {
-  light: 320,
-  regular: 420,
-  medium: 520,
-  semiBold: 590,
-  bold: 710,
-}
-
-/* Body
-------------------------------------------------- */
-const baseType: TypeSettings = {
-  family: `'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif`,
-  letterSpace: {
-    regular: '0.01em',
-    medium: '0.02em',
-    semiBold: '-0.02em',
-    bold: '0.004em',
-    uppercase: '0.06em',
+const typeSettings: Record<StyleType, TypeSettings> = {
+  body: {
+    family: `'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif`,
+    letterSpace: {
+      regular: '0.01em',
+      medium: '0.02em',
+      semiBold: '-0.02em',
+      bold: '0.004em',
+    },
+    lineHeight: {
+      flat: 1,
+      tight: 1.225,
+      regular: 1.3,
+      longform: 1.6,
+    },
+    weight: {
+      regular: 420,
+      medium: 520,
+      semiBold: 590,
+      bold: 710,
+    },
+    cropSettings: { topCrop: 9, bottomCrop: 6 },
   },
-  lineHeight: lineHeight,
-  weight: fontWeight,
-  cropSettings: { topCrop: 9, bottomCrop: 6 },
-}
-
-/* Display
-------------------------------------------------- */
-const displayType: TypeSettings = {
-  family: `'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif`,
-  letterSpace: {
-    regular: '-0.01em',
-    medium: '-0.005em',
-    semiBold: '-0.003em',
-    bold: '-0.005em',
-    uppercase: '0.06em',
+  display: {
+    family: `'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif`,
+    letterSpace: {
+      regular: '-0.01em',
+      medium: '-0.005em',
+      semiBold: '-0.003em',
+      bold: '-0.005em',
+    },
+    lineHeight: {
+      flat: 1,
+      tight: 1.225,
+      regular: 1.3,
+      longform: 1.6,
+    },
+    weight: {
+      regular: 420,
+      medium: 520,
+      semiBold: 590,
+      bold: 710,
+    },
+    cropSettings: { topCrop: 14, bottomCrop: 10 },
   },
-  lineHeight: lineHeight,
-  weight: fontWeight,
-  cropSettings: { topCrop: 14, bottomCrop: 10 },
-}
-
-const styles = {
-  base: baseType,
-  display: displayType,
 }
 
 /* Text node cropping
   ------------------------------------------------- */
-export const setCropAndLineHeight = (
-  style: StyleName,
+export function setCropAndLineHeight(
+  type: StyleType,
   lHeight: LineHeightName
-): CSSProp => {
+): CSSProp {
   return createTextCrop({
-    ...styles[style].cropSettings,
-    lHeight: styles[style].lineHeight[lHeight],
+    ...typeSettings[type].cropSettings,
+    lHeight: typeSettings[type].lineHeight[lHeight],
   })
 }
 
-export const setPlaceholderCrop = (
-  style: StyleName,
+export function setPlaceholderCrop(
+  type: StyleType,
   lHeight: LineHeightName
-): CSSProp => {
+): CSSProp {
   return createPlaceholderCrop({
-    ...styles[style].cropSettings,
-    lHeight: styles[style].lineHeight[lHeight],
+    ...typeSettings[type].cropSettings,
+    lHeight: typeSettings[type].lineHeight[lHeight],
   })
+}
+
+/* Text Style
+  ------------------------------------------------- */
+export function setTextStyle(type: StyleType, weightName: TextWeight): CSSProp {
+  const { family, weight, letterSpace } = typeSettings[type]
+
+  return css`
+    font-family: ${family};
+    font-weight: ${weight[weightName]};
+    letter-spacing: ${letterSpace[weightName]};
+  `
 }
 
 /* Responsive sizes and styles
   ------------------------------------------------- */
 export const displayText = {
-  weight: {
-    regular: css`
-      font-family: ${displayType.family};
-      font-weight: ${displayType.weight.regular};
-      letter-spacing: ${displayType.letterSpace.regular};
-    `,
-    medium: css`
-      font-family: ${displayType.family};
-      font-weight: ${displayType.weight.medium};
-      letter-spacing: ${displayType.letterSpace.medium};
-    `,
-    semiBold: css`
-      font-family: ${displayType.family};
-      font-weight: ${displayType.weight.semiBold};
-      letter-spacing: ${displayType.letterSpace.semiBold};
-    `,
-    bold: css`
-      font-family: ${displayType.family};
-      font-weight: ${displayType.weight.bold};
-      letter-spacing: ${displayType.letterSpace.bold};
-    `,
-  },
   size: {
     xxs: css`
       font-size: ${typeScale[4]};
@@ -193,23 +176,6 @@ export const displayText = {
 }
 
 export const baseText = {
-  weight: {
-    regular: css`
-      font-family: ${baseType.family};
-      font-weight: ${baseType.weight.regular};
-      letter-spacing: ${baseType.letterSpace.regular};
-    `,
-    medium: css`
-      font-family: ${baseType.family};
-      font-weight: ${baseType.weight.medium};
-      letter-spacing: ${baseType.letterSpace.medium};
-    `,
-    semiBold: css`
-      font-family: ${baseType.family};
-      font-weight: ${baseType.weight.semiBold};
-      letter-spacing: ${baseType.letterSpace.semiBold};
-    `,
-  },
   size: {
     xxs: css`
       font-size: ${typeScale[2]};
