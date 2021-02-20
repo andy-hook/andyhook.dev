@@ -7,7 +7,7 @@ import QuoteCard from '../QuoteCard/QuoteCard'
 import TextBase from '../Text/TextBase'
 import TextHeading from '../Text/TextHeading'
 
-function TestimonialGrid(): JSX.Element {
+function Testimonials(): JSX.Element {
   const items = useMemo(() => {
     const list = keys(TESTIMONIALS)
     const half = Math.ceil(list.length / 2)
@@ -116,4 +116,4 @@ function TestimonialGrid(): JSX.Element {
   )
 }
 
-export default TestimonialGrid
+export default Testimonials
