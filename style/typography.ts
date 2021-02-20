@@ -49,7 +49,7 @@ const typeSettings: Record<TextStyleType, TypeSettings> = {
     lineHeight: {
       flat: 1,
       tight: 1.225,
-      regular: 1.3,
+      regular: 1.5,
       longform: 1.6,
     },
     weight: {
