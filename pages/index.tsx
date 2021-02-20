@@ -7,7 +7,7 @@ import LayoutLimiter from '../components/Layout/LayoutLimiter'
 import LayoutRow from '../components/Layout/LayoutRow'
 import LayoutShade from '../components/Layout/LayoutShade'
 import MetaSocial from '../components/Meta/MetaSocial'
-import TestimonialGrid from '../components/TestimonialGrid/TestimonialGrid'
+import Testimonials from '../components/Testimonials/Testimonials'
 import WorkGrid from '../components/WorkGrid/WorkGrid'
 import { useTheme } from '../hooks/useTheme/useTheme'
 import { appearance } from '../style/appearance'
@@ -94,7 +94,7 @@ function Home(): JSX.Element {
           <LayoutGutter>
             <LayoutLimiter>
               <About />
-              <TestimonialGrid />
+              <Testimonials />
             </LayoutLimiter>
           </LayoutGutter>
         </LayoutRow>

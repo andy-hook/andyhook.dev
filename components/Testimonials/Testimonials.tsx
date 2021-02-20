@@ -7,7 +7,7 @@ import QuoteCard from '../QuoteCard/QuoteCard'
 import TextBase from '../Text/TextBase'
 import TextHeading from '../Text/TextHeading'
 
-function TestimonialGrid(): JSX.Element {
+function Testimonials(): JSX.Element {
   const items = useMemo(() => {
     const list = keys(TESTIMONIALS)
     const half = Math.ceil(list.length / 2)
@@ -28,7 +28,8 @@ function TestimonialGrid(): JSX.Element {
     >
       <TextHeading
         css={`
-          margin-bottom: 0.6em;
+          margin-top: 1em;
+          margin-bottom: 0.55em;
           text-align: center;
         `}
       >
@@ -36,6 +37,8 @@ function TestimonialGrid(): JSX.Element {
       </TextHeading>
 
       <TextBase
+        color="low"
+        size="lg"
         css={`
           text-align: center;
         `}
@@ -50,10 +53,17 @@ function TestimonialGrid(): JSX.Element {
           grid-auto-flow: row;
           grid-gap: var(--grid-gap);
 
-          margin-top: 5rem;
+          margin-top: 4rem;
+
+          ${inclusiveUp('sm')} {
+            margin-top: 7rem;
+          }
 
           ${inclusiveUp('md')} {
             grid-auto-flow: column;
+          }
+
+          ${inclusiveUp('lg')} {
             margin-top: 9rem;
           }
         }
@@ -106,4 +116,4 @@ function TestimonialGrid(): JSX.Element {
   )
 }
 
-export default TestimonialGrid
+export default Testimonials
