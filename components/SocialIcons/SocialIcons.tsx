@@ -71,13 +71,13 @@ function SocialIcon({
   const hoverIcon = useMemo(
     () => ({
       rest: {
-        color: foreground('extraLow'),
+        opacity: 0.2,
       },
       hover: {
-        color: foreground('extraHigh'),
+        opacity: 1,
       },
     }),
-    [foreground]
+    []
   )
 
   const hoverMotion = useMemo(
@@ -130,7 +130,12 @@ function SocialIcon({
           `}
         />
         <motion.div variants={hoverIcon}>
-          <Icon name={icon} />
+          <Icon
+            name={icon}
+            css={`
+              color: ${foreground('extraHigh')};
+            `}
+          />
         </motion.div>
       </InteractionBase>
     </motion.div>
