@@ -18,9 +18,12 @@ function Footer(): JSX.Element {
         <LayoutLimiter>
           <LayoutRow
             css={`
-              ${inclusiveUp('sm')} {
-                display: flex;
+              display: flex;
+              flex-direction: column;
+
+              ${inclusiveUp('md')} {
                 justify-content: space-between;
+                flex-direction: row;
                 align-items: flex-end;
               }
             `}
@@ -40,8 +43,8 @@ function Footer(): JSX.Element {
                 size="lg"
                 tag="h4"
                 css={`
-                  ${inclusiveDown('xs')} {
-                    margin-bottom: 1.75em;
+                  ${inclusiveDown('sm')} {
+                    margin-bottom: 1.4em;
                   }
                 `}
               >
@@ -57,6 +60,7 @@ function Footer(): JSX.Element {
                 </InteractionBase>
               </TextHeading>
             </div>
+
             <SocialIcons />
           </LayoutRow>
         </LayoutLimiter>
