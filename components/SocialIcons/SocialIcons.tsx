@@ -19,13 +19,13 @@ const socialInfo: Record<SocialNetworks, [SocialNetworks, string]> = {
 
 const iconPadding = '0.75em'
 
-function SocialIcons(): JSX.Element {
+function SocialIcons({
+  ...props
+}: React.HTMLAttributes<HTMLUListElement>): JSX.Element {
   return (
     <ul
       css={`
-        display: inline-grid;
-        grid-auto-flow: column;
-
+        display: inline-flex;
         font-size: 1.25rem;
 
         ${inclusiveUp('sm')} {
@@ -42,6 +42,7 @@ function SocialIcons(): JSX.Element {
 
         margin: -${iconPadding};
       `}
+      {...props}
     >
       {keys(meta.social).map((key) => {
         const [icon, url] = socialInfo[key]
@@ -60,7 +61,6 @@ function SocialIcons(): JSX.Element {
 function SocialIcon({
   icon,
   href,
-
   ...props
 }: {
   icon: SocialNetworks
