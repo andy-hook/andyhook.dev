@@ -63,6 +63,7 @@ export const WORK: Record<WorkName, WorkDetails> = {
       width: 1985,
       height: 1304,
     },
+    disabled: true,
   },
   bright: {
     route: '/bright',
@@ -73,14 +74,15 @@ export const WORK: Record<WorkName, WorkDetails> = {
     location: 'Brighton, UK',
     tenure: 'Sep 2018 – May 2020',
     technologies: [
-      'Angular',
+      'Angular 9+',
       'TypeScript',
       'NgRx',
-      'Playground',
-      'Karma / Jasmine',
+      'SASS',
+      'Storybook',
+      'Karma & Jasmine',
     ],
     intro:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In luctus leo vitae posuere varius. Donec massa neque, rutrum vestibulum pulvinar sed, laoreet sit amet ipsum. Integer in lorem sed orci tincidunt pulvinar nec fringilla orci. Nullam urna quam, tincidunt eu enim ut, condimentum vehicula tortor.',
+      'Bright was originally founded as a software development agency in 1999, but more recently has found success and traction by transitioning into a SASS led, customer centric product company best known for delivering high-quality digital asset management software, exceptional customer support and expert training services.',
     heroImage: {
       src: '/images/bright-hero.png',
       width: 3136,
