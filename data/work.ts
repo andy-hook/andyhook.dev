@@ -77,12 +77,12 @@ export const WORK: Record<WorkName, WorkDetails> = {
       'Angular 9+',
       'TypeScript',
       'NgRx',
-      'SASS',
+      'Sass (scss)',
       'Storybook',
       'Karma & Jasmine',
     ],
     intro:
-      'Bright was originally founded as a software development agency in 1999, but more recently has found success and traction by transitioning into a SASS led, customer centric product company best known for delivering high-quality digital asset management software, exceptional customer support and expert training services.',
+      'Bright was originally founded as a software development agency in 1999, but more recently has found success and traction by transitioning into a SaaS led, customer centric product company best known for delivering high-quality digital asset management software, exceptional customer support and expert training services.',
     heroImage: {
       src: '/images/bright-hero.png',
       width: 3136,

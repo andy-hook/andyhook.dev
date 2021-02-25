@@ -69,10 +69,10 @@ function Bright(): JSX.Element {
           The codebase at that time did feature an initial design token
           implementation but the application of it was spotty and inconsistent.
           I worked with the team to build out a revised set of tokens by
-          extending and improving the existing SASS utilities, from spacing and
-          typographic scales to colour palettes and a custom theming system,
-          this would go on to be exposed to end-users via a white labelling
-          style feature.
+          extending and improving the existing Sass (scss) utilities, from
+          spacing and typographic scales to colour palettes and a custom theming
+          system, this would go on to be exposed to end-users via a white
+          labelling style feature.
         </TextParagraph>
       </ArticleDescribe>
       <ArticleImageSet
@@ -86,7 +86,7 @@ function Bright(): JSX.Element {
       />
       <ArticleDescribe title="Modern digital asset management">
         <TextParagraph>
-          Overtime we continued to build out the component system while also
+          Over time we continued to build out the component system while also
           shipping features and iterating based on customer feedback. We would
           later encounter technical limitations such as poor performance within
           our list view with large collections. I worked with the team to
