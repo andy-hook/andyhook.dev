@@ -16,7 +16,6 @@ type WorkDetails = {
   heroImage: ImageProperties
   thumbnailImage: ImageProperties
   thumbnailImageSmall: ImageProperties
-  disabled?: boolean
 }
 
 export const WORK_ORDER: WorkName[] = [
