@@ -19,7 +19,7 @@ export type WorkCardProps = {
   disabled?: boolean
   title: string
   subtitle: string
-  href: string
+  href?: string
   size: 'large' | 'small'
 }
 
@@ -63,6 +63,7 @@ function WorkCard({
       disabled={disabled}
       css={`
         display: block;
+        width: 100%;
       `}
     >
       <div
