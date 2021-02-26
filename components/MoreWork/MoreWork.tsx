@@ -51,12 +51,12 @@ function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
             >
               {items.map(
                 (
-                  { title, description, route, thumbnailImageSmall, disabled },
+                  { title, subtitle, route, thumbnailImageSmall, disabled },
                   i
                 ) => (
                   <WorkCard
                     key={i}
-                    description={description}
+                    subtitle={subtitle}
                     href={route}
                     src={thumbnailImageSmall.src}
                     width={thumbnailImageSmall.width}

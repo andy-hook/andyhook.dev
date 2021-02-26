@@ -17,7 +17,7 @@ export type WorkCardProps = {
   alt?: string
   disabled?: boolean
   title: string
-  description: string
+  subtitle: string
   width: number
   height: number
   href: string
@@ -49,7 +49,7 @@ function WorkCard({
   alt,
   title,
   disabled,
-  description,
+  subtitle,
   width,
   height,
   href,
@@ -157,7 +157,7 @@ function WorkCard({
             margin-top: 0.55em;
           `}
         >
-          {description}
+          {subtitle}
         </TextParagraph>
       </div>
     </InteractionBase>

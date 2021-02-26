@@ -31,13 +31,9 @@ function WorkGrid(): JSX.Element {
             `}
           >
             {WORK_ORDER.map((key) => {
-              const {
-                thumbnailImage,
-                route,
-                title,
-                description,
-                disabled,
-              } = WORK[key]
+              const { thumbnailImage, route, title, subtitle, disabled } = WORK[
+                key
+              ]
 
               return (
                 <div
@@ -57,7 +53,7 @@ function WorkGrid(): JSX.Element {
                     disabled={disabled}
                     href={route}
                     title={title}
-                    description={description}
+                    subtitle={subtitle}
                     width={thumbnailImage.width}
                     height={thumbnailImage.height}
                   />
