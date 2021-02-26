@@ -34,7 +34,7 @@ function ArticleImageSet({
         );`}
       `}
     >
-      {items.map(({ filename }, i) => (
+      {items.map(({ imagePath }, i) => (
         <LayoutGutter
           key={i}
           css={`
@@ -49,7 +49,7 @@ function ArticleImageSet({
                 border-radius: ${appearance.radius.base};
               `}
             >
-              <ImageBase filename={filename} />
+              <ImageBase imagePath={imagePath} />
             </div>
           </LayoutLimiter>
         </LayoutGutter>

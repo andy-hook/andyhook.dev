@@ -30,7 +30,7 @@ type ImageBaseProps = {
 } & ImageProperties
 
 function ImageBase({
-  filename,
+  imagePath,
   alt,
   scaleRender = 100,
   quality = 80,
@@ -40,7 +40,7 @@ function ImageBase({
   const { background } = useTheme()
   const [loading, setLoading] = useState(true)
 
-  const image = imageData[filename]
+  const image = imageData[imagePath]
 
   const visibleMotion = useMemo(
     () => ({

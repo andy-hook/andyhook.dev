@@ -1,4 +1,4 @@
-import { ImageName } from './images'
+import { ImagePath } from './images'
 
 export type AuthorName =
   | 'brett'
@@ -10,7 +10,7 @@ export type AuthorName =
   | 'yohan'
 
 type AuthorDetails = {
-  avatar: ImageName
+  avatar: ImagePath
   name: string
   title: string
   company: string

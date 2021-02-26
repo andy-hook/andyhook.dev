@@ -5,10 +5,10 @@ import ImageBase from '../ImageBase/ImageBase'
 type ArticleImageProps = Partial<ImageProperties>
 
 function ArticleImage({
-  filename = 'test.png',
+  imagePath = 'test.png',
   alt,
 }: ArticleImageProps): JSX.Element {
-  return <ImageBase filename={filename} alt={alt} />
+  return <ImageBase imagePath={imagePath} alt={alt} />
 }
 
 export default ArticleImage

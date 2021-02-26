@@ -1,5 +1,5 @@
 import React from 'react'
-import { ImageName } from '../../data/images'
+import { ImagePath } from '../../data/images'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { appearance } from '../../style/appearance'
 import {
@@ -14,7 +14,7 @@ import TextHeading from '../Text/TextHeading'
 import TextParagraph from '../Text/TextParagraph'
 
 export type WorkCardProps = {
-  filename: ImageName
+  imagePath: ImagePath
   alt?: string
   disabled?: boolean
   title: string
@@ -44,7 +44,7 @@ const CARD_PROPERTIES: Record<
 }
 
 function WorkCard({
-  filename,
+  imagePath,
   alt,
   title,
   disabled,
@@ -125,7 +125,7 @@ function WorkCard({
         )}
 
         <ImageBase
-          filename={filename}
+          imagePath={imagePath}
           alt={alt}
           scaleRenderFromBp={['sm', imageRenderScale]}
         />

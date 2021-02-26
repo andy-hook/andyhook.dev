@@ -16,7 +16,7 @@ const images = Object.assign(
 
       return {
         [filename]: {
-          filename,
+          imagePath: filename,
           width: dimensions.width,
           height: dimensions.height,
         },

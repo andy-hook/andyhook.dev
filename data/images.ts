@@ -1,9 +1,9 @@
 import images from './image-sizes.json'
 
-export type ImageName = keyof typeof images
+export type ImagePath = keyof typeof images
 
 export type ImageProperties = {
-  filename: ImageName
+  imagePath: ImagePath
   alt?: string
 }
 

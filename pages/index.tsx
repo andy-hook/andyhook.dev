@@ -63,7 +63,7 @@ function Home(): JSX.Element {
           />
 
           <ImageBase
-            filename="home-bg.jpg"
+            imagePath="home-bg.jpg"
             quality={60}
             css={`
               opacity: 0.07;

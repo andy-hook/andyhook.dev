@@ -47,13 +47,13 @@ export const WORK: Record<WorkName, WorkDetails> = {
     intro:
       'Aragon is an open source software project that allows for the creation and management of decentralized organizations, the project empowers users to freely organize and collaborate without borders or intermediaries, creating global and bureaucracy-free organizations and communities.',
     heroImage: {
-      filename: 'aragon-hero.png',
+      imagePath: 'aragon-hero.png',
     },
     thumbnailImage: {
-      filename: 'aragon-thumb.png',
+      imagePath: 'aragon-thumb.png',
     },
     thumbnailImageSmall: {
-      filename: 'aragon-thumb-small.png',
+      imagePath: 'aragon-thumb-small.png',
     },
     disabled: true,
   },
@@ -78,13 +78,13 @@ export const WORK: Record<WorkName, WorkDetails> = {
     intro:
       'Bright was originally founded as a software development agency in 1999, but more recently has found success and traction by transitioning into a SaaS led, customer centric product company best known for delivering high-quality digital asset management software, exceptional customer support and expert training services.',
     heroImage: {
-      filename: 'bright-hero.png',
+      imagePath: 'bright-hero.png',
     },
     thumbnailImage: {
-      filename: 'bright-thumb.png',
+      imagePath: 'bright-thumb.png',
     },
     thumbnailImageSmall: {
-      filename: 'bright-thumb-small.png',
+      imagePath: 'bright-thumb-small.png',
     },
   },
   brandwatch: {
@@ -100,13 +100,13 @@ export const WORK: Record<WorkName, WorkDetails> = {
     intro:
       'Brandwatch is the world’s leading digital consumer intelligence company, allowing users to analyze and utilize conversations from across the web and social media. Enabling brands and companies to understand consumer insights, trends, influencers, and brand perception.',
     heroImage: {
-      filename: 'brandwatch-hero.png',
+      imagePath: 'brandwatch-hero.png',
     },
     thumbnailImage: {
-      filename: 'brandwatch-thumb.png',
+      imagePath: 'brandwatch-thumb.png',
     },
     thumbnailImageSmall: {
-      filename: 'brandwatch-thumb-small.png',
+      imagePath: 'brandwatch-thumb-small.png',
     },
     disabled: true,
   },
@@ -130,13 +130,13 @@ export const WORK: Record<WorkName, WorkDetails> = {
     intro:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In luctus leo vitae posuere varius. Donec massa neque, rutrum vestibulum pulvinar sed, laoreet sit amet ipsum. Integer in lorem sed orci tincidunt pulvinar nec fringilla orci. Nullam urna quam, tincidunt eu enim ut, condimentum vehicula tortor.',
     heroImage: {
-      filename: 'blocks-hero.png',
+      imagePath: 'blocks-hero.png',
     },
     thumbnailImage: {
-      filename: 'blocks-thumb.png',
+      imagePath: 'blocks-thumb.png',
     },
     thumbnailImageSmall: {
-      filename: 'blocks-thumb-small.png',
+      imagePath: 'blocks-thumb-small.png',
     },
     disabled: true,
   },
