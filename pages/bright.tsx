@@ -35,9 +35,9 @@ function Bright(): JSX.Element {
           For Dash, the team were very clear that they really wanted to have a
           delightful, high-quality user experience and felt their visual design
           at the time, didn't quite deliver on that promise. I ultimately
-          contributed to heavily redesigning the visual athestic and helped ship
-          a consistent, portable UI kit, styling system and various high impact
-          features.
+          contributed to heavily redesigning the visual aesthetic and helped
+          ship a consistent, portable UI kit, styling system and various high
+          impact features on the front-end.
         </TextParagraph>
       </ArticleDescribe>
       <ArticleImage
@@ -51,7 +51,7 @@ function Bright(): JSX.Element {
           The first area that I looked at was how the team were approaching
           visual style within the application, Dash is an Angular SPA supported
           by a micro-service backend architecture and made heavy use of Google
-          Material design principles and their assosociated UI primitives. While
+          Material design principles and their associated UI primitives. While
           Material principles are solid and offer great documentation for
           aligning a team, the visual style itself lacks unique character and
           often illicits a heavy association with Google products.
@@ -72,7 +72,7 @@ function Bright(): JSX.Element {
           extending and improving the existing Sass (scss) utilities, from
           spacing and typographic scales to colour palettes and a custom theming
           system, this would go on to be exposed to end-users via a white
-          labelling style feature.
+          labelling feature in the dashboard.
         </TextParagraph>
       </ArticleDescribe>
       <ArticleImageSet
@@ -99,11 +99,11 @@ function Bright(): JSX.Element {
           and every problem with ruthless prioritisation and make the right
           choices of when to favour features over improving our developer
           experience or pay down technical debt. This is the reality of quickly
-          shipping value to users and is even more crucial as we were still in
-          the validation stage and needing to quickly test product decisions in
-          order to find fit. I feel proud to have been able to provide high
-          impact UI engineering and deliver on one of the teams core pillars in
-          delivering a slick, delightful user experience.
+          shipping value to users and is even more crucial as we were in the
+          validation stage and needed to quickly test product decisions to find
+          fit. I feel proud to have been able to provide high impact UI
+          engineering and deliver on one of the teams core pillars in delivering
+          a slick, delightful user experience.
         </TextParagraph>
       </ArticleDescribe>
       <ArticleImageSet
