@@ -32,3 +32,6 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# generate files
+/data/image-sizes.json
