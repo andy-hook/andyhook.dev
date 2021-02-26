@@ -14,9 +14,9 @@ function Bright(): JSX.Element {
     <WorkTemplate name="bright">
       <ArticleDescribe title="Overview" bordered>
         <TextParagraph>
-          In 2018 I joined the team to evolve and elevate the user interface of
-          Dash, a new streamlined digital asset management product that the team
-          were busy preparing to ship as an MVP.
+          In 2018 I joined the Bright team to evolve and elevate the user
+          interface of Dash, a new streamlined digital asset management product
+          that the team were busy preparing to ship as an MVP.
         </TextParagraph>
 
         <TextParagraph>

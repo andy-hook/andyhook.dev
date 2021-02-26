@@ -9,7 +9,8 @@ type ImageData = {
 type WorkDetails = {
   route: string
   title: string
-  description: string
+  subtitle: string
+  excerpt: string
   role: string
   company: string
   location: string
@@ -33,7 +34,8 @@ export const WORK: Record<WorkName, WorkDetails> = {
   aragon: {
     route: '/aragon',
     title: 'Aragon',
-    description: 'Collaboration without borders',
+    subtitle: 'Collaboration without borders',
+    excerpt: '',
     role: 'Senior UI Engineer',
     company: 'Aragon',
     location: 'Remote',
@@ -68,7 +70,9 @@ export const WORK: Record<WorkName, WorkDetails> = {
   bright: {
     route: '/bright',
     title: 'Bright Interactive',
-    description: 'Realise your brand potential',
+    subtitle: 'Realise your brand potential',
+    excerpt:
+      'In 2018 I joined the Bright team to evolve and elevate the user interface of Dash, a new streamlined digital asset management product that the team were busy preparing to ship as an MVP.',
     role: 'UI Engineer',
     company: 'Bright Interactive',
     location: 'Brighton, UK',
@@ -102,7 +106,8 @@ export const WORK: Record<WorkName, WorkDetails> = {
   brandwatch: {
     route: '/brandwatch',
     title: 'Brandwatch',
-    description: 'Understand your customers',
+    subtitle: 'Understand your customers',
+    excerpt: '',
     role: 'Senior Front-End Developer',
     company: 'Brandwatch',
     location: 'Brighton, UK',
@@ -130,7 +135,8 @@ export const WORK: Record<WorkName, WorkDetails> = {
   blocks: {
     route: '/blocks',
     title: 'Blocks',
-    description: 'Ethereum inside your browser',
+    subtitle: 'Ethereum inside your browser',
+    excerpt: '',
     role: 'Front-End Developer',
     company: 'Side Project',
     location: 'Remote',

@@ -21,7 +21,8 @@ function WorkTemplate({
 }: WorkTemplate): JSX.Element {
   const {
     title,
-    description,
+    subtitle,
+    excerpt,
     intro,
     tenure,
     role,
@@ -31,7 +32,7 @@ function WorkTemplate({
 
   return (
     <>
-      <MetaSocial title={`Case study – ${title}`} description={description} />
+      <MetaSocial title={`Case Study – ${title}`} description={excerpt} />
       <article>
         <header>
           <div
@@ -67,7 +68,7 @@ function WorkTemplate({
                   </TextHeading>
 
                   <TextHeading size="lg" tag="h2" color="extraLow">
-                    {description}
+                    {subtitle}
                   </TextHeading>
                 </div>
               </LayoutLimiter>
