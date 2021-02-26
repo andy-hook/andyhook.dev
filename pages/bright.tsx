@@ -40,11 +40,7 @@ function Bright(): JSX.Element {
           impact features on the front-end.
         </TextParagraph>
       </ArticleDescribe>
-      <ArticleImage
-        src="/images/bright-dash-intro.png"
-        width={2000}
-        height={1183}
-      />
+      <ArticleImage imagePath="bright-dash-intro.png" />
 
       <ArticleDescribe title="Crafting a portable component system">
         <TextParagraph>
@@ -78,9 +74,7 @@ function Bright(): JSX.Element {
       <ArticleImageSet
         items={[
           {
-            src: '/images/bright-dash-design-system.png',
-            width: 2000,
-            height: 1409,
+            imagePath: 'bright-dash-design-system.png',
           },
         ]}
       />
@@ -112,29 +106,19 @@ function Bright(): JSX.Element {
         frameGradientEnd="#4C00A9"
         items={[
           {
-            src: '/images/bright-dash-ui-login.png',
-            width: 1750,
-            height: 1100,
+            imagePath: 'bright-dash-ui-login.png',
           },
           {
-            src: '/images/bright-dash-ui-search.png',
-            width: 1750,
-            height: 1100,
+            imagePath: 'bright-dash-ui-search.png',
           },
           {
-            src: '/images/bright-dash-ui-edit.png',
-            width: 1750,
-            height: 1100,
+            imagePath: 'bright-dash-ui-edit.png',
           },
           {
-            src: '/images/bright-dash-ui-detail.png',
-            width: 1750,
-            height: 1100,
+            imagePath: 'bright-dash-ui-detail.png',
           },
           {
-            src: '/images/bright-dash-ui-admin.png',
-            width: 1750,
-            height: 1100,
+            imagePath: 'bright-dash-ui-admin.png',
           },
         ]}
       />

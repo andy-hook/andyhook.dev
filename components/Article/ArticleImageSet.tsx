@@ -1,9 +1,10 @@
 import React from 'react'
 import { css } from 'styled-components'
+import { ImageProperties } from '../../data/images'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { appearance } from '../../style/appearance'
 import { inclusiveUp } from '../../style/responsive'
-import ImageBase, { ImageProperties } from '../ImageBase/ImageBase'
+import ImageBase from '../ImageBase/ImageBase'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 
@@ -33,7 +34,7 @@ function ArticleImageSet({
         );`}
       `}
     >
-      {items.map(({ src, width, height }, i) => (
+      {items.map(({ imagePath }, i) => (
         <LayoutGutter
           key={i}
           css={`
@@ -48,7 +49,7 @@ function ArticleImageSet({
                 border-radius: ${appearance.radius.base};
               `}
             >
-              <ImageBase src={src} width={width} height={height} />
+              <ImageBase imagePath={imagePath} />
             </div>
           </LayoutLimiter>
         </LayoutGutter>

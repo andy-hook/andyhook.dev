@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "yarn lint && next build",
+    "generate-image-sizes": "node generate-sizes.js",
+    "dev": "yarn generate-image-sizes && next dev",
+    "build": "yarn generate-image-sizes && yarn lint && next build",
     "start": "next start",
     "lint": "eslint . --ext ts,tsx --max-warnings 0 && tsc",
     "test": "jest --passWithNoTests"
@@ -46,7 +47,9 @@
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "glob": "^7.1.6",
     "husky": "^4.3.6",
+    "image-size": "^0.9.4",
     "jest": "^26.6.3",
     "jest-styled-components": "^7.0.3",
     "prettier": "^2.2.1",

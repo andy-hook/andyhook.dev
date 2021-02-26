@@ -6,6 +6,7 @@ import { useTheme } from '../../hooks/useTheme/useTheme'
 import { spring } from '../../style/motion'
 import { css, keyframes } from 'styled-components'
 import { lighten, rgba } from 'polished'
+import { imageData, ImageProperties } from '../../data/images'
 
 const shimmerAnimation = css`
   background-size: 500% 500%;
@@ -22,13 +23,6 @@ const shimmerAnimation = css`
   `} 2s linear infinite;
 `
 
-export type ImageProperties = {
-  src: string
-  width: number
-  height: number
-  alt?: string
-}
-
 type ImageBaseProps = {
   scaleRender?: number
   scaleRenderFromBp?: [BreakpointName, number]
@@ -36,9 +30,7 @@ type ImageBaseProps = {
 } & ImageProperties
 
 function ImageBase({
-  src,
-  width,
-  height,
+  imagePath,
   alt,
   scaleRender = 100,
   quality = 80,
@@ -47,6 +39,8 @@ function ImageBase({
 }: ImageBaseProps): JSX.Element {
   const { background } = useTheme()
   const [loading, setLoading] = useState(true)
+
+  const image = imageData[imagePath]
 
   const visibleMotion = useMemo(
     () => ({
@@ -141,10 +135,10 @@ function ImageBase({
           loading="lazy"
           quality={quality}
           onLoad={handleOnLoad}
-          src={src}
+          src={`/images/${image.imagePath}`}
           sizes={sizesMediaString}
-          width={width}
-          height={height}
+          width={image.width}
+          height={image.height}
           alt={alt}
           layout="responsive"
         />

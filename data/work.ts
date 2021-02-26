@@ -1,10 +1,6 @@
-export type WorkName = 'aragon' | 'bright' | 'brandwatch' | 'blocks'
+import { ImageProperties } from './images'
 
-type ImageData = {
-  src: string
-  width: number
-  height: number
-}
+export type WorkName = 'aragon' | 'bright' | 'brandwatch' | 'blocks'
 
 type WorkDetails = {
   route: string
@@ -17,9 +13,9 @@ type WorkDetails = {
   tenure: string
   technologies: string[]
   intro: string
-  heroImage: ImageData
-  thumbnailImage: ImageData
-  thumbnailImageSmall: ImageData
+  heroImage: ImageProperties
+  thumbnailImage: ImageProperties
+  thumbnailImageSmall: ImageProperties
   disabled?: boolean
 }
 
@@ -51,19 +47,13 @@ export const WORK: Record<WorkName, WorkDetails> = {
     intro:
       'Aragon is an open source software project that allows for the creation and management of decentralized organizations, the project empowers users to freely organize and collaborate without borders or intermediaries, creating global and bureaucracy-free organizations and communities.',
     heroImage: {
-      src: '/images/aragon-hero.png',
-      width: 3136,
-      height: 1435,
+      imagePath: 'aragon-hero.png',
     },
     thumbnailImage: {
-      src: '/images/aragon-thumb.png',
-      width: 1986,
-      height: 1451,
+      imagePath: 'aragon-thumb.png',
     },
     thumbnailImageSmall: {
-      src: '/images/aragon-thumb-small.png',
-      width: 1985,
-      height: 1304,
+      imagePath: 'aragon-thumb-small.png',
     },
     disabled: true,
   },
@@ -88,19 +78,13 @@ export const WORK: Record<WorkName, WorkDetails> = {
     intro:
       'Bright was originally founded as a software development agency in 1999, but more recently has found success and traction by transitioning into a SaaS led, customer centric product company best known for delivering high-quality digital asset management software, exceptional customer support and expert training services.',
     heroImage: {
-      src: '/images/bright-hero.png',
-      width: 3136,
-      height: 1435,
+      imagePath: 'bright-hero.png',
     },
     thumbnailImage: {
-      src: '/images/bright-thumb.png',
-      width: 1986,
-      height: 2131,
+      imagePath: 'bright-thumb.png',
     },
     thumbnailImageSmall: {
-      src: '/images/bright-thumb-small.png',
-      width: 1985,
-      height: 1304,
+      imagePath: 'bright-thumb-small.png',
     },
   },
   brandwatch: {
@@ -116,19 +100,13 @@ export const WORK: Record<WorkName, WorkDetails> = {
     intro:
       'Brandwatch is the world’s leading digital consumer intelligence company, allowing users to analyze and utilize conversations from across the web and social media. Enabling brands and companies to understand consumer insights, trends, influencers, and brand perception.',
     heroImage: {
-      src: '/images/brandwatch-hero.png',
-      width: 3136,
-      height: 1435,
+      imagePath: 'brandwatch-hero.png',
     },
     thumbnailImage: {
-      src: '/images/brandwatch-thumb.png',
-      width: 1986,
-      height: 2489,
+      imagePath: 'brandwatch-thumb.png',
     },
     thumbnailImageSmall: {
-      src: '/images/brandwatch-thumb-small.png',
-      width: 1985,
-      height: 1304,
+      imagePath: 'brandwatch-thumb-small.png',
     },
     disabled: true,
   },
@@ -152,19 +130,13 @@ export const WORK: Record<WorkName, WorkDetails> = {
     intro:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In luctus leo vitae posuere varius. Donec massa neque, rutrum vestibulum pulvinar sed, laoreet sit amet ipsum. Integer in lorem sed orci tincidunt pulvinar nec fringilla orci. Nullam urna quam, tincidunt eu enim ut, condimentum vehicula tortor.',
     heroImage: {
-      src: '/images/blocks-hero.png',
-      width: 3136,
-      height: 1435,
+      imagePath: 'blocks-hero.png',
     },
     thumbnailImage: {
-      src: '/images/blocks-thumb.png',
-      width: 1986,
-      height: 1889,
+      imagePath: 'blocks-thumb.png',
     },
     thumbnailImageSmall: {
-      src: '/images/blocks-thumb-small.png',
-      width: 1985,
-      height: 1304,
+      imagePath: 'blocks-thumb-small.png',
     },
     disabled: true,
   },

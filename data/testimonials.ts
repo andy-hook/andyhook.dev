@@ -1,3 +1,5 @@
+import { ImagePath } from './images'
+
 export type AuthorName =
   | 'brett'
   | 'mikey'
@@ -8,7 +10,7 @@ export type AuthorName =
   | 'yohan'
 
 type AuthorDetails = {
-  avatar: string
+  avatar: ImagePath
   name: string
   title: string
   company: string
@@ -18,7 +20,7 @@ type AuthorDetails = {
 
 export const TESTIMONIALS: Record<AuthorName, AuthorDetails> = {
   mikey: {
-    avatar: 'mikey',
+    avatar: 'avatars/mikey.jpg',
     name: 'Mikey Allan',
     title: 'Head of Design',
     company: 'Brandwatch',
@@ -27,7 +29,7 @@ export const TESTIMONIALS: Record<AuthorName, AuthorDetails> = {
     longTestimonial: '',
   },
   brett: {
-    avatar: 'brett',
+    avatar: 'avatars/brett.jpg',
     name: 'Brett Sun',
     title: 'Chief Technology Officer',
     company: 'Aragon One',
@@ -37,7 +39,7 @@ export const TESTIMONIALS: Record<AuthorName, AuthorDetails> = {
       'I have seldom met an individual who personifies the senior UI/UX engineer as well as Andy. He not only drives to personally deliver to the highest of standards, but goes the distance to improve the work of everyone around him. He produces well-crafted, precise, and polished interfaces, but more importantly as a senior engineer, demonstrates a strong ability to pass on his own strengths to others to help them mature',
   },
   jo: {
-    avatar: 'jo',
+    avatar: 'avatars/jo.jpg',
     name: 'Jo Petty',
     title: 'Documentation Lead',
     company: 'Unity Technologies',
@@ -46,7 +48,7 @@ export const TESTIMONIALS: Record<AuthorName, AuthorDetails> = {
     longTestimonial: '',
   },
   ben: {
-    avatar: 'ben',
+    avatar: 'avatars/ben.jpg',
     name: 'Ben Browning',
     title: 'UI/UX Developer',
     company: 'Bright Interactive',
@@ -55,7 +57,7 @@ export const TESTIMONIALS: Record<AuthorName, AuthorDetails> = {
     longTestimonial: '',
   },
   ze: {
-    avatar: 'ze',
+    avatar: 'avatars/ze.jpg',
     name: 'Zé Meirinhos',
     title: 'Javascript Developer',
     company: 'Bright Interactive',
@@ -65,7 +67,7 @@ export const TESTIMONIALS: Record<AuthorName, AuthorDetails> = {
       'Andy is inspiring, supportive, curious, always looking to expand his skills, and generally a great person to be around. Working in a team he understands the importance of clear goals and how to best achieve the team’s aims. His attention to detail makes everything he touches look incredibly polished, and affirms his elegant simplicity',
   },
   andrew: {
-    avatar: 'andrew',
+    avatar: 'avatars/andrew.jpg',
     name: 'Andrew Khan',
     title: 'Lead Software Architect',
     company: 'Opia',
@@ -74,7 +76,7 @@ export const TESTIMONIALS: Record<AuthorName, AuthorDetails> = {
     longTestimonial: '',
   },
   yohan: {
-    avatar: 'yohan',
+    avatar: 'avatars/yohan.jpg',
     name: 'Yohan Fernando',
     title: 'Senior Software Engineer',
     company: 'Brandwatch',

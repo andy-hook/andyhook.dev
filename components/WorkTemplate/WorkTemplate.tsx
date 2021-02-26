@@ -75,11 +75,7 @@ function WorkTemplate({
             </LayoutGutter>
           </div>
 
-          <ImageBase
-            src={heroImage.src}
-            width={heroImage.width}
-            height={heroImage.height}
-          />
+          <ImageBase imagePath={heroImage.imagePath} />
         </header>
         <main>
           <LayoutGutter>

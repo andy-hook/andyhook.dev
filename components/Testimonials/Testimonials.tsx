@@ -104,7 +104,7 @@ function Testimonials(): JSX.Element {
                     company={company}
                     title={title}
                     name={name}
-                    avatar={`/avatars/${avatar}.jpg`}
+                    avatar={avatar}
                   />
                 )
               })}
