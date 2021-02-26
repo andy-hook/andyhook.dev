@@ -3,7 +3,7 @@ import { ImageProperties } from './images'
 export type WorkName = 'aragon' | 'bright' | 'brandwatch' | 'blocks'
 
 type WorkDetails = {
-  route: string
+  route?: string
   title: string
   subtitle: string
   excerpt: string
@@ -28,7 +28,6 @@ export const WORK_ORDER: WorkName[] = [
 
 export const WORK: Record<WorkName, WorkDetails> = {
   aragon: {
-    route: '/aragon',
     title: 'Aragon',
     subtitle: 'Collaboration without borders',
     excerpt: '',
@@ -55,7 +54,6 @@ export const WORK: Record<WorkName, WorkDetails> = {
     thumbnailImageSmall: {
       imagePath: 'aragon-thumb-small.png',
     },
-    disabled: true,
   },
   bright: {
     route: '/bright',
@@ -88,7 +86,6 @@ export const WORK: Record<WorkName, WorkDetails> = {
     },
   },
   brandwatch: {
-    route: '/brandwatch',
     title: 'Brandwatch',
     subtitle: 'Understand your customers',
     excerpt: '',
@@ -108,10 +105,9 @@ export const WORK: Record<WorkName, WorkDetails> = {
     thumbnailImageSmall: {
       imagePath: 'brandwatch-thumb-small.png',
     },
-    disabled: true,
   },
   blocks: {
-    route: '/blocks',
+    route: 'https://blocks.andyhook.dev',
     title: 'Blocks',
     subtitle: 'Ethereum inside your browser',
     excerpt: '',
@@ -138,6 +134,5 @@ export const WORK: Record<WorkName, WorkDetails> = {
     thumbnailImageSmall: {
       imagePath: 'blocks-thumb-small.png',
     },
-    disabled: true,
   },
 }

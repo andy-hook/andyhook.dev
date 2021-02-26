@@ -100,6 +100,7 @@ const Global = createGlobalStyle`
     background: none;
     cursor: pointer;
     font-weight: inherit;
+    text-align: inherit;
 
     &[disabled] {
       cursor: default;
