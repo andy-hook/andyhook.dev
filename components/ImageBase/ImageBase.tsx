@@ -135,7 +135,7 @@ function ImageBase({
           loading="lazy"
           quality={quality}
           onLoad={handleOnLoad}
-          src={`/images/${image.filename}`}
+          src={`/images/${image.imagePath}`}
           sizes={sizesMediaString}
           width={image.width}
           height={image.height}
