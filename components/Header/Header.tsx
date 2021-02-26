@@ -1,6 +1,4 @@
-import { motion } from 'framer-motion'
 import React from 'react'
-import { slideInMotion } from '../../style/motion'
 import { inclusiveUp } from '../../style/responsive'
 import LayoutGutter from '../Layout/LayoutGutter'
 import Logo from '../Logo/Logo'
@@ -15,11 +13,7 @@ function Footer({
       `}
       {...props}
     >
-      <motion.header
-        variants={slideInMotion}
-        initial="offset"
-        animate="rest"
-        custom={{ offset: -75, delay: 0.25 }}
+      <header
         css={`
           padding-top: 4rem;
 
@@ -33,7 +27,7 @@ function Footer({
         `}
       >
         <Logo />
-      </motion.header>
+      </header>
     </LayoutGutter>
   )
 }

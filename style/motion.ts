@@ -4,10 +4,15 @@ export const spring = {
     stiffness: 260,
     damping: 15,
   },
-  softOut: {
+  soft: {
     type: 'spring',
     stiffness: 100,
     damping: 30,
+  },
+  snappy: {
+    type: 'spring',
+    stiffness: 150,
+    damping: 20,
   },
 }
 
@@ -35,6 +40,6 @@ export const slideInMotion = {
   } => ({
     opacity: 1,
     y: 0,
-    transition: { delay: props.delay, ...spring.softOut },
+    transition: { delay: props.delay, ...spring.soft },
   }),
 }

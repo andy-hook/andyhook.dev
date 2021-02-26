@@ -1,9 +1,7 @@
-import { motion } from 'framer-motion'
 import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import meta from '../../data/meta'
 import { appearance } from '../../style/appearance'
-import { slideInMotion } from '../../style/motion'
 import { inclusiveUp } from '../../style/responsive'
 import { setTextStyle } from '../../style/typography'
 import HireButton from '../HireButton/HireButton'
@@ -46,11 +44,7 @@ function Hero(): JSX.Element {
             }
           `}
         >
-          <motion.div
-            variants={slideInMotion}
-            initial="offset"
-            animate="rest"
-            custom={{ offset: 100, delay: 0.75 }}
+          <div
             css={`
               text-align: center;
             `}
@@ -94,7 +88,7 @@ function Hero(): JSX.Element {
             </TextHeading>
 
             <HireButton href={`mailto:${meta.email}`} />
-          </motion.div>
+          </div>
         </div>
       </LayoutLimiter>
     </LayoutGutter>

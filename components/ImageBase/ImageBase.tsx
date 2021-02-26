@@ -41,7 +41,7 @@ function ImageBase({
   height,
   alt,
   scaleRender = 100,
-  quality = 100,
+  quality = 80,
   scaleRenderFromBp,
   ...props
 }: ImageBaseProps): JSX.Element {
@@ -100,7 +100,7 @@ function ImageBase({
             initial="visible"
             animate="visible"
             exit="hidden"
-            transition={spring.softOut}
+            transition={spring.snappy}
             css={`
               position: absolute;
 
@@ -135,7 +135,7 @@ function ImageBase({
         initial="hidden"
         animate={loading ? 'hidden' : 'visible'}
         variants={visibleMotion}
-        transition={spring.softOut}
+        transition={spring.snappy}
       >
         <Image
           loading="lazy"

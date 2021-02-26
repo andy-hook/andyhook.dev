@@ -36,10 +36,10 @@ function About(): JSX.Element {
         </div>
         <div>
           <TextParagraph>
-            User experience is at the heart of everything I do, I believe that a
-            close relationship between design, user needs and front-end
-            engineering expertise leads to a superior customer experience within
-            digital products.
+            Great user experience is at the core of everything I do, I believe
+            that close collaboration between design, user research and front-end
+            engineering leads to a superior customer experience within digital
+            products.
           </TextParagraph>
 
           <TextParagraph>
