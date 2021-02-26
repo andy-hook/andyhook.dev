@@ -10,18 +10,7 @@ function Logo(): JSX.Element {
         display: inline-flex;
       `}
     >
-      <motion.div
-        variants={{
-          rest: {
-            opacity: 0.3,
-          },
-          hover: {
-            opacity: 1,
-          },
-        }}
-        initial="rest"
-        whileHover="hover"
-      >
+      <motion.div initial="rest" whileHover="hover">
         <TextBase
           tag="h1"
           size="sm"
@@ -38,7 +27,18 @@ function Logo(): JSX.Element {
               padding: 0.75em;
             `}
           >
-            Andy Hook
+            <motion.span
+              variants={{
+                rest: {
+                  opacity: 0.3,
+                },
+                hover: {
+                  opacity: 1,
+                },
+              }}
+            >
+              Andy Hook
+            </motion.span>
           </InteractionBase>
         </TextBase>
       </motion.div>
