@@ -22,8 +22,7 @@ const images = Object.assign(
         },
       }
     } catch (err) {
-      console.error(`${sourcePath} – Failed to retrieve image sizes`)
-      console.error(err)
+      console.error(`${sourcePath} – Failed to retrieve image sizes`, err)
     }
   })
 )
