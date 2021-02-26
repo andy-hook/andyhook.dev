@@ -1,15 +1,14 @@
 import React from 'react'
-import ImageBase, { ImageProperties } from '../ImageBase/ImageBase'
+import { ImageProperties } from '../../data/images'
+import ImageBase from '../ImageBase/ImageBase'
 
 type ArticleImageProps = Partial<ImageProperties>
 
 function ArticleImage({
-  src = '/test.png',
-  width = 500,
-  height = 250,
+  filename = 'test.png',
   alt,
 }: ArticleImageProps): JSX.Element {
-  return <ImageBase src={src} width={width} height={height} alt={alt} />
+  return <ImageBase filename={filename} alt={alt} />
 }
 
 export default ArticleImage

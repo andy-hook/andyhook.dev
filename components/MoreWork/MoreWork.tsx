@@ -58,10 +58,8 @@ function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
                     key={i}
                     subtitle={subtitle}
                     href={route}
-                    src={thumbnailImageSmall.src}
-                    width={thumbnailImageSmall.width}
+                    filename={thumbnailImageSmall.filename}
                     title={title}
-                    height={thumbnailImageSmall.height}
                     disabled={disabled}
                     size="small"
                   />

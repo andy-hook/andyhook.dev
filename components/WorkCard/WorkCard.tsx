@@ -1,4 +1,5 @@
 import React from 'react'
+import { ImageName } from '../../data/images'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { appearance } from '../../style/appearance'
 import {
@@ -13,13 +14,11 @@ import TextHeading from '../Text/TextHeading'
 import TextParagraph from '../Text/TextParagraph'
 
 export type WorkCardProps = {
-  src: string
+  filename: ImageName
   alt?: string
   disabled?: boolean
   title: string
   subtitle: string
-  width: number
-  height: number
   href: string
   size: 'large' | 'small'
 }
@@ -45,13 +44,11 @@ const CARD_PROPERTIES: Record<
 }
 
 function WorkCard({
-  src,
+  filename,
   alt,
   title,
   disabled,
   subtitle,
-  width,
-  height,
   href,
   size = 'large',
 }: WorkCardProps): JSX.Element {
@@ -128,10 +125,8 @@ function WorkCard({
         )}
 
         <ImageBase
-          src={src}
+          filename={filename}
           alt={alt}
-          width={width}
-          height={height}
           scaleRenderFromBp={['sm', imageRenderScale]}
         />
       </div>

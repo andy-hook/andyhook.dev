@@ -6,10 +6,11 @@ import ImageBase from '../ImageBase/ImageBase'
 import { inclusiveUp } from '../../style/responsive'
 import RemoveWidow from '../RemoveWidow/RemoveWidow'
 import TextBase from '../Text/TextBase'
+import { ImageName } from '../../data/images'
 
 export type QuoteCardProps = {
   quote: string
-  avatar: string
+  avatar: ImageName
   title: string
   name: string
   company: string
@@ -80,7 +81,7 @@ function QuoteCard({
             z-index: ${appearance.index.floor};
           `}
         >
-          <ImageBase width={300} height={300} src={avatar} />
+          <ImageBase filename={avatar} />
         </div>
       </div>
 

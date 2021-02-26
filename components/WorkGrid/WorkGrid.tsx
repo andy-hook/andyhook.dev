@@ -49,13 +49,11 @@ function WorkGrid(): JSX.Element {
                 >
                   <WorkCard
                     size="large"
-                    src={thumbnailImage.src}
+                    filename={thumbnailImage.filename}
                     disabled={disabled}
                     href={route}
                     title={title}
                     subtitle={subtitle}
-                    width={thumbnailImage.width}
-                    height={thumbnailImage.height}
                   />
                 </div>
               )
