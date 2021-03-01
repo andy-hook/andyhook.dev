@@ -5,7 +5,7 @@ import { BreakpointName, breakpoints } from '../../style/responsive'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { spring } from '../../style/motion'
 import { css, keyframes } from 'styled-components'
-import { lighten, rgba } from 'polished'
+import { darken, lighten, rgba } from 'polished'
 import { imageData, ImageProperties } from '../../data/images'
 
 const shimmerAnimation = css`
@@ -27,6 +27,7 @@ type ImageBaseProps = {
   scaleRender?: number
   scaleRenderFromBp?: [BreakpointName, number]
   quality?: number
+  loaderShade?: 'dark' | 'light'
   onLoad?: () => void
   visibleOpacity?: number
 } & ImageProperties
@@ -34,6 +35,7 @@ type ImageBaseProps = {
 function ImageBase({
   imagePath,
   alt,
+  loaderShade = 'dark',
   scaleRender = 100,
   quality = 80,
   scaleRenderFromBp,
@@ -41,7 +43,7 @@ function ImageBase({
   visibleOpacity = 1,
   ...props
 }: ImageBaseProps): JSX.Element {
-  const { background } = useTheme()
+  const { background, foreground } = useTheme()
   const [loading, setLoading] = useState(true)
 
   const image = imageData[imagePath]
@@ -71,12 +73,16 @@ function ImageBase({
   )
 
   const { centerStop, edgeStop, backboardColor } = useMemo(() => {
-    const backboardColor = background('medium')
-    const centerStop = lighten(0.2, backboardColor)
+    const stops = {
+      light: [foreground('extraHigh'), darken(0.4, foreground('extraHigh'))],
+      dark: [background('medium'), lighten(0.2, background('medium'))],
+    }
+
+    const [backboardColor, centerStop] = stops[loaderShade]
     const edgeStop = rgba(centerStop, 0)
 
     return { centerStop, edgeStop, backboardColor }
-  }, [background])
+  }, [background, foreground, loaderShade])
 
   return (
     <div

@@ -42,6 +42,7 @@ function Footer(): JSX.Element {
 
               <TextHeading
                 size="lg"
+                lineHeight="flat"
                 tag="h4"
                 css={`
                   ${inclusiveDown('sm')} {
