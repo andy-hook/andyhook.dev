@@ -29,7 +29,7 @@ function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
         padding-bottom: 2.1rem;
 
         ${inclusiveDown('xs')} {
-          grid-template-columns: 6.5rem 1fr;
+          grid-template-columns: 5.25rem 1fr;
           grid-template-rows: 1fr 1fr;
         }
 
@@ -47,11 +47,12 @@ function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
       <div
         css={`
           display: flex;
-          align-items: center;
+
           padding-left: 2.1rem;
 
           ${inclusiveUp('sm')} {
             padding-left: 2.4rem;
+            align-items: center;
           }
 
           ${inclusiveUp('md')} {
