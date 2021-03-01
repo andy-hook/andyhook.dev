@@ -1,7 +1,9 @@
-import React from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
+import React, { useState } from 'react'
 import { ImagePath } from '../../data/images'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { appearance } from '../../style/appearance'
+import { spring } from '../../style/motion'
 import { inclusiveUp } from '../../style/responsive'
 import {
   ResponsiveTextSize,
@@ -49,6 +51,8 @@ function WorkCard({
   href,
   size = 'large',
 }: WorkCardProps): JSX.Element {
+  const [loaded, setLoaded] = useState(false)
+
   const { foreground, background } = useTheme()
 
   const { titleSize, imageRenderScale } = CARD_PROPERTIES[size]
@@ -68,11 +72,26 @@ function WorkCard({
           position: relative;
           overflow: hidden;
           border-radius: ${appearance.radius.base};
+
+          background-color: ${background('low')};
         `}
       >
-        {disabled && (
-          <>
-            <div
+        <AnimatePresence>
+          {loaded && disabled && (
+            <motion.div
+              variants={{
+                hidden: {
+                  scale: 1.5,
+                  opacity: 0,
+                },
+                visible: {
+                  scale: 1,
+                  opacity: 1,
+                },
+              }}
+              initial="hidden"
+              animate="visible"
+              transition={{ ...spring.bounce, delay: 0.25 }}
               css={`
                 ${setResponsiveTextSize('body', 'sm')}
 
@@ -107,32 +126,17 @@ function WorkCard({
               `}
             >
               <Icon name="lock" />
-            </div>
-            <div
-              css={`
-                position: absolute;
-                top: 0;
-                left: 0;
-                bottom: 0;
-                right: 0;
+            </motion.div>
+          )}
+        </AnimatePresence>
 
-                background-color: ${background('low')};
-              `}
-            />
-          </>
-        )}
-
-        <div
-          css={`
-            opacity: ${disabled ? '0.25' : '1'};
-          `}
-        >
-          <ImageBase
-            imagePath={imagePath}
-            alt={alt}
-            scaleRenderFromBp={['sm', imageRenderScale]}
-          />
-        </div>
+        <ImageBase
+          imagePath={imagePath}
+          alt={alt}
+          scaleRenderFromBp={['sm', imageRenderScale]}
+          visibleOpacity={disabled ? 0.2 : 1}
+          onLoad={() => setLoaded(true)}
+        />
       </div>
       <div>
         <TextHeading
