@@ -10,6 +10,7 @@ import SocialIcons from '../SocialIcons/SocialIcons'
 import GradientText from '../GradientText/GradientText'
 import TextHeading from '../Text/TextHeading'
 import TextBase from '../Text/TextBase'
+import { removeWidow } from '../../style/utils'
 
 function Footer(): JSX.Element {
   return (
@@ -33,10 +34,10 @@ function Footer(): JSX.Element {
                 lineHeight="flat"
                 color="low"
                 css={`
-                  margin-bottom: 1.75em;
+                  margin-bottom: 2em;
                 `}
               >
-                Let’s build something awesome
+                Let’s build something awesome together
               </TextBase>
 
               <TextHeading
@@ -55,7 +56,7 @@ function Footer(): JSX.Element {
                       ${setTextStyle('display', 'bold')}
                     `}
                   >
-                    saying hello
+                    {removeWidow('saying hello')}
                   </GradientText>
                 </InteractionBase>
               </TextHeading>

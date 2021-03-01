@@ -2,10 +2,11 @@ import { motion } from 'framer-motion'
 import React, { useMemo } from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { appearance } from '../../style/appearance'
+import { inclusiveUp } from '../../style/responsive'
 import {
   setCropAndLineHeight,
-  setResponsiveTextSize,
   setTextStyle,
+  typeScale,
 } from '../../style/typography'
 import InteractionBase from '../InteractionBase/InteractionBase'
 
@@ -50,7 +51,15 @@ function HireButton({ href }: HireButtonProps): JSX.Element {
         href={href}
         css={`
           ${setTextStyle('body', 'medium')}
-          ${setResponsiveTextSize('body', 'sm')}
+          font-size: ${typeScale[2]};
+
+          ${inclusiveUp('sm')} {
+            font-size: ${typeScale[3]};
+          }
+
+          ${inclusiveUp('md')} {
+            font-size: ${typeScale[4]};
+          }
 
           display: flex;
           align-items: center;

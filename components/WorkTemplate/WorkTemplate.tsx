@@ -37,15 +37,15 @@ function WorkTemplate({
         <header>
           <div
             css={`
-              padding-top: 14rem;
+              padding-top: 11rem;
               padding-bottom: 5rem;
 
               ${inclusiveUp('sm')} {
-                padding-top: 16rem;
+                padding-top: 14rem;
                 padding-bottom: 6rem;
               }
 
-              ${inclusiveUp('md')} {
+              ${inclusiveUp('xl')} {
                 padding-top: 18rem;
                 padding-bottom: 9rem;
               }

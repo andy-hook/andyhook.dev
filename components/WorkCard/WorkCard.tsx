@@ -1,9 +1,11 @@
-import React from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
+import React, { useState } from 'react'
 import { ImagePath } from '../../data/images'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { appearance } from '../../style/appearance'
+import { spring } from '../../style/motion'
+import { inclusiveUp } from '../../style/responsive'
 import {
-  setTextStyle,
   ResponsiveTextSize,
   setResponsiveTextSize,
 } from '../../style/typography'
@@ -27,18 +29,15 @@ const CARD_PROPERTIES: Record<
   WorkCardProps['size'],
   {
     titleSize: ResponsiveTextSize
-    soonTagSize: ResponsiveTextSize
     imageRenderScale: number
   }
 > = {
   small: {
     titleSize: 'xs' as const,
-    soonTagSize: 'xxs' as const,
     imageRenderScale: 50,
   },
   large: {
     titleSize: 'sm' as const,
-    soonTagSize: 'xs' as const,
     imageRenderScale: 70,
   },
 }
@@ -52,9 +51,11 @@ function WorkCard({
   href,
   size = 'large',
 }: WorkCardProps): JSX.Element {
+  const [loaded, setLoaded] = useState(false)
+
   const { foreground, background } = useTheme()
 
-  const { titleSize, soonTagSize, imageRenderScale } = CARD_PROPERTIES[size]
+  const { titleSize, imageRenderScale } = CARD_PROPERTIES[size]
 
   return (
     <InteractionBase
@@ -71,71 +72,73 @@ function WorkCard({
           position: relative;
           overflow: hidden;
           border-radius: ${appearance.radius.base};
+
+          background-color: ${background('low')};
         `}
       >
-        {disabled && (
-          <>
-            <div
+        <AnimatePresence>
+          {loaded && disabled && (
+            <motion.div
+              variants={{
+                hidden: {
+                  scale: 1.5,
+                  opacity: 0,
+                },
+                visible: {
+                  scale: 1,
+                  opacity: 1,
+                },
+              }}
+              initial="hidden"
+              animate="visible"
+              transition={{ ...spring.bounce, delay: 0.25 }}
               css={`
-                ${setResponsiveTextSize('body', soonTagSize)}
-                ${setTextStyle('body', 'regular')}
-              
+                ${setResponsiveTextSize('body', 'sm')}
+
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 position: absolute;
-                top: 2.5em;
-                left: 2.5em;
 
-                padding: 0.7em 1.4em;
+                padding: 0.9em;
                 color: ${foreground('extraHigh')};
 
                 border: ${appearance.borderWidth.thick} solid
                   ${foreground('extraHigh', 0.2)};
-                border-radius: ${appearance.radius.pill};
+                border-radius: ${appearance.radius.circle};
 
                 background-color: ${foreground('extraHigh', 0.025)};
 
                 z-index: ${appearance.index.medium};
+
+                top: 1.5rem;
+                left: 1.5rem;
+
+                ${inclusiveUp('sm')} {
+                  top: 2rem;
+                  left: 2rem;
+                }
+
+                ${inclusiveUp('md')} {
+                  top: 2.5rem;
+                  left: 2.5rem;
+                }
               `}
             >
-              <Icon
-                name="lock"
-                css={`
-                  margin-right: 0.5em;
-                `}
-              />
-              Coming Soon
-            </div>
-            <div
-              css={`
-                position: absolute;
-                top: 0;
-                left: 0;
-                bottom: 0;
-                right: 0;
-
-                opacity: 0.8;
-
-                background-color: ${background('low')};
-
-                z-index: ${appearance.index.low};
-              `}
-            />
-          </>
-        )}
+              <Icon name="lock" />
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         <ImageBase
           imagePath={imagePath}
           alt={alt}
           scaleRenderFromBp={['sm', imageRenderScale]}
+          visibleOpacity={disabled ? 0.2 : 1}
+          onLoad={() => setLoaded(true)}
         />
       </div>
-      <div
-        css={`
-          opacity: ${disabled ? 0.4 : 1};
-        `}
-      >
+      <div>
         <TextHeading
           size={titleSize}
           tag="h3"

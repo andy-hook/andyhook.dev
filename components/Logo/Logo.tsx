@@ -30,7 +30,7 @@ function Logo(): JSX.Element {
             <motion.span
               variants={{
                 rest: {
-                  opacity: 0.3,
+                  opacity: 0.4,
                 },
                 hover: {
                   opacity: 1,

@@ -27,6 +27,8 @@ type ImageBaseProps = {
   scaleRender?: number
   scaleRenderFromBp?: [BreakpointName, number]
   quality?: number
+  onLoad?: () => void
+  visibleOpacity?: number
 } & ImageProperties
 
 function ImageBase({
@@ -35,24 +37,14 @@ function ImageBase({
   scaleRender = 100,
   quality = 80,
   scaleRenderFromBp,
+  onLoad,
+  visibleOpacity = 1,
   ...props
 }: ImageBaseProps): JSX.Element {
   const { background } = useTheme()
   const [loading, setLoading] = useState(true)
 
   const image = imageData[imagePath]
-
-  const visibleMotion = useMemo(
-    () => ({
-      hidden: {
-        opacity: 0,
-      },
-      visible: {
-        opacity: 1,
-      },
-    }),
-    []
-  )
 
   const sizesMediaString = useMemo(() => {
     if (!scaleRenderFromBp) {
@@ -64,12 +56,19 @@ function ImageBase({
     return `(min-width: ${breakpoints[breakpointName]}) ${breakpointScaleValue}vw, ${scaleRender}vw`
   }, [scaleRender, scaleRenderFromBp])
 
-  const handleOnLoad = useCallback((e) => {
-    // The next/image placeholder image triggers a duplicate event
-    // We only want to trigger the load handler when the actual image is loaded, hence making sure the source of the target element triggering the event is not base64.
-    // See https://github.com/vercel/next.js/issues/20368#issuecomment-757446007
-    e.target.src.indexOf('data:image/gif;base64') < 0 && setLoading(false)
-  }, [])
+  const handleOnLoad = useCallback(
+    (e) => {
+      // The next/image placeholder image triggers a duplicate event
+      // We only want to trigger the load handler when the actual image is loaded, hence making sure the source of the target element triggering the event is not base64.
+      // See https://github.com/vercel/next.js/issues/20368#issuecomment-757446007
+      if (e.target.src.indexOf('data:image/gif;base64') < 0) {
+        setLoading(false)
+
+        onLoad && onLoad()
+      }
+    },
+    [onLoad]
+  )
 
   const { centerStop, edgeStop, backboardColor } = useMemo(() => {
     const backboardColor = background('medium')
@@ -90,7 +89,14 @@ function ImageBase({
       <AnimatePresence>
         {loading && (
           <motion.div
-            variants={visibleMotion}
+            variants={{
+              hidden: {
+                opacity: 0,
+              },
+              visible: {
+                opacity: 1,
+              },
+            }}
             initial="visible"
             animate="visible"
             exit="hidden"
@@ -128,7 +134,14 @@ function ImageBase({
       <motion.div
         initial="hidden"
         animate={loading ? 'hidden' : 'visible'}
-        variants={visibleMotion}
+        variants={{
+          hidden: {
+            opacity: 0,
+          },
+          visible: {
+            opacity: visibleOpacity,
+          },
+        }}
         transition={spring.snappy}
       >
         <Image

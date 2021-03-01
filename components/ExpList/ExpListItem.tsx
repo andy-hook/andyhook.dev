@@ -70,7 +70,7 @@ function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
         </TextBase>
       </div>
 
-      <TextHeading size="xs" lineHeight="flat">
+      <TextHeading size="xs" lineHeight="tight">
         {title}
       </TextHeading>
 
