@@ -1,12 +1,12 @@
 import React from 'react'
 import About from '../components/About/About'
 import Hero from '../components/Hero/Hero'
-import ImageBase from '../components/ImageBase/ImageBase'
 import LayoutGutter from '../components/Layout/LayoutGutter'
 import LayoutLimiter from '../components/Layout/LayoutLimiter'
 import LayoutRow from '../components/Layout/LayoutRow'
 import LayoutShade from '../components/Layout/LayoutShade'
 import MetaSocial from '../components/Meta/MetaSocial'
+import StripeBackground from '../components/StripeBackground/StripeBackground'
 import Testimonials from '../components/Testimonials/Testimonials'
 import WorkGrid from '../components/WorkGrid/WorkGrid'
 import { useTheme } from '../hooks/useTheme/useTheme'
@@ -61,12 +61,11 @@ function Home(): JSX.Element {
               z-index: ${appearance.index.low};
             `}
           />
-
-          <ImageBase
-            imagePath="home-bg.jpg"
-            quality={60}
+          <StripeBackground
             css={`
-              opacity: 0.07;
+              display: block;
+              width: 100%;
+
               z-index: ${appearance.index.floor};
             `}
           />
