@@ -6,6 +6,7 @@
     "generate-image-sizes": "node generate-sizes.js",
     "dev": "yarn generate-image-sizes && next dev",
     "build": "yarn generate-image-sizes && yarn lint && next build",
+    "build-static": "yarn build && next export",
     "start": "next start",
     "lint": "eslint . --ext ts,tsx --max-warnings 0 && tsc",
     "test": "jest --passWithNoTests"
@@ -18,7 +19,7 @@
   },
   "dependencies": {
     "framer-motion": "^3.1.4",
-    "next": "^10.0.5",
+    "next": "^10.0.7",
     "polished": "^4.0.5",
     "react": "17.0.1",
     "react-dom": "17.0.1",
