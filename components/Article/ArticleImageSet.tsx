@@ -49,7 +49,10 @@ function ArticleImageSet({
                 border-radius: ${appearance.radius.base};
               `}
             >
-              <ImageBase imagePath={imagePath} />
+              <ImageBase
+                imagePath={imagePath}
+                loaderShade={framed ? 'light' : 'dark'}
+              />
             </div>
           </LayoutLimiter>
         </LayoutGutter>
