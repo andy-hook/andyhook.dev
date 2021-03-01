@@ -7,7 +7,7 @@ function TextHeading({
   children,
   tag = 'h1',
   size = 'md',
-  weight = 'semiBold',
+  weight = 'bold',
   color = 'extraHigh',
   lineHeight = 'tight',
   ...props

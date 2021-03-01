@@ -38,7 +38,11 @@ function QuoteCard({
 
         box-shadow: ${shadow('medium')};
 
-        padding: 3rem;
+        padding: 2rem;
+
+        ${inclusiveUp('xs')} {
+          padding: 4rem;
+        }
 
         ${inclusiveUp('lg')} {
           padding: 4rem;

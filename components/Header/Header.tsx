@@ -1,6 +1,7 @@
 import React from 'react'
 import { inclusiveUp } from '../../style/responsive'
 import LayoutGutter from '../Layout/LayoutGutter'
+import LayoutLimiter from '../Layout/LayoutLimiter'
 import Logo from '../Logo/Logo'
 
 function Footer({
@@ -13,21 +14,23 @@ function Footer({
       `}
       {...props}
     >
-      <header
-        css={`
-          padding-top: 4rem;
+      <LayoutLimiter>
+        <header
+          css={`
+            padding-top: 3rem;
 
-          ${inclusiveUp('sm')} {
-            padding-top: 3.75rem;
-          }
+            ${inclusiveUp('sm')} {
+              padding-top: 3.75rem;
+            }
 
-          ${inclusiveUp('md')} {
-            padding-top: 4rem;
-          }
-        `}
-      >
-        <Logo />
-      </header>
+            ${inclusiveUp('md')} {
+              padding-top: 4rem;
+            }
+          `}
+        >
+          <Logo />
+        </header>
+      </LayoutLimiter>
     </LayoutGutter>
   )
 }

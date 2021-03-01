@@ -21,7 +21,7 @@ export const baseFontSize = 16
 
 /* Base scale
 ------------------------------------------------- */
-const typeScale: Record<number, string> = {
+export const typeScale: Record<number, string> = {
   1: rem('12px'),
   2: rem('14px'),
   3: rem('16px'),
@@ -56,7 +56,7 @@ const typeSettings: Record<TextStyleType, TypeSettings> = {
       regular: 420,
       medium: 520,
       semiBold: 590,
-      bold: 710,
+      bold: 680,
     },
     cropSettings: { topCrop: 9, bottomCrop: 6 },
     sizes: {
@@ -64,7 +64,11 @@ const typeSettings: Record<TextStyleType, TypeSettings> = {
         font-size: ${typeScale[2]};
       `,
       xs: css`
-        font-size: ${typeScale[3]};
+        font-size: ${typeScale[2]};
+
+        ${inclusiveUp('sm')} {
+          font-size: ${typeScale[3]};
+        }
       `,
       sm: css`
         font-size: ${typeScale[3]};
@@ -115,7 +119,7 @@ const typeSettings: Record<TextStyleType, TypeSettings> = {
       regular: 420,
       medium: 520,
       semiBold: 590,
-      bold: 710,
+      bold: 680,
     },
     cropSettings: { topCrop: 14, bottomCrop: 10 },
     sizes: {

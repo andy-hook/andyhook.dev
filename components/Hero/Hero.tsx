@@ -1,15 +1,14 @@
 import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
-import meta from '../../data/meta'
 import { appearance } from '../../style/appearance'
 import { inclusiveUp } from '../../style/responsive'
-import { setTextStyle } from '../../style/typography'
-import HireButton from '../HireButton/HireButton'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import RemoveWidow from '../RemoveWidow/RemoveWidow'
 import GradientText from '../GradientText/GradientText'
 import TextHeading from '../Text/TextHeading'
+import meta from '../../data/meta'
+import HireButton from '../HireButton/HireButton'
 
 function Hero(): JSX.Element {
   const { foreground } = useTheme()
@@ -29,66 +28,60 @@ function Hero(): JSX.Element {
       >
         <div
           css={`
-            display: flex;
-            justify-content: center;
-
             height: 100%;
             flex: 1;
 
-            padding-top: 14rem;
-            padding-bottom: 7rem;
+            padding-top: 11rem;
+            padding-bottom: 6rem;
 
-            ${inclusiveUp('md')} {
-              padding-top: 20rem;
-              padding-bottom: 14rem;
+            ${inclusiveUp('sm')} {
+              padding-top: 14rem;
+              padding-bottom: 8rem;
+            }
+
+            ${inclusiveUp('xl')} {
+              padding-top: 18rem;
+              padding-bottom: 12rem;
             }
           `}
         >
-          <div
+          <TextHeading
+            size="lg"
             css={`
-              text-align: center;
+              max-width: 16em;
+              margin-bottom: 1.3em;
             `}
           >
-            <TextHeading
-              size="lg"
+            <GradientText
               css={`
-                max-width: 16em;
-                margin-bottom: 1.25em;
+                position: relative;
+                z-index: ${appearance.index.floor};
               `}
             >
-              <GradientText
-                css={`
-                  position: relative;
-                  z-index: ${appearance.index.floor};
-                  ${setTextStyle('display', 'bold')}
-                `}
-              >
-                Senior UI Engineer
-              </GradientText>{' '}
-              <span
-                css={`
+              Senior UI Engineer
+            </GradientText>{' '}
+            <span
+              css={`
                     position: relative;
                     z-index: ${appearance.index.low};
                     color ${foreground('high')};
                     text-shadow: ${appearance.textShadow.heavy};
                   `}
+            >
+              building{' '}
+              <span
+                css={`
+                  ${inclusiveUp('xs')} {
+                    white-space: nowrap;
+                  }
+                `}
               >
-                building{' '}
-                <span
-                  css={`
-                    ${inclusiveUp('xs')} {
-                      white-space: nowrap;
-                    }
-                  `}
-                >
-                  next-generation
-                </span>{' '}
-                <RemoveWidow>user interfaces out of Brighton, UK.</RemoveWidow>
-              </span>
-            </TextHeading>
-
-            <HireButton href={`mailto:${meta.email}`} />
-          </div>
+                next-generation
+              </span>{' '}
+              <RemoveWidow>user interfaces out of Brighton, UK.</RemoveWidow>
+            </span>
+          </TextHeading>
+          <HireButton href={`mailto:${meta.email}`} />
         </div>
       </LayoutLimiter>
     </LayoutGutter>
