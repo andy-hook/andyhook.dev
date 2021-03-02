@@ -18,16 +18,15 @@ type InteractionBaseProps = {
   onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void
 }
 
-const focusMotion = {
-  rest: {
-    opacity: 0,
-    scale: 1.05,
-  },
-  focus: {
-    opacity: 1,
-    scale: 1,
-  },
-}
+type ElementProps = [
+  'button' | 'a',
+  {
+    href?: string
+    rel?: string
+    target?: string
+    disabled?: boolean
+  }
+]
 
 function getElementProps({
   isAnchor,
@@ -39,25 +38,15 @@ function getElementProps({
   href?: string
   disabled: boolean
   external: boolean
-}): [
-  'button' | 'a',
-  {
-    href?: string
-    rel?: string
-    target?: string
-    disabled?: boolean
-  }
-] {
-  if (isAnchor && href) {
+}): ElementProps {
+  if (isAnchor && href && !disabled) {
     return [
       'a',
-      disabled
-        ? {}
-        : {
-            href: href,
-            rel: external ? 'noopener noreferrer' : '',
-            target: external ? '_blank' : '',
-          },
+      {
+        href: href,
+        rel: external ? 'noopener noreferrer' : '',
+        target: external ? '_blank' : '',
+      },
     ]
   }
 
@@ -118,7 +107,16 @@ function InteractionBase({
       <AnimatePresence>
         {focusVisible && (
           <motion.span
-            variants={focusMotion}
+            variants={{
+              rest: {
+                opacity: 0,
+                scale: 1.05,
+              },
+              focus: {
+                opacity: 1,
+                scale: 1,
+              },
+            }}
             initial="rest"
             animate="focus"
             exit="rest"
