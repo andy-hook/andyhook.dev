@@ -12,7 +12,7 @@ import {
 import InteractionBase from '../InteractionBase/InteractionBase'
 
 type ButtonProps = {
-  href: string
+  href?: string
   newTab?: boolean
   children: React.ReactNode
 }
