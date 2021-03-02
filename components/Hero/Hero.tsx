@@ -8,10 +8,11 @@ import RemoveWidow from '../RemoveWidow/RemoveWidow'
 import GradientText from '../GradientText/GradientText'
 import TextHeading from '../Text/TextHeading'
 import meta from '../../data/meta'
-import HireButton from '../HireButton/HireButton'
+import Button from '../Button/Button'
 
 function Hero(): JSX.Element {
   const { foreground } = useTheme()
+  const { accent } = useTheme()
 
   return (
     <LayoutGutter
@@ -81,7 +82,29 @@ function Hero(): JSX.Element {
               <RemoveWidow>user interfaces out of Brighton, UK.</RemoveWidow>
             </span>
           </TextHeading>
-          <HireButton href={`mailto:${meta.email}`} />
+          <Button href={`mailto:${meta.email}`}>
+            <div
+              css={`
+                position: relative;
+                font-size: 0.65em;
+                margin-right: 1.4em;
+              `}
+            >
+              <div
+                css={`
+                  width: 1em;
+                  height: 1em;
+                  background: linear-gradient(
+                    135deg,
+                    ${accent('light')} 0%,
+                    ${accent('base')} 100%
+                  );
+                  border-radius: ${appearance.radius.circle};
+                `}
+              />
+            </div>
+            Currently available for hire
+          </Button>
         </div>
       </LayoutLimiter>
     </LayoutGutter>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { inclusiveDown, inclusiveUp } from '../../style/responsive'
+import Button from '../Button/Button'
 import ExpList from '../ExpList/ExpList'
 import TextHeading from '../Text/TextHeading'
 import TextParagraph from '../Text/TextParagraph'
@@ -13,18 +14,26 @@ function About(): JSX.Element {
 
           ${inclusiveUp('sm')} {
             display: grid;
-            grid-template-columns: 50% 50%;
+            grid-template-areas:
+              'a b'
+              'c b';
+
+            grid-template-rows: auto 1fr;
+            grid-template-columns: 50%;
             margin-bottom: 8rem;
           }
         `}
       >
-        <div>
+        <div
+          css={`
+            grid-area: a;
+          `}
+        >
           <TextHeading
             tag="h2"
             css={`
-              ${inclusiveDown('xs')} {
-                margin-bottom: 0.8em;
-              }
+              grid-area: a;
+              margin-bottom: 1em;
 
               ${inclusiveUp('sm')} {
                 max-width: 9.5em;
@@ -34,7 +43,15 @@ function About(): JSX.Element {
             More than 10 years doing work I love
           </TextHeading>
         </div>
-        <div>
+
+        <div
+          css={`
+            grid-area: b;
+            ${inclusiveDown('sm')} {
+              margin-bottom: 3rem;
+            }
+          `}
+        >
           <TextParagraph>
             Great user experience is at the core of everything I do, I believe
             that close collaboration between design, user research and front-end
@@ -51,6 +68,16 @@ function About(): JSX.Element {
             performance profiling and testing. Some of my preferred tools
             include React, TypeScript, Styled Components and Jest.
           </TextParagraph>
+        </div>
+
+        <div
+          css={`
+            grid-area: c;
+          `}
+        >
+          <Button href="/andy-hook-brighton-senior-ui-engineer.pdf" newTab>
+            View my full Resume
+          </Button>
         </div>
       </div>
 

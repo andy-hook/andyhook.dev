@@ -11,11 +11,13 @@ import {
 } from '../../style/typography'
 import InteractionBase from '../InteractionBase/InteractionBase'
 
-type HireButtonProps = {
+type ButtonProps = {
   href: string
+  newTab?: boolean
+  children: React.ReactNode
 }
 
-function HireButton({ href }: HireButtonProps): JSX.Element {
+function Button({ href, children, newTab }: ButtonProps): JSX.Element {
   const { foreground, shadow, background } = useTheme()
 
   return (
@@ -60,6 +62,7 @@ function HireButton({ href }: HireButtonProps): JSX.Element {
         offset={0.5}
         radius="pill"
         href={href}
+        newTab={newTab}
         css={`
           ${setTextStyle('body', 'medium')}
           font-size: ${typeScale[2]};
@@ -72,8 +75,6 @@ function HireButton({ href }: HireButtonProps): JSX.Element {
             font-size: ${typeScale[4]};
           }
 
-          display: flex;
-          align-items: center;
           color: ${foreground('extraHigh')};
           padding: 1.2em 1.9em;
           border-radius: ${appearance.radius.pill};
@@ -81,44 +82,21 @@ function HireButton({ href }: HireButtonProps): JSX.Element {
       >
         <div
           css={`
-            position: relative;
-            font-size: 0.65em;
-            margin-right: 1.4em;
-          `}
-        >
-          <Pip />
-        </div>
-
-        <div
-          css={`
             ${setCropAndLineHeight('body', 'flat')}
           `}
         >
-          Currently available for hire
+          <div
+            css={`
+              display: flex;
+              align-items: center;
+            `}
+          >
+            {children}
+          </div>
         </div>
       </InteractionBase>
     </motion.div>
   )
 }
 
-function Pip({ ...props }: React.HTMLAttributes<HTMLDivElement>): JSX.Element {
-  const { accent } = useTheme()
-
-  return (
-    <div
-      css={`
-        width: 1em;
-        height: 1em;
-        background: linear-gradient(
-          135deg,
-          ${accent('light')} 0%,
-          ${accent('base')} 100%
-        );
-        border-radius: ${appearance.radius.circle};
-      `}
-      {...props}
-    />
-  )
-}
-
-export default HireButton
+export default Button
