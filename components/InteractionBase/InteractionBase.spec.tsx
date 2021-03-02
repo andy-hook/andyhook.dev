@@ -51,17 +51,13 @@ describe('given a default InteractionBase', () => {
   })
 })
 
-describe('given an InteractionBase with an external href', () => {
+describe('given an InteractionBase with external href', () => {
   let rendered: RenderResult
   let element: HTMLElement | null
 
-  const externalProps = {
-    href: 'https://www.google.com',
-  }
-
   beforeEach(() => {
     rendered = render(
-      <InteractionBase {...externalProps}>{BUTTON_TEXT}</InteractionBase>
+      <InteractionBase href="https://test.com">{BUTTON_TEXT}</InteractionBase>
     )
   })
 
@@ -75,7 +71,7 @@ describe('given an InteractionBase with an external href', () => {
     expect(element).toBeInTheDocument()
   })
 
-  it('should apply correct attributes to external link', () => {
+  it('should apply correct attributes', () => {
     element = rendered.queryByRole('link')
 
     EXTERNAL_ATTRIBUTES.forEach(([attribute, property]) => {
@@ -85,7 +81,7 @@ describe('given an InteractionBase with an external href', () => {
 
   it('should render as a button and not apply external attributes when disabled', () => {
     rendered.rerender(
-      <InteractionBase {...externalProps} disabled>
+      <InteractionBase href="https://test.com" disabled>
         {BUTTON_TEXT}
       </InteractionBase>
     )
@@ -94,6 +90,41 @@ describe('given an InteractionBase with an external href', () => {
 
     EXTERNAL_ATTRIBUTES.forEach(([attribute, property]) => {
       expect(element).not.toHaveAttribute(attribute, property)
+    })
+  })
+})
+
+describe('given an InteractionBase with internal href', () => {
+  let rendered: RenderResult
+  let element: HTMLElement | null
+
+  beforeEach(() => {
+    rendered = render(
+      <InteractionBase href="/test">{BUTTON_TEXT}</InteractionBase>
+    )
+  })
+
+  it('should render as a link element', () => {
+    element = rendered.queryByRole('link')
+
+    expect(element).toBeInTheDocument()
+  })
+
+  it('should only apply external attributes when passed newTab', () => {
+    element = rendered.queryByRole('link')
+
+    EXTERNAL_ATTRIBUTES.forEach(([attribute, property]) => {
+      expect(element).not.toHaveAttribute(attribute, property)
+    })
+
+    rendered.rerender(
+      <InteractionBase href="/test" newTab>
+        {BUTTON_TEXT}
+      </InteractionBase>
+    )
+
+    EXTERNAL_ATTRIBUTES.forEach(([attribute, property]) => {
+      expect(element).toHaveAttribute(attribute, property)
     })
   })
 })
