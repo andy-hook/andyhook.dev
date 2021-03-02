@@ -14,6 +14,7 @@ type InteractionBaseProps = {
   disabled?: boolean
   offset?: number
   radius?: keyof typeof appearance.radius
+  newTab?: boolean
   onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void
 }
 
@@ -32,10 +33,12 @@ function getElementProps({
   isAnchor,
   href,
   disabled,
+  external,
 }: {
   isAnchor: boolean
   href?: string
   disabled: boolean
+  external: boolean
 }): [
   'button' | 'a',
   {
@@ -46,8 +49,6 @@ function getElementProps({
   }
 ] {
   if (isAnchor && href) {
-    const external = isExternalURL(href)
-
     return [
       'a',
       disabled
@@ -75,6 +76,7 @@ function InteractionBase({
   disabled = false,
   offset = 0,
   radius = 'base',
+  newTab,
   ...props
 }: InteractionBaseProps): JSX.Element {
   const router = useRouter()
@@ -84,7 +86,7 @@ function InteractionBase({
   const handleOnClick = useCallback(
     (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
       // Use internal router for all relative links
-      if (href && !isExternalURL(href)) {
+      if (href && !isExternalURL(href) && !newTab) {
         event.preventDefault()
         router.push(href)
       }
@@ -93,12 +95,13 @@ function InteractionBase({
         onClick(event)
       }
     },
-    [onClick, href, router]
+    [onClick, href, router, newTab]
   )
 
   const [elementTag, elementProps] = getElementProps({
     isAnchor: Boolean(href),
     href,
+    external: Boolean(href && (isExternalURL(href) || newTab)),
     disabled,
   })
 
