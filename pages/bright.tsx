@@ -117,22 +117,22 @@ function Bright(): JSX.Element {
           {
             imagePath: 'bright-dash-ui-search.png',
             alt:
-              'A screenshot of the home screen showing search box and folder shortcuts',
+              'A screenshot of the application home screen showing a large search box with folder shortcuts',
           },
           {
             imagePath: 'bright-dash-ui-edit.png',
             alt:
-              'A screenshot of the edit screen showing how to select and update multiple assets',
+              'A screenshot of the application edit screen showing how to select and update multiple assets',
           },
           {
             imagePath: 'bright-dash-ui-detail.png',
             alt:
-              'A screenshot of the detail screen showing a large preview image and details about the asset',
+              'A screenshot of the application detail screen showing a large preview image with details',
           },
           {
             imagePath: 'bright-dash-ui-admin.png',
             alt:
-              'A screenshot of the admin screen showing how users can be assigned access permissions within the software',
+              'A screenshot of the application admin screen showing how users can be assigned access permissions',
           },
         ]}
       />

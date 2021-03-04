@@ -47,17 +47,17 @@ export const WORK: Record<WorkName, WorkDetails> = {
     heroImage: {
       imagePath: 'aragon-hero.png',
       alt:
-        'Mockup of the Aragon company upgrade website shown on an a tablet device',
+        'Mockup of the Aragon company upgrade website shown on a tablet device',
     },
     thumbnailImage: {
       imagePath: 'aragon-thumb.png',
       alt:
-        'Mockup of the Aragon company upgrade website shown on an a tablet device',
+        'Mockup of the Aragon company upgrade website shown on a tablet device',
     },
     thumbnailImageSmall: {
       imagePath: 'aragon-thumb-small.png',
       alt:
-        'Mockup of the Aragon company upgrade website shown on an a tablet device',
+        'Mockup of the Aragon company upgrade website shown on a tablet device',
     },
   },
   bright: {
@@ -107,17 +107,17 @@ export const WORK: Record<WorkName, WorkDetails> = {
     heroImage: {
       imagePath: 'brandwatch-hero.png',
       alt:
-        'Mockup of the Brandwatch company website shown on both a tablet and phone device',
+        'Mockup of the Brandwatch company website shown on both a tablet and smartphone',
     },
     thumbnailImage: {
       imagePath: 'brandwatch-thumb.png',
       alt:
-        'Mockup of the Brandwatch company website shown on both a tablet and phone device',
+        'Mockup of the Brandwatch company website shown on both a tablet and smartphone',
     },
     thumbnailImageSmall: {
       imagePath: 'brandwatch-thumb-small.png',
       alt:
-        'Mockup of the Brandwatch company website shown on both a tablet and phone device',
+        'Mockup of the Brandwatch company website shown on both a tablet and smartphone',
     },
   },
   blocks: {
