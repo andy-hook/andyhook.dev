@@ -28,6 +28,7 @@ function Button({ href, children, newTab }: ButtonProps): JSX.Element {
       css={`
         position: relative;
         display: inline-flex;
+        border-radius: ${appearance.radius.pill};
         box-shadow: ${shadow('medium')};
       `}
     >
