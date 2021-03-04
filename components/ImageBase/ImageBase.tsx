@@ -60,6 +60,13 @@ function ImageBase({
     return `(min-width: ${breakpoints[breakpointName]}) ${breakpointScaleValue}vw, ${scaleRender}vw`
   }, [scaleRender, scaleRenderFromBp])
 
+  const imageLoaded = useCallback(() => {
+    setShowLoader(false)
+    onLoad && onLoad()
+  }, [onLoad])
+
+  // When using loading strategy "eager", next/image won't reliably fire onLoad events when retrieving from client cache
+  // To work around this we need to check the "complete" property on the image element and run the same set of callbacks
   const handleLoadFromCache = useCallback(
     (wrapperRef) => {
       // We are unable to set a ref to the underlying image element directly so we must access it via querySelector on the wrapper
@@ -68,11 +75,10 @@ function ImageBase({
       const image = wrapperRef?.querySelector('img[srcset]') as HTMLImageElement
 
       if (image && image.complete && showLoader) {
-        setShowLoader(false)
-        onLoad && onLoad()
+        imageLoaded()
       }
     },
-    [onLoad, showLoader]
+    [showLoader, imageLoaded]
   )
 
   const handleLoadEvent = useCallback(
@@ -81,12 +87,10 @@ function ImageBase({
       // We only want to trigger the load handler when the actual image is loaded, hence making sure the source of the target element triggering the event is not base64.
       // See https://github.com/vercel/next.js/issues/20368#issuecomment-757446007
       if (e.target.src.indexOf('data:image/gif;base64') < 0) {
-        setShowLoader(false)
-
-        onLoad && onLoad()
+        imageLoaded()
       }
     },
-    [onLoad]
+    [imageLoaded]
   )
 
   const { centerStop, edgeStop, backboardColor } = useMemo(() => {
