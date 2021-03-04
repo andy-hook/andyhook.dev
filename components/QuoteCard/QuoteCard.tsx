@@ -1,6 +1,5 @@
 import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
-import { appearance } from '../../style/appearance'
 import { setTextStyle } from '../../style/typography'
 import ImageBase from '../ImageBase/ImageBase'
 import { inclusiveUp } from '../../style/responsive'
@@ -24,7 +23,7 @@ function QuoteCard({
   company,
   ...props
 }: QuoteCardProps): JSX.Element {
-  const { background, foreground, shadow } = useTheme()
+  const theme = useTheme()
 
   return (
     <figure
@@ -32,11 +31,11 @@ function QuoteCard({
         display: flex;
         align-items: center;
         flex-direction: column;
-        background-color: ${background('medium')};
-        background-color: ${background('medium')};
-        border-radius: ${appearance.radius.base};
+        background-color: ${theme.background('medium')};
+        background-color: ${theme.background('medium')};
+        border-radius: ${theme.radius.base};
 
-        box-shadow: ${shadow('medium')};
+        box-shadow: ${theme.shadow.medium};
 
         padding: 2rem;
 
@@ -60,10 +59,10 @@ function QuoteCard({
           width: 1em;
           height: 1em;
 
-          background-color: ${background('extraHigh')};
+          background-color: ${theme.background('extraHigh')};
           flex-shrink: 0;
-          box-shadow: ${shadow('medium')};
-          border-radius: ${appearance.radius.circle};
+          box-shadow: ${theme.shadow.medium};
+          border-radius: ${theme.radius.circle};
 
           ${inclusiveUp('lg')} {
             font-size: 6rem;
@@ -77,12 +76,12 @@ function QuoteCard({
             font-size: 0.75em;
             width: 1em;
             height: 1em;
-            background-color: ${background('high')};
-            box-shadow: ${shadow('medium')};
-            border-radius: ${appearance.radius.circle};
+            background-color: ${theme.background('high')};
+            box-shadow: ${theme.shadow.medium};
+            border-radius: ${theme.radius.circle};
 
             // We must set this index to correctly clip the overflow on Safari
-            z-index: ${appearance.index.floor};
+            z-index: ${theme.index.floor};
           `}
         >
           <ImageBase imagePath={avatar} />
@@ -109,7 +108,7 @@ function QuoteCard({
             &::before,
             &::after {
               ${setTextStyle('display', 'bold')}
-              color: ${foreground('medium')};
+              color: ${theme.foreground('medium')};
             }
 
             &::before {

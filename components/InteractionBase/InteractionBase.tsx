@@ -3,17 +3,17 @@ import React, { useCallback } from 'react'
 import styled from 'styled-components'
 import { useFocusVisible } from '../../hooks/useFocusVisible/useFocusVisible'
 import { useTheme } from '../../hooks/useTheme/useTheme'
-import { appearance } from '../../style/appearance'
 import { useRouter } from 'next/router'
 import { isExternalURL, noop } from '../../utils/general'
 import { spring } from '../../style/motion'
+import { Theme } from '../../style/theme'
 
 type InteractionBaseProps = {
   children: React.ReactNode
   href?: string
   disabled?: boolean
   offset?: number
-  radius?: keyof typeof appearance.radius
+  radius?: keyof Theme['radius']
   newTab?: boolean
   onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void
 }
@@ -80,7 +80,7 @@ function InteractionBase({
 }: InteractionBaseProps): JSX.Element {
   const router = useRouter()
   const { focusVisible, onFocus, onBlur } = useFocusVisible()
-  const { foreground } = useTheme()
+  const theme = useTheme()
 
   const handleOnClick = useCallback(
     (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
@@ -139,9 +139,9 @@ function InteractionBase({
               left: -${offset}em;
               right: -${offset}em;
               bottom: -${offset}em;
-              border: ${appearance.borderWidth.regular} dashed
-                ${foreground('medium')};
-              border-radius: ${appearance.radius[radius]};
+              border: ${theme.borderWidth.regular} dashed
+                ${theme.foreground('medium')};
+              border-radius: ${theme.radius[radius]};
             `}
           />
         )}

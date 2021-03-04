@@ -13,6 +13,10 @@ type ThemeCommon = {
   accent: Record<ColourRange, ColorValue>
   positive: Record<ColourRange, ColorValue>
   breakpoints: BreakpointList
+  radius: Record<'base' | 'pill' | 'circle', string>
+  index: Record<'floor' | 'low' | 'medium' | 'high' | 'highest', number>
+  borderWidth: Record<'regular' | 'thick', string>
+  textShadow: Record<'subtle' | 'heavy', string>
 }
 
 export type Theme = {
@@ -25,7 +29,7 @@ export type Theme = {
 const common: ThemeCommon = {
   accent: {
     base: [266, 0.92, 0.55],
-    light: [285, 1, 0.725],
+    light: [300, 0.98, 0.7],
     dark: [266, 0.72, 0.2],
   },
   positive: {
@@ -34,6 +38,26 @@ const common: ThemeCommon = {
     dark: [115, 0.65, 0.3],
   },
   breakpoints: breakpoints,
+  radius: {
+    base: 'clamp(6px, 1vw, 18px)',
+    pill: '50000px',
+    circle: '50%',
+  },
+  index: {
+    floor: 0,
+    low: 1,
+    medium: 2,
+    high: 3,
+    highest: 4,
+  },
+  borderWidth: {
+    regular: '1px',
+    thick: '2px',
+  },
+  textShadow: {
+    subtle: '0 0 0.03em rgba(0, 0, 0, 0.5)',
+    heavy: '0 0 0.3em rgba(0, 0, 0, 0.3)',
+  },
 }
 
 /* Light

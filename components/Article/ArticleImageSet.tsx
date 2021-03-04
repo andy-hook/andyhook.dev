@@ -2,7 +2,6 @@ import React from 'react'
 import { css } from 'styled-components'
 import { ImageProperties } from '../../data/images'
 import { useTheme } from '../../hooks/useTheme/useTheme'
-import { appearance } from '../../style/appearance'
 import { inclusiveUp } from '../../style/responsive'
 import ImageBase from '../ImageBase/ImageBase'
 import LayoutGutter from '../Layout/LayoutGutter'
@@ -22,7 +21,7 @@ function ArticleImageSet({
   frameGradientStart,
   frameGradientEnd,
 }: ArticleImageSetProps): JSX.Element {
-  const { shadow } = useTheme()
+  const theme = useTheme()
 
   return (
     <div
@@ -45,8 +44,8 @@ function ArticleImageSet({
             <div
               css={`
                 overflow: hidden;
-                box-shadow: ${shadow('low')};
-                border-radius: ${appearance.radius.base};
+                box-shadow: ${theme.shadow.low};
+                border-radius: ${theme.radius.base};
               `}
             >
               <ImageBase

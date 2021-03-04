@@ -1,9 +1,8 @@
 import React from 'react'
 import { rem } from 'polished'
-import { appearance } from '../../style/appearance'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 
-type Sizes = 'small' | 'medium' | 'large'
+type LimiterWidth = 'small' | 'medium' | 'large'
 
 interface LayoutLimiterProps {
   size?: 'small' | 'medium' | 'large'
@@ -11,10 +10,10 @@ interface LayoutLimiterProps {
   divider?: boolean
 }
 
-const widths: Record<Sizes, string> = {
+const widths: Record<LimiterWidth, string> = {
   small: rem('900px'),
   medium: rem('1550px'),
-  large: rem('1850px'),
+  large: rem('1900px'),
 }
 
 function LayoutLimiter({
@@ -23,7 +22,7 @@ function LayoutLimiter({
   children,
   ...props
 }: LayoutLimiterProps): JSX.Element {
-  const { background } = useTheme()
+  const theme = useTheme()
   const width = widths[size]
 
   return (
@@ -33,8 +32,8 @@ function LayoutLimiter({
         margin-right: auto;
         max-width: ${width};
 
-        border-top: ${divider ? appearance.borderWidth.regular : 0} solid
-          ${background('extraHigh')};
+        border-top: ${divider ? theme.borderWidth.regular : 0} solid
+          ${theme.background('extraHigh')};
       `}
       {...props}
     >

@@ -10,10 +10,9 @@ import StripeBackground from '../components/StripeBackground/StripeBackground'
 import Testimonials from '../components/Testimonials/Testimonials'
 import WorkGrid from '../components/WorkGrid/WorkGrid'
 import { useTheme } from '../hooks/useTheme/useTheme'
-import { appearance } from '../style/appearance'
 
 function Home(): JSX.Element {
-  const { background } = useTheme()
+  const theme = useTheme()
 
   return (
     <>
@@ -31,7 +30,7 @@ function Home(): JSX.Element {
         <div
           css={`
             position: relative;
-            z-index: ${appearance.index.medium};
+            z-index: ${theme.index.medium};
           `}
         >
           <Hero />
@@ -43,22 +42,22 @@ function Home(): JSX.Element {
             top: 0;
             left: 0;
             width: 100%;
-            z-index: ${appearance.index.floor};
+            z-index: ${theme.index.floor};
           `}
         >
           <div
             css={`
               position: absolute;
               background: linear-gradient(
-                ${background('low', 0.8)} 0%,
-                ${background('low', 0)} 70%
+                ${theme.background('low', 0.8)} 0%,
+                ${theme.background('low', 0)} 70%
               );
 
               top: 0;
               left: 0;
               width: 100%;
               height: 30%;
-              z-index: ${appearance.index.low};
+              z-index: ${theme.index.low};
             `}
           />
           <StripeBackground
@@ -66,7 +65,7 @@ function Home(): JSX.Element {
               display: block;
               width: 100%;
 
-              z-index: ${appearance.index.floor};
+              z-index: ${theme.index.floor};
             `}
           />
         </div>
@@ -74,15 +73,15 @@ function Home(): JSX.Element {
           css={`
             position: absolute;
             background: linear-gradient(
-              ${background('low', 0)} 0%,
-              ${background('low', 1)} 100%
+              ${theme.background('low', 0)} 0%,
+              ${theme.background('low', 1)} 100%
             );
 
             bottom: 0;
             left: 0;
             width: 100%;
             height: 40%;
-            z-index: ${appearance.index.low};
+            z-index: ${theme.index.low};
           `}
         />
       </div>

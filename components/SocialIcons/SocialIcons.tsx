@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react'
-import { appearance } from '../../style/appearance'
 import { motion } from 'framer-motion'
 import Icon from '../Icon/Icon'
 import InteractionBase from '../InteractionBase/InteractionBase'
@@ -66,7 +65,7 @@ function SocialIcon({
   icon: SocialNetworks
   href: string
 }): JSX.Element {
-  const { foreground } = useTheme()
+  const theme = useTheme()
 
   const hoverIcon = useMemo(
     () => ({
@@ -122,9 +121,10 @@ function SocialIcon({
             left: 0;
             right: 0;
             bottom: 0;
-            border: ${appearance.borderWidth.regular} solid ${foreground('low')};
+            border: ${theme.borderWidth.regular} solid
+              ${theme.foreground('low')};
 
-            border-radius: ${appearance.radius.circle};
+            border-radius: ${theme.radius.circle};
 
             pointer-events: none;
           `}
@@ -133,7 +133,7 @@ function SocialIcon({
           <Icon
             name={icon}
             css={`
-              color: ${foreground('extraHigh')};
+              color: ${theme.foreground('extraHigh')};
             `}
           />
         </motion.div>

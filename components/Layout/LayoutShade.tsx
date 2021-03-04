@@ -1,6 +1,5 @@
 import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
-import { appearance } from '../../style/appearance'
 
 type LayoutShadeProps = {
   children: React.ReactNode
@@ -14,11 +13,11 @@ function LayoutShade({
   borderBottom,
   ...props
 }: LayoutShadeProps): JSX.Element {
-  const { background } = useTheme()
+  const theme = useTheme()
 
   const borderStyle = `
-    ${appearance.borderWidth.regular} solid
-    ${background('extraHigh')}
+    ${theme.borderWidth.regular} solid
+    ${theme.background('extraHigh')}
   `
 
   return (
@@ -26,8 +25,8 @@ function LayoutShade({
       css={`
         background: linear-gradient(
           0deg,
-          ${background('medium', 0.2)} 0%,
-          ${background('medium', 0.6)} 70%
+          ${theme.background('medium', 0.2)} 0%,
+          ${theme.background('medium', 0.6)} 70%
         );
 
         ${borderTop && `border-top: ${borderStyle};`}

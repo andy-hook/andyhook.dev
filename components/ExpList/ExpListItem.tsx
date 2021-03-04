@@ -1,6 +1,5 @@
 import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
-import { appearance } from '../../style/appearance'
 import { inclusiveDown, inclusiveUp } from '../../style/responsive'
 import TextBase from '../Text/TextBase'
 import TextHeading from '../Text/TextHeading'
@@ -12,7 +11,7 @@ type ExpListItemProps = {
 }
 
 function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
-  const { background, shadow } = useTheme()
+  const theme = useTheme()
 
   return (
     <div
@@ -20,10 +19,10 @@ function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
         display: grid;
         grid-template-columns: 8rem 1fr 50%;
 
-        background-color: ${background('medium')};
-        border-radius: ${appearance.radius.base};
+        background-color: ${theme.background('medium')};
+        border-radius: ${theme.radius.base};
 
-        box-shadow: ${shadow('medium')};
+        box-shadow: ${theme.shadow.medium};
 
         padding-top: 2.1rem;
         padding-bottom: 2.1rem;

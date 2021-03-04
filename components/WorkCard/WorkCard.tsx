@@ -2,7 +2,6 @@ import { AnimatePresence, motion } from 'framer-motion'
 import React, { useState } from 'react'
 import { ImagePath } from '../../data/images'
 import { useTheme } from '../../hooks/useTheme/useTheme'
-import { appearance } from '../../style/appearance'
 import { spring } from '../../style/motion'
 import { inclusiveUp } from '../../style/responsive'
 import {
@@ -52,8 +51,7 @@ function WorkCard({
   size = 'large',
 }: WorkCardProps): JSX.Element {
   const [loaded, setLoaded] = useState(false)
-
-  const { foreground, background } = useTheme()
+  const theme = useTheme()
 
   const { titleSize, imageRenderScale } = CARD_PROPERTIES[size]
 
@@ -71,9 +69,9 @@ function WorkCard({
         css={`
           position: relative;
           overflow: hidden;
-          border-radius: ${appearance.radius.base};
+          border-radius: ${theme.radius.base};
 
-          background-color: ${background('low')};
+          background-color: ${theme.background('low')};
         `}
       >
         <AnimatePresence>
@@ -101,15 +99,15 @@ function WorkCard({
                 position: absolute;
 
                 padding: 0.9em;
-                color: ${foreground('extraHigh')};
+                color: ${theme.foreground('extraHigh')};
 
-                border: ${appearance.borderWidth.thick} solid
-                  ${foreground('extraHigh', 0.2)};
-                border-radius: ${appearance.radius.circle};
+                border: ${theme.borderWidth.thick} solid
+                  ${theme.foreground('extraHigh', 0.2)};
+                border-radius: ${theme.radius.circle};
 
-                background-color: ${foreground('extraHigh', 0.025)};
+                background-color: ${theme.foreground('extraHigh', 0.025)};
 
-                z-index: ${appearance.index.medium};
+                z-index: ${theme.index.medium};
 
                 top: 1.5rem;
                 left: 1.5rem;
