@@ -46,12 +46,18 @@ export const WORK: Record<WorkName, WorkDetails> = {
       'Aragon is an open source software project that allows for the creation and management of decentralized organizations, the project empowers users to freely organize and collaborate without borders or intermediaries, creating global and bureaucracy-free organizations and communities.',
     heroImage: {
       imagePath: 'aragon-hero.png',
+      alt:
+        'Mockup of the Aragon company upgrade website shown on a tablet device',
     },
     thumbnailImage: {
       imagePath: 'aragon-thumb.png',
+      alt:
+        'Mockup of the Aragon company upgrade website shown on a tablet device',
     },
     thumbnailImageSmall: {
       imagePath: 'aragon-thumb-small.png',
+      alt:
+        'Mockup of the Aragon company upgrade website shown on a tablet device',
     },
   },
   bright: {
@@ -76,12 +82,15 @@ export const WORK: Record<WorkName, WorkDetails> = {
       'Bright was originally founded as a software development agency in 1999, but more recently has found success and traction by transitioning into a SaaS led, customer centric product company best known for delivering high-quality digital asset management software, exceptional customer support and expert training services.',
     heroImage: {
       imagePath: 'bright-hero.png',
+      alt: 'Mockup of the Dash management software shown on a laptop screen',
     },
     thumbnailImage: {
       imagePath: 'bright-thumb.png',
+      alt: 'Mockup of asset management software shown on a laptop screen',
     },
     thumbnailImageSmall: {
       imagePath: 'bright-thumb-small.png',
+      alt: 'Mockup of asset management software shown on a laptop screen',
     },
   },
   brandwatch: {
@@ -97,12 +106,18 @@ export const WORK: Record<WorkName, WorkDetails> = {
       'Brandwatch is the world’s leading digital consumer intelligence company, allowing users to analyze and utilize conversations from across the web and social media. Enabling brands and companies to understand consumer insights, trends, influencers, and brand perception.',
     heroImage: {
       imagePath: 'brandwatch-hero.png',
+      alt:
+        'Mockup of the Brandwatch company website shown on both a tablet and smartphone',
     },
     thumbnailImage: {
       imagePath: 'brandwatch-thumb.png',
+      alt:
+        'Mockup of the Brandwatch company website shown on both a tablet and smartphone',
     },
     thumbnailImageSmall: {
       imagePath: 'brandwatch-thumb-small.png',
+      alt:
+        'Mockup of the Brandwatch company website shown on both a tablet and smartphone',
     },
   },
   blocks: {
@@ -126,12 +141,18 @@ export const WORK: Record<WorkName, WorkDetails> = {
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In luctus leo vitae posuere varius. Donec massa neque, rutrum vestibulum pulvinar sed, laoreet sit amet ipsum. Integer in lorem sed orci tincidunt pulvinar nec fringilla orci. Nullam urna quam, tincidunt eu enim ut, condimentum vehicula tortor.',
     heroImage: {
       imagePath: 'blocks-hero.png',
+      alt:
+        'Mockup of an ethereum block viewing application shown on a tablet device',
     },
     thumbnailImage: {
       imagePath: 'blocks-thumb.png',
+      alt:
+        'Mockup of an ethereum block viewing application shown on a tablet device',
     },
     thumbnailImageSmall: {
       imagePath: 'blocks-thumb-small.png',
+      alt:
+        'Mockup of an ethereum block viewing application shown on a tablet device',
     },
   },
 }

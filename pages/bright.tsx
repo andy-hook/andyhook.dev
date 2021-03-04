@@ -40,7 +40,10 @@ function Bright(): JSX.Element {
           impact features on the front-end.
         </TextParagraph>
       </ArticleDescribe>
-      <ArticleImage imagePath="bright-dash-intro.png" />
+      <ArticleImage
+        imagePath="bright-dash-intro.png"
+        alt="Mockup showing multiple tablet devices with various screens from the management software"
+      />
 
       <ArticleDescribe title="Crafting a portable component system">
         <TextParagraph>
@@ -75,6 +78,8 @@ function Bright(): JSX.Element {
         items={[
           {
             imagePath: 'bright-dash-design-system.png',
+            alt:
+              'A large array of application interface components arranged in an offset grid',
           },
         ]}
       />
@@ -107,18 +112,27 @@ function Bright(): JSX.Element {
         items={[
           {
             imagePath: 'bright-dash-ui-login.png',
+            alt: 'A screenshot of the login screen',
           },
           {
             imagePath: 'bright-dash-ui-search.png',
+            alt:
+              'A screenshot of the application home screen showing a large search box with folder shortcuts',
           },
           {
             imagePath: 'bright-dash-ui-edit.png',
+            alt:
+              'A screenshot of the application edit screen showing how to select and update multiple assets',
           },
           {
             imagePath: 'bright-dash-ui-detail.png',
+            alt:
+              'A screenshot of the application detail screen showing a large preview image with details',
           },
           {
             imagePath: 'bright-dash-ui-admin.png',
+            alt:
+              'A screenshot of the application admin screen showing how users can be assigned access permissions',
           },
         ]}
       />
