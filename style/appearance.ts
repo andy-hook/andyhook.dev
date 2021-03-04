@@ -1,6 +1,6 @@
 export const appearance = {
   radius: {
-    base: '16px',
+    base: 'clamp(6px, 1vw, 18px)',
     pill: '50000px',
     circle: '50%',
   },
