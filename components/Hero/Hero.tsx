@@ -9,6 +9,7 @@ import GradientText from '../GradientText/GradientText'
 import TextHeading from '../Text/TextHeading'
 import meta from '../../data/meta'
 import Button from '../Button/Button'
+import { setTextStyle } from '../../style/typography'
 
 function Hero(): JSX.Element {
   const { foreground } = useTheme()
@@ -57,6 +58,7 @@ function Hero(): JSX.Element {
               css={`
                 position: relative;
                 z-index: ${appearance.index.floor};
+                ${setTextStyle('display', 'extraBold')}
               `}
             >
               Senior UI Engineer

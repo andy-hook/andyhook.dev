@@ -43,6 +43,7 @@ function Footer(): JSX.Element {
               <TextHeading
                 size="lg"
                 lineHeight="flat"
+                color="high"
                 tag="h4"
                 css={`
                   ${inclusiveDown('sm')} {
@@ -54,7 +55,7 @@ function Footer(): JSX.Element {
                 <InteractionBase offset={0.1} href={`mailto:${meta.email}`}>
                   <GradientText
                     css={`
-                      ${setTextStyle('display', 'bold')}
+                      ${setTextStyle('display', 'extraBold')}
                     `}
                   >
                     {removeWidow('saying hello')}

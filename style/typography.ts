@@ -6,7 +6,12 @@ import { createPlaceholderCrop, createTextCrop } from './utils'
 export type ResponsiveTextSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg'
 export type TextStyleType = 'body' | 'display'
 export type LineHeightName = 'flat' | 'regular' | 'tight' | 'longform'
-export type TextWeight = 'regular' | 'medium' | 'semiBold' | 'bold'
+export type TextWeight =
+  | 'regular'
+  | 'medium'
+  | 'semiBold'
+  | 'bold'
+  | 'extraBold'
 
 type TypeSettings = {
   family: string
@@ -45,6 +50,7 @@ const typeSettings: Record<TextStyleType, TypeSettings> = {
       medium: '0.02em',
       semiBold: '-0.02em',
       bold: '0.004em',
+      extraBold: '-0.004em',
     },
     lineHeight: {
       flat: 1,
@@ -57,6 +63,7 @@ const typeSettings: Record<TextStyleType, TypeSettings> = {
       medium: 520,
       semiBold: 590,
       bold: 680,
+      extraBold: 740,
     },
     cropSettings: { topCrop: 9, bottomCrop: 6 },
     sizes: {
@@ -108,6 +115,7 @@ const typeSettings: Record<TextStyleType, TypeSettings> = {
       medium: '-0.005em',
       semiBold: '-0.003em',
       bold: '-0.005em',
+      extraBold: '-0.005em',
     },
     lineHeight: {
       flat: 1,
@@ -120,6 +128,7 @@ const typeSettings: Record<TextStyleType, TypeSettings> = {
       medium: 520,
       semiBold: 590,
       bold: 680,
+      extraBold: 740,
     },
     cropSettings: { topCrop: 14, bottomCrop: 10 },
     sizes: {
