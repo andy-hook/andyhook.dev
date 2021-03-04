@@ -1,6 +1,5 @@
 import React from 'react'
 import { rem } from 'polished'
-import { appearance } from '../../style/appearance'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 
 type LimiterWidth = 'small' | 'medium' | 'large'
@@ -23,7 +22,7 @@ function LayoutLimiter({
   children,
   ...props
 }: LayoutLimiterProps): JSX.Element {
-  const { background } = useTheme()
+  const theme = useTheme()
   const width = widths[size]
 
   return (
@@ -33,8 +32,8 @@ function LayoutLimiter({
         margin-right: auto;
         max-width: ${width};
 
-        border-top: ${divider ? appearance.borderWidth.regular : 0} solid
-          ${background('extraHigh')};
+        border-top: ${divider ? theme.borderWidth.regular : 0} solid
+          ${theme.background('extraHigh')};
       `}
       {...props}
     >

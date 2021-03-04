@@ -1,6 +1,5 @@
 import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
-import { appearance } from '../../style/appearance'
 import { inclusiveUp } from '../../style/responsive'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
@@ -12,14 +11,13 @@ import Button from '../Button/Button'
 import { setTextStyle } from '../../style/typography'
 
 function Hero(): JSX.Element {
-  const { foreground } = useTheme()
-  const { accent } = useTheme()
+  const theme = useTheme()
 
   return (
     <LayoutGutter
       css={`
         position: relative;
-        z-index: ${appearance.index.low};
+        z-index: ${theme.index.low};
       `}
     >
       <LayoutLimiter
@@ -57,7 +55,7 @@ function Hero(): JSX.Element {
             <GradientText
               css={`
                 position: relative;
-                z-index: ${appearance.index.floor};
+                z-index: ${theme.index.floor};
                 ${setTextStyle('display', 'extraBold')}
               `}
             >
@@ -66,9 +64,9 @@ function Hero(): JSX.Element {
             <span
               css={`
                     position: relative;
-                    z-index: ${appearance.index.low};
-                    color ${foreground('high')};
-                    text-shadow: ${appearance.textShadow.heavy};
+                    z-index: ${theme.index.low};
+                    color ${theme.foreground('high')};
+                    text-shadow: ${theme.textShadow.heavy};
                   `}
             >
               building{' '}
@@ -98,10 +96,10 @@ function Hero(): JSX.Element {
                   height: 1em;
                   background: linear-gradient(
                     135deg,
-                    ${accent('light')} 0%,
-                    ${accent('base')} 100%
+                    ${theme.accent('light')} 0%,
+                    ${theme.accent('base')} 100%
                   );
-                  border-radius: ${appearance.radius.circle};
+                  border-radius: ${theme.radius.circle};
                 `}
               />
             </div>

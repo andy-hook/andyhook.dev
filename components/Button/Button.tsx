@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
-import { appearance } from '../../style/appearance'
 import { spring } from '../../style/motion'
 import { inclusiveUp } from '../../style/responsive'
 import {
@@ -18,7 +17,7 @@ type ButtonProps = {
 }
 
 function Button({ href, children, newTab }: ButtonProps): JSX.Element {
-  const { foreground, shadow, background } = useTheme()
+  const theme = useTheme()
 
   return (
     <motion.div
@@ -28,8 +27,8 @@ function Button({ href, children, newTab }: ButtonProps): JSX.Element {
       css={`
         position: relative;
         display: inline-flex;
-        border-radius: ${appearance.radius.pill};
-        box-shadow: ${shadow('medium')};
+        border-radius: ${theme.radius.pill};
+        box-shadow: ${theme.shadow.medium};
       `}
     >
       <motion.div
@@ -49,14 +48,14 @@ function Button({ href, children, newTab }: ButtonProps): JSX.Element {
           bottom: 0;
           right: 0;
 
-          border-radius: ${appearance.radius.pill};
+          border-radius: ${theme.radius.pill};
 
-          background-color: ${background('medium')};
+          background-color: ${theme.background('medium')};
 
-          box-shadow: ${foreground('extraLow')} 0 0 0
-            ${appearance.borderWidth.thick} inset;
+          box-shadow: ${theme.foreground('extraLow')} 0 0 0
+            ${theme.borderWidth.thick} inset;
 
-          z-index: ${appearance.index.floor};
+          z-index: ${theme.index.floor};
         `}
       />
       <InteractionBase
@@ -76,9 +75,9 @@ function Button({ href, children, newTab }: ButtonProps): JSX.Element {
             font-size: ${typeScale[4]};
           }
 
-          color: ${foreground('extraHigh')};
+          color: ${theme.foreground('extraHigh')};
           padding: 1.2em 1.9em;
-          border-radius: ${appearance.radius.pill};
+          border-radius: ${theme.radius.pill};
         `}
       >
         <div
