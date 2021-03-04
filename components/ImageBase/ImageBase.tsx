@@ -30,6 +30,7 @@ type ImageBaseProps = {
   loaderShade?: 'dark' | 'light'
   onLoad?: () => void
   visibleOpacity?: number
+  loading?: 'eager' | 'lazy'
 } & ImageProperties
 
 function ImageBase({
@@ -41,10 +42,11 @@ function ImageBase({
   scaleRenderFromBp,
   onLoad,
   visibleOpacity = 1,
+  loading = 'eager',
   ...props
 }: ImageBaseProps): JSX.Element {
   const { background, foreground } = useTheme()
-  const [loading, setLoading] = useState(true)
+  const [showLoader, setShowLoader] = useState(true)
 
   const image = imageData[imagePath]
 
@@ -58,18 +60,37 @@ function ImageBase({
     return `(min-width: ${breakpoints[breakpointName]}) ${breakpointScaleValue}vw, ${scaleRender}vw`
   }, [scaleRender, scaleRenderFromBp])
 
-  const handleOnLoad = useCallback(
+  const imageLoaded = useCallback(() => {
+    setShowLoader(false)
+    onLoad && onLoad()
+  }, [onLoad])
+
+  // When using loading strategy "eager", next/image won't reliably fire onLoad events when retrieving from client cache
+  // To work around this we need to check the "complete" property on the image element and run the same set of callbacks
+  const handleLoadFromCache = useCallback(
+    (wrapperRef) => {
+      // We are unable to set a ref to the underlying image element directly so we must access it via querySelector on the wrapper
+      // We are querying by srcset attribute to differentiate from the placeholder image that next/image adds to reserve space
+      // https://github.com/vercel/next.js/discussions/18386
+      const image = wrapperRef?.querySelector('img[srcset]') as HTMLImageElement
+
+      if (image && image.complete && showLoader) {
+        imageLoaded()
+      }
+    },
+    [showLoader, imageLoaded]
+  )
+
+  const handleLoadEvent = useCallback(
     (e) => {
       // The next/image placeholder image triggers a duplicate event
       // We only want to trigger the load handler when the actual image is loaded, hence making sure the source of the target element triggering the event is not base64.
       // See https://github.com/vercel/next.js/issues/20368#issuecomment-757446007
       if (e.target.src.indexOf('data:image/gif;base64') < 0) {
-        setLoading(false)
-
-        onLoad && onLoad()
+        imageLoaded()
       }
     },
-    [onLoad]
+    [imageLoaded]
   )
 
   const { centerStop, edgeStop, backboardColor } = useMemo(() => {
@@ -86,6 +107,7 @@ function ImageBase({
 
   return (
     <div
+      ref={handleLoadFromCache}
       css={`
         position: relative;
         background-color: ${backboardColor};
@@ -93,7 +115,7 @@ function ImageBase({
       {...props}
     >
       <AnimatePresence>
-        {loading && (
+        {showLoader && (
           <motion.div
             variants={{
               hidden: {
@@ -139,7 +161,7 @@ function ImageBase({
       </AnimatePresence>
       <motion.div
         initial="hidden"
-        animate={loading ? 'hidden' : 'visible'}
+        animate={showLoader ? 'hidden' : 'visible'}
         variants={{
           hidden: {
             opacity: 0,
@@ -151,9 +173,9 @@ function ImageBase({
         transition={spring.snappy}
       >
         <Image
-          loading="lazy"
+          loading={loading}
           quality={quality}
-          onLoad={handleOnLoad}
+          onLoad={handleLoadEvent}
           src={`/images/${image.imagePath}`}
           sizes={sizesMediaString}
           width={image.width}
