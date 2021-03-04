@@ -28,34 +28,44 @@ type ElementProps = [
   }
 ]
 
-function getElementProps({
-  isAnchor,
-  href,
-  disabled,
-  external,
-}: {
-  isAnchor: boolean
-  href?: string
-  disabled: boolean
-  external: boolean
-}): ElementProps {
-  if (isAnchor && href && !disabled) {
-    return [
-      'a',
-      {
-        href: href,
-        rel: external ? 'noopener noreferrer' : '',
-        target: external ? '_blank' : '',
-      },
-    ]
-  }
+function getLinkProps(href: string, newTab: boolean): ElementProps {
+  const external = isExternalURL(href) || newTab
 
+  const externalProps = external
+    ? {
+        rel: 'noopener noreferrer',
+        target: '_blank',
+      }
+    : {}
+
+  return [
+    'a',
+    {
+      href: href,
+      ...externalProps,
+    },
+  ]
+}
+
+function getButtonProps(disabled: boolean): ElementProps {
   return [
     'button',
     {
       disabled,
     },
   ]
+}
+
+function isModifiedEvent(event: React.MouseEvent): boolean {
+  const { target } = event.currentTarget as HTMLAnchorElement
+  return (
+    (target && target !== '_self') ||
+    event.metaKey ||
+    event.ctrlKey ||
+    event.shiftKey ||
+    event.altKey || // triggers resource download
+    (event.nativeEvent && event.nativeEvent.which === 2)
+  )
 }
 
 function InteractionBase({
@@ -65,7 +75,7 @@ function InteractionBase({
   disabled = false,
   offset = 0,
   radius = 'base',
-  newTab,
+  newTab = false,
   ...props
 }: InteractionBaseProps): JSX.Element {
   const router = useRouter()
@@ -74,25 +84,25 @@ function InteractionBase({
 
   const handleOnClick = useCallback(
     (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
-      // Use internal router for all relative links
-      if (href && !isExternalURL(href) && !newTab) {
-        event.preventDefault()
-        router.push(href)
-      }
-
       if (onClick) {
         onClick(event)
       }
+
+      if (isModifiedEvent(event)) {
+        return
+      }
+
+      // Use internal router for all relative links
+      if (href && !isExternalURL(href)) {
+        event.preventDefault()
+        router.push(href)
+      }
     },
-    [onClick, href, router, newTab]
+    [onClick, href, router]
   )
 
-  const [elementTag, elementProps] = getElementProps({
-    isAnchor: Boolean(href),
-    href,
-    external: Boolean(href && (isExternalURL(href) || newTab)),
-    disabled,
-  })
+  const [elementTag, elementProps] =
+    href && !disabled ? getLinkProps(href, newTab) : getButtonProps(disabled)
 
   return (
     <StyledInteractiveElement
