@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import Image from 'next/image'
 import { AnimatePresence, motion } from 'framer-motion'
 import { BreakpointName, breakpoints } from '../../style/responsive'
@@ -58,19 +58,19 @@ function ImageBase({
     return `(min-width: ${breakpoints[breakpointName]}) ${breakpointScaleValue}vw, ${scaleRender}vw`
   }, [scaleRender, scaleRenderFromBp])
 
-  const handleOnLoad = useCallback(
-    (e) => {
-      // The next/image placeholder image triggers a duplicate event
-      // We only want to trigger the load handler when the actual image is loaded, hence making sure the source of the target element triggering the event is not base64.
-      // See https://github.com/vercel/next.js/issues/20368#issuecomment-757446007
-      if (e.target.src.indexOf('data:image/gif;base64') < 0) {
-        setLoading(false)
+  // const handleOnLoad = useCallback(
+  //   (e) => {
+  //     // The next/image placeholder image triggers a duplicate event
+  //     // We only want to trigger the load handler when the actual image is loaded, hence making sure the source of the target element triggering the event is not base64.
+  //     // See https://github.com/vercel/next.js/issues/20368#issuecomment-757446007
+  //     if (e.target.src.indexOf('data:image/gif;base64') < 0) {
+  //       setLoading(false)
 
-        onLoad && onLoad()
-      }
-    },
-    [onLoad]
-  )
+  //       onLoad && onLoad()
+  //     }
+  //   },
+  //   [onLoad]
+  // )
 
   const { centerStop, edgeStop, backboardColor } = useMemo(() => {
     const stops = {
@@ -86,6 +86,14 @@ function ImageBase({
 
   return (
     <div
+      ref={(ref) => {
+        const image = ref?.querySelector('img[srcset]') as HTMLImageElement
+
+        if (image && image.complete && loading) {
+          setLoading(false)
+          onLoad && onLoad()
+        }
+      }}
       css={`
         position: relative;
         background-color: ${backboardColor};
@@ -151,9 +159,9 @@ function ImageBase({
         transition={spring.snappy}
       >
         <Image
-          loading="lazy"
+          loading="eager"
           quality={quality}
-          onLoad={handleOnLoad}
+          // onLoad={handleOnLoad}
           src={`/images/${image.imagePath}`}
           sizes={sizesMediaString}
           width={image.width}
