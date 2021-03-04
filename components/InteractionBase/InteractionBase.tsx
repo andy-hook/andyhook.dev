@@ -84,6 +84,10 @@ function InteractionBase({
 
   const handleOnClick = useCallback(
     (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
+      if (onClick) {
+        onClick(event)
+      }
+
       if (isModifiedEvent(event)) {
         return
       }
@@ -92,10 +96,6 @@ function InteractionBase({
       if (href && !isExternalURL(href)) {
         event.preventDefault()
         router.push(href)
-      }
-
-      if (onClick) {
-        onClick(event)
       }
     },
     [onClick, href, router]
