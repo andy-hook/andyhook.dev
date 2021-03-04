@@ -48,6 +48,7 @@ function WorkGrid(): JSX.Element {
                   <WorkCard
                     size="large"
                     imagePath={thumbnailImage.imagePath}
+                    alt={thumbnailImage.alt}
                     disabled={!route}
                     href={route}
                     title={title}
