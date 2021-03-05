@@ -2,7 +2,7 @@ import React from 'react'
 import { ImageProperties } from '../../data/images'
 import ImageBase from '../ImageBase/ImageBase'
 
-type ArticleImageProps = Partial<ImageProperties>
+type ArticleImageProps = ImageProperties
 
 function ArticleImage({
   imagePath = 'test.png',

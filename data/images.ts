@@ -4,7 +4,7 @@ export type ImagePath = keyof typeof images
 
 export type ImageProperties = {
   imagePath: ImagePath
-  alt?: string
+  alt: string
 }
 
 export const imageData = images
