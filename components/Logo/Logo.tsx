@@ -2,6 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import InteractionBase from '../InteractionBase/InteractionBase'
 import TextBase from '../Text/TextBase'
+import { spring } from '../../style/motion'
 
 function Logo(): JSX.Element {
   return (
@@ -36,6 +37,7 @@ function Logo(): JSX.Element {
                   opacity: 1,
                 },
               }}
+              transition={spring.snappy}
             >
               Andy Hook
             </motion.span>
