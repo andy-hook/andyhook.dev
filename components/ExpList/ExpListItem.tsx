@@ -64,7 +64,7 @@ function ExpListItem({ year, company, title }: ExpListItemProps): JSX.Element {
           lineHeight="flat"
           weight="semiBold"
           size="xs"
-          color="extraLow"
+          color="low"
         >
           {year}
         </TextBase>

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import { motion } from 'framer-motion'
 import Icon from '../Icon/Icon'
 import InteractionBase from '../InteractionBase/InteractionBase'
@@ -67,32 +67,6 @@ function SocialIcon({
 }): JSX.Element {
   const theme = useTheme()
 
-  const hoverIcon = useMemo(
-    () => ({
-      rest: {
-        opacity: 0.2,
-      },
-      hover: {
-        opacity: 1,
-      },
-    }),
-    []
-  )
-
-  const hoverMotion = useMemo(
-    () => ({
-      rest: {
-        opacity: 0,
-        scale: 1.35,
-      },
-      hover: {
-        opacity: 1,
-        scale: 1,
-      },
-    }),
-    []
-  )
-
   return (
     <motion.div
       initial="rest"
@@ -112,7 +86,16 @@ function SocialIcon({
         {...props}
       >
         <motion.div
-          variants={hoverMotion}
+          variants={{
+            rest: {
+              opacity: 0,
+              scale: 1.35,
+            },
+            hover: {
+              opacity: 0.5,
+              scale: 1,
+            },
+          }}
           transition={spring.bounce}
           css={`
             position: absolute;
@@ -122,18 +105,27 @@ function SocialIcon({
             right: 0;
             bottom: 0;
             border: ${theme.borderWidth.regular} solid
-              ${theme.foreground('low')};
+              ${theme.foreground('extraLow')};
 
             border-radius: ${theme.radius.circle};
 
             pointer-events: none;
           `}
         />
-        <motion.div variants={hoverIcon}>
+        <motion.div
+          variants={{
+            rest: {
+              opacity: 0.35,
+            },
+            hover: {
+              opacity: 1,
+            },
+          }}
+        >
           <Icon
             name={icon}
             css={`
-              color: ${theme.foreground('extraHigh')};
+              color: ${theme.foreground('high')};
             `}
           />
         </motion.div>

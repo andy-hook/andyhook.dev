@@ -139,7 +139,7 @@ function WorkCard({
       <div>
         <TextHeading
           size={titleSize}
-          tag="h3"
+          tag="h2"
           css={`
             margin-top: 1.4em;
           `}

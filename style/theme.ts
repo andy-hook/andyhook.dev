@@ -65,7 +65,7 @@ const common: ThemeCommon = {
 export const darkTheme: Theme = {
   name: 'dark',
   foreground: {
-    extraLow: [240, 0.11, 0.55],
+    extraLow: [240, 0.11, 0.42],
     low: [230, 0.11, 0.6],
     medium: [230, 0.1, 0.75],
     high: [230, 0.08, 0.9],

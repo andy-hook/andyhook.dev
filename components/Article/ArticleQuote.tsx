@@ -91,7 +91,7 @@ function ArticleQuote({
               `}
             >
               <TextBase
-                tag="h3"
+                tag="h2"
                 lineHeight="flat"
                 weight="medium"
                 color="extraHigh"

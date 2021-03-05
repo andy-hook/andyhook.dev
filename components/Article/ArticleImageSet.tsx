@@ -33,7 +33,7 @@ function ArticleImageSet({
         );`}
       `}
     >
-      {items.map(({ imagePath }, i) => (
+      {items.map((item, i) => (
         <LayoutGutter
           key={i}
           css={`
@@ -49,8 +49,9 @@ function ArticleImageSet({
               `}
             >
               <ImageBase
-                imagePath={imagePath}
+                imagePath={item.imagePath}
                 loaderShade={framed ? 'light' : 'dark'}
+                alt={item.alt}
               />
             </div>
           </LayoutLimiter>
