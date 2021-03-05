@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useInView } from 'react-intersection-observer'
 import { spring } from '../../style/motion'
 
@@ -13,10 +13,6 @@ function ScrollAnimate({ children }: ScrollAnimateProps): JSX.Element {
     rootMargin: '-15%',
     initialInView: true,
   })
-
-  useEffect(() => {
-    console.log(inView)
-  }, [inView])
 
   return (
     <div ref={ref}>
