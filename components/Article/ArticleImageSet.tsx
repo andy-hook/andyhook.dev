@@ -6,6 +6,7 @@ import { inclusiveUp } from '../../style/responsive'
 import ImageBase from '../ImageBase/ImageBase'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
+import ScrollAnimate from '../ScrollAnimate/ScrollAnimate'
 
 type FramedProps =
   | { framed?: false; frameGradientStart?: never; frameGradientEnd?: never }
@@ -41,19 +42,21 @@ function ArticleImageSet({
           `}
         >
           <LayoutLimiter size="large">
-            <div
-              css={`
-                overflow: hidden;
-                box-shadow: ${theme.shadow.low};
-                border-radius: ${theme.radius.base};
-              `}
-            >
-              <ImageBase
-                imagePath={item.imagePath}
-                loaderShade={framed ? 'light' : 'dark'}
-                alt={item.alt}
-              />
-            </div>
+            <ScrollAnimate>
+              <div
+                css={`
+                  overflow: hidden;
+                  box-shadow: ${theme.shadow.low};
+                  border-radius: ${theme.radius.base};
+                `}
+              >
+                <ImageBase
+                  imagePath={item.imagePath}
+                  loaderShade={framed ? 'light' : 'dark'}
+                  alt={item.alt}
+                />
+              </div>
+            </ScrollAnimate>
           </LayoutLimiter>
         </LayoutGutter>
       ))}
