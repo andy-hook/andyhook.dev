@@ -17,7 +17,7 @@ import TextParagraph from '../Text/TextParagraph'
 
 export type WorkCardProps = {
   imagePath: ImagePath
-  alt?: string
+  alt: string
   disabled?: boolean
   title: string
   subtitle: string
