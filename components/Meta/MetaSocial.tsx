@@ -49,11 +49,11 @@ function MetaSocial({
       {/* Twitter */}
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:creator" content={`@${meta.social.twitter}`} />
-      <meta name="twitter:image" content={previewImage.alt} />
       <meta name="twitter:site" content={`@${meta.social.twitter}`} />
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image:src" content={relativeImagePath} />
+      <meta name="twitter:image:alt" content={previewImage.alt} />
     </Head>
   )
 }
