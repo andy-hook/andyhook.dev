@@ -2,7 +2,7 @@ export const spring = {
   bounce: {
     type: 'spring',
     stiffness: 260,
-    damping: 15,
+    damping: 10,
   },
   soft: {
     type: 'spring',
@@ -11,8 +11,8 @@ export const spring = {
   },
   snappy: {
     type: 'spring',
-    stiffness: 150,
-    damping: 20,
+    stiffness: 200,
+    damping: 30,
   },
 }
 

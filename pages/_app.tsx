@@ -27,16 +27,16 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
         <ThemeProvider>
           <GlobalStyle />
 
-          <AppTemplate>
+          <AppLayout>
             <Component {...pageProps} />
-          </AppTemplate>
+          </AppLayout>
         </ThemeProvider>
       </FocusVisibleProvider>
     </>
   )
 }
 
-function AppTemplate({ children }: { children: React.ReactNode }): JSX.Element {
+function AppLayout({ children }: { children: React.ReactNode }): JSX.Element {
   const theme = useTheme()
 
   return (

@@ -73,9 +73,10 @@ function Testimonials(): JSX.Element {
           <div
             key={i}
             css={`
+              // Offset second column
               &:last-child {
                 ${inclusiveUp('md')} {
-                  padding-top: 10rem;
+                  padding-top: 12rem;
                 }
               }
             `}
