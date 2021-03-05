@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import meta from '../../data/meta'
-import { ImageProperties } from '../../data/images'
+import { imageData, ImageProperties } from '../../data/images'
 
 const DEFAULT_PREVIEW_IMAGE: ImageProperties = {
   imagePath: 'social-preview.png',
@@ -22,6 +22,7 @@ function MetaSocial({
   const pageTitle = `Andy Hook – ${title}`
 
   const imageUrl = `${meta.url}/images/${previewImage.imagePath}`
+  const imageDimensions = imageData[previewImage.imagePath]
 
   return (
     <Head>
@@ -40,6 +41,8 @@ function MetaSocial({
       <meta property="og:description" content={description} />
       <meta property="og:image:secure_url" content={imageUrl} />
       <meta property="og:image" content={imageUrl} />
+      <meta property="og:image:width" content={`${imageDimensions.width}`} />
+      <meta property="og:image:height" content={`${imageDimensions.height}`} />
       <meta property="og:type" content="website" />
       <meta property="og:title" content={pageTitle} />
 
