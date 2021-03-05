@@ -1,14 +1,22 @@
 import React from 'react'
 import Head from 'next/head'
 import meta from '../../data/meta'
+import { ImagePath } from '../../data/images'
 
 type MetaSocialProps = {
   title: string
   description: string
+  previewImage?: ImagePath
 }
 
-function MetaSocial({ title, description }: MetaSocialProps): JSX.Element {
+function MetaSocial({
+  title,
+  description,
+  previewImage = 'social-preview.png',
+}: MetaSocialProps): JSX.Element {
   const pageTitle = `Andy Hook – ${title}`
+
+  const relativeImagePath = `/images/${previewImage}`
 
   return (
     <Head>
@@ -27,9 +35,9 @@ function MetaSocial({ title, description }: MetaSocialProps): JSX.Element {
       <meta property="og:description" content={description} />
       <meta
         property="og:image:secure_url"
-        content={`${meta.url}/social-preview.png`}
+        content={`${meta.url}${relativeImagePath}`}
       />
-      <meta property="og:image" content="/social-preview.png" />
+      <meta property="og:image" content={relativeImagePath} />
       <meta property="og:type" content="website" />
       <meta property="og:title" content={pageTitle} />
 
@@ -38,7 +46,7 @@ function MetaSocial({ title, description }: MetaSocialProps): JSX.Element {
       <meta name="twitter:creator" content={`@${meta.social.twitter}`} />
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image:src" content="/social-preview.png" />
+      <meta name="twitter:image:src" content={relativeImagePath} />
     </Head>
   )
 }

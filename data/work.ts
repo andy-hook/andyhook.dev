@@ -1,4 +1,4 @@
-import { ImageProperties } from './images'
+import { ImagePath, ImageProperties } from './images'
 
 export type WorkName = 'aragon' | 'bright' | 'brandwatch' | 'blocks'
 
@@ -13,6 +13,7 @@ type WorkDetails = {
   tenure: string
   technologies: string[]
   intro: string
+  previewImage: ImagePath
   heroImage: ImageProperties
   thumbnailImage: ImageProperties
   thumbnailImageSmall: ImageProperties
@@ -44,6 +45,7 @@ export const WORK: Record<WorkName, WorkDetails> = {
     ],
     intro:
       'Aragon is an open source software project that allows for the creation and management of decentralized organizations, the project empowers users to freely organize and collaborate without borders or intermediaries, creating global and bureaucracy-free organizations and communities.',
+    previewImage: 'aragon-social-preview.png',
     heroImage: {
       imagePath: 'aragon-hero.png',
       alt:
@@ -80,6 +82,7 @@ export const WORK: Record<WorkName, WorkDetails> = {
     ],
     intro:
       'Bright was originally founded as a software development agency in 1999, but more recently has found success and traction by transitioning into a SaaS led, customer centric product company best known for delivering high-quality digital asset management software, exceptional customer support and expert training services.',
+    previewImage: 'bright-social-preview.png',
     heroImage: {
       imagePath: 'bright-hero.png',
       alt: 'Mockup of the Dash management software shown on a laptop screen',
@@ -104,6 +107,7 @@ export const WORK: Record<WorkName, WorkDetails> = {
     technologies: ['JavaScript', 'HTML5', 'CSS3', 'PHP', 'GSAP'],
     intro:
       'Brandwatch is the world’s leading digital consumer intelligence company, allowing users to analyze and utilize conversations from across the web and social media. Enabling brands and companies to understand consumer insights, trends, influencers, and brand perception.',
+    previewImage: 'brandwatch-social-preview.png',
     heroImage: {
       imagePath: 'brandwatch-hero.png',
       alt:
@@ -139,6 +143,7 @@ export const WORK: Record<WorkName, WorkDetails> = {
     ],
     intro:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In luctus leo vitae posuere varius. Donec massa neque, rutrum vestibulum pulvinar sed, laoreet sit amet ipsum. Integer in lorem sed orci tincidunt pulvinar nec fringilla orci. Nullam urna quam, tincidunt eu enim ut, condimentum vehicula tortor.',
+    previewImage: 'blocks-social-preview.png',
     heroImage: {
       imagePath: 'blocks-hero.png',
       alt:

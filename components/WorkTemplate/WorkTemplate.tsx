@@ -15,10 +15,7 @@ type WorkTemplate = {
   children: React.ReactNode
 }
 
-function WorkTemplate({
-  children,
-  name = 'aragon',
-}: WorkTemplate): JSX.Element {
+function WorkTemplate({ children, name }: WorkTemplate): JSX.Element {
   const {
     title,
     subtitle,
@@ -28,11 +25,16 @@ function WorkTemplate({
     role,
     technologies,
     heroImage,
+    previewImage,
   } = WORK[name]
 
   return (
     <>
-      <MetaSocial title={`Case Study – ${title}`} description={excerpt} />
+      <MetaSocial
+        title={`Case Study – ${title}`}
+        description={excerpt}
+        previewImage={previewImage}
+      />
       <article>
         <header>
           <div
