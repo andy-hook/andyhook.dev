@@ -8,6 +8,7 @@ import {
   ResponsiveTextSize,
   setResponsiveTextSize,
 } from '../../style/typography'
+import AccessibleIcon from '../AccessibleIcon/AccessibleIcon'
 import Icon from '../Icon/Icon'
 import ImageBase from '../ImageBase/ImageBase'
 import InteractionBase from '../InteractionBase/InteractionBase'
@@ -123,7 +124,9 @@ function WorkCard({
                 }
               `}
             >
-              <Icon name="lock" />
+              <AccessibleIcon label="Coming soon">
+                <Icon name="lock" />
+              </AccessibleIcon>
             </motion.div>
           )}
         </AnimatePresence>

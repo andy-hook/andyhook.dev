@@ -7,6 +7,7 @@ import { keys } from '../../utils/general'
 import { inclusiveUp } from '../../style/responsive'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { spring } from '../../style/motion'
+import AccessibleIcon from '../AccessibleIcon/AccessibleIcon'
 
 const socialInfo: Record<SocialNetworks, [SocialNetworks, string]> = {
   twitter: ['twitter', 'https://twitter.com/'],
@@ -122,12 +123,14 @@ function SocialIcon({
             },
           }}
         >
-          <Icon
-            name={icon}
-            css={`
-              color: ${theme.foreground('high')};
-            `}
-          />
+          <AccessibleIcon label={icon}>
+            <Icon
+              name={icon}
+              css={`
+                color: ${theme.foreground('high')};
+              `}
+            />
+          </AccessibleIcon>
         </motion.div>
       </InteractionBase>
     </motion.div>
