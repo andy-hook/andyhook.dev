@@ -5,7 +5,7 @@ import { ImageProperties } from '../../data/images'
 
 const DEFAULT_PREVIEW_IMAGE: ImageProperties = {
   imagePath: 'social-preview.png',
-  alt: '',
+  alt: 'Stylised title that reads "I build interfaces',
 }
 
 type MetaSocialProps = {
@@ -47,7 +47,7 @@ function MetaSocial({
       <meta property="og:title" content={pageTitle} />
 
       {/* Twitter */}
-      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:creator" content={`@${meta.social.twitter}`} />
       <meta name="twitter:site" content={`@${meta.social.twitter}`} />
       <meta name="twitter:title" content={pageTitle} />
