@@ -60,6 +60,47 @@ const common: ThemeCommon = {
   },
 }
 
+/* Dark
+------------------------------------------------- */
+export const darkTheme: Theme = {
+  name: 'dark',
+  foreground: {
+    extraLow: [240, 0.11, 0.55],
+    low: [230, 0.11, 0.6],
+    medium: [230, 0.1, 0.75],
+    high: [230, 0.08, 0.9],
+    extraHigh: [0, 0, 1],
+  },
+  background: {
+    extraLow: [240, 0.13, 0.06],
+    low: [240, 0.13, 0.07],
+    medium: [230, 0.13, 0.1],
+    high: [230, 0.13, 0.12],
+    extraHigh: [230, 0.13, 0.13],
+  },
+  shadow: {
+    low: `0px 1px 2px ${hsla(240, 0.13, 0.06, 0.2)}, 0px 4px 20px ${hsla(
+      240,
+      0.13,
+      0.06,
+      0.125
+    )}`,
+    medium: `0px 2px 4px ${hsla(240, 0.13, 0.06, 0.4)}, 0px 10px 20px ${hsla(
+      240,
+      0.13,
+      0.06,
+      0.3
+    )}`,
+    high: `0px 5px 10px ${hsla(240, 0.13, 0.06, 0.4)}, 0px 15px 50px ${hsla(
+      240,
+      0.13,
+      0.06,
+      0.2
+    )}`,
+  },
+  ...common,
+}
+
 /* Light
 ------------------------------------------------- */
 export const lightTheme: Theme = {
@@ -96,47 +137,6 @@ export const lightTheme: Theme = {
       0.16,
       0.94,
       0.08
-    )}`,
-  },
-  ...common,
-}
-
-/* Dark
-------------------------------------------------- */
-export const darkTheme: Theme = {
-  name: 'dark',
-  foreground: {
-    extraLow: [240, 0.11, 0.325],
-    low: [230, 0.11, 0.45],
-    medium: [230, 0.1, 0.575],
-    high: [230, 0.08, 0.8],
-    extraHigh: [0, 0, 1],
-  },
-  background: {
-    extraLow: [240, 0.13, 0.06],
-    low: [240, 0.13, 0.07],
-    medium: [230, 0.13, 0.1],
-    high: [230, 0.13, 0.12],
-    extraHigh: [230, 0.13, 0.13],
-  },
-  shadow: {
-    low: `0px 1px 2px ${hsla(240, 0.13, 0.06, 0.2)}, 0px 4px 20px ${hsla(
-      240,
-      0.13,
-      0.06,
-      0.125
-    )}`,
-    medium: `0px 2px 4px ${hsla(240, 0.13, 0.06, 0.4)}, 0px 10px 20px ${hsla(
-      240,
-      0.13,
-      0.06,
-      0.3
-    )}`,
-    high: `0px 5px 10px ${hsla(240, 0.13, 0.06, 0.4)}, 0px 15px 50px ${hsla(
-      240,
-      0.13,
-      0.06,
-      0.2
     )}`,
   },
   ...common,
