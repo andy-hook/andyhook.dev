@@ -44,7 +44,7 @@ function Footer(): JSX.Element {
                 size="lg"
                 lineHeight="flat"
                 color="high"
-                tag="h4"
+                tag="h2"
                 css={`
                   ${inclusiveDown('sm')} {
                     margin-bottom: 1.4em;

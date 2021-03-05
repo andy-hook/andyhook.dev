@@ -75,85 +75,84 @@ function WorkTemplate({
             </LayoutGutter>
           </div>
 
-          <ImageBase imagePath={heroImage.imagePath} />
+          <ImageBase imagePath={heroImage.imagePath} alt={heroImage.alt} />
         </header>
-        <main>
-          <LayoutGutter>
-            <LayoutRow>
-              <LayoutLimiter
-                css={`
-                  display: grid;
-                  grid-template-columns: 1fr;
-                  grid-gap: 4rem;
-                  width: 100%;
 
+        <LayoutGutter>
+          <LayoutRow>
+            <LayoutLimiter
+              css={`
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-gap: 4rem;
+                width: 100%;
+
+                ${inclusiveUp('sm')} {
+                  grid-template-columns: 25% 1fr;
+                  grid-gap: 4rem;
+                }
+              `}
+            >
+              <div
+                css={`
                   ${inclusiveUp('sm')} {
-                    grid-template-columns: 25% 1fr;
-                    grid-gap: 4rem;
+                    order: 2;
                   }
                 `}
               >
-                <div
+                <TextHeading
+                  tag="p"
+                  size="sm"
+                  lineHeight="longform"
+                  weight="medium"
                   css={`
-                    ${inclusiveUp('sm')} {
-                      order: 2;
-                    }
+                    margin-bottom: 3em;
                   `}
                 >
+                  {intro}
+                </TextHeading>
+
+                <TextHeading
+                  tag="div"
+                  size="xs"
+                  lineHeight="longform"
+                  weight="regular"
+                  color="extraLow"
+                >
+                  <div>{role}</div>
+                  <div>{tenure}</div>
+                </TextHeading>
+              </div>
+
+              <ul
+                css={`
+                  ${inclusiveUp('sm')} {
+                    order: 1;
+                  }
+                `}
+              >
+                {technologies.map((item, i) => (
                   <TextHeading
-                    tag="p"
-                    size="sm"
-                    lineHeight="longform"
-                    weight="medium"
+                    key={i}
+                    tag="li"
+                    size="xs"
+                    weight="regular"
+                    lineHeight="flat"
+                    color="low"
                     css={`
-                      margin-bottom: 3em;
+                      &:not(:last-child) {
+                        margin-bottom: 1.1em;
+                      }
                     `}
                   >
-                    {intro}
+                    {item}
                   </TextHeading>
-
-                  <TextHeading
-                    tag="div"
-                    size="xs"
-                    lineHeight="longform"
-                    weight="regular"
-                    color="low"
-                  >
-                    <div>{role}</div>
-                    <div>{tenure}</div>
-                  </TextHeading>
-                </div>
-
-                <ul
-                  css={`
-                    ${inclusiveUp('sm')} {
-                      order: 1;
-                    }
-                  `}
-                >
-                  {technologies.map((item, i) => (
-                    <TextHeading
-                      key={i}
-                      tag="li"
-                      size="xs"
-                      weight="regular"
-                      lineHeight="flat"
-                      color="medium"
-                      css={`
-                        &:not(:last-child) {
-                          margin-bottom: 1.1em;
-                        }
-                      `}
-                    >
-                      {item}
-                    </TextHeading>
-                  ))}
-                </ul>
-              </LayoutLimiter>
-            </LayoutRow>
-          </LayoutGutter>
-          {children}
-        </main>
+                ))}
+              </ul>
+            </LayoutLimiter>
+          </LayoutRow>
+        </LayoutGutter>
+        {children}
       </article>
       <MoreWork currentWorkName={name} />
     </>

@@ -34,7 +34,7 @@ function Button({ href, children, newTab }: ButtonProps): JSX.Element {
       <motion.div
         variants={{
           rest: {
-            opacity: 0.5,
+            opacity: 0.4,
           },
           hover: {
             opacity: 1,
