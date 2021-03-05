@@ -21,7 +21,7 @@ function MetaSocial({
 }: MetaSocialProps): JSX.Element {
   const pageTitle = `Andy Hook – ${title}`
 
-  const relativeImagePath = `/images/${previewImage.imagePath}`
+  const imagePath = `${meta.url}/images/${previewImage.imagePath}`
 
   return (
     <Head>
@@ -38,11 +38,8 @@ function MetaSocial({
       <meta property="og:locale" content="en_GB" />
       <meta property="og:image:type" content="image/png" />
       <meta property="og:description" content={description} />
-      <meta
-        property="og:image:secure_url"
-        content={`${meta.url}${relativeImagePath}`}
-      />
-      <meta property="og:image" content={relativeImagePath} />
+      <meta property="og:image:secure_url" content={imagePath} />
+      <meta property="og:image" content={imagePath} />
       <meta property="og:type" content="website" />
       <meta property="og:title" content={pageTitle} />
 
@@ -52,7 +49,7 @@ function MetaSocial({
       <meta name="twitter:site" content={`@${meta.social.twitter}`} />
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image:src" content={relativeImagePath} />
+      <meta name="twitter:image" content={imagePath} />
       <meta name="twitter:image:alt" content={previewImage.alt} />
     </Head>
   )

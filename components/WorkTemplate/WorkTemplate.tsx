@@ -31,7 +31,7 @@ function WorkTemplate({ children, name }: WorkTemplate): JSX.Element {
   return (
     <>
       <MetaSocial
-        title={`Case Study – ${title}`}
+        title={title}
         description={excerpt}
         previewImage={previewImage}
       />
