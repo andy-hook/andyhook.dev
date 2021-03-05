@@ -6,7 +6,7 @@ import { inclusiveUp } from '../../style/responsive'
 import ImageBase from '../ImageBase/ImageBase'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
-import ScrollAnimate from '../ScrollAnimate/ScrollAnimate'
+import ScrollReveal from '../ScrollReveal/ScrollReveal'
 
 type FramedProps =
   | { framed?: false; frameGradientStart?: never; frameGradientEnd?: never }
@@ -42,7 +42,7 @@ function ArticleImageSet({
           `}
         >
           <LayoutLimiter size="large">
-            <ScrollAnimate>
+            <ScrollReveal>
               <div
                 css={`
                   overflow: hidden;
@@ -56,7 +56,7 @@ function ArticleImageSet({
                   alt={item.alt}
                 />
               </div>
-            </ScrollAnimate>
+            </ScrollReveal>
           </LayoutLimiter>
         </LayoutGutter>
       ))}

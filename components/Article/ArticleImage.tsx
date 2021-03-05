@@ -1,7 +1,7 @@
 import React from 'react'
 import { ImageProperties } from '../../data/images'
 import ImageBase from '../ImageBase/ImageBase'
-import ScrollAnimate from '../ScrollAnimate/ScrollAnimate'
+import ScrollReveal from '../ScrollReveal/ScrollReveal'
 
 type ArticleImageProps = ImageProperties
 
@@ -10,9 +10,9 @@ function ArticleImage({
   alt,
 }: ArticleImageProps): JSX.Element {
   return (
-    <ScrollAnimate>
+    <ScrollReveal>
       <ImageBase imagePath={imagePath} alt={alt} />
-    </ScrollAnimate>
+    </ScrollReveal>
   )
 }
 
