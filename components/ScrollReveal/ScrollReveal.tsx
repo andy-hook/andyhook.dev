@@ -18,7 +18,7 @@ function ScrollReveal({ children }: ScrollRevealProps): JSX.Element {
     initialInView: true,
   })
 
-  const variants = useMemo(
+  const motionVariants = useMemo(
     () => ({
       hidden: {
         opacity: 0,
@@ -37,7 +37,7 @@ function ScrollReveal({ children }: ScrollRevealProps): JSX.Element {
       ref={ref}
       initial="visible"
       animate={inView ? 'visible' : 'hidden'}
-      variants={variants}
+      variants={motionVariants}
       transition={spring.snappy}
     >
       {children}
