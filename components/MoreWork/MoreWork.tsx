@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion'
 import React, { useMemo } from 'react'
 import { useInView } from 'react-intersection-observer'
+import { useBreakpoint } from 'styled-breakpoints/react-styled'
 import { WORK, WorkName, WORK_ORDER } from '../../data/work'
 import { spring } from '../../style/motion'
-import { inclusiveUp } from '../../style/responsive'
+import { inclusiveDown, inclusiveUp } from '../../style/responsive'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import LayoutRow from '../Layout/LayoutRow'
@@ -15,12 +16,46 @@ type MoreWorkProps = {
   currentWorkName: WorkName
 }
 
+const MOTION_ORCHESTRATION = {
+  ...spring.snappy,
+  staggerChildren: 0.1,
+  delayChildren: 0.2,
+}
+
 function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
+  const enableRelativeYDistance = useBreakpoint(inclusiveDown('xl'))
+
   const [inViewRef, inView] = useInView({
     triggerOnce: true,
     rootMargin: '-10%',
     initialInView: true,
   })
+
+  const motionVariants = useMemo(
+    () => ({
+      container: {
+        hidden: {
+          opacity: 0,
+          y: enableRelativeYDistance ? '5vw' : 100,
+        },
+        visible: {
+          opacity: 1,
+          y: 0,
+        },
+      },
+      workItem: {
+        hidden: {
+          opacity: 0,
+          y: enableRelativeYDistance ? '3vw' : 60,
+        },
+        visible: {
+          opacity: 1,
+          y: 0,
+        },
+      },
+    }),
+    [enableRelativeYDistance]
+  )
 
   const items = useMemo(() => {
     return WORK_ORDER.filter((value) => value !== currentWorkName).map(
@@ -35,21 +70,8 @@ function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
           <LayoutLimiter>
             <motion.div
               ref={inViewRef}
-              variants={{
-                hidden: {
-                  opacity: 0,
-                  y: 150,
-                },
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                },
-              }}
-              transition={{
-                ...spring.snappy,
-                staggerChildren: 0.1,
-                delayChildren: 0.2,
-              }}
+              variants={motionVariants.container}
+              transition={MOTION_ORCHESTRATION}
               animate={inView ? 'visible' : 'hidden'}
             >
               <TextHeading
@@ -65,7 +87,7 @@ function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
                 css={`
                   display: grid;
                   grid-template-columns: 1fr;
-                  grid-gap: 6rem;
+                  grid-gap: 3rem;
 
                   ${inclusiveUp('sm')} {
                     grid-template-columns: 1fr 1fr 1fr;
@@ -83,16 +105,7 @@ function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
                       key={i}
                       initial="visible"
                       transition={spring.snappy}
-                      variants={{
-                        hidden: {
-                          opacity: 0,
-                          y: 60,
-                        },
-                        visible: {
-                          opacity: 1,
-                          y: 0,
-                        },
-                      }}
+                      variants={motionVariants.workItem}
                     >
                       <WorkCard
                         key={i}
