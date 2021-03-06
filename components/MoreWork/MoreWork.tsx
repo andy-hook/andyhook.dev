@@ -23,7 +23,7 @@ const MOTION_ORCHESTRATION = {
 }
 
 function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
-  const useRelativeYDistance = useBreakpoint(inclusiveDown('xl'))
+  const enableRelativeYDistance = useBreakpoint(inclusiveDown('xl'))
 
   const [inViewRef, inView] = useInView({
     triggerOnce: true,
@@ -36,7 +36,7 @@ function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
       container: {
         hidden: {
           opacity: 0,
-          y: useRelativeYDistance ? '5vw' : 100,
+          y: enableRelativeYDistance ? '5vw' : 100,
         },
         visible: {
           opacity: 1,
@@ -46,7 +46,7 @@ function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
       workItem: {
         hidden: {
           opacity: 0,
-          y: useRelativeYDistance ? '3vw' : 60,
+          y: enableRelativeYDistance ? '3vw' : 60,
         },
         visible: {
           opacity: 1,
@@ -54,7 +54,7 @@ function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
         },
       },
     }),
-    [useRelativeYDistance]
+    [enableRelativeYDistance]
   )
 
   const items = useMemo(() => {

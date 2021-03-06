@@ -10,7 +10,7 @@ type ScrollRevealProps = {
 }
 
 function ScrollReveal({ children }: ScrollRevealProps): JSX.Element {
-  const useRelativeYDistance = useBreakpoint(inclusiveDown('xl'))
+  const enableRelativeYDistance = useBreakpoint(inclusiveDown('xl'))
 
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -22,14 +22,14 @@ function ScrollReveal({ children }: ScrollRevealProps): JSX.Element {
     () => ({
       hidden: {
         opacity: 0,
-        y: useRelativeYDistance ? '5vw' : 100,
+        y: enableRelativeYDistance ? '5vw' : 100,
       },
       visible: {
         opacity: 1,
         y: 0,
       },
     }),
-    [useRelativeYDistance]
+    [enableRelativeYDistance]
   )
 
   return (
