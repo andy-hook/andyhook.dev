@@ -11,6 +11,7 @@ import Header from '../components/Header/Header'
 
 // Import fonts outside of styled-components to avoid flicker on state change
 import '../style/font.css'
+import LoadingIndicator from '../components/LoadingIndicator/LoadingIndicator'
 
 function App({ Component, pageProps }: AppProps): JSX.Element {
   // Remove any previously installed service worker
@@ -41,6 +42,7 @@ function AppLayout({ children }: { children: React.ReactNode }): JSX.Element {
 
   return (
     <>
+      <LoadingIndicator />
       <Header
         css={`
           position: absolute;
