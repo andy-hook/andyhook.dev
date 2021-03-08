@@ -39,7 +39,7 @@ const common: ThemeCommon = {
   },
   breakpoints: breakpoints,
   radius: {
-    base: 'clamp(6px, 1vw, 18px)',
+    base: 'clamp(8px, 1vw, 18px)',
     pill: '50000px',
     circle: '50%',
   },
@@ -91,11 +91,11 @@ export const darkTheme: Theme = {
       0.06,
       0.3
     )}`,
-    high: `0px 5px 10px ${hsla(240, 0.13, 0.06, 0.4)}, 0px 15px 50px ${hsla(
+    high: `0px 10px 10px ${hsla(240, 0.13, 0.06, 0.4)}, 0px 25px 50px ${hsla(
       240,
       0.13,
       0.06,
-      0.2
+      0.5
     )}`,
   },
   ...common,
