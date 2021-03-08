@@ -93,7 +93,11 @@ function WorkTemplate({ children, name }: WorkTemplate): JSX.Element {
                       >
                         {title}
                       </TextHeading>
-
+                    </motion.div>
+                    <motion.div
+                      variants={entranceMotionVariants}
+                      transition={spring.snappy}
+                    >
                       <TextHeading size="lg" tag="h2" color="extraLow">
                         {subtitle}
                       </TextHeading>
