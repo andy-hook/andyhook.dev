@@ -7,7 +7,7 @@ function StripeBackground({
   const { background } = useTheme()
 
   return (
-    <svg viewBox="0 0 1009 1507" {...props}>
+    <svg viewBox="0 0 1009 1507" role="decorative" {...props}>
       <defs>
         <radialGradient
           id="a"

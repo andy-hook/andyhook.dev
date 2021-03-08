@@ -9,7 +9,7 @@ import { TESTIMONIALS } from '../data/testimonials'
 
 const TESTIMONIAL = TESTIMONIALS.ze
 
-function Bright(): JSX.Element {
+function BrightPage(): JSX.Element {
   return (
     <WorkTemplate name="bright">
       <ArticleDescribe title="Overview" bordered>
@@ -146,4 +146,4 @@ function Bright(): JSX.Element {
   )
 }
 
-export default Bright
+export default BrightPage

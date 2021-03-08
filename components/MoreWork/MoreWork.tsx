@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion'
 import React, { useMemo } from 'react'
 import { useInView } from 'react-intersection-observer'
-import { useBreakpoint } from 'styled-breakpoints/react-styled'
 import { WORK, WorkName, WORK_ORDER } from '../../data/work'
+import { useRelativeYMotion } from '../../hooks/useRelativeYMotion/useRelativeYMotion'
 import { spring } from '../../style/motion'
-import { inclusiveDown, inclusiveUp } from '../../style/responsive'
+import { inclusiveUp } from '../../style/responsive'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import LayoutRow from '../Layout/LayoutRow'
@@ -19,11 +19,12 @@ type MoreWorkProps = {
 const MOTION_ORCHESTRATION = {
   ...spring.snappy,
   staggerChildren: 0.1,
-  delayChildren: 0.2,
+  delayChildren: 0.1,
 }
 
 function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
-  const enableRelativeYDistance = useBreakpoint(inclusiveDown('xl'))
+  const containerMotionVariants = useRelativeYMotion(100)
+  const workItemMotionVariants = useRelativeYMotion(60)
 
   const [inViewRef, inView] = useInView({
     triggerOnce: true,
@@ -33,28 +34,10 @@ function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
 
   const motionVariants = useMemo(
     () => ({
-      container: {
-        hidden: {
-          opacity: 0,
-          y: enableRelativeYDistance ? '5vw' : 100,
-        },
-        visible: {
-          opacity: 1,
-          y: 0,
-        },
-      },
-      workItem: {
-        hidden: {
-          opacity: 0,
-          y: enableRelativeYDistance ? '3vw' : 60,
-        },
-        visible: {
-          opacity: 1,
-          y: 0,
-        },
-      },
+      container: containerMotionVariants,
+      workItem: workItemMotionVariants,
     }),
-    [enableRelativeYDistance]
+    [containerMotionVariants, workItemMotionVariants]
   )
 
   const items = useMemo(() => {
