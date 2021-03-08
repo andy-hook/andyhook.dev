@@ -101,6 +101,8 @@ const Global = createGlobalStyle`
     cursor: pointer;
     font-weight: inherit;
     text-align: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
 
     &[disabled] {
       cursor: default;

@@ -8,6 +8,7 @@ import MetaIcons from '../components/Meta/MetaIcons'
 import { unregisterServiceWorker } from '../serviceWorker'
 import Footer from '../components/Footer/Footer'
 import Header from '../components/Header/Header'
+import LoadingIndicator from '../components/LoadingIndicator/LoadingIndicator'
 
 // Import fonts outside of styled-components to avoid flicker on state change
 import '../style/font.css'
@@ -41,6 +42,7 @@ function AppLayout({ children }: { children: React.ReactNode }): JSX.Element {
 
   return (
     <>
+      <LoadingIndicator />
       <Header
         css={`
           position: absolute;

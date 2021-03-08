@@ -1,4 +1,4 @@
-export const ENTRANCE_TRANSITION_DELAY = 0.25
+export const ENTRANCE_TRANSITION_DELAY = 0.3
 export const ENTRANCE_TRANSITION_Y_DISTANCE = 50
 
 export const spring = {
