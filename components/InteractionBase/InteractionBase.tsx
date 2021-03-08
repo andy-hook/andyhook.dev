@@ -5,7 +5,6 @@ import { useFocusVisible } from '../../hooks/useFocusVisible/useFocusVisible'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { useRouter } from 'next/router'
 import { isExternalURL, noop } from '../../utils/general'
-import { spring } from '../../style/motion'
 import { Theme } from '../../style/theme'
 
 type InteractionBaseProps = {
@@ -118,19 +117,23 @@ function InteractionBase({
         {focusVisible && (
           <motion.span
             variants={{
-              rest: {
+              initial: {
                 opacity: 0,
-                scale: 1.05,
+                scale: 1.15,
               },
               focus: {
                 opacity: 1,
                 scale: 1,
               },
+              exit: {
+                opacity: 0,
+                scale: 1.05,
+              },
             }}
-            initial="rest"
+            initial="initial"
             animate="focus"
-            exit="rest"
-            transition={spring.bounce}
+            exit="exit"
+            transition={{ type: 'spring', duration: 0.4 }}
             css={`
               display: block;
               position: absolute;
