@@ -1,4 +1,5 @@
 export const ENTRANCE_TRANSITION_DELAY = 0.25
+export const ENTRANCE_TRANSITION_Y_DISTANCE = 75
 
 export const spring = {
   bounce: {

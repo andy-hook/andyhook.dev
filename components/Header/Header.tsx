@@ -1,20 +1,21 @@
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import React from 'react'
-import { ENTRANCE_TRANSITION_DELAY, spring } from '../../style/motion'
+import { useRelativeYMotion } from '../../hooks/useRelativeYMotion/useRelativeYMotion'
+import {
+  ENTRANCE_TRANSITION_DELAY,
+  ENTRANCE_TRANSITION_Y_DISTANCE,
+  spring,
+} from '../../style/motion'
 import { inclusiveUp } from '../../style/responsive'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import Logo from '../Logo/Logo'
 
-const MOTION_VARIANTS = {
-  hidden: { opacity: 0, y: -25 },
-  visible: { opacity: 1, y: 0 },
-}
-
 function Footer({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>): JSX.Element {
+  const motionVariants = useRelativeYMotion(-ENTRANCE_TRANSITION_Y_DISTANCE / 2)
   const router = useRouter()
 
   return (
@@ -27,7 +28,7 @@ function Footer({
       <LayoutLimiter>
         <motion.header
           key={router.pathname}
-          variants={MOTION_VARIANTS}
+          variants={motionVariants}
           transition={{ ...spring.snappy, delay: ENTRANCE_TRANSITION_DELAY }}
           initial="hidden"
           animate="visible"

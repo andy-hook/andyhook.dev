@@ -15,8 +15,13 @@ import TextHeading from '../components/Text/TextHeading'
 import WorkCard from '../components/WorkCard/WorkCard'
 import meta from '../data/meta'
 import { WORK, WORK_ORDER } from '../data/work'
+import { useRelativeYMotion } from '../hooks/useRelativeYMotion/useRelativeYMotion'
 import { useTheme } from '../hooks/useTheme/useTheme'
-import { ENTRANCE_TRANSITION_DELAY, spring } from '../style/motion'
+import {
+  ENTRANCE_TRANSITION_DELAY,
+  ENTRANCE_TRANSITION_Y_DISTANCE,
+  spring,
+} from '../style/motion'
 import { inclusiveDown, inclusiveUp } from '../style/responsive'
 import { setTextStyle } from '../style/typography'
 
@@ -25,15 +30,11 @@ const MOTION_ORCHESTRATION = {
   delayChildren: ENTRANCE_TRANSITION_DELAY,
 }
 
-const ENTRANCE_MOTION_PROPS = {
-  variants: {
-    hidden: { opacity: 0, y: 175 },
-    visible: { opacity: 1, y: 0 },
-  },
-  transition: spring.snappy,
-}
-
 function Home(): JSX.Element {
+  const entranceMotionVariants = useRelativeYMotion(
+    ENTRANCE_TRANSITION_Y_DISTANCE
+  )
+
   const theme = useTheme()
 
   return (
@@ -82,7 +83,10 @@ function Home(): JSX.Element {
                     }
                   `}
                 >
-                  <motion.div {...ENTRANCE_MOTION_PROPS}>
+                  <motion.div
+                    variants={entranceMotionVariants}
+                    transition={spring.snappy}
+                  >
                     <TextHeading
                       size="lg"
                       css={`
@@ -149,7 +153,6 @@ function Home(): JSX.Element {
                   </motion.div>
                 </div>
                 <motion.div
-                  transition={{ staggerChildren: 0.1 }}
                   css={`
                     display: grid;
 
@@ -173,7 +176,8 @@ function Home(): JSX.Element {
 
                     return (
                       <motion.div
-                        {...ENTRANCE_MOTION_PROPS}
+                        variants={entranceMotionVariants}
+                        transition={spring.snappy}
                         key={key}
                         css={`
                           ${inclusiveUp('sm')} {
