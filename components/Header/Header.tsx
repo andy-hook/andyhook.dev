@@ -1,12 +1,22 @@
+import { motion } from 'framer-motion'
+import { useRouter } from 'next/router'
 import React from 'react'
+import { ENTRANCE_TRANSITION_DELAY, spring } from '../../style/motion'
 import { inclusiveUp } from '../../style/responsive'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import Logo from '../Logo/Logo'
 
+const MOTION_VARIANTS = {
+  hidden: { opacity: 0, y: -25 },
+  visible: { opacity: 1, y: 0 },
+}
+
 function Footer({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>): JSX.Element {
+  const router = useRouter()
+
   return (
     <LayoutGutter
       css={`
@@ -15,7 +25,12 @@ function Footer({
       {...props}
     >
       <LayoutLimiter>
-        <header
+        <motion.header
+          key={router.pathname}
+          variants={MOTION_VARIANTS}
+          transition={{ ...spring.snappy, delay: ENTRANCE_TRANSITION_DELAY }}
+          initial="hidden"
+          animate="visible"
           css={`
             padding-top: 3rem;
 
@@ -29,7 +44,7 @@ function Footer({
           `}
         >
           <Logo />
-        </header>
+        </motion.header>
       </LayoutLimiter>
     </LayoutGutter>
   )

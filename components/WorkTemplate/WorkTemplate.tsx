@@ -9,6 +9,21 @@ import MetaSocial from '../Meta/MetaSocial'
 import MoreWork from '../MoreWork/MoreWork'
 import ImageBase from '../ImageBase/ImageBase'
 import TextHeading from '../Text/TextHeading'
+import { motion } from 'framer-motion'
+import { ENTRANCE_TRANSITION_DELAY, spring } from '../../style/motion'
+
+const MOTION_ORCHESTRATION = {
+  staggerChildren: 0.05,
+  delayChildren: ENTRANCE_TRANSITION_DELAY,
+}
+
+const ENTRANCE_MOTION_PROPS = {
+  variants: {
+    hidden: { opacity: 0, y: 175 },
+    visible: { opacity: 1, y: 0 },
+  },
+  transition: spring.snappy,
+}
 
 type WorkTemplate = {
   name: WorkName
@@ -36,7 +51,11 @@ function WorkTemplate({ children, name }: WorkTemplate): JSX.Element {
         previewImage={previewImage}
       />
       <article>
-        <header>
+        <motion.header
+          transition={MOTION_ORCHESTRATION}
+          initial="hidden"
+          animate="visible"
+        >
           <div
             css={`
               padding-top: 11rem;
@@ -60,25 +79,29 @@ function WorkTemplate({ children, name }: WorkTemplate): JSX.Element {
                     ${setResponsiveTextSize('display', 'lg')}
                   `}
                 >
-                  <TextHeading
-                    size="lg"
-                    css={`
-                      margin-bottom: 0.25em;
-                    `}
-                  >
-                    {title}
-                  </TextHeading>
+                  <motion.div {...ENTRANCE_MOTION_PROPS}>
+                    <TextHeading
+                      size="lg"
+                      css={`
+                        margin-bottom: 0.25em;
+                      `}
+                    >
+                      {title}
+                    </TextHeading>
 
-                  <TextHeading size="lg" tag="h2" color="extraLow">
-                    {subtitle}
-                  </TextHeading>
+                    <TextHeading size="lg" tag="h2" color="extraLow">
+                      {subtitle}
+                    </TextHeading>
+                  </motion.div>
                 </div>
               </LayoutLimiter>
             </LayoutGutter>
           </div>
 
-          <ImageBase imagePath={heroImage.imagePath} alt={heroImage.alt} />
-        </header>
+          <motion.div {...ENTRANCE_MOTION_PROPS}>
+            <ImageBase imagePath={heroImage.imagePath} alt={heroImage.alt} />
+          </motion.div>
+        </motion.header>
 
         <LayoutGutter>
           <LayoutRow>

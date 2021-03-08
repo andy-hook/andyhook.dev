@@ -10,7 +10,7 @@ interface LayoutLimiterProps {
   divider?: boolean
 }
 
-const widths: Record<LimiterWidth, string> = {
+const LIMITER_WIDTHS: Record<LimiterWidth, string> = {
   small: rem('900px'),
   medium: rem('1550px'),
   large: rem('1900px'),
@@ -23,7 +23,7 @@ function LayoutLimiter({
   ...props
 }: LayoutLimiterProps): JSX.Element {
   const theme = useTheme()
-  const width = widths[size]
+  const width = LIMITER_WIDTHS[size]
 
   return (
     <div
