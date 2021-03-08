@@ -19,7 +19,7 @@ type MoreWorkProps = {
 const MOTION_ORCHESTRATION = {
   ...spring.snappy,
   staggerChildren: 0.1,
-  delayChildren: 0.2,
+  delayChildren: 0.1,
 }
 
 function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
