@@ -8,10 +8,10 @@ import MetaIcons from '../components/Meta/MetaIcons'
 import { unregisterServiceWorker } from '../serviceWorker'
 import Footer from '../components/Footer/Footer'
 import Header from '../components/Header/Header'
+import LoadingIndicator from '../components/LoadingIndicator/LoadingIndicator'
 
 // Import fonts outside of styled-components to avoid flicker on state change
 import '../style/font.css'
-import LoadingIndicator from '../components/LoadingIndicator/LoadingIndicator'
 
 function App({ Component, pageProps }: AppProps): JSX.Element {
   // Remove any previously installed service worker
