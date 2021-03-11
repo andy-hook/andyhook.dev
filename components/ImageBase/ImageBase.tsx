@@ -38,7 +38,7 @@ function ImageBase({
   alt,
   loaderShade = 'dark',
   scaleRender = 100,
-  quality = 80,
+  quality = 90,
   scaleRenderFromBp,
   onLoad,
   visibleOpacity = 1,

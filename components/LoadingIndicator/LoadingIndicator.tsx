@@ -36,7 +36,7 @@ function LoadingIndicator(): JSX.Element {
   )
   const [loadingStatus, setLoadingStatus] = useState<LoadingStatus>('rest')
 
-  const setLoading = useCallback(
+  const loadComplete = useCallback(
     (newPath) => {
       // Don't display the indicator if navigating to the current route
       if (router.pathname !== newPath) {
@@ -48,12 +48,12 @@ function LoadingIndicator(): JSX.Element {
   )
 
   useEffect(() => {
-    router.events.on('routeChangeStart', setLoading)
+    router.events.on('routeChangeStart', loadComplete)
 
     return () => {
-      router.events.off('routeChangeStart', setLoading)
+      router.events.off('routeChangeStart', loadComplete)
     }
-  }, [router.events, setLoading])
+  }, [router.events, loadComplete])
 
   return (
     <motion.div
