@@ -28,6 +28,7 @@ export const WORK_ORDER: WorkName[] = [
 
 export const WORK: Record<WorkName, WorkDetails> = {
   aragon: {
+    route: '/aragon',
     title: 'Aragon',
     subtitle: 'Collaboration without borders',
     excerpt: '',
@@ -38,13 +39,15 @@ export const WORK: Record<WorkName, WorkDetails> = {
     technologies: [
       'React',
       'TypeScript',
-      'Next',
+      'Ethers.js',
+      'Web3.js',
+      'Next.js',
+      'React Spring',
       'Styled Components',
-      'Ethers',
-      'Jest / Testing Library',
+      'Jest & Testing Library',
     ],
     intro:
-      'Aragon is an open source software project that allows for the creation and management of decentralized organizations, the project empowers users to freely organize and collaborate without borders or intermediaries, creating global and bureaucracy-free organizations and communities.',
+      'Aragon is an open source software project built on Ethereum technology to empower the creation and management of decentralized organizations, the project empowers users to freely organize and collaborate without borders or intermediaries, creating global and bureaucracy-free organizations and communities.',
     previewImage: {
       imagePath: 'aragon-social-preview.png',
       alt:
