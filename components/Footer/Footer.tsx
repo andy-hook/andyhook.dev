@@ -52,7 +52,10 @@ function Footer(): JSX.Element {
                 `}
               >
                 Start by{' '}
-                <InteractionBase offset={0.1} href={`mailto:${meta.email}`}>
+                <InteractionBase
+                  offset={[0.2, 0.05]}
+                  href={`mailto:${meta.email}`}
+                >
                   <GradientText
                     css={`
                       ${setTextStyle('display', 'extraBold')}

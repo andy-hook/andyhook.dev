@@ -49,6 +49,32 @@ describe('given a default InteractionBase', () => {
 
     expect(handleClick).not.toBeCalled()
   })
+
+  it('should apply outline offsets correctly', () => {
+    element = rendered.getByText(BUTTON_TEXT)
+
+    fireEvent.focus(element)
+
+    rendered.rerender(
+      <InteractionBase offset={1}>{BUTTON_TEXT}</InteractionBase>
+    )
+
+    const outlineElement = element.querySelector('span')
+
+    expect(outlineElement).toHaveStyleRule('top', '-1em')
+    expect(outlineElement).toHaveStyleRule('bottom', '-1em')
+    expect(outlineElement).toHaveStyleRule('left', '-1em')
+    expect(outlineElement).toHaveStyleRule('right', '-1em')
+
+    rendered.rerender(
+      <InteractionBase offset={[0.5, 1]}>{BUTTON_TEXT}</InteractionBase>
+    )
+
+    expect(outlineElement).toHaveStyleRule('top', '-1em')
+    expect(outlineElement).toHaveStyleRule('bottom', '-1em')
+    expect(outlineElement).toHaveStyleRule('left', '-0.5em')
+    expect(outlineElement).toHaveStyleRule('right', '-0.5em')
+  })
 })
 
 describe('given an InteractionBase with external href', () => {
