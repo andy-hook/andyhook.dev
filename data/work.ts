@@ -31,7 +31,7 @@ export const WORK: Record<WorkName, WorkDetails> = {
     route: '/aragon',
     title: 'Aragon',
     subtitle: 'Collaboration without borders',
-    excerpt: '',
+    excerpt: 'Furthering Aragons mission to revolutionise governance',
     role: 'Senior UI Engineer',
     company: 'Aragon',
     location: 'Remote',
@@ -74,7 +74,7 @@ export const WORK: Record<WorkName, WorkDetails> = {
     title: 'Bright Interactive',
     subtitle: 'Realise your brand potential',
     excerpt:
-      'In 2018 I joined the Bright team to evolve and elevate the user interface of Dash, a new streamlined digital asset management product that the team were busy preparing to ship as an MVP.',
+      'Evolving and elevating the user interface of Dash, a streamlined digital asset management product from Bright',
     role: 'UI Engineer',
     company: 'Bright Interactive',
     location: 'Brighton, UK',

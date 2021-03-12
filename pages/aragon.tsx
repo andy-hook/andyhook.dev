@@ -14,11 +14,11 @@ function AragonPage(): JSX.Element {
     <WorkTemplate name="aragon">
       <ArticleDescribe title="Overview" bordered>
         <TextParagraph>
-          I joined the Aragon team in 2020 to help further their efforts to
-          revolutionise governance. From the very start it was clear that high
-          performance, responsive and delightful user interfaces were a crucial
-          element for the project and that the team values technically competent
-          engineers who are equally well versed in design.
+          I joined the Aragon One team in 2020 as a Senior Engineer to help
+          further their mission of revolutionising governance. From the very
+          start it was clear that high quality, responsive and delightful user
+          interfaces were a crucial element of the project and that the team
+          values technically competent engineers equally versed in design.
         </TextParagraph>
 
         <TextParagraph>
@@ -26,85 +26,87 @@ function AragonPage(): JSX.Element {
           understood within the Ethereum community, but for the uninitiated
           there is a lot to unpack. The team knew that onboarding an entire
           class of first-time crypto users to the decentralized governance
-          concept couldn't be achieved overnight. Aragons messaging and
-          technological solutions have taken many forms and iterations over the
-          years with this in mind, and the ultimate goal of finding product
-          market fit is now within reach.
+          concept couldn't be achieved overnight and Aragons messaging has taken
+          multiple iterations over the years with this in mind.
         </TextParagraph>
 
         <TextParagraph>
-          As part of the front-end engineering team I would ultimately
-          contribute heavily to the initial prototype of the Aragon Network
-          Dashboard, launch a highly praised ANT Upgrade Portal, further the
-          adoption of TypeScript in front-end code, improve and maintain a
-          variety of Aragons open source packages, push for a bigger emphasis on
-          Agile development and mentor junior team members.
+          As part of the front-end engineering team I heavily contributed to the
+          initial prototype of the Aragon Network Dashboard, launched a highly
+          praised ANT Upgrade Portal, furthered the adoption of TypeScript in
+          front-end code, improved and maintained a variety of open source
+          packages, pushed for a bigger emphasis on Agile development and
+          mentored junior team members.
         </TextParagraph>
       </ArticleDescribe>
-      <ArticleImage imagePath="aragon-intro.png" alt="" />
+      <ArticleImage
+        imagePath="aragon-intro.png"
+        alt="Multiple tablet devices showing screens of Aragon user interfaces"
+      />
 
       <ArticleDescribe title="Delivering on the Aragon promise">
         <TextParagraph>
-          The Aragon project is well known in the DAO space for executing to a
-          very high level, the exceptional quality of their brand design and
-          user experience stand out in an industry that is not known for being
+          The project is well known in the DAO space for executing to a very
+          high standard, the exceptional quality of their brand design and user
+          experience stand out in an industry that is not known for being
           particularly user friendly.
         </TextParagraph>
 
         <TextParagraph>
-          I was lucky enough to have the opportunity to work with two amazing
-          design talents, Patricia Davila and Adrian García, user experience and
-          brand respectively. They are hands down some of the most talented
-          designers I've ever worked with and they deserve high praise for the
-          visual fidelity and user experience present in their products.
+          I was lucky enough to work with two amazing design talents, Patricia
+          Davila and Adrian García, user experience, and brand respectively.
+          They are some of the most talented designers I've worked with and
+          deserve high praise for the visual fidelity and intuitive experience
+          offered within Aragons products.
         </TextParagraph>
 
         <TextParagraph>
-          A crucial component of any high performing product team is the
-          relationship between engineers and designers, catching every edge
-          case, accounting for all possible states and fine tuning a flow to fit
-          within technological limitations requires smooth communication and
-          engineers who understand both sides of the coin – technology, design,
-          user psychology and business value. Where I was able to have the most
-          impact was in the execution of this vision, ensuring every detail and
-          interaction was of the highest quality.
+          An important component of a high performing product team is a strong
+          relationship between engineers and designers. Catching every edge
+          case, accounting for all possible UI states and fine tuning a flow to
+          fit within technological limitations requires smooth communication
+          between disciplines and engineers who understand all sides of the coin
+          – technology, design, users and business. My biggest impact in this
+          regard was an ability to execute on this vision, ensuring every detail
+          and interaction was of the highest quality.
         </TextParagraph>
       </ArticleDescribe>
       <ArticleImageSet
         items={[
           {
             imagePath: 'aragon-components.png',
-            alt: '',
+            alt:
+              'A large array of Aragon user interface components arranged in an offset grid',
           },
         ]}
       />
-      <ArticleDescribe title="Exceptional quality at lightning speed">
+      <ArticleDescribe title="Exceptional quality and predictable delivery">
         <TextParagraph>
-          Quality is often thought of as diametrically opposed to delivery
-          speed, and in a lot of circumstances this can be the case, however, my
-          take on this is to ask the question of "why?" – "Why are we building
-          this now?", "What's the smallest thing we can ship that adds value for
-          users today?" these are important questions to ask, a mutual
-          understanding of expectations within the team and a tight scope allows
-          us to push the quality of what we aim to deliver and fosters an
-          iterative product development culture that empowers the team to
-          rapidly evolve at a measured cadance.
+          Quality is often considered diametrically opposed to delivery speed,
+          and in a lot of circumstances this can be the case, however, my take
+          on this is to ask the question of why? why are we building this now?
+          what's the simplest feature we can ship today that adds value for
+          users? These are important questions to ask, a mutual understanding of
+          expectations within the team and a tight scope can unlock a team to
+          push the quality of what is delivered while fostering an iterative
+          development culture that empowers a team to rapidly evolve at a
+          predictable cadance.
         </TextParagraph>
 
         <TextParagraph>
-          From a technology perspective I'm a big believer in the use of tools
-          like TypeScript for enhancing velocity within a team, the confidence
-          that static type systems provide when refactoring, and the implicit
-          documentation provided by strict typing go a long way to battling code
-          entropy (and make it a whole lot easier to onboard new hires)
+          From a technology perspective I'm a believer in the use of static type
+          systems such as TypeScript for improving velocity over time, the
+          confidence that type systems provide when refactoring, and the
+          implicit documentation provided by strict typings go a long way to
+          battling code entropy (and make it a whole lot easier to onboard new
+          hires)
         </TextParagraph>
 
         <TextParagraph>
-          By following these principles and working closely with the team we
-          were able to deliver on high impact objectives beyond expectation and
-          ahead of schedule. The launch of Aragons ANT Upgrade Portal was a
-          great example of this and really solidified the benefits of these
-          approaches to the team.
+          By following these principles we were able to deliver high impact
+          initiatives beyond expectation and ahead of schedule. The launch of
+          the ANT Upgrade Portal was a great example of this and proved the
+          benefits to the team.
         </TextParagraph>
       </ArticleDescribe>
       <ArticleImageSet
@@ -114,27 +116,30 @@ function AragonPage(): JSX.Element {
         items={[
           {
             imagePath: 'aragon-network-dashboard-home.png',
-            alt: '',
+            alt: 'Dashboard screen showing a list of open proposals in a grid',
           },
           {
             imagePath: 'aragon-network-dashboard-proposal.png',
-            alt: '',
+            alt: 'Dashboard screen showing details about a single proposal',
           },
           {
             imagePath: 'aragon-network-dashboard-agreement.png',
-            alt: '',
+            alt: 'Dashboard screen showing details about an agreement',
           },
           {
             imagePath: 'aragon-upgrade-home.png',
-            alt: '',
+            alt:
+              'Upgrade portal home screen showing options for upgrading ANT tokens',
           },
           {
             imagePath: 'aragon-upgrade-converter.png',
-            alt: '',
+            alt:
+              'Upgrade portal converter screen showing the conversion rate and a user input for specifying an amount',
           },
           {
             imagePath: 'aragon-upgrade-complete.png',
-            alt: '',
+            alt:
+              'Upgrade portal transaction signing screen showing the steps needed to complete the process',
           },
         ]}
       />
