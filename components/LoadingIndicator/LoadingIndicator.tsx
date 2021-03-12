@@ -83,8 +83,8 @@ function LoadingIndicator(): JSX.Element {
           width: 100%;
           background: linear-gradient(
             -90deg,
-            ${theme.accent('light')} 0%,
-            ${theme.accent('base')} 50%
+            ${theme.projectAccent('light')} 0%,
+            ${theme.projectAccent('base')} 50%
           );
           border-radius: ${theme.radius.pill};
           box-shadow: ${theme.shadow.high};
