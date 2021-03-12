@@ -31,18 +31,18 @@ const VISIBILITY_MOTION_VARIANTS: Record<
 function LoadingIndicator(): JSX.Element {
   const router = useRouter()
   const theme = useTheme()
-  const firstLoad = useRef(false)
+  const firstLoad = useRef(true)
   const [visibilityStatus, setVisibilityStatus] = useState<VisibilityStatus>(
     'hidden'
   )
 
   useEffect(() => {
-    if (firstLoad.current) {
+    if (!firstLoad.current) {
       setVisibilityStatus('visible')
     }
 
     // Only show indicator on successive route changes
-    firstLoad.current = true
+    firstLoad.current = false
   }, [router.pathname])
 
   return (
