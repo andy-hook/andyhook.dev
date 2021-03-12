@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import React, { useCallback } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import styled from 'styled-components'
 import { useFocusVisible } from '../../hooks/useFocusVisible/useFocusVisible'
 import { useTheme } from '../../hooks/useTheme/useTheme'
@@ -11,7 +11,7 @@ type InteractionBaseProps = {
   children: React.ReactNode
   href?: string
   disabled?: boolean
-  offset?: number
+  offset?: number | [number, number]
   radius?: keyof Theme['radius']
   newTab?: boolean
   onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void
@@ -103,6 +103,14 @@ function InteractionBase({
   const [elementTag, elementProps] =
     href && !disabled ? getLinkProps(href, newTab) : getButtonProps(disabled)
 
+  const [offsetX, offsetY] = useMemo(() => {
+    if (typeof offset === 'number') {
+      return [offset, offset]
+    }
+
+    return offset
+  }, [offset])
+
   return (
     <StyledInteractiveElement
       as={elementTag}
@@ -138,13 +146,22 @@ function InteractionBase({
               display: block;
               position: absolute;
 
-              top: -${offset}em;
-              left: -${offset}em;
-              right: -${offset}em;
-              bottom: -${offset}em;
+              top: -${offsetY}em;
+              left: -${offsetX}em;
+              right: -${offsetX}em;
+              bottom: -${offsetY}em;
               border: ${theme.borderWidth.regular} dashed
                 ${theme.foreground('medium')};
+
               border-radius: ${theme.radius[radius]};
+
+              background: linear-gradient(
+                135deg,
+                ${theme.foreground('extraHigh', 0)},
+                ${theme.foreground('extraHigh', 0.02)}
+              );
+
+              z-index: -${theme.index.low};
             `}
           />
         )}
