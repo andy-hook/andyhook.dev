@@ -83,7 +83,10 @@ function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
                 `}
               >
                 {items.map(
-                  ({ title, subtitle, route, thumbnailImageSmall }, i) => (
+                  (
+                    { title, subtitle, route, thumbnailImageSmall, disabled },
+                    i
+                  ) => (
                     <motion.div
                       key={i}
                       initial="visible"
@@ -97,7 +100,7 @@ function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
                         imagePath={thumbnailImageSmall.imagePath}
                         alt={thumbnailImageSmall.alt}
                         title={title}
-                        disabled={!route}
+                        disabled={disabled}
                         size="small"
                       />
                     </motion.div>
