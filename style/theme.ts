@@ -28,7 +28,7 @@ export type Theme = {
   shadow: Record<LimitedShadeRange, string>
 } & ThemeCommon
 
-export const accents: Record<'default' | WorkName, ThemeCommon['accent']> = {
+const accents: Record<'default' | WorkName, ThemeCommon['accent']> = {
   default: {
     base: [266, 0.92, 0.55],
     light: [300, 0.98, 0.7],
