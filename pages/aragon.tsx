@@ -3,6 +3,7 @@ import ArticleDescribe from '../components/Article/ArticleDescribe'
 import ArticleImage from '../components/Article/ArticleImage'
 import ArticleImageSet from '../components/Article/ArticleImageSet'
 import ArticleQuote from '../components/Article/ArticleQuote'
+import Link from '../components/Link/Link'
 import TextParagraph from '../components/Text/TextParagraph'
 import WorkTemplate from '../components/WorkTemplate/WorkTemplate'
 import { TESTIMONIALS } from '../data/testimonials'
@@ -53,11 +54,13 @@ function AragonPage(): JSX.Element {
         </TextParagraph>
 
         <TextParagraph>
-          I was lucky enough to work with two amazing design talents, Patricia
-          Davila and Adrian García, user experience, and brand respectively.
-          They are some of the most talented designers I've worked with and
-          deserve high praise for the visual fidelity and intuitive experience
-          offered within Aragons products.
+          I was lucky enough to work with two amazing design talents,{' '}
+          <Link href="https://twitter.com/dizzypaty">Patricia Davila</Link> and{' '}
+          <Link href="https://twitter.com/owisixseven">Adrián García</Link>,
+          user experience, and brand respectively. They are some of the most
+          talented designers I've worked with and deserve high praise for the
+          visual fidelity and intuitive experience offered within Aragons
+          products.
         </TextParagraph>
 
         <TextParagraph>
