@@ -42,7 +42,7 @@ function BrightPage(): JSX.Element {
       </ArticleDescribe>
       <ArticleImage
         imagePath="bright-dash-intro.png"
-        alt="Mockup showing multiple tablet devices with various screens from the management software"
+        alt="Multiple tablet devices showing screens the Dash product"
       />
 
       <ArticleDescribe title="Crafting a portable component system">
@@ -79,7 +79,7 @@ function BrightPage(): JSX.Element {
           {
             imagePath: 'bright-dash-design-system.png',
             alt:
-              'A large array of application interface components arranged in an offset grid',
+              'A large array of Dash user interface components arranged in an offset grid',
           },
         ]}
       />
@@ -117,22 +117,22 @@ function BrightPage(): JSX.Element {
           {
             imagePath: 'bright-dash-ui-search.png',
             alt:
-              'A screenshot of the application home screen showing a large search box with folder shortcuts',
+              'Dash home screen showing a large search box with folder shortcuts',
           },
           {
             imagePath: 'bright-dash-ui-edit.png',
             alt:
-              'A screenshot of the application edit screen showing how to select and update multiple assets',
+              'Dash edit screen showing how to select and update multiple assets',
           },
           {
             imagePath: 'bright-dash-ui-detail.png',
             alt:
-              'A screenshot of the application detail screen showing a large preview image with details',
+              'Dash asset detail screen showing a large preview image with details',
           },
           {
             imagePath: 'bright-dash-ui-admin.png',
             alt:
-              'A screenshot of the application admin screen showing how users can be assigned access permissions',
+              'Dash admin screen showing how users can be assigned access permissions',
           },
         ]}
       />
