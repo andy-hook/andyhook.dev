@@ -14,7 +14,7 @@ function AragonPage(): JSX.Element {
     <WorkTemplate name="aragon">
       <ArticleDescribe title="Overview" bordered>
         <TextParagraph>
-          I joined the Aragon One team in 2020 as a Senior UI Engineer to help
+          I joined the Aragon One team in 2020 as a Senior Engineer to help
           further their mission of revolutionising governance. From the very
           start it was clear that high quality, responsive and delightful user
           interfaces were a crucial element of the project and that the team
@@ -128,12 +128,13 @@ function AragonPage(): JSX.Element {
           },
           {
             imagePath: 'aragon-upgrade-home.png',
-            alt: 'Upgrade portal home screen showing options to ANT tokens',
+            alt:
+              'Upgrade portal home screen showing options for upgrading ANT tokens',
           },
           {
             imagePath: 'aragon-upgrade-converter.png',
             alt:
-              'Upgrade portal converter screen showing the conversion rate and a user input for specifying the amount',
+              'Upgrade portal converter screen showing the conversion rate and a user input for specifying an amount',
           },
           {
             imagePath: 'aragon-upgrade-complete.png',

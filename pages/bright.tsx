@@ -40,9 +40,10 @@ function BrightPage(): JSX.Element {
           impact features on the front-end.
         </TextParagraph>
       </ArticleDescribe>
+
       <ArticleImage
         imagePath="bright-dash-intro.png"
-        alt="Multiple tablet devices showing screens the Dash product"
+        alt="Multiple tablet devices showing screens of the Dash product"
       />
 
       <ArticleDescribe title="Crafting a portable component system">
@@ -79,7 +80,7 @@ function BrightPage(): JSX.Element {
           {
             imagePath: 'bright-dash-design-system.png',
             alt:
-              'A large array of Dash user interface components arranged in an offset grid',
+              'A large array of user interface components arranged in an offset grid',
           },
         ]}
       />
