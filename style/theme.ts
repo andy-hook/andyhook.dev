@@ -1,4 +1,5 @@
 import { hsla } from 'polished'
+import { WorkName } from '../data/work'
 import { BreakpointList, breakpoints } from './responsive'
 
 export type ThemeName = 'light' | 'dark'
@@ -11,6 +12,7 @@ type ColorValue = [number, number, number]
 
 type ThemeCommon = {
   accent: Record<ColourRange, ColorValue>
+  projectAccent: Record<ColourRange, ColorValue>
   positive: Record<ColourRange, ColorValue>
   breakpoints: BreakpointList
   radius: Record<'base' | 'pill' | 'circle', string>
@@ -26,12 +28,37 @@ export type Theme = {
   shadow: Record<LimitedShadeRange, string>
 } & ThemeCommon
 
-const common: ThemeCommon = {
-  accent: {
+const accents: Record<'default' | WorkName, ThemeCommon['accent']> = {
+  default: {
     base: [266, 0.92, 0.55],
     light: [300, 0.98, 0.7],
     dark: [266, 0.72, 0.2],
   },
+  aragon: {
+    base: [195, 0.99, 0.425],
+    light: [180, 0.95, 0.75],
+    dark: [195, 0.99, 0.2],
+  },
+  bright: {
+    base: [267, 1, 0.4],
+    light: [277, 1, 0.5],
+    dark: [267, 1, 0.1],
+  },
+  blocks: {
+    base: [300, 1, 0.1],
+    light: [300, 1, 1],
+    dark: [300, 1, 1],
+  },
+  brandwatch: {
+    base: [300, 1, 0.1],
+    light: [300, 1, 1],
+    dark: [300, 1, 1],
+  },
+}
+
+const common: ThemeCommon = {
+  accent: accents.default,
+  projectAccent: accents.default,
   positive: {
     base: [115, 0.64, 0.55],
     light: [115, 0.64, 0.65],
@@ -145,6 +172,13 @@ export const lightTheme: Theme = {
 export const themes = {
   light: lightTheme,
   dark: darkTheme,
+}
+
+export function getTheme(
+  themeName: ThemeName,
+  accentType: 'default' | WorkName
+): Theme {
+  return { ...themes[themeName], projectAccent: accents[accentType] }
 }
 
 export function applyHsl(value: ColorValue, alpha?: number): string {

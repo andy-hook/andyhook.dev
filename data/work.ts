@@ -3,7 +3,7 @@ import { ImageProperties } from './images'
 export type WorkName = 'aragon' | 'bright' | 'brandwatch' | 'blocks'
 
 type WorkDetails = {
-  route?: string
+  route: string
   title: string
   subtitle: string
   excerpt: string
@@ -17,6 +17,7 @@ type WorkDetails = {
   heroImage: ImageProperties
   thumbnailImage: ImageProperties
   thumbnailImageSmall: ImageProperties
+  disabled?: true
 }
 
 export const WORK_ORDER: WorkName[] = [
@@ -107,6 +108,7 @@ export const WORK: Record<WorkName, WorkDetails> = {
     },
   },
   brandwatch: {
+    route: '/brandwatch',
     title: 'Brandwatch',
     subtitle: 'Understand your customers',
     excerpt: '',
@@ -137,6 +139,7 @@ export const WORK: Record<WorkName, WorkDetails> = {
       alt:
         'Mockup of the Brandwatch company website shown on both a tablet and smartphone',
     },
+    disabled: true,
   },
   blocks: {
     route: 'https://blocks.andyhook.dev',

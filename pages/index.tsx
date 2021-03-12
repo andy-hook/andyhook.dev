@@ -172,7 +172,13 @@ function Home(): JSX.Element {
                   `}
                 >
                   {WORK_ORDER.map((key) => {
-                    const { thumbnailImage, route, title, subtitle } = WORK[key]
+                    const {
+                      thumbnailImage,
+                      route,
+                      title,
+                      subtitle,
+                      disabled,
+                    } = WORK[key]
 
                     return (
                       <motion.div
@@ -192,7 +198,7 @@ function Home(): JSX.Element {
                           size="large"
                           imagePath={thumbnailImage.imagePath}
                           alt={thumbnailImage.alt}
-                          disabled={!route}
+                          disabled={disabled}
                           href={route}
                           title={title}
                           subtitle={subtitle}

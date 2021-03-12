@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import { motion } from 'framer-motion'
 import { spring } from '../../style/motion'
@@ -31,29 +31,19 @@ const VISIBILITY_MOTION_VARIANTS: Record<
 function LoadingIndicator(): JSX.Element {
   const router = useRouter()
   const theme = useTheme()
+  const firstLoad = useRef(true)
   const [visibilityStatus, setVisibilityStatus] = useState<VisibilityStatus>(
     'hidden'
   )
-  const [loadingStatus, setLoadingStatus] = useState<LoadingStatus>('rest')
-
-  const loadComplete = useCallback(
-    (newPath) => {
-      // Don't display the indicator if navigating to the current route
-      if (router.pathname !== newPath) {
-        setVisibilityStatus('visible')
-        setLoadingStatus('complete')
-      }
-    },
-    [router.pathname]
-  )
 
   useEffect(() => {
-    router.events.on('routeChangeStart', loadComplete)
-
-    return () => {
-      router.events.off('routeChangeStart', loadComplete)
+    if (!firstLoad.current) {
+      setVisibilityStatus('visible')
     }
-  }, [router.events, loadComplete])
+
+    // Only show indicator on successive route changes
+    firstLoad.current = false
+  }, [router.pathname])
 
   return (
     <motion.div
@@ -75,7 +65,7 @@ function LoadingIndicator(): JSX.Element {
       <motion.div
         initial="rest"
         transition={spring.soft}
-        animate={loadingStatus}
+        animate="complete"
         variants={LOADING_BAR_MOTION_VARIANTS}
         onAnimationComplete={() => setVisibilityStatus('hidden')}
         css={`
@@ -83,8 +73,8 @@ function LoadingIndicator(): JSX.Element {
           width: 100%;
           background: linear-gradient(
             -90deg,
-            ${theme.accent('light')} 0%,
-            ${theme.accent('base')} 50%
+            ${theme.projectAccent('light')} 0%,
+            ${theme.projectAccent('base')} 50%
           );
           border-radius: ${theme.radius.pill};
           box-shadow: ${theme.shadow.high};
