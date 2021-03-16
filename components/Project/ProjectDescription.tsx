@@ -6,18 +6,18 @@ import LayoutRow from '../Layout/LayoutRow'
 import LayoutShade from '../Layout/LayoutShade'
 import TextHeading from '../Text/TextHeading'
 
-type ArticleDescribeProps = {
+type ProjectDescriptionProps = {
   children?: React.ReactNode
   title: string
   bordered?: boolean
 }
 
-function ArticleDescribe({
+function ProjectDescription({
   children,
   title,
   bordered,
   ...props
-}: ArticleDescribeProps): JSX.Element {
+}: ProjectDescriptionProps): JSX.Element {
   return (
     <ConditionalBorder bordered={bordered}>
       <LayoutRow>
@@ -68,4 +68,4 @@ function ConditionalBorder({
   return bordered ? <LayoutShade borderTop>{children}</LayoutShade> : children
 }
 
-export default ArticleDescribe
+export default ProjectDescription

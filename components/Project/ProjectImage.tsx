@@ -3,15 +3,15 @@ import { ImageProperties } from '../../data/images'
 import ImageBase from '../ImageBase/ImageBase'
 import ScrollReveal from '../ScrollReveal/ScrollReveal'
 
-type ArticleImageProps = ImageProperties & {
+type ProjectImageProps = ImageProperties & {
   loadingColor?: string
 }
 
-function ArticleImage({
+function ProjectImage({
   imagePath = 'test.png',
   loadingColor,
   alt,
-}: ArticleImageProps): JSX.Element {
+}: ProjectImageProps): JSX.Element {
   return (
     <ScrollReveal>
       <ImageBase
@@ -23,4 +23,4 @@ function ArticleImage({
   )
 }
 
-export default ArticleImage
+export default ProjectImage
