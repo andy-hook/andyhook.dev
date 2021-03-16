@@ -110,6 +110,7 @@ function BrightPage(): JSX.Element {
         framed
         frameGradientStart="#7600A9"
         frameGradientEnd="#4C00A9"
+        loadingColor="#EDEDF0"
       >
         <ProjectImageGroup.Item
           imagePath="bright-dash-ui-login.png"
@@ -126,6 +127,7 @@ function BrightPage(): JSX.Element {
         <ProjectImageGroup.Item
           imagePath="bright-dash-ui-detail.png"
           alt="Dash asset detail screen showing a large preview image with details"
+          loadingColor="#232329"
         />
         <ProjectImageGroup.Item
           imagePath="bright-dash-ui-admin.png"

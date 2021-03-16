@@ -116,6 +116,7 @@ function AragonPage(): JSX.Element {
         framed
         frameGradientStart="#00E1FF"
         frameGradientEnd="#00B9ED"
+        loadingColor="#F3F5F9"
       >
         <ProjectImageGroup.Item
           imagePath="aragon-network-dashboard-home.png"
