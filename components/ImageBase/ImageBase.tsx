@@ -52,6 +52,9 @@ function ImageBase({
 
   const image = imageData[imagePath]
 
+  // There is no need to optimise and render srcset for a scalable SVG
+  const unoptimized = useMemo(() => imagePath.endsWith('.svg'), [imagePath])
+
   const sizesMediaString = useMemo(() => {
     if (!scaleRenderFromBp) {
       return `${scaleRender}vw`
@@ -178,6 +181,7 @@ function ImageBase({
         transition={spring.snappy}
       >
         <Image
+          unoptimized={unoptimized}
           loading={loading}
           quality={quality}
           onLoad={handleLoadEvent}

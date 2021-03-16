@@ -40,8 +40,9 @@ function AragonPage(): JSX.Element {
           mentored junior team members.
         </TextParagraph>
       </ProjectDescription>
+
       <ProjectImage
-        imagePath="aragon-intro.png"
+        imagePath="aragon-intro.svg"
         alt="Multiple tablet devices showing screens of Aragon user interfaces"
       />
 
@@ -77,7 +78,7 @@ function AragonPage(): JSX.Element {
 
       <ProjectImageGroup>
         <ProjectImageGroup.Item
-          imagePath="aragon-components.png"
+          imagePath="aragon-components.svg"
           alt="A large array of Aragon user interface components arranged in an offset grid"
         />
       </ProjectImageGroup>
@@ -119,27 +120,27 @@ function AragonPage(): JSX.Element {
         loadingColor="#F3F5F9"
       >
         <ProjectImageGroup.Item
-          imagePath="aragon-network-dashboard-home.png"
+          imagePath="aragon-network-dashboard-home.svg"
           alt="Dashboard screen showing a list of open proposals in a grid"
         />
         <ProjectImageGroup.Item
-          imagePath="aragon-network-dashboard-proposal.png"
+          imagePath="aragon-network-dashboard-proposal.svg"
           alt="Dashboard screen showing details about a single proposal"
         />
         <ProjectImageGroup.Item
-          imagePath="aragon-network-dashboard-agreement.png"
+          imagePath="aragon-network-dashboard-agreement.svg"
           alt="Dashboard screen showing details about an agreement"
         />
         <ProjectImageGroup.Item
-          imagePath="aragon-upgrade-home.png"
+          imagePath="aragon-upgrade-home.svg"
           alt="Upgrade portal home screen showing options for upgrading ANT tokens"
         />
         <ProjectImageGroup.Item
-          imagePath="aragon-upgrade-converter.png"
+          imagePath="aragon-upgrade-converter.svg"
           alt="Upgrade portal converter screen showing the conversion rate and a user input for specifying an amount"
         />
         <ProjectImageGroup.Item
-          imagePath="aragon-upgrade-complete.png"
+          imagePath="aragon-upgrade-complete.svg"
           alt="Upgrade portal transaction signing screen showing the steps needed to complete the process"
         />
       </ProjectImageGroup>
