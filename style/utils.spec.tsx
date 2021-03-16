@@ -1,11 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import {
-  createHsl,
-  createHsla,
-  createCubicBezier,
   createTextCrop,
-  createPlaceholderCrop,
+  loadingShimmerGradientFromColor,
   removeWidow,
 } from './utils'
 import { render } from '../utils/testing'
@@ -18,35 +15,7 @@ const CroppedTextComponent = styled.div`
   })}
 `
 
-const CroppedPlaceholderComponent = styled.div`
-  ${createPlaceholderCrop({
-    lHeight: 1.5,
-    topCrop: 10,
-    bottomCrop: 15,
-  })}
-`
-
-describe('createHsl', () => {
-  it('should return valid hsl css string from provided value', () => {
-    expect(createHsl('240,17%,2%')).toMatch('hsl(240,17%,2%)')
-  })
-})
-
-describe('createHsla', () => {
-  it('should return valid hsla css string from provided value', () => {
-    expect(createHsla('240,17%,2%', 50)).toMatch('hsla(240,17%,2%,50)')
-  })
-})
-
-describe('createCubicBezier', () => {
-  it('should return valid cubic-bezier css string from provided values', () => {
-    expect(createCubicBezier([0.55, 0.085, 0.68, 0.53])).toMatch(
-      'cubic-bezier(0.55,0.085,0.68,0.53)'
-    )
-  })
-})
-
-describe('createTextCrop', () => {
+describe('createTextCrop()', () => {
   it('should apply correct top and bottom offsets', () => {
     const { container } = render(<CroppedTextComponent />)
 
@@ -68,20 +37,26 @@ describe('createTextCrop', () => {
   })
 })
 
-describe('createPlaceholderCrop', () => {
-  it('should apply correct top and bottom crop offsetting', () => {
-    const { container } = render(<CroppedPlaceholderComponent />)
-
-    expect(container.firstChild).toHaveStyleRule('top', 'calc(0.35em + 0px)')
-
-    expect(container.firstChild).toHaveStyleRule('bottom', 'calc(0.4em + 0px)')
+describe('removeWidow()', () => {
+  it('should return a formatted string with a non-breaking space before last word', () => {
+    expect(removeWidow('This is a test string')).toBe(
+      'This is a test\u00A0string'
+    )
   })
 })
 
-describe('removeWidow', () => {
-  test('returns string with non-breaking space before last word', () => {
-    expect(removeWidow('This is a test string')).toMatch(
-      'This is a test\u00A0string'
-    )
+describe('loadingShimmerGradientFromColor()', () => {
+  it('should correctly flip gradient contrast depending on input brightness', () => {
+    expect(loadingShimmerGradientFromColor('#fff')).toEqual({
+      gradientStop: '#666',
+      gradientStopAlpha: 'rgba(102,102,102,0)',
+      sourceColor: '#fff',
+    })
+
+    expect(loadingShimmerGradientFromColor('#000')).toEqual({
+      gradientStop: '#333',
+      gradientStopAlpha: 'rgba(51,51,51,0)',
+      sourceColor: '#000',
+    })
   })
 })

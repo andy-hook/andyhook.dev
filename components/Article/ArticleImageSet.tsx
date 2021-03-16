@@ -12,8 +12,10 @@ type FramedProps =
   | { framed?: false; frameGradientStart?: never; frameGradientEnd?: never }
   | { framed: true; frameGradientStart: string; frameGradientEnd: string }
 
+type ArticleImageItem = ImageProperties & { loadingColor?: string }
+
 type ArticleImageSetProps = {
-  items: ImageProperties[]
+  items: ArticleImageItem[]
 } & FramedProps
 
 function ArticleImageSet({
@@ -34,32 +36,36 @@ function ArticleImageSet({
         );`}
       `}
     >
-      {items.map((item, i) => (
-        <LayoutGutter
-          key={i}
-          css={`
-            ${framed ? framedAppearance : standardSpacing}
-          `}
-        >
-          <LayoutLimiter size="large">
-            <ScrollReveal>
-              <div
-                css={`
-                  overflow: hidden;
-                  box-shadow: ${theme.shadow.low};
-                  border-radius: ${theme.radius.base};
-                `}
-              >
-                <ImageBase
-                  imagePath={item.imagePath}
-                  loaderShade={framed ? 'light' : 'dark'}
-                  alt={item.alt}
-                />
-              </div>
-            </ScrollReveal>
-          </LayoutLimiter>
-        </LayoutGutter>
-      ))}
+      {items.map((item, i) => {
+        const backgroundColor = item.loadingColor ?? (framed ? 'light' : 'dark')
+
+        return (
+          <LayoutGutter
+            key={i}
+            css={`
+              ${framed ? framedAppearance : standardSpacing}
+            `}
+          >
+            <LayoutLimiter size="large">
+              <ScrollReveal>
+                <div
+                  css={`
+                    overflow: hidden;
+                    box-shadow: ${theme.shadow.low};
+                    border-radius: ${theme.radius.base};
+                  `}
+                >
+                  <ImageBase
+                    imagePath={item.imagePath}
+                    backgroundColor={backgroundColor}
+                    alt={item.alt}
+                  />
+                </div>
+              </ScrollReveal>
+            </LayoutLimiter>
+          </LayoutGutter>
+        )
+      })}
     </div>
   )
 }

@@ -7,7 +7,6 @@ export type ThemeName = 'light' | 'dark'
 type LimitedShadeRange = 'low' | 'medium' | 'high'
 export type FullShadeRange = LimitedShadeRange | 'extraLow' | 'extraHigh'
 type ColourRange = 'base' | 'light' | 'dark'
-
 type ColorValue = [number, number, number]
 
 type ThemeCommon = {
@@ -45,9 +44,9 @@ const accents: Record<'default' | WorkName, ThemeCommon['accent']> = {
     dark: [267, 1, 0.1],
   },
   blocks: {
-    base: [300, 1, 0.1],
-    light: [300, 1, 1],
-    dark: [300, 1, 1],
+    base: [8, 0.91, 0.61],
+    light: [17, 1, 0.8],
+    dark: [8, 0.91, 0.2],
   },
   brandwatch: {
     base: [300, 1, 0.1],

@@ -1,7 +1,7 @@
 import { rem } from 'polished'
 import { css, CSSProp } from 'styled-components'
 import { inclusiveUp } from './responsive'
-import { createPlaceholderCrop, createTextCrop } from './utils'
+import { createTextCrop } from './utils'
 
 export type ResponsiveTextSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg'
 export type TextStyleType = 'body' | 'display'
@@ -194,16 +194,6 @@ export function setCropAndLineHeight(
   lHeight: LineHeightName
 ): CSSProp {
   return createTextCrop({
-    ...typeSettings[type].cropSettings,
-    lHeight: typeSettings[type].lineHeight[lHeight],
-  })
-}
-
-export function setPlaceholderCrop(
-  type: TextStyleType,
-  lHeight: LineHeightName
-): CSSProp {
-  return createPlaceholderCrop({
     ...typeSettings[type].cropSettings,
     lHeight: typeSettings[type].lineHeight[lHeight],
   })
