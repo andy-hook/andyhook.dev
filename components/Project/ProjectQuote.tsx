@@ -9,19 +9,19 @@ import RemoveWidow from '../RemoveWidow/RemoveWidow'
 import TextBase from '../Text/TextBase'
 import TextHeading from '../Text/TextHeading'
 
-type ArticleQuoteProps = {
+type ProjectQuoteProps = {
   name: string
   title: string
   testimonial: string
   company: string
 }
 
-function ArticleQuote({
+function ProjectQuote({
   name,
   title,
   company,
   testimonial,
-}: ArticleQuoteProps): JSX.Element {
+}: ProjectQuoteProps): JSX.Element {
   const { foreground } = useTheme()
 
   return (
@@ -122,4 +122,4 @@ function ArticleQuote({
   )
 }
 
-export default ArticleQuote
+export default ProjectQuote

@@ -1,8 +1,8 @@
 import React from 'react'
-import ArticleDescribe from '../components/Article/ArticleDescribe'
-import ArticleImage from '../components/Article/ArticleImage'
-import ArticleImageSet from '../components/Article/ArticleImageSet'
-import ArticleQuote from '../components/Article/ArticleQuote'
+import ProjectDescription from '../components/Project/ProjectDescription'
+import ProjectImage from '../components/Project/ProjectImage'
+import ProjectImageGroup from '../components/Project/ProjectImageGroup'
+import ProjectQuote from '../components/Project/ProjectQuote'
 import TextParagraph from '../components/Text/TextParagraph'
 import WorkTemplate from '../components/WorkTemplate/WorkTemplate'
 import { TESTIMONIALS } from '../data/testimonials'
@@ -12,7 +12,7 @@ const TESTIMONIAL = TESTIMONIALS.ze
 function BrightPage(): JSX.Element {
   return (
     <WorkTemplate name="bright">
-      <ArticleDescribe title="Overview" bordered>
+      <ProjectDescription title="Overview" bordered>
         <TextParagraph>
           In 2018 I joined the Bright team to evolve and elevate the user
           interface of Dash, a new streamlined digital asset management product
@@ -39,14 +39,14 @@ function BrightPage(): JSX.Element {
           ship a consistent, portable UI kit, styling system and various high
           impact features on the front-end.
         </TextParagraph>
-      </ArticleDescribe>
+      </ProjectDescription>
 
-      <ArticleImage
+      <ProjectImage
         imagePath="bright-dash-intro.png"
         alt="Multiple tablet devices showing screens of the Dash product"
       />
 
-      <ArticleDescribe title="Crafting a portable component system">
+      <ProjectDescription title="Crafting a portable component system">
         <TextParagraph>
           The first area that I looked at was how the team were approaching
           visual style within the application, Dash is an Angular SPA supported
@@ -74,17 +74,16 @@ function BrightPage(): JSX.Element {
           system, this would go on to be exposed to end-users via a white
           labelling feature in the dashboard.
         </TextParagraph>
-      </ArticleDescribe>
-      <ArticleImageSet
-        items={[
-          {
-            imagePath: 'bright-dash-design-system.png',
-            alt:
-              'A large array of user interface components arranged in an offset grid',
-          },
-        ]}
-      />
-      <ArticleDescribe title="Modern digital asset management">
+      </ProjectDescription>
+
+      <ProjectImageGroup>
+        <ProjectImageGroup.Item
+          imagePath="bright-dash-design-system.png"
+          alt="A large array of user interface components arranged in an offset grid"
+        />
+      </ProjectImageGroup>
+
+      <ProjectDescription title="Modern digital asset management">
         <TextParagraph>
           Over time we continued to build out the component system while also
           shipping features and iterating based on customer feedback. We would
@@ -105,39 +104,38 @@ function BrightPage(): JSX.Element {
           engineering and deliver on one of the teams core pillars in delivering
           a slick, delightful user experience.
         </TextParagraph>
-      </ArticleDescribe>
-      <ArticleImageSet
+      </ProjectDescription>
+
+      <ProjectImageGroup
         framed
         frameGradientStart="#7600A9"
         frameGradientEnd="#4C00A9"
-        items={[
-          {
-            imagePath: 'bright-dash-ui-login.png',
-            alt: 'A screenshot of the login screen',
-          },
-          {
-            imagePath: 'bright-dash-ui-search.png',
-            alt:
-              'Dash home screen showing a large search box with folder shortcuts',
-          },
-          {
-            imagePath: 'bright-dash-ui-edit.png',
-            alt:
-              'Dash edit screen showing how to select and update multiple assets',
-          },
-          {
-            imagePath: 'bright-dash-ui-detail.png',
-            alt:
-              'Dash asset detail screen showing a large preview image with details',
-          },
-          {
-            imagePath: 'bright-dash-ui-admin.png',
-            alt:
-              'Dash admin screen showing how users can be assigned access permissions',
-          },
-        ]}
-      />
-      <ArticleQuote
+        loadingColor="#EDEDF0"
+      >
+        <ProjectImageGroup.Item
+          imagePath="bright-dash-ui-login.png"
+          alt="A screenshot of the login screen"
+        />
+        <ProjectImageGroup.Item
+          imagePath="bright-dash-ui-search.png"
+          alt="Dash home screen showing a large search box with folder shortcuts"
+        />
+        <ProjectImageGroup.Item
+          imagePath="bright-dash-ui-edit.png"
+          alt="Dash edit screen showing how to select and update multiple assets"
+        />
+        <ProjectImageGroup.Item
+          imagePath="bright-dash-ui-detail.png"
+          alt="Dash asset detail screen showing a large preview image with details"
+          loadingColor="#232329"
+        />
+        <ProjectImageGroup.Item
+          imagePath="bright-dash-ui-admin.png"
+          alt="Dash admin screen showing how users can be assigned access permissions"
+        />
+      </ProjectImageGroup>
+
+      <ProjectQuote
         name={TESTIMONIAL.name}
         title={TESTIMONIAL.title}
         company={TESTIMONIAL.company}

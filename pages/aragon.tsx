@@ -1,9 +1,9 @@
 import React from 'react'
-import ArticleDescribe from '../components/Article/ArticleDescribe'
-import ArticleImage from '../components/Article/ArticleImage'
-import ArticleImageSet from '../components/Article/ArticleImageSet'
-import ArticleQuote from '../components/Article/ArticleQuote'
 import Link from '../components/Link/Link'
+import ProjectDescription from '../components/Project/ProjectDescription'
+import ProjectImage from '../components/Project/ProjectImage'
+import ProjectImageGroup from '../components/Project/ProjectImageGroup'
+import ProjectQuote from '../components/Project/ProjectQuote'
 import TextParagraph from '../components/Text/TextParagraph'
 import WorkTemplate from '../components/WorkTemplate/WorkTemplate'
 import { TESTIMONIALS } from '../data/testimonials'
@@ -13,7 +13,7 @@ const TESTIMONIAL = TESTIMONIALS.brett
 function AragonPage(): JSX.Element {
   return (
     <WorkTemplate name="aragon">
-      <ArticleDescribe title="Overview" bordered>
+      <ProjectDescription title="Overview" bordered>
         <TextParagraph>
           I joined the Aragon One team in 2020 as a Senior Engineer to help
           further their mission of revolutionising governance. From the very
@@ -39,13 +39,13 @@ function AragonPage(): JSX.Element {
           packages, pushed for a bigger emphasis on Agile development and
           mentored junior team members.
         </TextParagraph>
-      </ArticleDescribe>
-      <ArticleImage
+      </ProjectDescription>
+      <ProjectImage
         imagePath="aragon-intro.png"
         alt="Multiple tablet devices showing screens of Aragon user interfaces"
       />
 
-      <ArticleDescribe title="Delivering on the Aragon promise">
+      <ProjectDescription title="Delivering on the Aragon promise">
         <TextParagraph>
           The project is well known in the DAO space for executing to a very
           high standard, the exceptional quality of their brand design and user
@@ -73,17 +73,16 @@ function AragonPage(): JSX.Element {
           regard was an ability to execute on this vision, ensuring every detail
           and interaction was of the highest quality.
         </TextParagraph>
-      </ArticleDescribe>
-      <ArticleImageSet
-        items={[
-          {
-            imagePath: 'aragon-components.png',
-            alt:
-              'A large array of Aragon user interface components arranged in an offset grid',
-          },
-        ]}
-      />
-      <ArticleDescribe title="Exceptional quality and predictable delivery">
+      </ProjectDescription>
+
+      <ProjectImageGroup>
+        <ProjectImageGroup.Item
+          imagePath="aragon-components.png"
+          alt="A large array of Aragon user interface components arranged in an offset grid"
+        />
+      </ProjectImageGroup>
+
+      <ProjectDescription title="Exceptional quality and predictable delivery">
         <TextParagraph>
           Quality is often considered diametrically opposed to delivery speed,
           and in a lot of circumstances this can be the case, however, my take
@@ -111,43 +110,41 @@ function AragonPage(): JSX.Element {
           the ANT Upgrade Portal was a great example of this and proved the
           benefits to the team.
         </TextParagraph>
-      </ArticleDescribe>
-      <ArticleImageSet
+      </ProjectDescription>
+
+      <ProjectImageGroup
         framed
         frameGradientStart="#00E1FF"
         frameGradientEnd="#00B9ED"
-        items={[
-          {
-            imagePath: 'aragon-network-dashboard-home.png',
-            alt: 'Dashboard screen showing a list of open proposals in a grid',
-          },
-          {
-            imagePath: 'aragon-network-dashboard-proposal.png',
-            alt: 'Dashboard screen showing details about a single proposal',
-          },
-          {
-            imagePath: 'aragon-network-dashboard-agreement.png',
-            alt: 'Dashboard screen showing details about an agreement',
-          },
-          {
-            imagePath: 'aragon-upgrade-home.png',
-            alt:
-              'Upgrade portal home screen showing options for upgrading ANT tokens',
-          },
-          {
-            imagePath: 'aragon-upgrade-converter.png',
-            alt:
-              'Upgrade portal converter screen showing the conversion rate and a user input for specifying an amount',
-          },
-          {
-            imagePath: 'aragon-upgrade-complete.png',
-            alt:
-              'Upgrade portal transaction signing screen showing the steps needed to complete the process',
-          },
-        ]}
-      />
+        loadingColor="#F3F5F9"
+      >
+        <ProjectImageGroup.Item
+          imagePath="aragon-network-dashboard-home.png"
+          alt="Dashboard screen showing a list of open proposals in a grid"
+        />
+        <ProjectImageGroup.Item
+          imagePath="aragon-network-dashboard-proposal.png"
+          alt="Dashboard screen showing details about a single proposal"
+        />
+        <ProjectImageGroup.Item
+          imagePath="aragon-network-dashboard-agreement.png"
+          alt="Dashboard screen showing details about an agreement"
+        />
+        <ProjectImageGroup.Item
+          imagePath="aragon-upgrade-home.png"
+          alt="Upgrade portal home screen showing options for upgrading ANT tokens"
+        />
+        <ProjectImageGroup.Item
+          imagePath="aragon-upgrade-converter.png"
+          alt="Upgrade portal converter screen showing the conversion rate and a user input for specifying an amount"
+        />
+        <ProjectImageGroup.Item
+          imagePath="aragon-upgrade-complete.png"
+          alt="Upgrade portal transaction signing screen showing the steps needed to complete the process"
+        />
+      </ProjectImageGroup>
 
-      <ArticleQuote
+      <ProjectQuote
         name={TESTIMONIAL.name}
         title={TESTIMONIAL.title}
         company={TESTIMONIAL.company}
