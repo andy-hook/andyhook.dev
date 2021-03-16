@@ -6,7 +6,6 @@ import { inclusiveUp } from '../../style/responsive'
 import ImageBase from '../ImageBase/ImageBase'
 import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
-import ScrollReveal from '../ScrollReveal/ScrollReveal'
 
 type OptionalFramedProps =
   | {
@@ -97,21 +96,19 @@ const ProjectImageGroupItem = ({
       `}
     >
       <LayoutLimiter size="large">
-        <ScrollReveal>
-          <div
-            css={`
-              overflow: hidden;
-              box-shadow: ${theme.shadow.low};
-              border-radius: ${theme.radius.base};
-            `}
-          >
-            <ImageBase
-              imagePath={imagePath}
-              backgroundColor={backgroundColor}
-              alt={alt}
-            />
-          </div>
-        </ScrollReveal>
+        <div
+          css={`
+            overflow: hidden;
+            box-shadow: ${theme.shadow.low};
+            border-radius: ${theme.radius.base};
+          `}
+        >
+          <ImageBase
+            imagePath={imagePath}
+            backgroundColor={backgroundColor}
+            alt={alt}
+          />
+        </div>
       </LayoutLimiter>
     </LayoutGutter>
   )
