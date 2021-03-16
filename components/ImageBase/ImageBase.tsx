@@ -5,8 +5,8 @@ import { BreakpointName, breakpoints } from '../../style/responsive'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { spring } from '../../style/motion'
 import { css, keyframes } from 'styled-components'
-import { darken, lighten, rgba } from 'polished'
 import { imageData, ImageProperties } from '../../data/images'
+import { loadingShimmerGradientFromColor } from '../../style/utils'
 
 const shimmerAnimation = css`
   background-size: 500% 500%;
@@ -23,11 +23,13 @@ const shimmerAnimation = css`
   `} 2s linear infinite;
 `
 
+type BackgroundColorPreset = 'light' | 'dark'
+
 type ImageBaseProps = {
   scaleRender?: number
   scaleRenderFromBp?: [BreakpointName, number]
   quality?: number
-  loaderShade?: 'dark' | 'light'
+  backgroundColor?: BackgroundColorPreset | string
   onLoad?: () => void
   visibleOpacity?: number
   loading?: 'eager' | 'lazy'
@@ -36,7 +38,7 @@ type ImageBaseProps = {
 function ImageBase({
   imagePath,
   alt,
-  loaderShade = 'dark',
+  backgroundColor = 'dark',
   scaleRender = 100,
   quality = 90,
   scaleRenderFromBp,
@@ -93,24 +95,27 @@ function ImageBase({
     [imageLoaded]
   )
 
-  const { centerStop, edgeStop, backboardColor } = useMemo(() => {
-    const stops = {
-      light: [foreground('extraHigh'), darken(0.4, foreground('extraHigh'))],
-      dark: [background('medium'), lighten(0.2, background('medium'))],
+  const { gradientStop, gradientStopAlpha, sourceColor } = useMemo(() => {
+    const backgroundPreset: Record<BackgroundColorPreset, string> = {
+      light: foreground('extraHigh'),
+      dark: background('medium'),
     }
 
-    const [backboardColor, centerStop] = stops[loaderShade]
-    const edgeStop = rgba(centerStop, 0)
+    const isPreset = backgroundColor === 'light' || backgroundColor === 'dark'
 
-    return { centerStop, edgeStop, backboardColor }
-  }, [background, foreground, loaderShade])
+    return loadingShimmerGradientFromColor(
+      isPreset
+        ? backgroundPreset[backgroundColor as BackgroundColorPreset]
+        : backgroundColor
+    )
+  }, [background, foreground, backgroundColor])
 
   return (
     <div
       ref={handleLoadFromCache}
       css={`
         position: relative;
-        background-color: ${backboardColor};
+        background-color: ${sourceColor};
       `}
       {...props}
     >
@@ -148,9 +153,9 @@ function ImageBase({
 
                 background: linear-gradient(
                   143deg,
-                  ${edgeStop} 20%,
-                  ${centerStop},
-                  ${edgeStop} 80%
+                  ${gradientStopAlpha} 20%,
+                  ${gradientStop},
+                  ${gradientStopAlpha} 80%
                 );
 
                 ${shimmerAnimation}
