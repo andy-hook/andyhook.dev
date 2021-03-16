@@ -1,8 +1,8 @@
 import React from 'react'
 import ArticleDescribe from '../components/Article/ArticleDescribe'
 import ArticleImage from '../components/Article/ArticleImage'
-import ArticleImageSet from '../components/Article/ArticleImageSet'
 import ArticleQuote from '../components/Article/ArticleQuote'
+import ProjectImageGroup from '../components/Article/ProjectImageGroup'
 import Link from '../components/Link/Link'
 import TextParagraph from '../components/Text/TextParagraph'
 import WorkTemplate from '../components/WorkTemplate/WorkTemplate'
@@ -74,15 +74,14 @@ function AragonPage(): JSX.Element {
           and interaction was of the highest quality.
         </TextParagraph>
       </ArticleDescribe>
-      <ArticleImageSet
-        items={[
-          {
-            imagePath: 'aragon-components.png',
-            alt:
-              'A large array of Aragon user interface components arranged in an offset grid',
-          },
-        ]}
-      />
+
+      <ProjectImageGroup>
+        <ProjectImageGroup.Item
+          imagePath="aragon-components.png"
+          alt="A large array of Aragon user interface components arranged in an offset grid"
+        />
+      </ProjectImageGroup>
+
       <ArticleDescribe title="Exceptional quality and predictable delivery">
         <TextParagraph>
           Quality is often considered diametrically opposed to delivery speed,
@@ -112,40 +111,37 @@ function AragonPage(): JSX.Element {
           benefits to the team.
         </TextParagraph>
       </ArticleDescribe>
-      <ArticleImageSet
+
+      <ProjectImageGroup
         framed
         frameGradientStart="#00E1FF"
         frameGradientEnd="#00B9ED"
-        items={[
-          {
-            imagePath: 'aragon-network-dashboard-home.png',
-            alt: 'Dashboard screen showing a list of open proposals in a grid',
-          },
-          {
-            imagePath: 'aragon-network-dashboard-proposal.png',
-            alt: 'Dashboard screen showing details about a single proposal',
-          },
-          {
-            imagePath: 'aragon-network-dashboard-agreement.png',
-            alt: 'Dashboard screen showing details about an agreement',
-          },
-          {
-            imagePath: 'aragon-upgrade-home.png',
-            alt:
-              'Upgrade portal home screen showing options for upgrading ANT tokens',
-          },
-          {
-            imagePath: 'aragon-upgrade-converter.png',
-            alt:
-              'Upgrade portal converter screen showing the conversion rate and a user input for specifying an amount',
-          },
-          {
-            imagePath: 'aragon-upgrade-complete.png',
-            alt:
-              'Upgrade portal transaction signing screen showing the steps needed to complete the process',
-          },
-        ]}
-      />
+      >
+        <ProjectImageGroup.Item
+          imagePath="aragon-network-dashboard-home.png"
+          alt="Dashboard screen showing a list of open proposals in a grid"
+        />
+        <ProjectImageGroup.Item
+          imagePath="aragon-network-dashboard-proposal.png"
+          alt="Dashboard screen showing details about a single proposal"
+        />
+        <ProjectImageGroup.Item
+          imagePath="aragon-network-dashboard-agreement.png"
+          alt="Dashboard screen showing details about an agreement"
+        />
+        <ProjectImageGroup.Item
+          imagePath="aragon-upgrade-home.png"
+          alt="Upgrade portal home screen showing options for upgrading ANT tokens"
+        />
+        <ProjectImageGroup.Item
+          imagePath="aragon-upgrade-converter.png"
+          alt="Upgrade portal converter screen showing the conversion rate and a user input for specifying an amount"
+        />
+        <ProjectImageGroup.Item
+          imagePath="aragon-upgrade-complete.png"
+          alt="Upgrade portal transaction signing screen showing the steps needed to complete the process"
+        />
+      </ProjectImageGroup>
 
       <ArticleQuote
         name={TESTIMONIAL.name}

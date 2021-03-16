@@ -1,8 +1,8 @@
 import React from 'react'
 import ArticleDescribe from '../components/Article/ArticleDescribe'
 import ArticleImage from '../components/Article/ArticleImage'
-import ArticleImageSet from '../components/Article/ArticleImageSet'
 import ArticleQuote from '../components/Article/ArticleQuote'
+import ProjectImageGroup from '../components/Article/ProjectImageGroup'
 import TextParagraph from '../components/Text/TextParagraph'
 import WorkTemplate from '../components/WorkTemplate/WorkTemplate'
 import { TESTIMONIALS } from '../data/testimonials'
@@ -75,15 +75,14 @@ function BrightPage(): JSX.Element {
           labelling feature in the dashboard.
         </TextParagraph>
       </ArticleDescribe>
-      <ArticleImageSet
-        items={[
-          {
-            imagePath: 'bright-dash-design-system.png',
-            alt:
-              'A large array of user interface components arranged in an offset grid',
-          },
-        ]}
-      />
+
+      <ProjectImageGroup>
+        <ProjectImageGroup.Item
+          imagePath="bright-dash-design-system.png"
+          alt="A large array of user interface components arranged in an offset grid"
+        />
+      </ProjectImageGroup>
+
       <ArticleDescribe title="Modern digital asset management">
         <TextParagraph>
           Over time we continued to build out the component system while also
@@ -106,37 +105,34 @@ function BrightPage(): JSX.Element {
           a slick, delightful user experience.
         </TextParagraph>
       </ArticleDescribe>
-      <ArticleImageSet
+
+      <ProjectImageGroup
         framed
         frameGradientStart="#7600A9"
         frameGradientEnd="#4C00A9"
-        items={[
-          {
-            imagePath: 'bright-dash-ui-login.png',
-            alt: 'A screenshot of the login screen',
-          },
-          {
-            imagePath: 'bright-dash-ui-search.png',
-            alt:
-              'Dash home screen showing a large search box with folder shortcuts',
-          },
-          {
-            imagePath: 'bright-dash-ui-edit.png',
-            alt:
-              'Dash edit screen showing how to select and update multiple assets',
-          },
-          {
-            imagePath: 'bright-dash-ui-detail.png',
-            alt:
-              'Dash asset detail screen showing a large preview image with details',
-          },
-          {
-            imagePath: 'bright-dash-ui-admin.png',
-            alt:
-              'Dash admin screen showing how users can be assigned access permissions',
-          },
-        ]}
-      />
+      >
+        <ProjectImageGroup.Item
+          imagePath="bright-dash-ui-login.png"
+          alt="A screenshot of the login screen"
+        />
+        <ProjectImageGroup.Item
+          imagePath="bright-dash-ui-search.png"
+          alt="Dash home screen showing a large search box with folder shortcuts"
+        />
+        <ProjectImageGroup.Item
+          imagePath="bright-dash-ui-edit.png"
+          alt="Dash edit screen showing how to select and update multiple assets"
+        />
+        <ProjectImageGroup.Item
+          imagePath="bright-dash-ui-detail.png"
+          alt="Dash asset detail screen showing a large preview image with details"
+        />
+        <ProjectImageGroup.Item
+          imagePath="bright-dash-ui-admin.png"
+          alt="Dash admin screen showing how users can be assigned access permissions"
+        />
+      </ProjectImageGroup>
+
       <ArticleQuote
         name={TESTIMONIAL.name}
         title={TESTIMONIAL.title}
