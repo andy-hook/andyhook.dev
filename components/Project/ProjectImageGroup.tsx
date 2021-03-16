@@ -83,6 +83,13 @@ const ProjectImageGroupItem = ({
 
   const theme = useTheme()
 
+  const backgroundColor = useMemo(() => {
+    const defaultColor = framed ? 'light' : 'dark'
+    const customColor = loadingColor ?? parentLoadingColor
+
+    return customColor || defaultColor
+  }, [framed, loadingColor, parentLoadingColor])
+
   return (
     <LayoutGutter
       css={`
@@ -100,7 +107,7 @@ const ProjectImageGroupItem = ({
           >
             <ImageBase
               imagePath={imagePath}
-              backgroundColor={loadingColor ?? parentLoadingColor}
+              backgroundColor={backgroundColor}
               alt={alt}
             />
           </div>
