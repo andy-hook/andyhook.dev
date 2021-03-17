@@ -53,8 +53,9 @@ export const TESTIMONIALS: Record<AuthorName, AuthorDetails> = {
     title: 'UI/UX Developer',
     company: 'Bright Interactive',
     shortTestimonial:
-      'Andy is a rare find in UI development. He is equally brilliant at the creative visual design side as he is with the technical side of engineering a modern web app. Whatever task he is working on he will go above and beyond to deliver at a very high quality level.',
-    longTestimonial: '',
+      'Andy is a rare find in UI development. He is equally brilliant at creative visual design as he is with the technical aspect of engineering a modern web app. Whatever task he is working on he will go above and beyond to deliver at a very high quality level.',
+    longTestimonial:
+      'Andy is a rare find in UI development. He is equally brilliant at creative visual design as he is with the technical aspect of engineering a modern web app. Whatever task he is working on he will go above and beyond to deliver at a very high quality level.',
   },
   ze: {
     avatar: 'avatars/ze.jpg',
@@ -82,6 +83,7 @@ export const TESTIMONIALS: Record<AuthorName, AuthorDetails> = {
     company: 'Brandwatch',
     shortTestimonial:
       'Andy has an unparalleled thirst for knowledge which keeps him always on top of his game, self-motivated and not only positively contribute to projects, but guide & motivates other team members too. His ability to absorb the brief and come up with unique and artistic designs whilst conforming to constraints of web is phenomenal.',
-    longTestimonial: '',
+    longTestimonial:
+      'Andy has an unparalleled thirst for knowledge which keeps him always on top of his game, self-motivated and not only positively contribute to projects, but guide & motivates other team members too. His ability to absorb the brief and come up with unique and artistic designs whilst conforming to constraints of web is phenomenal.',
   },
 }

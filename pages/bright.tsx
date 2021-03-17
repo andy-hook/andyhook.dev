@@ -1,6 +1,5 @@
 import React from 'react'
 import ProjectDescription from '../components/Project/ProjectDescription'
-import ProjectImage from '../components/Project/ProjectImage'
 import ProjectImageGroup from '../components/Project/ProjectImageGroup'
 import ProjectQuote from '../components/Project/ProjectQuote'
 import TextParagraph from '../components/Text/TextParagraph'
@@ -41,10 +40,12 @@ function BrightPage(): JSX.Element {
         </TextParagraph>
       </ProjectDescription>
 
-      <ProjectImage
-        imagePath="bright-dash-intro.png"
-        alt="Multiple tablet devices showing screens of the Dash product"
-      />
+      <ProjectImageGroup>
+        <ProjectImageGroup.Item
+          imagePath="bright-dash-intro.jpg"
+          alt="Multiple tablet devices showing screens of the Dash product"
+        />
+      </ProjectImageGroup>
 
       <ProjectDescription title="Crafting a portable component system">
         <TextParagraph>
@@ -78,7 +79,7 @@ function BrightPage(): JSX.Element {
 
       <ProjectImageGroup>
         <ProjectImageGroup.Item
-          imagePath="bright-dash-design-system.png"
+          imagePath="bright-dash-design-system.jpg"
           alt="A large array of user interface components arranged in an offset grid"
         />
       </ProjectImageGroup>
@@ -113,24 +114,24 @@ function BrightPage(): JSX.Element {
         loadingColor="#EDEDF0"
       >
         <ProjectImageGroup.Item
-          imagePath="bright-dash-ui-login.png"
+          imagePath="bright-dash-ui-login.jpg"
           alt="A screenshot of the login screen"
         />
         <ProjectImageGroup.Item
-          imagePath="bright-dash-ui-search.png"
+          imagePath="bright-dash-ui-search.jpg"
           alt="Dash home screen showing a large search box with folder shortcuts"
         />
         <ProjectImageGroup.Item
-          imagePath="bright-dash-ui-edit.png"
+          imagePath="bright-dash-ui-edit.jpg"
           alt="Dash edit screen showing how to select and update multiple assets"
         />
         <ProjectImageGroup.Item
-          imagePath="bright-dash-ui-detail.png"
+          imagePath="bright-dash-ui-detail.jpg"
           alt="Dash asset detail screen showing a large preview image with details"
           loadingColor="#232329"
         />
         <ProjectImageGroup.Item
-          imagePath="bright-dash-ui-admin.png"
+          imagePath="bright-dash-ui-admin.jpg"
           alt="Dash admin screen showing how users can be assigned access permissions"
         />
       </ProjectImageGroup>

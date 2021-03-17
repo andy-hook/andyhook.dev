@@ -50,22 +50,22 @@ export const WORK: Record<WorkName, WorkDetails> = {
     intro:
       'Aragon is an open source software project built on Ethereum technology to empower the creation and management of decentralized organizations, the project empowers users to freely organize and collaborate without borders or intermediaries, creating global and bureaucracy-free organizations and communities.',
     previewImage: {
-      imagePath: 'aragon-social-preview.png',
+      imagePath: 'aragon-social-preview.jpg',
       alt:
         'Mockup of the Aragon company upgrade website shown on a tablet device',
     },
     heroImage: {
-      imagePath: 'aragon-hero.png',
+      imagePath: 'aragon-hero.jpg',
       alt:
         'Mockup of the Aragon company upgrade website shown on a tablet device',
     },
     thumbnailImage: {
-      imagePath: 'aragon-thumb.png',
+      imagePath: 'aragon-thumb.jpg',
       alt:
         'Mockup of the Aragon company upgrade website shown on a tablet device',
     },
     thumbnailImageSmall: {
-      imagePath: 'aragon-thumb-small.png',
+      imagePath: 'aragon-thumb-small.jpg',
       alt:
         'Mockup of the Aragon company upgrade website shown on a tablet device',
     },
@@ -91,19 +91,19 @@ export const WORK: Record<WorkName, WorkDetails> = {
     intro:
       'Bright was originally founded as a software development agency in 1999, but more recently has found success and traction by transitioning into a SaaS led, customer centric product company best known for delivering high-quality digital asset management software, exceptional customer support and expert training services.',
     previewImage: {
-      imagePath: 'bright-social-preview.png',
+      imagePath: 'bright-social-preview.jpg',
       alt: 'Mockup of the Dash management software shown on a laptop screen',
     },
     heroImage: {
-      imagePath: 'bright-hero.png',
+      imagePath: 'bright-hero.jpg',
       alt: 'Mockup of the Dash management software shown on a laptop screen',
     },
     thumbnailImage: {
-      imagePath: 'bright-thumb.png',
+      imagePath: 'bright-thumb.jpg',
       alt: 'Mockup of asset management software shown on a laptop screen',
     },
     thumbnailImageSmall: {
-      imagePath: 'bright-thumb-small.png',
+      imagePath: 'bright-thumb-small.jpg',
       alt: 'Mockup of asset management software shown on a laptop screen',
     },
   },
@@ -120,22 +120,22 @@ export const WORK: Record<WorkName, WorkDetails> = {
     intro:
       'Brandwatch is the world’s leading digital consumer intelligence company, allowing users to analyze and utilize conversations from across the web and social media. Enabling brands and companies to understand consumer insights, trends, influencers, and brand perception.',
     previewImage: {
-      imagePath: 'brandwatch-social-preview.png',
+      imagePath: 'brandwatch-social-preview.jpg',
       alt:
         'Mockup of the Brandwatch company website shown on both a tablet and smartphone',
     },
     heroImage: {
-      imagePath: 'brandwatch-hero.png',
+      imagePath: 'brandwatch-hero.jpg',
       alt:
         'Mockup of the Brandwatch company website shown on both a tablet and smartphone',
     },
     thumbnailImage: {
-      imagePath: 'brandwatch-thumb.png',
+      imagePath: 'brandwatch-thumb.jpg',
       alt:
         'Mockup of the Brandwatch company website shown on both a tablet and smartphone',
     },
     thumbnailImageSmall: {
-      imagePath: 'brandwatch-thumb-small.png',
+      imagePath: 'brandwatch-thumb-small.jpg',
       alt:
         'Mockup of the Brandwatch company website shown on both a tablet and smartphone',
     },
@@ -144,7 +144,7 @@ export const WORK: Record<WorkName, WorkDetails> = {
   blocks: {
     route: 'https://blocks.andyhook.dev',
     title: 'Blocks',
-    subtitle: 'Ethereum inside your browser',
+    subtitle: 'Explore the Ethereum blockchain',
     excerpt: '',
     role: 'Front-End Developer',
     company: 'Side Project',
@@ -161,22 +161,22 @@ export const WORK: Record<WorkName, WorkDetails> = {
     intro:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In luctus leo vitae posuere varius. Donec massa neque, rutrum vestibulum pulvinar sed, laoreet sit amet ipsum. Integer in lorem sed orci tincidunt pulvinar nec fringilla orci. Nullam urna quam, tincidunt eu enim ut, condimentum vehicula tortor.',
     previewImage: {
-      imagePath: 'blocks-social-preview.png',
+      imagePath: 'blocks-social-preview.jpg',
       alt:
         'Mockup of an ethereum block viewing application shown on a tablet device',
     },
     heroImage: {
-      imagePath: 'blocks-hero.png',
+      imagePath: 'blocks-hero.jpg',
       alt:
         'Mockup of an ethereum block viewing application shown on a tablet device',
     },
     thumbnailImage: {
-      imagePath: 'blocks-thumb.png',
+      imagePath: 'blocks-thumb.jpg',
       alt:
         'Mockup of an ethereum block viewing application shown on a tablet device',
     },
     thumbnailImageSmall: {
-      imagePath: 'blocks-thumb-small.png',
+      imagePath: 'blocks-thumb-small.jpg',
       alt:
         'Mockup of an ethereum block viewing application shown on a tablet device',
     },
