@@ -25,8 +25,8 @@ function LayoutShade({
       css={`
         background: linear-gradient(
           0deg,
-          ${theme.background('medium', 0.2)} 0%,
-          ${theme.background('medium', 0.6)} 70%
+          ${theme.background('medium', 0)} 0%,
+          ${theme.background('medium', 0.6)} 50%
         );
 
         ${borderTop && `border-top: ${borderStyle};`}

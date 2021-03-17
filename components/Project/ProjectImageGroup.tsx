@@ -54,9 +54,9 @@ const ProjectImageGroup = ({
       <div
         css={`
           ${framed &&
-          `background: linear-gradient(135deg,
+          `background: linear-gradient(100deg,
           ${frameGradientStart} 0%,
-          ${frameGradientEnd} 50%
+          ${frameGradientEnd} 75%
         );`}
         `}
       >
