@@ -1,7 +1,6 @@
 import React from 'react'
 import Link from '../components/Link/Link'
 import ProjectDescription from '../components/Project/ProjectDescription'
-import ProjectImage from '../components/Project/ProjectImage'
 import ProjectImageGroup from '../components/Project/ProjectImageGroup'
 import ProjectQuote from '../components/Project/ProjectQuote'
 import TextParagraph from '../components/Text/TextParagraph'
@@ -40,10 +39,13 @@ function AragonPage(): JSX.Element {
           mentored junior team members.
         </TextParagraph>
       </ProjectDescription>
-      <ProjectImage
-        imagePath="aragon-intro.png"
-        alt="Multiple tablet devices showing screens of Aragon user interfaces"
-      />
+
+      <ProjectImageGroup>
+        <ProjectImageGroup.Item
+          imagePath="aragon-intro.jpg"
+          alt="Multiple tablet devices showing screens of Aragon user interfaces"
+        />
+      </ProjectImageGroup>
 
       <ProjectDescription title="Delivering on the Aragon promise">
         <TextParagraph>
@@ -77,7 +79,7 @@ function AragonPage(): JSX.Element {
 
       <ProjectImageGroup>
         <ProjectImageGroup.Item
-          imagePath="aragon-components.png"
+          imagePath="aragon-components.jpg"
           alt="A large array of Aragon user interface components arranged in an offset grid"
         />
       </ProjectImageGroup>
@@ -119,27 +121,27 @@ function AragonPage(): JSX.Element {
         loadingColor="#F3F5F9"
       >
         <ProjectImageGroup.Item
-          imagePath="aragon-network-dashboard-home.png"
+          imagePath="aragon-network-dashboard-home.jpg"
           alt="Dashboard screen showing a list of open proposals in a grid"
         />
         <ProjectImageGroup.Item
-          imagePath="aragon-network-dashboard-proposal.png"
+          imagePath="aragon-network-dashboard-proposal.jpg"
           alt="Dashboard screen showing details about a single proposal"
         />
         <ProjectImageGroup.Item
-          imagePath="aragon-network-dashboard-agreement.png"
+          imagePath="aragon-network-dashboard-agreement.jpg"
           alt="Dashboard screen showing details about an agreement"
         />
         <ProjectImageGroup.Item
-          imagePath="aragon-upgrade-home.png"
+          imagePath="aragon-upgrade-home.jpg"
           alt="Upgrade portal home screen showing options for upgrading ANT tokens"
         />
         <ProjectImageGroup.Item
-          imagePath="aragon-upgrade-converter.png"
+          imagePath="aragon-upgrade-converter.jpg"
           alt="Upgrade portal converter screen showing the conversion rate and a user input for specifying an amount"
         />
         <ProjectImageGroup.Item
-          imagePath="aragon-upgrade-complete.png"
+          imagePath="aragon-upgrade-complete.jpg"
           alt="Upgrade portal transaction signing screen showing the steps needed to complete the process"
         />
       </ProjectImageGroup>
