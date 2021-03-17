@@ -40,7 +40,7 @@ function ImageBase({
   alt,
   backgroundColor = 'dark',
   scaleRender = 100,
-  quality = 90,
+  quality = 100,
   scaleRenderFromBp,
   onLoad,
   visibleOpacity = 1,

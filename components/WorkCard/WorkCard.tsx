@@ -37,11 +37,11 @@ const CARD_PROPERTIES: Record<
 > = {
   small: {
     titleSize: 'xs' as const,
-    imageRenderScale: 50,
+    imageRenderScale: 40,
   },
   large: {
     titleSize: 'sm' as const,
-    imageRenderScale: 70,
+    imageRenderScale: 50,
   },
 }
 
