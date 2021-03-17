@@ -130,11 +130,13 @@ const Global = createGlobalStyle`
   /* 3. Setting "vertical-align" removes the whitespace that appears under "img"
         elements when they are dropped into a page as-is. Safer alternative to
         using "display: block;". */
+  /* 4. Improve image scaling algorithm in chrome safari to prevent blurry text when scaling high resolution images. */
   
   img {
     max-width: 100%; /* [1] */
     font-style: italic; /* [2] */
     vertical-align: middle; /* [3] */
+    image-rendering: -webkit-optimize-contrast; /* [4] */
   }
 
   /* 1. If a "width" and/or "height" attribute have been explicitly defined, let’s

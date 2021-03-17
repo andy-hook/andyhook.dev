@@ -24,6 +24,9 @@ function ScrollReveal({ children }: ScrollRevealProps): JSX.Element {
       animate={inView ? 'visible' : 'hidden'}
       variants={motionVariants}
       transition={spring.snappy}
+      css={`
+        will-change: transform, opacity;
+      `}
     >
       {children}
     </motion.div>

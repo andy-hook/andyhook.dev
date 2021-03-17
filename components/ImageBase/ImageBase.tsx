@@ -52,6 +52,9 @@ function ImageBase({
 
   const image = imageData[imagePath]
 
+  // There is no need to optimise and render srcset for a scalable SVG
+  const unoptimized = useMemo(() => imagePath.endsWith('.svg'), [imagePath])
+
   const sizesMediaString = useMemo(() => {
     if (!scaleRenderFromBp) {
       return `${scaleRender}vw`
@@ -74,7 +77,7 @@ function ImageBase({
       // We are unable to set a ref to the underlying image element directly so we must access it via querySelector on the wrapper
       // We are querying by srcset attribute to differentiate from the placeholder image that next/image adds to reserve space
       // https://github.com/vercel/next.js/discussions/18386
-      const image = wrapperRef?.querySelector('img[srcset]') as HTMLImageElement
+      const image = wrapperRef?.querySelector('img') as HTMLImageElement
 
       if (image && image.complete && showLoader) {
         imageLoaded()
@@ -178,6 +181,7 @@ function ImageBase({
         transition={spring.snappy}
       >
         <Image
+          unoptimized={unoptimized}
           loading={loading}
           quality={quality}
           onLoad={handleLoadEvent}
