@@ -142,9 +142,9 @@ export const WORK: Record<WorkName, WorkDetails> = {
     disabled: true,
   },
   blocks: {
-    route: 'https://blocks.andyhook.dev',
+    route: '/blocks',
     title: 'Blocks',
-    subtitle: 'Explore the Ethereum blockchain',
+    subtitle: 'Blockchain in your browser',
     excerpt: '',
     role: 'Front-End Developer',
     company: 'Side Project',
@@ -153,13 +153,14 @@ export const WORK: Record<WorkName, WorkDetails> = {
     technologies: [
       'React',
       'TypeScript',
+      'Ethers.js',
       'React Spring',
       'Gatsby',
       'Styled Components',
       'Jest / Testing Library',
     ],
     intro:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In luctus leo vitae posuere varius. Donec massa neque, rutrum vestibulum pulvinar sed, laoreet sit amet ipsum. Integer in lorem sed orci tincidunt pulvinar nec fringilla orci. Nullam urna quam, tincidunt eu enim ut, condimentum vehicula tortor.',
+      'Blocks is a minimal Ethereum explorer initially built for a technical assessment. After putting together the initial concept I decided to continue extending it as an excuse to try new techniques as well as further familiarise myself with decentralised applications. It features a block overview, transaction list, light / dark themes and shuffle function.',
     previewImage: {
       imagePath: 'blocks-social-preview.jpg',
       alt:
