@@ -51,23 +51,19 @@ export const WORK: Record<WorkName, WorkDetails> = {
       'Aragon is an open source software project built on Ethereum technology to empower the creation and management of decentralized organizations, the project empowers users to freely organize and collaborate without borders or intermediaries, creating global and bureaucracy-free organizations and communities.',
     previewImage: {
       imagePath: 'aragon-social-preview.jpg',
-      alt:
-        'Mockup of the Aragon company upgrade website shown on a tablet device',
+      alt: 'Mockup of the Aragon upgrade website shown on a tablet device',
     },
     heroImage: {
       imagePath: 'aragon-hero.jpg',
-      alt:
-        'Mockup of the Aragon company upgrade website shown on a tablet device',
+      alt: 'Mockup of the Aragon upgrade website shown on a tablet device',
     },
     thumbnailImage: {
       imagePath: 'aragon-thumb.jpg',
-      alt:
-        'Mockup of the Aragon company upgrade website shown on a tablet device',
+      alt: 'Mockup of the Aragon upgrade website shown on a tablet device',
     },
     thumbnailImageSmall: {
       imagePath: 'aragon-thumb-small.jpg',
-      alt:
-        'Mockup of the Aragon company upgrade website shown on a tablet device',
+      alt: 'Mockup of the Aragon upgrade website shown on a tablet device',
     },
   },
   bright: {
@@ -122,22 +118,22 @@ export const WORK: Record<WorkName, WorkDetails> = {
     previewImage: {
       imagePath: 'brandwatch-social-preview.jpg',
       alt:
-        'Mockup of the Brandwatch company website shown on both a tablet and smartphone',
+        'Mockup of the Brandwatch website shown on both a tablet and smartphone',
     },
     heroImage: {
       imagePath: 'brandwatch-hero.jpg',
       alt:
-        'Mockup of the Brandwatch company website shown on both a tablet and smartphone',
+        'Mockup of the Brandwatch website shown on both a tablet and smartphone',
     },
     thumbnailImage: {
       imagePath: 'brandwatch-thumb.jpg',
       alt:
-        'Mockup of the Brandwatch company website shown on both a tablet and smartphone',
+        'Mockup of the Brandwatch website shown on both a tablet and smartphone',
     },
     thumbnailImageSmall: {
       imagePath: 'brandwatch-thumb-small.jpg',
       alt:
-        'Mockup of the Brandwatch company website shown on both a tablet and smartphone',
+        'Mockup of the Brandwatch website shown on both a tablet and smartphone',
     },
     disabled: true,
   },
@@ -163,23 +159,19 @@ export const WORK: Record<WorkName, WorkDetails> = {
       'Blocks is a minimal Ethereum explorer initially built for a technical assessment. After putting together the initial concept I decided to continue extending it as an excuse to try new techniques as well as further familiarise myself with decentralised applications. It features a block overview, transaction list, light / dark themes and shuffle function.',
     previewImage: {
       imagePath: 'blocks-social-preview.jpg',
-      alt:
-        'Mockup of an ethereum block viewing application shown on a tablet device',
+      alt: 'Mockup of the Blocks application shown on a tablet device',
     },
     heroImage: {
       imagePath: 'blocks-hero.jpg',
-      alt:
-        'Mockup of an ethereum block viewing application shown on a tablet device',
+      alt: 'Mockup of the Blocks application shown on a tablet device',
     },
     thumbnailImage: {
       imagePath: 'blocks-thumb.jpg',
-      alt:
-        'Mockup of an ethereum block viewing application shown on a tablet device',
+      alt: 'Mockup of the Blocks application shown on a tablet device',
     },
     thumbnailImageSmall: {
       imagePath: 'blocks-thumb-small.jpg',
-      alt:
-        'Mockup of an ethereum block viewing application shown on a tablet device',
+      alt: 'Mockup of the Blocks application shown on a tablet device',
     },
   },
 }
