@@ -1,3 +1,4 @@
+import { rgba } from 'polished'
 import React, { createContext, useContext, useMemo } from 'react'
 import { css } from 'styled-components'
 import { ImageProperties } from '../../data/images'
@@ -8,19 +9,10 @@ import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import ScrollReveal from '../ScrollReveal/ScrollReveal'
 
-type OptionalFramedProps =
-  | {
-      framed?: false
-      frameGradientStart?: never
-      frameGradientEnd?: never
-    }
-  | {
-      framed: true
-      frameGradientStart: string
-      frameGradientEnd: string
-    }
-
-type ProjectImageGroupProps = OptionalFramedProps & {
+type ProjectImageGroupProps = {
+  framed?: boolean
+  frameGradientStart?: string
+  frameGradientEnd?: string
   children: React.ReactNode
   loadingColor?: string
 }
@@ -41,6 +33,8 @@ const ProjectImageGroup = ({
   children,
   loadingColor,
 }: ProjectImageGroupProps): JSX.Element => {
+  const { projectAccent } = useTheme()
+
   const contextValue = useMemo(
     () => ({
       framed,
@@ -49,15 +43,23 @@ const ProjectImageGroup = ({
     [framed, loadingColor]
   )
 
+  const framedGradient = useMemo(() => {
+    const gradientStart = frameGradientStart || projectAccent('light')
+    const gradientEnd = frameGradientEnd || projectAccent('dark')
+
+    return framed
+      ? `background: linear-gradient(100deg,
+      ${gradientStart} 0%,
+      ${gradientEnd} 75%
+    );`
+      : ''
+  }, [frameGradientStart, frameGradientEnd, projectAccent, framed])
+
   return (
     <ProjectImageGroupContext.Provider value={contextValue}>
       <div
         css={`
-          ${framed &&
-          `background: linear-gradient(100deg,
-          ${frameGradientStart} 0%,
-          ${frameGradientEnd} 75%
-        );`}
+          ${framedGradient}
         `}
       >
         {children}
@@ -94,6 +96,15 @@ const ProjectImageGroupItem = ({
     <LayoutGutter
       css={`
         ${framed ? framedAppearance : standardSpacing}
+
+        ${framed &&
+        `&:nth-child(even) {
+          background: linear-gradient(
+            135deg,
+            ${rgba(theme.projectAccent('dark'), 0.2)} 0%,
+            ${rgba(theme.projectAccent('dark'), 0.2)} 50%
+          );
+        }`}
       `}
     >
       <LayoutLimiter size="large">
@@ -145,14 +156,6 @@ const framedAppearance = css`
   ${inclusiveUp('xxl')} {
     padding-top: 9rem;
     padding-bottom: 9rem;
-  }
-
-  &:nth-child(even) {
-    background: linear-gradient(
-      135deg,
-      rgba(0, 0, 0, 0.085) 0%,
-      rgba(0, 0, 0, 0.05) 50%
-    );
   }
 `
 

@@ -81,19 +81,14 @@ function BlocksPage(): JSX.Element {
           <Link href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">
             BigInt
           </Link>{' '}
-          directly in the browser , greatly reducing bundle sizes and
+          directly in the browser, greatly reducing bundle size and
           standardising around a single API. It's these types of learnings and
           exposure to new technology that make investing in personal projects
           rewarding and valuable.
         </TextParagraph>
       </ProjectDescription>
 
-      <ProjectImageGroup
-        framed
-        frameGradientStart="#d88350"
-        frameGradientEnd="#b64a32"
-        loadingColor="#181F23"
-      >
+      <ProjectImageGroup framed loadingColor="#181F23">
         <ProjectImageGroup.Item imagePath="blocks-home.jpg" alt="" />
         <ProjectImageGroup.Item imagePath="blocks-list.jpg" alt="" />
         <ProjectImageGroup.Item imagePath="blocks-detail.jpg" alt="" />
