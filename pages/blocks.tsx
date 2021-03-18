@@ -76,7 +76,7 @@ function BlocksPage(): JSX.Element {
         <TextParagraph>
           Tech moves fast though, and we now have fantastic projects such as{' '}
           <Link href="https://thegraph.com/">The Graph</Link> offering a data
-          abstraction later powered by Subgraphs and GraphQL, we even have
+          abstraction layer powered by Subgraphs and GraphQL, we even have
           native support for{' '}
           <Link href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">
             BigInt
