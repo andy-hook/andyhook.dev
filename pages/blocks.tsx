@@ -35,7 +35,10 @@ function BlocksPage(): JSX.Element {
       </ProjectDescription>
 
       <ProjectImageGroup>
-        <ProjectImageGroup.Item imagePath="blocks-intro.jpg" alt="" />
+        <ProjectImageGroup.Item
+          imagePath="blocks-intro.jpg"
+          alt="Multiple tablet devices showing screens from the Blocks application"
+        />
       </ProjectImageGroup>
 
       <ProjectDescription title="Decentralized technology takes some practice">
@@ -89,10 +92,22 @@ function BlocksPage(): JSX.Element {
       </ProjectDescription>
 
       <ProjectImageGroup framed loadingColor="#181F23">
-        <ProjectImageGroup.Item imagePath="blocks-home.jpg" alt="" />
-        <ProjectImageGroup.Item imagePath="blocks-list.jpg" alt="" />
-        <ProjectImageGroup.Item imagePath="blocks-detail.jpg" alt="" />
-        <ProjectImageGroup.Item imagePath="blocks-transactions.jpg" alt="" />
+        <ProjectImageGroup.Item
+          imagePath="blocks-home.jpg"
+          alt="Blocks application screen showing the home page with title and block list"
+        />
+        <ProjectImageGroup.Item
+          imagePath="blocks-list.jpg"
+          alt="Blocks application screen showing a list of blocks with details"
+        />
+        <ProjectImageGroup.Item
+          imagePath="blocks-detail.jpg"
+          alt="Blocks application screen showing detailed information about a block"
+        />
+        <ProjectImageGroup.Item
+          imagePath="blocks-transactions.jpg"
+          alt="Blocks application screen showing a list of transactions associated with a block"
+        />
       </ProjectImageGroup>
 
       <ProjectQuote
