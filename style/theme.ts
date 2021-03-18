@@ -29,28 +29,28 @@ export type Theme = {
 
 const accents: Record<'default' | WorkName, ThemeCommon['accent']> = {
   default: {
-    base: [266, 0.92, 0.55],
     light: [300, 0.98, 0.7],
-    dark: [266, 0.72, 0.2],
+    base: [266, 0.92, 0.55],
+    dark: [267, 0.9, 0.33],
   },
   aragon: {
-    base: [195, 0.99, 0.425],
-    light: [180, 0.95, 0.75],
-    dark: [195, 0.99, 0.2],
+    light: [184, 0.99, 0.55],
+    base: [194, 1, 0.5],
+    dark: [194, 1, 0.425],
   },
   bright: {
-    base: [267, 1, 0.4],
-    light: [277, 1, 0.5],
-    dark: [267, 1, 0.1],
+    light: [285, 1, 0.4],
+    base: [267, 1, 0.6],
+    dark: [267, 0.9, 0.33],
   },
   blocks: {
-    base: [8, 0.91, 0.61],
-    light: [17, 1, 0.8],
-    dark: [8, 0.91, 0.2],
+    light: [22, 0.63, 0.6],
+    base: [15, 0.68, 0.55],
+    dark: [11, 0.6, 0.45],
   },
   brandwatch: {
-    base: [300, 1, 0.1],
     light: [300, 1, 1],
+    base: [300, 1, 0.1],
     dark: [300, 1, 1],
   },
 }
@@ -91,9 +91,9 @@ const common: ThemeCommon = {
 export const darkTheme: Theme = {
   name: 'dark',
   foreground: {
-    extraLow: [240, 0.11, 0.42],
-    low: [230, 0.11, 0.6],
-    medium: [230, 0.1, 0.75],
+    extraLow: [240, 0.08, 0.42],
+    low: [230, 0.08, 0.6],
+    medium: [230, 0.08, 0.75],
     high: [230, 0.08, 0.9],
     extraHigh: [0, 0, 1],
   },

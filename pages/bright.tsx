@@ -107,12 +107,7 @@ function BrightPage(): JSX.Element {
         </TextParagraph>
       </ProjectDescription>
 
-      <ProjectImageGroup
-        framed
-        frameGradientStart="#7600A9"
-        frameGradientEnd="#4C00A9"
-        loadingColor="#EDEDF0"
-      >
+      <ProjectImageGroup framed loadingColor="#EDEDF0">
         <ProjectImageGroup.Item
           imagePath="bright-dash-ui-login.jpg"
           alt="A screenshot of the login screen"
