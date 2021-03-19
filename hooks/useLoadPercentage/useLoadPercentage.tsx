@@ -51,6 +51,7 @@ function LoadPercentageProvider({
 }): JSX.Element {
   const router = useRouter()
 
+  // Reset all context state when navigating between routes
   return (
     <LoadPercentageBaseProvider key={router.pathname}>
       {children}
@@ -60,8 +61,8 @@ function LoadPercentageProvider({
 
 function useLoadPercentage(): {
   percentLoaded: number
-  incrementTotalLoaded: () => void
-  incrementTotalCount: () => void
+  markImageLoaded: () => void
+  trackImageLoad: () => void
 } {
   const {
     incrementTotalCount,
@@ -70,8 +71,8 @@ function useLoadPercentage(): {
   } = useContext(LoadPercentageContext)
 
   return {
-    incrementTotalCount,
-    incrementTotalLoaded,
+    trackImageLoad: incrementTotalCount,
+    markImageLoaded: incrementTotalLoaded,
     percentLoaded,
   }
 }

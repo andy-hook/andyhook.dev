@@ -50,11 +50,11 @@ function ImageBase({
 }: ImageBaseProps): JSX.Element {
   const { background, foreground } = useTheme()
   const [imageLoaded, setImageLoaded] = useState(false)
-  const { incrementTotalLoaded, incrementTotalCount } = useLoadPercentage()
+  const { trackImageLoad, markImageLoaded } = useLoadPercentage()
 
   useEffect(() => {
-    incrementTotalCount()
-  }, [incrementTotalCount])
+    trackImageLoad()
+  }, [trackImageLoad])
 
   const image = imageData[imagePath]
 
@@ -74,10 +74,10 @@ function ImageBase({
   const fireLoadEvents = useCallback(() => {
     if (!imageLoaded) {
       setImageLoaded(true)
-      incrementTotalLoaded()
+      markImageLoaded()
       onLoad && onLoad()
     }
-  }, [onLoad, incrementTotalLoaded, imageLoaded])
+  }, [onLoad, markImageLoaded, imageLoaded])
 
   // When using loading strategy "eager", next/image won't reliably fire onLoad events when retrieving from client cache
   // To work around this we need to check the "complete" property on the image element and run the same set of callbacks
@@ -89,7 +89,6 @@ function ImageBase({
       const image = wrapperRef?.querySelector('img[srcset]') as HTMLImageElement
 
       if (image && image.complete) {
-        // console.log(`${imagePath} fire cache`)
         fireLoadEvents()
       }
     },
@@ -102,7 +101,6 @@ function ImageBase({
       // We only want to trigger the load handler when the actual image is loaded, hence making sure the source of the target element triggering the event is not base64.
       // See https://github.com/vercel/next.js/issues/20368#issuecomment-757446007
       if (e.target.src.indexOf('data:image/gif;base64') < 0) {
-        // console.log(`${imagePath} fire standard load`)
         fireLoadEvents()
       }
     },
