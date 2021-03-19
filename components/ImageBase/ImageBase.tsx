@@ -44,7 +44,7 @@ function ImageBase({
   scaleRenderFromBp,
   onLoad,
   visibleOpacity = 1,
-  loading = 'eager',
+  loading = 'lazy',
   ...props
 }: ImageBaseProps): JSX.Element {
   const { background, foreground } = useTheme()
@@ -77,7 +77,7 @@ function ImageBase({
       // We are unable to set a ref to the underlying image element directly so we must access it via querySelector on the wrapper
       // We are querying by srcset attribute to differentiate from the placeholder image that next/image adds to reserve space
       // https://github.com/vercel/next.js/discussions/18386
-      const image = wrapperRef?.querySelector('img') as HTMLImageElement
+      const image = wrapperRef?.querySelector('img[srcset]') as HTMLImageElement
 
       if (image && image.complete && showLoader) {
         imageLoaded()
