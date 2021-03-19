@@ -202,6 +202,7 @@ function Home(): JSX.Element {
                           href={route}
                           title={title}
                           subtitle={subtitle}
+                          backgroundColor={thumbnailImage.color}
                         />
                       </motion.div>
                     )

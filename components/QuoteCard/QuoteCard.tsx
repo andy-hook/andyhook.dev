@@ -84,7 +84,11 @@ function QuoteCard({
             z-index: ${theme.index.floor};
           `}
         >
-          <ImageBase imagePath={avatar} alt={`Profile shot of ${name}`} />
+          <ImageBase
+            imagePath={avatar}
+            alt={`Profile shot of ${name}`}
+            backgroundColor="light"
+          />
         </div>
       </div>
 

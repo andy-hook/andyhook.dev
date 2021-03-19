@@ -101,6 +101,7 @@ function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
                         alt={thumbnailImageSmall.alt}
                         title={title}
                         disabled={disabled}
+                        backgroundColor={thumbnailImageSmall.color}
                         size="small"
                       />
                     </motion.div>
