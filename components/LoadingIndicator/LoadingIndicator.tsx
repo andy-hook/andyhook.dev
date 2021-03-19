@@ -1,58 +1,35 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { motion } from 'framer-motion'
 import { spring } from '../../style/motion'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { setLightness } from 'polished'
-
-type VisibilityStatus = 'visible' | 'hidden'
-type LoadingStatus = 'rest' | 'complete'
-
-const LOADING_BAR_MOTION_VARIANTS: Record<LoadingStatus, { x: string }> = {
-  rest: {
-    x: '-100%',
-  },
-  complete: {
-    x: '0%',
-  },
-}
-
-const VISIBILITY_MOTION_VARIANTS: Record<
-  VisibilityStatus,
-  { opacity: number }
-> = {
-  hidden: {
-    opacity: 0,
-  },
-  visible: {
-    opacity: 1,
-  },
-}
+import { useLoadPercentage } from '../../hooks/useLoadPercentage/useLoadPercentage'
 
 function LoadingIndicator(): JSX.Element {
+  const [loadComplete, setLoadComplete] = useState(false)
+  const [hidden, setHidden] = useState(false)
   const router = useRouter()
   const theme = useTheme()
-  const firstLoad = useRef(true)
-  const [visibilityStatus, setVisibilityStatus] = useState<VisibilityStatus>(
-    'hidden'
-  )
+  const { percentLoaded } = useLoadPercentage()
 
   useEffect(() => {
-    if (!firstLoad.current) {
-      setVisibilityStatus('visible')
+    if (percentLoaded === 100) {
+      setLoadComplete(true)
     }
+  }, [percentLoaded])
 
-    // Only show indicator on successive route changes
-    firstLoad.current = false
-  }, [router.pathname])
+  // We only fill the bar half the way using the loaded percentage
+  // This let's us rapidly fill the remainder once everything has loaded
+  // This improves perceived performance
+  // https://developer.mozilla.org/en-US/docs/Learn/Performance/Perceived_performance
+  const barPosition = loadComplete ? 0 : -100 + percentLoaded / 2
 
   return (
     <motion.div
       key={router.pathname}
-      variants={VISIBILITY_MOTION_VARIANTS}
-      initial="hidden"
-      animate={visibilityStatus}
-      transition={{ type: 'spring', duration: 0.4 }}
+      transition={{ type: 'spring', bounce: 0, duration: 0.4 }}
+      animate={{ opacity: hidden ? 0 : 1 }}
       css={`
         position: fixed;
         top: 0;
@@ -64,11 +41,10 @@ function LoadingIndicator(): JSX.Element {
       `}
     >
       <motion.div
-        initial="rest"
-        transition={spring.soft}
-        animate="complete"
-        variants={LOADING_BAR_MOTION_VARIANTS}
-        onAnimationComplete={() => setVisibilityStatus('hidden')}
+        initial={{ x: '-100%' }}
+        transition={spring[loadComplete ? 'snappy' : 'soft']}
+        animate={{ x: `${barPosition}%` }}
+        onAnimationComplete={() => setHidden(true)}
         css={`
           position: relative;
           height: 100%;

@@ -9,6 +9,7 @@ import { unregisterServiceWorker } from '../serviceWorker'
 import Footer from '../components/Footer/Footer'
 import Header from '../components/Header/Header'
 import LoadingIndicator from '../components/LoadingIndicator/LoadingIndicator'
+import { LoadPercentageProvider } from '../hooks/useLoadPercentage/useLoadPercentage'
 
 // Import fonts outside of styled-components to avoid flicker on state change
 import '../style/font.css'
@@ -26,11 +27,13 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
       <MetaIcons />
       <FocusVisibleProvider>
         <ThemeProvider>
-          <GlobalStyle />
+          <LoadPercentageProvider>
+            <GlobalStyle />
 
-          <AppLayout>
-            <Component {...pageProps} />
-          </AppLayout>
+            <AppLayout>
+              <Component {...pageProps} />
+            </AppLayout>
+          </LoadPercentageProvider>
         </ThemeProvider>
       </FocusVisibleProvider>
     </>
