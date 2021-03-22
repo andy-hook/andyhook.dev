@@ -199,7 +199,7 @@ function ProjectTemplate({
           name={testimonial.name}
           title={testimonial.title}
           company={testimonial.company}
-          testimonial={testimonial.testimonial}
+          testimonial={testimonial.longText || testimonial.shortText}
         />
       </article>
       <MoreProjects activeProjectName={name} />

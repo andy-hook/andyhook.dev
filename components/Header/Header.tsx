@@ -31,7 +31,11 @@ function Header({
             initial="hidden"
             animate="visible"
             css={`
-              padding-top: 3rem;
+              padding-top: 2.25rem;
+
+              ${inclusiveUp('xs')} {
+                padding-top: 3rem;
+              }
 
               ${inclusiveUp('sm')} {
                 padding-top: 3.75rem;

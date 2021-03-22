@@ -9,17 +9,17 @@ function LayoutGutter({ children, ...props }: LayoutGutterProps): JSX.Element {
   return (
     <div
       css={`
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
 
         ${inclusiveUp('xxs')} {
-          padding-left: 7%;
-          padding-right: 7%;
+          padding-left: 6%;
+          padding-right: 6%;
         }
 
         ${inclusiveUp('sm')} {
-          padding-left: 8%;
-          padding-right: 8%;
+          padding-left: 7%;
+          padding-right: 7%;
         }
 
         ${inclusiveUp('xl')} {

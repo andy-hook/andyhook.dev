@@ -30,13 +30,7 @@ function Footer(): JSX.Element {
             `}
           >
             <div>
-              <TextBase
-                lineHeight="flat"
-                color="low"
-                css={`
-                  margin-bottom: 2em;
-                `}
-              >
+              <TextBase lineHeight="flat" color="low">
                 Let’s build something awesome together
               </TextBase>
 
@@ -46,6 +40,8 @@ function Footer(): JSX.Element {
                 color="high"
                 tag="h2"
                 css={`
+                  margin-top: 0.6em;
+
                   ${inclusiveDown('sm')} {
                     margin-bottom: 1.4em;
                   }

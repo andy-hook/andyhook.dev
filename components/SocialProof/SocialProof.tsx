@@ -6,12 +6,18 @@ import QuoteCard from '../QuoteCard/QuoteCard'
 import TextBase from '../Text/TextBase'
 import TextHeading from '../Text/TextHeading'
 
-const ORDER: Author[] = ['michael', 'brett', 'yohan', 'ze', 'jo', 'andrew']
-const CURATED_RECOMMENDATIONS = ORDER.map((author) => RECOMMENDATIONS[author])
-
 function SocialProof(): JSX.Element {
   const items = useMemo(() => {
-    const list = CURATED_RECOMMENDATIONS
+    const order: Author[] = [
+      'michael',
+      'brett',
+      'jo',
+      'ben',
+      'ze',
+      'andrew',
+      'yohan',
+    ]
+    const list = order.map((author) => RECOMMENDATIONS[author])
     const half = Math.ceil(list.length / 2)
 
     const firstColumn = list.splice(0, half)
@@ -98,7 +104,7 @@ function SocialProof(): JSX.Element {
                 return (
                   <QuoteCard
                     key={i}
-                    quote={item.testimonial}
+                    quote={item.shortText}
                     company={item.company}
                     title={item.title}
                     name={item.name}
