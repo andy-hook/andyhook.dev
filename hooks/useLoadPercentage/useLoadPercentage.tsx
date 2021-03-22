@@ -1,10 +1,17 @@
 import { useRouter } from 'next/router'
-import React, { useState, useContext, useCallback, useMemo } from 'react'
+import React, {
+  useContext,
+  useCallback,
+  useMemo,
+  useEffect,
+  useState,
+} from 'react'
 
 type LoadPercentageContextValue = {
   percentLoaded: number
-  incrementTotalCount: () => void
-  incrementTotalLoaded: () => void
+
+  addToPendingListByKey: (key: string) => void
+  addToLoadedListByKey: (key: string) => void
 }
 
 const LoadPercentageContext = React.createContext<LoadPercentageContextValue>(
@@ -16,28 +23,31 @@ function LoadPercentageBaseProvider({
 }: {
   children: React.ReactNode
 }): JSX.Element {
-  const [totalPending, setTotalPending] = useState(0)
-  const [totalLoaded, setTotalLoaded] = useState(0)
+  const [loadedList, setLoadedList] = useState<string[]>([])
+  const [pendingList, setPendingList] = useState<string[]>([])
 
-  const percentLoaded = useMemo(
-    () =>
-      totalPending > 0 ? Math.floor((100 / totalPending) * totalLoaded) : 0,
-    [totalPending, totalLoaded]
-  )
+  const totalCount = pendingList.length
+  const totalLoaded = loadedList.length
 
-  const incrementTotalCount = useCallback(
-    () => setTotalPending((prevCount) => prevCount + 1),
-    []
-  )
+  const percentLoaded = useMemo(() => {
+    return totalCount > 0 ? Math.floor((100 / totalCount) * totalLoaded) : 0
+  }, [totalCount, totalLoaded])
 
-  const incrementTotalLoaded = useCallback(
-    () => setTotalLoaded((prevCount) => prevCount + 1),
-    []
-  )
+  const addToPendingListByKey = useCallback((key: string) => {
+    setPendingList((prevList) => {
+      return prevList.includes(key) ? prevList : [...prevList, key]
+    })
+  }, [])
+
+  const addToLoadedListByKey = useCallback((key: string) => {
+    setLoadedList((prevList) => {
+      return prevList.includes(key) ? prevList : [...prevList, key]
+    })
+  }, [])
 
   return (
     <LoadPercentageContext.Provider
-      value={{ incrementTotalCount, incrementTotalLoaded, percentLoaded }}
+      value={{ addToPendingListByKey, addToLoadedListByKey, percentLoaded }}
     >
       {children}
     </LoadPercentageContext.Provider>
@@ -59,22 +69,26 @@ function LoadPercentageProvider({
   )
 }
 
-function useLoadPercentage(): {
-  percentLoaded: number
-  markImageLoaded: () => void
-  trackImageLoad: () => void
-} {
-  const {
-    incrementTotalCount,
-    incrementTotalLoaded,
-    percentLoaded,
-  } = useContext(LoadPercentageContext)
+function useLoadPercentage(): number {
+  const { percentLoaded } = useContext(LoadPercentageContext)
 
-  return {
-    trackImageLoad: incrementTotalCount,
-    markImageLoaded: incrementTotalLoaded,
-    percentLoaded,
-  }
+  return percentLoaded
 }
 
-export { LoadPercentageProvider, useLoadPercentage }
+function useTrackLoading(key: string): { trackLoaded: () => void } {
+  const { addToPendingListByKey, addToLoadedListByKey } = useContext(
+    LoadPercentageContext
+  )
+
+  const trackLoaded = useCallback(() => {
+    addToLoadedListByKey(key)
+  }, [addToLoadedListByKey, key])
+
+  useEffect(() => {
+    addToPendingListByKey(key)
+  }, [addToPendingListByKey, key])
+
+  return { trackLoaded }
+}
+
+export { LoadPercentageProvider, useLoadPercentage, useTrackLoading }

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import Image from 'next/image'
 import { AnimatePresence, motion } from 'framer-motion'
 import { BreakpointName, breakpoints } from '../../style/responsive'
@@ -7,7 +7,7 @@ import { spring } from '../../style/motion'
 import { css, keyframes } from 'styled-components'
 import { imageData, ImageProperties } from '../../data/images'
 import { loadingShimmerGradientFromColor } from '../../style/utils'
-import { useLoadPercentage } from '../../hooks/useLoadPercentage/useLoadPercentage'
+import { useTrackLoading } from '../../hooks/useLoadPercentage/useLoadPercentage'
 
 const shimmerAnimation = css`
   background-size: 500% 500%;
@@ -50,11 +50,7 @@ function ImageBase({
 }: ImageBaseProps): JSX.Element {
   const { background, foreground } = useTheme()
   const [imageLoaded, setImageLoaded] = useState(false)
-  const { trackImageLoad, markImageLoaded } = useLoadPercentage()
-
-  useEffect(() => {
-    trackImageLoad()
-  }, [trackImageLoad])
+  const { trackLoaded } = useTrackLoading(imagePath)
 
   const image = imageData[imagePath]
 
@@ -74,10 +70,10 @@ function ImageBase({
   const fireLoadEvents = useCallback(() => {
     if (!imageLoaded) {
       setImageLoaded(true)
-      markImageLoaded()
+      trackLoaded()
       onLoad && onLoad()
     }
-  }, [onLoad, markImageLoaded, imageLoaded])
+  }, [onLoad, trackLoaded, imageLoaded])
 
   // When using loading strategy "eager", next/image won't reliably fire onLoad events when retrieving from client cache
   // To work around this we need to check the "complete" property on the image element and run the same set of callbacks

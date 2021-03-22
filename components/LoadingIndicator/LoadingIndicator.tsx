@@ -11,7 +11,7 @@ function LoadingIndicator(): JSX.Element {
   const [hidden, setHidden] = useState(false)
   const router = useRouter()
   const theme = useTheme()
-  const { percentLoaded } = useLoadPercentage()
+  const percentLoaded = useLoadPercentage()
 
   useEffect(() => {
     if (percentLoaded === 100) {

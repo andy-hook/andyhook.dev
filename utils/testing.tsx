@@ -3,6 +3,7 @@ import { render, RenderOptions, RenderResult } from '@testing-library/react'
 import { ThemeName } from '../style/theme'
 import { FocusVisibleProvider } from '../hooks/useFocusVisible/useFocusVisible'
 import { ThemeProvider } from '../hooks/useTheme/useTheme'
+import { LoadPercentageProvider } from '../hooks/useLoadPercentage/useLoadPercentage'
 
 type ComponentProps = {
   children?: React.ReactNode
@@ -19,7 +20,9 @@ function RenderProviders({
 }: ComponentProps): JSX.Element {
   return (
     <FocusVisibleProvider>
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      <LoadPercentageProvider>
+        <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      </LoadPercentageProvider>
     </FocusVisibleProvider>
   )
 }
