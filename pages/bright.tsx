@@ -1,16 +1,12 @@
 import React from 'react'
 import ProjectDescription from '../components/Project/ProjectDescription'
 import ProjectImageGroup from '../components/Project/ProjectImageGroup'
-import ProjectQuote from '../components/Project/ProjectQuote'
+import ProjectTemplate from '../components/ProjectTemplate/ProjectTemplate'
 import TextParagraph from '../components/Text/TextParagraph'
-import WorkTemplate from '../components/WorkTemplate/WorkTemplate'
-import { TESTIMONIALS } from '../data/testimonials'
-
-const TESTIMONIAL = TESTIMONIALS.ze
 
 function BrightPage(): JSX.Element {
   return (
-    <WorkTemplate name="bright">
+    <ProjectTemplate name="bright">
       <ProjectDescription title="Overview" bordered>
         <TextParagraph>
           In 2018 I joined the Bright team to evolve and elevate the user
@@ -130,14 +126,7 @@ function BrightPage(): JSX.Element {
           alt="Dash admin screen showing how users can be assigned access permissions"
         />
       </ProjectImageGroup>
-
-      <ProjectQuote
-        name={TESTIMONIAL.name}
-        title={TESTIMONIAL.title}
-        company={TESTIMONIAL.company}
-        testimonial={TESTIMONIAL.longTestimonial}
-      />
-    </WorkTemplate>
+    </ProjectTemplate>
   )
 }
 

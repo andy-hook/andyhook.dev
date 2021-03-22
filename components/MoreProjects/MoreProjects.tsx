@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import React, { useMemo } from 'react'
 import { useInView } from 'react-intersection-observer'
-import { WORK, WorkName, WORK_ORDER } from '../../data/work'
+import { PROJECTS, ProjectName, PROJECT_ORDER } from '../../data/projects'
 import { useRelativeYMotion } from '../../hooks/useRelativeYMotion/useRelativeYMotion'
 import { spring } from '../../style/motion'
 import { inclusiveUp } from '../../style/responsive'
@@ -9,11 +9,11 @@ import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import LayoutRow from '../Layout/LayoutRow'
 import LayoutShade from '../Layout/LayoutShade'
+import ProjectCard from '../ProjectCard/ProjectCard'
 import TextHeading from '../Text/TextHeading'
-import WorkCard from '../WorkCard/WorkCard'
 
-type MoreWorkProps = {
-  currentWorkName: WorkName
+type MoreProjectsProps = {
+  activeProjectName: ProjectName
 }
 
 const MOTION_ORCHESTRATION = {
@@ -22,7 +22,7 @@ const MOTION_ORCHESTRATION = {
   delayChildren: 0.1,
 }
 
-function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
+function MoreProjects({ activeProjectName }: MoreProjectsProps): JSX.Element {
   const containerMotionVariants = useRelativeYMotion(100)
   const workItemMotionVariants = useRelativeYMotion(60)
 
@@ -41,10 +41,10 @@ function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
   )
 
   const items = useMemo(() => {
-    return WORK_ORDER.filter((value) => value !== currentWorkName).map(
-      (key) => WORK[key]
+    return PROJECT_ORDER.filter((value) => value !== activeProjectName).map(
+      (key) => PROJECTS[key]
     )
-  }, [currentWorkName])
+  }, [activeProjectName])
 
   return (
     <LayoutShade borderTop borderBottom>
@@ -64,7 +64,7 @@ function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
                   margin-bottom: 1.25em;
                 `}
               >
-                More Work
+                More Projects
               </TextHeading>
               <div
                 css={`
@@ -93,7 +93,7 @@ function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
                       transition={spring.snappy}
                       variants={motionVariants.workItem}
                     >
-                      <WorkCard
+                      <ProjectCard
                         key={i}
                         subtitle={subtitle}
                         href={route}
@@ -116,4 +116,4 @@ function MoreWork({ currentWorkName }: MoreWorkProps): JSX.Element {
   )
 }
 
-export default MoreWork
+export default MoreProjects

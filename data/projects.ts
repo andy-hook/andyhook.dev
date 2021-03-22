@@ -1,12 +1,13 @@
 import { ImageProperties } from './images'
+import { Author } from './recommendations'
 
-export type WorkName = 'aragon' | 'bright' | 'brandwatch' | 'blocks'
+export type ProjectName = 'aragon' | 'bright' | 'brandwatch' | 'blocks'
 
-type WorkImageProperties = ImageProperties & {
+type ProjectImageProperties = ImageProperties & {
   color: string
 }
 
-type WorkDetails = {
+type ProjectDetails = {
   route: string
   title: string
   subtitle: string
@@ -18,20 +19,21 @@ type WorkDetails = {
   technologies: string[]
   intro: string
   previewImage: ImageProperties
-  heroImage: WorkImageProperties
-  thumbnailImage: WorkImageProperties
-  thumbnailImageSmall: WorkImageProperties
+  heroImage: ProjectImageProperties
+  thumbnailImage: ProjectImageProperties
+  thumbnailImageSmall: ProjectImageProperties
   disabled?: true
+  recommendation: Author
 }
 
-export const WORK_ORDER: WorkName[] = [
+export const PROJECT_ORDER: ProjectName[] = [
   'bright',
   'aragon',
   'blocks',
   'brandwatch',
 ]
 
-export const WORK: Record<WorkName, WorkDetails> = {
+export const PROJECTS: Record<ProjectName, ProjectDetails> = {
   aragon: {
     route: '/aragon',
     title: 'Aragon',
@@ -51,6 +53,7 @@ export const WORK: Record<WorkName, WorkDetails> = {
       'Styled Components',
       'Jest & Testing Library',
     ],
+    recommendation: 'brett',
     intro:
       'Aragon is an open source software project built on Ethereum technology to empower the creation and management of decentralized organizations, the project empowers users to freely organize and collaborate without borders or intermediaries, creating global and bureaucracy-free organizations and communities.',
     previewImage: {
@@ -91,6 +94,7 @@ export const WORK: Record<WorkName, WorkDetails> = {
       'Storybook',
       'Karma & Jasmine',
     ],
+    recommendation: 'ze',
     intro:
       'Bright was originally founded as a software development agency in 1999, but more recently has found success and traction by transitioning into a SaaS led, customer centric product company best known for delivering high-quality digital asset management software, exceptional customer support and expert training services.',
     previewImage: {
@@ -123,6 +127,7 @@ export const WORK: Record<WorkName, WorkDetails> = {
     location: 'Brighton, UK',
     tenure: 'Apr 2016 – May 2018',
     technologies: ['JavaScript', 'HTML5', 'CSS3', 'PHP', 'GSAP'],
+    recommendation: 'jo',
     intro:
       'Brandwatch is the world’s leading digital consumer intelligence company, allowing users to analyze and utilize conversations from across the web and social media. Enabling brands and companies to understand consumer insights, trends, influencers, and brand perception.',
     previewImage: {
@@ -168,6 +173,7 @@ export const WORK: Record<WorkName, WorkDetails> = {
       'Styled Components',
       'Jest / Testing Library',
     ],
+    recommendation: 'yohan',
     intro:
       'Blocks is a minimal Ethereum explorer initially built for a technical assessment. After putting together the initial concept I decided to continue extending it as an excuse to try new techniques as well as further familiarise myself with decentralised applications. It features a block overview, transaction list, light / dark themes and shuffle function.',
     previewImage: {

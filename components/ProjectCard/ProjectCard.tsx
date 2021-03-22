@@ -18,7 +18,7 @@ import TextParagraph from '../Text/TextParagraph'
 const IMAGE_SCALE_SIZE = 1.04
 const IMAGE_SCALE_TRANSITION = { type: 'spring', duration: 0.5, bounce: 0 }
 
-export type WorkCardProps = {
+export type ProjectCardProps = {
   imagePath: ImagePath
   alt: string
   disabled?: boolean
@@ -30,7 +30,7 @@ export type WorkCardProps = {
 }
 
 const CARD_PROPERTIES: Record<
-  WorkCardProps['size'],
+  ProjectCardProps['size'],
   {
     titleSize: ResponsiveTextSize
     imageRenderScale: number
@@ -46,7 +46,7 @@ const CARD_PROPERTIES: Record<
   },
 }
 
-function WorkCard({
+function ProjectCard({
   imagePath,
   alt,
   title,
@@ -55,7 +55,7 @@ function WorkCard({
   href,
   size = 'large',
   backgroundColor,
-}: WorkCardProps): JSX.Element {
+}: ProjectCardProps): JSX.Element {
   const [loaded, setLoaded] = useState(false)
   const theme = useTheme()
 
@@ -232,4 +232,4 @@ function WorkCard({
   )
 }
 
-export default WorkCard
+export default ProjectCard

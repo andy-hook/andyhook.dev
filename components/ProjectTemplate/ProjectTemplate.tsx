@@ -4,9 +4,9 @@ import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import LayoutRow from '../Layout/LayoutRow'
 import { inclusiveUp } from '../../style/responsive'
-import { WORK, WorkName } from '../../data/work'
+import { PROJECTS, ProjectName } from '../../data/projects'
 import MetaSocial from '../Meta/MetaSocial'
-import MoreWork from '../MoreWork/MoreWork'
+import MoreProjects from '../MoreProjects/MoreProjects'
 import ImageBase from '../ImageBase/ImageBase'
 import TextHeading from '../Text/TextHeading'
 import { motion } from 'framer-motion'
@@ -16,40 +16,36 @@ import {
   spring,
 } from '../../style/motion'
 import { useRelativeYMotion } from '../../hooks/useRelativeYMotion/useRelativeYMotion'
+import ProjectQuote from '../Project/ProjectQuote'
+import { RECOMMENDATIONS } from '../../data/recommendations'
 
 const MOTION_ORCHESTRATION = {
   staggerChildren: 0.05,
   delayChildren: ENTRANCE_TRANSITION_DELAY,
 }
 
-type WorkTemplate = {
-  name: WorkName
+type ProjectTemplateProps = {
+  name: ProjectName
   children: React.ReactNode
 }
 
-function WorkTemplate({ children, name }: WorkTemplate): JSX.Element {
+function ProjectTemplate({
+  children,
+  name,
+}: ProjectTemplateProps): JSX.Element {
   const entranceMotionVariants = useRelativeYMotion(
     ENTRANCE_TRANSITION_Y_DISTANCE
   )
 
-  const {
-    title,
-    subtitle,
-    excerpt,
-    intro,
-    tenure,
-    role,
-    technologies,
-    heroImage,
-    previewImage,
-  } = WORK[name]
+  const project = PROJECTS[name]
+  const testimonial = RECOMMENDATIONS[project.recommendation]
 
   return (
     <>
       <MetaSocial
-        title={title}
-        description={excerpt}
-        previewImage={previewImage}
+        title={project.title}
+        description={project.excerpt}
+        previewImage={project.previewImage}
       />
       <article>
         <motion.div
@@ -91,7 +87,7 @@ function WorkTemplate({ children, name }: WorkTemplate): JSX.Element {
                           margin-bottom: 0.3em;
                         `}
                       >
-                        {title}
+                        {project.title}
                       </TextHeading>
                     </motion.div>
                     <motion.div
@@ -99,7 +95,7 @@ function WorkTemplate({ children, name }: WorkTemplate): JSX.Element {
                       transition={spring.snappy}
                     >
                       <TextHeading size="lg" tag="h2" color="extraLow">
-                        {subtitle}
+                        {project.subtitle}
                       </TextHeading>
                     </motion.div>
                   </div>
@@ -112,9 +108,9 @@ function WorkTemplate({ children, name }: WorkTemplate): JSX.Element {
               transition={spring.snappy}
             >
               <ImageBase
-                imagePath={heroImage.imagePath}
-                alt={heroImage.alt}
-                backgroundColor={heroImage.color}
+                imagePath={project.heroImage.imagePath}
+                alt={project.heroImage.alt}
+                backgroundColor={project.heroImage.color}
               />
             </motion.div>
           </header>
@@ -152,7 +148,7 @@ function WorkTemplate({ children, name }: WorkTemplate): JSX.Element {
                       margin-bottom: 3em;
                     `}
                   >
-                    {intro}
+                    {project.intro}
                   </TextHeading>
 
                   <TextHeading
@@ -162,8 +158,8 @@ function WorkTemplate({ children, name }: WorkTemplate): JSX.Element {
                     weight="regular"
                     color="extraLow"
                   >
-                    <div>{role}</div>
-                    <div>{tenure}</div>
+                    <div>{project.role}</div>
+                    <div>{project.tenure}</div>
                   </TextHeading>
                 </motion.div>
 
@@ -176,7 +172,7 @@ function WorkTemplate({ children, name }: WorkTemplate): JSX.Element {
                     }
                   `}
                 >
-                  {technologies.map((item, i) => (
+                  {project.technologies.map((item, i) => (
                     <TextHeading
                       key={i}
                       tag="li"
@@ -199,10 +195,16 @@ function WorkTemplate({ children, name }: WorkTemplate): JSX.Element {
           </LayoutGutter>
         </motion.div>
         {children}
+        <ProjectQuote
+          name={testimonial.name}
+          title={testimonial.title}
+          company={testimonial.company}
+          testimonial={testimonial.testimonial}
+        />
       </article>
-      <MoreWork currentWorkName={name} />
+      <MoreProjects activeProjectName={name} />
     </>
   )
 }
 
-export default WorkTemplate
+export default ProjectTemplate

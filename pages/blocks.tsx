@@ -2,16 +2,12 @@ import React from 'react'
 import Link from '../components/Link/Link'
 import ProjectDescription from '../components/Project/ProjectDescription'
 import ProjectImageGroup from '../components/Project/ProjectImageGroup'
-import ProjectQuote from '../components/Project/ProjectQuote'
+import ProjectTemplate from '../components/ProjectTemplate/ProjectTemplate'
 import TextParagraph from '../components/Text/TextParagraph'
-import WorkTemplate from '../components/WorkTemplate/WorkTemplate'
-import { TESTIMONIALS } from '../data/testimonials'
-
-const TESTIMONIAL = TESTIMONIALS.yohan
 
 function BlocksPage(): JSX.Element {
   return (
-    <WorkTemplate name="blocks">
+    <ProjectTemplate name="blocks">
       <ProjectDescription title="Overview" bordered>
         <TextParagraph>
           I designed and built the first version of Blocks in early 2020 as part
@@ -109,14 +105,7 @@ function BlocksPage(): JSX.Element {
           alt="Blocks application screen showing a list of transactions associated with a block"
         />
       </ProjectImageGroup>
-
-      <ProjectQuote
-        name={TESTIMONIAL.name}
-        title={TESTIMONIAL.title}
-        company={TESTIMONIAL.company}
-        testimonial={TESTIMONIAL.longTestimonial}
-      />
-    </WorkTemplate>
+    </ProjectTemplate>
   )
 }
 

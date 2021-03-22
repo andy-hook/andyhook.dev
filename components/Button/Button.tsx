@@ -14,9 +14,10 @@ type ButtonProps = {
   href?: string
   newTab?: boolean
   children: React.ReactNode
+  onClick?: () => void
 }
 
-function Button({ href, children, newTab }: ButtonProps): JSX.Element {
+function Button({ href, children, newTab, onClick }: ButtonProps): JSX.Element {
   const theme = useTheme()
 
   return (
@@ -63,6 +64,7 @@ function Button({ href, children, newTab }: ButtonProps): JSX.Element {
         radius="pill"
         href={href}
         newTab={newTab}
+        onClick={onClick}
         css={`
           ${setTextStyle('body', 'medium')}
           font-size: ${typeScale[2]};
