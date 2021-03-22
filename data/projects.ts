@@ -1,13 +1,13 @@
 import { ImageProperties } from './images'
 import { Author } from './testimonials'
 
-export type WorkName = 'aragon' | 'bright' | 'brandwatch' | 'blocks'
+export type ProjectName = 'aragon' | 'bright' | 'brandwatch' | 'blocks'
 
-type WorkImageProperties = ImageProperties & {
+type ProjectImageProperties = ImageProperties & {
   color: string
 }
 
-type WorkDetails = {
+type ProjectDetails = {
   route: string
   title: string
   subtitle: string
@@ -19,21 +19,21 @@ type WorkDetails = {
   technologies: string[]
   intro: string
   previewImage: ImageProperties
-  heroImage: WorkImageProperties
-  thumbnailImage: WorkImageProperties
-  thumbnailImageSmall: WorkImageProperties
+  heroImage: ProjectImageProperties
+  thumbnailImage: ProjectImageProperties
+  thumbnailImageSmall: ProjectImageProperties
   disabled?: true
   testimonial: Author
 }
 
-export const WORK_ORDER: WorkName[] = [
+export const PROJECT_ORDER: ProjectName[] = [
   'bright',
   'aragon',
   'blocks',
   'brandwatch',
 ]
 
-export const WORK: Record<WorkName, WorkDetails> = {
+export const PROJECTS: Record<ProjectName, ProjectDetails> = {
   aragon: {
     route: '/aragon',
     title: 'Aragon',

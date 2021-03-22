@@ -2,12 +2,12 @@ import React from 'react'
 import Link from '../components/Link/Link'
 import ProjectDescription from '../components/Project/ProjectDescription'
 import ProjectImageGroup from '../components/Project/ProjectImageGroup'
+import ProjectTemplate from '../components/ProjectTemplate/ProjectTemplate'
 import TextParagraph from '../components/Text/TextParagraph'
-import WorkTemplate from '../components/WorkTemplate/WorkTemplate'
 
 function AragonPage(): JSX.Element {
   return (
-    <WorkTemplate name="aragon">
+    <ProjectTemplate name="aragon">
       <ProjectDescription title="Overview" bordered>
         <TextParagraph>
           I joined the Aragon One team in 2020 as a Senior Engineer to help
@@ -136,7 +136,7 @@ function AragonPage(): JSX.Element {
           alt="Upgrade portal transaction signing screen showing the steps needed to complete the process"
         />
       </ProjectImageGroup>
-    </WorkTemplate>
+    </ProjectTemplate>
   )
 }
 

@@ -8,13 +8,13 @@ import LayoutLimiter from '../components/Layout/LayoutLimiter'
 import LayoutRow from '../components/Layout/LayoutRow'
 import LayoutShade from '../components/Layout/LayoutShade'
 import MetaSocial from '../components/Meta/MetaSocial'
+import ProjectCard from '../components/ProjectCard/ProjectCard'
 import RemoveWidow from '../components/RemoveWidow/RemoveWidow'
 import StripeBackground from '../components/StripeBackground/StripeBackground'
 import Testimonials from '../components/Testimonials/Testimonials'
 import TextHeading from '../components/Text/TextHeading'
-import WorkCard from '../components/WorkCard/WorkCard'
 import meta from '../data/meta'
-import { WORK, WORK_ORDER } from '../data/work'
+import { PROJECTS, PROJECT_ORDER } from '../data/projects'
 import { useRelativeYMotion } from '../hooks/useRelativeYMotion/useRelativeYMotion'
 import { useTheme } from '../hooks/useTheme/useTheme'
 import {
@@ -171,14 +171,14 @@ function Home(): JSX.Element {
                     }
                   `}
                 >
-                  {WORK_ORDER.map((key) => {
+                  {PROJECT_ORDER.map((key) => {
                     const {
                       thumbnailImage,
                       route,
                       title,
                       subtitle,
                       disabled,
-                    } = WORK[key]
+                    } = PROJECTS[key]
 
                     return (
                       <motion.div
@@ -194,7 +194,7 @@ function Home(): JSX.Element {
                           }
                         `}
                       >
-                        <WorkCard
+                        <ProjectCard
                           size="large"
                           imagePath={thumbnailImage.imagePath}
                           alt={thumbnailImage.alt}

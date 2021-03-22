@@ -1,12 +1,12 @@
 import React from 'react'
 import ProjectDescription from '../components/Project/ProjectDescription'
 import ProjectImageGroup from '../components/Project/ProjectImageGroup'
+import ProjectTemplate from '../components/ProjectTemplate/ProjectTemplate'
 import TextParagraph from '../components/Text/TextParagraph'
-import WorkTemplate from '../components/WorkTemplate/WorkTemplate'
 
 function BrightPage(): JSX.Element {
   return (
-    <WorkTemplate name="bright">
+    <ProjectTemplate name="bright">
       <ProjectDescription title="Overview" bordered>
         <TextParagraph>
           In 2018 I joined the Bright team to evolve and elevate the user
@@ -126,7 +126,7 @@ function BrightPage(): JSX.Element {
           alt="Dash admin screen showing how users can be assigned access permissions"
         />
       </ProjectImageGroup>
-    </WorkTemplate>
+    </ProjectTemplate>
   )
 }
 

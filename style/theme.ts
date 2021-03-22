@@ -1,5 +1,5 @@
 import { hsla } from 'polished'
-import { WorkName } from '../data/work'
+import { ProjectName } from '../data/projects'
 import { BreakpointList, breakpoints } from './responsive'
 
 export type ThemeName = 'light' | 'dark'
@@ -27,7 +27,7 @@ export type Theme = {
   shadow: Record<LimitedShadeRange, string>
 } & ThemeCommon
 
-const accents: Record<'default' | WorkName, ThemeCommon['accent']> = {
+const accents: Record<'default' | ProjectName, ThemeCommon['accent']> = {
   default: {
     light: [300, 0.98, 0.7],
     base: [266, 0.92, 0.55],
@@ -175,7 +175,7 @@ export const themes = {
 
 export function getTheme(
   themeName: ThemeName,
-  accentType: 'default' | WorkName
+  accentType: 'default' | ProjectName
 ): Theme {
   return { ...themes[themeName], projectAccent: accents[accentType] }
 }

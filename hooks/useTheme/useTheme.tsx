@@ -4,7 +4,7 @@ import {
   ThemeProvider as StyledThemeProvider,
   useTheme as styledUseTheme,
 } from 'styled-components'
-import { WORK } from '../../data/work'
+import { PROJECTS } from '../../data/projects'
 import { applyHsl, getTheme, Theme, ThemeName } from '../../style/theme'
 import { keys } from '../../utils/general'
 
@@ -20,7 +20,8 @@ function ThemeProvider({
   // Update projectAccent based on route
   const selectedTheme = useMemo(() => {
     const accentName =
-      keys(WORK).find((key) => WORK[key].route === router.pathname) ?? 'default'
+      keys(PROJECTS).find((key) => PROJECTS[key].route === router.pathname) ??
+      'default'
 
     return getTheme(theme, accentName)
   }, [theme, router.pathname])

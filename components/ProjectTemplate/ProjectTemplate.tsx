@@ -4,9 +4,9 @@ import LayoutGutter from '../Layout/LayoutGutter'
 import LayoutLimiter from '../Layout/LayoutLimiter'
 import LayoutRow from '../Layout/LayoutRow'
 import { inclusiveUp } from '../../style/responsive'
-import { WORK, WorkName } from '../../data/work'
+import { PROJECTS, ProjectName } from '../../data/projects'
 import MetaSocial from '../Meta/MetaSocial'
-import MoreWork from '../MoreWork/MoreWork'
+import MoreProjects from '../MoreProjects/MoreProjects'
 import ImageBase from '../ImageBase/ImageBase'
 import TextHeading from '../Text/TextHeading'
 import { motion } from 'framer-motion'
@@ -24,17 +24,20 @@ const MOTION_ORCHESTRATION = {
   delayChildren: ENTRANCE_TRANSITION_DELAY,
 }
 
-type WorkTemplate = {
-  name: WorkName
+type ProjectTemplateProps = {
+  name: ProjectName
   children: React.ReactNode
 }
 
-function WorkTemplate({ children, name }: WorkTemplate): JSX.Element {
+function ProjectTemplate({
+  children,
+  name,
+}: ProjectTemplateProps): JSX.Element {
   const entranceMotionVariants = useRelativeYMotion(
     ENTRANCE_TRANSITION_Y_DISTANCE
   )
 
-  const project = WORK[name]
+  const project = PROJECTS[name]
   const testimonial = TESTIMONIALS[project.testimonial]
 
   return (
@@ -199,9 +202,9 @@ function WorkTemplate({ children, name }: WorkTemplate): JSX.Element {
           testimonial={testimonial.testimonial}
         />
       </article>
-      <MoreWork currentWorkName={name} />
+      <MoreProjects activeProjectName={name} />
     </>
   )
 }
 
-export default WorkTemplate
+export default ProjectTemplate
