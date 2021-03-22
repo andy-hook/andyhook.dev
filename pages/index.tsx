@@ -11,7 +11,6 @@ import MetaSocial from '../components/Meta/MetaSocial'
 import ProjectCard from '../components/ProjectCard/ProjectCard'
 import RemoveWidow from '../components/RemoveWidow/RemoveWidow'
 import StripeBackground from '../components/StripeBackground/StripeBackground'
-import Testimonials from '../components/Testimonials/Testimonials'
 import TextHeading from '../components/Text/TextHeading'
 import meta from '../data/meta'
 import { PROJECTS, PROJECT_ORDER } from '../data/projects'
@@ -277,7 +276,6 @@ function Home(): JSX.Element {
           <LayoutGutter>
             <LayoutLimiter>
               <About />
-              <Testimonials />
             </LayoutLimiter>
           </LayoutGutter>
         </LayoutRow>

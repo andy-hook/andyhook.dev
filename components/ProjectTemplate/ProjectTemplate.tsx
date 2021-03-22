@@ -17,7 +17,7 @@ import {
 } from '../../style/motion'
 import { useRelativeYMotion } from '../../hooks/useRelativeYMotion/useRelativeYMotion'
 import ProjectQuote from '../Project/ProjectQuote'
-import { TESTIMONIALS } from '../../data/testimonials'
+import { RECOMMENDATIONS } from '../../data/recommendations'
 
 const MOTION_ORCHESTRATION = {
   staggerChildren: 0.05,
@@ -38,7 +38,7 @@ function ProjectTemplate({
   )
 
   const project = PROJECTS[name]
-  const testimonial = TESTIMONIALS[project.testimonial]
+  const testimonial = RECOMMENDATIONS[project.recommendation]
 
   return (
     <>

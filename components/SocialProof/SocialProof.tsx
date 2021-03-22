@@ -1,15 +1,16 @@
 import React, { useMemo } from 'react'
-import { TESTIMONIALS } from '../../data/testimonials'
+import { RECOMMENDATIONS } from '../../data/recommendations'
 import { inclusiveUp } from '../../style/responsive'
 import { keys } from '../../utils/general'
+import Button from '../Button/Button'
 import LayoutRow from '../Layout/LayoutRow'
 import QuoteCard from '../QuoteCard/QuoteCard'
 import TextBase from '../Text/TextBase'
 import TextHeading from '../Text/TextHeading'
 
-function Testimonials(): JSX.Element {
+function SocialProof(): JSX.Element {
   const items = useMemo(() => {
-    const list = keys(TESTIMONIALS)
+    const list = keys(RECOMMENDATIONS)
     const half = Math.ceil(list.length / 2)
 
     return [list.splice(0, half), list.splice(-half)]
@@ -69,14 +70,14 @@ function Testimonials(): JSX.Element {
         }
         `}
       >
-        {items.map((items, i) => (
+        {items.map((itemChunk, i) => (
           <div
             key={i}
             css={`
               // Offset second column
               &:last-child {
                 ${inclusiveUp('md')} {
-                  padding-top: 12rem;
+                  padding-top: 17rem;
                 }
               }
             `}
@@ -89,14 +90,14 @@ function Testimonials(): JSX.Element {
                 grid-gap: var(--grid-gap);
               `}
             >
-              {items.map((key) => {
+              {itemChunk.map((key) => {
                 const {
                   avatar,
                   title,
                   company,
                   name,
                   testimonial,
-                } = TESTIMONIALS[key]
+                } = RECOMMENDATIONS[key]
 
                 return (
                   <QuoteCard
@@ -113,8 +114,17 @@ function Testimonials(): JSX.Element {
           </div>
         ))}
       </div>
+      <div
+        css={`
+          margin-top: 5rem;
+          display: flex;
+          justify-content: center;
+        `}
+      >
+        <Button>Load More Recommendations</Button>
+      </div>
     </LayoutRow>
   )
 }
 
-export default Testimonials
+export default SocialProof

@@ -17,7 +17,7 @@ type AuthorDetails = {
   testimonial: string
 }
 
-export const TESTIMONIALS: Record<Author, AuthorDetails> = {
+export const RECOMMENDATIONS: Record<Author, AuthorDetails> = {
   michael: {
     avatar: 'avatars/michael.jpg',
     name: 'Michael Allan',

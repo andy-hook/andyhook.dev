@@ -1,5 +1,5 @@
 import { ImageProperties } from './images'
-import { Author } from './testimonials'
+import { Author } from './recommendations'
 
 export type ProjectName = 'aragon' | 'bright' | 'brandwatch' | 'blocks'
 
@@ -23,7 +23,7 @@ type ProjectDetails = {
   thumbnailImage: ProjectImageProperties
   thumbnailImageSmall: ProjectImageProperties
   disabled?: true
-  testimonial: Author
+  recommendation: Author
 }
 
 export const PROJECT_ORDER: ProjectName[] = [
@@ -53,7 +53,7 @@ export const PROJECTS: Record<ProjectName, ProjectDetails> = {
       'Styled Components',
       'Jest & Testing Library',
     ],
-    testimonial: 'brett',
+    recommendation: 'brett',
     intro:
       'Aragon is an open source software project built on Ethereum technology to empower the creation and management of decentralized organizations, the project empowers users to freely organize and collaborate without borders or intermediaries, creating global and bureaucracy-free organizations and communities.',
     previewImage: {
@@ -94,7 +94,7 @@ export const PROJECTS: Record<ProjectName, ProjectDetails> = {
       'Storybook',
       'Karma & Jasmine',
     ],
-    testimonial: 'ze',
+    recommendation: 'ze',
     intro:
       'Bright was originally founded as a software development agency in 1999, but more recently has found success and traction by transitioning into a SaaS led, customer centric product company best known for delivering high-quality digital asset management software, exceptional customer support and expert training services.',
     previewImage: {
@@ -127,7 +127,7 @@ export const PROJECTS: Record<ProjectName, ProjectDetails> = {
     location: 'Brighton, UK',
     tenure: 'Apr 2016 – May 2018',
     technologies: ['JavaScript', 'HTML5', 'CSS3', 'PHP', 'GSAP'],
-    testimonial: 'jo',
+    recommendation: 'jo',
     intro:
       'Brandwatch is the world’s leading digital consumer intelligence company, allowing users to analyze and utilize conversations from across the web and social media. Enabling brands and companies to understand consumer insights, trends, influencers, and brand perception.',
     previewImage: {
@@ -173,7 +173,7 @@ export const PROJECTS: Record<ProjectName, ProjectDetails> = {
       'Styled Components',
       'Jest / Testing Library',
     ],
-    testimonial: 'yohan',
+    recommendation: 'yohan',
     intro:
       'Blocks is a minimal Ethereum explorer initially built for a technical assessment. After putting together the initial concept I decided to continue extending it as an excuse to try new techniques as well as further familiarise myself with decentralised applications. It features a block overview, transaction list, light / dark themes and shuffle function.',
     previewImage: {
