@@ -12,7 +12,7 @@ export function getRelativeMotionProps(
   return {
     hidden: {
       opacity: 0,
-      y: useRelative ? `${offsetValue / 15}vw` : offsetValue,
+      y: useRelative ? `${Math.round(offsetValue / 15)}vw` : offsetValue,
     },
     visible: {
       opacity: 1,
