@@ -7,7 +7,7 @@ describe('getRelativeMotionProps()', () => {
     expect(returnValue).toEqual({
       hidden: {
         opacity: 0,
-        y: '5vw',
+        y: '7vw',
       },
       visible: {
         opacity: 1,
@@ -49,7 +49,7 @@ describe('getRelativeMotionProps()', () => {
     expect(relativeReturnValue).toEqual({
       hidden: {
         opacity: 0,
-        y: '-5vw',
+        y: '-7vw',
       },
       visible: {
         opacity: 1,

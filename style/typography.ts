@@ -37,7 +37,7 @@ export const typeScale: Record<number, string> = {
   8: rem('36px'),
   9: rem('48px'),
   10: rem('54px'),
-  11: rem('66px'),
+  11: rem('64px'),
 }
 
 /* Settings - Useful for pairing typeface dimensions with the best display properties
@@ -133,17 +133,25 @@ const typeSettings: Record<TextStyleType, TypeSettings> = {
     cropSettings: { topCrop: 14, bottomCrop: 10 },
     sizes: {
       xxs: css`
-        font-size: ${typeScale[4]};
+        font-size: ${typeScale[3]};
       `,
       xs: css`
-        font-size: ${typeScale[5]};
+        font-size: ${typeScale[4]};
+
+        ${inclusiveUp('sm')} {
+          font-size: ${typeScale[5]};
+        }
 
         ${inclusiveUp('lg')} {
           font-size: ${typeScale[6]};
         }
       `,
       sm: css`
-        font-size: ${typeScale[6]};
+        font-size: ${typeScale[5]};
+
+        ${inclusiveUp('sm')} {
+          font-size: ${typeScale[6]};
+        }
 
         ${inclusiveUp('md')} {
           font-size: ${typeScale[7]};
@@ -154,7 +162,7 @@ const typeSettings: Record<TextStyleType, TypeSettings> = {
         }
       `,
       md: css`
-        font-size: ${typeScale[7]};
+        font-size: ${typeScale[6]};
 
         ${inclusiveUp('sm')} {
           font-size: ${typeScale[8]};
@@ -169,7 +177,11 @@ const typeSettings: Record<TextStyleType, TypeSettings> = {
         }
       `,
       lg: css`
-        font-size: ${typeScale[8]};
+        font-size: ${typeScale[7]};
+
+        ${inclusiveUp('xs')} {
+          font-size: ${typeScale[8]};
+        }
 
         ${inclusiveUp('sm')} {
           font-size: ${typeScale[9]};

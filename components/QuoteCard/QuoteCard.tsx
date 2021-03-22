@@ -37,10 +37,10 @@ function QuoteCard({
 
         box-shadow: ${theme.shadow.medium};
 
-        padding: 2rem;
+        padding: 1.5rem;
 
         ${inclusiveUp('xs')} {
-          padding: 4rem;
+          padding: 3rem;
         }
 
         ${inclusiveUp('lg')} {

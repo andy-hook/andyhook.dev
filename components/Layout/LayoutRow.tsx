@@ -27,10 +27,14 @@ function LayoutRow({
 }
 
 const topSpaceStyle = css`
-  padding-top: 5rem;
+  padding-top: 4rem;
 
   ${inclusiveUp('sm')} {
-    padding-top: 9rem;
+    padding-top: 7rem;
+  }
+
+  ${inclusiveUp('md')} {
+    padding-top: 10rem;
   }
 
   ${inclusiveUp('lg')} {
@@ -39,10 +43,14 @@ const topSpaceStyle = css`
 `
 
 const bottomSpaceStyle = css`
-  padding-bottom: 5rem;
+  padding-bottom: 4rem;
 
   ${inclusiveUp('sm')} {
-    padding-bottom: 9rem;
+    padding-bottom: 7rem;
+  }
+
+  ${inclusiveUp('md')} {
+    padding-bottom: 10rem;
   }
 
   ${inclusiveUp('lg')} {
