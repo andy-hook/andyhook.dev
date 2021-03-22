@@ -2,12 +2,8 @@ import React from 'react'
 import Link from '../components/Link/Link'
 import ProjectDescription from '../components/Project/ProjectDescription'
 import ProjectImageGroup from '../components/Project/ProjectImageGroup'
-import ProjectQuote from '../components/Project/ProjectQuote'
 import TextParagraph from '../components/Text/TextParagraph'
 import WorkTemplate from '../components/WorkTemplate/WorkTemplate'
-import { TESTIMONIALS } from '../data/testimonials'
-
-const TESTIMONIAL = TESTIMONIALS.brett
 
 function AragonPage(): JSX.Element {
   return (
@@ -140,13 +136,6 @@ function AragonPage(): JSX.Element {
           alt="Upgrade portal transaction signing screen showing the steps needed to complete the process"
         />
       </ProjectImageGroup>
-
-      <ProjectQuote
-        name={TESTIMONIAL.name}
-        title={TESTIMONIAL.title}
-        company={TESTIMONIAL.company}
-        testimonial={TESTIMONIAL.longTestimonial}
-      />
     </WorkTemplate>
   )
 }

@@ -95,13 +95,13 @@ function Testimonials(): JSX.Element {
                   title,
                   company,
                   name,
-                  shortTestimonial,
+                  testimonial,
                 } = TESTIMONIALS[key]
 
                 return (
                   <QuoteCard
                     key={key}
-                    quote={shortTestimonial}
+                    quote={testimonial}
                     company={company}
                     title={title}
                     name={name}

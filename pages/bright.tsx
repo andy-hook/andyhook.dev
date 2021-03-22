@@ -1,12 +1,8 @@
 import React from 'react'
 import ProjectDescription from '../components/Project/ProjectDescription'
 import ProjectImageGroup from '../components/Project/ProjectImageGroup'
-import ProjectQuote from '../components/Project/ProjectQuote'
 import TextParagraph from '../components/Text/TextParagraph'
 import WorkTemplate from '../components/WorkTemplate/WorkTemplate'
-import { TESTIMONIALS } from '../data/testimonials'
-
-const TESTIMONIAL = TESTIMONIALS.ze
 
 function BrightPage(): JSX.Element {
   return (
@@ -130,13 +126,6 @@ function BrightPage(): JSX.Element {
           alt="Dash admin screen showing how users can be assigned access permissions"
         />
       </ProjectImageGroup>
-
-      <ProjectQuote
-        name={TESTIMONIAL.name}
-        title={TESTIMONIAL.title}
-        company={TESTIMONIAL.company}
-        testimonial={TESTIMONIAL.longTestimonial}
-      />
     </WorkTemplate>
   )
 }

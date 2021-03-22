@@ -16,6 +16,8 @@ import {
   spring,
 } from '../../style/motion'
 import { useRelativeYMotion } from '../../hooks/useRelativeYMotion/useRelativeYMotion'
+import ProjectQuote from '../Project/ProjectQuote'
+import { TESTIMONIALS } from '../../data/testimonials'
 
 const MOTION_ORCHESTRATION = {
   staggerChildren: 0.05,
@@ -32,24 +34,15 @@ function WorkTemplate({ children, name }: WorkTemplate): JSX.Element {
     ENTRANCE_TRANSITION_Y_DISTANCE
   )
 
-  const {
-    title,
-    subtitle,
-    excerpt,
-    intro,
-    tenure,
-    role,
-    technologies,
-    heroImage,
-    previewImage,
-  } = WORK[name]
+  const project = WORK[name]
+  const testimonial = TESTIMONIALS[project.testimonial]
 
   return (
     <>
       <MetaSocial
-        title={title}
-        description={excerpt}
-        previewImage={previewImage}
+        title={project.title}
+        description={project.excerpt}
+        previewImage={project.previewImage}
       />
       <article>
         <motion.div
@@ -91,7 +84,7 @@ function WorkTemplate({ children, name }: WorkTemplate): JSX.Element {
                           margin-bottom: 0.3em;
                         `}
                       >
-                        {title}
+                        {project.title}
                       </TextHeading>
                     </motion.div>
                     <motion.div
@@ -99,7 +92,7 @@ function WorkTemplate({ children, name }: WorkTemplate): JSX.Element {
                       transition={spring.snappy}
                     >
                       <TextHeading size="lg" tag="h2" color="extraLow">
-                        {subtitle}
+                        {project.subtitle}
                       </TextHeading>
                     </motion.div>
                   </div>
@@ -112,9 +105,9 @@ function WorkTemplate({ children, name }: WorkTemplate): JSX.Element {
               transition={spring.snappy}
             >
               <ImageBase
-                imagePath={heroImage.imagePath}
-                alt={heroImage.alt}
-                backgroundColor={heroImage.color}
+                imagePath={project.heroImage.imagePath}
+                alt={project.heroImage.alt}
+                backgroundColor={project.heroImage.color}
               />
             </motion.div>
           </header>
@@ -152,7 +145,7 @@ function WorkTemplate({ children, name }: WorkTemplate): JSX.Element {
                       margin-bottom: 3em;
                     `}
                   >
-                    {intro}
+                    {project.intro}
                   </TextHeading>
 
                   <TextHeading
@@ -162,8 +155,8 @@ function WorkTemplate({ children, name }: WorkTemplate): JSX.Element {
                     weight="regular"
                     color="extraLow"
                   >
-                    <div>{role}</div>
-                    <div>{tenure}</div>
+                    <div>{project.role}</div>
+                    <div>{project.tenure}</div>
                   </TextHeading>
                 </motion.div>
 
@@ -176,7 +169,7 @@ function WorkTemplate({ children, name }: WorkTemplate): JSX.Element {
                     }
                   `}
                 >
-                  {technologies.map((item, i) => (
+                  {project.technologies.map((item, i) => (
                     <TextHeading
                       key={i}
                       tag="li"
@@ -199,6 +192,12 @@ function WorkTemplate({ children, name }: WorkTemplate): JSX.Element {
           </LayoutGutter>
         </motion.div>
         {children}
+        <ProjectQuote
+          name={testimonial.name}
+          title={testimonial.title}
+          company={testimonial.company}
+          testimonial={testimonial.testimonial}
+        />
       </article>
       <MoreWork currentWorkName={name} />
     </>
