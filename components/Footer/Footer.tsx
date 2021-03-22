@@ -31,7 +31,7 @@ function Footer(): JSX.Element {
           >
             <div>
               <TextBase lineHeight="flat" color="low">
-                Let’s build something awesome together
+                Let’s build something awesome
               </TextBase>
 
               <TextHeading

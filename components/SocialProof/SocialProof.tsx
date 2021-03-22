@@ -30,7 +30,11 @@ function SocialProof(): JSX.Element {
     <LayoutRow
       trimBottom
       css={`
-        --grid-gap: 3rem;
+        --grid-gap: 2rem;
+
+        ${inclusiveUp('md')} {
+          --grid-gap: 3rem;
+        }
 
         ${inclusiveUp('lg')} {
           --grid-gap: 4.8rem;

@@ -56,16 +56,24 @@ function ProjectTemplate({
           <header>
             <div
               css={`
-                padding-top: 11rem;
-                padding-bottom: 5rem;
+                padding-top: 8rem;
+                padding-bottom: 4rem;
+
+                ${inclusiveUp('xs')} {
+                  padding-top: 10rem;
+                }
 
                 ${inclusiveUp('sm')} {
+                  padding-top: 13rem;
+                  padding-bottom: 7rem;
+                }
+
+                ${inclusiveUp('md')} {
                   padding-top: 14rem;
-                  padding-bottom: 6rem;
                 }
 
                 ${inclusiveUp('xl')} {
-                  padding-top: 18rem;
+                  padding-top: 17rem;
                   padding-bottom: 9rem;
                 }
               `}

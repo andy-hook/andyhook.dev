@@ -37,7 +37,7 @@ export const typeScale: Record<number, string> = {
   8: rem('36px'),
   9: rem('48px'),
   10: rem('54px'),
-  11: rem('66px'),
+  11: rem('64px'),
 }
 
 /* Settings - Useful for pairing typeface dimensions with the best display properties
