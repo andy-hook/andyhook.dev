@@ -111,7 +111,11 @@ function WorkTemplate({ children, name }: WorkTemplate): JSX.Element {
               variants={entranceMotionVariants}
               transition={spring.snappy}
             >
-              <ImageBase imagePath={heroImage.imagePath} alt={heroImage.alt} />
+              <ImageBase
+                imagePath={heroImage.imagePath}
+                alt={heroImage.alt}
+                backgroundColor={heroImage.color}
+              />
             </motion.div>
           </header>
 

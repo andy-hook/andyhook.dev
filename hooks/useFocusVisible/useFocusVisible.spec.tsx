@@ -3,6 +3,8 @@ import { useFocusVisible } from './useFocusVisible'
 import { fireEvent, render, screen } from '../../utils/testing'
 import 'jest-styled-components'
 
+const BUTTON_TEXT = 'Button'
+
 function TestButton(): JSX.Element {
   const { focusVisible, onFocus, onBlur } = useFocusVisible()
 
@@ -14,7 +16,7 @@ function TestButton(): JSX.Element {
         outline: ${focusVisible ? '1px solid white' : 'none'};
       `}
     >
-      Button
+      {BUTTON_TEXT}
     </button>
   )
 }
@@ -23,7 +25,7 @@ describe('useFocusVisible', () => {
   it('Should show an outline when focused', () => {
     render(<TestButton />)
 
-    const button = screen.getByText('Button')
+    const button = screen.getByText(BUTTON_TEXT)
 
     button.focus()
 
@@ -37,7 +39,7 @@ describe('useFocusVisible', () => {
   it('Should not show an outline on pointer interaction', () => {
     render(<TestButton />)
 
-    const button = screen.getByText('Button')
+    const button = screen.getByText(BUTTON_TEXT)
 
     const pointerEvents = [
       'mousemove',

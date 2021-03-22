@@ -26,6 +26,7 @@ export type WorkCardProps = {
   subtitle: string
   href?: string
   size: 'large' | 'small'
+  backgroundColor?: string
 }
 
 const CARD_PROPERTIES: Record<
@@ -53,6 +54,7 @@ function WorkCard({
   subtitle,
   href,
   size = 'large',
+  backgroundColor,
 }: WorkCardProps): JSX.Element {
   const [loaded, setLoaded] = useState(false)
   const theme = useTheme()
@@ -174,6 +176,7 @@ function WorkCard({
                   scaleRenderFromBp={['sm', imageRenderScale]}
                   visibleOpacity={disabled ? 0.2 : 1}
                   onLoad={() => setLoaded(true)}
+                  backgroundColor={disabled ? 'dark' : backgroundColor}
                 />
               </motion.div>
             </div>

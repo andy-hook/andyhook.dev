@@ -2,6 +2,10 @@ import { ImageProperties } from './images'
 
 export type WorkName = 'aragon' | 'bright' | 'brandwatch' | 'blocks'
 
+type WorkImageProperties = ImageProperties & {
+  color: string
+}
+
 type WorkDetails = {
   route: string
   title: string
@@ -14,9 +18,9 @@ type WorkDetails = {
   technologies: string[]
   intro: string
   previewImage: ImageProperties
-  heroImage: ImageProperties
-  thumbnailImage: ImageProperties
-  thumbnailImageSmall: ImageProperties
+  heroImage: WorkImageProperties
+  thumbnailImage: WorkImageProperties
+  thumbnailImageSmall: WorkImageProperties
   disabled?: true
 }
 
@@ -56,14 +60,17 @@ export const WORK: Record<WorkName, WorkDetails> = {
     heroImage: {
       imagePath: 'aragon-hero.jpg',
       alt: 'Mockup of the Aragon upgrade website shown on a tablet device',
+      color: '#029ac6',
     },
     thumbnailImage: {
       imagePath: 'aragon-thumb.jpg',
       alt: 'Mockup of the Aragon upgrade website shown on a tablet device',
+      color: '#029ac6',
     },
     thumbnailImageSmall: {
       imagePath: 'aragon-thumb-small.jpg',
       alt: 'Mockup of the Aragon upgrade website shown on a tablet device',
+      color: '#029ac6',
     },
   },
   bright: {
@@ -93,14 +100,17 @@ export const WORK: Record<WorkName, WorkDetails> = {
     heroImage: {
       imagePath: 'bright-hero.jpg',
       alt: 'Mockup of the Dash management software shown on a laptop screen',
+      color: '#6e02b2',
     },
     thumbnailImage: {
       imagePath: 'bright-thumb.jpg',
       alt: 'Mockup of asset management software shown on a laptop screen',
+      color: '#6e02b2',
     },
     thumbnailImageSmall: {
       imagePath: 'bright-thumb-small.jpg',
       alt: 'Mockup of asset management software shown on a laptop screen',
+      color: '#6e02b2',
     },
   },
   brandwatch: {
@@ -124,16 +134,19 @@ export const WORK: Record<WorkName, WorkDetails> = {
       imagePath: 'brandwatch-hero.jpg',
       alt:
         'Mockup of the Brandwatch website shown on both a tablet and smartphone',
+      color: '#702a7b',
     },
     thumbnailImage: {
       imagePath: 'brandwatch-thumb.jpg',
       alt:
         'Mockup of the Brandwatch website shown on both a tablet and smartphone',
+      color: '#702a7b',
     },
     thumbnailImageSmall: {
       imagePath: 'brandwatch-thumb-small.jpg',
       alt:
         'Mockup of the Brandwatch website shown on both a tablet and smartphone',
+      color: '#702a7b',
     },
     disabled: true,
   },
@@ -164,14 +177,17 @@ export const WORK: Record<WorkName, WorkDetails> = {
     heroImage: {
       imagePath: 'blocks-hero.jpg',
       alt: 'Mockup of the Blocks application shown on a tablet device',
+      color: '#191d21',
     },
     thumbnailImage: {
       imagePath: 'blocks-thumb.jpg',
       alt: 'Mockup of the Blocks application shown on a tablet device',
+      color: '#191d21',
     },
     thumbnailImageSmall: {
       imagePath: 'blocks-thumb-small.jpg',
       alt: 'Mockup of the Blocks application shown on a tablet device',
+      color: '#191d21',
     },
   },
 }
