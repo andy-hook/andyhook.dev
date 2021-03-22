@@ -55,7 +55,7 @@ describe('useLoadPercentage', () => {
     expect(rendered.getByText('100')).toBeInTheDocument()
   })
 
-  it('Should not increment percentage more than once per item', () => {
+  it('Should not increment percentage more than once per unique key', () => {
     rendered.rerender(<Container />)
 
     fireEvent.click(rendered.getByText(TRIGGER_1))
