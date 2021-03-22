@@ -1,19 +1,23 @@
 import React, { useMemo } from 'react'
-import { RECOMMENDATIONS } from '../../data/recommendations'
+import { Author, RECOMMENDATIONS } from '../../data/recommendations'
 import { inclusiveUp } from '../../style/responsive'
-import { keys } from '../../utils/general'
-import Button from '../Button/Button'
 import LayoutRow from '../Layout/LayoutRow'
 import QuoteCard from '../QuoteCard/QuoteCard'
 import TextBase from '../Text/TextBase'
 import TextHeading from '../Text/TextHeading'
 
+const ORDER: Author[] = ['michael', 'brett', 'yohan', 'ze', 'jo', 'andrew']
+const CURATED_RECOMMENDATIONS = ORDER.map((author) => RECOMMENDATIONS[author])
+
 function SocialProof(): JSX.Element {
   const items = useMemo(() => {
-    const list = keys(RECOMMENDATIONS)
+    const list = CURATED_RECOMMENDATIONS
     const half = Math.ceil(list.length / 2)
 
-    return [list.splice(0, half), list.splice(-half)]
+    const firstColumn = list.splice(0, half)
+    const secondColumn = list.splice(-half)
+
+    return [firstColumn, secondColumn]
   }, [])
 
   return (
@@ -51,7 +55,7 @@ function SocialProof(): JSX.Element {
       <div
         css={`
           display: grid;
-          grid-auto-flow: row;
+          
           grid-gap: var(--grid-gap);
 
           margin-top: 4rem;
@@ -61,7 +65,7 @@ function SocialProof(): JSX.Element {
           }
 
           ${inclusiveUp('md')} {
-            grid-auto-flow: column;
+            grid-template-columns: 1fr 1fr;
           }
 
           ${inclusiveUp('lg')} {
@@ -77,7 +81,7 @@ function SocialProof(): JSX.Element {
               // Offset second column
               &:last-child {
                 ${inclusiveUp('md')} {
-                  padding-top: 17rem;
+                  padding-top: 10rem;
                 }
               }
             `}
@@ -90,38 +94,21 @@ function SocialProof(): JSX.Element {
                 grid-gap: var(--grid-gap);
               `}
             >
-              {itemChunk.map((key) => {
-                const {
-                  avatar,
-                  title,
-                  company,
-                  name,
-                  testimonial,
-                } = RECOMMENDATIONS[key]
-
+              {itemChunk.map((item, i) => {
                 return (
                   <QuoteCard
-                    key={key}
-                    quote={testimonial}
-                    company={company}
-                    title={title}
-                    name={name}
-                    avatar={avatar}
+                    key={i}
+                    quote={item.testimonial}
+                    company={item.company}
+                    title={item.title}
+                    name={item.name}
+                    avatar={item.avatar}
                   />
                 )
               })}
             </div>
           </div>
         ))}
-      </div>
-      <div
-        css={`
-          margin-top: 5rem;
-          display: flex;
-          justify-content: center;
-        `}
-      >
-        <Button>Load More Recommendations</Button>
       </div>
     </LayoutRow>
   )
