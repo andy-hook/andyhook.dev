@@ -177,7 +177,7 @@ const typeSettings: Record<TextStyleType, TypeSettings> = {
         }
       `,
       lg: css`
-        font-size: ${typeScale[7]};
+        font-size: ${typeScale[8]};
 
         ${inclusiveUp('xs')} {
           font-size: ${typeScale[8]};
