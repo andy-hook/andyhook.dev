@@ -1,7 +1,7 @@
 import React from 'react'
 import { inclusiveDown, inclusiveUp } from '../../style/responsive'
 import Button from '../Button/Button'
-import ExpList from '../ExpList/ExpList'
+import ExperienceList from '../ExperienceList/ExperienceList'
 import SocialProof from '../SocialProof/SocialProof'
 import TextHeading from '../Text/TextHeading'
 import TextParagraph from '../Text/TextParagraph'
@@ -82,7 +82,7 @@ function About(): JSX.Element {
         </div>
       </div>
 
-      <ExpList />
+      <ExperienceList />
       <SocialProof />
     </>
   )

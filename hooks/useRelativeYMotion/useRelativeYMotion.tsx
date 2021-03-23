@@ -9,8 +9,6 @@ import {
 function useRelativeYMotion(offsetValue: number): RelativeMotionProps {
   const enableRelativeYDistance = useBreakpoint(inclusiveDown('xl'))
 
-  console.log(enableRelativeYDistance)
-
   return useMemo(
     () => getRelativeMotionProps(Boolean(enableRelativeYDistance), offsetValue),
     [enableRelativeYDistance, offsetValue]

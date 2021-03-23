@@ -102,7 +102,12 @@ function ProjectTemplate({
                       variants={entranceMotionVariants}
                       transition={spring.snappy}
                     >
-                      <TextHeading size="lg" tag="h2" color="extraLow">
+                      <TextHeading
+                        size="lg"
+                        tag="h2"
+                        color="extraLow"
+                        lineHeight="flat"
+                      >
                         {project.subtitle}
                       </TextHeading>
                     </motion.div>
