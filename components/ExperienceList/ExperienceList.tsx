@@ -35,50 +35,60 @@ function ExperienceList(): JSX.Element {
           <div
             css={`
               --logo-size: 2.5rem;
-              --padding-y: 2.1rem;
+              --padding-y: 1.9rem;
+              --grid-template-columns: var(--logo-size) 1fr;
 
               display: grid;
-              grid-template-columns: 8rem var(--logo-size) 1fr 50%;
+              grid-template-columns: var(--logo-size) 1fr;
+              grid-template-rows: 1fr 1fr 2rem;
 
               background-color: ${theme.background('medium')};
               border-radius: ${theme.radius.base};
-
               box-shadow: ${theme.shadow.medium};
-
               padding-top: var(--padding-y);
               padding-bottom: var(--padding-y);
 
-              ${inclusiveDown('sm')} {
-                grid-template-columns: 6.5rem var(--logo-size) 1fr;
+              ${inclusiveDown('xxs')} {
+                padding-left: var(--padding-y);
+              }
+
+              ${inclusiveUp('xs')} {
+                grid-template-columns: 6rem var(--logo-size) 1fr;
                 grid-template-rows: 1fr 1fr;
               }
 
               ${inclusiveUp('sm')} {
-                --padding-y: 2.4rem;
+                grid-template-columns: 6rem var(--logo-size) 1fr 50%;
+                grid-template-rows: 1fr;
               }
 
               ${inclusiveUp('md')} {
-                --padding-y: 2rem;
+                grid-template-columns: 8rem var(--logo-size) 1fr 50%;
               }
             `}
           >
+            {/* Employment year */}
             <div
               css={`
                 display: flex;
 
-                padding-left: 2.1rem;
-                align-items: center;
+                padding-left: 1.25rem;
+                align-items: flex-end;
 
-                ${inclusiveDown('sm')} {
+                grid-column-start: 2;
+                grid-row-start: 3;
+
+                ${inclusiveUp('xs')} {
+                  align-items: center;
+                  padding-left: 2.25rem;
+                  grid-column-start: 1;
+                  grid-row-start: 1;
                   grid-row: span 2;
-                }
-
-                ${inclusiveUp('sm')} {
-                  padding-left: 2.4rem;
                 }
 
                 ${inclusiveUp('md')} {
                   padding-left: 2.75rem;
+                  grid-row: auto;
                 }
               `}
             >
@@ -93,56 +103,80 @@ function ExperienceList(): JSX.Element {
               </TextBase>
             </div>
 
+            {/* Logo mark */}
             <div
               css={`
                 display: flex;
                 align-items: center;
-                ${inclusiveDown('sm')} {
+                grid-column-start: 1;
+                grid-row: span 2;
+
+                ${inclusiveUp('xs')} {
                   grid-column-start: 2;
-                  grid-row: span 2;
+                }
+
+                ${inclusiveUp('sm')} {
+                  grid-column-start: auto;
+                  grid-row: auto;
                 }
               `}
             >
               <img
                 src={`images/${logoPath}`}
                 css={`
-                  width: 2.5rem;
-                  height: 2.5rem;
+                  width: var(--logo-size);
+                  height: var(--logo-size);
                 `}
               />
             </div>
 
+            {/* Company name */}
             <div
               css={`
                 display: flex;
                 align-items: center;
 
                 padding-left: 1.25rem;
+
+                grid-column-start: 2;
+                grid-row-start: 1;
+
+                ${inclusiveUp('xs')} {
+                  grid-column-start: 3;
+                  grid-row-start: 1;
+                }
+
+                ${inclusiveUp('sm')} {
+                  grid-column-start: auto;
+                  grid-row-start: auto;
+                }
               `}
             >
-              <TextHeading
-                size="xs"
-                lineHeight="tight"
-                css={`
-                  ${inclusiveDown('sm')} {
-                    grid-column-start: 3;
-                    grid-row-start: 1;
-                  }
-                `}
-              >
+              <TextHeading size="xs" lineHeight="tight">
                 {company}
               </TextHeading>
             </div>
 
+            {/* Job title */}
             <div
               css={`
-                display: flex;
-                align-items: center;
+                grid-column-start: 2;
+                grid-row-start: 2;
 
-                ${inclusiveDown('sm')} {
-                  padding-left: 1.25rem;
+                ${inclusiveUp('xs')} {
                   grid-column-start: 3;
                   grid-row-start: 2;
+                }
+
+                ${inclusiveDown('xs')} {
+                  padding-left: 1.25rem;
+                }
+
+                ${inclusiveUp('sm')} {
+                  display: flex;
+                  align-items: center;
+                  grid-column-start: auto;
+                  grid-row-start: auto;
                 }
               `}
             >
