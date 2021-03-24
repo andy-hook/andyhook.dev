@@ -12,14 +12,12 @@ function Panel({ children, ...props }: PanelProps): JSX.Element {
     <div
       css={`
         border-radius: ${theme.radius.base};
-        background-color: ${theme.background('medium')};
         box-shadow: ${theme.shadow.medium};
         background: linear-gradient(
           165deg,
           ${theme.background('extraHigh')} -5%,
           ${theme.background('medium')} 25%
         );
-        /* background-color: red; */
       `}
       {...props}
     >

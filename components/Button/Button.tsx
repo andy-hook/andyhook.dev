@@ -111,7 +111,7 @@ function Button({
                 <div
                   css={`
                     width: 1em;
-                    height: 1em;
+                    height: 100%;
                     font-size: 1.3em;
                   `}
                 >
