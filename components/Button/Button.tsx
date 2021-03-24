@@ -15,9 +15,16 @@ type ButtonProps = {
   newTab?: boolean
   children: React.ReactNode
   onClick?: () => void
+  icon?: React.ReactNode
 }
 
-function Button({ href, children, newTab, onClick }: ButtonProps): JSX.Element {
+function Button({
+  href,
+  children,
+  newTab,
+  onClick,
+  icon,
+}: ButtonProps): JSX.Element {
   const theme = useTheme()
 
   return (
@@ -41,7 +48,7 @@ function Button({ href, children, newTab, onClick }: ButtonProps): JSX.Element {
             opacity: 1,
           },
         }}
-        transition={spring.snappy}
+        transition={spring.tactile}
         css={`
           position: absolute;
           top: 0;
@@ -93,6 +100,36 @@ function Button({ href, children, newTab, onClick }: ButtonProps): JSX.Element {
               align-items: center;
             `}
           >
+            {icon && (
+              <div
+                css={`
+                  position: relative;
+                  margin-right: 0.6em;
+                  height: 1em;
+                `}
+              >
+                <div
+                  css={`
+                    width: 1em;
+                    height: 1em;
+                    font-size: 1.3em;
+                  `}
+                >
+                  <div
+                    css={`
+                      position: absolute;
+                      top: 50%;
+                      margin-top: -0.5em;
+                      left: -0.15em;
+                      color: ${theme.foreground('low')};
+                    `}
+                  >
+                    {icon}
+                  </div>
+                </div>
+              </div>
+            )}
+
             {children}
           </div>
         </div>
