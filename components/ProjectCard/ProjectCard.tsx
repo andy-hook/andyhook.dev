@@ -16,7 +16,7 @@ import TextHeading from '../Text/TextHeading'
 import TextParagraph from '../Text/TextParagraph'
 
 const IMAGE_SCALE_SIZE = 1.04
-const IMAGE_SCALE_TRANSITION = { type: 'spring', duration: 0.5, bounce: 0 }
+const IMAGE_SCALE_TRANSITION = spring.tactile
 
 export type ProjectCardProps = {
   imagePath: ImagePath

@@ -37,7 +37,7 @@ function Logo(): JSX.Element {
                   opacity: 1,
                 },
               }}
-              transition={spring.snappy}
+              transition={spring.tactile}
             >
               Andy Hook
             </motion.span>

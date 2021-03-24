@@ -6,6 +6,7 @@ import { useTheme } from '../../hooks/useTheme/useTheme'
 import { useRouter } from 'next/router'
 import { isExternalURL, noop } from '../../utils/general'
 import { Theme } from '../../style/theme'
+import { spring } from '../../style/motion'
 
 type InteractionBaseProps = {
   children: React.ReactNode
@@ -141,7 +142,7 @@ function InteractionBase({
             initial="initial"
             animate="focus"
             exit="exit"
-            transition={{ type: 'spring', duration: 0.4 }}
+            transition={spring.tactile}
             css={`
               display: block;
               position: absolute;
