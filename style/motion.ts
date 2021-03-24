@@ -17,4 +17,5 @@ export const spring = {
     stiffness: 200,
     damping: 30,
   },
+  tactile: { type: 'spring', duration: 0.4, bounce: 0.1 },
 }

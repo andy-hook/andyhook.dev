@@ -28,7 +28,7 @@ function LoadingIndicator(): JSX.Element {
   return (
     <motion.div
       key={router.pathname}
-      transition={{ type: 'spring', bounce: 0, duration: 0.4 }}
+      transition={spring.tactile}
       animate={{ opacity: hidden ? 0 : 1 }}
       css={`
         position: fixed;

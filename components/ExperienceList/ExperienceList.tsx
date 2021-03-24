@@ -1,7 +1,7 @@
 import React from 'react'
 import { ImagePath } from '../../data/images'
-import { useTheme } from '../../hooks/useTheme/useTheme'
 import { inclusiveDown, inclusiveUp } from '../../style/responsive'
+import Panel from '../Panel/Panel'
 import TextBase from '../Text/TextBase'
 import TextHeading from '../Text/TextHeading'
 
@@ -19,8 +19,6 @@ const ENTRIES: [string, ImagePath, string, string][] = [
 ]
 
 function ExperienceList(): JSX.Element {
-  const theme = useTheme()
-
   return (
     <ul>
       {ENTRIES.map(([year, logoPath, title, company], i) => (
@@ -32,7 +30,7 @@ function ExperienceList(): JSX.Element {
           `}
           key={i}
         >
-          <div
+          <Panel
             css={`
               --logo-size: 2.5rem;
               --padding-y: 1.9rem;
@@ -42,9 +40,6 @@ function ExperienceList(): JSX.Element {
               grid-template-columns: var(--logo-size) 1fr;
               grid-template-rows: 1fr 1fr 2rem;
 
-              background-color: ${theme.background('medium')};
-              border-radius: ${theme.radius.base};
-              box-shadow: ${theme.shadow.medium};
               padding-top: var(--padding-y);
               padding-bottom: var(--padding-y);
 
@@ -122,6 +117,7 @@ function ExperienceList(): JSX.Element {
               `}
             >
               <img
+                alt=""
                 src={`images/${logoPath}`}
                 css={`
                   width: var(--logo-size);
@@ -194,7 +190,7 @@ function ExperienceList(): JSX.Element {
                 {title}
               </TextBase>
             </div>
-          </div>
+          </Panel>
         </li>
       ))}
     </ul>

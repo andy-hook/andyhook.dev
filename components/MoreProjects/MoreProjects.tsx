@@ -47,7 +47,7 @@ function MoreProjects({ activeProjectName }: MoreProjectsProps): JSX.Element {
   }, [activeProjectName])
 
   return (
-    <LayoutShade borderTop borderBottom>
+    <LayoutShade borderTop>
       <LayoutRow>
         <LayoutGutter>
           <LayoutLimiter>

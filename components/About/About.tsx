@@ -2,6 +2,7 @@ import React from 'react'
 import { inclusiveDown, inclusiveUp } from '../../style/responsive'
 import Button from '../Button/Button'
 import ExperienceList from '../ExperienceList/ExperienceList'
+import Icon from '../Icon/Icon'
 import SocialProof from '../SocialProof/SocialProof'
 import TextHeading from '../Text/TextHeading'
 import TextParagraph from '../Text/TextParagraph'
@@ -76,8 +77,12 @@ function About(): JSX.Element {
             grid-area: c;
           `}
         >
-          <Button href="/andy-hook-brighton-senior-ui-engineer.pdf" newTab>
-            View my full Resume
+          <Button
+            icon={<Icon name="download" />}
+            href="/andy-hook-brighton-senior-ui-engineer.pdf"
+            newTab
+          >
+            Download my Resume
           </Button>
         </div>
       </div>
