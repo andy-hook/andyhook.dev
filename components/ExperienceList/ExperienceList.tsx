@@ -122,6 +122,7 @@ function ExperienceList(): JSX.Element {
               `}
             >
               <img
+                alt=""
                 src={`images/${logoPath}`}
                 css={`
                   width: var(--logo-size);
