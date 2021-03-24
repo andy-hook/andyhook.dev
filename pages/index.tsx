@@ -271,7 +271,7 @@ function Home(): JSX.Element {
           `}
         />
       </div>
-      <LayoutShade borderTop borderBottom>
+      <LayoutShade borderTop>
         <LayoutRow>
           <LayoutGutter>
             <LayoutLimiter>

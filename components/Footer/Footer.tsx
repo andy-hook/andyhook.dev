@@ -11,62 +11,65 @@ import GradientText from '../GradientText/GradientText'
 import TextHeading from '../Text/TextHeading'
 import TextBase from '../Text/TextBase'
 import { removeWidow } from '../../style/utils'
+import LayoutShade from '../Layout/LayoutShade'
 
 function Footer(): JSX.Element {
   return (
     <footer>
-      <LayoutGutter>
-        <LayoutLimiter>
-          <LayoutRow
-            css={`
-              display: flex;
-              flex-direction: column;
+      <LayoutShade borderTop>
+        <LayoutGutter>
+          <LayoutLimiter>
+            <LayoutRow
+              css={`
+                display: flex;
+                flex-direction: column;
 
-              ${inclusiveUp('md')} {
-                justify-content: space-between;
-                flex-direction: row;
-                align-items: flex-end;
-              }
-            `}
-          >
-            <div>
-              <TextBase lineHeight="flat" color="low">
-                Let’s build something awesome
-              </TextBase>
+                ${inclusiveUp('md')} {
+                  justify-content: space-between;
+                  flex-direction: row;
+                  align-items: flex-end;
+                }
+              `}
+            >
+              <div>
+                <TextBase lineHeight="flat" color="low">
+                  Let’s build something awesome
+                </TextBase>
 
-              <TextHeading
-                size="lg"
-                lineHeight="flat"
-                color="high"
-                tag="h2"
-                css={`
-                  margin-top: 0.6em;
+                <TextHeading
+                  size="lg"
+                  lineHeight="flat"
+                  color="high"
+                  tag="h2"
+                  css={`
+                    margin-top: 0.6em;
 
-                  ${inclusiveDown('sm')} {
-                    margin-bottom: 1.4em;
-                  }
-                `}
-              >
-                Start by{' '}
-                <InteractionBase
-                  offset={[0.2, 0.05]}
-                  href={`mailto:${meta.email}`}
+                    ${inclusiveDown('sm')} {
+                      margin-bottom: 1.4em;
+                    }
+                  `}
                 >
-                  <GradientText
-                    css={`
-                      ${setTextStyle('display', 'extraBold')}
-                    `}
+                  Start by{' '}
+                  <InteractionBase
+                    offset={[0.2, 0.05]}
+                    href={`mailto:${meta.email}`}
                   >
-                    {removeWidow('saying hello')}
-                  </GradientText>
-                </InteractionBase>
-              </TextHeading>
-            </div>
+                    <GradientText
+                      css={`
+                        ${setTextStyle('display', 'extraBold')}
+                      `}
+                    >
+                      {removeWidow('saying hello')}
+                    </GradientText>
+                  </InteractionBase>
+                </TextHeading>
+              </div>
 
-            <SocialIcons />
-          </LayoutRow>
-        </LayoutLimiter>
-      </LayoutGutter>
+              <SocialIcons />
+            </LayoutRow>
+          </LayoutLimiter>
+        </LayoutGutter>
+      </LayoutShade>
     </footer>
   )
 }
