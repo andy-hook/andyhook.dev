@@ -58,7 +58,8 @@ export const PROJECTS: Record<ProjectName, ProjectDetails> = {
       'Aragon is an open source software project built on Ethereum technology to empower the creation and management of decentralized organizations, the project empowers users to freely organize and collaborate without borders or intermediaries, creating global and bureaucracy-free organizations and communities.',
     previewImage: {
       imagePath: 'aragon-social-preview.jpg',
-      alt: 'Mockup of the Aragon upgrade website shown on a tablet device',
+      alt:
+        'A large array of Aragon user interface components arranged in an offset grid',
     },
     heroImage: {
       imagePath: 'aragon-hero.jpg',
@@ -99,7 +100,7 @@ export const PROJECTS: Record<ProjectName, ProjectDetails> = {
       'Bright was originally founded as a software development agency in 1999, but more recently has found success and traction by transitioning into a SaaS led, customer centric product company best known for delivering high-quality digital asset management software, exceptional customer support and expert training services.',
     previewImage: {
       imagePath: 'bright-social-preview.jpg',
-      alt: 'Mockup of the Dash management software shown on a laptop screen',
+      alt: 'Multiple tablet devices showing screens of the Dash product',
     },
     heroImage: {
       imagePath: 'bright-hero.jpg',
@@ -178,7 +179,8 @@ export const PROJECTS: Record<ProjectName, ProjectDetails> = {
       'Blocks is a minimal Ethereum explorer initially built for a technical assessment. After putting together the initial concept I decided to continue extending it as an excuse to try new techniques as well as further familiarise myself with decentralised applications. It features a block overview, transaction list, light / dark themes and shuffle function.',
     previewImage: {
       imagePath: 'blocks-social-preview.jpg',
-      alt: 'Mockup of the Blocks application shown on a tablet device',
+      alt:
+        'Multiple tablet devices showing screens from the Blocks application',
     },
     heroImage: {
       imagePath: 'blocks-hero.jpg',
