@@ -3,7 +3,7 @@ import { css, CSSProp } from 'styled-components'
 import { inclusiveUp } from './responsive'
 import { createTextCrop } from './utils'
 
-export type ResponsiveTextSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg'
+export type ResponsiveTextSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 export type TextStyleType = 'body' | 'display'
 export type LineHeightName = 'flat' | 'regular' | 'tight' | 'longform'
 export type TextWeight =
@@ -26,7 +26,7 @@ export const baseFontSize = 16
 
 /* Base scale
 ------------------------------------------------- */
-export const typeScale: Record<number, string> = {
+export const typeScale = {
   1: rem('12px'),
   2: rem('14px'),
   3: rem('16px'),
@@ -38,6 +38,7 @@ export const typeScale: Record<number, string> = {
   9: rem('48px'),
   10: rem('54px'),
   11: rem('64px'),
+  12: rem('70px'),
 }
 
 /* Settings - Useful for pairing typeface dimensions with the best display properties
@@ -104,6 +105,17 @@ const typeSettings: Record<TextStyleType, TypeSettings> = {
 
         ${inclusiveUp('md')} {
           font-size: ${typeScale[6]};
+        }
+      `,
+      xl: css`
+        font-size: ${typeScale[5]};
+
+        ${inclusiveUp('xs')} {
+          font-size: ${typeScale[6]};
+        }
+
+        ${inclusiveUp('md')} {
+          font-size: ${typeScale[7]};
         }
       `,
     },
@@ -193,6 +205,29 @@ const typeSettings: Record<TextStyleType, TypeSettings> = {
 
         ${inclusiveUp('xl')} {
           font-size: ${typeScale[11]};
+        }
+      `,
+      xl: css`
+        font-size: ${typeScale[8]};
+
+        ${inclusiveUp('xs')} {
+          font-size: ${typeScale[8]};
+        }
+
+        ${inclusiveUp('sm')} {
+          font-size: ${typeScale[9]};
+        }
+
+        ${inclusiveUp('md')} {
+          font-size: ${typeScale[10]};
+        }
+
+        ${inclusiveUp('lg')} {
+          font-size: ${typeScale[11]};
+        }
+
+        ${inclusiveUp('xl')} {
+          font-size: ${typeScale[12]};
         }
       `,
     },
