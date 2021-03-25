@@ -322,6 +322,7 @@ function Signature({ ...props }): JSX.Element {
         `}
       >
         <svg
+          role="presentation"
           viewBox={`0 0 ${width} ${height}`}
           css={`
             position: absolute;
@@ -348,7 +349,7 @@ function Signature({ ...props }): JSX.Element {
               y2="282.314"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stopColor={theme.background('high')} />
+              <stop stopColor={theme.background('extraHigh')} />
               <stop offset="1" stopColor={theme.background('low')} />
             </linearGradient>
           </defs>
