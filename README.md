@@ -1,34 +1,57 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# andyhook.dev
 
-## Getting Started
+Source code for my personal portfolio. Built with [Next.js](https://nextjs.org/), [Styled Components](https://styled-components.com/) and [Framer Motion](https://www.framer.com/api/motion/).
 
-First, run the development server:
+## Development
 
-```bash
-npm run dev
-# or
+To start development:
+
+```sh
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+By default this will spin up a local server on `localhost:3000`
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Image dimensions
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Static image dimensions are generated during a build step, either on each run of the dev server or for every production build. If you add, update or change any images you must run `yarn generate-image-sizes` or restart the dev server to get the latest dimensions and [ImagePath](https://github.com/andy-hook/andyhook.dev/blob/main/data/images.ts) typings.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Building
 
-## Learn More
+To build for Node environments:
 
-To learn more about Next.js, take a look at the following resources:
+```sh
+yarn build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+or for a [static export](https://nextjs.org/docs/advanced-features/static-html-export):
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```sh
+yarn build-static
+```
 
-## Deploy on Vercel
+## Testing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Run the tests:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```sh
+yarn test
+```
+
+## Type checking and linting
+
+Type checking and linting is handled by a single script:
+
+```sh
+yarn lint
+```
+
+## Formatting your code
+
+Prettier is supported but you'll need to add your own script if you wish to use the cli.
+
+I personally use [this vscode package](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) to format automatically within my editor.
+
+## License
+
+MIT, see [LICENSE](LICENSE).
