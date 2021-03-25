@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import {
   createTextCrop,
+  getRatioAsPercentage,
   loadingShimmerGradientFromColor,
   removeWidow,
 } from './utils'
@@ -58,5 +59,15 @@ describe('loadingShimmerGradientFromColor()', () => {
       gradientStopAlpha: 'rgba(51,51,51,0)',
       sourceColor: '#000',
     })
+  })
+})
+
+describe('getRatioAsPercentage()', () => {
+  it('should return correct percentage', () => {
+    expect(getRatioAsPercentage(100, 50)).toEqual('50%')
+    expect(getRatioAsPercentage(482025320, 543)).toEqual(
+      '0.00011264968404564308%'
+    )
+    expect(getRatioAsPercentage(433, 54343436)).toEqual('12550447.113163972%')
   })
 })

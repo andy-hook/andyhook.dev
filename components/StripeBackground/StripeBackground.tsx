@@ -18,12 +18,8 @@ function StripeBackground({
           r="349.35"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stopColor={background('extraHigh')} />
-          <stop
-            offset="1"
-            stopColor={background('extraHigh')}
-            stopOpacity="0"
-          />
+          <stop offset="0" stopColor={background('high')} />
+          <stop offset="1" stopColor={background('medium')} stopOpacity="0" />
         </radialGradient>
         <radialGradient
           id="b"

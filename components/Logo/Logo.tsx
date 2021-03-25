@@ -26,12 +26,13 @@ function Logo(): JSX.Element {
             href="/"
             css={`
               padding: 0.75em;
+              top: 0.1em;
             `}
           >
             <motion.span
               variants={{
                 rest: {
-                  opacity: 0.4,
+                  opacity: 0.8,
                 },
                 hover: {
                   opacity: 1,

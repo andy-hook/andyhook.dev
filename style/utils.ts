@@ -105,3 +105,21 @@ export function loadingShimmerGradientFromColor(
 
   return { gradientStop, gradientStopAlpha, sourceColor }
 }
+
+/**
+ * Get a percentage for creating padded aspect ratio containers.
+ *
+ * @param {number} height - Image height
+ * @param {number} width - Image width
+ * @return {string} Percentage string
+ *
+ * @example
+ *
+ *     getRatioAsPercentage(100, 50)
+ *     // 50%
+ */
+export function getRatioAsPercentage(height: number, width: number): string {
+  const percentage = (width / height) * 100
+
+  return `${percentage}%`
+}

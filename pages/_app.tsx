@@ -7,9 +7,9 @@ import MetaBrowser from '../components/Meta/MetaBrowser'
 import MetaIcons from '../components/Meta/MetaIcons'
 import { unregisterServiceWorker } from '../serviceWorker'
 import Footer from '../components/Footer/Footer'
-import Header from '../components/Header/Header'
 import LoadingIndicator from '../components/LoadingIndicator/LoadingIndicator'
 import { LoadPercentageProvider } from '../hooks/useLoadPercentage/useLoadPercentage'
+import TopBar from '../components/TopBar/TopBar'
 
 // Import fonts outside of styled-components to avoid flicker on state change
 import '../style/font.css'
@@ -46,14 +46,7 @@ function AppLayout({ children }: { children: React.ReactNode }): JSX.Element {
   return (
     <>
       <LoadingIndicator />
-      <Header
-        css={`
-          position: absolute;
-          top: 0;
-          left: 0;
-          z-index: ${theme.index.highest};
-        `}
-      />
+      <TopBar />
       <main
         css={`
           position: relative;
