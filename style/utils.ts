@@ -107,7 +107,7 @@ export function loadingShimmerGradientFromColor(
 }
 
 /**
- * Create percentage based ratio for creating padded aspect boxes.
+ * Get a percentage for creating padded aspect ratio containers.
  *
  * @param {number} height - Image height
  * @param {number} width - Image width
@@ -115,7 +115,7 @@ export function loadingShimmerGradientFromColor(
  *
  * @example
  *
- *     getRatioPercentage(100, 50)
+ *     getRatioAsPercentage(100, 50)
  *     // 50%
  */
 export function getRatioAsPercentage(height: number, width: number): string {
