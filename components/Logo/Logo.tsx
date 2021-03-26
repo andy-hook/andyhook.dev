@@ -1,8 +1,6 @@
 import React from 'react'
-import { motion } from 'framer-motion'
 import InteractionBase from '../InteractionBase/InteractionBase'
 import TextBase from '../Text/TextBase'
-import { spring } from '../../style/motion'
 
 function Logo(): JSX.Element {
   return (
@@ -11,40 +9,23 @@ function Logo(): JSX.Element {
         display: inline-flex;
       `}
     >
-      <motion.div initial="rest" whileHover="hover">
-        <TextBase
-          tag="h1"
-          size="sm"
-          weight="semiBold"
-          color="extraHigh"
-          lineHeight="flat"
-          css={`
-            margin: -0.75em;
-          `}
-        >
-          <InteractionBase
-            href="/"
+      <InteractionBase href="/" offset={[1, 0.5]}>
+        <TextBase tag="h1" size="sm" weight="semiBold" color="extraHigh">
+          <div
             css={`
-              padding: 0.75em;
-              top: 0.1em;
+              margin: -0.75em;
             `}
           >
-            <motion.span
-              variants={{
-                rest: {
-                  opacity: 0.8,
-                },
-                hover: {
-                  opacity: 1,
-                },
-              }}
-              transition={spring.tactile}
+            <div
+              css={`
+                padding: 0.75em;
+              `}
             >
               Andy Hook
-            </motion.span>
-          </InteractionBase>
+            </div>
+          </div>
         </TextBase>
-      </motion.div>
+      </InteractionBase>
     </div>
   )
 }

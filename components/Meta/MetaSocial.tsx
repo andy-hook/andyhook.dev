@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
-import meta from '../../data/meta'
 import { imageData, ImageProperties } from '../../data/images'
+import { META } from '../../data/meta'
 
 const DEFAULT_PREVIEW_IMAGE: ImageProperties = {
   imagePath: 'social-preview.png',
@@ -21,7 +21,7 @@ function MetaSocial({
 }: MetaSocialProps): JSX.Element {
   const pageTitle = `Andy Hook – ${title}`
 
-  const imageUrl = `${meta.url}/images/${previewImage.imagePath}`
+  const imageUrl = `${META.url}/images/${previewImage.imagePath}`
   const imageDimensions = imageData[previewImage.imagePath]
 
   return (
@@ -35,7 +35,7 @@ function MetaSocial({
       <title>{pageTitle}</title>
 
       {/* Opengraph */}
-      <meta property="og:url" content={meta.url} />
+      <meta property="og:url" content={META.url} />
       <meta property="og:locale" content="en_GB" />
       <meta property="og:image:type" content="image/png" />
       <meta property="og:description" content={description} />
@@ -48,8 +48,8 @@ function MetaSocial({
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:creator" content={`@${meta.social.twitter}`} />
-      <meta name="twitter:site" content={`@${meta.social.twitter}`} />
+      <meta name="twitter:creator" content={`@${META.socialAlias.twitter}`} />
+      <meta name="twitter:site" content={`@${META.socialAlias.twitter}`} />
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={imageUrl} />

@@ -12,7 +12,7 @@ import ProjectCard from '../components/ProjectCard/ProjectCard'
 import RemoveWidow from '../components/RemoveWidow/RemoveWidow'
 import StripeBackground from '../components/StripeBackground/StripeBackground'
 import TextHeading from '../components/Text/TextHeading'
-import meta from '../data/meta'
+import { META } from '../data/meta'
 import { PROJECTS, PROJECT_ORDER } from '../data/projects'
 import { useRelativeYMotion } from '../hooks/useRelativeYMotion/useRelativeYMotion'
 import { useTheme } from '../hooks/useTheme/useTheme'
@@ -148,7 +148,7 @@ function Home(): JSX.Element {
                       />
                     </TextHeading>
 
-                    <Button href={`mailto:${meta.email}`}>
+                    <Button href={`mailto:${META.email}`}>
                       <div
                         css={`
                           position: relative;
@@ -169,7 +169,7 @@ function Home(): JSX.Element {
                           `}
                         />
                       </div>
-                      Limited availability for 2021
+                      Limited availability
                     </Button>
                   </motion.div>
                 </div>

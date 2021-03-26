@@ -2,20 +2,12 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import Icon from '../Icon/Icon'
 import InteractionBase from '../InteractionBase/InteractionBase'
-import meta, { SocialNetworks } from '../../data/meta'
+import { META, SocialNetworkName, SOCIAL_NETWORK_INFO } from '../../data/meta'
 import { keys } from '../../utils/general'
 import { inclusiveUp } from '../../style/responsive'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { spring } from '../../style/motion'
 import AccessibleIcon from '../AccessibleIcon/AccessibleIcon'
-
-const socialInfo: Record<SocialNetworks, [SocialNetworks, string]> = {
-  twitter: ['twitter', 'https://twitter.com/'],
-  instagram: ['instagram', 'https://instagram.com/'],
-  linkedin: ['linkedin', 'https://www.linkedin.com/in/'],
-  dribbble: ['dribbble', 'https://dribbble.com/'],
-  github: ['github', 'https://github.com/'],
-}
 
 const iconPadding = '0.75em'
 
@@ -44,13 +36,12 @@ function SocialIcons({
       `}
       {...props}
     >
-      {keys(meta.social).map((key) => {
-        const [icon, url] = socialInfo[key]
-        const username = meta.social[key]
+      {keys(META.socialAlias).map((key) => {
+        const { icon, url } = SOCIAL_NETWORK_INFO[key]
 
         return (
           <li key={key}>
-            <SocialIcon icon={icon} href={`${url}${username}`} />
+            <SocialIcon icon={icon} href={url} />
           </li>
         )
       })}
@@ -63,7 +54,7 @@ function SocialIcon({
   href,
   ...props
 }: {
-  icon: SocialNetworks
+  icon: SocialNetworkName
   href: string
 }): JSX.Element {
   const theme = useTheme()
