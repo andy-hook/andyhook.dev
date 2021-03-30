@@ -27,6 +27,8 @@ function Button({
 }: ButtonProps): JSX.Element {
   const theme = useTheme()
 
+  const radius = theme.radius.pill
+
   return (
     <motion.div
       initial="rest"
@@ -35,7 +37,7 @@ function Button({
       css={`
         position: relative;
         display: inline-flex;
-        border-radius: ${theme.radius.pill};
+        border-radius: ${radius};
         box-shadow: ${theme.shadow.medium};
       `}
     >
@@ -56,7 +58,7 @@ function Button({
           bottom: 0;
           right: 0;
 
-          border-radius: ${theme.radius.pill};
+          border-radius: ${radius};
 
           background-color: ${theme.background('medium')};
 
@@ -86,7 +88,7 @@ function Button({
 
           color: ${theme.foreground('extraHigh')};
           padding: 1.2em 1.9em;
-          border-radius: ${theme.radius.pill};
+          border-radius: ${radius};
         `}
       >
         <div

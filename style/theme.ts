@@ -14,7 +14,7 @@ type ThemeCommon = {
   projectAccent: Record<ColourRange, ColorValue>
   positive: Record<ColourRange, ColorValue>
   breakpoints: BreakpointList
-  radius: Record<'base' | 'pill' | 'circle' | 'frame', string>
+  radius: Record<'base' | 'pill' | 'circle' | 'frame' | 'large', string>
   index: Record<'floor' | 'low' | 'medium' | 'high' | 'highest', number>
   borderWidth: Record<'regular' | 'thick', string>
   textShadow: Record<'subtle' | 'heavy', string>
@@ -65,8 +65,9 @@ const common: ThemeCommon = {
   },
   breakpoints: breakpoints,
   radius: {
-    base: 'clamp(12px, 1vw, 20px)',
+    base: '12px',
     frame: 'clamp(6px, 1vw, 12px)',
+    large: 'clamp(12px, 1vw, 20px)',
     pill: '50000px',
     circle: '50%',
   },

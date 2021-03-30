@@ -113,7 +113,7 @@ const ProjectImageGroupItem = ({
             css={`
               overflow: hidden;
               box-shadow: ${theme.shadow.low};
-              border-radius: ${theme.radius[framed ? 'frame' : 'base']};
+              border-radius: ${theme.radius[framed ? 'frame' : 'large']};
             `}
           >
             <ImageBase

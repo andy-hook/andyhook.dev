@@ -11,7 +11,7 @@ function Panel({ children, ...props }: PanelProps): JSX.Element {
   return (
     <div
       css={`
-        border-radius: ${theme.radius.base};
+        border-radius: ${theme.radius.large};
         box-shadow: ${theme.shadow.medium};
         background: linear-gradient(
           165deg,
