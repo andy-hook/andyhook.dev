@@ -11,7 +11,7 @@ type ColorValue = [number, number, number]
 
 type ThemeCommon = {
   accent: Record<ColourRange, ColorValue>
-  projectAccent: Record<ColourRange, ColorValue>
+  projectAccents: Record<ProjectName, ThemeCommon['accent']>
   positive: Record<ColourRange, ColorValue>
   breakpoints: BreakpointList
   radius: Record<'base' | 'pill' | 'circle' | 'frame' | 'large', string>
@@ -27,37 +27,34 @@ export type Theme = {
   shadow: Record<LimitedShadeRange, string>
 } & ThemeCommon
 
-const accents: Record<'default' | ProjectName, ThemeCommon['accent']> = {
-  default: {
+const common: ThemeCommon = {
+  accent: {
     light: [300, 0.98, 0.7],
     base: [266, 0.92, 0.55],
     dark: [267, 0.9, 0.33],
   },
-  aragon: {
-    light: [184, 0.99, 0.55],
-    base: [194, 1, 0.5],
-    dark: [194, 1, 0.425],
+  projectAccents: {
+    aragon: {
+      light: [184, 0.99, 0.55],
+      base: [194, 1, 0.5],
+      dark: [194, 1, 0.425],
+    },
+    bright: {
+      light: [285, 1, 0.4],
+      base: [267, 1, 0.6],
+      dark: [267, 0.9, 0.33],
+    },
+    blocks: {
+      light: [22, 0.63, 0.6],
+      base: [15, 0.68, 0.55],
+      dark: [11, 0.6, 0.45],
+    },
+    brandwatch: {
+      light: [300, 1, 1],
+      base: [300, 1, 0.1],
+      dark: [300, 1, 1],
+    },
   },
-  bright: {
-    light: [285, 1, 0.4],
-    base: [267, 1, 0.6],
-    dark: [267, 0.9, 0.33],
-  },
-  blocks: {
-    light: [22, 0.63, 0.6],
-    base: [15, 0.68, 0.55],
-    dark: [11, 0.6, 0.45],
-  },
-  brandwatch: {
-    light: [300, 1, 1],
-    base: [300, 1, 0.1],
-    dark: [300, 1, 1],
-  },
-}
-
-const common: ThemeCommon = {
-  accent: accents.default,
-  projectAccent: accents.default,
   positive: {
     base: [115, 0.64, 0.55],
     light: [115, 0.64, 0.65],
@@ -173,13 +170,6 @@ export const lightTheme: Theme = {
 export const themes = {
   light: lightTheme,
   dark: darkTheme,
-}
-
-export function getTheme(
-  themeName: ThemeName,
-  accentType: 'default' | ProjectName
-): Theme {
-  return { ...themes[themeName], projectAccent: accents[accentType] }
 }
 
 export function applyHsl(value: ColorValue, alpha?: number): string {

@@ -13,6 +13,7 @@ import TopBar from '../components/TopBar/TopBar'
 
 // Import fonts outside of styled-components to avoid flicker on state change
 import '../style/font.css'
+import { LocationStateProvider } from '../hooks/useLocationState/useLocationState'
 
 function App({ Component, pageProps }: AppProps): JSX.Element {
   // Remove any previously installed service worker
@@ -26,15 +27,17 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
       <MetaBrowser />
       <MetaIcons />
       <FocusVisibleProvider>
-        <ThemeProvider>
-          <LoadPercentageProvider>
-            <GlobalStyle />
+        <LocationStateProvider>
+          <ThemeProvider>
+            <LoadPercentageProvider>
+              <GlobalStyle />
 
-            <AppLayout>
-              <Component {...pageProps} />
-            </AppLayout>
-          </LoadPercentageProvider>
-        </ThemeProvider>
+              <AppLayout>
+                <Component {...pageProps} />
+              </AppLayout>
+            </LoadPercentageProvider>
+          </ThemeProvider>
+        </LocationStateProvider>
       </FocusVisibleProvider>
     </>
   )

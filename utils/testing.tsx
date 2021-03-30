@@ -4,6 +4,7 @@ import { ThemeName } from '../style/theme'
 import { FocusVisibleProvider } from '../hooks/useFocusVisible/useFocusVisible'
 import { ThemeProvider } from '../hooks/useTheme/useTheme'
 import { LoadPercentageProvider } from '../hooks/useLoadPercentage/useLoadPercentage'
+import { LocationStateProvider } from '../hooks/useLocationState/useLocationState'
 
 type ComponentProps = {
   children?: React.ReactNode
@@ -21,7 +22,9 @@ function RenderProviders({
   return (
     <FocusVisibleProvider>
       <LoadPercentageProvider>
-        <ThemeProvider theme={theme}>{children}</ThemeProvider>
+        <LocationStateProvider>
+          <ThemeProvider theme={theme}>{children}</ThemeProvider>
+        </LocationStateProvider>
       </LoadPercentageProvider>
     </FocusVisibleProvider>
   )
