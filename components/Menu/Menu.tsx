@@ -25,7 +25,7 @@ function Menu(): JSX.Element {
         background: linear-gradient(
           -45deg,
           ${theme.background('low')} 0%,
-          ${theme.background('medium')} 100%
+          ${theme.background('medium')} 90%
         );
 
         border-radius: ${theme.radius.base};
@@ -44,7 +44,7 @@ function Menu(): JSX.Element {
           `}
         >
           {PROJECT_ORDER.map((key) => {
-            const { title, route } = PROJECTS[key]
+            const { title, route, disabled } = PROJECTS[key]
 
             return (
               <li
@@ -52,11 +52,15 @@ function Menu(): JSX.Element {
                 css={`
                   ${setTextStyle('display', 'bold')}
                   padding-left: 0.2em;
-                  color: ${theme.foreground('extraHigh')};
+                  color: ${theme.foreground(
+                    disabled ? 'extraLow' : 'extraHigh'
+                  )};
+                  opacity: ${disabled ? 0.6 : 1};
                 `}
               >
                 <InteractionBase
                   href={route}
+                  disabled={disabled}
                   offset={[0.9, 0.3]}
                   css={`
                     display: flex;
@@ -67,7 +71,13 @@ function Menu(): JSX.Element {
                     padding-top: 0.3em;
                   `}
                 >
-                  <Pip />
+                  <Pip
+                    backgroundColor={
+                      disabled
+                        ? theme.foreground('extraLow')
+                        : theme.projectAccent(key, 'base')
+                    }
+                  />
                   <span
                     css={`
                       margin-left: 0.75em;

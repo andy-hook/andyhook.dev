@@ -6,13 +6,15 @@ export type ThemeName = 'light' | 'dark'
 
 type LimitedShadeRange = 'low' | 'medium' | 'high'
 export type FullShadeRange = LimitedShadeRange | 'extraLow' | 'extraHigh'
-type ColourRange = 'base' | 'light' | 'dark'
+export type ProjectAccentName = ProjectName
+export type AccentShade = 'base' | 'light' | 'dark'
+type AccentName = ProjectAccentName | 'default'
 type ColorValue = [number, number, number]
+type ColorRange = Record<AccentShade, ColorValue>
 
 type ThemeCommon = {
-  accent: Record<ColourRange, ColorValue>
-  projectAccents: Record<ProjectName, ThemeCommon['accent']>
-  positive: Record<ColourRange, ColorValue>
+  accent: Record<AccentName, ColorRange>
+  positive: ColorRange
   breakpoints: BreakpointList
   radius: Record<'base' | 'pill' | 'circle' | 'frame' | 'large', string>
   index: Record<'floor' | 'low' | 'medium' | 'high' | 'highest', number>
@@ -29,11 +31,11 @@ export type Theme = {
 
 const common: ThemeCommon = {
   accent: {
-    light: [300, 0.98, 0.7],
-    base: [266, 0.92, 0.55],
-    dark: [267, 0.9, 0.33],
-  },
-  projectAccents: {
+    default: {
+      light: [300, 0.98, 0.7],
+      base: [266, 0.92, 0.55],
+      dark: [267, 0.9, 0.33],
+    },
     aragon: {
       light: [184, 0.99, 0.55],
       base: [194, 1, 0.5],

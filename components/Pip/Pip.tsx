@@ -1,21 +1,24 @@
 import React from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 
-function Pip(): JSX.Element {
+type PipProps = {
+  backgroundColor?: string
+}
+
+function Pip({ backgroundColor }: PipProps): JSX.Element {
   const theme = useTheme()
+
+  const backgroundColorWithDefault = backgroundColor ?? theme.accent('light')
 
   return (
     <span
       css={`
+        position: relative;
         display: block;
-        font-size: 0.5rem;
+        font-size: 7px;
         width: 1em;
         height: 1em;
-        background: linear-gradient(
-          135deg,
-          ${theme.accent('light')} 0%,
-          ${theme.accent('base')} 100%
-        );
+        background-color: ${backgroundColorWithDefault};
         border-radius: ${theme.radius.circle};
       `}
     />

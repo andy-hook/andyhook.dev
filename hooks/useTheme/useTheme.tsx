@@ -3,7 +3,14 @@ import {
   ThemeProvider as StyledThemeProvider,
   useTheme as styledUseTheme,
 } from 'styled-components'
-import { applyHsl, Theme, ThemeName, themes } from '../../style/theme'
+import {
+  applyHsl,
+  Theme,
+  ThemeName,
+  themes,
+  ProjectAccentName,
+  AccentShade,
+} from '../../style/theme'
 import { useLocationState } from '../useLocationState/useLocationState'
 
 function ThemeProvider({
@@ -21,11 +28,11 @@ function ThemeProvider({
 type ThemeMethods = {
   foreground: (value: keyof Theme['foreground'], alpha?: number) => string
   background: (value: keyof Theme['background'], alpha?: number) => string
-  accent: (value: keyof Theme['accent'], alpha?: number) => string
-  currentProjectAccent: (value: keyof Theme['accent'], alpha?: number) => string
+  accent: (value: AccentShade, alpha?: number) => string
+  currentProjectAccent: (value: AccentShade, alpha?: number) => string
   projectAccent: (
-    projectName: keyof Theme['projectAccents'],
-    value: keyof Theme['accent'],
+    projectName: ProjectAccentName,
+    value: AccentShade,
     alpha?: number
   ) => string
   positive: (value: keyof Theme['positive'], alpha?: number) => string
@@ -49,23 +56,23 @@ function useTheme(): ThemeMethods {
   )
 
   const accent: ThemeMethods['accent'] = useCallback(
-    (value, alpha): string => applyHsl(theme.accent[value], alpha),
+    (value, alpha): string => applyHsl(theme.accent.default[value], alpha),
     [theme]
   )
 
   const currentProjectAccent: ThemeMethods['currentProjectAccent'] = useCallback(
     (value, alpha): string => {
-      const accent = currentProjectName
-        ? theme.projectAccents[currentProjectName]
-        : theme.accent
-      return applyHsl(accent[value], alpha)
+      const projectAccent = currentProjectName
+        ? theme.accent[currentProjectName]
+        : theme.accent.default
+      return applyHsl(projectAccent[value], alpha)
     },
     [theme, currentProjectName]
   )
 
   const projectAccent: ThemeMethods['projectAccent'] = useCallback(
     (projectName, value, alpha): string =>
-      applyHsl(theme.projectAccents[projectName][value], alpha),
+      applyHsl(theme.accent[projectName][value], alpha),
     [theme]
   )
 
