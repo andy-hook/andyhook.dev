@@ -5,6 +5,7 @@ import { PROJECTS, PROJECT_ORDER } from '../../data/projects'
 import { useLocationState } from '../../hooks/useLocationState/useLocationState'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { spring } from '../../style/motion'
+import { inclusiveUp } from '../../style/responsive'
 import {
   setCropAndLineHeight,
   setResponsiveTextSize,
@@ -41,8 +42,6 @@ function MenuPanel(): JSX.Element {
         position: relative;
         z-index: ${theme.index.floor};
         grid-auto-flow: row;
-        grid-gap: 50px;
-        padding-top: 5rem;
 
         background: linear-gradient(
           -45deg,
@@ -54,7 +53,26 @@ function MenuPanel(): JSX.Element {
         border: ${theme.borderWidth.regular} solid
           ${theme.background('extraHigh')};
         box-shadow: ${theme.shadow.high};
-        min-width: 28rem;
+
+        width: calc(100vw - 3.25rem);
+        padding-top: 3.5rem;
+        grid-gap: 2.5rem;
+
+        ${inclusiveUp('xxs')} {
+          width: 24rem;
+        }
+
+        ${inclusiveUp('sm')} {
+          padding-top: 4.25rem;
+          width: 26rem;
+          grid-gap: 2.75rem;
+        }
+
+        ${inclusiveUp('lg')} {
+          padding-top: 5rem;
+          width: 29rem;
+          grid-gap: 3.1rem;
+        }
       `}
     >
       <MenuNavSet heading="Projects">
@@ -69,7 +87,8 @@ function MenuPanel(): JSX.Element {
           {projectListItems.map((projectItem) => {
             const { disabled, route, title } = projectItem.details
 
-            const active = projectItem.active || noActiveItemsInList
+            const highlight = projectItem.active || noActiveItemsInList
+            const disableInteraction = highlight && !noActiveItemsInList
 
             return (
               <li
@@ -78,7 +97,7 @@ function MenuPanel(): JSX.Element {
                   ${setTextStyle('display', 'bold')}
 
                   color: ${theme.foreground(
-                    disabled ? 'extraLow' : active ? 'extraHigh' : 'extraLow'
+                    disabled ? 'extraLow' : highlight ? 'extraHigh' : 'extraLow'
                   )};
                   opacity: ${disabled ? 0.3 : 1};
                 `}
@@ -88,11 +107,12 @@ function MenuPanel(): JSX.Element {
                   disabled={disabled}
                   offset={[0.9, 0.3]}
                   css={`
+                    cursor: ${disableInteraction ? 'default' : 'pointer'};
                     width: 100%;
                   `}
                 >
                   <MenuItemHoverInteraction
-                    disabled={disabled}
+                    disabled={disableInteraction || disabled}
                     css={`
                       padding-bottom: 0.45em;
                       padding-top: 0.45em;
@@ -119,7 +139,7 @@ function MenuPanel(): JSX.Element {
                           left: 0.3em;
                           top: 50%;
                           transform: translateY(-50%);
-                          opacity: ${!disabled && active ? 1 : 0.5};
+                          opacity: ${!disabled && highlight ? 1 : 0.5};
                         `}
                       >
                         <Pip
@@ -309,7 +329,15 @@ function MenuPadSection({
   return (
     <div
       css={`
-        padding-left: 3rem;
+        padding-left: 2rem;
+
+        ${inclusiveUp('sm')} {
+          padding-left: 2.75rem;
+        }
+
+        ${inclusiveUp('lg')} {
+          padding-left: 3.1rem;
+        }
       `}
       {...props}
     >
