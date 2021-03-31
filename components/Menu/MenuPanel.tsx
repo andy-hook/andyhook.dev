@@ -124,7 +124,7 @@ function MenuPanel(): JSX.Element {
                           position: absolute;
                           left: 0;
                           top: 50%;
-                          transform: translate(0.1em, -40%);
+                          transform: translate(0.1em, -50%);
                           font-size: 0.7em;
                         `}
                       >
