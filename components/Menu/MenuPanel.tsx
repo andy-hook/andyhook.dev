@@ -105,10 +105,10 @@ function MenuPanel(): JSX.Element {
                 <InteractionBase
                   href={route}
                   disabled={disabled}
-                  offset={[0.9, 0.3]}
+                  offset={[0.7, 0.2]}
                   css={`
+                    display: block;
                     cursor: ${disableInteraction ? 'default' : 'pointer'};
-                    width: 100%;
                   `}
                 >
                   <MenuItemHoverInteraction
@@ -193,7 +193,7 @@ function MenuPanel(): JSX.Element {
                   href={url}
                   offset={[0.9, 0.3]}
                   css={`
-                    width: 100%;
+                    display: block;
                   `}
                 >
                   <MenuItemHoverInteraction
@@ -330,13 +330,16 @@ function MenuPadSection({
     <div
       css={`
         padding-left: 2rem;
+        padding-right: 2rem;
 
         ${inclusiveUp('sm')} {
           padding-left: 2.75rem;
+          padding-right: 2.75rem;
         }
 
         ${inclusiveUp('lg')} {
           padding-left: 3.1rem;
+          padding-right: 2.75rem;
         }
       `}
       {...props}
