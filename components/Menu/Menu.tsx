@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import React, { useCallback, useState } from 'react'
+import { DetectOutsideClick } from '../../hooks/useDetectOutsideClick/useDetectOutsideClick'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { spring } from '../../style/motion'
 import MenuPanel from './MenuPanel'
@@ -7,15 +8,19 @@ import MenuTrigger from './MenuTrigger'
 
 function Menu(): JSX.Element {
   const theme = useTheme()
-
   const [open, setOpen] = useState(false)
 
   const handleMenuToggle = useCallback(() => {
     setOpen((prevValue) => !prevValue)
   }, [])
 
+  const handleMenuClose = useCallback(() => {
+    setOpen(false)
+  }, [])
+
   return (
-    <div
+    <DetectOutsideClick
+      onOutsideClick={handleMenuClose}
       css={`
         position: relative;
       `}
@@ -87,7 +92,7 @@ function Menu(): JSX.Element {
           border-radius: ${theme.radius.base};
         `}
       />
-    </div>
+    </DetectOutsideClick>
   )
 }
 
