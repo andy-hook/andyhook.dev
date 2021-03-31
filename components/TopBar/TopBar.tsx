@@ -79,16 +79,8 @@ function TopBar(): JSX.Element {
         >
           <Logo />
         </div>
-        <div
-          css={`
-            display: flex;
-            align-items: center;
 
-            height: 100%;
-          `}
-        >
-          <Menu />
-        </div>
+        <Menu />
       </motion.header>
     </div>
   )

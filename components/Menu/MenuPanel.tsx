@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import React, { useMemo } from 'react'
+import { IconName } from '../../data/icons'
 import { META, SOCIAL_NETWORK_INFO } from '../../data/meta'
 import { PROJECTS, PROJECT_ORDER } from '../../data/projects'
 import { useLocationState } from '../../hooks/useLocationState/useLocationState'
@@ -97,7 +98,7 @@ function MenuPanel(): JSX.Element {
                   ${setTextStyle('display', 'bold')}
 
                   color: ${theme.foreground(
-                    disabled ? 'extraLow' : highlight ? 'extraHigh' : 'extraLow'
+                    disabled || !highlight ? 'extraLow' : 'extraHigh'
                   )};
                   opacity: ${disabled ? 0.3 : 1};
                 `}
@@ -112,6 +113,7 @@ function MenuPanel(): JSX.Element {
                   `}
                 >
                   <MenuItemHoverInteraction
+                    icon="arrowRight"
                     disabled={disableInteraction || disabled}
                     css={`
                       padding-bottom: 0.45em;
@@ -197,6 +199,7 @@ function MenuPanel(): JSX.Element {
                   `}
                 >
                   <MenuItemHoverInteraction
+                    icon="external"
                     css={`
                       padding-bottom: 0.4em;
                       padding-top: 0.4em;
@@ -234,34 +237,29 @@ function MenuPanel(): JSX.Element {
           offset={[1.25, 0.5]}
           css={`
             display: block;
+            padding-top: 0.5em;
+            padding-bottom: 0.5em;
           `}
         >
-          <MenuItemHoverInteraction
+          <TextBase
+            size="xs"
+            weight="medium"
+            color="high"
             css={`
-              padding-top: 0.5em;
-              padding-bottom: 0.5em;
+              display: flex;
+              align-items: center;
             `}
           >
-            <TextBase
-              size="xs"
-              weight="medium"
-              color="high"
+            <Pip />
+
+            <span
               css={`
-                display: flex;
-                align-items: center;
+                margin-left: 1em;
               `}
             >
-              <Pip />
-
-              <span
-                css={`
-                  margin-left: 1em;
-                `}
-              >
-                Limited availability
-              </span>
-            </TextBase>
-          </MenuItemHoverInteraction>
+              Limited availability
+            </span>
+          </TextBase>
         </InteractionBase>
       </MenuPadSection>
     </div>
@@ -271,9 +269,11 @@ function MenuPanel(): JSX.Element {
 function MenuItemHoverInteraction({
   disabled,
   children,
+  icon,
   ...props
 }: {
   disabled?: boolean
+  icon: IconName
   children: React.ReactNode
 }): JSX.Element {
   const theme = useTheme()
@@ -310,9 +310,9 @@ function MenuItemHoverInteraction({
               },
               hover: { opacity: 1, transform: 'translateX(0%)' },
             }}
-            transition={spring.tactile}
+            transition={spring.punchy}
           >
-            <Icon name="arrowRight" />
+            <Icon name={icon} />
           </motion.div>
         </span>
       )}

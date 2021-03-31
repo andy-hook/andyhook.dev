@@ -26,17 +26,12 @@ function Menu(): JSX.Element {
       `}
     >
       <motion.div
-        initial="closed"
-        animate={open ? 'open' : 'closed'}
-        variants={{
-          open: {
-            transform: 'translate(-10%, 26%)',
-          },
-          closed: {
-            transform: 'translate(0%, 0%)',
-          },
+        animate={{
+          transform: `translate(${open ? '-10%' : '0%'}, ${
+            open ? '26%' : '0%'
+          })`,
         }}
-        transition={spring.tactile}
+        transition={spring.punchy}
         css={`
           position: relative;
           z-index: ${theme.index.medium};
@@ -61,7 +56,7 @@ function Menu(): JSX.Element {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            transition={spring.tactile}
+            transition={spring.punchy}
             css={`
               transform-origin: top right;
               position: absolute;

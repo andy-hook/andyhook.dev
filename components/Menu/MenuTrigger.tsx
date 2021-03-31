@@ -17,7 +17,7 @@ function getLineMotionVariant(direction: -1 | 1) {
         }deg)`,
       },
     },
-    transition: spring.tactile,
+    transition: spring.punchy,
   }
 }
 
