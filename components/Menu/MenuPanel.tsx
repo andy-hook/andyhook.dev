@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { META, SOCIAL_NETWORK_INFO } from '../../data/meta'
 import { PROJECTS, PROJECT_ORDER } from '../../data/projects'
+import { useLocationState } from '../../hooks/useLocationState/useLocationState'
 import { useTheme } from '../../hooks/useTheme/useTheme'
 import { setResponsiveTextSize, setTextStyle } from '../../style/typography'
 import { keys } from '../../utils/general'
+import AccessibleIcon from '../AccessibleIcon/AccessibleIcon'
 import Icon from '../Icon/Icon'
 import InteractionBase from '../InteractionBase/InteractionBase'
 import Pip from '../Pip/Pip'
@@ -11,6 +13,20 @@ import TextBase from '../Text/TextBase'
 
 function MenuPanel(): JSX.Element {
   const theme = useTheme()
+  const { currentProjectName } = useLocationState()
+
+  const { projectListItems, noActiveItemsInList } = useMemo(() => {
+    const projectListItems = PROJECT_ORDER.map((key) => ({
+      key,
+      accent: theme.projectAccent(key, 'base'),
+      active: key === currentProjectName,
+      details: PROJECTS[key],
+    }))
+
+    const noActiveItemsInList = !projectListItems.find(({ active }) => active)
+
+    return { projectListItems, noActiveItemsInList }
+  }, [currentProjectName, theme])
 
   return (
     <div
@@ -44,19 +60,21 @@ function MenuPanel(): JSX.Element {
             margin-bottom: -0.3em;
           `}
         >
-          {PROJECT_ORDER.map((key) => {
-            const { title, route, disabled } = PROJECTS[key]
+          {projectListItems.map((projectItem) => {
+            const { disabled, route, title } = projectItem.details
+
+            const active = projectItem.active || noActiveItemsInList
 
             return (
               <li
-                key={key}
+                key={projectItem.key}
                 css={`
                   ${setTextStyle('display', 'bold')}
-                  padding-left: 0.2em;
+
                   color: ${theme.foreground(
-                    disabled ? 'extraLow' : 'extraHigh'
+                    disabled ? 'extraLow' : active ? 'extraHigh' : 'extraLow'
                   )};
-                  opacity: ${disabled ? 0.6 : 1};
+                  opacity: ${disabled ? 0.3 : 1};
                 `}
               >
                 <InteractionBase
@@ -64,6 +82,7 @@ function MenuPanel(): JSX.Element {
                   disabled={disabled}
                   offset={[0.9, 0.3]}
                   css={`
+                    position: relative;
                     display: flex;
                     align-items: center;
                     width: 100%;
@@ -72,16 +91,44 @@ function MenuPanel(): JSX.Element {
                     padding-top: 0.3em;
                   `}
                 >
-                  <Pip
-                    backgroundColor={
-                      disabled
-                        ? theme.foreground('extraLow')
-                        : theme.projectAccent(key, 'base')
-                    }
-                  />
+                  {disabled ? (
+                    <div
+                      css={`
+                        position: absolute;
+                        left: 0;
+                        top: 50%;
+                        transform: translate(0.1em, -40%);
+                        font-size: 0.7em;
+                      `}
+                    >
+                      <AccessibleIcon label="Coming soon">
+                        <Icon name="lock" />
+                      </AccessibleIcon>
+                    </div>
+                  ) : (
+                    <div
+                      css={`
+                        position: absolute;
+                        left: 0.3em;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        opacity: ${!disabled && active ? 1 : 0.5};
+                      `}
+                    >
+                      <Pip
+                        backgroundColor={
+                          disabled
+                            ? theme.foreground('extraLow')
+                            : theme.projectAccent(projectItem.key, 'base')
+                        }
+                      />
+                    </div>
+                  )}
+
                   <span
                     css={`
-                      margin-left: 0.75em;
+                      display: flex;
+                      padding-left: 1.4em;
                     `}
                   >
                     {title}
@@ -131,7 +178,7 @@ function MenuPanel(): JSX.Element {
                     css={`
                       color: ${theme.foreground('extraLow')};
                       font-size: 1.2em;
-                      margin-right: 0.75em;
+                      margin-right: 0.6em;
                     `}
                   />
                   <div>{title}</div>
