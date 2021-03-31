@@ -1,9 +1,15 @@
+import { motion } from 'framer-motion'
 import React, { useMemo } from 'react'
 import { META, SOCIAL_NETWORK_INFO } from '../../data/meta'
 import { PROJECTS, PROJECT_ORDER } from '../../data/projects'
 import { useLocationState } from '../../hooks/useLocationState/useLocationState'
 import { useTheme } from '../../hooks/useTheme/useTheme'
-import { setResponsiveTextSize, setTextStyle } from '../../style/typography'
+import { spring } from '../../style/motion'
+import {
+  setCropAndLineHeight,
+  setResponsiveTextSize,
+  setTextStyle,
+} from '../../style/typography'
 import { keys } from '../../utils/general'
 import AccessibleIcon from '../AccessibleIcon/AccessibleIcon'
 import Icon from '../Icon/Icon'
@@ -82,57 +88,59 @@ function MenuPanel(): JSX.Element {
                   disabled={disabled}
                   offset={[0.9, 0.3]}
                   css={`
-                    position: relative;
-                    display: flex;
-                    align-items: center;
                     width: 100%;
-
-                    padding-bottom: 0.3em;
-                    padding-top: 0.3em;
                   `}
                 >
-                  {disabled ? (
-                    <div
-                      css={`
-                        position: absolute;
-                        left: 0;
-                        top: 50%;
-                        transform: translate(0.1em, -40%);
-                        font-size: 0.7em;
-                      `}
-                    >
-                      <AccessibleIcon label="Coming soon">
-                        <Icon name="lock" />
-                      </AccessibleIcon>
-                    </div>
-                  ) : (
-                    <div
-                      css={`
-                        position: absolute;
-                        left: 0.3em;
-                        top: 50%;
-                        transform: translateY(-50%);
-                        opacity: ${!disabled && active ? 1 : 0.5};
-                      `}
-                    >
-                      <Pip
-                        backgroundColor={
-                          disabled
-                            ? theme.foreground('extraLow')
-                            : theme.projectAccent(projectItem.key, 'base')
-                        }
-                      />
-                    </div>
-                  )}
-
-                  <span
+                  <MenuItemHoverInteraction
+                    disabled={disabled}
                     css={`
-                      display: flex;
-                      padding-left: 1.4em;
+                      padding-bottom: 0.45em;
+                      padding-top: 0.45em;
                     `}
                   >
-                    {title}
-                  </span>
+                    {disabled ? (
+                      <div
+                        css={`
+                          position: absolute;
+                          left: 0;
+                          top: 50%;
+                          transform: translate(0.1em, -40%);
+                          font-size: 0.7em;
+                        `}
+                      >
+                        <AccessibleIcon label="Coming soon">
+                          <Icon name="lock" />
+                        </AccessibleIcon>
+                      </div>
+                    ) : (
+                      <div
+                        css={`
+                          position: absolute;
+                          left: 0.3em;
+                          top: 50%;
+                          transform: translateY(-50%);
+                          opacity: ${!disabled && active ? 1 : 0.5};
+                        `}
+                      >
+                        <Pip
+                          backgroundColor={
+                            disabled
+                              ? theme.foreground('extraLow')
+                              : theme.projectAccent(projectItem.key, 'base')
+                          }
+                        />
+                      </div>
+                    )}
+                    <span
+                      css={`
+                        ${setCropAndLineHeight('display', 'flat')}
+
+                        padding-left: 1.4em;
+                      `}
+                    >
+                      {title}
+                    </span>
+                  </MenuItemHoverInteraction>
                 </InteractionBase>
               </li>
             )
@@ -165,23 +173,26 @@ function MenuPanel(): JSX.Element {
                   href={url}
                   offset={[0.9, 0.3]}
                   css={`
-                    display: flex;
-                    align-items: center;
                     width: 100%;
-
-                    padding-bottom: 0.4em;
-                    padding-top: 0.4em;
                   `}
                 >
-                  <Icon
-                    name={icon}
+                  <MenuItemHoverInteraction
                     css={`
-                      color: ${theme.foreground('extraLow')};
-                      font-size: 1.2em;
-                      margin-right: 0.6em;
+                      padding-bottom: 0.4em;
+                      padding-top: 0.4em;
                     `}
-                  />
-                  <div>{title}</div>
+                  >
+                    <Icon
+                      name={icon}
+                      css={`
+                        color: ${theme.foreground('extraLow')};
+                        font-size: 1.2em;
+                        margin-right: 0.6em;
+                        opacity: 0.75;
+                      `}
+                    />
+                    {title}
+                  </MenuItemHoverInteraction>
                 </InteractionBase>
               </li>
             )
@@ -205,30 +216,87 @@ function MenuPanel(): JSX.Element {
             display: block;
           `}
         >
-          <TextBase
-            size="xs"
-            weight="medium"
-            color="high"
+          <MenuItemHoverInteraction
             css={`
-              display: flex;
-              align-items: center;
               padding-top: 0.5em;
               padding-bottom: 0.5em;
             `}
           >
-            <Pip />
-
-            <span
+            <TextBase
+              size="xs"
+              weight="medium"
+              color="high"
               css={`
-                margin-left: 1em;
+                display: flex;
+                align-items: center;
               `}
             >
-              Limited availability in 2021
-            </span>
-          </TextBase>
+              <Pip />
+
+              <span
+                css={`
+                  margin-left: 1em;
+                `}
+              >
+                Limited availability in 2021
+              </span>
+            </TextBase>
+          </MenuItemHoverInteraction>
         </InteractionBase>
       </MenuPadSection>
     </div>
+  )
+}
+
+function MenuItemHoverInteraction({
+  disabled,
+  children,
+  ...props
+}: {
+  disabled?: boolean
+  children: React.ReactNode
+}): JSX.Element {
+  const theme = useTheme()
+
+  return (
+    <motion.div
+      whileHover="hover"
+      initial="rest"
+      animate="rest"
+      css={`
+        position: relative;
+        display: flex;
+        align-items: center;
+      `}
+      {...props}
+    >
+      {children}
+      {!disabled && (
+        <span
+          css={`
+            position: relative;
+            top: 0.1em;
+            font-size: 0.8em;
+            margin-left: 0.4em;
+            overflow: hidden;
+            color: ${theme.foreground('extraLow')};
+          `}
+        >
+          <motion.div
+            variants={{
+              rest: {
+                opacity: 0,
+                transform: 'translateX(-50%)',
+              },
+              hover: { opacity: 1, transform: 'translateX(0%)' },
+            }}
+            transition={spring.tactile}
+          >
+            <Icon name="arrowRight" />
+          </motion.div>
+        </span>
+      )}
+    </motion.div>
   )
 }
 
@@ -242,7 +310,6 @@ function MenuPadSection({
     <div
       css={`
         padding-left: 3rem;
-        padding-right: 8rem;
       `}
       {...props}
     >
