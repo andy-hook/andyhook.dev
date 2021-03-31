@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion'
 import React from 'react'
+import { motion } from 'framer-motion'
 import { css } from 'styled-components'
 import { useRelativeYMotion } from '../../hooks/useRelativeYMotion/useRelativeYMotion'
 import { useTheme } from '../../hooks/useTheme/useTheme'
@@ -9,8 +9,6 @@ import {
   spring,
 } from '../../style/motion'
 import { inclusiveUp } from '../../style/responsive'
-import { setCropAndLineHeight, setTextStyle } from '../../style/typography'
-import InteractionBase from '../InteractionBase/InteractionBase'
 import Logo from '../Logo/Logo'
 import Menu from '../Menu/Menu'
 
@@ -87,54 +85,9 @@ function TopBar(): JSX.Element {
             height: 100%;
           `}
         >
-          <InteractionBase
-            offset={0.4}
-            onClick={() => {
-              console.log('hello')
-            }}
-            radius="base"
-            css={`
-              ${setTextStyle('body', 'medium')}
-
-              color: ${theme.foreground('extraHigh')};
-
-              box-shadow: ${theme.foreground('extraLow', 0.4)} 0 0 0
-                ${theme.borderWidth.regular} inset;
-
-              border-radius: ${theme.radius.base};
-              padding: 0.9em 1.5em;
-            `}
-          >
-            <div
-              css={`
-                ${setCropAndLineHeight('body', 'flat')}
-              `}
-            >
-              Menu
-            </div>
-          </InteractionBase>
-        </div>
-      </motion.header>
-      <div
-        css={`
-          ${containerXPadding}
-
-          padding-top: 2rem;
-
-          display: flex;
-          justify-content: flex-end;
-
-          pointer-events: none;
-        `}
-      >
-        <div
-          css={`
-            pointer-events: auto;
-          `}
-        >
           <Menu />
         </div>
-      </div>
+      </motion.header>
     </div>
   )
 }
