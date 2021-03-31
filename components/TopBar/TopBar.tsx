@@ -39,14 +39,12 @@ function TopBar(): JSX.Element {
   return (
     <div
       css={`
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         width: 100%;
 
         z-index: ${theme.index.high};
-
-        pointer-events: none;
       `}
     >
       <motion.header
@@ -64,9 +62,13 @@ function TopBar(): JSX.Element {
           border-bottom: ${theme.borderWidth.regular} solid
             ${theme.background('extraHigh')};
 
-          height: 4.8rem;
+          background-color: ${theme.background('low')};
 
-          pointer-events: auto;
+          height: 3.75rem;
+
+          ${inclusiveUp('sm')} {
+            height: 4.4rem;
+          }
         `}
       >
         <div

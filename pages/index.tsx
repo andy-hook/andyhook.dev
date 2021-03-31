@@ -156,7 +156,7 @@ function Home(): JSX.Element {
                           margin-left: 1em;
                         `}
                       >
-                        Limited availability in 2021
+                        Limited availability
                       </span>
                     </Button>
                   </motion.div>
