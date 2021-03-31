@@ -1,12 +1,29 @@
 import { motion } from 'framer-motion'
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useTheme } from '../../hooks/useTheme/useTheme'
+import { spring } from '../../style/motion'
 import {
   setCropAndLineHeight,
   setResponsiveTextSize,
   setTextStyle,
 } from '../../style/typography'
 import InteractionBase from '../InteractionBase/InteractionBase'
+
+function getLineMotionVariant(direction: -1 | 1) {
+  return {
+    variants: {
+      stacked: {
+        transform: `translateY(0px) rotate(0deg)`,
+      },
+      crossed: {
+        transform: `translateY(${4 * direction}px) rotate(${
+          45 * direction
+        }deg)`,
+      },
+    },
+    transition: spring.tactile,
+  }
+}
 
 function MenuTrigger({
   onClick,
@@ -16,6 +33,10 @@ function MenuTrigger({
   open: boolean
 }): JSX.Element {
   const theme = useTheme()
+
+  const [topLineMotionProps, bottomLineMotionProps] = useMemo(() => {
+    return [getLineMotionVariant(1), getLineMotionVariant(-1)]
+  }, [])
 
   return (
     <InteractionBase
@@ -27,7 +48,6 @@ function MenuTrigger({
         ${setResponsiveTextSize('body', 'xs')}
 
         color: ${theme.foreground('extraHigh')};
-
         padding: 1em 1.4em;
       `}
     >
@@ -42,8 +62,10 @@ function MenuTrigger({
             align-items: center;
           `}
         >
-          <svg
+          <motion.svg
             viewBox="0 0 24 24"
+            initial="stacked"
+            animate={open ? 'crossed' : 'stacked'}
             css={`
               width: 1em;
               height: 1em;
@@ -51,9 +73,19 @@ function MenuTrigger({
               margin-right: 0.75em;
             `}
           >
-            <motion.path d="M1 8H23" strokeWidth="2" strokeLinecap="round" />
-            <motion.path d="M1 16H23" strokeWidth="2" strokeLinecap="round" />
-          </svg>
+            <motion.path
+              d="M1 8H23"
+              strokeWidth="2"
+              strokeLinecap="round"
+              {...topLineMotionProps}
+            />
+            <motion.path
+              d="M1 16H23"
+              strokeWidth="2"
+              strokeLinecap="round"
+              {...bottomLineMotionProps}
+            />
+          </motion.svg>
           {open ? 'Close' : 'Menu'}
         </div>
       </div>
