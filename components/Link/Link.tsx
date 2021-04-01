@@ -16,11 +16,11 @@ function Link({ children, href }: LinkProps): JSX.Element {
       offset={[0.6, 0.3]}
       css={`
         display: inline;
-        color: ${theme.projectAccent('base')};
+        color: ${theme.currentProjectAccent('base')};
 
         &:hover {
           text-decoration: underline;
-          text-decoration-color: ${theme.projectAccent('base', 0.5)};
+          text-decoration-color: ${theme.currentProjectAccent('base', 0.5)};
         }
       `}
     >

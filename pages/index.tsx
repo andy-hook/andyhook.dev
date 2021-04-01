@@ -8,11 +8,12 @@ import LayoutLimiter from '../components/Layout/LayoutLimiter'
 import LayoutRow from '../components/Layout/LayoutRow'
 import LayoutShade from '../components/Layout/LayoutShade'
 import MetaSocial from '../components/Meta/MetaSocial'
+import Pip from '../components/Pip/Pip'
 import ProjectCard from '../components/ProjectCard/ProjectCard'
 import RemoveWidow from '../components/RemoveWidow/RemoveWidow'
 import StripeBackground from '../components/StripeBackground/StripeBackground'
 import TextHeading from '../components/Text/TextHeading'
-import meta from '../data/meta'
+import { META } from '../data/meta'
 import { PROJECTS, PROJECT_ORDER } from '../data/projects'
 import { useRelativeYMotion } from '../hooks/useRelativeYMotion/useRelativeYMotion'
 import { useTheme } from '../hooks/useTheme/useTheme'
@@ -148,28 +149,15 @@ function Home(): JSX.Element {
                       />
                     </TextHeading>
 
-                    <Button href={`mailto:${meta.email}`}>
-                      <div
+                    <Button href={`mailto:${META.email}`}>
+                      <Pip />
+                      <span
                         css={`
-                          position: relative;
-                          font-size: 0.65em;
-                          margin-right: 1.4em;
+                          margin-left: 1em;
                         `}
                       >
-                        <div
-                          css={`
-                            width: 1em;
-                            height: 1em;
-                            background: linear-gradient(
-                              135deg,
-                              ${theme.accent('light')} 0%,
-                              ${theme.accent('base')} 100%
-                            );
-                            border-radius: ${theme.radius.circle};
-                          `}
-                        />
-                      </div>
-                      Limited availability for 2021
+                        Send me a message
+                      </span>
                     </Button>
                   </motion.div>
                 </div>

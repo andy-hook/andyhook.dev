@@ -1,12 +1,17 @@
-import { useRouter } from 'next/router'
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback } from 'react'
 import {
   ThemeProvider as StyledThemeProvider,
   useTheme as styledUseTheme,
 } from 'styled-components'
-import { PROJECTS } from '../../data/projects'
-import { applyHsl, getTheme, Theme, ThemeName } from '../../style/theme'
-import { keys } from '../../utils/general'
+import {
+  applyHsl,
+  Theme,
+  ThemeName,
+  themes,
+  ProjectAccentName,
+  AccentShade,
+} from '../../style/theme'
+import { useLocationState } from '../useLocationState/useLocationState'
 
 function ThemeProvider({
   children,
@@ -15,27 +20,21 @@ function ThemeProvider({
   children: React.ReactNode
   theme?: ThemeName
 }): JSX.Element {
-  const router = useRouter()
-
-  // Update projectAccent based on route
-  const selectedTheme = useMemo(() => {
-    const accentName =
-      keys(PROJECTS).find((key) => PROJECTS[key].route === router.pathname) ??
-      'default'
-
-    return getTheme(theme, accentName)
-  }, [theme, router.pathname])
-
   return (
-    <StyledThemeProvider theme={selectedTheme}>{children}</StyledThemeProvider>
+    <StyledThemeProvider theme={themes[theme]}>{children}</StyledThemeProvider>
   )
 }
 
 type ThemeMethods = {
   foreground: (value: keyof Theme['foreground'], alpha?: number) => string
   background: (value: keyof Theme['background'], alpha?: number) => string
-  accent: (value: keyof Theme['accent'], alpha?: number) => string
-  projectAccent: (value: keyof Theme['projectAccent'], alpha?: number) => string
+  accent: (value: AccentShade, alpha?: number) => string
+  currentProjectAccent: (value: AccentShade, alpha?: number) => string
+  projectAccent: (
+    projectName: ProjectAccentName,
+    value: AccentShade,
+    alpha?: number
+  ) => string
   positive: (value: keyof Theme['positive'], alpha?: number) => string
 } & Omit<
   Theme,
@@ -44,6 +43,7 @@ type ThemeMethods = {
 
 function useTheme(): ThemeMethods {
   const theme = styledUseTheme()
+  const { currentProjectName } = useLocationState()
 
   const foreground: ThemeMethods['foreground'] = useCallback(
     (value, alpha): string => applyHsl(theme.foreground[value], alpha),
@@ -56,12 +56,23 @@ function useTheme(): ThemeMethods {
   )
 
   const accent: ThemeMethods['accent'] = useCallback(
-    (value, alpha): string => applyHsl(theme.accent[value], alpha),
+    (value, alpha): string => applyHsl(theme.accent.default[value], alpha),
     [theme]
   )
 
+  const currentProjectAccent: ThemeMethods['currentProjectAccent'] = useCallback(
+    (value, alpha): string => {
+      const projectAccent = currentProjectName
+        ? theme.accent[currentProjectName]
+        : theme.accent.default
+      return applyHsl(projectAccent[value], alpha)
+    },
+    [theme, currentProjectName]
+  )
+
   const projectAccent: ThemeMethods['projectAccent'] = useCallback(
-    (value, alpha): string => applyHsl(theme.projectAccent[value], alpha),
+    (projectName, value, alpha): string =>
+      applyHsl(theme.accent[projectName][value], alpha),
     [theme]
   )
 
@@ -77,6 +88,7 @@ function useTheme(): ThemeMethods {
     accent,
     projectAccent,
     positive,
+    currentProjectAccent,
   }
 }
 

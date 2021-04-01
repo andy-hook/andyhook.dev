@@ -6,15 +6,17 @@ export type ThemeName = 'light' | 'dark'
 
 type LimitedShadeRange = 'low' | 'medium' | 'high'
 export type FullShadeRange = LimitedShadeRange | 'extraLow' | 'extraHigh'
-type ColourRange = 'base' | 'light' | 'dark'
+export type ProjectAccentName = ProjectName
+export type AccentShade = 'base' | 'light' | 'dark'
+type AccentName = ProjectAccentName | 'default'
 type ColorValue = [number, number, number]
+type ColorRange = Record<AccentShade, ColorValue>
 
 type ThemeCommon = {
-  accent: Record<ColourRange, ColorValue>
-  projectAccent: Record<ColourRange, ColorValue>
-  positive: Record<ColourRange, ColorValue>
+  accent: Record<AccentName, ColorRange>
+  positive: ColorRange
   breakpoints: BreakpointList
-  radius: Record<'base' | 'pill' | 'circle' | 'frame', string>
+  radius: Record<'base' | 'pill' | 'circle' | 'frame' | 'large', string>
   index: Record<'floor' | 'low' | 'medium' | 'high' | 'highest', number>
   borderWidth: Record<'regular' | 'thick', string>
   textShadow: Record<'subtle' | 'heavy', string>
@@ -27,37 +29,34 @@ export type Theme = {
   shadow: Record<LimitedShadeRange, string>
 } & ThemeCommon
 
-const accents: Record<'default' | ProjectName, ThemeCommon['accent']> = {
-  default: {
-    light: [300, 0.98, 0.7],
-    base: [266, 0.92, 0.55],
-    dark: [267, 0.9, 0.33],
-  },
-  aragon: {
-    light: [184, 0.99, 0.55],
-    base: [194, 1, 0.5],
-    dark: [194, 1, 0.425],
-  },
-  bright: {
-    light: [285, 1, 0.4],
-    base: [267, 1, 0.6],
-    dark: [267, 0.9, 0.33],
-  },
-  blocks: {
-    light: [22, 0.63, 0.6],
-    base: [15, 0.68, 0.55],
-    dark: [11, 0.6, 0.45],
-  },
-  brandwatch: {
-    light: [300, 1, 1],
-    base: [300, 1, 0.1],
-    dark: [300, 1, 1],
-  },
-}
-
 const common: ThemeCommon = {
-  accent: accents.default,
-  projectAccent: accents.default,
+  accent: {
+    default: {
+      light: [300, 0.98, 0.7],
+      base: [266, 0.92, 0.55],
+      dark: [267, 0.9, 0.33],
+    },
+    aragon: {
+      light: [184, 0.99, 0.55],
+      base: [194, 1, 0.5],
+      dark: [194, 1, 0.425],
+    },
+    bright: {
+      light: [285, 1, 0.4],
+      base: [267, 1, 0.6],
+      dark: [267, 0.9, 0.33],
+    },
+    blocks: {
+      light: [22, 0.63, 0.6],
+      base: [15, 0.68, 0.55],
+      dark: [11, 0.6, 0.45],
+    },
+    brandwatch: {
+      light: [300, 1, 1],
+      base: [300, 1, 0.1],
+      dark: [300, 1, 1],
+    },
+  },
   positive: {
     base: [115, 0.64, 0.55],
     light: [115, 0.64, 0.65],
@@ -65,8 +64,9 @@ const common: ThemeCommon = {
   },
   breakpoints: breakpoints,
   radius: {
-    base: 'clamp(12px, 1vw, 20px)',
+    base: '12px',
     frame: 'clamp(6px, 1vw, 12px)',
+    large: 'clamp(12px, 1vw, 20px)',
     pill: '50000px',
     circle: '50%',
   },
@@ -172,13 +172,6 @@ export const lightTheme: Theme = {
 export const themes = {
   light: lightTheme,
   dark: darkTheme,
-}
-
-export function getTheme(
-  themeName: ThemeName,
-  accentType: 'default' | ProjectName
-): Theme {
-  return { ...themes[themeName], projectAccent: accents[accentType] }
 }
 
 export function applyHsl(value: ColorValue, alpha?: number): string {

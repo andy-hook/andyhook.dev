@@ -150,7 +150,7 @@ function ProjectCard({
               css={`
                 position: relative;
                 overflow: hidden;
-                border-radius: ${theme.radius.base};
+                border-radius: ${theme.radius.large};
 
                 background-color: ${theme.background('low')};
 
@@ -197,7 +197,7 @@ function ProjectCard({
                 right: 0;
                 bottom: 0;
                 box-shadow: ${theme.shadow.high};
-                border-radius: ${theme.radius.base};
+                border-radius: ${theme.radius.large};
 
                 z-index: ${theme.index.floor};
               `}

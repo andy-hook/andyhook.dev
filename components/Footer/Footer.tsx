@@ -1,5 +1,4 @@
 import React from 'react'
-import meta from '../../data/meta'
 import { inclusiveDown, inclusiveUp } from '../../style/responsive'
 import { setTextStyle } from '../../style/typography'
 import InteractionBase from '../InteractionBase/InteractionBase'
@@ -12,6 +11,7 @@ import TextHeading from '../Text/TextHeading'
 import TextBase from '../Text/TextBase'
 import { removeWidow } from '../../style/utils'
 import LayoutShade from '../Layout/LayoutShade'
+import { META } from '../../data/meta'
 
 function Footer(): JSX.Element {
   return (
@@ -52,7 +52,7 @@ function Footer(): JSX.Element {
                   Start by{' '}
                   <InteractionBase
                     offset={[0.2, 0.05]}
-                    href={`mailto:${meta.email}`}
+                    href={`mailto:${META.email}`}
                   >
                     <GradientText
                       css={`

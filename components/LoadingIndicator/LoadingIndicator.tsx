@@ -51,8 +51,8 @@ function LoadingIndicator(): JSX.Element {
           width: 100%;
           background: linear-gradient(
             -90deg,
-            ${setLightness(0.7, theme.projectAccent('light'))} 0%,
-            ${theme.projectAccent('dark')} 30%
+            ${setLightness(0.7, theme.currentProjectAccent('light'))} 0%,
+            ${theme.currentProjectAccent('dark')} 30%
           );
           border-radius: ${theme.radius.pill};
           box-shadow: ${theme.shadow.high};
@@ -70,7 +70,7 @@ function LoadingIndicator(): JSX.Element {
             background: linear-gradient(
               180deg,
               rgba(0, 0, 0, 0) 0%,
-              ${setLightness(0.7, theme.projectAccent('light', 0.25))}
+              ${setLightness(0.7, theme.currentProjectAccent('light', 0.25))}
             );
           }
         `}

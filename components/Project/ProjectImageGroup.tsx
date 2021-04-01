@@ -33,7 +33,7 @@ const ProjectImageGroup = ({
   children,
   loadingColor,
 }: ProjectImageGroupProps): JSX.Element => {
-  const { projectAccent } = useTheme()
+  const { currentProjectAccent } = useTheme()
 
   const contextValue = useMemo(
     () => ({
@@ -44,8 +44,8 @@ const ProjectImageGroup = ({
   )
 
   const framedGradient = useMemo(() => {
-    const gradientStart = frameGradientStart || projectAccent('light')
-    const gradientEnd = frameGradientEnd || projectAccent('dark')
+    const gradientStart = frameGradientStart || currentProjectAccent('light')
+    const gradientEnd = frameGradientEnd || currentProjectAccent('dark')
 
     return framed
       ? `background: linear-gradient(100deg,
@@ -53,7 +53,7 @@ const ProjectImageGroup = ({
       ${gradientEnd} 75%
     );`
       : ''
-  }, [frameGradientStart, frameGradientEnd, projectAccent, framed])
+  }, [frameGradientStart, frameGradientEnd, currentProjectAccent, framed])
 
   return (
     <ProjectImageGroupContext.Provider value={contextValue}>
@@ -101,8 +101,8 @@ const ProjectImageGroupItem = ({
         `&:nth-child(even) {
           background: linear-gradient(
             135deg,
-            ${rgba(theme.projectAccent('dark'), 0.2)} 0%,
-            ${rgba(theme.projectAccent('dark'), 0.2)} 50%
+            ${rgba(theme.currentProjectAccent('dark'), 0.2)} 0%,
+            ${rgba(theme.currentProjectAccent('dark'), 0.2)} 50%
           );
         }`}
       `}
@@ -113,7 +113,7 @@ const ProjectImageGroupItem = ({
             css={`
               overflow: hidden;
               box-shadow: ${theme.shadow.low};
-              border-radius: ${theme.radius[framed ? 'frame' : 'base']};
+              border-radius: ${theme.radius[framed ? 'frame' : 'large']};
             `}
           >
             <ImageBase
