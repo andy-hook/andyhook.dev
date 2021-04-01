@@ -63,7 +63,7 @@ function Button({
           background-color: ${theme.background('medium')};
 
           box-shadow: ${theme.foreground('extraLow')} 0 0 0
-            ${theme.borderWidth.thick} inset;
+            ${theme.borderWidth.regular} inset;
 
           z-index: ${theme.index.floor};
         `}

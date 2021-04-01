@@ -9,6 +9,7 @@ import MenuTrigger from './MenuTrigger'
 function Menu(): JSX.Element {
   const theme = useTheme()
   const [open, setOpen] = useState(false)
+  const [hovered, setHovered] = useState(false)
 
   const handleMenuToggle = useCallback(() => {
     setOpen((prevValue) => !prevValue)
@@ -16,6 +17,14 @@ function Menu(): JSX.Element {
 
   const handleMenuClose = useCallback(() => {
     setOpen(false)
+  }, [])
+
+  const handleButtonHovered = useCallback(() => {
+    setHovered(true)
+  }, [])
+
+  const handleButtonBlurred = useCallback(() => {
+    setHovered(false)
   }, [])
 
   return (
@@ -26,6 +35,8 @@ function Menu(): JSX.Element {
       `}
     >
       <motion.div
+        onMouseOver={handleButtonHovered}
+        onMouseOut={handleButtonBlurred}
         animate={{
           transform: `translate(${open ? '-10%' : '0%'}, ${
             open ? '26%' : '0%'
@@ -71,7 +82,9 @@ function Menu(): JSX.Element {
         )}
       </AnimatePresence>
 
-      <div
+      <motion.div
+        animate={{ opacity: hovered ? 1 : 0.4 }}
+        transition={spring.tactile}
         css={`
           position: absolute;
           top: 0;
@@ -81,9 +94,9 @@ function Menu(): JSX.Element {
 
           z-index: ${theme.index.floor};
 
-          box-shadow: ${theme.foreground('extraLow', 0.4)} 0 0 0
+          box-shadow: ${theme.foreground('extraLow')} 0 0 0
             ${theme.borderWidth.regular} inset;
-
+          background-color: ${theme.background('medium')};
           border-radius: ${theme.radius.base};
         `}
       />
