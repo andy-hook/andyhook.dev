@@ -278,11 +278,24 @@ function MenuItemHoverInteraction({
 }): JSX.Element {
   const theme = useTheme()
 
+  const motionProps = !disabled
+    ? {
+        whileHover: 'hover',
+        initial: 'rest',
+        animate: 'rest',
+        variants: {
+          rest: {
+            transform: 'translateX(0px)',
+          },
+          hover: { transform: 'translateX(4px)' },
+        },
+        transition: spring.tactile,
+      }
+    : {}
+
   return (
     <motion.div
-      whileHover="hover"
-      initial="rest"
-      animate="rest"
+      {...motionProps}
       css={`
         position: relative;
         display: flex;
