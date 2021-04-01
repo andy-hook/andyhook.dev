@@ -46,7 +46,7 @@ function Menu(): JSX.Element {
             variants={{
               hidden: {
                 opacity: 0,
-                scale: 0.85,
+                scale: 0.95,
               },
               visible: {
                 opacity: 1,

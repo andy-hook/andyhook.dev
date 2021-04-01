@@ -156,7 +156,7 @@ function Home(): JSX.Element {
                           margin-left: 1em;
                         `}
                       >
-                        Limited availability
+                        Send me a message
                       </span>
                     </Button>
                   </motion.div>
