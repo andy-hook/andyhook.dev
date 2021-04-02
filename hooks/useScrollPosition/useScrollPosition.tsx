@@ -8,42 +8,22 @@ import {
 } from 'react'
 import { isBrowser } from '../../utils/general'
 
-type YAxisPosition = {
-  direction: 'up' | 'down'
-  offset: number
-}
+type Direction = 'forward' | 'backward'
 
-type XAxisPosition = {
-  direction: 'left' | 'right'
-  offset: number
+type Position = {
+  y: {
+    direction: Direction
+    offset: number
+  }
+  x: {
+    direction: Direction
+    offset: number
+  }
 }
 
 type ScrollPosition = {
-  previous: {
-    x: XAxisPosition
-    y: YAxisPosition
-  }
-  current: {
-    x: XAxisPosition
-    y: YAxisPosition
-  }
-}
-
-function getInitialState(): ScrollPosition {
-  const { x, y } = getWindowScrollOffsets()
-
-  const initialPosition = {
-    x: {
-      direction: 'right' as const,
-      offset: x,
-    },
-    y: { direction: 'down' as const, offset: y },
-  }
-
-  return {
-    previous: initialPosition,
-    current: initialPosition,
-  }
+  previous: Position
+  current: Position
 }
 
 const ScrollPositionContext = React.createContext<ScrollPosition>(
@@ -55,6 +35,7 @@ function ScrollPositionProvider({
 }: {
   children: React.ReactNode
 }): JSX.Element {
+  const ticking = useRef(false)
   const currPosition = useRef(getWindowScrollOffsets())
   const prevPosition = useRef(getWindowScrollOffsets())
   const prevDirection = useRef(
@@ -72,30 +53,38 @@ function ScrollPositionProvider({
   const [scrollPosition, setScrollPosition] = useState<ScrollPosition>(
     getInitialState()
   )
-  const ticking = useRef(false)
 
   const update = useCallback(() => {
     ticking.current = false
 
-    const prevPos = prevPosition.current
-    const currPos = currPosition.current
+    prevDirection.current = {
+      x: getDirection(currPosition.current.x, prevPosition.current.x),
+      y: getDirection(currPosition.current.y, prevPosition.current.y),
+    }
+
+    prevPosition.current = currPosition.current
+
+    const lastestOffsets = getWindowScrollOffsets()
+    const previousOffsets = prevPosition.current
+
+    currPosition.current = lastestOffsets
 
     setScrollPosition({
       previous: {
         x: {
           direction: prevDirection.current.x,
-          offset: prevPos.x,
+          offset: previousOffsets.x,
         },
-        y: { direction: prevDirection.current.y, offset: prevPos.y },
+        y: { direction: prevDirection.current.y, offset: previousOffsets.y },
       },
       current: {
         x: {
-          direction: currPos.x >= prevPos.x ? 'right' : 'left',
-          offset: currPos.x,
+          direction: getDirection(lastestOffsets.x, previousOffsets.x),
+          offset: lastestOffsets.x,
         },
         y: {
-          direction: currPos.y >= prevPos.y ? 'down' : 'up',
-          offset: currPos.y,
+          direction: getDirection(lastestOffsets.y, previousOffsets.y),
+          offset: lastestOffsets.y,
         },
       },
     })
@@ -108,26 +97,15 @@ function ScrollPositionProvider({
     ticking.current = true
   }, [update])
 
-  const onScroll = useCallback(() => {
-    prevDirection.current = {
-      x: currPosition.current.x >= prevPosition.current.x ? 'right' : 'left',
-      y: currPosition.current.y >= prevPosition.current.y ? 'down' : 'up',
-    }
-    prevPosition.current = currPosition.current
-    currPosition.current = getWindowScrollOffsets()
-
-    requestTick()
-  }, [requestTick])
-
   useIsomorphicLayoutEffect(() => {
     if (!isBrowser) {
       return
     }
 
-    window.addEventListener('scroll', onScroll)
+    window.addEventListener('scroll', requestTick)
 
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [onScroll])
+    return () => window.removeEventListener('scroll', requestTick)
+  }, [requestTick])
 
   return (
     <ScrollPositionContext.Provider value={scrollPosition}>
@@ -141,6 +119,27 @@ function useScrollPosition(): ScrollPosition {
 }
 
 const useIsomorphicLayoutEffect = isBrowser ? useLayoutEffect : useEffect
+
+function getInitialState(): ScrollPosition {
+  const { x, y } = getWindowScrollOffsets()
+
+  const initialPosition = {
+    x: {
+      direction: 'forward' as const,
+      offset: x,
+    },
+    y: { direction: 'forward' as const, offset: y },
+  }
+
+  return {
+    previous: initialPosition,
+    current: initialPosition,
+  }
+}
+
+function getDirection(current: number, previous: number): Direction {
+  return current >= previous ? 'forward' : 'backward'
+}
 
 function getWindowScrollOffsets(): { x: number; y: number } {
   if (!isBrowser) {
