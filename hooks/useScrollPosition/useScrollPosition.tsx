@@ -19,18 +19,18 @@ type XAxisPosition = {
 }
 
 type ScrollPosition = {
-  prevPos: {
+  previous: {
     x: XAxisPosition
     y: YAxisPosition
   }
-  currPos: {
+  current: {
     x: XAxisPosition
     y: YAxisPosition
   }
 }
 
 function getInitialState(): ScrollPosition {
-  const { x, y } = getScrollPosition()
+  const { x, y } = getWindowScrollOffsets()
 
   const initialPosition = {
     x: {
@@ -41,8 +41,8 @@ function getInitialState(): ScrollPosition {
   }
 
   return {
-    prevPos: initialPosition,
-    currPos: initialPosition,
+    previous: initialPosition,
+    current: initialPosition,
   }
 }
 
@@ -55,12 +55,12 @@ function ScrollPositionProvider({
 }: {
   children: React.ReactNode
 }): JSX.Element {
-  const currPosition = useRef(getScrollPosition())
-  const prevPosition = useRef(getScrollPosition())
+  const currPosition = useRef(getWindowScrollOffsets())
+  const prevPosition = useRef(getWindowScrollOffsets())
   const prevDirection = useRef(
     (() => {
       const {
-        prevPos: { x, y },
+        previous: { x, y },
       } = getInitialState()
 
       return {
@@ -81,14 +81,14 @@ function ScrollPositionProvider({
     const currPos = currPosition.current
 
     setScrollPosition({
-      prevPos: {
+      previous: {
         x: {
-          direction: 'right',
+          direction: prevDirection.current.x,
           offset: prevPos.x,
         },
-        y: { direction: 'down', offset: prevPos.y },
+        y: { direction: prevDirection.current.y, offset: prevPos.y },
       },
-      currPos: {
+      current: {
         x: {
           direction: currPos.x >= prevPos.x ? 'right' : 'left',
           offset: currPos.x,
@@ -110,11 +110,11 @@ function ScrollPositionProvider({
 
   const onScroll = useCallback(() => {
     prevDirection.current = {
-      x: prevPosition.current.x >= currPosition.current.x ? 'right' : 'left',
-      y: prevPosition.current.y >= currPosition.current.y ? 'down' : 'up',
+      x: currPosition.current.x >= prevPosition.current.x ? 'right' : 'left',
+      y: currPosition.current.y >= prevPosition.current.y ? 'down' : 'up',
     }
     prevPosition.current = currPosition.current
-    currPosition.current = getScrollPosition()
+    currPosition.current = getWindowScrollOffsets()
 
     requestTick()
   }, [requestTick])
@@ -142,7 +142,7 @@ function useScrollPosition(): ScrollPosition {
 
 const useIsomorphicLayoutEffect = isBrowser ? useLayoutEffect : useEffect
 
-function getScrollPosition(): { x: number; y: number } {
+function getWindowScrollOffsets(): { x: number; y: number } {
   if (!isBrowser) {
     return { x: 0, y: 0 }
   }
