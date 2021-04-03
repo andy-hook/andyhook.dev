@@ -36,20 +36,12 @@ function ScrollPositionProvider({
   children: React.ReactNode
 }): JSX.Element {
   const ticking = useRef(false)
-  const currPosition = useRef(getWindowScrollOffsets())
-  const prevPosition = useRef(getWindowScrollOffsets())
-  const prevDirection = useRef(
-    (() => {
-      const {
-        previous: { x, y },
-      } = getInitialState()
-
-      return {
-        x: x.direction,
-        y: y.direction,
-      }
-    })()
-  )
+  const offset = useRef(getWindowScrollOffsets())
+  const prevOffset = useRef(getWindowScrollOffsets())
+  const prevScrollDirection = useRef({
+    x: getInitialState().previous.x.direction,
+    y: getInitialState().previous.y.direction,
+  })
   const [scrollPosition, setScrollPosition] = useState<ScrollPosition>(
     getInitialState()
   )
@@ -57,34 +49,32 @@ function ScrollPositionProvider({
   const update = useCallback(() => {
     ticking.current = false
 
-    prevDirection.current = {
-      x: getDirection(currPosition.current.x, prevPosition.current.x),
-      y: getDirection(currPosition.current.y, prevPosition.current.y),
+    prevScrollDirection.current = {
+      x: getDirection(offset.current.x, prevOffset.current.x),
+      y: getDirection(offset.current.y, prevOffset.current.y),
     }
-
-    prevPosition.current = currPosition.current
-
-    const lastestOffsets = getWindowScrollOffsets()
-    const previousOffsets = prevPosition.current
-
-    currPosition.current = lastestOffsets
+    prevOffset.current = offset.current
+    offset.current = getWindowScrollOffsets()
 
     setScrollPosition({
       previous: {
         x: {
-          direction: prevDirection.current.x,
-          offset: previousOffsets.x,
+          direction: prevScrollDirection.current.x,
+          offset: prevOffset.current.x,
         },
-        y: { direction: prevDirection.current.y, offset: previousOffsets.y },
+        y: {
+          direction: prevScrollDirection.current.y,
+          offset: prevOffset.current.y,
+        },
       },
       current: {
         x: {
-          direction: getDirection(lastestOffsets.x, previousOffsets.x),
-          offset: lastestOffsets.x,
+          direction: getDirection(offset.current.x, prevOffset.current.x),
+          offset: offset.current.x,
         },
         y: {
-          direction: getDirection(lastestOffsets.y, previousOffsets.y),
-          offset: lastestOffsets.y,
+          direction: getDirection(offset.current.y, prevOffset.current.y),
+          offset: offset.current.y,
         },
       },
     })
