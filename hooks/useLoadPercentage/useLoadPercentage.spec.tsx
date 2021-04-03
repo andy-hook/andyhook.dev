@@ -5,6 +5,7 @@ import { useLoadPercentage, useTrackLoading } from './useLoadPercentage'
 const TRIGGER_1 = 'trigger-1'
 const TRIGGER_2 = 'trigger-2'
 const TRIGGER_3 = 'trigger-3'
+const PERCENTAGE_CONTAINER_ID = 'percent-loaded'
 
 function MockLoadingTrigger({
   identifier,
@@ -25,34 +26,36 @@ function Container(): JSX.Element {
       <MockLoadingTrigger identifier={TRIGGER_2} />
       <MockLoadingTrigger identifier={TRIGGER_3} />
 
-      <div>{percentLoaded}</div>
+      <div data-testid={PERCENTAGE_CONTAINER_ID}>{percentLoaded}</div>
     </>
   )
 }
 
 describe('useLoadPercentage', () => {
   let rendered: RenderResult
+  let percentageContainer: HTMLElement
 
   beforeEach(() => {
     rendered = render(<Container />)
+    percentageContainer = rendered.getByTestId(PERCENTAGE_CONTAINER_ID)
   })
 
   it('Should initialy render percentage as 0', () => {
-    expect(rendered.getByText('0')).toBeInTheDocument()
+    expect(percentageContainer).toHaveTextContent('0')
   })
 
   it('Should correctly calculate percentage', () => {
     fireEvent.click(rendered.getByText(TRIGGER_1))
 
-    expect(rendered.getByText('33')).toBeInTheDocument()
+    expect(percentageContainer).toHaveTextContent('33')
 
     fireEvent.click(rendered.getByText(TRIGGER_2))
 
-    expect(rendered.getByText('66')).toBeInTheDocument()
+    expect(percentageContainer).toHaveTextContent('66')
 
     fireEvent.click(rendered.getByText(TRIGGER_3))
 
-    expect(rendered.getByText('100')).toBeInTheDocument()
+    expect(percentageContainer).toHaveTextContent('100')
   })
 
   it('Should not increment percentage more than once per unique key', () => {
@@ -60,10 +63,10 @@ describe('useLoadPercentage', () => {
 
     fireEvent.click(rendered.getByText(TRIGGER_1))
 
-    expect(rendered.getByText('33')).toBeInTheDocument()
+    expect(percentageContainer).toHaveTextContent('33')
 
     fireEvent.click(rendered.getByText(TRIGGER_1))
 
-    expect(rendered.getByText('33')).toBeInTheDocument()
+    expect(percentageContainer).toHaveTextContent('33')
   })
 })
