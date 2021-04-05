@@ -70,26 +70,26 @@ function Home(): JSX.Element {
               <LayoutLimiter>
                 <div
                   css={`
-                    padding-top: 12rem;
+                    padding-top: 10rem;
                     padding-bottom: 6rem;
 
                     ${inclusiveUp('sm')} {
-                      padding-top: 15rem;
+                      padding-top: 14rem;
                       padding-bottom: 8rem;
                     }
 
                     ${inclusiveUp('md')} {
-                      padding-top: 16rem;
+                      padding-top: 15rem;
                       padding-bottom: 8rem;
                     }
 
                     ${inclusiveUp('lg')} {
-                      padding-top: 17rem;
+                      padding-top: 16rem;
                       padding-bottom: 8rem;
                     }
 
                     ${inclusiveUp('xl')} {
-                      padding-top: 20rem;
+                      padding-top: 19rem;
                       padding-bottom: 12rem;
                     }
                   `}
