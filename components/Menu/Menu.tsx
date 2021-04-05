@@ -6,18 +6,15 @@ import { spring } from '../../style/motion'
 import MenuPanel from './MenuPanel'
 import MenuTrigger from './MenuTrigger'
 
-function Menu(): JSX.Element {
+type MenuProps = {
+  onClick: () => void
+  onClickOutside: () => void
+  open: boolean
+}
+
+function Menu({ open, onClick, onClickOutside }: MenuProps): JSX.Element {
   const theme = useTheme()
-  const [open, setOpen] = useState(false)
   const [hovered, setHovered] = useState(false)
-
-  const handleMenuToggle = useCallback(() => {
-    setOpen((prevValue) => !prevValue)
-  }, [])
-
-  const handleMenuClose = useCallback(() => {
-    setOpen(false)
-  }, [])
 
   const handleButtonHovered = useCallback(() => {
     setHovered(true)
@@ -29,7 +26,7 @@ function Menu(): JSX.Element {
 
   return (
     <DetectOutsideClick
-      onOutsideClick={handleMenuClose}
+      onOutsideClick={onClickOutside}
       css={`
         position: relative;
       `}
@@ -48,7 +45,7 @@ function Menu(): JSX.Element {
           z-index: ${theme.index.medium};
         `}
       >
-        <MenuTrigger open={open} onClick={handleMenuToggle} />
+        <MenuTrigger open={open} onClick={onClick} />
       </motion.div>
 
       <AnimatePresence>

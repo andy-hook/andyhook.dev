@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback, useState } from 'react'
 import { motion } from 'framer-motion'
 import { css } from 'styled-components'
 import { useRelativeYMotion } from '../../hooks/useRelativeYMotion/useRelativeYMotion'
@@ -39,7 +39,16 @@ const containerXPadding = css`
 function TopBar(): JSX.Element {
   const theme = useTheme()
   const motionVariants = useRelativeYMotion(-ENTRANCE_TRANSITION_Y_DISTANCE / 2)
+  const [menuOpen, setMenuOpen] = useState(false)
   const { current } = useScrollPosition()
+
+  const handleMenuToggle = useCallback(() => {
+    setMenuOpen((prevValue) => !prevValue)
+  }, [])
+
+  const handleMenuClose = useCallback(() => {
+    setMenuOpen(false)
+  }, [])
 
   const raisedEffect = current.y.offset > RAISED_EFFECT_OFFSET_PX
   const visible =
@@ -50,7 +59,8 @@ function TopBar(): JSX.Element {
   return (
     <motion.div
       animate={{
-        transform: visible ? 'translateY(0%)' : 'translateY(-100%',
+        transform:
+          !visible && !menuOpen ? 'translateY(-100%)' : 'translateY(0%)',
       }}
       transition={spring.tactile}
       css={`
@@ -93,7 +103,11 @@ function TopBar(): JSX.Element {
         >
           <Logo />
 
-          <Menu />
+          <Menu
+            open={menuOpen}
+            onClick={handleMenuToggle}
+            onClickOutside={handleMenuClose}
+          />
         </div>
 
         <motion.div
