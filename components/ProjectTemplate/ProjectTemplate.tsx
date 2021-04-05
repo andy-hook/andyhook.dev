@@ -60,20 +60,20 @@ function ProjectTemplate({
                 padding-bottom: 4rem;
 
                 ${inclusiveUp('xs')} {
-                  padding-top: 10rem;
+                  padding-top: 9rem;
                 }
 
                 ${inclusiveUp('sm')} {
-                  padding-top: 13rem;
+                  padding-top: 12rem;
                   padding-bottom: 7rem;
                 }
 
                 ${inclusiveUp('md')} {
-                  padding-top: 14rem;
+                  padding-top: 13rem;
                 }
 
                 ${inclusiveUp('xl')} {
-                  padding-top: 17rem;
+                  padding-top: 16rem;
                   padding-bottom: 9rem;
                 }
               `}
