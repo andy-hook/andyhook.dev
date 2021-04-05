@@ -5,6 +5,7 @@ import { FocusVisibleProvider } from '../hooks/useFocusVisible/useFocusVisible'
 import { ThemeProvider } from '../hooks/useTheme/useTheme'
 import { LoadPercentageProvider } from '../hooks/useLoadPercentage/useLoadPercentage'
 import { LocationStateProvider } from '../hooks/useLocationState/useLocationState'
+import { ScrollPositionProvider } from '../hooks/useScrollPosition/useScrollPosition'
 
 type ComponentProps = {
   children?: React.ReactNode
@@ -20,13 +21,15 @@ function RenderProviders({
   theme = 'dark',
 }: ComponentProps): JSX.Element {
   return (
-    <FocusVisibleProvider>
-      <LoadPercentageProvider>
-        <LocationStateProvider>
-          <ThemeProvider theme={theme}>{children}</ThemeProvider>
-        </LocationStateProvider>
-      </LoadPercentageProvider>
-    </FocusVisibleProvider>
+    <ScrollPositionProvider>
+      <FocusVisibleProvider>
+        <LoadPercentageProvider>
+          <LocationStateProvider>
+            <ThemeProvider theme={theme}>{children}</ThemeProvider>
+          </LocationStateProvider>
+        </LoadPercentageProvider>
+      </FocusVisibleProvider>
+    </ScrollPositionProvider>
   )
 }
 
