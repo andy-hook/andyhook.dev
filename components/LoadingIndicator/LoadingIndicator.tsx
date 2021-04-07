@@ -44,7 +44,11 @@ function LoadingIndicator(): JSX.Element {
         initial={{ x: '-100%' }}
         transition={spring[loadComplete ? 'snappy' : 'soft']}
         animate={{ x: `${barPosition}%` }}
-        onAnimationComplete={() => setHidden(true)}
+        onAnimationComplete={() => {
+          if (loadComplete) {
+            setHidden(true)
+          }
+        }}
         css={`
           position: relative;
           height: 100%;
