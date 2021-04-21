@@ -12,17 +12,40 @@ import TextBase from '../Text/TextBase'
 import { removeWidow } from '../../style/utils'
 import LayoutShade from '../Layout/LayoutShade'
 import { META } from '../../data/meta'
+import Signature from '../Signature/Signature'
+import { useTheme } from '../../hooks/useTheme/useTheme'
 
 function Footer(): JSX.Element {
+  const theme = useTheme()
+
   return (
     <footer>
       <LayoutShade borderTop>
-        <LayoutGutter>
-          <LayoutLimiter>
+        <LayoutGutter
+          css={`
+            overflow: hidden;
+          `}
+        >
+          <LayoutLimiter
+            css={`
+              position: relative;
+            `}
+          >
             <LayoutRow
               css={`
                 display: flex;
                 flex-direction: column;
+                position: relative;
+                z-index: ${theme.index.low};
+                align-items: center;
+
+                ${inclusiveDown('xs')} {
+                  text-align: center;
+                }
+
+                ${inclusiveUp('sm')} {
+                  align-items: flex-start;
+                }
 
                 ${inclusiveUp('md')} {
                   justify-content: space-between;
@@ -42,10 +65,10 @@ function Footer(): JSX.Element {
                   color="high"
                   tag="h2"
                   css={`
-                    margin-top: 0.6em;
+                    margin-top: 0.75em;
 
                     ${inclusiveDown('sm')} {
-                      margin-bottom: 1.4em;
+                      margin-bottom: 1.25em;
                     }
                   `}
                 >
@@ -67,6 +90,20 @@ function Footer(): JSX.Element {
 
               <SocialIcons />
             </LayoutRow>
+
+            <Signature
+              css={`
+                position: absolute;
+
+                top: 50%;
+                right: 50%;
+                transform: translate(60%, -31%);
+                z-index: ${theme.index.floor};
+                font-size: clamp(50rem, calc(50rem + 50vw), 120rem);
+                width: 1em;
+                opacity: 0.4;
+              `}
+            />
           </LayoutLimiter>
         </LayoutGutter>
       </LayoutShade>
