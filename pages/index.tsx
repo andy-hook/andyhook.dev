@@ -90,7 +90,7 @@ function Home(): JSX.Element {
 
                     ${inclusiveUp('xl')} {
                       padding-top: 19rem;
-                      padding-bottom: 12rem;
+                      padding-bottom: 10rem;
                     }
                   `}
                 >
@@ -135,7 +135,7 @@ function Home(): JSX.Element {
                           next-generation
                         </span>{' '}
                         <RemoveWidow>
-                          user interfaces out of Brighton, UK.
+                          user interfaces out of Brighton, UK
                         </RemoveWidow>
                       </span>
                       <Signature
@@ -145,7 +145,7 @@ function Home(): JSX.Element {
                           top: 0;
                           left: 0;
                           z-index: ${theme.index.floor};
-                          width: clamp(15em, calc(10em + 20vw), 25em);
+                          width: clamp(15em, calc(10em + 15vw), 25em);
                           opacity: 0.75;
                         `}
                       />
