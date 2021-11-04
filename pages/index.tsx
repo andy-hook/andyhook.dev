@@ -90,7 +90,7 @@ function Home(): JSX.Element {
 
                     ${inclusiveUp('xl')} {
                       padding-top: 19rem;
-                      padding-bottom: 12rem;
+                      padding-bottom: 10rem;
                     }
                   `}
                 >
@@ -106,6 +106,7 @@ function Home(): JSX.Element {
                         margin-bottom: 1.3em;
                       `}
                     >
+                      I'm a{' '}
                       <GradientText
                         css={`
                           position: relative;
@@ -113,7 +114,7 @@ function Home(): JSX.Element {
                           ${setTextStyle('display', 'extraBold')}
                         `}
                       >
-                        Senior UI Engineer
+                        UI Engineer
                       </GradientText>{' '}
                       <span
                         css={`
@@ -134,21 +135,21 @@ function Home(): JSX.Element {
                           next-generation
                         </span>{' '}
                         <RemoveWidow>
-                          user interfaces out of Brighton, UK.
+                          user interfaces out of Brighton, UK
                         </RemoveWidow>
                       </span>
                       <Signature
                         css={`
                           position: absolute;
-                          transform: translate(-17%, -35%);
+                          transform: translate(-20%, -35%) rotate(-5deg);
                           top: 0;
                           left: 0;
                           z-index: ${theme.index.floor};
-                          width: clamp(10em, calc(10em + 10vw), 10em);
+                          width: clamp(15em, calc(10em + 15vw), 25em);
+                          opacity: 0.75;
                         `}
                       />
                     </TextHeading>
-
                     <Button href={`mailto:${META.email}`}>
                       <Pip />
                       <span
@@ -248,7 +249,7 @@ function Home(): JSX.Element {
           <motion.div
             variants={{
               hidden: { opacity: 0 },
-              visible: { opacity: 1 },
+              visible: { opacity: 0.5 },
             }}
             initial="hidden"
             animate="visible"

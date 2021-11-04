@@ -32,13 +32,13 @@ export const typeScale = {
   3: rem('16px'),
   4: rem('18px'),
   5: rem('20px'),
-  6: rem('24px'),
-  7: rem('30px'),
-  8: rem('36px'),
-  9: rem('48px'),
-  10: rem('54px'),
-  11: rem('64px'),
-  12: rem('70px'),
+  6: rem('22px'),
+  7: rem('28px'),
+  8: rem('34px'),
+  9: rem('46px'),
+  10: rem('52px'),
+  11: rem('60px'),
+  12: rem('66px'),
 }
 
 /* Settings - Useful for pairing typeface dimensions with the best display properties

@@ -5,23 +5,56 @@ import Panel from '../Panel/Panel'
 import TextBase from '../Text/TextBase'
 import TextHeading from '../Text/TextHeading'
 
-const ENTRIES: [string, ImagePath, string, string][] = [
-  ['2020', 'logos/aragon-mark.svg', 'Senior UI Engineer', 'Aragon One'],
-  ['2018', 'logos/bright-mark.svg', 'UI Engineer', 'Bright Interactive'],
-  [
-    '2016',
-    'logos/brandwatch-mark.svg',
-    'Senior Front-End Developer',
-    'Brandwatch',
-  ],
-  ['2012', 'logos/tjc-mark.svg', 'Front-End Developer', 'Jamieson Consultancy'],
-  ['2009', 'logos/andyhook-mark.svg', 'Digital Designer', 'Freelance'],
+type ExperienceEntry = {
+  year: string
+  logoSrc: ImagePath
+  title: string
+  company: string
+}
+
+const ENTRIES: ExperienceEntry[] = [
+  {
+    year: '2021',
+    logoSrc: 'logos/modulz-mark.svg',
+    title: 'Senior Product Engineer',
+    company: 'Modulz',
+  },
+  {
+    year: '2020',
+    logoSrc: 'logos/aragon-mark.svg',
+    title: 'Senior UI Engineer',
+    company: 'Aragon One',
+  },
+  {
+    year: '2018',
+    logoSrc: 'logos/bright-mark.svg',
+    title: 'UI Engineer',
+    company: 'Bright Interactive',
+  },
+  {
+    year: '2016',
+    logoSrc: 'logos/brandwatch-mark.svg',
+    title: 'Senior Front-End Developer',
+    company: 'Brandwatch',
+  },
+  {
+    year: '2012',
+    logoSrc: 'logos/tjc-mark.svg',
+    title: 'Front-End Developer',
+    company: 'Jamieson Consultancy',
+  },
+  {
+    year: '2009',
+    logoSrc: 'logos/andyhook-mark.svg',
+    title: 'Digital Designer',
+    company: 'Freelance',
+  },
 ]
 
 function ExperienceList(): JSX.Element {
   return (
     <ul>
-      {ENTRIES.map(([year, logoPath, title, company], i) => (
+      {ENTRIES.map((item, i) => (
         <li
           css={`
             &:not(:last-child) {
@@ -94,7 +127,7 @@ function ExperienceList(): JSX.Element {
                 size="xs"
                 color="low"
               >
-                {year}
+                {item.year}
               </TextBase>
             </div>
 
@@ -118,7 +151,7 @@ function ExperienceList(): JSX.Element {
             >
               <img
                 alt=""
-                src={`images/${logoPath}`}
+                src={`images/${item.logoSrc}`}
                 css={`
                   width: var(--logo-size);
                   height: var(--logo-size);
@@ -149,7 +182,7 @@ function ExperienceList(): JSX.Element {
               `}
             >
               <TextHeading size="xs" lineHeight="tight">
-                {company}
+                {item.company}
               </TextHeading>
             </div>
 
@@ -187,7 +220,7 @@ function ExperienceList(): JSX.Element {
                   }
                 `}
               >
-                {title}
+                {item.title}
               </TextBase>
             </div>
           </Panel>

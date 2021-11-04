@@ -159,7 +159,7 @@ export const PROJECTS: Record<ProjectName, ProjectDetails> = {
   blocks: {
     route: '/blocks',
     title: 'Blocks',
-    subtitle: 'Blockchain in your browser',
+    subtitle: 'Explore Ethereum in your browser',
     excerpt: '',
     role: 'Front-End Developer',
     company: 'Side Project',
