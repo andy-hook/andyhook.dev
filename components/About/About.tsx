@@ -42,7 +42,7 @@ function About(): JSX.Element {
               }
             `}
           >
-            More than 10 years doing work I love
+            More than 10 years building for the web
           </TextHeading>
         </div>
 
@@ -55,20 +55,19 @@ function About(): JSX.Element {
           `}
         >
           <TextParagraph>
-            Great user experience is at the core of everything I do, I believe
-            that close collaboration between design, user research and front-end
-            engineering leads to a superior customer experience within digital
+            Great user experience is the core driving everything I do, I believe
+            that close collaboration between design, research and front-end
+            engineering leads to superior customer experiences within digital
             products.
           </TextParagraph>
 
           <TextParagraph>
             As a specialist in modular design systems and component libraries, I
             work to bridge the gap between design and engineering disiplines and
-            am a catalyst for fast, iterative design processes within agile
-            product teams. My technical experience spans a wealth of front-end
-            technologies ranging from modern SPA frameworks to run-time
-            performance profiling and testing. Some of my preferred tools
-            include React, TypeScript, Styled Components and Jest.
+            act as a catalyst for fast, iterative design processes within agile
+            product teams. My technical expertise spans a wealth of front-end
+            technologies ranging from modern SPA application development to
+            accessibility optimisation and front-end testing.
           </TextParagraph>
         </div>
 

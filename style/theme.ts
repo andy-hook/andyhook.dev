@@ -17,7 +17,10 @@ type ThemeCommon = {
   positive: ColorRange
   breakpoints: BreakpointList
   radius: Record<'base' | 'pill' | 'circle' | 'frame' | 'large', string>
-  index: Record<'floor' | 'low' | 'medium' | 'high' | 'highest', number>
+  index: Record<
+    'negative' | 'floor' | 'low' | 'medium' | 'high' | 'highest',
+    number
+  >
   borderWidth: Record<'regular' | 'thick', string>
   textShadow: Record<'subtle' | 'heavy', string>
 }
@@ -64,13 +67,14 @@ const common: ThemeCommon = {
   },
   breakpoints: breakpoints,
   radius: {
-    base: '12px',
+    base: '8px',
     frame: 'clamp(6px, 1vw, 12px)',
     large: 'clamp(12px, 1vw, 20px)',
     pill: '50000px',
     circle: '50%',
   },
   index: {
+    negative: -1,
     floor: 0,
     low: 1,
     medium: 2,
