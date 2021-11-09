@@ -144,7 +144,7 @@ function Home(): JSX.Element {
                           transform: translate(-20%, -35%) rotate(-5deg);
                           top: 0;
                           left: 0;
-                          z-index: ${theme.index.floor};
+                          z-index: ${theme.index.negative};
                           width: clamp(15em, calc(10em + 15vw), 25em);
                           opacity: 0.75;
                         `}
