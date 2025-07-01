@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind utilities;
+
+/* Prevent tailwind breaking 'until-found' element visibility  */
+[hidden='until-found'] {
+  display: revert-layer;
+}
