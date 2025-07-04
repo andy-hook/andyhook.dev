@@ -3,6 +3,7 @@
 import * as React from 'react';
 import * as Floating from '@floating-ui/react';
 import { cva, cx } from '@/cva.config';
+import { ArrowUpRightIcon } from '@heroicons/react/16/solid';
 
 import * as ScrollArea from '@/components/primitives/scroll-area';
 
@@ -16,6 +17,7 @@ import { SocialLink } from '@/components/social-link';
 import { Line } from '@/components/line';
 import { MouseHover } from '@/components/primitives/mouse-hover';
 import { ProjectId } from '@/types';
+import { getColorProject, getColorSlateDark } from '@/theme';
 import { getProjectById } from '@/data';
 import { RouterLink, useRouterState } from './router';
 import { useDevice } from '@/components/utils/use-device';
@@ -376,6 +378,8 @@ const SidebarProjectLink = React.forwardRef<SidebarProjectLinkElement, SidebarPr
   ({ className, path, title, projectId, ...props }, forwardedRef) => {
     const [hovered, setHovered] = React.useState(false);
 
+    const isExternal = path.startsWith('https://');
+
     return (
       <FocusRing className="outline-offset-0 focus-visible:outline-offset-1" scheme="light">
         <MouseHover onValueChange={setHovered} asChild>
@@ -406,7 +410,24 @@ const SidebarProjectLink = React.forwardRef<SidebarProjectLinkElement, SidebarPr
                 }}
                 className="relative text-slate-light-12 group-hover/list:text-slate-light-9 group-hover/item:!text-slate-light-12 transition-colors duration-200 capsize will-change-motion"
               >
-                {title}
+                {isExternal && (
+                  <motion.div
+                    variants={{
+                      initial: { backgroundColor: getColorSlateDark(8) },
+                      hovered: { backgroundColor: getColorProject(projectId, 1) },
+                    }}
+                    className="absolute -top-1.5 -right-3.5 lg:-top-2 lg:-right-5 size-3 lg:size-4 rounded-full flex items-center justify-center"
+                    transition={{
+                      type: 'spring',
+                      stiffness: 700,
+                      damping: 40,
+                      mass: 1,
+                    }}
+                  >
+                    <ArrowUpRightIcon className="text-slate-light-1 size-2 lg:size-3" />
+                  </motion.div>
+                )}
+                <div className="relative z-10">{title}</div>
               </motion.div>
 
               <div className="grow ml-12 lg:ml-14 flex items-center">
