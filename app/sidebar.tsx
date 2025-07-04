@@ -301,7 +301,7 @@ const SidebarMenuContent = React.forwardRef<SidebarMenuContentElement, SidebarMe
                       className="will-change-motion"
                     >
                       <SidebarProjectLink
-                        path={project.id}
+                        path={project.externalUrl ?? project.id}
                         title={project.title}
                         projectId={project.id}
                       />

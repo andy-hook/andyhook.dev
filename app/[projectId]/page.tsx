@@ -155,7 +155,7 @@ export default async function ProjectPage(props: { params: Promise<{ projectId: 
         <RouterTransition multiplier={10} className="relative z-10">
           <Gutter size="small">
             <div className="mx-auto relative z-10">
-              <div className="md:rounded-3xl overflow-hidden shadow-slate-1 shadow-2xl">
+              <div className="rounded-3xl overflow-hidden shadow-slate-1 shadow-2xl">
                 <RouterImage
                   image={project.heroImage}
                   quality={90}
