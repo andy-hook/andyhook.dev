@@ -59,7 +59,7 @@ export const experience: Experience[] = [
     year: '2024',
     logoAsset: ScrollMark,
     title: 'Senior Software Engineer',
-    company: 'Scroll',
+    company: 'Scroll AI',
     tenure: 'Present',
     description:
       'All-in-one transcription, translation, summaries and archiving. Tailor made for journalists and writers.',
