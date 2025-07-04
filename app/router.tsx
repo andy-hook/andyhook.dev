@@ -155,7 +155,8 @@ const RouterProvider: React.FC<React.PropsWithChildren> = (props) => {
             onAnimationComplete={(definition) => {
               if (definition === 'intro') setState('idle');
             }}
-            className="fixed inset-0 bg-gradient-to-tl from-slate-1 to-slate-2 z-40 pointer-events-none will-change-motion"
+            className="bg-gradient-to-tl from-slate-1 to-slate-2 z-40 pointer-events-none will-change-motion"
+            style={{ position: 'fixed', inset: 0, backgroundColor: 'red' }}
             transition={{ duration: 0.6 }}
           />
         )}
