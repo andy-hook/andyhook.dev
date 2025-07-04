@@ -147,15 +147,15 @@ const RouterProvider: React.FC<React.PropsWithChildren> = (props) => {
         {state === 'initial' && (
           <motion.div
             variants={{
-              initial: { opacity: 1 },
-              intro: { opacity: 0 },
+              initial: { opacity: 1, position: 'fixed', inset: 0 },
+              intro: { opacity: 0, position: 'fixed', inset: 0 },
             }}
             initial="initial"
             exit="intro"
             onAnimationComplete={(definition) => {
               if (definition === 'intro') setState('idle');
             }}
-            className="fixed inset-0 bg-gradient-to-tl from-slate-1 to-slate-2 z-40 pointer-events-none will-change-motion"
+            className="bg-gradient-to-tl from-slate-1 to-slate-2 z-40 pointer-events-none will-change-motion"
             transition={{ duration: 0.6 }}
           />
         )}
