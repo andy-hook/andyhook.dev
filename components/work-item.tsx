@@ -94,7 +94,7 @@ export const WorkItem = React.forwardRef<WorkItemElement, WorkItemProps>(
           )}
         >
           <RouterLink
-            href={project.externalUrl ?? project.id}
+            href={project.externalUrl ?? `/${project.id}`}
             className={cx('block relative', isLarge && 'p-5 md:p-7 xl:p-10', className)}
             {...props}
             ref={forwardedRef}

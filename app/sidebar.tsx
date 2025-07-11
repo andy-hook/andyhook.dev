@@ -269,7 +269,7 @@ const SidebarMenuContent = React.forwardRef<SidebarMenuContentElement, SidebarMe
 
         <div className="h-full flex flex-col justify-between gap-12 md:gap-14 lg:gap-20 xl:gap-24">
           <div className="grow flex items-center">
-            <div className="mt-[10vh] pt-8 md:pt-12 lg:pt-14 xl:pt-16 grow">
+            <div className="mt-[20vh] pt-8 md:pt-12 lg:pt-14 xl:pt-16 grow">
               <h3 className="font-body text-sm lg:text-base xl:text-lg font-medium capsize text-slate-light-9 mb-7 md:mb-8 lg:mb-10 xl:mb-12">
                 Work
               </h3>
@@ -303,13 +303,30 @@ const SidebarMenuContent = React.forwardRef<SidebarMenuContentElement, SidebarMe
                       className="will-change-motion"
                     >
                       <SidebarProjectLink
-                        path={project.externalUrl ?? project.id}
+                        path={project.externalUrl ?? `/${project.id}`}
                         title={project.title}
                         projectId={project.id}
                       />
                     </motion.li>
                   ))}
               </motion.ul>
+
+              <ul className="text-lg text-slate-light-11 mt-20 space-y-2">
+                <li>
+                  <RouterLink href="/#experience">Home</RouterLink>
+                </li>
+                <li>
+                  <RouterLink href="/#experience">Experience</RouterLink>
+                </li>
+                <li>
+                  <RouterLink href="/#testimonials">Recommendations</RouterLink>
+                </li>
+                <li>
+                  <a href="/cv" target="_blank" rel="noopener noreferrer">
+                    Download CV
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
 
