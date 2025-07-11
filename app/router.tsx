@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import NextLink from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { AnimatePresence, motion, useInView } from 'motion/react';
 import { projects } from '@/data';
 import { cx } from '@/cva.config';
@@ -47,7 +47,6 @@ const [RouterProviderImpl, useRouterContext] = createContext<RouterContextValue>
 const RouterProvider: React.FC<React.PropsWithChildren> = (props) => {
   const { children } = props;
   const router = useRouter();
-  const pathname = usePathname();
   const [state, setState] = React.useState<TransitionState>('initial');
   const [imagesReadyMap, setImagesReadyMap] = React.useState<Map<string, boolean> | null>(null);
   const [navigationPending, startTransition] = React.useTransition();
@@ -75,16 +74,24 @@ const RouterProvider: React.FC<React.PropsWithChildren> = (props) => {
   React.useEffect(() => {
     if (allImagesReady) {
       if (state === 'initial') setTimeout(() => setState('intro'), 500);
-      if (state === 'loading') setTimeout(() => setState('enter'), 50);
+      if (state === 'loading')
+        setTimeout(() => {
+          const url = new URL(path, window.location.origin);
+          const hash = url.hash ? url.hash : null;
+
+          // Remove hash from the URL
+          if (hash) history.replaceState(null, '', url.pathname + url.search);
+
+          setState('enter');
+        }, 50);
       setImagesReadyMap(null);
     }
-  }, [allImagesReady, state]);
+  }, [allImagesReady, state, path]);
 
   return (
     <RouterProviderImpl
       state={state}
       onLinkClick={(href) => {
-        console.log('onLinkClick', href, pathname);
         setState('cover');
         setPath(href);
       }}

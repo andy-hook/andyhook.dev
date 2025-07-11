@@ -7,15 +7,15 @@ import { RouterTransition } from '../router';
 
 export default function Home() {
   return (
-    <div className="space-y-24 md:space-y-28 lg:space-y-36 xl:space-y-48">
-      <Work />
+    <div>
+      <Work className="pb-12 md:pb-14 lg:pb-18 xl:pb-24" />
 
       <RouterTransition multiplier={10}>
-        <Experience />
+        <Experience id="experience" className="py-12 md:py-14 lg:py-18 xl:py-24" />
       </RouterTransition>
 
       <RouterTransition multiplier={10}>
-        <Testimonials />
+        <Testimonials id="testimonials" className="py-12 md:py-14 lg:py-18 xl:py-24" />
       </RouterTransition>
     </div>
   );

@@ -313,7 +313,7 @@ const SidebarMenuContent = React.forwardRef<SidebarMenuContentElement, SidebarMe
 
               <ul className="text-lg text-slate-light-11 mt-20 space-y-2">
                 <li>
-                  <RouterLink href="/#experience">Home</RouterLink>
+                  <RouterLink href="/">Home</RouterLink>
                 </li>
                 <li>
                   <RouterLink href="/#experience">Experience</RouterLink>
