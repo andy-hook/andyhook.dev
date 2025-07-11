@@ -5,7 +5,7 @@ import { getProjectMetadata } from '../_components/metadata';
 
 export const metadata = getProjectMetadata('blocks');
 
-export default function AragonPage() {
+export default function BlocksPage() {
   return (
     <Project projectId="blocks">
       <BlocksContent />
