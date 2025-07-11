@@ -7,24 +7,19 @@ type DeviceContextValue = { isMobile: boolean };
 
 const [DeviceProviderImpl, useDevice] = createContext<DeviceContextValue>('DeviceContext');
 
-interface DeviceProviderProps extends React.PropsWithChildren {
-  userAgent: string | null;
-}
+interface DeviceProviderProps extends React.PropsWithChildren {}
 
 const DeviceProvider: React.FC<DeviceProviderProps> = (props) => {
-  const { children, userAgent } = props;
+  const { children } = props;
+  const [isMobile, setIsMobile] = React.useState(false);
 
-  if (userAgent === null) {
-    throw new Error('DeviceProvider must be provided with a valid userAgent.');
-  }
+  React.useEffect(() => {
+    setIsMobile(
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
+    );
+  }, []);
 
-  return (
-    <DeviceProviderImpl
-      isMobile={/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent)}
-    >
-      {children}
-    </DeviceProviderImpl>
-  );
+  return <DeviceProviderImpl isMobile={isMobile}>{children}</DeviceProviderImpl>;
 };
 
 export { useDevice, DeviceProvider };

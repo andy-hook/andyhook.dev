@@ -19,7 +19,6 @@ import { SocialLink } from '@/components/social-link';
 import { DeviceProvider } from '@/components/utils/use-device';
 import { Theme } from './theme';
 import { RouterLink, RouterProvider, RouterTransition } from './router';
-import { headers } from 'next/headers';
 import { FocusRing } from '@/components/focus-ring';
 
 const displayFont = IBM_Plex_Serif({
@@ -45,7 +44,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const resolvedHeaders = await headers();
   return (
     <html lang="en">
       <body
@@ -55,7 +53,7 @@ export default async function RootLayout({
           'bg-slate-2 relative antialiased overflow-x-hidden',
         )}
       >
-        <DeviceProvider userAgent={resolvedHeaders.get('user-agent')}>
+        <DeviceProvider>
           <TooltipPrimitive.DelayProvider delay={{ open: 250, close: 0 }} timeoutMs={250}>
             <Theme className="relative overflow-x-hidden z-0">
               <RouterProvider>
