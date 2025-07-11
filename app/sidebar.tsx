@@ -180,7 +180,7 @@ const SidebarMenu = React.forwardRef<SidebarMenuElement, SidebarMenuProps>(
           >
             <div
               className={cx(
-                'fixed right-0 top-0 bottom-0 w-full sm:w-[28rem] md:w-[30rem] lg:w-[35rem] xl:w-[38rem]',
+                'fixed right-0 top-0 bottom-0 w-full sm:w-[28rem] md:w-[30rem] lg:w-[35rem] xl:w-[38rem] outline-none selection:bg-slate-4 selection:text-slate-12',
                 className,
               )}
               {...context.floating.getFloatingProps()}

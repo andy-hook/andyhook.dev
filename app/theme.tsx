@@ -24,7 +24,6 @@ const Theme = React.forwardRef<ThemeElement, ThemeProps>((props, forwardedRef) =
   const colorVariables = React.useMemo(() => {
     const parsedPathname = pathname.replace('/', '') as ProjectId;
     const projectId = getProjectById(parsedPathname)?.id;
-
     return getThemeColorValues(projectId);
   }, [pathname]);
 
