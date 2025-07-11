@@ -24,7 +24,7 @@ export const DownloadButton = React.forwardRef<DownloadButtonElement, DownloadBu
         <FocusRing className="outline-offset-0 focus-visible:outline-offset-2">
           <MouseHover onValueChange={setHovered} asChild>
             <motion.a
-              href="/andy-hook-uk-software-engineer.pdf"
+              href="/cv"
               className={cx(
                 'relative inline-flex py-4 lg:py-5 px-7 border rounded-full items-center gap-3 w-full sm:w-auto justify-center overflow-hidden',
                 className,
