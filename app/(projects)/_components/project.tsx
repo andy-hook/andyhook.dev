@@ -11,54 +11,26 @@ import { Quote } from '@/components/quote';
 import { Gutter } from '@/components/gutter';
 import { Author } from '@/components/author';
 import { WorkItem } from '@/components/work-item';
-import { TeamList } from './_components/team-list';
+import { TeamList } from './team-list';
 
 import * as HoverGroup from '@/components/primitives/hover-group';
 
-import AragonContent from './_components/content/aragon';
-import BlocksContent from './_components/content/blocks';
-import DashContent from './_components/content/dash';
-import RadixContent from './_components/content/radix';
-import { RouterImage, RouterTransition } from '../router';
-import { Metadata } from 'next';
+import { RouterImage, RouterTransition } from '../../router';
+import { ProjectId } from '@/types';
 
-export async function generateMetadata(props: {
-  params: Promise<{ projectId: string }>;
-}): Promise<Metadata> {
-  const { projectId } = await props.params;
-  const project = projects.find((project) => project.id === projectId);
-
-  if (!project) return {};
-
-  return {
-    title: `Andy Hook – ${project.title}`,
-    description: project.subtitle,
-  };
+interface ProjectProps {
+  projectId: ProjectId;
+  children: React.ReactNode;
 }
 
-const projectContent: Record<string, React.ComponentType> = {
-  aragon: AragonContent,
-  blocks: BlocksContent,
-  dash: DashContent,
-  radix: RadixContent,
-};
+const Project: React.FC<ProjectProps> = (props) => {
+  const { children, projectId } = props;
 
-export async function generateStaticParams() {
-  return projects.map((project) => ({
-    projectId: project.id,
-  }));
-}
-
-export default async function ProjectPage(props: { params: Promise<{ projectId: string }> }) {
-  const { projectId } = await props.params;
   const project = projects
     .filter((project) => !project.externalUrl)
     .find((project) => project.id === projectId);
 
   if (!project) notFound();
-
-  // Get the appropriate content component for this project
-  const Content = projectContent[projectId];
 
   const projectMeta = [
     [
@@ -203,7 +175,7 @@ export default async function ProjectPage(props: { params: Promise<{ projectId: 
         </RouterTransition>
       </section>
 
-      <Content />
+      {children}
 
       <section>
         <RouterTransition multiplier={10}>
@@ -296,4 +268,6 @@ export default async function ProjectPage(props: { params: Promise<{ projectId: 
       </section>
     </div>
   );
-}
+};
+
+export { Project };
