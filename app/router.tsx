@@ -271,17 +271,22 @@ type RouterLinkElement = React.ComponentRef<typeof NextLink>;
 type NextLinkProps = React.ComponentPropsWithoutRef<typeof NextLink>;
 interface RouterLinkProps extends NextLinkProps {
   href: string;
+  newTab?: boolean;
 }
 
 const RouterLink = React.forwardRef<RouterLinkElement, RouterLinkProps>((props, forwardedRef) => {
+  const { newTab, ...linkProps } = props;
   const context = useRouterContext();
 
   const isExternal = props.href.startsWith('https://');
-  const externalProps = isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {};
+  const externalProps =
+    isExternal || newTab
+      ? { target: '_blank', rel: isExternal ? 'noopener noreferrer' : undefined }
+      : {};
 
   return (
     <NextLink
-      {...props}
+      {...linkProps}
       ref={forwardedRef}
       onClick={(event) => {
         props.onClick?.(event);
