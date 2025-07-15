@@ -108,7 +108,7 @@ const Header = React.forwardRef<HeaderElement, HeaderProps>(
           <Container className="flex justify-between items-center md:px-7 xl:px-10" width="wide">
             <FocusRing className="outline-offset-0 focus-visible:outline-offset-1">
               <RouterLink
-                href=""
+                href="/"
                 className="text-slate-12 font-body tracking-tight font-bold text-base capsize p-2 -m-2 rounded-md"
               >
                 Andy Hook

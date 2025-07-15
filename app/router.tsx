@@ -60,7 +60,7 @@ const RouterProvider: React.FC<React.PropsWithChildren> = (props) => {
     const defaultTitle = 'Home';
     if (!path) return defaultTitle;
 
-    const project = projects.find((project) => project.id === path);
+    const project = projects.find((project) => project.id === path.replace('/', ''));
     return project?.title ?? defaultTitle;
   }, [path]);
 
@@ -73,16 +73,20 @@ const RouterProvider: React.FC<React.PropsWithChildren> = (props) => {
 
   React.useEffect(() => {
     if (allImagesReady) {
-      if (state === 'initial') {
-        setTimeout(() => setState('intro'), 500);
-      }
-      if (state === 'loading') {
-        setTimeout(() => setState('enter'), 50);
-      }
+      if (state === 'initial') setTimeout(() => setState('intro'), 500);
+      if (state === 'loading')
+        setTimeout(() => {
+          const url = new URL(path, window.location.origin);
+          const hash = url.hash ? url.hash : null;
 
+          // Remove hash from the URL
+          if (hash) history.replaceState(null, '', url.pathname + url.search);
+
+          setState('enter');
+        }, 50);
       setImagesReadyMap(null);
     }
-  }, [allImagesReady, state]);
+  }, [allImagesReady, state, path]);
 
   return (
     <RouterProviderImpl
@@ -175,7 +179,7 @@ const RouterProvider: React.FC<React.PropsWithChildren> = (props) => {
               exit="enter"
               onAnimationComplete={(definition) => {
                 if (definition === 'cover') {
-                  startTransition(() => router.push(`/${path}`));
+                  startTransition(() => router.push(path));
                   setScreenFilled(true);
                 } else if (definition === 'enter') {
                   setPath('');
@@ -267,17 +271,22 @@ type RouterLinkElement = React.ComponentRef<typeof NextLink>;
 type NextLinkProps = React.ComponentPropsWithoutRef<typeof NextLink>;
 interface RouterLinkProps extends NextLinkProps {
   href: string;
+  newTab?: boolean;
 }
 
 const RouterLink = React.forwardRef<RouterLinkElement, RouterLinkProps>((props, forwardedRef) => {
+  const { newTab, ...linkProps } = props;
   const context = useRouterContext();
 
   const isExternal = props.href.startsWith('https://');
-  const externalProps = isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {};
+  const externalProps =
+    isExternal || newTab
+      ? { target: '_blank', rel: isExternal ? 'noopener noreferrer' : undefined }
+      : {};
 
   return (
     <NextLink
-      {...props}
+      {...linkProps}
       ref={forwardedRef}
       onClick={(event) => {
         props.onClick?.(event);

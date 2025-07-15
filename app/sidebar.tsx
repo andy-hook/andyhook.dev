@@ -22,6 +22,8 @@ import { getProjectById } from '@/data';
 import { RouterLink, useRouterState } from './router';
 import { useDevice } from '@/components/utils/use-device';
 import { FocusRing } from '@/components/focus-ring';
+import * as HoverGroup from '@/components/primitives/hover-group';
+import { ScrambleText } from '@/components/scramble-text';
 
 const MOTION_TRANSITION = {
   ease: cubicBezier(0.5, 0.2, 0.2, 1),
@@ -180,7 +182,7 @@ const SidebarMenu = React.forwardRef<SidebarMenuElement, SidebarMenuProps>(
           >
             <div
               className={cx(
-                'fixed right-0 top-0 bottom-0 w-full sm:w-[28rem] md:w-[30rem] lg:w-[35rem] xl:w-[38rem]',
+                'fixed right-0 top-0 bottom-0 w-full sm:w-[28rem] md:w-[30rem] lg:w-[35rem] xl:w-[38rem] outline-none selection:!bg-slate-4 selection:!text-slate-12',
                 className,
               )}
               {...context.floating.getFloatingProps()}
@@ -269,7 +271,7 @@ const SidebarMenuContent = React.forwardRef<SidebarMenuContentElement, SidebarMe
 
         <div className="h-full flex flex-col justify-between gap-12 md:gap-14 lg:gap-20 xl:gap-24">
           <div className="grow flex items-center">
-            <div className="mt-[10vh] pt-8 md:pt-12 lg:pt-14 xl:pt-16 grow">
+            <div className="mt-[15vh] pt-8 md:pt-12 lg:pt-14 xl:pt-16 grow">
               <h3 className="font-body text-sm lg:text-base xl:text-lg font-medium capsize text-slate-light-9 mb-7 md:mb-8 lg:mb-10 xl:mb-12">
                 Work
               </h3>
@@ -303,13 +305,39 @@ const SidebarMenuContent = React.forwardRef<SidebarMenuContentElement, SidebarMe
                       className="will-change-motion"
                     >
                       <SidebarProjectLink
-                        path={project.externalUrl ?? project.id}
+                        path={project.externalUrl ?? `/${project.id}`}
                         title={project.title}
                         projectId={project.id}
                       />
                     </motion.li>
                   ))}
               </motion.ul>
+
+              <div className="mt-8 lg:mt-10 xl:mt-14 max-w-72">
+                <motion.ul
+                  className="text-sm lg:text-base xl:text-lg -my-1 -mx-3 group/list text-slate-light-11"
+                  variants={{
+                    hidden: {
+                      transition: {
+                        staggerChildren: 0.01,
+                      },
+                    },
+                    visible: {
+                      transition: {
+                        staggerChildren: 0.01,
+                        delayChildren: 0.06,
+                      },
+                    },
+                  }}
+                >
+                  <SidebarSubListItem href="/">Home</SidebarSubListItem>
+                  <SidebarSubListItem href="/#experience">Experience</SidebarSubListItem>
+                  <SidebarSubListItem href="/#testimonials">Recommendations</SidebarSubListItem>
+                  <SidebarSubListItem href="/cv" newTab>
+                    Download CV
+                  </SidebarSubListItem>
+                </motion.ul>
+              </div>
             </div>
           </div>
 
@@ -353,6 +381,71 @@ SidebarMenuContent.displayName = 'SidebarMenuContent';
 
 /* -----------------------------------------------------------------------------------------------*/
 
+type SidebarSubListElement = React.ComponentRef<'ul'>;
+
+interface SidebarSubListProps extends React.ComponentPropsWithoutRef<'ul'> {}
+
+const SidebarSubList = React.forwardRef<SidebarSubListElement, SidebarSubListProps>(
+  (props, forwardedRef) => {
+    const [hoveredItem, setHoveredItem] = React.useState('');
+
+    return (
+      <HoverGroup.Root value={hoveredItem} onValueChange={setHoveredItem}>
+        <ul {...props} ref={forwardedRef} />
+      </HoverGroup.Root>
+    );
+  },
+);
+
+SidebarSubList.displayName = 'SidebarSubList';
+
+/* -----------------------------------------------------------------------------------------------*/
+
+type SidebarSubListItemElement = React.ComponentRef<typeof RouterLink>;
+
+interface SidebarSubListItemProps extends React.ComponentPropsWithoutRef<typeof RouterLink> {
+  children: string;
+}
+
+const SidebarSubListItem = React.forwardRef<SidebarSubListItemElement, SidebarSubListItemProps>(
+  (props, forwardedRef) => {
+    const { children, ...itemProps } = props;
+    const scrambleRef = React.useRef<React.ComponentRef<typeof ScrambleText>>(null);
+    return (
+      <motion.li
+        className="group/item"
+        variants={{
+          hidden: { x: 100, opacity: 0 },
+          visible: { x: 0, opacity: 1 },
+        }}
+        transition={MOTION_TRANSITION}
+      >
+        <div className="group-hover/list:text-slate-light-9 group-hover/item:!text-slate-light-12 transition-colors">
+          <FocusRing
+            className="-outline-offset-3 focus-visible:outline-offset-0 rounded-lg"
+            scheme="light"
+          >
+            <MouseHover
+              onValueChange={(hovered) => {
+                if (hovered) scrambleRef.current?.replay();
+              }}
+              asChild
+            >
+              <RouterLink {...itemProps} ref={forwardedRef} className="py-1 px-3 block">
+                <ScrambleText ref={scrambleRef}>{children}</ScrambleText>
+              </RouterLink>
+            </MouseHover>
+          </FocusRing>
+        </div>
+      </motion.li>
+    );
+  },
+);
+
+SidebarSubListItem.displayName = 'SidebarSubListItem';
+
+/* -----------------------------------------------------------------------------------------------*/
+
 const sidebarProjectLinkLine = cva({
   base: 'h-full absolute top-0 right-0 rounded-full bg-gradient-to-tl',
   variants: {
@@ -377,7 +470,6 @@ interface SidebarProjectLinkProps
 const SidebarProjectLink = React.forwardRef<SidebarProjectLinkElement, SidebarProjectLinkProps>(
   ({ className, path, title, projectId, ...props }, forwardedRef) => {
     const [hovered, setHovered] = React.useState(false);
-
     const isExternal = path.startsWith('https://');
 
     return (
