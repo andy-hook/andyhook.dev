@@ -54,9 +54,14 @@ export const Tooltip = React.forwardRef<TooltipElement, TooltipProps>((props, fo
                     key={`${side}-${align}`}
                     {...tooltipProps}
                     className={cx('bg-slate-light-1 p-4 rounded-lg shadow-lg', className)}
-                    initial={{ opacity: 0, scale: 0.75, [axis]: 10 * (inverseSide ? -1 : 1) }}
+                    initial={{ opacity: 0, scale: 0.85, [axis]: 10 * (inverseSide ? -1 : 1) }}
                     animate={{ opacity: 1, scale: 1, [axis]: 0 }}
                     exit={{ opacity: 0, scale: 0.95, [axis]: 2 * (inverseSide ? -1 : 1) }}
+                    transition={{
+                      type: 'spring',
+                      duration: 0.3,
+                      bounce: 0.25,
+                    }}
                     style={{
                       originX: 'var(--floating-transform-origin-x)',
                       originY: 'var(--floating-transform-origin-y)',
