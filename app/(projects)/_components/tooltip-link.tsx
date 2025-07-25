@@ -21,11 +21,11 @@ export const TooltipLink = React.forwardRef<TooltipLinkElement, TooltipLinkProps
       <Tooltip
         content={
           <div className="font-body font-medium text-sm text-slate-light-11 flex items-center gap-2">
-            <div className="relative bg-slate-light-5 rounded-full overflow-hidden">
+            <div className="relative bg-slate-light-5 rounded-full overflow-hidden size-3">
               <ExternalFavicon
                 image={{ src: props.href, alt: 'favicon', color: null }}
-                className="size-3"
                 fill
+                className="size-full"
               />
             </div>
             <div className="capsize">
