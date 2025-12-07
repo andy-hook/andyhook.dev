@@ -20,14 +20,14 @@ const GENTLE_TRANSITION = {
   stiffness: 110,
   damping: 20,
   mass: 1,
-};
+} as const;
 
 const SNAPPY_TRANSITION = {
   type: 'spring',
   stiffness: 250,
   damping: 30,
   mass: 1,
-};
+} as const;
 
 type TransitionState = 'initial' | 'idle' | 'cover' | 'loading' | 'enter' | 'intro';
 
