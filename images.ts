@@ -293,13 +293,13 @@ const alastairBirdAvatarImage = {
 const radixThumbImage = {
   src: radixThumb,
   alt: 'Radix project thumbnail',
-  color: '#000000',
+  color: '#191B1E',
 };
 
 const radixThumbSmallImage = {
   src: radixThumbSmall,
   alt: 'Radix project small thumbnail',
-  color: '#000000',
+  color: '#191B1E',
 };
 
 const aragonThumbImage = {
