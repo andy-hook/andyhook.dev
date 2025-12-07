@@ -18,7 +18,7 @@ const MOTION_TRANSITION = {
   stiffness: 500,
   damping: 25,
   mass: 0.5,
-};
+} as const;
 
 const workItemTitle = cva({
   base: 'font-body text-slate-12 font-medium capsize block',
