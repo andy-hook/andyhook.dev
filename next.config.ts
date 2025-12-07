@@ -1,4 +1,5 @@
 import type { NextConfig } from 'next';
+import path from 'path';
 
 const nextConfig: NextConfig = {
   images: {
@@ -9,8 +10,11 @@ const nextConfig: NextConfig = {
         pathname: '/s2/favicons/**',
       },
     ],
+    qualities: [90],
   },
-
+  turbopack: {
+    root: path.join(__dirname, '..'),
+  },
   async redirects() {
     return [
       {

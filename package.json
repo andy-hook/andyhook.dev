@@ -12,7 +12,7 @@
     "@floating-ui/react": "^0.27.8",
     "@heroicons/react": "^2.1.5",
     "motion": "^12.6.3",
-    "next": "15.5.7",
+    "next": "16.0.7",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "use-scramble": "^2.2.15"
