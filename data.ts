@@ -62,7 +62,7 @@ export const experience: Experience[] = [
     company: 'Scroll AI',
     tenure: 'Present',
     description:
-      'All-in-one transcription, translation, summaries and archiving. Tailor made for journalists and writers.',
+      'Convert company knowledge into intelligent agents, enable your teams and customers to instantly access trusted answers from reliable sources.',
     link: 'https://scroll.ai',
   },
   {
@@ -224,8 +224,8 @@ export const testimonials: Testimonial[] = [
     name: getPersonById('vlad')!.name,
     avatar: getPersonById('vlad')!.avatar,
     bio: getPersonById('vlad')!.bio,
-    role: 'UI Lead',
-    company: 'WorkOS',
+    role: 'Co-founder',
+    company: 'paper.design',
     full: 'Full quote here.',
     excerpt:
       'Andy is one of the best engineers I have ever worked with. He is thorough, has a great eye for design detail, incredible intuition for simplicity, and holds himself and his team to the highest of standards.',
@@ -236,7 +236,7 @@ export const testimonials: Testimonial[] = [
     avatar: getPersonById('benoit')!.avatar,
     bio: getPersonById('benoit')!.bio,
     role: 'Co-creator of Radix',
-    company: 'WorkOS',
+    company: 'Raycast',
     full: 'Andy has great design-sense and attention to detail, which makes him a key contributor in any environment dealing with user interfaces. He truly cares about what the end user experience will be, considering all paths, not just the happy, but errors, network and edge cases as well.',
     excerpt:
       'Whether researching and developing accessible components for Radix UI, writing documentation, or tackling large architecture changes to the WorkOS dashboard, Andy has always applied the same amount of rigour to his work.',
