@@ -39,12 +39,12 @@ export const Work = React.forwardRef<WorkElement, WorkProps>((props, forwardedRe
             <div className="md:ml-7 xl:ml-10">
               <RouterTransition multiplier={1}>
                 <div className="capsize font-body text-base sm:text-lg text-slate-10 mb-8 sm:mb-9 md:mb-10 xl:mb-11">
-                  Software Engineer
+                  Senior Software Engineer
                 </div>
               </RouterTransition>
               <RouterTransition multiplier={4}>
                 <h1 className="text-slate-12 font-display relative z-10 font-normal mb-10 sm:mb-12 lg:mb-16 xl:mb-18 tracking-tighter leading-tight capsize text-balance">
-                  Building next-generation user interfaces out of the UK
+                  Building high-performance user interfaces out of the UK
                 </h1>
               </RouterTransition>
 
