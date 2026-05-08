@@ -63,6 +63,8 @@ import blocksThumb from '@/public/images/blocks-thumb-large.jpg';
 import blocksThumbSmall from '@/public/images/blocks-thumb-small.jpg';
 import dashThumb from '@/public/images/dash-thumb-large.jpg';
 import dashThumbSmall from '@/public/images/dash-thumb-small.jpg';
+import scrollThumb from '@/public/images/scroll-thumb-large.jpg';
+import scrollThumbSmall from '@/public/images/scroll-thumb-small.jpg';
 
 /* -------------------------------------------------------------------------------------------------
  * Hero Images
@@ -338,6 +340,18 @@ const dashThumbSmallImage = {
   color: '#6A17B7',
 };
 
+const scrollThumbImage = {
+  src: scrollThumb,
+  alt: 'Scroll project thumbnail',
+  color: 'red',
+};
+
+const scrollThumbSmallImage = {
+  src: scrollThumbSmall,
+  alt: 'Scroll project small thumbnail',
+  color: 'red',
+};
+
 /* -------------------------------------------------------------------------------------------------
  * Hero Images
  * -----------------------------------------------------------------------------------------------*/
@@ -402,6 +416,8 @@ export {
   blocksThumbSmallImage,
   dashThumbImage,
   dashThumbSmallImage,
+  scrollThumbImage,
+  scrollThumbSmallImage,
   aragonHeroImage,
   blocksHeroImage,
   dashHeroImage,

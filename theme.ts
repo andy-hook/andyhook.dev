@@ -77,6 +77,13 @@ export const colorProject = {
     4: 'oklch(80% 0.25 300 / <alpha-value>)',
     5: 'oklch(90% 0.25 300 / <alpha-value>)',
   },
+  scroll: {
+    1: 'oklch(38.68% 0.205 293.11 / <alpha-value>)',
+    2: 'oklch(38.68% 0.205 293.11 / <alpha-value>)',
+    3: 'oklch(51.91% 0.269 313 / <alpha-value>)',
+    4: 'oklch(80% 0.25 300 / <alpha-value>)',
+    5: 'oklch(90% 0.25 300 / <alpha-value>)',
+  },
 };
 
 export const colorSocial = {

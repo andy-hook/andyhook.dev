@@ -52,6 +52,8 @@ import {
   dashThumbSmallImage,
   dashHeroImage,
   radixThumbSmallImage,
+  scrollThumbImage,
+  scrollThumbSmallImage,
 } from './images';
 
 export const experience: Experience[] = [
@@ -221,9 +223,9 @@ export const people: Person[] = [
 export const testimonials: Testimonial[] = [
   {
     id: 'vlad',
-    name: getPersonById('vlad')!.name,
-    avatar: getPersonById('vlad')!.avatar,
-    bio: getPersonById('vlad')!.bio,
+    name: getPersonById('vlad').name,
+    avatar: getPersonById('vlad').avatar,
+    bio: getPersonById('vlad').bio,
     role: 'Co-founder',
     company: 'paper.design',
     full: 'Full quote here.',
@@ -232,9 +234,9 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: 'benoit',
-    name: getPersonById('benoit')!.name,
-    avatar: getPersonById('benoit')!.avatar,
-    bio: getPersonById('benoit')!.bio,
+    name: getPersonById('benoit').name,
+    avatar: getPersonById('benoit').avatar,
+    bio: getPersonById('benoit').bio,
     role: 'Co-creator of Radix',
     company: 'Raycast',
     full: 'Andy has great design-sense and attention to detail, which makes him a key contributor in any environment dealing with user interfaces. He truly cares about what the end user experience will be, considering all paths, not just the happy, but errors, network and edge cases as well.',
@@ -243,9 +245,9 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: 'brett',
-    name: getPersonById('brett')!.name,
-    avatar: getPersonById('brett')!.avatar,
-    bio: getPersonById('brett')!.bio,
+    name: getPersonById('brett').name,
+    avatar: getPersonById('brett').avatar,
+    bio: getPersonById('brett').bio,
     role: 'CTO',
     company: 'Aragon',
     full: 'Andy not only drives to personally deliver to the highest of standards, but goes the distance to improve the work of everyone around him. He produces well-crafted, precise, and polished interfaces, but more importantly as a senior engineer, demonstrates a strong ability to pass on his own strengths to others.',
@@ -254,9 +256,9 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: 'andrew',
-    name: getPersonById('andrew')!.name,
-    avatar: getPersonById('andrew')!.avatar,
-    bio: getPersonById('andrew')!.bio,
+    name: getPersonById('andrew').name,
+    avatar: getPersonById('andrew').avatar,
+    bio: getPersonById('andrew').bio,
     role: 'Lead Architect',
     company: 'Opia',
     full: 'Full quote here.',
@@ -265,9 +267,9 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: 'ze',
-    name: getPersonById('ze')!.name,
-    avatar: getPersonById('ze')!.avatar,
-    bio: getPersonById('ze')!.bio,
+    name: getPersonById('ze').name,
+    avatar: getPersonById('ze').avatar,
+    bio: getPersonById('ze').bio,
     role: 'Sr Developer',
     company: 'Bright',
     full: 'Andy is brilliant to work with, as dedicated to well polished detail as he is to the broader sweep of creative design. I have enjoyed working with someone so innovative who has collaborated with me and the wider team on finding efficient constructive solutions.',
@@ -276,9 +278,9 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: 'michael',
-    name: getPersonById('michael')!.name,
-    avatar: getPersonById('michael')!.avatar,
-    bio: getPersonById('michael')!.bio,
+    name: getPersonById('michael').name,
+    avatar: getPersonById('michael').avatar,
+    bio: getPersonById('michael').bio,
     role: 'Head of Design',
     company: 'Brandwatch',
     full: 'Full quote here.',
@@ -287,9 +289,9 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: 'ben',
-    name: getPersonById('ben')!.name,
-    avatar: getPersonById('ben')!.avatar,
-    bio: getPersonById('ben')!.bio,
+    name: getPersonById('ben').name,
+    avatar: getPersonById('ben').avatar,
+    bio: getPersonById('ben').bio,
     role: 'UX Engineer',
     company: 'Bright',
     full: 'Andy is equally brilliant at creative visual design as he is with the technical side of engineering a modern web app. Whatever task he is working on he will go above and beyond to deliver at a very high quality level. As a fellow UI developer I have learnt a lot from working with him.',
@@ -311,12 +313,32 @@ export const projects: Project[] = [
     thumbnail: radixThumbImage,
     thumbnailSmall: radixThumbSmallImage,
     heroImage: aragonHeroImage,
-    testimonial: getTestimonialById('benoit')!,
+    testimonial: getTestimonialById('benoit'),
     team: [
-      { ...getPersonById('benoit')!, role: 'Engineer' },
-      { ...getPersonById('jenna')!, role: 'Engineer' },
-      { ...getPersonById('vlad')!, role: 'Product Designer' },
-      { ...getPersonById('pedro')!, role: 'Developer Advocate' },
+      { ...getPersonById('benoit'), role: 'Engineer' },
+      { ...getPersonById('jenna'), role: 'Engineer' },
+      { ...getPersonById('vlad'), role: 'Product Designer' },
+      { ...getPersonById('pedro'), role: 'Developer Advocate' },
+    ],
+    additionalTeam: 2,
+  },
+  {
+    id: 'scroll',
+    title: 'Scroll',
+    subtitle: 'Powerfully accurate AI intelligence',
+    role: 'Senior UI Engineer',
+    tenure: 'Sept 2024 – May 2026',
+    technologies: ['React', 'TypeScript', 'Next', 'Tailwind', 'Jest & Testing Library'],
+    intro: 'fgdfgdfg',
+    thumbnail: scrollThumbImage,
+    thumbnailSmall: scrollThumbSmallImage,
+    heroImage: aragonHeroImage,
+    testimonial: getTestimonialById('benoit'),
+    team: [
+      { ...getPersonById('benoit'), role: 'Engineer' },
+      { ...getPersonById('jenna'), role: 'Engineer' },
+      { ...getPersonById('vlad'), role: 'Product Designer' },
+      { ...getPersonById('pedro'), role: 'Developer Advocate' },
     ],
     additionalTeam: 2,
   },
@@ -339,11 +361,11 @@ export const projects: Project[] = [
     thumbnail: aragonThumbImage,
     thumbnailSmall: aragonThumbSmallImage,
     heroImage: aragonHeroImage,
-    testimonial: getTestimonialById('brett')!,
+    testimonial: getTestimonialById('brett'),
     team: [
-      { ...getPersonById('pierre')!, role: 'Engineer' },
-      { ...getPersonById('paty')!, role: 'Product Designer' },
-      { ...getPersonById('adri')!, role: 'Brand Designer' },
+      { ...getPersonById('pierre'), role: 'Engineer' },
+      { ...getPersonById('paty'), role: 'Product Designer' },
+      { ...getPersonById('adri'), role: 'Brand Designer' },
     ],
     additionalTeam: 4,
   },
@@ -366,7 +388,7 @@ export const projects: Project[] = [
     thumbnail: blocksThumbImage,
     thumbnailSmall: blocksThumbSmallImage,
     heroImage: blocksHeroImage,
-    testimonial: getTestimonialById('ben')!,
+    testimonial: getTestimonialById('ben'),
     team: [],
     additionalTeam: 0,
   },
@@ -382,15 +404,22 @@ export const projects: Project[] = [
     thumbnail: dashThumbImage,
     thumbnailSmall: dashThumbSmallImage,
     heroImage: dashHeroImage,
-    testimonial: getTestimonialById('ze')!,
+    testimonial: getTestimonialById('ze'),
     team: [
-      { ...getPersonById('ze')!, role: 'Engineer' },
-      { ...getPersonById('alastair')!, role: 'UX Engineer' },
-      { ...getPersonById('ben')!, role: 'UX Engineer' },
+      { ...getPersonById('ze'), role: 'Engineer' },
+      { ...getPersonById('alastair'), role: 'UX Engineer' },
+      { ...getPersonById('ben'), role: 'UX Engineer' },
     ],
     additionalTeam: 4,
   },
 ];
+
+export const selectedProjects = [
+  getProjectById('radix'),
+  getProjectById('scroll'),
+  getProjectById('aragon'),
+  getProjectById('dash'),
+] as const;
 
 export const social: Record<SocialName, SocialLink> = {
   dribbble: {
@@ -431,13 +460,13 @@ export const data: Data = {
 
 // Utility functions
 export function getTestimonialById(id: TestimonialId) {
-  return testimonials.find((testimonial) => testimonial.id === id);
+  return testimonials.find((testimonial) => testimonial.id === id)!;
 }
 
 export function getPersonById(id: PersonId) {
-  return people.find((person) => person.id === id);
+  return people.find((person) => person.id === id)!;
 }
 
 export function getProjectById(id: ProjectId) {
-  return projects.find((project) => project.id === id);
+  return projects.find((project) => project.id === id)!;
 }

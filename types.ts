@@ -9,7 +9,7 @@ export interface ImageWithMetadata {
   color: string | null;
 }
 
-export type ProjectId = 'radix' | 'aragon' | 'blocks' | 'dash';
+export type ProjectId = 'radix' | 'aragon' | 'blocks' | 'dash' | 'scroll';
 
 export type PersonId =
   | 'vlad'

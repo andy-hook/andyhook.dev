@@ -1,0 +1,14 @@
+import * as React from 'react';
+import ScrollContent from '../_components/content/scroll';
+import { Project } from '../_components/project';
+import { getProjectMetadata } from '../_components/metadata';
+
+export const metadata = getProjectMetadata('aragon');
+
+export default function AragonPage() {
+  return (
+    <Project projectId="scroll">
+      <ScrollContent />
+    </Project>
+  );
+}

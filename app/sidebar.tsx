@@ -291,10 +291,9 @@ const SidebarMenuContent = React.forwardRef<SidebarMenuContentElement, SidebarMe
                   },
                 }}
               >
-                {(['radix', 'aragon', 'blocks', 'dash'] as const)
-                  .map((projectId) => getProjectById(projectId))
-                  .filter((project): project is NonNullable<typeof project> => project !== null)
-                  .map((project) => (
+                {(['radix', 'scroll', 'aragon', 'dash', 'blocks'] as const).map((projectId) => {
+                  const project = getProjectById(projectId);
+                  return (
                     <motion.li
                       key={project.id}
                       variants={{
@@ -310,7 +309,8 @@ const SidebarMenuContent = React.forwardRef<SidebarMenuContentElement, SidebarMe
                         projectId={project.id}
                       />
                     </motion.li>
-                  ))}
+                  );
+                })}
               </motion.ul>
 
               <div className="mt-8 lg:mt-10 xl:mt-14 max-w-72">
@@ -454,6 +454,7 @@ const sidebarProjectLinkLine = cva({
       aragon: 'from-aragon-1 to-aragon-5',
       blocks: 'from-blocks-1 to-blocks-5',
       dash: 'from-dash-1 to-dash-4',
+      scroll: 'from-scroll-1 to-scroll-4',
     },
   },
 });
