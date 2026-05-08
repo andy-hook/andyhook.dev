@@ -272,17 +272,20 @@ type NextLinkProps = React.ComponentPropsWithoutRef<typeof NextLink>;
 interface RouterLinkProps extends NextLinkProps {
   href: string;
   newTab?: boolean;
+  external?: boolean;
 }
 
 const RouterLink = React.forwardRef<RouterLinkElement, RouterLinkProps>((props, forwardedRef) => {
-  const { newTab, ...linkProps } = props;
+  const { newTab, external, ...linkProps } = props;
   const context = useRouterContext();
 
-  const isExternal = props.href.startsWith('https://');
+  const isExternal = external ?? props.href.startsWith('https://');
   const externalProps =
     isExternal || newTab
       ? { target: '_blank', rel: isExternal ? 'noopener noreferrer' : undefined }
       : {};
+
+  if (isExternal) return <a {...linkProps} {...externalProps} ref={forwardedRef} />;
 
   return (
     <NextLink
@@ -290,8 +293,6 @@ const RouterLink = React.forwardRef<RouterLinkElement, RouterLinkProps>((props, 
       ref={forwardedRef}
       onClick={(event) => {
         props.onClick?.(event);
-
-        if (isExternal) return;
 
         if (!event.isDefaultPrevented() && !isModifiedEvent(event)) {
           event.preventDefault();
@@ -349,8 +350,10 @@ RouterTransition.displayName = 'RouterTransition';
 
 type RouterImageElement = React.ComponentRef<typeof NextImage>;
 
-interface RouterImageProps
-  extends Omit<React.ComponentPropsWithoutRef<typeof NextImage>, 'src' | 'alt'> {
+interface RouterImageProps extends Omit<
+  React.ComponentPropsWithoutRef<typeof NextImage>,
+  'src' | 'alt'
+> {
   image: ImageWithMetadata;
 }
 
