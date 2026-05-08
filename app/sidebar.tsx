@@ -333,7 +333,7 @@ const SidebarMenuContent = React.forwardRef<SidebarMenuContentElement, SidebarMe
                   <SidebarSubListItem href="/">Home</SidebarSubListItem>
                   <SidebarSubListItem href="/#experience">Experience</SidebarSubListItem>
                   <SidebarSubListItem href="/#testimonials">Recommendations</SidebarSubListItem>
-                  <SidebarSubListItem href="/cv" newTab>
+                  <SidebarSubListItem href="/cv" newTab external>
                     Download CV
                   </SidebarSubListItem>
                 </motion.ul>
@@ -460,8 +460,10 @@ const sidebarProjectLinkLine = cva({
 
 type SidebarProjectLinkElement = React.ComponentRef<typeof RouterLink>;
 
-interface SidebarProjectLinkProps
-  extends Omit<React.ComponentPropsWithoutRef<typeof RouterLink>, 'href'> {
+interface SidebarProjectLinkProps extends Omit<
+  React.ComponentPropsWithoutRef<typeof RouterLink>,
+  'href'
+> {
   projectId: ProjectId;
   title: string;
   path: string;
