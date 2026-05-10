@@ -320,6 +320,16 @@ export const testimonials: Testimonial[] = [
     excerpt:
       'Andy is a rare find in UI development. He is equally brilliant at creative visual design as he is with the technical aspect of engineering a modern web app.',
   },
+  {
+    id: 'elik',
+    name: getPersonById('elik').name,
+    avatar: getPersonById('elik').avatar,
+    bio: getPersonById('elik').bio,
+    role: 'CEO & Co-founder',
+    company: 'Scroll AI',
+    full: 'Andy is self-reliant, smart, and technically very strong. He does not just build what is asked. He thinks through what users are trying to do, where the product might feel confusing, and how to make the final experience simpler, clearer, and more useful.',
+    excerpt: 'TBC',
+  },
 ];
 
 export const projects: Project[] = [
@@ -355,7 +365,7 @@ export const projects: Project[] = [
     thumbnail: scrollThumbImage,
     thumbnailSmall: scrollThumbSmallImage,
     heroImage: scrollHeroImage,
-    testimonial: getTestimonialById('benoit'),
+    testimonial: getTestimonialById('elik'),
     team: [
       { ...getPersonById('itamar'), role: 'Software Engineer' },
       { ...getPersonById('jenna'), role: 'Software Engineer' },
