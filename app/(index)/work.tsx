@@ -105,11 +105,11 @@ export const Work = React.forwardRef<WorkElement, WorkProps>((props, forwardedRe
                       className="absolute left-5 md:left-7 xl:left-10 -bottom-44 h-full"
                     />
 
-                    <WorkItem project={aragon} className="relative" priority />
+                    <WorkItem project={scroll} className="relative" priority />
                   </li>
 
                   <li>
-                    <WorkItem project={scroll} priority />
+                    <WorkItem project={aragon} priority />
                   </li>
 
                   <li className="relative sm:-mt-[31.5%]">
