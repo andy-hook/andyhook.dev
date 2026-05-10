@@ -360,7 +360,15 @@ export const projects: Project[] = [
     subtitle: 'Powerfully accurate AI intelligence',
     role: 'Senior Software Engineer',
     tenure: 'Sept 2024 – May 2026',
-    technologies: ['React', 'TypeScript', 'Next.js', 'Tailwind', 'Zero Sync', 'Playwright'],
+    technologies: [
+      'React',
+      'TypeScript',
+      'Tailwind',
+      'Next.js',
+      'Clerk',
+      'Zero Sync',
+      'Playwright',
+    ],
     intro: 'fgdfgdfg',
     thumbnail: scrollThumbImage,
     thumbnailSmall: scrollThumbSmallImage,
@@ -384,8 +392,8 @@ export const projects: Project[] = [
       'React',
       'TypeScript',
       'Ethers.js',
-      'Next.js',
       'Styled Components',
+      'Next.js',
       'Jest & Testing Library',
     ],
     intro:
@@ -410,9 +418,9 @@ export const projects: Project[] = [
     technologies: [
       'React',
       'TypeScript',
-      'Ethers.js',
-      'Next',
       'Styled Components',
+      'Ethers.js',
+      'Next.js',
       'Jest & Testing Library',
     ],
     intro:
@@ -430,7 +438,7 @@ export const projects: Project[] = [
     subtitle: 'Modern digital asset management',
     role: 'UI Engineer',
     tenure: 'Sep 2018 – May 2020',
-    technologies: ['Angular', 'TypeScript', 'Sass (SCSS)', 'Storybook', 'Karma & Jasmine'],
+    technologies: ['Angular', 'TypeScript', 'Sass', 'Auth0', 'Storybook', 'Karma & Jasmine'],
     intro:
       'Bright was originally founded as a software development agency in 1999, but more recently has found success and traction by transitioning into a SaaS led, customer centric product company best known for delivering high-quality digital asset management software, exceptional customer support and expert training services.',
     thumbnail: dashThumbImage,
