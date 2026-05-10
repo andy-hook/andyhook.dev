@@ -56,6 +56,8 @@ import {
   scrollThumbSmallImage,
   scrollHeroImage,
   itamarRavidAvatarImage,
+  benGadAvatarImage,
+  elikEizenbergAvatarImage,
 } from './images';
 
 export const experience: Experience[] = [
@@ -226,6 +228,18 @@ export const people: Person[] = [
     avatar: itamarRavidAvatarImage,
     bio: 'https://www.linkedin.com/in/iravid/',
   },
+  {
+    id: 'ben-g',
+    name: 'Ben Gad',
+    avatar: benGadAvatarImage,
+    bio: 'https://www.linkedin.com/in/bengad/',
+  },
+  {
+    id: 'elik',
+    name: 'Elik Eizenberg',
+    avatar: elikEizenbergAvatarImage,
+    bio: 'https://www.linkedin.com/in/elikeizenberg/',
+  },
 ];
 
 export const testimonials: Testimonial[] = [
@@ -345,8 +359,8 @@ export const projects: Project[] = [
     team: [
       { ...getPersonById('itamar'), role: 'Software Engineer' },
       { ...getPersonById('jenna'), role: 'Software Engineer' },
-      { ...getPersonById('vlad'), role: 'Product Designer' },
-      { ...getPersonById('pedro'), role: 'Developer Advocate' },
+      { ...getPersonById('ben-g'), role: 'Product Designer' },
+      { ...getPersonById('elik'), role: 'Product' },
     ],
     additionalTeam: 2,
   },
@@ -360,7 +374,7 @@ export const projects: Project[] = [
       'React',
       'TypeScript',
       'Ethers.js',
-      'Next',
+      'Next.js',
       'Styled Components',
       'Jest & Testing Library',
     ],

@@ -51,6 +51,8 @@ import patyDavilaAvatar from '@/public/images/avatars/paty-davila.png';
 import pierreBerterAvatar from '@/public/images/avatars/pierre-bertet.png';
 import alastairBirdAvatar from '@/public/images/avatars/alastair-bird.png';
 import itamarRavidAvatar from '@/public/images/avatars/itamar-ravid.png';
+import benGadAvatar from '@/public/images/avatars/ben-gad.png';
+import elikEizenbergAvatar from '@/public/images/avatars/elik-eizenberg.png';
 
 /* -------------------------------------------------------------------------------------------------
  * Thumbnails
@@ -296,6 +298,18 @@ const itamarRavidAvatarImage = {
   color: '#6D7D7E',
 };
 
+const benGadAvatarImage = {
+  src: benGadAvatar,
+  alt: 'Ben Gad',
+  color: '#0F092D',
+};
+
+const elikEizenbergAvatarImage = {
+  src: elikEizenbergAvatar,
+  alt: 'Elik Eizenberg',
+  color: '#714556',
+};
+
 /* -------------------------------------------------------------------------------------------------
  * Thumbnail Images
  * -----------------------------------------------------------------------------------------------*/
@@ -423,6 +437,8 @@ export {
   pierreBerterAvatarImage,
   alastairBirdAvatarImage,
   itamarRavidAvatarImage,
+  benGadAvatarImage,
+  elikEizenbergAvatarImage,
   radixThumbImage,
   radixThumbSmallImage,
   aragonThumbImage,
