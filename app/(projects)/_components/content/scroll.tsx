@@ -35,26 +35,52 @@ export default function ScrollContent() {
 
       <ImageSection image={scrollPlaceholderImage} />
 
-      <ContentSection title="Delivering on the Aragon promise">
-        <p className="capsize">
-          The project is well known in the DAO space for executing to a very high standard, the
-          exceptional quality of their brand design and user experience stand out in an industry
-          that is not known for being particularly user friendly.
-        </p>
-        <p className="capsize">
-          I was lucky enough to work with two amazing design talents, Patricia Davila and Adrián
-          García, user experience, and brand respectively. They are some of the most talented
-          designers I&apos;ve worked with and deserve high praise for the visual fidelity and
-          intuitive experience offered within Aragons products.
-        </p>
-        <p className="capsize">
-          An important component of a high performing product team is a strong relationship between
-          engineers and designers. Catching every edge case, accounting for all possible UI states
-          and fine tuning a flow to fit within technological limitations requires smooth
-          communication between disciplines and engineers who understand all sides of the coin –
-          technology, design, users and business. My biggest impact in this regard was an ability to
-          execute on this vision, ensuring every detail and interaction was of the highest quality.
-        </p>
+      <ContentSection title="Zero sync optimistic">
+        <p className="capsize">Stuff</p>
+      </ContentSection>
+
+      <ContentSection title="Rich text editing">
+        <p className="capsize">Stuff</p>
+      </ContentSection>
+
+      <ContentSection title="Image cropping">
+        <p className="capsize">Stuff</p>
+      </ContentSection>
+
+      <ContentSection title="Folder organization">
+        <p className="capsize">Stuff</p>
+      </ContentSection>
+
+      <ContentSection title="Source uploads">
+        <p className="capsize">Stuff</p>
+      </ContentSection>
+
+      <ContentSection title="Chat streaming, inline citations">
+        <p className="capsize">Stuff</p>
+      </ContentSection>
+
+      <ContentSection title="Credit based billing">
+        <p className="capsize">Stuff</p>
+      </ContentSection>
+
+      <ContentSection title="Chat publishing">
+        <p className="capsize">Stuff</p>
+      </ContentSection>
+
+      <ContentSection title="Source viewing">
+        <p className="capsize">Stuff</p>
+      </ContentSection>
+
+      <ContentSection title="Source clipping to notes, highlights">
+        <p className="capsize">Stuff</p>
+      </ContentSection>
+
+      <ContentSection title="Sheets extension">
+        <p className="capsize">Stuff</p>
+      </ContentSection>
+
+      <ContentSection title="Sheets extension">
+        <p className="capsize">Stuff</p>
       </ContentSection>
 
       <ImageSection image={scrollPlaceholderImage} />
