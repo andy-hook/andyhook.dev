@@ -428,10 +428,10 @@ RouterImage.displayName = 'RouterImage';
 /* -----------------------------------------------------------------------------------------------*/
 
 const getSpinnerVariantFromPath = (path: string) => {
-  if (path === 'radix') return 'radix';
-  if (path === 'aragon') return 'aragon';
-  if (path === 'blocks') return 'blocks';
-  if (path === 'dash') return 'dash';
+  if (path === '/radix') return 'radix';
+  if (path === '/aragon') return 'aragon';
+  if (path === '/blocks') return 'blocks';
+  if (path === '/dash') return 'dash';
   return 'light';
 };
 
