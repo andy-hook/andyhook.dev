@@ -54,6 +54,8 @@ import {
   radixThumbSmallImage,
   scrollThumbImage,
   scrollThumbSmallImage,
+  scrollHeroImage,
+  itamarRavidAvatarImage,
 } from './images';
 
 export const experience: Experience[] = [
@@ -218,6 +220,12 @@ export const people: Person[] = [
     avatar: alastairBirdAvatarImage,
     bio: 'https://www.linkedin.com/in/alastair-bird/',
   },
+  {
+    id: 'itamar',
+    name: 'Itamar Ravid',
+    avatar: itamarRavidAvatarImage,
+    bio: 'https://www.linkedin.com/in/iravid/',
+  },
 ];
 
 export const testimonials: Testimonial[] = [
@@ -326,17 +334,17 @@ export const projects: Project[] = [
     id: 'scroll',
     title: 'Scroll',
     subtitle: 'Powerfully accurate AI intelligence',
-    role: 'Senior UI Engineer',
+    role: 'Senior Software Engineer',
     tenure: 'Sept 2024 – May 2026',
-    technologies: ['React', 'TypeScript', 'Next', 'Tailwind', 'Jest & Testing Library'],
+    technologies: ['React', 'TypeScript', 'Next.js', 'Tailwind', 'Zero Sync', 'Playwright'],
     intro: 'fgdfgdfg',
     thumbnail: scrollThumbImage,
     thumbnailSmall: scrollThumbSmallImage,
-    heroImage: aragonHeroImage,
+    heroImage: scrollHeroImage,
     testimonial: getTestimonialById('benoit'),
     team: [
-      { ...getPersonById('benoit'), role: 'Engineer' },
-      { ...getPersonById('jenna'), role: 'Engineer' },
+      { ...getPersonById('itamar'), role: 'Software Engineer' },
+      { ...getPersonById('jenna'), role: 'Software Engineer' },
       { ...getPersonById('vlad'), role: 'Product Designer' },
       { ...getPersonById('pedro'), role: 'Developer Advocate' },
     ],

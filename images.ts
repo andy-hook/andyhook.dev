@@ -50,6 +50,7 @@ import adriGarciaAvatar from '@/public/images/avatars/adri-garcia.png';
 import patyDavilaAvatar from '@/public/images/avatars/paty-davila.png';
 import pierreBerterAvatar from '@/public/images/avatars/pierre-bertet.png';
 import alastairBirdAvatar from '@/public/images/avatars/alastair-bird.png';
+import itamarRavidAvatar from '@/public/images/avatars/itamar-ravid.png';
 
 /* -------------------------------------------------------------------------------------------------
  * Thumbnails
@@ -73,6 +74,7 @@ import scrollThumbSmall from '@/public/images/scroll-thumb-small.jpg';
 import aragonHero from '@/public/images/aragon-hero.jpg';
 import blocksHero from '@/public/images/blocks-hero.jpg';
 import dashHero from '@/public/images/dash-hero.jpg';
+import scrollHero from '@/public/images/scroll-hero.jpg';
 
 /* -------------------------------------------------------------------------------------------------
  * Aragon Images
@@ -288,6 +290,12 @@ const alastairBirdAvatarImage = {
   color: '#555557',
 };
 
+const itamarRavidAvatarImage = {
+  src: itamarRavidAvatar,
+  alt: 'Itamar Ravid',
+  color: '#6D7D7E',
+};
+
 /* -------------------------------------------------------------------------------------------------
  * Thumbnail Images
  * -----------------------------------------------------------------------------------------------*/
@@ -374,6 +382,12 @@ const dashHeroImage = {
   color: '#7500BE',
 };
 
+const scrollHeroImage = {
+  src: scrollHero,
+  alt: 'Scroll project hero image',
+  color: 'red',
+};
+
 export {
   aragonIntroImage,
   aragonComponentsImage,
@@ -408,6 +422,7 @@ export {
   patyDavilaAvatarImage,
   pierreBerterAvatarImage,
   alastairBirdAvatarImage,
+  itamarRavidAvatarImage,
   radixThumbImage,
   radixThumbSmallImage,
   aragonThumbImage,
@@ -421,4 +436,5 @@ export {
   aragonHeroImage,
   blocksHeroImage,
   dashHeroImage,
+  scrollHeroImage,
 };
