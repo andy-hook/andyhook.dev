@@ -410,6 +410,26 @@ export const projects: Project[] = [
     additionalTeam: 4,
   },
   {
+    id: 'dash',
+    title: 'Dash',
+    subtitle: 'Modern digital asset management',
+    role: 'UI Engineer',
+    tenure: 'Sep 2018 – May 2020',
+    technologies: ['Angular', 'TypeScript', 'Sass', 'Auth0', 'Storybook', 'Karma & Jasmine'],
+    intro:
+      'Bright was originally founded as a software development agency in 1999, but more recently has found success and traction by transitioning into a SaaS led, customer centric product company best known for delivering high-quality digital asset management software, exceptional customer support and expert training services.',
+    thumbnail: dashThumbImage,
+    thumbnailSmall: dashThumbSmallImage,
+    heroImage: dashHeroImage,
+    testimonial: getTestimonialById('ze'),
+    team: [
+      { ...getPersonById('ze'), role: 'Engineer' },
+      { ...getPersonById('alastair'), role: 'UX Engineer' },
+      { ...getPersonById('ben'), role: 'UX Engineer' },
+    ],
+    additionalTeam: 4,
+  },
+  {
     id: 'blocks',
     title: 'Blocks',
     subtitle: 'Ethereum inside your browser',
@@ -431,26 +451,6 @@ export const projects: Project[] = [
     testimonial: getTestimonialById('ben'),
     team: [],
     additionalTeam: 0,
-  },
-  {
-    id: 'dash',
-    title: 'Dash',
-    subtitle: 'Modern digital asset management',
-    role: 'UI Engineer',
-    tenure: 'Sep 2018 – May 2020',
-    technologies: ['Angular', 'TypeScript', 'Sass', 'Auth0', 'Storybook', 'Karma & Jasmine'],
-    intro:
-      'Bright was originally founded as a software development agency in 1999, but more recently has found success and traction by transitioning into a SaaS led, customer centric product company best known for delivering high-quality digital asset management software, exceptional customer support and expert training services.',
-    thumbnail: dashThumbImage,
-    thumbnailSmall: dashThumbSmallImage,
-    heroImage: dashHeroImage,
-    testimonial: getTestimonialById('ze'),
-    team: [
-      { ...getPersonById('ze'), role: 'Engineer' },
-      { ...getPersonById('alastair'), role: 'UX Engineer' },
-      { ...getPersonById('ben'), role: 'UX Engineer' },
-    ],
-    additionalTeam: 4,
   },
 ];
 

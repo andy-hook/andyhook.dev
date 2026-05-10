@@ -2,7 +2,7 @@ import * as React from 'react';
 import { notFound } from 'next/navigation';
 import { UserIcon, CalendarIcon } from '@heroicons/react/16/solid';
 
-import { projects, selectedProjects } from '@/data';
+import { projects } from '@/data';
 
 import { Container } from '@/components/container';
 import { Line } from '@/components/line';
@@ -49,7 +49,11 @@ const Project: React.FC<ProjectProps> = (props) => {
     ],
   ] as const;
 
-  const moreProjects = selectedProjects.filter((project) => project.id !== projectId);
+  const currentProjectIndex = projects.findIndex((project) => project.id === projectId);
+  const moreProjects = Array.from({ length: 3 }, (_, offset) => {
+    const nextProjectIndex = (currentProjectIndex + offset + 1) % projects.length;
+    return projects[nextProjectIndex];
+  });
 
   const renderedTeam = project.team.map(({ avatar, name, role }) => ({
     avatar,
