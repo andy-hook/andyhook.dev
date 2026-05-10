@@ -432,6 +432,7 @@ const getSpinnerVariantFromPath = (path: string) => {
   if (path === '/aragon') return 'aragon';
   if (path === '/blocks') return 'blocks';
   if (path === '/dash') return 'dash';
+  if (path === '/scroll') return 'scroll';
   return 'light';
 };
 

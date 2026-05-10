@@ -2,16 +2,7 @@ import { ContentSection } from '../content-section';
 import { ImageSection } from '../image-section';
 import { ImageGroupSection } from '../image-group-section';
 import { TooltipLink } from '../tooltip-link';
-import {
-  aragonIntroImage,
-  aragonComponentsImage,
-  aragonNetworkDashboardHomeImage,
-  aragonNetworkDashboardProposalImage,
-  aragonNetworkDashboardAgreementImage,
-  aragonUpgradeHomeImage,
-  aragonUpgradeConverterImage,
-  aragonUpgradeCompleteImage,
-} from '@/images';
+import { scrollPlaceholderImage } from '@/images';
 
 export default function ScrollContent() {
   return (
@@ -42,7 +33,7 @@ export default function ScrollContent() {
         </p>
       </ContentSection>
 
-      <ImageSection image={aragonIntroImage} />
+      <ImageSection image={scrollPlaceholderImage} />
 
       <ContentSection title="Delivering on the Aragon promise">
         <p className="capsize">
@@ -66,7 +57,7 @@ export default function ScrollContent() {
         </p>
       </ContentSection>
 
-      <ImageSection image={aragonComponentsImage} />
+      <ImageSection image={scrollPlaceholderImage} />
 
       <ContentSection title="Exceptional quality, predictable delivery">
         <p className="capsize">
@@ -93,14 +84,14 @@ export default function ScrollContent() {
       </ContentSection>
 
       <ImageGroupSection
-        project="aragon"
+        project="scroll"
         images={[
-          aragonNetworkDashboardHomeImage,
-          aragonNetworkDashboardProposalImage,
-          aragonNetworkDashboardAgreementImage,
-          aragonUpgradeHomeImage,
-          aragonUpgradeConverterImage,
-          aragonUpgradeCompleteImage,
+          scrollPlaceholderImage,
+          scrollPlaceholderImage,
+          scrollPlaceholderImage,
+          scrollPlaceholderImage,
+          scrollPlaceholderImage,
+          scrollPlaceholderImage,
         ]}
       />
     </>

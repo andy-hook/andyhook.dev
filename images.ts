@@ -34,6 +34,12 @@ import dashUIDetail from '@/public/images/dash-ui-detail.jpg';
 import dashUIAdmin from '@/public/images/dash-ui-admin.jpg';
 
 /* -------------------------------------------------------------------------------------------------
+ * Scroll
+ * -----------------------------------------------------------------------------------------------*/
+
+import scrollPlaceholder from '@/public/images/scroll-placeholder.jpg';
+
+/* -------------------------------------------------------------------------------------------------
  * Avatars
  * -----------------------------------------------------------------------------------------------*/
 
@@ -208,6 +214,16 @@ const dashUIAdminImage = {
   src: dashUIAdmin,
   alt: 'Dash admin screen showing how users can be assigned access permissions',
   color: '#F3F3F7',
+};
+
+/* -------------------------------------------------------------------------------------------------
+ * Scroll Images
+ * -----------------------------------------------------------------------------------------------*/
+
+const scrollPlaceholderImage = {
+  src: scrollPlaceholder,
+  alt: 'Scroll placeholder image',
+  color: '#F9FAFC',
 };
 
 /* -------------------------------------------------------------------------------------------------
@@ -423,6 +439,7 @@ export {
   dashUIEditImage,
   dashUIDetailImage,
   dashUIAdminImage,
+  scrollPlaceholderImage,
   vladMorozAvatarImage,
   benoitGrelardAvatarImage,
   brettSunAvatarImage,
