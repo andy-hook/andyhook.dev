@@ -61,6 +61,9 @@ const config: Config = {
       maxWidth: {
         ...tailwindContainerWidths,
       },
+      fontSize: {
+        '4.5xl': '2.5rem',
+      },
     },
   },
   plugins: [capsize],
