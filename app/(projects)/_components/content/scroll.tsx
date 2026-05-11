@@ -35,78 +35,132 @@ export default function ScrollContent() {
 
       <ImageSection image={scrollPlaceholderImage} />
 
-      <ContentSection title="Zero sync optimistic">
-        <p className="capsize">Stuff</p>
+      <ContentSection title="All of your knowledge in one place">
+        <p className="capsize">
+          The utility of a{' '}
+          <TooltipLink href="https://www.investopedia.com/tech/what-dao/">
+            Decentralized Autonomous Organisation
+          </TooltipLink>{' '}
+          (DAO) is well understood within the Ethereum community, but for the uninitiated there is a
+          lot to unpack. The team knew that onboarding an entire class of first-time crypto users to
+          the decentralized governance concept couldn&apos;t be achieved overnight and Aragons
+          messaging has taken multiple iterations over the years with this in mind.
+        </p>
+        <p className="capsize">
+          As part of the front-end engineering team I heavily contributed to the initial prototype
+          of the Aragon Network Dashboard, launched a highly praised ANT Upgrade Portal, furthered
+          the adoption of TypeScript in front-end code, improved and maintained a variety of open
+          source packages, pushed for a bigger emphasis on Agile development and mentored junior
+          team members.
+        </p>
+        {/* <p className="capsize">Source uploads</p>
+        <p className="capsize">Resource list</p>
+        <p className="capsize">Resource detail side panel</p>
+        <p className="capsize">Resource syncing</p>
+        <p className="capsize">Ingestion</p>
+        <p className="capsize">Temporal workflows</p>
+        <p className="capsize">Cancellation dialog</p> */}
       </ContentSection>
 
-      <ContentSection title="Rich text editing">
-        <p className="capsize">Stuff</p>
+      {/* Knowlege base and syncing */}
+      <ImageSection image={scrollPlaceholderImage} />
+
+      <ContentSection title="Optimistic by design">
+        <p className="capsize">
+          The utility of a{' '}
+          <TooltipLink href="https://www.investopedia.com/tech/what-dao/">
+            Decentralized Autonomous Organisation
+          </TooltipLink>{' '}
+          (DAO) is well understood within the Ethereum community, but for the uninitiated there is a
+          lot to unpack. The team knew that onboarding an entire class of first-time crypto users to
+          the decentralized governance concept couldn&apos;t be achieved overnight and Aragons
+          messaging has taken multiple iterations over the years with this in mind.
+        </p>
+        <p className="capsize">
+          As part of the front-end engineering team I heavily contributed to the initial prototype
+          of the Aragon Network Dashboard, launched a highly praised ANT Upgrade Portal, furthered
+          the adoption of TypeScript in front-end code, improved and maintained a variety of open
+          source packages, pushed for a bigger emphasis on Agile development and mentored junior
+          team members.
+        </p>
+        {/* <p className="capsize">Zero sync</p>
+        <p className="capsize">Folder interaction</p>
+        <p className="capsize">Re-ordering</p>
+        <p className="capsize">Suggested questions</p>
+        <p className="capsize">Inline citations</p>
+        <p className="capsize">Text editing</p> */}
       </ContentSection>
 
-      <ContentSection title="Image cropping">
-        <p className="capsize">Stuff</p>
-      </ContentSection>
+      {/* interaction tiles */}
+      {/* folder drag and drop, re-ordering, deleting, creating, renaming */}
+      <ImageSection image={scrollPlaceholderImage} />
 
-      <ContentSection title="Folder organization">
-        <p className="capsize">Stuff</p>
-      </ContentSection>
+      <ContentSection title="Distill insights, quickly and accurately">
+        <p className="capsize">
+          The utility of a{' '}
+          <TooltipLink href="https://www.investopedia.com/tech/what-dao/">
+            Decentralized Autonomous Organisation
+          </TooltipLink>{' '}
+          (DAO) is well understood within the Ethereum community, but for the uninitiated there is a
+          lot to unpack. The team knew that onboarding an entire class of first-time crypto users to
+          the decentralized governance concept couldn&apos;t be achieved overnight and Aragons
+          messaging has taken multiple iterations over the years with this in mind.
+        </p>
+        <p className="capsize">
+          As part of the front-end engineering team I heavily contributed to the initial prototype
+          of the Aragon Network Dashboard, launched a highly praised ANT Upgrade Portal, furthered
+          the adoption of TypeScript in front-end code, improved and maintained a variety of open
+          source packages, pushed for a bigger emphasis on Agile development and mentored junior
+          team members.
+        </p>
 
-      <ContentSection title="Source uploads">
-        <p className="capsize">Stuff</p>
-      </ContentSection>
-
-      <ContentSection title="Chat streaming, inline citations">
-        <p className="capsize">Stuff</p>
-      </ContentSection>
-
-      <ContentSection title="Credit based billing">
-        <p className="capsize">Stuff</p>
-      </ContentSection>
-
-      <ContentSection title="Chat publishing">
-        <p className="capsize">Stuff</p>
-      </ContentSection>
-
-      <ContentSection title="Source viewing">
-        <p className="capsize">Stuff</p>
-      </ContentSection>
-
-      <ContentSection title="Source clipping to notes, highlights">
-        <p className="capsize">Stuff</p>
-      </ContentSection>
-
-      <ContentSection title="Sheets extension">
-        <p className="capsize">Stuff</p>
-      </ContentSection>
-
-      <ContentSection title="Sheets extension">
-        <p className="capsize">Stuff</p>
+        {/* <p className="capsize">Chat interface</p>
+        <p className="capsize">Chat linking to specific sources</p>
+        <p className="capsize">Add ons and extensions</p>
+        <p className="capsize">Sharing</p>
+        <p className="capsize">Note editor</p>
+        <p className="capsize">Clippings</p>
+        <p className="capsize">Highlights</p> */}
       </ContentSection>
 
       <ImageSection image={scrollPlaceholderImage} />
 
-      <ContentSection title="Exceptional quality, predictable delivery">
+      {/* interaction tiles */}
+      {/* folder drag and drop, re-ordering, deleting, creating, renaming */}
+
+      <ContentSection title="Built for self service and reliability">
         <p className="capsize">
-          Quality is often considered diametrically opposed to delivery speed, and in a lot of
-          circumstances this can be the case, however, my take on this is to ask the question of
-          why? why are we building this now? what&apos;s the simplest feature we can ship today that
-          adds value for users? These are important questions to ask, a mutual understanding of
-          expectations within the team and a tight scope can unlock a team to push the quality of
-          what is delivered while fostering an iterative development culture that empowers a team to
-          rapidly evolve at a predictable cadance.
+          The utility of a{' '}
+          <TooltipLink href="https://www.investopedia.com/tech/what-dao/">
+            Decentralized Autonomous Organisation
+          </TooltipLink>{' '}
+          (DAO) is well understood within the Ethereum community, but for the uninitiated there is a
+          lot to unpack. The team knew that onboarding an entire class of first-time crypto users to
+          the decentralized governance concept couldn&apos;t be achieved overnight and Aragons
+          messaging has taken multiple iterations over the years with this in mind.
         </p>
         <p className="capsize">
-          From a technology perspective I&apos;m a believer in the use of static type systems such
-          as <TooltipLink href="https://www.typescriptlang.org/">TypeScript</TooltipLink> for
-          improving velocity over time, the confidence that type systems provide when refactoring,
-          and the implicit documentation provided by strict typings go a long way to battling code
-          entropy (and make it a whole lot easier to onboard new hires)
+          As part of the front-end engineering team I heavily contributed to the initial prototype
+          of the Aragon Network Dashboard, launched a highly praised ANT Upgrade Portal, furthered
+          the adoption of TypeScript in front-end code, improved and maintained a variety of open
+          source packages, pushed for a bigger emphasis on Agile development and mentored junior
+          team members.
         </p>
+
         <p className="capsize">
-          By following these principles we were able to deliver high impact initiatives beyond
-          expectation and ahead of schedule. The launch of the ANT Upgrade Portal was a great
-          example of this and proved the benefits to the team.
+          As part of the front-end engineering team I heavily contributed to the initial prototype
+          of the Aragon Network Dashboard, launched a highly praised ANT Upgrade Portal, furthered
+          the adoption of TypeScript in front-end code, improved and maintained a variety of open
+          source packages, pushed for a bigger emphasis on Agile development and mentored junior
+          team members.
         </p>
+
+        {/* <p className="capsize">Clerk authentication</p>
+        <p className="capsize">Temporal workflows</p>
+        <p className="capsize">Stripe for billing</p>
+        <p className="capsize">Entitlements and gates</p>
+        <p className="capsize">Image cropping</p>
+        <p className="capsize">Publishing</p> */}
       </ContentSection>
 
       <ImageGroupSection

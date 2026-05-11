@@ -325,7 +325,7 @@ export const testimonials: Testimonial[] = [
     name: getPersonById('elik').name,
     avatar: getPersonById('elik').avatar,
     bio: getPersonById('elik').bio,
-    role: 'CEO & Co-founder',
+    role: 'CEO & Founder',
     company: 'Scroll AI',
     full: 'Andy is self-reliant, smart, and technically very strong. He does not just build what is asked. He thinks through what users are trying to do, where the product might feel confusing, and how to make the final experience simpler, clearer, and more useful.',
     excerpt: 'TBC',
@@ -360,7 +360,7 @@ export const projects: Project[] = [
     subtitle: 'Powerfully accurate AI intelligence',
     role: 'Senior Software Engineer',
     tenure: 'Sept 2024 – May 2026',
-    technologies: ['React', 'TypeScript', 'Tailwind', 'Next.js', 'Zero Sync', 'Clerk'],
+    technologies: ['React', 'Typescript', 'Next.js', 'ProseMirror', 'Zero Sync', 'Clerk', 'Stripe'],
     intro:
       'Scroll AI transforms your company’s knowledge into powerful AI-driven experts. By connecting documents, spreadsheets, videos, and internal resources, it creates intelligent knowledge agents that deliver instant, reliable answers, streamline workflows, and unlock insights across your organization.',
     thumbnail: scrollThumbImage,
