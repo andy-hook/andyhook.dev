@@ -38,6 +38,11 @@ import dashUIAdmin from '@/public/images/dash-ui-admin.jpg';
  * -----------------------------------------------------------------------------------------------*/
 
 import scrollPlaceholder from '@/public/images/scroll-placeholder.jpg';
+import scrollKnowledgeBase from '@/public/images/scroll-knowledge-base.jpg';
+import scrollSourceSingle from '@/public/images/scroll-source-single.jpg';
+import scrollPlaygroundNew from '@/public/images/scroll-playground-new.jpg';
+import scrollPlaygroundExisting from '@/public/images/scroll-playground-existing.jpg';
+import scrollPlaygroundSource from '@/public/images/scroll-playground-source.jpg';
 
 /* -------------------------------------------------------------------------------------------------
  * Avatars
@@ -223,6 +228,36 @@ const dashUIAdminImage = {
 const scrollPlaceholderImage = {
   src: scrollPlaceholder,
   alt: 'Scroll placeholder image',
+  color: '#F9FAFC',
+};
+
+const scrollKnowledgeBaseImage = {
+  src: scrollKnowledgeBase,
+  alt: 'Scroll knowledge base image',
+  color: '#F9FAFC',
+};
+
+const scrollSourceSingleImage = {
+  src: scrollSourceSingle,
+  alt: 'Scroll source single image',
+  color: '#F9FAFC',
+};
+
+const scrollPlaygroundNewImage = {
+  src: scrollPlaygroundNew,
+  alt: 'Scroll playground new image',
+  color: '#F9FAFC',
+};
+
+const scrollPlaygroundExistingImage = {
+  src: scrollPlaygroundExisting,
+  alt: 'Scroll playground existing image',
+  color: '#F9FAFC',
+};
+
+const scrollPlaygroundSourceImage = {
+  src: scrollPlaygroundSource,
+  alt: 'Scroll playground source image',
   color: '#F9FAFC',
 };
 
@@ -440,6 +475,11 @@ export {
   dashUIDetailImage,
   dashUIAdminImage,
   scrollPlaceholderImage,
+  scrollKnowledgeBaseImage,
+  scrollSourceSingleImage,
+  scrollPlaygroundNewImage,
+  scrollPlaygroundExistingImage,
+  scrollPlaygroundSourceImage,
   vladMorozAvatarImage,
   benoitGrelardAvatarImage,
   brettSunAvatarImage,

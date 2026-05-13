@@ -2,7 +2,14 @@ import { ContentSection } from '../content-section';
 import { ImageSection } from '../image-section';
 import { ImageGroupSection } from '../image-group-section';
 import { TooltipLink } from '../tooltip-link';
-import { scrollPlaceholderImage } from '@/images';
+import {
+  scrollKnowledgeBaseImage,
+  scrollPlaceholderImage,
+  scrollPlaygroundExistingImage,
+  scrollPlaygroundNewImage,
+  scrollPlaygroundSourceImage,
+  scrollSourceSingleImage,
+} from '@/images';
 
 export default function ScrollContent() {
   return (
@@ -93,7 +100,7 @@ export default function ScrollContent() {
 
       {/* interaction tiles */}
       {/* folder drag and drop, re-ordering, deleting, creating, renaming */}
-      <ImageSection image={scrollPlaceholderImage} />
+      <ImageSection image={scrollKnowledgeBaseImage} />
 
       <ContentSection title="Distill insights, quickly and accurately">
         <p className="capsize">
@@ -166,11 +173,11 @@ export default function ScrollContent() {
       <ImageGroupSection
         project="scroll"
         images={[
-          scrollPlaceholderImage,
-          scrollPlaceholderImage,
-          scrollPlaceholderImage,
-          scrollPlaceholderImage,
-          scrollPlaceholderImage,
+          scrollKnowledgeBaseImage,
+          scrollSourceSingleImage,
+          scrollPlaygroundNewImage,
+          scrollPlaygroundExistingImage,
+          scrollPlaygroundSourceImage,
           scrollPlaceholderImage,
         ]}
       />
