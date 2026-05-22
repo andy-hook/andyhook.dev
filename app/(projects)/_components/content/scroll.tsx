@@ -35,8 +35,8 @@ export default function ScrollContent() {
         <p className="capsize">
           Although my primary focus was crafting intuitive front-end experiences, I also contributed
           across the stack. My work included implementing both client and server-side image
-          handling, advanced drag-and-drop organization, nested file and folder management, chat
-          stream rendering and intuitive resource syncing.
+          cropping, advanced drag-and-drop organization, nested file and folder management, chat
+          citation rendering and an intuitive resource sync interface.
         </p>
       </ContentSection>
 
