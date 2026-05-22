@@ -327,7 +327,7 @@ export const testimonials: Testimonial[] = [
     bio: getPersonById('elik').bio,
     role: 'CEO & Founder',
     company: 'Scroll AI',
-    full: 'Andy is self-reliant, smart, and technically very strong. He does not just build what is asked. He thinks through what users are trying to do, where the product might feel confusing, and how to make the final experience simpler, clearer, and more useful.',
+    full: "Andy is self-reliant, smart, and technically very strong. He doesn't just build what is asked, but thinks through what users are trying to do, where the product might feel confusing, and how to make the final experience simpler, clearer, and more useful.",
     excerpt: 'TBC',
   },
 ];
@@ -368,9 +368,9 @@ export const projects: Project[] = [
     heroImage: scrollHeroImage,
     testimonial: getTestimonialById('elik'),
     team: [
-      { ...getPersonById('itamar'), role: 'Software Engineer' },
+      { ...getPersonById('itamar'), role: 'Lead Engineer' },
       { ...getPersonById('jenna'), role: 'Software Engineer' },
-      { ...getPersonById('ben-g'), role: 'Product Designer' },
+      { ...getPersonById('ben-g'), role: 'Product Design' },
       { ...getPersonById('elik'), role: 'Product' },
     ],
     additionalTeam: 2,

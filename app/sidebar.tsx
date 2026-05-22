@@ -454,7 +454,7 @@ const sidebarProjectLinkLine = cva({
       aragon: 'from-aragon-1 to-aragon-5',
       blocks: 'from-blocks-1 to-blocks-5',
       dash: 'from-dash-1 to-dash-4',
-      scroll: 'from-scroll-1 to-scroll-4',
+      scroll: 'from-scroll-1 via-scroll-4 to-scroll-5',
     },
   },
 });

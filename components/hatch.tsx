@@ -23,7 +23,7 @@ const Hatch = React.forwardRef<HatchElement, HatchProps>(
       contrast = 'normal',
       scheme = 'dark',
       space = 18,
-      width = 1,
+      width = 2,
       ...props
     },
     forwardedRef,
@@ -49,7 +49,8 @@ Hatch.displayName = 'Hatch';
 /* ---------------------------------------------------------------------------------------------- */
 
 const getHatchColor = (scheme: 'light' | 'dark', contrast: 'low' | 'normal') => {
-  if (scheme === 'light') return contrast === 'low' ? getColorSlateLight(4) : getColorSlateLight(6);
+  if (scheme === 'light')
+    return contrast === 'low' ? getColorSlateLight(4, 0.3) : getColorSlateLight(6);
   return contrast === 'low' ? getColorSlateDark(2) : getColorSlateDark(3);
 };
 

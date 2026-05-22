@@ -38,11 +38,16 @@ import dashUIAdmin from '@/public/images/dash-ui-admin.jpg';
  * -----------------------------------------------------------------------------------------------*/
 
 import scrollPlaceholder from '@/public/images/scroll-placeholder.jpg';
+import scrollIntro from '@/public/images/scroll-intro.jpg';
+import scrollComponents from '@/public/images/scroll-components.jpg';
 import scrollKnowledgeBase from '@/public/images/scroll-knowledge-base.jpg';
 import scrollSourceSingle from '@/public/images/scroll-source-single.jpg';
 import scrollPlaygroundNew from '@/public/images/scroll-playground-new.jpg';
 import scrollPlaygroundExisting from '@/public/images/scroll-playground-existing.jpg';
 import scrollPlaygroundSource from '@/public/images/scroll-playground-source.jpg';
+import scrollCustomize from '@/public/images/scroll-customize.jpg';
+import scrollEmbedded from '@/public/images/scroll-embedded.jpg';
+import scrollSignUp from '@/public/images/scroll-sign-up.jpg';
 
 /* -------------------------------------------------------------------------------------------------
  * Avatars
@@ -231,6 +236,18 @@ const scrollPlaceholderImage = {
   color: '#F9FAFC',
 };
 
+const scrollIntroImage = {
+  src: scrollIntro,
+  alt: 'Scroll intro image',
+  color: '#F9FAFC',
+};
+
+const scrollComponentsImage = {
+  src: scrollComponents,
+  alt: 'Scroll intro image',
+  color: '#F9FAFC',
+};
+
 const scrollKnowledgeBaseImage = {
   src: scrollKnowledgeBase,
   alt: 'Scroll knowledge base image',
@@ -258,6 +275,24 @@ const scrollPlaygroundExistingImage = {
 const scrollPlaygroundSourceImage = {
   src: scrollPlaygroundSource,
   alt: 'Scroll playground source image',
+  color: '#F9FAFC',
+};
+
+const scrollCustomizeImage = {
+  src: scrollCustomize,
+  alt: 'Scroll customize image',
+  color: '#F9FAFC',
+};
+
+const scrollEmbeddedImage = {
+  src: scrollEmbedded,
+  alt: 'Scroll embedded image',
+  color: '#F9FAFC',
+};
+
+const scrollSignUpImage = {
+  src: scrollSignUp,
+  alt: 'Scroll sign up image',
   color: '#F9FAFC',
 };
 
@@ -475,11 +510,16 @@ export {
   dashUIDetailImage,
   dashUIAdminImage,
   scrollPlaceholderImage,
+  scrollIntroImage,
+  scrollComponentsImage,
   scrollKnowledgeBaseImage,
   scrollSourceSingleImage,
   scrollPlaygroundNewImage,
   scrollPlaygroundExistingImage,
   scrollPlaygroundSourceImage,
+  scrollCustomizeImage,
+  scrollEmbeddedImage,
+  scrollSignUpImage,
   vladMorozAvatarImage,
   benoitGrelardAvatarImage,
   brettSunAvatarImage,

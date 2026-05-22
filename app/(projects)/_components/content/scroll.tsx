@@ -3,11 +3,15 @@ import { ImageSection } from '../image-section';
 import { ImageGroupSection } from '../image-group-section';
 import { TooltipLink } from '../tooltip-link';
 import {
+  scrollComponentsImage,
+  scrollCustomizeImage,
+  scrollEmbeddedImage,
+  scrollIntroImage,
   scrollKnowledgeBaseImage,
-  scrollPlaceholderImage,
   scrollPlaygroundExistingImage,
   scrollPlaygroundNewImage,
   scrollPlaygroundSourceImage,
+  scrollSignUpImage,
   scrollSourceSingleImage,
 } from '@/images';
 
@@ -40,7 +44,7 @@ export default function ScrollContent() {
         </p>
       </ContentSection>
 
-      <ImageSection image={scrollPlaceholderImage} />
+      <ImageSection image={scrollIntroImage} />
 
       <ContentSection title="All of your knowledge in one place">
         <p className="capsize">
@@ -70,7 +74,7 @@ export default function ScrollContent() {
       </ContentSection>
 
       {/* Knowlege base and syncing */}
-      <ImageSection image={scrollPlaceholderImage} />
+      <ImageSection image={scrollComponentsImage} />
 
       <ContentSection title="Optimistic by design">
         <p className="capsize">
@@ -100,10 +104,10 @@ export default function ScrollContent() {
 
       {/* interaction tiles */}
       {/* folder drag and drop, re-ordering, deleting, creating, renaming */}
-      <ImageSection image={scrollKnowledgeBaseImage} />
+      {/* <ImageSection image={scrollKnowledgeBaseImage} /> */}
 
-      <ContentSection title="Distill insights, quickly and accurately">
-        <p className="capsize">
+      {/* <ContentSection title="Distill insights, quickly and accurately"> */}
+      {/* <p className="capsize">
           The utility of a{' '}
           <TooltipLink href="https://www.investopedia.com/tech/what-dao/">
             Decentralized Autonomous Organisation
@@ -119,24 +123,24 @@ export default function ScrollContent() {
           the adoption of TypeScript in front-end code, improved and maintained a variety of open
           source packages, pushed for a bigger emphasis on Agile development and mentored junior
           team members.
-        </p>
+        </p> */}
 
-        {/* <p className="capsize">Chat interface</p>
+      {/* <p className="capsize">Chat interface</p>
         <p className="capsize">Chat linking to specific sources</p>
         <p className="capsize">Add ons and extensions</p>
         <p className="capsize">Sharing</p>
         <p className="capsize">Note editor</p>
         <p className="capsize">Clippings</p>
         <p className="capsize">Highlights</p> */}
-      </ContentSection>
+      {/* </ContentSection> */}
 
-      <ImageSection image={scrollPlaceholderImage} />
+      {/* <ImageSection image={scrollPlaceholderImage} /> */}
 
       {/* interaction tiles */}
       {/* folder drag and drop, re-ordering, deleting, creating, renaming */}
 
-      <ContentSection title="Built for self service and reliability">
-        <p className="capsize">
+      {/* <ContentSection title="Built for self service and reliability"> */}
+      {/* <p className="capsize">
           The utility of a{' '}
           <TooltipLink href="https://www.investopedia.com/tech/what-dao/">
             Decentralized Autonomous Organisation
@@ -160,25 +164,27 @@ export default function ScrollContent() {
           the adoption of TypeScript in front-end code, improved and maintained a variety of open
           source packages, pushed for a bigger emphasis on Agile development and mentored junior
           team members.
-        </p>
+        </p> */}
 
-        {/* <p className="capsize">Clerk authentication</p>
+      {/* <p className="capsize">Clerk authentication</p>
         <p className="capsize">Temporal workflows</p>
         <p className="capsize">Stripe for billing</p>
         <p className="capsize">Entitlements and gates</p>
         <p className="capsize">Image cropping</p>
         <p className="capsize">Publishing</p> */}
-      </ContentSection>
+      {/* </ContentSection> */}
 
       <ImageGroupSection
         project="scroll"
         images={[
+          scrollSignUpImage,
           scrollKnowledgeBaseImage,
           scrollSourceSingleImage,
           scrollPlaygroundNewImage,
           scrollPlaygroundExistingImage,
           scrollPlaygroundSourceImage,
-          scrollPlaceholderImage,
+          scrollCustomizeImage,
+          scrollEmbeddedImage,
         ]}
       />
     </>
