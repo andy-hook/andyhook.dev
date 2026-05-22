@@ -68,6 +68,7 @@ import alastairBirdAvatar from '@/public/images/avatars/alastair-bird.png';
 import itamarRavidAvatar from '@/public/images/avatars/itamar-ravid.png';
 import benGadAvatar from '@/public/images/avatars/ben-gad.png';
 import elikEizenbergAvatar from '@/public/images/avatars/elik-eizenberg.png';
+import henryOswaldAvatar from '@/public/images/avatars/henry-oswald.png';
 
 /* -------------------------------------------------------------------------------------------------
  * Thumbnails
@@ -231,62 +232,62 @@ const dashUIAdminImage = {
 
 const scrollIntroImage = {
   src: scrollIntro,
-  alt: 'Scroll intro image',
-  color: '#F9FAFC',
+  alt: 'Multiple tablet devices showing screens of the Scroll product',
+  color: '#B62B82',
 };
 
 const scrollComponentsImage = {
   src: scrollComponents,
-  alt: 'Scroll intro image',
-  color: '#F9FAFC',
+  alt: 'A large array of user interface components arranged in an offset grid',
+  color: '#B62B82',
 };
 
 const scrollKnowledgeBaseImage = {
   src: scrollKnowledgeBase,
-  alt: 'Scroll knowledge base image',
-  color: '#F9FAFC',
+  alt: 'Scroll knowledge base screen showing a list of sources',
+  color: '#F6F6F9',
 };
 
 const scrollSourceSingleImage = {
   src: scrollSourceSingle,
-  alt: 'Scroll source single image',
-  color: '#F9FAFC',
+  alt: 'Scroll knowledge base screen overlayed by a transcribed source with playback controls',
+  color: '#F6F6F9',
 };
 
 const scrollPlaygroundNewImage = {
   src: scrollPlaygroundNew,
-  alt: 'Scroll playground new image',
-  color: '#F9FAFC',
+  alt: 'Scroll playground area with a chat interface ready to recieve an initial prompt',
+  color: '#F6F6F9',
 };
 
 const scrollPlaygroundExistingImage = {
   src: scrollPlaygroundExisting,
-  alt: 'Scroll playground existing image',
-  color: '#F9FAFC',
+  alt: 'Scroll playground area with an in-progress chat',
+  color: '#F6F6F9',
 };
 
 const scrollPlaygroundSourceImage = {
   src: scrollPlaygroundSource,
-  alt: 'Scroll playground source image',
-  color: '#F9FAFC',
+  alt: 'Scroll playground chat with a source overlayed and cited text highlighted',
+  color: '#F6F6F9',
 };
 
 const scrollCustomizeImage = {
   src: scrollCustomize,
-  alt: 'Scroll customize image',
-  color: '#F9FAFC',
+  alt: 'Scroll customization area showing form fields and image editing',
+  color: '#F6F6F9',
 };
 
 const scrollEmbeddedImage = {
   src: scrollEmbedded,
-  alt: 'Scroll embedded image',
-  color: '#F9FAFC',
+  alt: 'Scroll embedded publish settings screen',
+  color: '#F6F6F9',
 };
 
 const scrollSignUpImage = {
   src: scrollSignUp,
-  alt: 'Scroll sign up image',
-  color: '#F9FAFC',
+  alt: 'Scroll sign up form alongside a decorative image',
+  color: '#F6F6F9',
 };
 
 /* -------------------------------------------------------------------------------------------------
@@ -380,13 +381,19 @@ const itamarRavidAvatarImage = {
 const benGadAvatarImage = {
   src: benGadAvatar,
   alt: 'Ben Gad',
-  color: '#0F092D',
+  color: '#151515',
 };
 
 const elikEizenbergAvatarImage = {
   src: elikEizenbergAvatar,
   alt: 'Elik Eizenberg',
   color: '#714556',
+};
+
+const henryOswaldAvatarImage = {
+  src: henryOswaldAvatar,
+  alt: 'Henry Oswald',
+  color: '#818181',
 };
 
 /* -------------------------------------------------------------------------------------------------
@@ -444,13 +451,13 @@ const dashThumbSmallImage = {
 const scrollThumbImage = {
   src: scrollThumb,
   alt: 'Scroll project thumbnail',
-  color: 'red',
+  color: '#431651',
 };
 
 const scrollThumbSmallImage = {
   src: scrollThumbSmall,
   alt: 'Scroll project small thumbnail',
-  color: 'red',
+  color: '#431651',
 };
 
 /* -------------------------------------------------------------------------------------------------
@@ -478,7 +485,7 @@ const dashHeroImage = {
 const scrollHeroImage = {
   src: scrollHero,
   alt: 'Scroll project hero image',
-  color: 'red',
+  color: '#561956',
 };
 
 export {
@@ -528,6 +535,7 @@ export {
   itamarRavidAvatarImage,
   benGadAvatarImage,
   elikEizenbergAvatarImage,
+  henryOswaldAvatarImage,
   radixThumbImage,
   radixThumbSmallImage,
   aragonThumbImage,

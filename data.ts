@@ -58,6 +58,7 @@ import {
   itamarRavidAvatarImage,
   benGadAvatarImage,
   elikEizenbergAvatarImage,
+  henryOswaldAvatarImage,
 } from './images';
 
 export const experience: Experience[] = [
@@ -190,7 +191,7 @@ export const people: Person[] = [
     id: 'jenna',
     name: 'Jenna Smith',
     avatar: jennaSmithAvatarImage,
-    bio: 'https://x.com/jjenzz',
+    bio: 'https://www.linkedin.com/in/jennasmith',
   },
   {
     id: 'pedro',
@@ -239,6 +240,12 @@ export const people: Person[] = [
     name: 'Elik Eizenberg',
     avatar: elikEizenbergAvatarImage,
     bio: 'https://www.linkedin.com/in/elikeizenberg/',
+  },
+  {
+    id: 'henry',
+    name: 'Henry Oswald',
+    avatar: henryOswaldAvatarImage,
+    bio: 'https://www.linkedin.com/in/henryoswald/',
   },
 ];
 
@@ -358,7 +365,7 @@ export const projects: Project[] = [
     id: 'scroll',
     title: 'Scroll',
     subtitle: 'Powerfully accurate AI intelligence',
-    role: 'Senior Software Engineer',
+    role: 'Software Engineer',
     tenure: 'Sept 2024 – May 2026',
     technologies: ['React', 'Typescript', 'Next.js', 'ProseMirror', 'Zero Sync', 'Clerk', 'Stripe'],
     intro:
@@ -368,10 +375,11 @@ export const projects: Project[] = [
     heroImage: scrollHeroImage,
     testimonial: getTestimonialById('elik'),
     team: [
+      { ...getPersonById('elik'), role: 'Lead Product' },
       { ...getPersonById('itamar'), role: 'Lead Engineer' },
+      { ...getPersonById('ben-g'), role: 'Product Designer' },
       { ...getPersonById('jenna'), role: 'Software Engineer' },
-      { ...getPersonById('ben-g'), role: 'Product Design' },
-      { ...getPersonById('elik'), role: 'Product' },
+      { ...getPersonById('henry'), role: 'Software Engineer' },
     ],
     additionalTeam: 2,
   },
