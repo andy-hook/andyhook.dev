@@ -5,7 +5,7 @@ import { getProjectMetadata } from '../_components/metadata';
 
 export const metadata = getProjectMetadata('scroll');
 
-export default function AragonPage() {
+export default function ScrollPage() {
   return (
     <Project projectId="scroll">
       <ScrollContent />
