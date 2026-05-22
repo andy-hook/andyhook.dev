@@ -37,7 +37,6 @@ import dashUIAdmin from '@/public/images/dash-ui-admin.jpg';
  * Scroll
  * -----------------------------------------------------------------------------------------------*/
 
-import scrollPlaceholder from '@/public/images/scroll-placeholder.jpg';
 import scrollIntro from '@/public/images/scroll-intro.jpg';
 import scrollComponents from '@/public/images/scroll-components.jpg';
 import scrollKnowledgeBase from '@/public/images/scroll-knowledge-base.jpg';
@@ -229,12 +228,6 @@ const dashUIAdminImage = {
 /* -------------------------------------------------------------------------------------------------
  * Scroll Images
  * -----------------------------------------------------------------------------------------------*/
-
-const scrollPlaceholderImage = {
-  src: scrollPlaceholder,
-  alt: 'Scroll placeholder image',
-  color: '#F9FAFC',
-};
 
 const scrollIntroImage = {
   src: scrollIntro,
@@ -509,7 +502,6 @@ export {
   dashUIEditImage,
   dashUIDetailImage,
   dashUIAdminImage,
-  scrollPlaceholderImage,
   scrollIntroImage,
   scrollComponentsImage,
   scrollKnowledgeBaseImage,
