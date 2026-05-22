@@ -49,7 +49,11 @@ const Project: React.FC<ProjectProps> = (props) => {
     ],
   ] as const;
 
-  const moreProjects = projects.filter((project) => project.id !== projectId);
+  const currentProjectIndex = projects.findIndex((project) => project.id === projectId);
+  const moreProjects = Array.from({ length: 3 }, (_, offset) => {
+    const nextProjectIndex = (currentProjectIndex + offset + 1) % projects.length;
+    return projects[nextProjectIndex];
+  });
 
   const renderedTeam = project.team.map(({ avatar, name, role }) => ({
     avatar,

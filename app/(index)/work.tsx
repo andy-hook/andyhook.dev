@@ -14,7 +14,7 @@ import { Gutter } from '@/components/gutter';
 
 const radix = getProjectById('radix');
 const aragon = getProjectById('aragon');
-const blocks = getProjectById('blocks');
+const scroll = getProjectById('scroll');
 const dash = getProjectById('dash');
 
 type WorkElement = React.ComponentRef<'section'>;
@@ -96,7 +96,7 @@ export const Work = React.forwardRef<WorkElement, WorkProps>((props, forwardedRe
                   <li className="relative">
                     <Line className="absolute -left-24 right-0 bottom-0" />
 
-                    {radix && <WorkItem project={radix} className="relative" priority />}
+                    <WorkItem project={radix} className="relative" priority />
                   </li>
 
                   <li className="relative">
@@ -105,10 +105,12 @@ export const Work = React.forwardRef<WorkElement, WorkProps>((props, forwardedRe
                       className="absolute left-5 md:left-7 xl:left-10 -bottom-44 h-full"
                     />
 
-                    {aragon && <WorkItem project={aragon} className="relative" priority />}
+                    <WorkItem project={scroll} className="relative" priority />
                   </li>
 
-                  <li>{blocks && <WorkItem project={blocks} priority />}</li>
+                  <li>
+                    <WorkItem project={aragon} priority />
+                  </li>
 
                   <li className="relative sm:-mt-[31.5%]">
                     <Line className="absolute -left-10 sm:-left-5 md:-left-7 xl:-left-10 -right-24 top-0" />
@@ -117,7 +119,7 @@ export const Work = React.forwardRef<WorkElement, WorkProps>((props, forwardedRe
                       orientation="vertical"
                       className="absolute -top-5 xl:-top-10 h-1/2 w-5 md:w-7 xl:w-10 -right-5 md:-right-7 xl:-right-10"
                     />
-                    {dash && <WorkItem project={dash} className="relative" priority />}
+                    <WorkItem project={dash} className="relative" priority />
                   </li>
                 </ul>
               </HoverGroup.Root>

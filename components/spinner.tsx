@@ -19,6 +19,7 @@ const spinnerLine = cva({
       blocks: 'stroke-blocks-2 fill-blocks-2/5',
       dash: 'stroke-dash-2 fill-dash-2/5',
       radix: 'stroke-radix-2 fill-radix-2/5',
+      scroll: 'stroke-scroll-2 fill-scroll-2/5',
     },
   },
   defaultVariants: {
@@ -29,8 +30,7 @@ const spinnerLine = cva({
 type SpinnerElement = React.ComponentRef<typeof motion.svg>;
 
 interface SpinnerProps
-  extends React.ComponentPropsWithoutRef<typeof motion.svg>,
-    VariantProps<typeof spinnerLine> {
+  extends React.ComponentPropsWithoutRef<typeof motion.svg>, VariantProps<typeof spinnerLine> {
   scheme?: 'light' | 'dark';
   visible: boolean;
 }

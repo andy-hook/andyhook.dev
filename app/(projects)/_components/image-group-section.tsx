@@ -16,6 +16,8 @@ const imageGroupSectionBackground = cva({
       aragon: 'from-aragon-5 to-aragon-1',
       blocks: 'from-blocks-3 to-blocks-1',
       dash: 'from-dash-3 to-dash-1',
+      // scroll: 'from-[#DF3078] via-[#630AB2]  to-[#000C3D]',
+      scroll: 'from-scroll-4 via-scroll-3 to-scroll-1',
     },
   },
 });
@@ -34,7 +36,7 @@ export const ImageGroupSection = React.forwardRef<ImageGroupSectionElement, Imag
         <RouterTransition multiplier={10}>
           <Gutter size="small">
             <div className={imageGroupSectionBackground({ project })}>
-              <Container width="widest" className="relative py-4 md:py-12 lg:py-16 2xl:py-[6vw]">
+              <Container width="widest" className="relative py-4 md:py-12 lg:py-24 2xl:py-[6vw]">
                 <Line
                   orientation="vertical"
                   contrast="low"
@@ -49,21 +51,23 @@ export const ImageGroupSection = React.forwardRef<ImageGroupSectionElement, Imag
                   className="absolute right-0 top-0 bottom-0"
                   solid
                 />
-                <div className="space-y-4 md:space-y-12 lg:space-y-16 2xl:space-y-[6vw]">
+                <div className="space-y-4 md:space-y-12 lg:space-y-24 2xl:space-y-[6vw]">
                   {images.map((image) => {
                     return (
                       <div className="relative" key={image.alt}>
                         <Hatch
                           orientation="vertical"
-                          className="absolute left-[-100vw] top-0 bottom-0 right-full opacity-30"
+                          className="absolute left-[-100vw] top-0 bottom-0 right-full opacity-10"
                           scheme="light"
                           contrast="low"
+                          width={6}
                         />
                         <Hatch
                           orientation="vertical"
-                          className="absolute left-full top-0 bottom-0 right-[-100vw] opacity-30"
+                          className="absolute left-full top-0 bottom-0 right-[-100vw] opacity-10"
                           scheme="light"
                           contrast="low"
+                          width={6}
                         />
                         <Line
                           contrast="low"

@@ -52,6 +52,13 @@ import {
   dashThumbSmallImage,
   dashHeroImage,
   radixThumbSmallImage,
+  scrollThumbImage,
+  scrollThumbSmallImage,
+  scrollHeroImage,
+  itamarRavidAvatarImage,
+  benGadAvatarImage,
+  elikEizenbergAvatarImage,
+  henryOswaldAvatarImage,
 } from './images';
 
 export const experience: Experience[] = [
@@ -184,7 +191,7 @@ export const people: Person[] = [
     id: 'jenna',
     name: 'Jenna Smith',
     avatar: jennaSmithAvatarImage,
-    bio: 'https://x.com/jjenzz',
+    bio: 'https://www.linkedin.com/in/jennasmith',
   },
   {
     id: 'pedro',
@@ -216,14 +223,38 @@ export const people: Person[] = [
     avatar: alastairBirdAvatarImage,
     bio: 'https://www.linkedin.com/in/alastair-bird/',
   },
+  {
+    id: 'itamar',
+    name: 'Itamar Ravid',
+    avatar: itamarRavidAvatarImage,
+    bio: 'https://www.linkedin.com/in/iravid/',
+  },
+  {
+    id: 'ben-g',
+    name: 'Ben Gad',
+    avatar: benGadAvatarImage,
+    bio: 'https://www.linkedin.com/in/bengad/',
+  },
+  {
+    id: 'elik',
+    name: 'Elik Eizenberg',
+    avatar: elikEizenbergAvatarImage,
+    bio: 'https://www.linkedin.com/in/elikeizenberg/',
+  },
+  {
+    id: 'henry',
+    name: 'Henry Oswald',
+    avatar: henryOswaldAvatarImage,
+    bio: 'https://www.linkedin.com/in/henryoswald/',
+  },
 ];
 
 export const testimonials: Testimonial[] = [
   {
     id: 'vlad',
-    name: getPersonById('vlad')!.name,
-    avatar: getPersonById('vlad')!.avatar,
-    bio: getPersonById('vlad')!.bio,
+    name: getPersonById('vlad').name,
+    avatar: getPersonById('vlad').avatar,
+    bio: getPersonById('vlad').bio,
     role: 'Co-founder',
     company: 'paper.design',
     full: 'Full quote here.',
@@ -232,9 +263,9 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: 'benoit',
-    name: getPersonById('benoit')!.name,
-    avatar: getPersonById('benoit')!.avatar,
-    bio: getPersonById('benoit')!.bio,
+    name: getPersonById('benoit').name,
+    avatar: getPersonById('benoit').avatar,
+    bio: getPersonById('benoit').bio,
     role: 'Co-creator of Radix',
     company: 'Raycast',
     full: 'Andy has great design-sense and attention to detail, which makes him a key contributor in any environment dealing with user interfaces. He truly cares about what the end user experience will be, considering all paths, not just the happy, but errors, network and edge cases as well.',
@@ -243,9 +274,9 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: 'brett',
-    name: getPersonById('brett')!.name,
-    avatar: getPersonById('brett')!.avatar,
-    bio: getPersonById('brett')!.bio,
+    name: getPersonById('brett').name,
+    avatar: getPersonById('brett').avatar,
+    bio: getPersonById('brett').bio,
     role: 'CTO',
     company: 'Aragon',
     full: 'Andy not only drives to personally deliver to the highest of standards, but goes the distance to improve the work of everyone around him. He produces well-crafted, precise, and polished interfaces, but more importantly as a senior engineer, demonstrates a strong ability to pass on his own strengths to others.',
@@ -254,9 +285,9 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: 'andrew',
-    name: getPersonById('andrew')!.name,
-    avatar: getPersonById('andrew')!.avatar,
-    bio: getPersonById('andrew')!.bio,
+    name: getPersonById('andrew').name,
+    avatar: getPersonById('andrew').avatar,
+    bio: getPersonById('andrew').bio,
     role: 'Lead Architect',
     company: 'Opia',
     full: 'Full quote here.',
@@ -265,9 +296,9 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: 'ze',
-    name: getPersonById('ze')!.name,
-    avatar: getPersonById('ze')!.avatar,
-    bio: getPersonById('ze')!.bio,
+    name: getPersonById('ze').name,
+    avatar: getPersonById('ze').avatar,
+    bio: getPersonById('ze').bio,
     role: 'Sr Developer',
     company: 'Bright',
     full: 'Andy is brilliant to work with, as dedicated to well polished detail as he is to the broader sweep of creative design. I have enjoyed working with someone so innovative who has collaborated with me and the wider team on finding efficient constructive solutions.',
@@ -276,9 +307,9 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: 'michael',
-    name: getPersonById('michael')!.name,
-    avatar: getPersonById('michael')!.avatar,
-    bio: getPersonById('michael')!.bio,
+    name: getPersonById('michael').name,
+    avatar: getPersonById('michael').avatar,
+    bio: getPersonById('michael').bio,
     role: 'Head of Design',
     company: 'Brandwatch',
     full: 'Full quote here.',
@@ -287,14 +318,24 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: 'ben',
-    name: getPersonById('ben')!.name,
-    avatar: getPersonById('ben')!.avatar,
-    bio: getPersonById('ben')!.bio,
+    name: getPersonById('ben').name,
+    avatar: getPersonById('ben').avatar,
+    bio: getPersonById('ben').bio,
     role: 'UX Engineer',
     company: 'Bright',
     full: 'Andy is equally brilliant at creative visual design as he is with the technical side of engineering a modern web app. Whatever task he is working on he will go above and beyond to deliver at a very high quality level. As a fellow UI developer I have learnt a lot from working with him.',
     excerpt:
       'Andy is a rare find in UI development. He is equally brilliant at creative visual design as he is with the technical aspect of engineering a modern web app.',
+  },
+  {
+    id: 'elik',
+    name: getPersonById('elik').name,
+    avatar: getPersonById('elik').avatar,
+    bio: getPersonById('elik').bio,
+    role: 'CEO & Founder',
+    company: 'Scroll AI',
+    full: "Andy is self-reliant, smart, and technically very strong. He doesn't just build what is asked, but thinks through what users are trying to do, where the product might feel confusing, and how to make the final experience simpler, clearer, and more useful.",
+    excerpt: 'TBC',
   },
 ];
 
@@ -311,12 +352,42 @@ export const projects: Project[] = [
     thumbnail: radixThumbImage,
     thumbnailSmall: radixThumbSmallImage,
     heroImage: aragonHeroImage,
-    testimonial: getTestimonialById('benoit')!,
+    testimonial: getTestimonialById('benoit'),
     team: [
-      { ...getPersonById('benoit')!, role: 'Engineer' },
-      { ...getPersonById('jenna')!, role: 'Engineer' },
-      { ...getPersonById('vlad')!, role: 'Product Designer' },
-      { ...getPersonById('pedro')!, role: 'Developer Advocate' },
+      { ...getPersonById('benoit'), role: 'Engineer' },
+      { ...getPersonById('jenna'), role: 'Engineer' },
+      { ...getPersonById('vlad'), role: 'Product Designer' },
+      { ...getPersonById('pedro'), role: 'Developer Advocate' },
+    ],
+    additionalTeam: 2,
+  },
+  {
+    id: 'scroll',
+    title: 'Scroll',
+    subtitle: 'Powerful knowledge agents',
+    role: 'Software Engineer',
+    tenure: 'Sept 2024 – June 2026',
+    technologies: [
+      'React',
+      'Typescript',
+      'Next.js',
+      'Zero Sync',
+      'ProseMirror',
+      'tRPC',
+      'Temporal',
+    ],
+    intro:
+      'Scroll transforms your company’s knowledge into powerful domain experts. Connect your organizational documents, spreadsheets, videos, and internal resources and deploy powerful knowledge agents across your product surfaces. Scroll delivers instant, reliable answers and streamlines workflows.',
+    thumbnail: scrollThumbImage,
+    thumbnailSmall: scrollThumbSmallImage,
+    heroImage: scrollHeroImage,
+    testimonial: getTestimonialById('elik'),
+    team: [
+      { ...getPersonById('elik'), role: 'Lead Product' },
+      { ...getPersonById('itamar'), role: 'Lead Engineer' },
+      { ...getPersonById('ben-g'), role: 'Product Designer' },
+      { ...getPersonById('jenna'), role: 'Software Engineer' },
+      { ...getPersonById('henry'), role: 'Software Engineer' },
     ],
     additionalTeam: 2,
   },
@@ -330,8 +401,8 @@ export const projects: Project[] = [
       'React',
       'TypeScript',
       'Ethers.js',
-      'Next',
       'Styled Components',
+      'Next.js',
       'Jest & Testing Library',
     ],
     intro:
@@ -339,11 +410,31 @@ export const projects: Project[] = [
     thumbnail: aragonThumbImage,
     thumbnailSmall: aragonThumbSmallImage,
     heroImage: aragonHeroImage,
-    testimonial: getTestimonialById('brett')!,
+    testimonial: getTestimonialById('brett'),
     team: [
-      { ...getPersonById('pierre')!, role: 'Engineer' },
-      { ...getPersonById('paty')!, role: 'Product Designer' },
-      { ...getPersonById('adri')!, role: 'Brand Designer' },
+      { ...getPersonById('pierre'), role: 'Engineer' },
+      { ...getPersonById('paty'), role: 'Product Designer' },
+      { ...getPersonById('adri'), role: 'Brand Designer' },
+    ],
+    additionalTeam: 4,
+  },
+  {
+    id: 'dash',
+    title: 'Dash',
+    subtitle: 'Modern digital asset management',
+    role: 'UI Engineer',
+    tenure: 'Sep 2018 – May 2020',
+    technologies: ['Angular', 'TypeScript', 'Sass', 'Auth0', 'Storybook', 'Karma & Jasmine'],
+    intro:
+      'Bright was originally founded as a software development agency in 1999, but more recently has found success and traction by transitioning into a SaaS led, customer centric product company best known for delivering high-quality digital asset management software, exceptional customer support and expert training services.',
+    thumbnail: dashThumbImage,
+    thumbnailSmall: dashThumbSmallImage,
+    heroImage: dashHeroImage,
+    testimonial: getTestimonialById('ze'),
+    team: [
+      { ...getPersonById('ze'), role: 'Engineer' },
+      { ...getPersonById('alastair'), role: 'UX Engineer' },
+      { ...getPersonById('ben'), role: 'UX Engineer' },
     ],
     additionalTeam: 4,
   },
@@ -356,9 +447,9 @@ export const projects: Project[] = [
     technologies: [
       'React',
       'TypeScript',
-      'Ethers.js',
-      'Next',
       'Styled Components',
+      'Ethers.js',
+      'Next.js',
       'Jest & Testing Library',
     ],
     intro:
@@ -366,31 +457,18 @@ export const projects: Project[] = [
     thumbnail: blocksThumbImage,
     thumbnailSmall: blocksThumbSmallImage,
     heroImage: blocksHeroImage,
-    testimonial: getTestimonialById('ben')!,
+    testimonial: getTestimonialById('ben'),
     team: [],
     additionalTeam: 0,
   },
-  {
-    id: 'dash',
-    title: 'Dash',
-    subtitle: 'Modern digital asset management',
-    role: 'UI Engineer',
-    tenure: 'Sep 2018 – May 2020',
-    technologies: ['Angular', 'TypeScript', 'Sass (SCSS)', 'Storybook', 'Karma & Jasmine'],
-    intro:
-      'Bright was originally founded as a software development agency in 1999, but more recently has found success and traction by transitioning into a SaaS led, customer centric product company best known for delivering high-quality digital asset management software, exceptional customer support and expert training services.',
-    thumbnail: dashThumbImage,
-    thumbnailSmall: dashThumbSmallImage,
-    heroImage: dashHeroImage,
-    testimonial: getTestimonialById('ze')!,
-    team: [
-      { ...getPersonById('ze')!, role: 'Engineer' },
-      { ...getPersonById('alastair')!, role: 'UX Engineer' },
-      { ...getPersonById('ben')!, role: 'UX Engineer' },
-    ],
-    additionalTeam: 4,
-  },
 ];
+
+export const selectedProjects = [
+  getProjectById('radix'),
+  getProjectById('scroll'),
+  getProjectById('aragon'),
+  getProjectById('dash'),
+] as const;
 
 export const social: Record<SocialName, SocialLink> = {
   dribbble: {
@@ -431,13 +509,13 @@ export const data: Data = {
 
 // Utility functions
 export function getTestimonialById(id: TestimonialId) {
-  return testimonials.find((testimonial) => testimonial.id === id);
+  return testimonials.find((testimonial) => testimonial.id === id)!;
 }
 
 export function getPersonById(id: PersonId) {
-  return people.find((person) => person.id === id);
+  return people.find((person) => person.id === id)!;
 }
 
 export function getProjectById(id: ProjectId) {
-  return projects.find((project) => project.id === id);
+  return projects.find((project) => project.id === id)!;
 }

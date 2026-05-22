@@ -34,6 +34,21 @@ import dashUIDetail from '@/public/images/dash-ui-detail.jpg';
 import dashUIAdmin from '@/public/images/dash-ui-admin.jpg';
 
 /* -------------------------------------------------------------------------------------------------
+ * Scroll
+ * -----------------------------------------------------------------------------------------------*/
+
+import scrollIntro from '@/public/images/scroll-intro.jpg';
+import scrollComponents from '@/public/images/scroll-components.jpg';
+import scrollKnowledgeBase from '@/public/images/scroll-knowledge-base.jpg';
+import scrollSourceSingle from '@/public/images/scroll-source-single.jpg';
+import scrollPlaygroundNew from '@/public/images/scroll-playground-new.jpg';
+import scrollPlaygroundExisting from '@/public/images/scroll-playground-existing.jpg';
+import scrollPlaygroundSource from '@/public/images/scroll-playground-source.jpg';
+import scrollCustomize from '@/public/images/scroll-customize.jpg';
+import scrollEmbedded from '@/public/images/scroll-embedded.jpg';
+import scrollSignUp from '@/public/images/scroll-sign-up.jpg';
+
+/* -------------------------------------------------------------------------------------------------
  * Avatars
  * -----------------------------------------------------------------------------------------------*/
 
@@ -50,6 +65,10 @@ import adriGarciaAvatar from '@/public/images/avatars/adri-garcia.png';
 import patyDavilaAvatar from '@/public/images/avatars/paty-davila.png';
 import pierreBerterAvatar from '@/public/images/avatars/pierre-bertet.png';
 import alastairBirdAvatar from '@/public/images/avatars/alastair-bird.png';
+import itamarRavidAvatar from '@/public/images/avatars/itamar-ravid.png';
+import benGadAvatar from '@/public/images/avatars/ben-gad.png';
+import elikEizenbergAvatar from '@/public/images/avatars/elik-eizenberg.png';
+import henryOswaldAvatar from '@/public/images/avatars/henry-oswald.png';
 
 /* -------------------------------------------------------------------------------------------------
  * Thumbnails
@@ -63,6 +82,8 @@ import blocksThumb from '@/public/images/blocks-thumb-large.jpg';
 import blocksThumbSmall from '@/public/images/blocks-thumb-small.jpg';
 import dashThumb from '@/public/images/dash-thumb-large.jpg';
 import dashThumbSmall from '@/public/images/dash-thumb-small.jpg';
+import scrollThumb from '@/public/images/scroll-thumb-large.jpg';
+import scrollThumbSmall from '@/public/images/scroll-thumb-small.jpg';
 
 /* -------------------------------------------------------------------------------------------------
  * Hero Images
@@ -71,6 +92,7 @@ import dashThumbSmall from '@/public/images/dash-thumb-small.jpg';
 import aragonHero from '@/public/images/aragon-hero.jpg';
 import blocksHero from '@/public/images/blocks-hero.jpg';
 import dashHero from '@/public/images/dash-hero.jpg';
+import scrollHero from '@/public/images/scroll-hero.jpg';
 
 /* -------------------------------------------------------------------------------------------------
  * Aragon Images
@@ -205,6 +227,70 @@ const dashUIAdminImage = {
 };
 
 /* -------------------------------------------------------------------------------------------------
+ * Scroll Images
+ * -----------------------------------------------------------------------------------------------*/
+
+const scrollIntroImage = {
+  src: scrollIntro,
+  alt: 'Multiple tablet devices showing screens of the Scroll product',
+  color: '#B62B82',
+};
+
+const scrollComponentsImage = {
+  src: scrollComponents,
+  alt: 'A large array of user interface components arranged in an offset grid',
+  color: '#B62B82',
+};
+
+const scrollKnowledgeBaseImage = {
+  src: scrollKnowledgeBase,
+  alt: 'Scroll knowledge base screen showing a list of sources',
+  color: '#F6F6F9',
+};
+
+const scrollSourceSingleImage = {
+  src: scrollSourceSingle,
+  alt: 'Scroll knowledge base screen overlayed by a transcribed source with playback controls',
+  color: '#F6F6F9',
+};
+
+const scrollPlaygroundNewImage = {
+  src: scrollPlaygroundNew,
+  alt: 'Scroll playground area with a chat interface ready to recieve an initial prompt',
+  color: '#F6F6F9',
+};
+
+const scrollPlaygroundExistingImage = {
+  src: scrollPlaygroundExisting,
+  alt: 'Scroll playground area with an in-progress chat',
+  color: '#F6F6F9',
+};
+
+const scrollPlaygroundSourceImage = {
+  src: scrollPlaygroundSource,
+  alt: 'Scroll playground chat with a source overlayed and cited text highlighted',
+  color: '#F6F6F9',
+};
+
+const scrollCustomizeImage = {
+  src: scrollCustomize,
+  alt: 'Scroll customization area showing form fields and image editing',
+  color: '#F6F6F9',
+};
+
+const scrollEmbeddedImage = {
+  src: scrollEmbedded,
+  alt: 'Scroll embedded publish settings screen',
+  color: '#F6F6F9',
+};
+
+const scrollSignUpImage = {
+  src: scrollSignUp,
+  alt: 'Scroll sign up form alongside a decorative image',
+  color: '#F6F6F9',
+};
+
+/* -------------------------------------------------------------------------------------------------
  * Avatar Images
  * -----------------------------------------------------------------------------------------------*/
 
@@ -286,6 +372,30 @@ const alastairBirdAvatarImage = {
   color: '#555557',
 };
 
+const itamarRavidAvatarImage = {
+  src: itamarRavidAvatar,
+  alt: 'Itamar Ravid',
+  color: '#6D7D7E',
+};
+
+const benGadAvatarImage = {
+  src: benGadAvatar,
+  alt: 'Ben Gad',
+  color: '#151515',
+};
+
+const elikEizenbergAvatarImage = {
+  src: elikEizenbergAvatar,
+  alt: 'Elik Eizenberg',
+  color: '#714556',
+};
+
+const henryOswaldAvatarImage = {
+  src: henryOswaldAvatar,
+  alt: 'Henry Oswald',
+  color: '#818181',
+};
+
 /* -------------------------------------------------------------------------------------------------
  * Thumbnail Images
  * -----------------------------------------------------------------------------------------------*/
@@ -338,6 +448,18 @@ const dashThumbSmallImage = {
   color: '#6A17B7',
 };
 
+const scrollThumbImage = {
+  src: scrollThumb,
+  alt: 'Scroll project thumbnail',
+  color: '#431651',
+};
+
+const scrollThumbSmallImage = {
+  src: scrollThumbSmall,
+  alt: 'Scroll project small thumbnail',
+  color: '#431651',
+};
+
 /* -------------------------------------------------------------------------------------------------
  * Hero Images
  * -----------------------------------------------------------------------------------------------*/
@@ -358,6 +480,12 @@ const dashHeroImage = {
   src: dashHero,
   alt: 'Dash project hero image',
   color: '#7500BE',
+};
+
+const scrollHeroImage = {
+  src: scrollHero,
+  alt: 'Scroll project hero image',
+  color: '#561956',
 };
 
 export {
@@ -381,6 +509,16 @@ export {
   dashUIEditImage,
   dashUIDetailImage,
   dashUIAdminImage,
+  scrollIntroImage,
+  scrollComponentsImage,
+  scrollKnowledgeBaseImage,
+  scrollSourceSingleImage,
+  scrollPlaygroundNewImage,
+  scrollPlaygroundExistingImage,
+  scrollPlaygroundSourceImage,
+  scrollCustomizeImage,
+  scrollEmbeddedImage,
+  scrollSignUpImage,
   vladMorozAvatarImage,
   benoitGrelardAvatarImage,
   brettSunAvatarImage,
@@ -394,6 +532,10 @@ export {
   patyDavilaAvatarImage,
   pierreBerterAvatarImage,
   alastairBirdAvatarImage,
+  itamarRavidAvatarImage,
+  benGadAvatarImage,
+  elikEizenbergAvatarImage,
+  henryOswaldAvatarImage,
   radixThumbImage,
   radixThumbSmallImage,
   aragonThumbImage,
@@ -402,7 +544,10 @@ export {
   blocksThumbSmallImage,
   dashThumbImage,
   dashThumbSmallImage,
+  scrollThumbImage,
+  scrollThumbSmallImage,
   aragonHeroImage,
   blocksHeroImage,
   dashHeroImage,
+  scrollHeroImage,
 };

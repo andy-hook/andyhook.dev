@@ -121,38 +121,34 @@ const TestimonialGrid = React.forwardRef<TestimonialGridElement, TestimonialGrid
                   <QuoteMark className="relative w-8 sm:w-12 lg:w-13" />
                 </div>
 
-                {vlad && (
-                  <figure className="flex flex-grow flex-col justify-between relative">
-                    <Quote className="font-body font-medium text-base sm:text-lg md:text-xl xl:text-2xl text-slate-12 leading-relaxed sm:leading-relaxed md:leading-relaxed xl:leading-relaxed mb-10 sm:mb-12">
-                      {vlad.excerpt}
-                    </Quote>
+                <figure className="flex flex-grow flex-col justify-between relative">
+                  <Quote className="font-body font-medium text-base sm:text-lg md:text-xl xl:text-2xl text-slate-12 leading-relaxed sm:leading-relaxed md:leading-relaxed xl:leading-relaxed mb-10 sm:mb-12">
+                    {vlad.excerpt}
+                  </Quote>
 
-                    <Line orientation="vertical" className="absolute left-0 -top-8 bottom-16" />
+                  <Line orientation="vertical" className="absolute left-0 -top-8 bottom-16" />
 
-                    <figcaption>
-                      <Author
-                        name={vlad.name}
-                        company={vlad.company}
-                        role={vlad.role}
-                        avatar={vlad.avatar}
-                      />
-                    </figcaption>
-                  </figure>
-                )}
+                  <figcaption>
+                    <Author
+                      name={vlad.name}
+                      company={vlad.company}
+                      role={vlad.role}
+                      avatar={vlad.avatar}
+                    />
+                  </figcaption>
+                </figure>
               </div>
             </li>
 
             <li className="px-5 py-7 md:p-7 xl:p-10 relative">
-              {benoit && (
-                <TestimonialGridItem content={benoit.excerpt}>
-                  <Author
-                    name={benoit.name}
-                    company={benoit.company}
-                    role={benoit.role}
-                    avatar={benoit.avatar}
-                  />
-                </TestimonialGridItem>
-              )}
+              <TestimonialGridItem content={benoit.excerpt}>
+                <Author
+                  name={benoit.name}
+                  company={benoit.company}
+                  role={benoit.role}
+                  avatar={benoit.avatar}
+                />
+              </TestimonialGridItem>
 
               <Line className="absolute bottom-0 left-0 right-0 sm:right-auto sm:w-[180%]" />
               <Line
@@ -163,48 +159,42 @@ const TestimonialGrid = React.forwardRef<TestimonialGridElement, TestimonialGrid
               />
             </li>
 
-            {michael && (
-              <li className="lg:col-start-2 lg:row-start-2 px-5 py-7 md:p-7 xl:p-10 relative">
-                <TestimonialGridItem content={michael.excerpt}>
-                  <Author
-                    name={michael.name}
-                    company={michael.company}
-                    role={michael.role}
-                    avatar={michael.avatar}
-                  />
-                </TestimonialGridItem>
+            <li className="lg:col-start-2 lg:row-start-2 px-5 py-7 md:p-7 xl:p-10 relative">
+              <TestimonialGridItem content={michael.excerpt}>
+                <Author
+                  name={michael.name}
+                  company={michael.company}
+                  role={michael.role}
+                  avatar={michael.avatar}
+                />
+              </TestimonialGridItem>
 
-                <Line className="absolute bottom-0 left-0 right-0 sm:hidden" />
-              </li>
-            )}
+              <Line className="absolute bottom-0 left-0 right-0 sm:hidden" />
+            </li>
 
-            {andrew && (
-              <li className="lg:col-start-3 lg:row-start-2 px-5 py-7 md:p-7 xl:p-10 relative">
-                <TestimonialGridItem content={andrew.excerpt}>
-                  <Author
-                    name={andrew.name}
-                    company={andrew.company}
-                    role={andrew.role}
-                    avatar={andrew.avatar}
-                  />
-                </TestimonialGridItem>
+            <li className="lg:col-start-3 lg:row-start-2 px-5 py-7 md:p-7 xl:p-10 relative">
+              <TestimonialGridItem content={andrew.excerpt}>
+                <Author
+                  name={andrew.name}
+                  company={andrew.company}
+                  role={andrew.role}
+                  avatar={andrew.avatar}
+                />
+              </TestimonialGridItem>
 
-                <Line className="absolute bottom-0 left-0 right-0 sm:hidden" />
-              </li>
-            )}
+              <Line className="absolute bottom-0 left-0 right-0 sm:hidden" />
+            </li>
 
-            {brett && (
-              <li className="lg:col-start-3 lg:row-start-1 p-5 pt-7 md:p-7 xl:p-10">
-                <TestimonialGridItem content={brett.excerpt}>
-                  <Author
-                    name={brett.name}
-                    company={brett.company}
-                    role={brett.role}
-                    avatar={brett.avatar}
-                  />
-                </TestimonialGridItem>
-              </li>
-            )}
+            <li className="lg:col-start-3 lg:row-start-1 p-5 pt-7 md:p-7 xl:p-10">
+              <TestimonialGridItem content={brett.excerpt}>
+                <Author
+                  name={brett.name}
+                  company={brett.company}
+                  role={brett.role}
+                  avatar={brett.avatar}
+                />
+              </TestimonialGridItem>
+            </li>
           </ul>
         </div>
       </div>

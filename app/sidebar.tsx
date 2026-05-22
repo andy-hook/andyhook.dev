@@ -273,11 +273,11 @@ const SidebarMenuContent = React.forwardRef<SidebarMenuContentElement, SidebarMe
           <div className="grow flex items-center">
             <div className="mt-[15vh] pt-8 md:pt-12 lg:pt-14 xl:pt-16 grow">
               <h3 className="font-body text-sm lg:text-base xl:text-lg font-medium capsize text-slate-light-9 mb-7 md:mb-8 lg:mb-10 xl:mb-12">
-                Work
+                Works
               </h3>
 
               <motion.ul
-                className="-my-[0.35em] text-3xl lg:text-4xl xl:text-5xl group/list font-display font-medium tracking-tighter"
+                className="-my-[0.35em] text-3xl lg:text-4xl xl:text-4.5xl group/list font-display font-medium tracking-tighter"
                 variants={{
                   hidden: {
                     transition: {
@@ -291,10 +291,9 @@ const SidebarMenuContent = React.forwardRef<SidebarMenuContentElement, SidebarMe
                   },
                 }}
               >
-                {(['radix', 'aragon', 'blocks', 'dash'] as const)
-                  .map((projectId) => getProjectById(projectId))
-                  .filter((project): project is NonNullable<typeof project> => project !== null)
-                  .map((project) => (
+                {(['radix', 'scroll', 'aragon', 'dash', 'blocks'] as const).map((projectId) => {
+                  const project = getProjectById(projectId);
+                  return (
                     <motion.li
                       key={project.id}
                       variants={{
@@ -310,7 +309,8 @@ const SidebarMenuContent = React.forwardRef<SidebarMenuContentElement, SidebarMe
                         projectId={project.id}
                       />
                     </motion.li>
-                  ))}
+                  );
+                })}
               </motion.ul>
 
               <div className="mt-8 lg:mt-10 xl:mt-14 max-w-72">
@@ -454,6 +454,7 @@ const sidebarProjectLinkLine = cva({
       aragon: 'from-aragon-1 to-aragon-5',
       blocks: 'from-blocks-1 to-blocks-5',
       dash: 'from-dash-1 to-dash-4',
+      scroll: 'from-scroll-1 via-scroll-4 to-scroll-5',
     },
   },
 });

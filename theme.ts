@@ -1,6 +1,6 @@
 export const containerWidths = {
   wide: 1362,
-  widest: 1536,
+  widest: 1800,
 };
 
 export const screens = {
@@ -76,6 +76,13 @@ export const colorProject = {
     3: 'oklch(51.91% 0.269 313 / <alpha-value>)',
     4: 'oklch(80% 0.25 300 / <alpha-value>)',
     5: 'oklch(90% 0.25 300 / <alpha-value>)',
+  },
+  scroll: {
+    1: 'oklch(18.86% 0.096 263.06 / <alpha-value>)',
+    2: 'oklch(23.72% 0.096 267.34 / <alpha-value>)',
+    3: 'oklch(42.31% 0.221 298.83 / <alpha-value>)',
+    4: 'oklch(60.45% 0.214 1.8 / <alpha-value>)',
+    5: 'oklch(90% 0.168 356.58 / <alpha-value>)',
   },
 };
 
