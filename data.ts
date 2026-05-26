@@ -69,7 +69,7 @@ export const experience: Experience[] = [
     company: 'Scroll AI',
     tenure: 'Present',
     description:
-      'Convert company knowledge into intelligent agents, enable your teams and customers to instantly access trusted answers from reliable sources.',
+      'I worked across nearly every user surface of the product, including rich-text editing, CRDT-based collaboration, sharing and permissions systems, authentication and entitlements, browser extensions, Google Sheets autofill workflows, and billing infrastructure.',
     link: 'https://scroll.ai',
   },
   {
@@ -79,7 +79,7 @@ export const experience: Experience[] = [
     company: 'WorkOS',
     tenure: 'Mar 2022 – May 2024',
     description:
-      'WorkOS acquired Modulz in March 2022. After acquisition I continued to maintain Radix Primitives, building new components and shipping the stable 1.0 release. I would later transition to a horizontal UI team where I led projects to re-architect the dashboard and support the roll out of User Management.',
+      'WorkOS acquired Modulz in March 2022. I continued as maintainer of Radix Primitives, shipping the stable v1 release which later grew to ecosystem dominance (130M monthly installs). I later joined a horizontal front-end team, leading the dashboard re-architecture and supporting the rollout of User Management.',
     link: 'https://workos.com',
   },
   {
@@ -89,7 +89,7 @@ export const experience: Experience[] = [
     company: 'Modulz',
     tenure: 'Apr 2021 – Mar 2022',
     description:
-      'Core maintainer of Radix Primitives, an accessibility focused toolkit of headless UI components. I collaborated closely with the team to scope, shape, research and implement WAI-ARIA compliant accessibility patterns and DX centric component APIs.',
+      'Core maintainer of Radix Primitives, an popular headless UI library used by millions of developers. Worked closely with the team to scope, shape, research and implement WAI-ARIA compliant accessible UI patterns and DX centric component APIs.',
     link: 'https://modulz.app',
   },
   {
@@ -99,7 +99,7 @@ export const experience: Experience[] = [
     company: 'Aragon',
     tenure: 'May 2020 – Jan 2021',
     description:
-      'Using Ethereum technology to build censorship resistant tools for organisation and collaboration on the blockchain. Shipped and maintained high-quality interfaces for the Aragon dashboard, upgrade and token conversion tools as well as a rewards program to incentivise staking in automated liquidity pools.',
+      'Built censorship resistant tools for organisation and collaboration on the Ethereum blockchain. Shipped and maintained high-quality interfaces for the dashboard, upgrade and token conversion tools as well as a rewards program to incentivise staking in automated liquidity pools.',
     link: 'https://aragon.org',
   },
   {
@@ -109,7 +109,7 @@ export const experience: Experience[] = [
     company: 'Bright Interactive',
     tenure: 'Sep 2018 – Jan 2021',
     description:
-      'Built the user interface for a next-generation digital asset management product. Focused on crafting a front end that is intuitive, reliable and extremely fast. Dash was built as an Angular SPA with Typescript, RxJS and supported by a micro-service back end running on Amazon Web Services.',
+      'Built the user interface of the Dash digital asset management platform. Crafted a front-end that is intuitive, reliable and extremely fast. Dash was built as an Angular SPA with Typescript, RxJS and supported by a micro-service back-end running on AWS.',
     link: 'https://builtbybright.com',
   },
   {
