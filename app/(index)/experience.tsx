@@ -20,21 +20,28 @@ export const Experience = React.forwardRef<ExperienceElement, ExperienceProps>(
           <Container>
             <div className="mb-20 lg:mb-24 grid lg:grid-rows-[auto_1fr] grid-cols-1 lg:grid-cols-2 md:gap-x-0 md:px-7 xl:px-10 relative items-start">
               <h2 className="text-slate-12 font-display font-normal tracking-tighter text-3xl lg:text-4xl xl:text-5xl leading-tight lg:leading-tight xl:leading-tight capsize mb-10 lg:mb-12 xl:mb-16">
-                <div className="text-balance">More than a decade building for the web</div>
+                <div className="text-balance">More than 15 years of experience</div>
               </h2>
 
               <div className="text-slate-11 font-body font-normal leading-relaxed sm:leading-relaxed lg:leading-relaxed text-sm sm:text-base lg:text-lg space-y-10 lg:row-span-2 mb-14 lg:mb-0">
                 <p className="capsize">
-                  Design is at the heart of everything I do, I believe that a close relationship
-                  between visual design, UX and front-end engineering expertise leads to a better
-                  customer experience within digital products.
+                  I’m a front-end focused software engineer with more than 15 years of experience
+                  building high-quality digital products across AI, developer tooling, SaaS, and
+                  collaborative web applications.
                 </p>
+
                 <p className="capsize">
-                  As a specialist in modular design systems and component libraries, I work to
-                  bridge the gap between design and engineering disciplines and am a catalyst for
-                  fast, iterative processes within agile product teams. My technical experience
-                  spans a wealth of front-end technologies ranging from modern SPA frameworks to
-                  run-time performance profiling, testing and accessibility.
+                  My background spans product architecture, design engineering, accessibility,
+                  performance, and developer experience. I’ve worked on everything from AI-powered
+                  editing environments and authentication platforms to widely adopted component
+                  systems used by millions of developers.
+                </p>
+
+                <p className="capsize">
+                  Design remains a core strength. I bring a deep understanding of usability,
+                  interaction design, and interface quality, allowing me to bridge product thinking
+                  and engineering execution while building software that is both technically robust
+                  and intuitive to use.
                 </p>
               </div>
 
