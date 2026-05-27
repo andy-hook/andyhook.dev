@@ -35,7 +35,7 @@ export const Breadcrumbs = React.forwardRef<BreadcrumbsElement, BreadcrumbsProps
             className={cx('text-slate-12 p-2 -m-2 rounded-md flex items-center relative')}
           >
             {!isRootPath && (
-              <div className="h-full left-0 top-0 absolute flex items-center ml-2">
+              <div className="h-full left-0 top-0 absolute flex items-center ml-2" aria-hidden>
                 <ArrowLeftIcon className={cx('size-4 mr-2.5 text-slate-9 absolute')} />{' '}
               </div>
             )}
