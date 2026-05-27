@@ -34,7 +34,7 @@ export const Breadcrumbs = React.forwardRef<BreadcrumbsElement, BreadcrumbsProps
             href="/"
             className={cx(
               'p-2 -m-2 rounded-md flex items-center relative',
-              isRootPath ? 'text-slate-12' : 'hover:bg-slate-3/70 text-slate-9 hover:text-slate-11',
+              isRootPath ? 'text-slate-12' : 'text-slate-9 hover:text-slate-10',
             )}
           >
             {!isRootPath && (
