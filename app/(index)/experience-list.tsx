@@ -65,25 +65,15 @@ export const ExperienceList = React.forwardRef<ExperienceListElement, Experience
                   return (
                     <AccordionPrimitive.Item value={key} key={key} className="relative" asChild>
                       <li>
-                        <AnimatePresence>
-                          {(open || hovered) && (
-                            <motion.div
-                              className={cx(
-                                'absolute inset-0 bg-gradient-to-br from-slate-5/25 -z-10',
-                                lastItem && 'rounded-b-3xl',
-                                firstItem && 'rounded-t-3xl',
-                              )}
-                              initial="hidden"
-                              animate="visible"
-                              exit="hidden"
-                              variants={{
-                                hidden: { opacity: 0 },
-                                visible: { opacity: 1 },
-                              }}
-                              transition={MOTION_TRANSITION}
-                            />
-                          )}
-                        </AnimatePresence>
+                        {(open || hovered) && (
+                          <div
+                            className={cx(
+                              'absolute inset-0 bg-gradient-to-br from-slate-5/25 -z-10',
+                              lastItem && 'rounded-b-3xl',
+                              firstItem && 'rounded-t-3xl',
+                            )}
+                          />
+                        )}
 
                         {!lastItem ? (
                           <Line
@@ -264,8 +254,10 @@ function getCompanyTitleColor(openItem: string, hoveredItem: string, key: string
 
 type ExperienceListItemTriggerElement = React.ComponentRef<typeof AccordionPrimitive.Trigger>;
 
-interface ExperienceListItemTriggerProps
-  extends Omit<React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>, 'children'> {
+interface ExperienceListItemTriggerProps extends Omit<
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>,
+  'children'
+> {
   children(refs: {
     yearScrambleRef: React.RefObject<React.ComponentRef<typeof ScrambleText> | null>;
     companyScrambleRef: React.RefObject<React.ComponentRef<typeof ScrambleText> | null>;
@@ -307,8 +299,9 @@ ExperienceListItemTrigger.displayName = 'ExperienceListItemTrigger';
 
 type ExperienceListItemContentElement = React.ComponentRef<typeof AccordionPrimitive.Content>;
 
-interface ExperienceListItemContentProps
-  extends React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content> {
+interface ExperienceListItemContentProps extends React.ComponentPropsWithoutRef<
+  typeof AccordionPrimitive.Content
+> {
   onBeforeMatch(): void;
 }
 
