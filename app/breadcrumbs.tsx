@@ -30,19 +30,16 @@ export const Breadcrumbs = React.forwardRef<BreadcrumbsElement, BreadcrumbsProps
         className={cx('flex items-center transition-transform', className)}
       >
         <FocusRing className="outline-offset-0 focus-visible:outline-offset-1">
-          <RouterLink
-            href="/"
-            className={cx('text-slate-12 p-2 -m-2 rounded-md flex items-center relative')}
-          >
+          <RouterLink href="/" className={cx('p-2 -m-2 rounded-md flex items-center relative')}>
             {!isRootPath && (
               <div className="h-full left-0 top-0 absolute flex items-center ml-2" aria-hidden>
-                <ArrowLeftIcon className={cx('size-4 mr-2.5 text-slate-9 absolute')} />{' '}
+                <ArrowLeftIcon className={cx('size-4 mr-2.5 text-slate-8 absolute')} />{' '}
               </div>
             )}
             <span
               className={cx(
-                'font-body text-base tracking-tight font-bold capsize',
-                !isRootPath && 'ml-7',
+                'font-body text-base tracking-tight capsize font-bold',
+                isRootPath ? ' text-slate-12' : 'text-slate-10 ml-6 font-medium',
               )}
             >
               Andy Hook
@@ -51,10 +48,12 @@ export const Breadcrumbs = React.forwardRef<BreadcrumbsElement, BreadcrumbsProps
         </FocusRing>
 
         {knownProject && (
-          <span className="text-slate-9 font-body font-medium text-base capsize">
-            <span className="ml-3 mr-2.5">/</span>
-            {knownProject.title}
-          </span>
+          <>
+            <span className="mx-3 capsize font-body font-medium text-base text-slate-9">/</span>
+            <span className={cx('text-slate-12 font-body font-bold text-base capsize')}>
+              {knownProject.title}
+            </span>
+          </>
         )}
       </div>
     );
