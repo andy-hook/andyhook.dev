@@ -18,8 +18,8 @@ import * as TooltipPrimitive from '@/components/primitives/tooltip';
 import { SocialLink } from '@/components/social-link';
 import { DeviceProvider } from '@/components/utils/use-device';
 import { Theme } from './theme';
-import { RouterLink, RouterProvider, RouterTransition } from './router';
-import { FocusRing } from '@/components/focus-ring';
+import { RouterProvider, RouterTransition } from './router';
+import { Breadcrumbs } from './breadcrumbs';
 
 const displayFont = IBM_Plex_Serif({
   weight: ['300', '400', '500'],
@@ -106,14 +106,7 @@ const Header = React.forwardRef<HeaderElement, HeaderProps>(
       >
         <Gutter>
           <Container className="flex justify-between items-center md:px-7 xl:px-10" width="wide">
-            <FocusRing className="outline-offset-0 focus-visible:outline-offset-1">
-              <RouterLink
-                href="/"
-                className="text-slate-12 font-body tracking-tight font-bold text-base capsize p-2 -m-2 rounded-md"
-              >
-                Andy Hook
-              </RouterLink>
-            </FocusRing>
+            <Breadcrumbs />
           </Container>
         </Gutter>
       </header>

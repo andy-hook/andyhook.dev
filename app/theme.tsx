@@ -3,8 +3,7 @@
 import * as React from 'react';
 import { usePathname } from 'next/navigation';
 
-import { ProjectId } from '@/types';
-import { getProjectById } from '@/data';
+import { getProjectByPathname } from '@/data';
 
 import { cx } from '@/cva.config';
 import { getThemeColorValues } from '@/theme';
@@ -22,8 +21,7 @@ const Theme = React.forwardRef<ThemeElement, ThemeProps>((props, forwardedRef) =
   const pathname = usePathname();
 
   const colorVariables = React.useMemo(() => {
-    const parsedPathname = pathname.replace('/', '') as ProjectId;
-    const projectId = getProjectById(parsedPathname)?.id;
+    const projectId = getProjectByPathname(pathname)?.id;
     return getThemeColorValues(projectId);
   }, [pathname]);
 

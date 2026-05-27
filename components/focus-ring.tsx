@@ -4,8 +4,10 @@ import { Primitive } from '@/components/primitives/primitive';
 
 type FocusRingElement = React.ComponentRef<typeof Primitive.div>;
 
-interface FocusRingProps
-  extends Omit<React.ComponentPropsWithoutRef<typeof Primitive.div>, 'asChild'> {
+interface FocusRingProps extends Omit<
+  React.ComponentPropsWithoutRef<typeof Primitive.div>,
+  'asChild'
+> {
   scheme?: 'light' | 'dark';
 }
 
