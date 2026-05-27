@@ -60,7 +60,7 @@ export const TeamList = React.forwardRef<TeamListElement, TeamListProps>(
             >
               <RouterLink
                 href={member.bio}
-                className="size-9 bg-slate-6 rounded-full overflow-hidden border-4 border-slate-1 relative block"
+                className="size-9 bg-slate-6 rounded-full overflow-hidden border-4 border-slate-2 relative block"
               >
                 <RouterImage image={member.avatar} quality={90} sizes="50px" />
               </RouterLink>
@@ -79,7 +79,7 @@ export const TeamList = React.forwardRef<TeamListElement, TeamListProps>(
               },
             }}
           >
-            <div className="size-9 z-0 bg-slate-4 rounded-full overflow-hidden border-4 border-slate-1 relative flex items-center justify-center text-body text-slate-10 text-xs font-bold cursor-default">
+            <div className="size-9 z-0 bg-slate-4 rounded-full overflow-hidden border-4 border-slate-2 relative flex items-center justify-center text-body text-slate-10 text-xs font-bold cursor-default">
               +{additionalCount}
             </div>
           </motion.li>
@@ -95,8 +95,10 @@ TeamList.displayName = 'TeamList';
 
 type TeamListItemElement = React.ComponentRef<typeof motion.li>;
 
-interface TeamListItemProps
-  extends Omit<React.ComponentPropsWithoutRef<typeof motion.li>, 'content'> {
+interface TeamListItemProps extends Omit<
+  React.ComponentPropsWithoutRef<typeof motion.li>,
+  'content'
+> {
   content: React.ReactNode;
   children: React.ReactNode;
   teamCount: number;

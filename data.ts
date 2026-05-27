@@ -519,3 +519,8 @@ export function getPersonById(id: PersonId) {
 export function getProjectById(id: ProjectId) {
   return projects.find((project) => project.id === id)!;
 }
+
+export function getProjectByPathname(pathname: string) {
+  const parsedPathname = pathname.replace('/', '');
+  return projects.find((project) => project.id === parsedPathname);
+}

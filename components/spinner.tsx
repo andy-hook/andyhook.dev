@@ -19,7 +19,7 @@ const spinnerLine = cva({
       blocks: 'stroke-blocks-2 fill-blocks-2/5',
       dash: 'stroke-dash-2 fill-dash-2/5',
       radix: 'stroke-radix-2 fill-radix-2/5',
-      scroll: 'stroke-scroll-2 fill-scroll-2/5',
+      scroll: 'stroke-scroll-4 fill-scroll-4/5',
     },
   },
   defaultVariants: {
