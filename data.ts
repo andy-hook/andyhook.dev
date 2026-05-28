@@ -472,7 +472,7 @@ export const projects: Project[] = [
     thumbnail: blocksThumbImage,
     thumbnailSmall: blocksThumbSmallImage,
     heroImage: blocksHeroImage,
-    testimonial: getTestimonialById('ben'),
+    testimonial: getTestimonialById('ze'),
     team: [],
     additionalTeam: 0,
   },
