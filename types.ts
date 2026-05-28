@@ -80,9 +80,9 @@ export interface Project {
   tenure: string;
   technologies: string[];
   intro: string;
-  thumbnail: ImageWithMetadata;
-  thumbnailSmall: ImageWithMetadata;
-  heroImage: ImageWithMetadata;
+  thumbnail: StaticImageWithMetadata;
+  thumbnailSmall: StaticImageWithMetadata;
+  heroImage: StaticImageWithMetadata;
   testimonial: Testimonial;
   team: TeamMember[];
   additionalTeam: number;

@@ -15,21 +15,22 @@ import { TeamList } from './team-list';
 import * as HoverGroup from '@/components/primitives/hover-group';
 
 import { RouterImage, RouterTransition } from '../../router';
-import { Project } from '@/types';
+import { ProjectId, StaticImageWithMetadata, TeamMember, Testimonial } from '@/types';
 import { cx } from '@/cva.config';
 
 /* -------------------------------------------------------------------------------------------------
  * Project
  * -----------------------------------------------------------------------------------------------*/
 interface ProjectProps {
-  project: Project;
+  projectId: ProjectId;
+  testimonial: Testimonial;
   children: React.ReactNode;
 }
 
 const ProjectRoot: React.FC<ProjectProps> = (props) => {
-  const { children, project } = props;
+  const { children, projectId, testimonial } = props;
 
-  const currentProjectIndex = projects.findIndex(({ id }) => id === project.id);
+  const currentProjectIndex = projects.findIndex(({ id }) => id === projectId);
   const moreProjects = Array.from({ length: 3 }, (_, offset) => {
     const nextProjectIndex = (currentProjectIndex + offset + 1) % projects.length;
     return projects[nextProjectIndex];
@@ -52,15 +53,15 @@ const ProjectRoot: React.FC<ProjectProps> = (props) => {
                 <Hatch className="hidden wide:block absolute -left-6 md:left-0 top-0 w-6 md:w-7 xl:w-10 h-36" />
 
                 <Quote className="font-body text-lg sm:leading-relaxed sm:text-xl lg:text-2xl xl:text-3xl text-slate-12 leading-relaxed lg:leading-relaxed xl:leading-relaxed capsize font-medium text-pretty lg:col-span-2 lg:col-start-2">
-                  {project.testimonial.full}
+                  {testimonial.full}
                 </Quote>
 
                 <figcaption className="lg:row-start-1 relative">
                   <Author
-                    name={project.testimonial.name}
-                    role={project.testimonial.role}
-                    company={project.testimonial.company}
-                    avatar={project.testimonial.avatar}
+                    name={testimonial.name}
+                    role={testimonial.role}
+                    company={testimonial.company}
+                    avatar={testimonial.avatar}
                     size="large"
                   />
                 </figcaption>
@@ -139,29 +140,34 @@ const ProjectRoot: React.FC<ProjectProps> = (props) => {
 type ProjectHeaderElement = React.ComponentRef<'section'>;
 
 interface ProjectHeaderProps extends React.ComponentPropsWithoutRef<'section'> {
-  project: Project;
+  title: string;
+  subtitle: string;
+  role: string;
+  tenure: string;
+  team: TeamMember[];
+  additionalTeam: number;
 }
 
 const ProjectHeader = React.forwardRef<ProjectHeaderElement, ProjectHeaderProps>(
-  ({ children, project, ...props }, forwardedRef) => {
+  ({ children, title, subtitle, role, tenure, team, additionalTeam, ...props }, forwardedRef) => {
     const projectMeta = [
       [
         UserIcon,
         <>
           <span className="sr-only">Role: </span>
-          {project.role}
+          {role}
         </>,
       ],
       [
         CalendarIcon,
         <>
           <span className="sr-only">Tenure: </span>
-          {project.tenure}
+          {tenure}
         </>,
       ],
     ] as const;
 
-    const renderedTeam = project.team.map(({ avatar, name, role }) => ({
+    const renderedTeam = team.map(({ avatar, name, role }) => ({
       avatar,
       description: `${name} – ${role}`,
     }));
@@ -178,14 +184,14 @@ const ProjectHeader = React.forwardRef<ProjectHeaderElement, ProjectHeaderProps>
                     solid
                     contrast="low"
                   />
-                  <div className="relative capsize text-slate-12">{project.title}</div>
+                  <div className="relative capsize text-slate-12">{title}</div>
                 </RouterTransition>
               </div>
 
               <RouterTransition multiplier={6} className="relative">
                 <div className="capsize md:leading-tight text-balance">
                   <div className="font-light text-transparent bg-gradient-to-br from-slate-11 via-slate-9 to-slate-8 bg-clip-text">
-                    {project.subtitle}
+                    {subtitle}
                   </div>
                 </div>
 
@@ -223,9 +229,9 @@ const ProjectHeader = React.forwardRef<ProjectHeaderElement, ProjectHeaderProps>
 
                 {renderedTeam.length > 0 ? (
                   <TeamList
-                    team={project.team}
+                    team={team}
                     className="hidden md:flex"
-                    additionalCount={project.additionalTeam}
+                    additionalCount={additionalTeam}
                   />
                 ) : null}
               </div>
@@ -251,11 +257,13 @@ interface ProjectHeroProps extends Omit<
   React.ComponentPropsWithoutRef<typeof RouterTransition>,
   'children' | 'multiplier'
 > {
-  project: Project;
+  heroImage: StaticImageWithMetadata;
+  technologies: string[];
+  intro: string;
 }
 
 const ProjectHero = React.forwardRef<ProjectHeroElement, ProjectHeroProps>(
-  ({ project, className, ...props }, forwardedRef) => {
+  ({ heroImage, technologies, intro, className, ...props }, forwardedRef) => {
     return (
       <RouterTransition
         multiplier={10}
@@ -267,7 +275,7 @@ const ProjectHero = React.forwardRef<ProjectHeroElement, ProjectHeroProps>(
           <div className="mx-auto relative z-10">
             <div className="rounded-3xl overflow-hidden shadow-slate-1 shadow-2xl">
               <RouterImage
-                image={project.heroImage}
+                image={heroImage}
                 quality={90}
                 fill
                 className="aspect-[50/35] md:aspect-[448/205]"
@@ -295,7 +303,7 @@ const ProjectHero = React.forwardRef<ProjectHeroElement, ProjectHeroProps>(
                   <Hatch className="absolute -left-5 xl:-left-10 w-5 md:-left-7 md:w-7 xl:w-10 top-0 bottom-0" />
 
                   <ul className="font-body text-sm sm:text-base lg:text-xl font-normal text-slate-11 flex flex-col gap-4 sm:gap-5 lg:gap-6 row-start-2 lg:row-start-auto">
-                    {project.technologies.map((technology) => (
+                    {technologies.map((technology) => (
                       <li key={technology} className="capsize">
                         {technology}
                       </li>
@@ -304,7 +312,7 @@ const ProjectHero = React.forwardRef<ProjectHeroElement, ProjectHeroProps>(
                 </div>
 
                 <p className="col-span-2 font-body font-medium text-slate-12 text-base sm:text-lg leading-relaxed md:leading-relaxed xl:leading-relaxed md:text-xl lg:text-2xl xl:text-[26px] lg:leading-relaxed capsize text-pretty row-start-1 lg:row-start-auto">
-                  {project.intro}
+                  {intro}
                 </p>
               </div>
             </div>

@@ -9,9 +9,20 @@ const project = getProjectById('dash');
 
 export default function DashPage() {
   return (
-    <Project.Root project={project}>
-      <Project.Header project={project}>
-        <Project.Hero project={project} />
+    <Project.Root projectId={project.id} testimonial={project.testimonial}>
+      <Project.Header
+        title={project.title}
+        subtitle={project.subtitle}
+        team={project.team}
+        additionalTeam={project.additionalTeam}
+        role={project.role}
+        tenure={project.tenure}
+      >
+        <Project.Hero
+          heroImage={project.heroImage}
+          technologies={project.technologies}
+          intro={project.intro}
+        />
       </Project.Header>
 
       <DashContent />
