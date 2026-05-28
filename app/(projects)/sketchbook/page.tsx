@@ -1,68 +1,78 @@
 import * as React from 'react';
 import { getProjectMetadata } from '../_components/metadata';
 import { RouterImage } from '@/app/router';
-import { aragonComponentsImage } from '@/images';
+import {
+  sketchbookAnglesImage,
+  sketchbookCoupleImage,
+  sketchbookFacesImage,
+  sketchbookFemaleStudyImage,
+  sketchbookHeadspaceImage,
+  sketchbookMaleStudyImage,
+  sketchbookMapImage,
+  sketchbookRasputinImage,
+  sketchbookScarfImage,
+  sketchbookSuitImage,
+  sketchbookTattooImage,
+  sketchbookTreeMarkAlternImage,
+  sketchbookTreeMarkImage,
+} from '@/images';
 import { Gutter } from '@/components/gutter';
+import { StaticImageWithMetadata } from '@/types';
 
 export const metadata = getProjectMetadata('aragon');
 
 export default function SketchbookPage() {
   return (
     <Gutter size="small">
-      {/* <section className="grid grid-cols-3 gap-5">
-        <RouterImage image={aragonComponentsImage} className="w-full" quality={90} sizes="100vw" />
-        <RouterImage image={aragonComponentsImage} className="w-full" quality={90} sizes="100vw" />
-        <RouterImage image={aragonComponentsImage} className="w-full" quality={90} sizes="100vw" />
-        <RouterImage image={aragonComponentsImage} className="w-full" quality={90} sizes="100vw" />
-        <RouterImage image={aragonComponentsImage} className="w-full" quality={90} sizes="100vw" />
-        
-      </section> */}
-
       <section
         style={
           {
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(700px, 1fr))',
-            ['--precision']: 50,
+            ['--precision']: 40,
             ['--gap']: '30px',
             margin: 'calc(-1 * var(--gap) / 2)',
           } as React.CSSProperties
         }
       >
-        <GridItem width={500} height={250} />
-
-        <GridItem width={500} height={800} />
-
-        <GridItem width={340} height={400} />
-
-        <GridItem width={500} height={250} />
-
-        <GridItem width={500} height={600} />
-
-        <GridItem width={500} height={250} />
+        <GridItem image={sketchbookScarfImage} />
+        <GridItem image={sketchbookMaleStudyImage} />
+        <GridItem image={sketchbookCoupleImage} />
+        <GridItem image={sketchbookMapImage} />
+        <GridItem image={sketchbookTreeMarkImage} />
+        <GridItem image={sketchbookFacesImage} />
+        <GridItem image={sketchbookRasputinImage} />
+        <GridItem image={sketchbookFemaleStudyImage} />
+        <GridItem image={sketchbookTreeMarkAlternImage} />
+        <GridItem image={sketchbookTattooImage} />
+        <GridItem image={sketchbookHeadspaceImage} />
+        <GridItem image={sketchbookSuitImage} />
+        <GridItem image={sketchbookAnglesImage} />
       </section>
-
-      <RouterImage image={aragonComponentsImage} className="w-full" quality={90} sizes="100vw" />
     </Gutter>
   );
 }
 
-function GridItem({ width, height }: { width: number; height: number }) {
+function GridItem({ image }: { image: StaticImageWithMetadata }) {
   return (
     <div
       style={
         {
+          ['--width']: image.src.width,
+          ['--height']: image.src.height,
           aspectRatio: 'var(--width) / var(--height)',
-          gridRow: 'span calc(var(--height) / var(--width) * var(--precision))',
-          ['--width']: width,
-          ['--height']: height,
+          gridRow: `span calc(var(--height) / var(--width) * var(--precision))`,
           position: 'relative',
         } as React.CSSProperties
       }
     >
-      <div
-        style={{ position: 'absolute', inset: 'calc(var(--gap) / 2)', backgroundColor: 'red' }}
-      ></div>
+      <RouterImage
+        image={image}
+        fill
+        style={{ position: 'absolute', inset: 'calc(var(--gap) / 2)' }}
+        quality={90}
+        sizes="25vw"
+      />
     </div>
   );
 }

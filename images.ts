@@ -95,6 +95,24 @@ import dashHero from '@/public/images/dash-hero.jpg';
 import scrollHero from '@/public/images/scroll-hero.jpg';
 
 /* -------------------------------------------------------------------------------------------------
+ * Sketchbook Images
+ * -----------------------------------------------------------------------------------------------*/
+
+import sketchbookScarf from '@/public/images/sketchbook/sketchbook-scarf.jpg';
+import sketchbookMaleStudy from '@/public/images/sketchbook/sketchbook-male-study.jpg';
+import sketchbookFemaleStudy from '@/public/images/sketchbook/sketchbook-female-study.jpg';
+import sketchbookCouple from '@/public/images/sketchbook/sketchbook-couple.jpg';
+import sketchbookFaces from '@/public/images/sketchbook/sketchbook-faces.jpg';
+import sketchbookMap from '@/public/images/sketchbook/sketchbook-map.jpg';
+import sketchbookRasputin from '@/public/images/sketchbook/sketchbook-rasputin.jpg';
+import sketchbookTreeMark from '@/public/images/sketchbook/sketchbook-tree-mark.jpg';
+import sketchbookAngles from '@/public/images/sketchbook/sketchbook-angles.jpg';
+import sketchbookHeadspace from '@/public/images/sketchbook/sketchbook-headspace.jpg';
+import sketchbookTattoo from '@/public/images/sketchbook/sketchbook-tattoo.jpg';
+import sketchbookTreeMarkAltern from '@/public/images/sketchbook/sketchbook-tree-mark-altern.jpg';
+import sketchbookSuit from '@/public/images/sketchbook/sketchbook-suit.jpg';
+
+/* -------------------------------------------------------------------------------------------------
  * Aragon Images
  * -----------------------------------------------------------------------------------------------*/
 
@@ -488,6 +506,88 @@ const scrollHeroImage = {
   color: '#561956',
 };
 
+/* -------------------------------------------------------------------------------------------------
+ * Sketchbook Images
+ * -----------------------------------------------------------------------------------------------*/
+
+const sketchbookScarfImage = {
+  src: sketchbookScarf,
+  alt: 'TEMP',
+  color: '#00C8F8',
+};
+
+const sketchbookMaleStudyImage = {
+  src: sketchbookMaleStudy,
+  alt: 'TEMP',
+  color: '#00C8F8',
+};
+
+const sketchbookCoupleImage = {
+  src: sketchbookCouple,
+  alt: 'TEMP',
+  color: '#00C8F8',
+};
+
+const sketchbookFemaleStudyImage = {
+  src: sketchbookFemaleStudy,
+  alt: 'TEMP',
+  color: '#00C8F8',
+};
+
+const sketchbookFacesImage = {
+  src: sketchbookFaces,
+  alt: 'TEMP',
+  color: '#00C8F8',
+};
+
+const sketchbookMapImage = {
+  src: sketchbookMap,
+  alt: 'TEMP',
+  color: '#00C8F8',
+};
+
+const sketchbookRasputinImage = {
+  src: sketchbookRasputin,
+  alt: 'TEMP',
+  color: '#00C8F8',
+};
+
+const sketchbookTreeMarkImage = {
+  src: sketchbookTreeMark,
+  alt: 'TEMP',
+  color: '#00C8F8',
+};
+
+const sketchbookAnglesImage = {
+  src: sketchbookAngles,
+  alt: 'TEMP',
+  color: '#00C8F8',
+};
+
+const sketchbookHeadspaceImage = {
+  src: sketchbookHeadspace,
+  alt: 'TEMP',
+  color: '#00C8F8',
+};
+
+const sketchbookTattooImage = {
+  src: sketchbookTattoo,
+  alt: 'TEMP',
+  color: '#00C8F8',
+};
+
+const sketchbookTreeMarkAlternImage = {
+  src: sketchbookTreeMarkAltern,
+  alt: 'TEMP',
+  color: '#00C8F8',
+};
+
+const sketchbookSuitImage = {
+  src: sketchbookSuit,
+  alt: 'TEMP',
+  color: '#00C8F8',
+};
+
 export {
   aragonIntroImage,
   aragonComponentsImage,
@@ -519,6 +619,7 @@ export {
   scrollCustomizeImage,
   scrollEmbeddedImage,
   scrollSignUpImage,
+  //
   vladMorozAvatarImage,
   benoitGrelardAvatarImage,
   brettSunAvatarImage,
@@ -536,6 +637,7 @@ export {
   benGadAvatarImage,
   elikEizenbergAvatarImage,
   henryOswaldAvatarImage,
+  //
   radixThumbImage,
   radixThumbSmallImage,
   aragonThumbImage,
@@ -550,4 +652,18 @@ export {
   blocksHeroImage,
   dashHeroImage,
   scrollHeroImage,
+  //
+  sketchbookScarfImage,
+  sketchbookMaleStudyImage,
+  sketchbookCoupleImage,
+  sketchbookFemaleStudyImage,
+  sketchbookFacesImage,
+  sketchbookMapImage,
+  sketchbookRasputinImage,
+  sketchbookTreeMarkImage,
+  sketchbookAnglesImage,
+  sketchbookHeadspaceImage,
+  sketchbookTattooImage,
+  sketchbookTreeMarkAlternImage,
+  sketchbookSuitImage,
 };
