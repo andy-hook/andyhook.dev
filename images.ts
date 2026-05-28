@@ -111,6 +111,8 @@ import sketchbookHeadspace from '@/public/images/sketchbook/sketchbook-headspace
 import sketchbookTattoo from '@/public/images/sketchbook/sketchbook-tattoo.jpg';
 import sketchbookTreeMarkAltern from '@/public/images/sketchbook/sketchbook-tree-mark-altern.jpg';
 import sketchbookSuit from '@/public/images/sketchbook/sketchbook-suit.jpg';
+import sketchbookSnowman from '@/public/images/sketchbook/sketchbook-snowman.jpg';
+import sketchbookSpaceship from '@/public/images/sketchbook/sketchbook-spaceship.jpg';
 
 /* -------------------------------------------------------------------------------------------------
  * Aragon Images
@@ -588,6 +590,18 @@ const sketchbookSuitImage = {
   color: '#00C8F8',
 };
 
+const sketchbookSnowmanImage = {
+  src: sketchbookSnowman,
+  alt: 'TEMP',
+  color: '#00C8F8',
+};
+
+const sketchbookSpaceshipImage = {
+  src: sketchbookSpaceship,
+  alt: 'TEMP',
+  color: '#00C8F8',
+};
+
 export {
   aragonIntroImage,
   aragonComponentsImage,
@@ -666,4 +680,6 @@ export {
   sketchbookTattooImage,
   sketchbookTreeMarkAlternImage,
   sketchbookSuitImage,
+  sketchbookSnowmanImage,
+  sketchbookSpaceshipImage,
 };
