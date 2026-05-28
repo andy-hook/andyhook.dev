@@ -3,17 +3,20 @@ import { ComponentType } from 'react';
 
 type LogoComponent = ComponentType<React.SVGProps<SVGSVGElement>>;
 
-export interface ImageWithMetadata {
-  src: string | StaticImageData;
+interface ImageMetadata {
   alt: string;
   color: string | null;
 }
 
-export interface StaticImageWithMetadata {
-  src: StaticImageData;
-  alt: string;
-  color: string | null;
+export interface RemoteImageWithMetadata extends ImageMetadata {
+  src: string;
 }
+
+export interface StaticImageWithMetadata extends ImageMetadata {
+  src: StaticImageData;
+}
+
+export type ImageWithMetadata = RemoteImageWithMetadata | StaticImageWithMetadata;
 
 export type ProjectId = 'radix' | 'aragon' | 'blocks' | 'dash' | 'scroll';
 
