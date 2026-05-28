@@ -18,7 +18,7 @@ import { Line } from '@/components/line';
 import { MouseHover } from '@/components/primitives/mouse-hover';
 import { ProjectId } from '@/types';
 import { getColorProject, getColorSlateDark } from '@/theme';
-import { getProjectById } from '@/data';
+import { getProjectById, selectedProjects, sideProjects } from '@/data';
 import { RouterLink, useRouterState } from './router';
 import { useDevice } from '@/components/utils/use-device';
 import { FocusRing } from '@/components/focus-ring';
@@ -272,8 +272,8 @@ const SidebarMenuContent = React.forwardRef<SidebarMenuContentElement, SidebarMe
         <div className="h-full flex flex-col justify-between gap-12 md:gap-14 lg:gap-20 xl:gap-24">
           <div className="grow flex items-center">
             <div className="mt-[15vh] pt-8 md:pt-12 lg:pt-14 xl:pt-16 grow">
-              <h3 className="font-body text-sm lg:text-base xl:text-lg font-medium capsize text-slate-light-9 mb-7 md:mb-8 lg:mb-10 xl:mb-12">
-                Works
+              <h3 className="font-body text-sm lg:text-base xl:text-lg font-medium capsize text-slate-light-9 mb-6 md:mb-8 lg:mb-8 xl:mb-10">
+                Professional
               </h3>
 
               <motion.ul
@@ -291,8 +291,47 @@ const SidebarMenuContent = React.forwardRef<SidebarMenuContentElement, SidebarMe
                   },
                 }}
               >
-                {(['radix', 'scroll', 'aragon', 'dash', 'blocks'] as const).map((projectId) => {
-                  const project = getProjectById(projectId);
+                {selectedProjects.map((project) => {
+                  return (
+                    <motion.li
+                      key={project.id}
+                      variants={{
+                        hidden: { x: 100, opacity: 0 },
+                        visible: { x: 0, opacity: 1 },
+                      }}
+                      transition={MOTION_TRANSITION}
+                      className="will-change-motion"
+                    >
+                      <SidebarProjectLink
+                        path={project.externalUrl ?? `/${project.id}`}
+                        title={project.title}
+                        projectId={project.id}
+                      />
+                    </motion.li>
+                  );
+                })}
+              </motion.ul>
+
+              <h3 className="font-body text-sm lg:text-base xl:text-lg font-medium capsize text-slate-light-9 mt-14 mb-6 md:mb-8 lg:mb-8 xl:mb-10">
+                Personal
+              </h3>
+
+              <motion.ul
+                className="-my-[0.35em] text-3xl lg:text-4xl xl:text-4.5xl group/list font-display font-medium tracking-tighter"
+                variants={{
+                  hidden: {
+                    transition: {
+                      staggerChildren: 0.01,
+                    },
+                  },
+                  visible: {
+                    transition: {
+                      staggerChildren: 0.02,
+                    },
+                  },
+                }}
+              >
+                {sideProjects.map((project) => {
                   return (
                     <motion.li
                       key={project.id}
@@ -455,6 +494,7 @@ const sidebarProjectLinkLine = cva({
       blocks: 'from-blocks-1 to-blocks-5',
       dash: 'from-dash-1 to-dash-4',
       scroll: 'from-scroll-1 via-scroll-4 to-scroll-5',
+      sketchbook: 'from-sketchbook-1 to-sketchbook-5',
     },
   },
 });
