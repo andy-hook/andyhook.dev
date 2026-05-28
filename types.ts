@@ -18,7 +18,7 @@ export interface StaticImageWithMetadata extends ImageMetadata {
 
 export type ImageWithMetadata = RemoteImageWithMetadata | StaticImageWithMetadata;
 
-export type ProjectId = 'radix' | 'aragon' | 'blocks' | 'dash' | 'scroll';
+export type ProjectId = 'radix' | 'aragon' | 'blocks' | 'dash' | 'scroll' | 'sketchbook';
 
 export type PersonId =
   | 'vlad'

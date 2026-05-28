@@ -18,38 +18,45 @@ import {
 } from '@/images';
 import { Gutter } from '@/components/gutter';
 import { StaticImageWithMetadata } from '@/types';
+import * as Project from '../_components/project';
+import { getProjectById } from '@/data';
 
 export const metadata = getProjectMetadata('aragon');
+const project = getProjectById('sketchbook');
 
 export default function SketchbookPage() {
   return (
-    <Gutter size="small">
-      <section
-        style={
-          {
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(700px, 1fr))',
-            ['--precision']: 40,
-            ['--gap']: '30px',
-            margin: 'calc(-1 * var(--gap) / 2)',
-          } as React.CSSProperties
-        }
-      >
-        <GridItem image={sketchbookScarfImage} />
-        <GridItem image={sketchbookMaleStudyImage} />
-        <GridItem image={sketchbookCoupleImage} />
-        <GridItem image={sketchbookMapImage} />
-        <GridItem image={sketchbookTreeMarkImage} />
-        <GridItem image={sketchbookFacesImage} />
-        <GridItem image={sketchbookRasputinImage} />
-        <GridItem image={sketchbookFemaleStudyImage} />
-        <GridItem image={sketchbookTreeMarkAlternImage} />
-        <GridItem image={sketchbookTattooImage} />
-        <GridItem image={sketchbookHeadspaceImage} />
-        <GridItem image={sketchbookSuitImage} />
-        <GridItem image={sketchbookAnglesImage} />
-      </section>
-    </Gutter>
+    <Project.Root project={project}>
+      <Project.Header project={project}>
+        <Gutter size="small">
+          <section
+            style={
+              {
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fill, minmax(700px, 1fr))',
+                ['--precision']: 40,
+                ['--gap']: '30px',
+                margin: 'calc(-1 * var(--gap) / 2)',
+              } as React.CSSProperties
+            }
+          >
+            <GridItem image={sketchbookScarfImage} />
+            <GridItem image={sketchbookMaleStudyImage} />
+            <GridItem image={sketchbookCoupleImage} />
+            <GridItem image={sketchbookMapImage} />
+            <GridItem image={sketchbookTreeMarkImage} />
+            <GridItem image={sketchbookFacesImage} />
+            <GridItem image={sketchbookRasputinImage} />
+            <GridItem image={sketchbookFemaleStudyImage} />
+            <GridItem image={sketchbookTreeMarkAlternImage} />
+            <GridItem image={sketchbookTattooImage} />
+            <GridItem image={sketchbookHeadspaceImage} />
+            <GridItem image={sketchbookSuitImage} />
+            <GridItem image={sketchbookAnglesImage} />
+          </section>
+        </Gutter>
+      </Project.Header>
+    </Project.Root>
   );
 }
 

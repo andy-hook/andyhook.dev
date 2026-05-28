@@ -461,6 +461,21 @@ export const projects: Project[] = [
     team: [],
     additionalTeam: 0,
   },
+  {
+    id: 'sketchbook',
+    title: 'Sketchbook',
+    subtitle: 'Assorted works from the archive',
+    role: 'Fine Art Studies & Illustration',
+    tenure: '2004 - 2022',
+    technologies: [],
+    intro: '',
+    thumbnail: blocksThumbImage,
+    thumbnailSmall: blocksThumbSmallImage,
+    heroImage: blocksHeroImage,
+    testimonial: getTestimonialById('ben'),
+    team: [],
+    additionalTeam: 0,
+  },
 ];
 
 export const selectedProjects = [
@@ -469,6 +484,8 @@ export const selectedProjects = [
   getProjectById('aragon'),
   getProjectById('dash'),
 ] as const;
+
+export const sideProjects = [getProjectById('sketchbook'), getProjectById('blocks')] as const;
 
 export const social: Record<SocialName, SocialLink> = {
   dribbble: {

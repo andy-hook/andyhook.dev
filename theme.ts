@@ -84,6 +84,13 @@ export const colorProject = {
     4: 'oklch(60.45% 0.214 1.8 / <alpha-value>)',
     5: 'oklch(90% 0.168 356.58 / <alpha-value>)',
   },
+  sketchbook: {
+    1: 'oklch(58% 0.1357 167.82 / <alpha-value>)',
+    2: 'oklch(64% 0.1357 167.82 / <alpha-value>)',
+    3: 'oklch(86% 0.1357 167.82 / <alpha-value>)',
+    4: 'oklch(86% 0.1357 167.82 / <alpha-value>)',
+    5: 'oklch(86% 0.1357 167.82 / <alpha-value>)',
+  },
 };
 
 export const colorSocial = {
