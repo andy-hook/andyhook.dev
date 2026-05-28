@@ -18,7 +18,7 @@ import { Line } from '@/components/line';
 import { MouseHover } from '@/components/primitives/mouse-hover';
 import { ProjectId } from '@/types';
 import { getColorProject, getColorSlateDark } from '@/theme';
-import { getProjectById, selectedProjects, sideProjects } from '@/data';
+import { selectedProjects, sideProjects } from '@/data';
 import { RouterLink, useRouterState } from './router';
 import { useDevice } from '@/components/utils/use-device';
 import { FocusRing } from '@/components/focus-ring';
