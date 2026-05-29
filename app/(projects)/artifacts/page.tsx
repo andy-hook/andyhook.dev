@@ -24,9 +24,9 @@ import * as Project from '../_components/project';
 import { getProjectById } from '@/data';
 
 export const metadata = getProjectMetadata('aragon');
-const project = getProjectById('sketchbook');
+const project = getProjectById('artifacts');
 
-export default function SketchbookPage() {
+export default function ArtifactsPage() {
   return (
     <Project.Root projectId={project.id} testimonial={project.testimonial}>
       <Project.Header

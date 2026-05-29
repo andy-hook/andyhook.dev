@@ -494,7 +494,7 @@ const sidebarProjectLinkLine = cva({
       blocks: 'from-blocks-1 to-blocks-5',
       dash: 'from-dash-1 to-dash-4',
       scroll: 'from-scroll-1 via-scroll-4 to-scroll-5',
-      sketchbook: 'from-sketchbook-1 to-sketchbook-5',
+      artifacts: 'from-artifacts-1 to-artifacts-5',
     },
   },
 });

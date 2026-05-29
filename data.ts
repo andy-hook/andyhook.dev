@@ -464,7 +464,7 @@ export const projects: Project[] = [
     additionalTeam: 0,
   },
   {
-    id: 'sketchbook',
+    id: 'artifacts',
     title: 'Artifacts',
     subtitle: 'Assorted works from the archive',
     role: 'Fine Art Studies & Illustration',
@@ -487,7 +487,7 @@ export const selectedProjects = [
   getProjectById('dash'),
 ] as const;
 
-export const sideProjects = [getProjectById('blocks'), getProjectById('sketchbook')] as const;
+export const sideProjects = [getProjectById('blocks'), getProjectById('artifacts')] as const;
 
 export const social: Record<SocialName, SocialLink> = {
   dribbble: {

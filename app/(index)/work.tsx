@@ -17,7 +17,7 @@ const aragon = getProjectById('aragon');
 const scroll = getProjectById('scroll');
 const dash = getProjectById('dash');
 const blocks = getProjectById('blocks');
-const sketchbook = getProjectById('sketchbook');
+const artifacts = getProjectById('artifacts');
 
 type WorkElement = React.ComponentRef<'section'>;
 
@@ -134,7 +134,7 @@ export const Work = React.forwardRef<WorkElement, WorkProps>((props, forwardedRe
                   </li>
 
                   <li>
-                    <WorkItem project={sketchbook} priority />
+                    <WorkItem project={artifacts} priority />
                   </li> */}
                 </ul>
               </HoverGroup.Root>
@@ -171,7 +171,7 @@ export const Work = React.forwardRef<WorkElement, WorkProps>((props, forwardedRe
                   </li>
 
                   <li>
-                    <WorkItem project={sketchbook} priority />
+                    <WorkItem project={artifacts} priority />
                   </li>
                 </ul>
               </HoverGroup.Root>
