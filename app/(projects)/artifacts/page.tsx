@@ -37,7 +37,7 @@ export default function ArtifactsPage() {
         role={project.role}
         tenure={project.tenure}
       >
-        <RouterTransition multiplier={15}>
+        <RouterTransition multiplier={15} className="z-10 relative">
           <Gutter size="small" className="bg-slate-12 py-20 relative">
             <div
               style={
