@@ -84,6 +84,8 @@ import dashThumb from '@/public/images/dash-thumb-large.jpg';
 import dashThumbSmall from '@/public/images/dash-thumb-small.jpg';
 import scrollThumb from '@/public/images/scroll-thumb-large.jpg';
 import scrollThumbSmall from '@/public/images/scroll-thumb-small.jpg';
+import sketchbookThumb from '@/public/images/sketchbook-thumb-large.jpg';
+import sketchbookThumbSmall from '@/public/images/blocks-thumb-small.jpg';
 
 /* -------------------------------------------------------------------------------------------------
  * Hero Images
@@ -480,6 +482,18 @@ const scrollThumbSmallImage = {
   color: '#431651',
 };
 
+const sketchbookThumbImage = {
+  src: sketchbookThumb,
+  alt: 'Sketchbook project thumbnail',
+  color: '#431651',
+};
+
+const sketchbookThumbSmallImage = {
+  src: sketchbookThumbSmall,
+  alt: 'Sketchbook project small thumbnail',
+  color: '#431651',
+};
+
 /* -------------------------------------------------------------------------------------------------
  * Hero Images
  * -----------------------------------------------------------------------------------------------*/
@@ -666,6 +680,8 @@ export {
   blocksHeroImage,
   dashHeroImage,
   scrollHeroImage,
+  sketchbookThumbImage,
+  sketchbookThumbSmallImage,
   //
   sketchbookScarfImage,
   sketchbookMaleStudyImage,

@@ -16,6 +16,8 @@ const radix = getProjectById('radix');
 const aragon = getProjectById('aragon');
 const scroll = getProjectById('scroll');
 const dash = getProjectById('dash');
+const blocks = getProjectById('blocks');
+const sketchbook = getProjectById('sketchbook');
 
 type WorkElement = React.ComponentRef<'section'>;
 
@@ -77,11 +79,11 @@ export const Work = React.forwardRef<WorkElement, WorkProps>((props, forwardedRe
               solid
               contrast="low"
             />
-            <Line
+            {/* <Line
               className="absolute xl:bottom-10 bottom-5 hidden md:block md:bottom-7 -left-full -right-full"
               solid
               contrast="low"
-            />
+            /> */}
             <div className="border-y md:border-x border-slate-3 from-slate-3/25 to-slate-2/50 bg-gradient-to-br rounded-3xl shadow-slate-1 shadow-2xl relative overflow-hidden">
               <Line
                 orientation="vertical"
@@ -120,6 +122,56 @@ export const Work = React.forwardRef<WorkElement, WorkProps>((props, forwardedRe
                       className="absolute -top-5 xl:-top-10 h-1/2 w-5 md:w-7 xl:w-10 -right-5 md:-right-7 xl:-right-10"
                     />
                     <WorkItem project={dash} className="relative" priority />
+                  </li>
+
+                  {/* <li className="relative">
+                    <Line
+                      orientation="horizontal"
+                      className="absolute left-0 -right-full top-0 h-full"
+                    />
+
+                    <WorkItem project={blocks} priority />
+                  </li>
+
+                  <li>
+                    <WorkItem project={sketchbook} priority />
+                  </li> */}
+                </ul>
+              </HoverGroup.Root>
+            </div>
+          </RouterTransition>
+        </Container>
+
+        <Container width="wide" className="relative mt-8">
+          <RouterTransition multiplier={10}>
+            <Line
+              className="absolute xl:top-10 hidden md:block md:top-7 -left-full -right-full"
+              solid
+              contrast="low"
+            />
+            <Line
+              className="absolute xl:bottom-10 bottom-5 hidden md:block md:bottom-7 -left-full -right-full"
+              solid
+              contrast="low"
+            />
+
+            <div className="border-y md:border-x border-slate-3 from-slate-3/25 to-slate-2/50 bg-gradient-to-br rounded-3xl shadow-slate-1 shadow-2xl relative overflow-hidden">
+              <Line
+                orientation="vertical"
+                className="absolute left-1/2 top-0 bottom-0 opacity-50 hidden sm:block"
+                contrast="low"
+                solid
+              />
+              <div className="absolute right-1/2 top-0 left-0 bottom-0 to-slate-3/30 from-slate-2/10 bg-gradient-to-br hidden sm:block" />
+
+              <HoverGroup.Root>
+                <ul className="grid grid-cols-1 sm:grid-cols-2">
+                  <li>
+                    <WorkItem project={blocks} priority />
+                  </li>
+
+                  <li>
+                    <WorkItem project={sketchbook} priority />
                   </li>
                 </ul>
               </HoverGroup.Root>

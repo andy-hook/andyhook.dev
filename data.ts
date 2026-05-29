@@ -59,6 +59,8 @@ import {
   benGadAvatarImage,
   elikEizenbergAvatarImage,
   henryOswaldAvatarImage,
+  sketchbookThumbImage,
+  sketchbookThumbSmallImage,
 } from './images';
 
 export const experience: Experience[] = [
@@ -463,14 +465,14 @@ export const projects: Project[] = [
   },
   {
     id: 'sketchbook',
-    title: 'Sketchbook',
+    title: 'Artifacts',
     subtitle: 'Assorted works from the archive',
     role: 'Fine Art Studies & Illustration',
-    tenure: '2004 - 2022',
+    tenure: '2002 - 2022',
     technologies: [],
     intro: '',
-    thumbnail: blocksThumbImage,
-    thumbnailSmall: blocksThumbSmallImage,
+    thumbnail: sketchbookThumbImage,
+    thumbnailSmall: sketchbookThumbSmallImage,
     heroImage: blocksHeroImage,
     testimonial: getTestimonialById('ze'),
     team: [],
@@ -485,7 +487,7 @@ export const selectedProjects = [
   getProjectById('dash'),
 ] as const;
 
-export const sideProjects = [getProjectById('sketchbook'), getProjectById('blocks')] as const;
+export const sideProjects = [getProjectById('blocks'), getProjectById('sketchbook')] as const;
 
 export const social: Record<SocialName, SocialLink> = {
   dribbble: {
