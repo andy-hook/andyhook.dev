@@ -79,11 +79,11 @@ export const Work = React.forwardRef<WorkElement, WorkProps>((props, forwardedRe
               solid
               contrast="low"
             />
-            {/* <Line
+            <Line
               className="absolute xl:bottom-10 bottom-5 hidden md:block md:bottom-7 -left-full -right-full"
               solid
               contrast="low"
-            /> */}
+            />
             <div className="border-y md:border-x border-slate-3 from-slate-3/25 to-slate-2/50 bg-gradient-to-br rounded-3xl shadow-slate-1 shadow-2xl relative overflow-hidden">
               <Line
                 orientation="vertical"
