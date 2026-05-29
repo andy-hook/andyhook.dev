@@ -45,7 +45,7 @@ export default function SketchbookPage() {
                   display: 'grid',
                   gridTemplateColumns: 'repeat(auto-fill, minmax(700px, 1fr))',
                   ['--precision']: 40,
-                  ['--gap']: '30px',
+                  ['--gap']: '60px',
                   margin: 'calc(-1 * var(--gap) / 2)',
                 } as React.CSSProperties
               }
@@ -86,14 +86,12 @@ function GridItem({ image }: { image: StaticImageWithMetadata }) {
         } as React.CSSProperties
       }
     >
-      <RouterImage
-        image={image}
-        fill
-        style={{ position: 'absolute', inset: 'calc(var(--gap) / 2)' }}
-        quality={90}
-        sizes="25vw"
+      <div
+        style={{ position: 'absolute', inset: 'calc(var(--gap) / 2)', backgroundColor: 'white' }}
         className="shadow-md"
-      />
+      >
+        <RouterImage image={image} fill quality={90} sizes="25vw" className="absolute inset-12" />
+      </div>
     </div>
   );
 }
