@@ -18,10 +18,12 @@ import {
   sketchbookTreeMarkAlternImage,
   sketchbookTreeMarkImage,
 } from '@/images';
-import { Gutter } from '@/components/gutter';
 import { StaticImageWithMetadata } from '@/types';
 import * as Project from '../_components/project';
 import { getProjectById } from '@/data';
+import { cx } from '@/cva.config';
+
+const GRID_PRECISION = 40;
 
 export const metadata = getProjectMetadata('aragon');
 const project = getProjectById('artifacts');
@@ -37,61 +39,85 @@ export default function ArtifactsPage() {
         role={project.role}
         tenure={project.tenure}
       >
-        <RouterTransition multiplier={15} className="z-10 relative">
-          <Gutter size="small" className="bg-slate-12 py-20 relative">
-            <div
-              style={
-                {
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fill, minmax(700px, 1fr))',
-                  ['--precision']: 40,
-                  ['--gap']: '60px',
-                  margin: 'calc(-1 * var(--gap) / 2)',
-                } as React.CSSProperties
-              }
-            >
-              <GridItem image={sketchbookScarfImage} />
-              <GridItem image={sketchbookMaleStudyImage} />
-              <GridItem image={sketchbookCoupleImage} />
-              <GridItem image={sketchbookMapImage} />
-              <GridItem image={sketchbookTreeMarkImage} />
-              <GridItem image={sketchbookFacesImage} />
-              <GridItem image={sketchbookRasputinImage} />
-              <GridItem image={sketchbookFemaleStudyImage} />
-              <GridItem image={sketchbookTreeMarkAlternImage} />
-              <GridItem image={sketchbookTattooImage} />
-              <GridItem image={sketchbookHeadspaceImage} />
-              <GridItem image={sketchbookSuitImage} />
-              <GridItem image={sketchbookAnglesImage} />
-              <GridItem image={sketchbookSnowmanImage} />
-              <GridItem image={sketchbookSpaceshipImage} />
-            </div>
-          </Gutter>
+        <RouterTransition multiplier={15} className="z-10 relative bg-slate-12 p-20 ">
+          <ArtifactGrid>
+            <ArtifactGridItem image={sketchbookScarfImage} />
+            <ArtifactGridItem image={sketchbookMaleStudyImage} />
+            <ArtifactGridItem image={sketchbookCoupleImage} />
+            <ArtifactGridItem image={sketchbookMapImage} />
+            <ArtifactGridItem image={sketchbookTreeMarkImage} />
+            <ArtifactGridItem image={sketchbookFacesImage} />
+            <ArtifactGridItem image={sketchbookRasputinImage} />
+            <ArtifactGridItem image={sketchbookFemaleStudyImage} />
+            <ArtifactGridItem image={sketchbookTreeMarkAlternImage} />
+            <ArtifactGridItem image={sketchbookTattooImage} />
+            <ArtifactGridItem image={sketchbookHeadspaceImage} />
+            <ArtifactGridItem image={sketchbookSuitImage} />
+            <ArtifactGridItem image={sketchbookAnglesImage} />
+            <ArtifactGridItem image={sketchbookSnowmanImage} />
+            <ArtifactGridItem image={sketchbookSpaceshipImage} />
+          </ArtifactGrid>
         </RouterTransition>
       </Project.Header>
     </Project.Root>
   );
 }
 
-function GridItem({ image }: { image: StaticImageWithMetadata }) {
-  return (
-    <div
-      style={
-        {
-          ['--width']: image.src.width,
-          ['--height']: image.src.height,
-          aspectRatio: 'var(--width) / var(--height)',
-          gridRow: `span calc(var(--height) / var(--width) * var(--precision))`,
-          position: 'relative',
-        } as React.CSSProperties
-      }
-    >
+/* -----------------------------------------------------------------------------------------------*/
+
+type ArtifactGridElement = React.ComponentRef<'div'>;
+
+interface ArtifactGridProps extends React.ComponentPropsWithoutRef<'div'> {}
+
+const ArtifactGrid = React.forwardRef<ArtifactGridElement, ArtifactGridProps>(
+  ({ children, ...props }, forwardedRef) => {
+    return (
       <div
-        style={{ position: 'absolute', inset: 'calc(var(--gap) / 2)', backgroundColor: 'white' }}
-        className="shadow-md"
+        {...props}
+        className={cx(
+          'grid m-[calc(-1_*_var(--gap)_/_2)] grid-cols-[repeat(auto-fill,_minmax(700px,_1fr))] [--gap:60px]',
+          props.className,
+        )}
+        ref={forwardedRef}
       >
-        <RouterImage image={image} fill quality={90} sizes="25vw" className="absolute inset-12" />
+        {children}
       </div>
-    </div>
-  );
+    );
+  },
+);
+
+ArtifactGrid.displayName = 'ArtifactGrid';
+
+/* -----------------------------------------------------------------------------------------------*/
+
+type ArtifactGridItemElement = React.ComponentRef<'div'>;
+
+interface ArtifactGridItemProps extends React.ComponentPropsWithoutRef<'div'> {
+  image: StaticImageWithMetadata;
 }
+
+const ArtifactGridItem = React.forwardRef<ArtifactGridItemElement, ArtifactGridItemProps>(
+  ({ image, ...props }, forwardedRef) => {
+    return (
+      <div
+        {...props}
+        style={
+          {
+            ['--width']: image.src.width,
+            ['--height']: image.src.height,
+            gridRow: `span calc(var(--height) / var(--width) * ${GRID_PRECISION})`,
+            ...props.style,
+          } as React.CSSProperties
+        }
+        className={cx('relative aspect-[var(--width)_/_var(--height)] grid-row', props.className)}
+        ref={forwardedRef}
+      >
+        <div className="absolute shadow-md bg-white" style={{ inset: 'calc(var(--gap) / 2)' }}>
+          <RouterImage image={image} fill quality={90} sizes="25vw" className="absolute inset-12" />
+        </div>
+      </div>
+    );
+  },
+);
+
+ArtifactGridItem.displayName = 'ArtifactGridItem';
