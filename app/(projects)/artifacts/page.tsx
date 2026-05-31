@@ -12,10 +12,8 @@ import {
   sketchbookRasputinImage,
   sketchbookScarfImage,
   sketchbookSnowmanImage,
-  sketchbookSpaceshipImage,
   sketchbookSuitImage,
   sketchbookTattooImage,
-  sketchbookTreeMarkAlternImage,
   sketchbookTreeMarkImage,
 } from '@/images';
 import { StaticImageWithMetadata } from '@/types';
