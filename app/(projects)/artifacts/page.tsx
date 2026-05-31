@@ -45,16 +45,14 @@ export default function ArtifactsPage() {
           <ArtifactGridItem image={sketchbookMaleStudyImage} />
           <ArtifactGridItem image={sketchbookMapImage} />
           <ArtifactGridItem image={sketchbookFacesImage} />
+          <ArtifactGridItem image={sketchbookAnglesImage} />
           <ArtifactGridItem image={sketchbookTreeMarkImage} />
           <ArtifactGridItem image={sketchbookRasputinImage} />
           <ArtifactGridItem image={sketchbookFemaleStudyImage} />
-          <ArtifactGridItem image={sketchbookTreeMarkAlternImage} />
           <ArtifactGridItem image={sketchbookTattooImage} />
           <ArtifactGridItem image={sketchbookHeadspaceImage} />
           <ArtifactGridItem image={sketchbookSuitImage} />
-          <ArtifactGridItem image={sketchbookAnglesImage} />
           <ArtifactGridItem image={sketchbookSnowmanImage} />
-          <ArtifactGridItem image={sketchbookSpaceshipImage} />
         </ArtifactGrid>
       </Project.Header>
     </Project.Root>
