@@ -124,25 +124,27 @@ export const Work = React.forwardRef<WorkElement, WorkProps>((props, forwardedRe
                     <WorkItem project={dash} className="relative" priority />
                   </li>
 
-                  {/* <li className="relative">
+                  <li className="relative -mt-[28%]">
+                    <Line className="absolute -left-24 right-0 top-0" />
+
+                    <WorkItem project={artifacts} priority />
+                  </li>
+
+                  <li className="relative">
                     <Line
                       orientation="horizontal"
-                      className="absolute left-0 -right-full top-0 h-full"
+                      className="absolute -left-10 sm:-left-5 md:-left-7 xl:-left-10 -right-24 top-0"
                     />
 
                     <WorkItem project={blocks} priority />
                   </li>
-
-                  <li>
-                    <WorkItem project={artifacts} priority />
-                  </li> */}
                 </ul>
               </HoverGroup.Root>
             </div>
           </RouterTransition>
         </Container>
 
-        <Container width="wide" className="relative mt-8">
+        {/* <Container width="wide" className="relative mt-8">
           <RouterTransition multiplier={10}>
             <Line
               className="absolute xl:top-10 hidden md:block md:top-7 -left-full -right-full"
@@ -177,7 +179,7 @@ export const Work = React.forwardRef<WorkElement, WorkProps>((props, forwardedRe
               </HoverGroup.Root>
             </div>
           </RouterTransition>
-        </Container>
+        </Container> */}
       </Gutter>
     </section>
   );
