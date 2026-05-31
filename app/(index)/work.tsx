@@ -124,7 +124,7 @@ export const Work = React.forwardRef<WorkElement, WorkProps>((props, forwardedRe
                     <WorkItem project={dash} className="relative" priority />
                   </li>
 
-                  <li className="relative -mt-[28%]">
+                  <li className="relative sm:-mt-[28%]">
                     <Line className="absolute -left-24 right-0 top-0" />
 
                     <WorkItem project={artifacts} priority />
