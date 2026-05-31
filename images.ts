@@ -111,10 +111,8 @@ import sketchbookTreeMark from '@/public/images/sketchbook/sketchbook-tree-mark.
 import sketchbookAngles from '@/public/images/sketchbook/sketchbook-angles.jpg';
 import sketchbookHeadspace from '@/public/images/sketchbook/sketchbook-headspace.jpg';
 import sketchbookTattoo from '@/public/images/sketchbook/sketchbook-tattoo.jpg';
-import sketchbookTreeMarkAltern from '@/public/images/sketchbook/sketchbook-tree-mark-altern.jpg';
 import sketchbookSuit from '@/public/images/sketchbook/sketchbook-suit.jpg';
 import sketchbookSnowman from '@/public/images/sketchbook/sketchbook-snowman.jpg';
-import sketchbookSpaceship from '@/public/images/sketchbook/sketchbook-spaceship.jpg';
 
 /* -------------------------------------------------------------------------------------------------
  * Aragon Images
@@ -534,86 +532,74 @@ const sketchbookScarfImage = {
 
 const sketchbookMaleStudyImage = {
   src: sketchbookMaleStudy,
-  alt: 'TEMP',
-  color: '#00C8F8',
+  alt: 'Illustrated woman wearing a green scarf',
+  color: '#031110',
 };
 
 const sketchbookCoupleImage = {
   src: sketchbookCouple,
-  alt: 'TEMP',
-  color: '#00C8F8',
+  alt: 'Illustrated couple in winter weather',
+  color: '#DBDCE0',
 };
 
 const sketchbookFemaleStudyImage = {
   src: sketchbookFemaleStudy,
-  alt: 'TEMP',
-  color: '#00C8F8',
+  alt: 'Female figure still life study',
+  color: '#696969',
 };
 
 const sketchbookFacesImage = {
   src: sketchbookFaces,
-  alt: 'TEMP',
-  color: '#00C8F8',
+  alt: 'Stylised side profile of a woman with long hair',
+  color: '#717878',
 };
 
 const sketchbookMapImage = {
   src: sketchbookMap,
-  alt: 'TEMP',
-  color: '#00C8F8',
+  alt: 'Illustrated abstract map',
+  color: '#77787F',
 };
 
 const sketchbookRasputinImage = {
   src: sketchbookRasputin,
-  alt: 'TEMP',
-  color: '#00C8F8',
+  alt: 'Charcoal artwork of an older monk figure',
+  color: '#C3C5C5',
 };
 
 const sketchbookTreeMarkImage = {
   src: sketchbookTreeMark,
-  alt: 'TEMP',
-  color: '#00C8F8',
+  alt: 'Lock up of a branded tree logo mark',
+  color: '#094C21',
 };
 
 const sketchbookAnglesImage = {
   src: sketchbookAngles,
-  alt: 'TEMP',
-  color: '#00C8F8',
+  alt: 'Abstract portrait of a hairless woman with decorative elements',
+  color: '#848484',
 };
 
 const sketchbookHeadspaceImage = {
   src: sketchbookHeadspace,
-  alt: 'TEMP',
-  color: '#00C8F8',
+  alt: 'Illustration of a topless man in visible pain',
+  color: '#C6988F',
 };
 
 const sketchbookTattooImage = {
   src: sketchbookTattoo,
-  alt: 'TEMP',
-  color: '#00C8F8',
-};
-
-const sketchbookTreeMarkAlternImage = {
-  src: sketchbookTreeMarkAltern,
-  alt: 'TEMP',
-  color: '#00C8F8',
+  alt: 'Illustration of a young woman with a tattoo that has come to life',
+  color: '#BABABA',
 };
 
 const sketchbookSuitImage = {
   src: sketchbookSuit,
-  alt: 'TEMP',
-  color: '#00C8F8',
+  alt: 'Profile illustration of a young man with a trilby and suit',
+  color: '#5E5E5E',
 };
 
 const sketchbookSnowmanImage = {
   src: sketchbookSnowman,
-  alt: 'TEMP',
-  color: '#00C8F8',
-};
-
-const sketchbookSpaceshipImage = {
-  src: sketchbookSpaceship,
-  alt: 'TEMP',
-  color: '#00C8F8',
+  alt: 'Stylised illustration of a snow man',
+  color: '#E9EBEC',
 };
 
 export {
@@ -694,8 +680,6 @@ export {
   sketchbookAnglesImage,
   sketchbookHeadspaceImage,
   sketchbookTattooImage,
-  sketchbookTreeMarkAlternImage,
   sketchbookSuitImage,
   sketchbookSnowmanImage,
-  sketchbookSpaceshipImage,
 };
