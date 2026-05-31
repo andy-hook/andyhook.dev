@@ -16,8 +16,8 @@ const imageGroupSectionBackground = cva({
       aragon: 'from-aragon-5 to-aragon-1',
       blocks: 'from-blocks-3 to-blocks-1',
       dash: 'from-dash-3 to-dash-1',
-      // scroll: 'from-[#DF3078] via-[#630AB2]  to-[#000C3D]',
       scroll: 'from-scroll-4 via-scroll-3 to-scroll-1',
+      artifacts: 'from-artifacts-3 to-artifacts-1',
     },
   },
 });
