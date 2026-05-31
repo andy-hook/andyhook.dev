@@ -7,6 +7,7 @@ import { getProjectByPathname } from '@/data';
 
 import { cx } from '@/cva.config';
 import { getThemeColorValues } from '@/theme';
+import { Slot } from '@/components/primitives/slot';
 
 /* -------------------------------------------------------------------------------------------------
  * Theme
@@ -14,10 +15,12 @@ import { getThemeColorValues } from '@/theme';
 
 type ThemeElement = React.ComponentRef<'div'>;
 
-interface ThemeProps extends React.ComponentPropsWithoutRef<'div'> {}
+interface ThemeProps extends React.ComponentPropsWithoutRef<'div'> {
+  asChild?: boolean;
+}
 
 const Theme = React.forwardRef<ThemeElement, ThemeProps>((props, forwardedRef) => {
-  const { className, ...themeProps } = props;
+  const { className, asChild, ...themeProps } = props;
   const pathname = usePathname();
 
   const colorVariables = React.useMemo(() => {
@@ -25,10 +28,15 @@ const Theme = React.forwardRef<ThemeElement, ThemeProps>((props, forwardedRef) =
     return getThemeColorValues(projectId);
   }, [pathname]);
 
+  const Component = asChild ? Slot : 'div';
+
   return (
-    <div
+    <Component
       {...themeProps}
-      className={cx('selection:bg-slate-light-4 selection:text-slate-light-12', className)}
+      className={cx(
+        'selection:bg-slate-light-4 selection:text-slate-light-12 bg-slate-2 antialiased',
+        className,
+      )}
       style={colorVariables}
       ref={forwardedRef}
     />

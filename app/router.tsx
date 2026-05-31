@@ -359,7 +359,7 @@ interface RouterImageProps extends Omit<
 
 const RouterImage = React.forwardRef<RouterImageElement, RouterImageProps>(
   (props, forwardedRef) => {
-    const { image, className, ...imageProps } = props;
+    const { image, className, style, ...imageProps } = props;
     const ref = React.useRef<RouterImageElement>(null);
     const id = React.useId();
     const context = useRouterContext();
@@ -397,7 +397,7 @@ const RouterImage = React.forwardRef<RouterImageElement, RouterImageProps>(
 
     return (
       <div
-        style={{ backgroundColor: image.color ?? undefined }}
+        style={{ backgroundColor: image.color ?? undefined, ...style }}
         className={cx('relative', className)}
       >
         <motion.div

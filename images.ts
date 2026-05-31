@@ -84,6 +84,8 @@ import dashThumb from '@/public/images/dash-thumb-large.jpg';
 import dashThumbSmall from '@/public/images/dash-thumb-small.jpg';
 import scrollThumb from '@/public/images/scroll-thumb-large.jpg';
 import scrollThumbSmall from '@/public/images/scroll-thumb-small.jpg';
+import sketchbookThumb from '@/public/images/sketchbook-thumb-large.jpg';
+import sketchbookThumbSmall from '@/public/images/sketchbook-thumb-small.jpg';
 
 /* -------------------------------------------------------------------------------------------------
  * Hero Images
@@ -93,6 +95,24 @@ import aragonHero from '@/public/images/aragon-hero.jpg';
 import blocksHero from '@/public/images/blocks-hero.jpg';
 import dashHero from '@/public/images/dash-hero.jpg';
 import scrollHero from '@/public/images/scroll-hero.jpg';
+
+/* -------------------------------------------------------------------------------------------------
+ * Sketchbook Images
+ * -----------------------------------------------------------------------------------------------*/
+
+import sketchbookScarf from '@/public/images/sketchbook/sketchbook-scarf.jpg';
+import sketchbookMaleStudy from '@/public/images/sketchbook/sketchbook-male-study.jpg';
+import sketchbookFemaleStudy from '@/public/images/sketchbook/sketchbook-female-study.jpg';
+import sketchbookCouple from '@/public/images/sketchbook/sketchbook-couple.jpg';
+import sketchbookFaces from '@/public/images/sketchbook/sketchbook-faces.jpg';
+import sketchbookMap from '@/public/images/sketchbook/sketchbook-map.jpg';
+import sketchbookRasputin from '@/public/images/sketchbook/sketchbook-rasputin.jpg';
+import sketchbookTreeMark from '@/public/images/sketchbook/sketchbook-tree-mark.jpg';
+import sketchbookAngles from '@/public/images/sketchbook/sketchbook-angles.jpg';
+import sketchbookHeadspace from '@/public/images/sketchbook/sketchbook-headspace.jpg';
+import sketchbookTattoo from '@/public/images/sketchbook/sketchbook-tattoo.jpg';
+import sketchbookSuit from '@/public/images/sketchbook/sketchbook-suit.jpg';
+import sketchbookSnowman from '@/public/images/sketchbook/sketchbook-snowman.jpg';
 
 /* -------------------------------------------------------------------------------------------------
  * Aragon Images
@@ -460,6 +480,18 @@ const scrollThumbSmallImage = {
   color: '#431651',
 };
 
+const sketchbookThumbImage = {
+  src: sketchbookThumb,
+  alt: 'Sketchbook project thumbnail',
+  color: '#431651',
+};
+
+const sketchbookThumbSmallImage = {
+  src: sketchbookThumbSmall,
+  alt: 'Sketchbook project small thumbnail',
+  color: '#431651',
+};
+
 /* -------------------------------------------------------------------------------------------------
  * Hero Images
  * -----------------------------------------------------------------------------------------------*/
@@ -486,6 +518,88 @@ const scrollHeroImage = {
   src: scrollHero,
   alt: 'Scroll project hero image',
   color: '#561956',
+};
+
+/* -------------------------------------------------------------------------------------------------
+ * Sketchbook Images
+ * -----------------------------------------------------------------------------------------------*/
+
+const sketchbookScarfImage = {
+  src: sketchbookScarf,
+  alt: 'TEMP',
+  color: '#00C8F8',
+};
+
+const sketchbookMaleStudyImage = {
+  src: sketchbookMaleStudy,
+  alt: 'Illustrated woman wearing a green scarf',
+  color: '#031110',
+};
+
+const sketchbookCoupleImage = {
+  src: sketchbookCouple,
+  alt: 'Illustrated couple in winter weather',
+  color: '#DBDCE0',
+};
+
+const sketchbookFemaleStudyImage = {
+  src: sketchbookFemaleStudy,
+  alt: 'Female figure still life study',
+  color: '#696969',
+};
+
+const sketchbookFacesImage = {
+  src: sketchbookFaces,
+  alt: 'Stylised side profile of a woman with long hair',
+  color: '#717878',
+};
+
+const sketchbookMapImage = {
+  src: sketchbookMap,
+  alt: 'Illustrated abstract map',
+  color: '#77787F',
+};
+
+const sketchbookRasputinImage = {
+  src: sketchbookRasputin,
+  alt: 'Charcoal artwork of an older monk figure',
+  color: '#C3C5C5',
+};
+
+const sketchbookTreeMarkImage = {
+  src: sketchbookTreeMark,
+  alt: 'Lock up of a branded tree logo mark',
+  color: '#094C21',
+};
+
+const sketchbookAnglesImage = {
+  src: sketchbookAngles,
+  alt: 'Abstract portrait of a hairless woman with decorative elements',
+  color: '#848484',
+};
+
+const sketchbookHeadspaceImage = {
+  src: sketchbookHeadspace,
+  alt: 'Illustration of a topless man in visible pain',
+  color: '#C6988F',
+};
+
+const sketchbookTattooImage = {
+  src: sketchbookTattoo,
+  alt: 'Illustration of a young woman with a tattoo that has come to life',
+  color: '#BABABA',
+};
+
+const sketchbookSuitImage = {
+  src: sketchbookSuit,
+  alt: 'Profile illustration of a young man with a trilby and suit',
+  color: '#5E5E5E',
+};
+
+const sketchbookSnowmanImage = {
+  src: sketchbookSnowman,
+  alt: 'Stylised illustration of a snow man',
+  color: '#E9EBEC',
 };
 
 export {
@@ -519,6 +633,7 @@ export {
   scrollCustomizeImage,
   scrollEmbeddedImage,
   scrollSignUpImage,
+  //
   vladMorozAvatarImage,
   benoitGrelardAvatarImage,
   brettSunAvatarImage,
@@ -536,6 +651,7 @@ export {
   benGadAvatarImage,
   elikEizenbergAvatarImage,
   henryOswaldAvatarImage,
+  //
   radixThumbImage,
   radixThumbSmallImage,
   aragonThumbImage,
@@ -550,4 +666,20 @@ export {
   blocksHeroImage,
   dashHeroImage,
   scrollHeroImage,
+  sketchbookThumbImage,
+  sketchbookThumbSmallImage,
+  //
+  sketchbookScarfImage,
+  sketchbookMaleStudyImage,
+  sketchbookCoupleImage,
+  sketchbookFemaleStudyImage,
+  sketchbookFacesImage,
+  sketchbookMapImage,
+  sketchbookRasputinImage,
+  sketchbookTreeMarkImage,
+  sketchbookAnglesImage,
+  sketchbookHeadspaceImage,
+  sketchbookTattooImage,
+  sketchbookSuitImage,
+  sketchbookSnowmanImage,
 };

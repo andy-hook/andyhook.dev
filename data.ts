@@ -59,6 +59,8 @@ import {
   benGadAvatarImage,
   elikEizenbergAvatarImage,
   henryOswaldAvatarImage,
+  sketchbookThumbImage,
+  sketchbookThumbSmallImage,
 } from './images';
 
 export const experience: Experience[] = [
@@ -439,6 +441,21 @@ export const projects: Project[] = [
     additionalTeam: 4,
   },
   {
+    id: 'artifacts',
+    title: 'Artifacts',
+    subtitle: 'Assorted works from the archive',
+    role: 'Fine Art Studies & Illustration',
+    tenure: '2002 - 2022',
+    technologies: [],
+    intro: '',
+    thumbnail: sketchbookThumbImage,
+    thumbnailSmall: sketchbookThumbSmallImage,
+    heroImage: blocksHeroImage,
+    testimonial: getTestimonialById('ze'),
+    team: [],
+    additionalTeam: 0,
+  },
+  {
     id: 'blocks',
     title: 'Blocks',
     subtitle: 'Ethereum inside your browser',
@@ -469,6 +486,8 @@ export const selectedProjects = [
   getProjectById('aragon'),
   getProjectById('dash'),
 ] as const;
+
+export const sideProjects = [getProjectById('artifacts'), getProjectById('blocks')] as const;
 
 export const social: Record<SocialName, SocialLink> = {
   dribbble: {

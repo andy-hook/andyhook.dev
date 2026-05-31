@@ -18,7 +18,7 @@ import { Line } from '@/components/line';
 import { MouseHover } from '@/components/primitives/mouse-hover';
 import { ProjectId } from '@/types';
 import { getColorProject, getColorSlateDark } from '@/theme';
-import { getProjectById } from '@/data';
+import { selectedProjects, sideProjects } from '@/data';
 import { RouterLink, useRouterState } from './router';
 import { useDevice } from '@/components/utils/use-device';
 import { FocusRing } from '@/components/focus-ring';
@@ -291,8 +291,7 @@ const SidebarMenuContent = React.forwardRef<SidebarMenuContentElement, SidebarMe
                   },
                 }}
               >
-                {(['radix', 'scroll', 'aragon', 'dash', 'blocks'] as const).map((projectId) => {
-                  const project = getProjectById(projectId);
+                {[...selectedProjects, ...sideProjects].map((project) => {
                   return (
                     <motion.li
                       key={project.id}
@@ -455,6 +454,7 @@ const sidebarProjectLinkLine = cva({
       blocks: 'from-blocks-1 to-blocks-5',
       dash: 'from-dash-1 to-dash-4',
       scroll: 'from-scroll-1 via-scroll-4 to-scroll-5',
+      artifacts: 'from-artifacts-1 to-artifacts-5',
     },
   },
 });

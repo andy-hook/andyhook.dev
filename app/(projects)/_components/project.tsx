@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { notFound } from 'next/navigation';
 import { UserIcon, CalendarIcon } from '@heroicons/react/16/solid';
 
 import { projects } from '@/data';
@@ -16,169 +15,29 @@ import { TeamList } from './team-list';
 import * as HoverGroup from '@/components/primitives/hover-group';
 
 import { RouterImage, RouterTransition } from '../../router';
-import { ProjectId } from '@/types';
+import { ProjectId, StaticImageWithMetadata, TeamMember, Testimonial } from '@/types';
+import { cx } from '@/cva.config';
 
+/* -------------------------------------------------------------------------------------------------
+ * Project
+ * -----------------------------------------------------------------------------------------------*/
 interface ProjectProps {
   projectId: ProjectId;
+  testimonial: Testimonial;
   children: React.ReactNode;
 }
 
-const Project: React.FC<ProjectProps> = (props) => {
-  const { children, projectId } = props;
+const ProjectRoot: React.FC<ProjectProps> = (props) => {
+  const { children, projectId, testimonial } = props;
 
-  const project = projects
-    .filter((project) => !project.externalUrl)
-    .find((project) => project.id === projectId);
-
-  if (!project) notFound();
-
-  const projectMeta = [
-    [
-      UserIcon,
-      <>
-        <span className="sr-only">Role: </span>
-        {project.role}
-      </>,
-    ],
-    [
-      CalendarIcon,
-      <>
-        <span className="sr-only">Tenure: </span>
-        {project.tenure}
-      </>,
-    ],
-  ] as const;
-
-  const currentProjectIndex = projects.findIndex((project) => project.id === projectId);
+  const currentProjectIndex = projects.findIndex(({ id }) => id === projectId);
   const moreProjects = Array.from({ length: 3 }, (_, offset) => {
     const nextProjectIndex = (currentProjectIndex + offset + 1) % projects.length;
     return projects[nextProjectIndex];
   });
 
-  const renderedTeam = project.team.map(({ avatar, name, role }) => ({
-    avatar,
-    description: `${name} – ${role}`,
-  }));
-
   return (
     <div className="space-y-20 lg:space-y-24 xl:space-y-32">
-      <section>
-        <Gutter>
-          <Container className="mb-12 md:mb-14 lg:mb-16 xl:mb-20">
-            <h1 className="flex flex-col items-start gap-5 sm:gap-[0.55em] font-display relative z-10 md:pl-7 xl:pl-10 font-normal tracking-tighter text-3xl sm:text-4xl lg:text-5xl xl:text-6xl">
-              <div className="relative">
-                <RouterTransition multiplier={4}>
-                  <Line
-                    className="hidden md:block absolute -left-[100vw] -right-24 bottom-0"
-                    solid
-                    contrast="low"
-                  />
-                  <div className="relative capsize text-slate-12">{project.title}</div>
-                </RouterTransition>
-              </div>
-
-              <RouterTransition multiplier={6} className="relative">
-                <div className="capsize md:leading-tight text-balance">
-                  <div className="font-light text-transparent bg-gradient-to-br from-slate-11 via-slate-9 to-slate-8 bg-clip-text">
-                    {project.subtitle}
-                  </div>
-                </div>
-
-                <Line
-                  orientation="vertical"
-                  className="absolute left-0 -top-28 -bottom-44 hidden md:block"
-                  solid
-                  contrast="low"
-                />
-              </RouterTransition>
-            </h1>
-          </Container>
-        </Gutter>
-        <Gutter collapse>
-          <Container>
-            <RouterTransition multiplier={10}>
-              <div className="flex justify-between items-center px-5 md:px-7 xl:px-10 py-5 lg:py-6 border-t md:border-x border-slate-3 rounded-t-3xl bg-gradient-to-br from-slate-3/10 to-slate-2/20 shadow-slate-1 shadow-2xl relative">
-                <Hatch
-                  className="absolute left-0 top-0 bottom-0 hidden md:block md:w-7 xl:w-10"
-                  orientation="vertical"
-                />
-
-                <ul className="flex-col sm:flex-row flex gap-3 sm:gap-9 lg:gap-12">
-                  {projectMeta.map(([Icon, text], i) => (
-                    <li className="flex items-center gap-3 sm:gap-4" key={i}>
-                      <div className="p-1.5 sm:p-2 rounded-full border border-slate-7 bg-gradient-to-br from-slate-3">
-                        <Icon className="text-slate-12 size-3 sm:size-4" />
-                      </div>
-                      <div className="font-body text-sm sm:text-base lg:text-lg font-normal text-slate-11 capsize">
-                        {text}
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-
-                {renderedTeam.length > 0 ? (
-                  <TeamList
-                    team={project.team}
-                    className="hidden md:flex"
-                    additionalCount={project.additionalTeam}
-                  />
-                ) : null}
-              </div>
-            </RouterTransition>
-          </Container>
-        </Gutter>
-
-        <RouterTransition multiplier={10} className="relative z-10">
-          <Gutter size="small">
-            <div className="mx-auto relative z-10">
-              <div className="rounded-3xl overflow-hidden shadow-slate-1 shadow-2xl">
-                <RouterImage
-                  image={project.heroImage}
-                  quality={90}
-                  fill
-                  className="aspect-[50/35] md:aspect-[448/205]"
-                  priority
-                  sizes="100vw"
-                />
-              </div>
-            </div>
-          </Gutter>
-
-          <Gutter collapse>
-            <Container width="wide">
-              <div className="px-5 md:px-7 xl:px-10 py-8 md:py-9 lg:py-12 xl:py-16 border-b md:border-x border-slate-3 rounded-b-3xl bg-gradient-to-br from-slate-3/10 to-slate-2/20 shadow-slate-1 shadow-2xl">
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 items-start">
-                  <div className="relative">
-                    <Line
-                      className="absolute -left-5 md:-left-7 xl:-left-10 top-0 w-5 md:w-7 xl:w-10"
-                      solid
-                    />
-                    <Line
-                      className="absolute -left-5 md:-left-7 xl:-left-10 bottom-0 w-5 md:w-7 xl:w-10"
-                      solid
-                    />
-                    <Line orientation="vertical" className="absolute left-0 -top-16 -bottom-12" />
-                    <Hatch className="absolute -left-5 xl:-left-10 w-5 md:-left-7 md:w-7 xl:w-10 top-0 bottom-0" />
-
-                    <ul className="font-body text-sm sm:text-base lg:text-xl font-normal text-slate-11 flex flex-col gap-4 sm:gap-5 lg:gap-6 row-start-2 lg:row-start-auto">
-                      {project.technologies.map((technology) => (
-                        <li key={technology} className="capsize">
-                          {technology}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <p className="col-span-2 font-body font-medium text-slate-12 text-base sm:text-lg leading-relaxed md:leading-relaxed xl:leading-relaxed md:text-xl lg:text-2xl xl:text-[26px] lg:leading-relaxed capsize text-pretty row-start-1 lg:row-start-auto">
-                    {project.intro}
-                  </p>
-                </div>
-              </div>
-            </Container>
-          </Gutter>
-        </RouterTransition>
-      </section>
-
       {children}
 
       <section>
@@ -194,15 +53,15 @@ const Project: React.FC<ProjectProps> = (props) => {
                 <Hatch className="hidden wide:block absolute -left-6 md:left-0 top-0 w-6 md:w-7 xl:w-10 h-36" />
 
                 <Quote className="font-body text-lg sm:leading-relaxed sm:text-xl lg:text-2xl xl:text-3xl text-slate-12 leading-relaxed lg:leading-relaxed xl:leading-relaxed capsize font-medium text-pretty lg:col-span-2 lg:col-start-2">
-                  {project.testimonial.full}
+                  {testimonial.full}
                 </Quote>
 
                 <figcaption className="lg:row-start-1 relative">
                   <Author
-                    name={project.testimonial.name}
-                    role={project.testimonial.role}
-                    company={project.testimonial.company}
-                    avatar={project.testimonial.avatar}
+                    name={testimonial.name}
+                    role={testimonial.role}
+                    company={testimonial.company}
+                    avatar={testimonial.avatar}
                     size="large"
                   />
                 </figcaption>
@@ -274,4 +133,200 @@ const Project: React.FC<ProjectProps> = (props) => {
   );
 };
 
-export { Project };
+/* -------------------------------------------------------------------------------------------------
+ * ProjectHeader
+ * -----------------------------------------------------------------------------------------------*/
+
+type ProjectHeaderElement = React.ComponentRef<'section'>;
+
+interface ProjectHeaderProps extends React.ComponentPropsWithoutRef<'section'> {
+  title: string;
+  subtitle: string;
+  role: string;
+  tenure: string;
+  team: TeamMember[];
+  additionalTeam: number;
+}
+
+const ProjectHeader = React.forwardRef<ProjectHeaderElement, ProjectHeaderProps>(
+  ({ children, title, subtitle, role, tenure, team, additionalTeam, ...props }, forwardedRef) => {
+    const projectMeta = [
+      [
+        UserIcon,
+        <>
+          <span className="sr-only">Role: </span>
+          {role}
+        </>,
+      ],
+      [
+        CalendarIcon,
+        <>
+          <span className="sr-only">Tenure: </span>
+          {tenure}
+        </>,
+      ],
+    ] as const;
+
+    const renderedTeam = team.map(({ avatar, name, role }) => ({
+      avatar,
+      description: `${name} – ${role}`,
+    }));
+
+    return (
+      <section {...props} ref={forwardedRef}>
+        <Gutter>
+          <Container className="mb-12 md:mb-14 lg:mb-16 xl:mb-20">
+            <h1 className="flex flex-col items-start gap-5 sm:gap-[0.55em] font-display relative z-10 md:pl-7 xl:pl-10 font-normal tracking-tighter text-3xl sm:text-4xl lg:text-5xl xl:text-6xl">
+              <div className="relative">
+                <RouterTransition multiplier={4}>
+                  <Line
+                    className="hidden md:block absolute -left-[100vw] -right-24 bottom-0"
+                    solid
+                    contrast="low"
+                  />
+                  <div className="relative capsize text-slate-12">{title}</div>
+                </RouterTransition>
+              </div>
+
+              <RouterTransition multiplier={6} className="relative">
+                <div className="capsize md:leading-tight text-balance">
+                  <div className="font-light text-transparent bg-gradient-to-br from-slate-11 via-slate-9 to-slate-8 bg-clip-text">
+                    {subtitle}
+                  </div>
+                </div>
+
+                <Line
+                  orientation="vertical"
+                  className="absolute left-0 -top-28 -bottom-44 hidden md:block"
+                  solid
+                  contrast="low"
+                />
+              </RouterTransition>
+            </h1>
+          </Container>
+        </Gutter>
+        <Gutter collapse>
+          <Container>
+            <RouterTransition multiplier={10}>
+              <div className="flex justify-between items-center px-5 md:px-7 xl:px-10 py-5 lg:py-6 border-t md:border-x border-slate-3 rounded-t-3xl bg-gradient-to-br from-slate-3/10 to-slate-2/20 shadow-slate-1 shadow-2xl relative">
+                <Hatch
+                  className="absolute left-0 top-0 bottom-0 hidden md:block md:w-7 xl:w-10"
+                  orientation="vertical"
+                />
+
+                <ul className="flex-col sm:flex-row flex gap-3 sm:gap-9 lg:gap-12">
+                  {projectMeta.map(([Icon, text], i) => (
+                    <li className="flex items-center gap-3 sm:gap-4" key={i}>
+                      <div className="p-1.5 sm:p-2 rounded-full border border-slate-7 bg-gradient-to-br from-slate-3">
+                        <Icon className="text-slate-12 size-3 sm:size-4" />
+                      </div>
+                      <div className="font-body text-sm sm:text-base lg:text-lg font-normal text-slate-11 capsize">
+                        {text}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+
+                {renderedTeam.length > 0 ? (
+                  <TeamList
+                    team={team}
+                    className="hidden md:flex"
+                    additionalCount={additionalTeam}
+                  />
+                ) : null}
+              </div>
+            </RouterTransition>
+          </Container>
+        </Gutter>
+
+        {children}
+      </section>
+    );
+  },
+);
+
+ProjectHeader.displayName = 'ProjectHeader';
+
+/* -------------------------------------------------------------------------------------------------
+ * ProjectHero
+ * -----------------------------------------------------------------------------------------------*/
+
+type ProjectHeroElement = React.ComponentRef<typeof RouterTransition>;
+
+interface ProjectHeroProps extends Omit<
+  React.ComponentPropsWithoutRef<typeof RouterTransition>,
+  'children' | 'multiplier'
+> {
+  heroImage: StaticImageWithMetadata;
+  technologies: string[];
+  intro: string;
+}
+
+const ProjectHero = React.forwardRef<ProjectHeroElement, ProjectHeroProps>(
+  ({ heroImage, technologies, intro, className, ...props }, forwardedRef) => {
+    return (
+      <RouterTransition
+        multiplier={10}
+        className={cx('relative z-10', className)}
+        {...props}
+        ref={forwardedRef}
+      >
+        <Gutter size="small">
+          <div className="mx-auto relative z-10">
+            <div className="rounded-3xl overflow-hidden shadow-slate-1 shadow-2xl">
+              <RouterImage
+                image={heroImage}
+                quality={90}
+                fill
+                className="aspect-[50/35] md:aspect-[448/205]"
+                priority
+                sizes="100vw"
+              />
+            </div>
+          </div>
+        </Gutter>
+
+        <Gutter collapse>
+          <Container width="wide">
+            <div className="px-5 md:px-7 xl:px-10 py-8 md:py-9 lg:py-12 xl:py-16 border-b md:border-x border-slate-3 rounded-b-3xl bg-gradient-to-br from-slate-3/10 to-slate-2/20 shadow-slate-1 shadow-2xl">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 items-start">
+                <div className="relative">
+                  <Line
+                    className="absolute -left-5 md:-left-7 xl:-left-10 top-0 w-5 md:w-7 xl:w-10"
+                    solid
+                  />
+                  <Line
+                    className="absolute -left-5 md:-left-7 xl:-left-10 bottom-0 w-5 md:w-7 xl:w-10"
+                    solid
+                  />
+                  <Line orientation="vertical" className="absolute left-0 -top-16 -bottom-12" />
+                  <Hatch className="absolute -left-5 xl:-left-10 w-5 md:-left-7 md:w-7 xl:w-10 top-0 bottom-0" />
+
+                  <ul className="font-body text-sm sm:text-base lg:text-xl font-normal text-slate-11 flex flex-col gap-4 sm:gap-5 lg:gap-6 row-start-2 lg:row-start-auto">
+                    {technologies.map((technology) => (
+                      <li key={technology} className="capsize">
+                        {technology}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <p className="col-span-2 font-body font-medium text-slate-12 text-base sm:text-lg leading-relaxed md:leading-relaxed xl:leading-relaxed md:text-xl lg:text-2xl xl:text-[26px] lg:leading-relaxed capsize text-pretty row-start-1 lg:row-start-auto">
+                  {intro}
+                </p>
+              </div>
+            </div>
+          </Container>
+        </Gutter>
+      </RouterTransition>
+    );
+  },
+);
+
+ProjectHero.displayName = 'ProjectHero';
+
+/* -----------------------------------------------------------------------------------------------*/
+
+export const Root = ProjectRoot;
+export const Header = ProjectHeader;
+export const Hero = ProjectHero;

@@ -46,16 +46,12 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={cx(
-          displayFont.variable,
-          bodyFont.variable,
-          'bg-slate-2 relative antialiased overflow-x-hidden',
-        )}
-      >
-        <DeviceProvider>
-          <TooltipPrimitive.DelayProvider delay={{ open: 250, close: 0 }} timeoutMs={250}>
-            <Theme className="relative overflow-x-hidden z-0">
+      <Theme asChild>
+        <body
+          className={cx(displayFont.variable, bodyFont.variable, 'relative overflow-x-hidden z-0')}
+        >
+          <DeviceProvider>
+            <TooltipPrimitive.DelayProvider delay={{ open: 250, close: 0 }} timeoutMs={250}>
               <RouterProvider>
                 <Sidebar.Root>
                   <Sidebar.Animation className="relative z-10">
@@ -79,10 +75,10 @@ export default async function RootLayout({
                   <Background className="absolute inset-0 -z-10" />
                 </Sidebar.Root>
               </RouterProvider>
-            </Theme>
-          </TooltipPrimitive.DelayProvider>
-        </DeviceProvider>
-      </body>
+            </TooltipPrimitive.DelayProvider>
+          </DeviceProvider>
+        </body>
+      </Theme>
     </html>
   );
 }
