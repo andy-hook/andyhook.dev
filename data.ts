@@ -441,6 +441,21 @@ export const projects: Project[] = [
     additionalTeam: 4,
   },
   {
+    id: 'artifacts',
+    title: 'Artifacts',
+    subtitle: 'Assorted works from the archive',
+    role: 'Fine Art Studies & Illustration',
+    tenure: '2002 - 2022',
+    technologies: [],
+    intro: '',
+    thumbnail: sketchbookThumbImage,
+    thumbnailSmall: sketchbookThumbSmallImage,
+    heroImage: blocksHeroImage,
+    testimonial: getTestimonialById('ze'),
+    team: [],
+    additionalTeam: 0,
+  },
+  {
     id: 'blocks',
     title: 'Blocks',
     subtitle: 'Ethereum inside your browser',
@@ -463,21 +478,6 @@ export const projects: Project[] = [
     team: [],
     additionalTeam: 0,
   },
-  {
-    id: 'artifacts',
-    title: 'Artifacts',
-    subtitle: 'Assorted works from the archive',
-    role: 'Fine Art Studies & Illustration',
-    tenure: '2002 - 2022',
-    technologies: [],
-    intro: '',
-    thumbnail: sketchbookThumbImage,
-    thumbnailSmall: sketchbookThumbSmallImage,
-    heroImage: blocksHeroImage,
-    testimonial: getTestimonialById('ze'),
-    team: [],
-    additionalTeam: 0,
-  },
 ];
 
 export const selectedProjects = [
@@ -487,7 +487,7 @@ export const selectedProjects = [
   getProjectById('dash'),
 ] as const;
 
-export const sideProjects = [getProjectById('blocks'), getProjectById('artifacts')] as const;
+export const sideProjects = [getProjectById('artifacts'), getProjectById('blocks')] as const;
 
 export const social: Record<SocialName, SocialLink> = {
   dribbble: {

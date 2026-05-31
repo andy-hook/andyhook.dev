@@ -23,7 +23,7 @@ import { cx } from '@/cva.config';
 
 const GRID_PRECISION = 40;
 
-export const metadata = getProjectMetadata('aragon');
+export const metadata = getProjectMetadata('artifacts');
 const project = getProjectById('artifacts');
 
 export default function ArtifactsPage() {

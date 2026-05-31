@@ -85,7 +85,7 @@ import dashThumbSmall from '@/public/images/dash-thumb-small.jpg';
 import scrollThumb from '@/public/images/scroll-thumb-large.jpg';
 import scrollThumbSmall from '@/public/images/scroll-thumb-small.jpg';
 import sketchbookThumb from '@/public/images/sketchbook-thumb-large.jpg';
-import sketchbookThumbSmall from '@/public/images/blocks-thumb-small.jpg';
+import sketchbookThumbSmall from '@/public/images/sketchbook-thumb-small.jpg';
 
 /* -------------------------------------------------------------------------------------------------
  * Hero Images
