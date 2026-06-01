@@ -483,13 +483,13 @@ const scrollThumbSmallImage = {
 const sketchbookThumbImage = {
   src: sketchbookThumb,
   alt: 'Sketchbook project thumbnail',
-  color: '#431651',
+  color: '#E1E4E6',
 };
 
 const sketchbookThumbSmallImage = {
   src: sketchbookThumbSmall,
   alt: 'Sketchbook project small thumbnail',
-  color: '#431651',
+  color: '#E1E4E6',
 };
 
 /* -------------------------------------------------------------------------------------------------

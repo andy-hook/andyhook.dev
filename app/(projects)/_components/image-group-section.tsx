@@ -81,7 +81,7 @@ export const ImageGroupSection = React.forwardRef<ImageGroupSectionElement, Imag
                           className="absolute -left-full bottom-0 -right-full"
                           solid
                         />
-                        <div className="rounded-xl overflow-hidden shadow-xl relative">
+                        <div className="rounded lg:rounded-xl overflow-hidden shadow-xl relative">
                           <RouterImage
                             image={image}
                             className="w-full"

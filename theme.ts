@@ -50,11 +50,11 @@ export const colorSlateLight = {
 
 export const colorProject = {
   radix: {
-    1: 'oklch(58% 0.1357 167.82 / <alpha-value>)',
-    2: 'oklch(64% 0.1357 167.82 / <alpha-value>)',
-    3: 'oklch(86% 0.1357 167.82 / <alpha-value>)',
-    4: 'oklch(86% 0.1357 167.82 / <alpha-value>)',
-    5: 'oklch(86% 0.1357 167.82 / <alpha-value>)',
+    1: 'oklch(5% 0 0 / <alpha-value>)',
+    2: 'oklch(15% 0 0 / <alpha-value>)',
+    3: 'oklch(86% 0 0 / <alpha-value>)',
+    4: 'oklch(86% 0 0 / <alpha-value>)',
+    5: 'oklch(86% 0 0 / <alpha-value>)',
   },
   aragon: {
     1: 'oklch(66.91% 0.16 229 / <alpha-value>)',

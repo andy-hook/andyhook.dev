@@ -28,15 +28,16 @@ export default function ScrollContent() {
         <p className="capsize">
           I worked across nearly every user surface of the product, including rich-text editing,{' '}
           <TooltipLink href="https://crdt.tech">CRDT-based</TooltipLink> collaboration, sharing and
-          permissions systems, authentication and entitlements, browser extensions, Google Sheets
-          autofill workflows, and billing infrastructure.
+          permissions systems, authentication and entitlements, browser extensions, Spreadsheet
+          autofill interfaces, and billing presentation.
         </p>
 
         <p className="capsize">
           Although my primary focus was crafting intuitive front-end experiences, I also contributed
           across the stack. My work included implementing both client and server-side image
-          cropping, advanced drag-and-drop organization, nested file and folder management, chat
-          citation rendering and an intuitive resource sync interface.
+          cropping, advanced drag-and-drop organization, nested file and folder management,
+          interactive chat suggestion and citation rendering, and an intuitive source sync
+          interface.
         </p>
       </ContentSection>
 

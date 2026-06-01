@@ -74,18 +74,19 @@ export interface TeamMember extends Person {
 
 export interface Project {
   id: ProjectId;
+  type: 'professional' | 'personal';
   title: string;
   subtitle: string;
   role: string;
   tenure: string;
-  technologies: string[];
-  intro: string;
+  technologies?: string[];
+  intro?: string;
   thumbnail: StaticImageWithMetadata;
   thumbnailSmall: StaticImageWithMetadata;
-  heroImage: StaticImageWithMetadata;
+  heroImage?: StaticImageWithMetadata;
   testimonial: Testimonial;
-  team: TeamMember[];
-  additionalTeam: number;
+  team?: TeamMember[];
+  additionalTeam?: number;
   externalUrl?: string;
 }
 

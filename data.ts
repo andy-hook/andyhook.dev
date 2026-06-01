@@ -71,7 +71,7 @@ export const experience: Experience[] = [
     company: 'Scroll AI',
     tenure: 'Present',
     description:
-      'I worked across nearly every user surface of the product, including rich-text editing, CRDT-based collaboration, sharing and permissions systems, authentication and entitlements, browser extensions, Google Sheets autofill workflows, and billing infrastructure.',
+      'I worked across nearly every user surface of the product, including rich-text editing, CRDT-based collaboration, chat rendering, sharing and permissions, authentication and entitlements, browser extensions, spreadsheet autofill interfaces, billing, and more.',
     link: 'https://scroll.ai',
   },
   {
@@ -81,7 +81,7 @@ export const experience: Experience[] = [
     company: 'WorkOS',
     tenure: 'Mar 2022 – May 2024',
     description:
-      'WorkOS acquired Modulz in March 2022. I continued as maintainer of Radix Primitives, shipping the stable v1 release which later grew to ecosystem dominance (130M monthly installs). I later joined a horizontal front-end team, leading the dashboard re-architecture and supporting the rollout of User Management.',
+      'WorkOS acquired Modulz in March 2022. I continued as maintainer of Radix Primitives, shipping the stable v1 release which is now used by millions of developers. I later joined a horizontal product team, leading the dashboard re-architecture and supporting the rollout of User Management.',
     link: 'https://workos.com',
   },
   {
@@ -344,6 +344,7 @@ export const testimonials: Testimonial[] = [
 export const projects: Project[] = [
   {
     id: 'radix',
+    type: 'professional',
     title: 'Radix',
     subtitle: "The world's most popular headless library",
     externalUrl: 'https://www.radix-ui.com',
@@ -365,6 +366,7 @@ export const projects: Project[] = [
   },
   {
     id: 'scroll',
+    type: 'professional',
     title: 'Scroll',
     subtitle: 'Powerful knowledge agents',
     role: 'Software Engineer',
@@ -395,6 +397,7 @@ export const projects: Project[] = [
   },
   {
     id: 'aragon',
+    type: 'professional',
     title: 'Aragon',
     subtitle: 'Collaboration without borders',
     role: 'Senior UI Engineer',
@@ -422,6 +425,7 @@ export const projects: Project[] = [
   },
   {
     id: 'dash',
+    type: 'professional',
     title: 'Dash',
     subtitle: 'Modern digital asset management',
     role: 'UI Engineer',
@@ -442,21 +446,18 @@ export const projects: Project[] = [
   },
   {
     id: 'artifacts',
+    type: 'personal',
     title: 'Artifacts',
-    subtitle: 'Assorted works from the archive',
+    subtitle: 'Assorted art studies from the archive',
     role: 'Fine Art Studies & Illustration',
     tenure: '2002 - 2022',
-    technologies: [],
-    intro: '',
     thumbnail: sketchbookThumbImage,
     thumbnailSmall: sketchbookThumbSmallImage,
-    heroImage: blocksHeroImage,
     testimonial: getTestimonialById('ze'),
-    team: [],
-    additionalTeam: 0,
   },
   {
     id: 'blocks',
+    type: 'personal',
     title: 'Blocks',
     subtitle: 'Ethereum inside your browser',
     role: 'Front-End Developer',
@@ -475,8 +476,6 @@ export const projects: Project[] = [
     thumbnailSmall: blocksThumbSmallImage,
     heroImage: blocksHeroImage,
     testimonial: getTestimonialById('ben'),
-    team: [],
-    additionalTeam: 0,
   },
 ];
 

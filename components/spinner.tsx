@@ -20,6 +20,7 @@ const spinnerLine = cva({
       dash: 'stroke-dash-2 fill-dash-2/5',
       radix: 'stroke-radix-2 fill-radix-2/5',
       scroll: 'stroke-scroll-4 fill-scroll-4/5',
+      artifacts: 'stroke-artifacts-1 fill-artifacts-1/5',
     },
   },
   defaultVariants: {

@@ -38,10 +38,10 @@ export default function ArtifactsPage() {
         tenure={project.tenure}
       >
         <ArtifactGrid>
-          <ArtifactGridItem image={sketchbookCoupleImage} />
-          <ArtifactGridItem image={sketchbookScarfImage} />
-          <ArtifactGridItem image={sketchbookMaleStudyImage} />
-          <ArtifactGridItem image={sketchbookSuitImage} />
+          <ArtifactGridItem eager image={sketchbookCoupleImage} />
+          <ArtifactGridItem eager image={sketchbookScarfImage} />
+          <ArtifactGridItem eager image={sketchbookMaleStudyImage} />
+          <ArtifactGridItem eager image={sketchbookSuitImage} />
           <ArtifactGridItem image={sketchbookFacesImage} />
           <ArtifactGridItem image={sketchbookAnglesImage} />
           <ArtifactGridItem image={sketchbookTreeMarkImage} />
@@ -49,7 +49,6 @@ export default function ArtifactsPage() {
           <ArtifactGridItem image={sketchbookFemaleStudyImage} />
           <ArtifactGridItem image={sketchbookTattooImage} />
           <ArtifactGridItem image={sketchbookHeadspaceImage} />
-
           <ArtifactGridItem image={sketchbookMapImage} />
           <ArtifactGridItem image={sketchbookSnowmanImage} />
         </ArtifactGrid>
@@ -81,7 +80,7 @@ const ArtifactGrid = React.forwardRef<ArtifactGridElement, ArtifactGridProps>(
           'lg:[--gap:40px]',
           'xl:[--gap:50px]',
           'widest:[--gap:70px]',
-          'z-10 relative bg-slate-12 p-[calc(var(--gap))] overflow-hidden',
+          'z-10 relative bg-slate-12 p-4 md:p-12 lg:p-16 2xl:p-[6vw] overflow-hidden',
           props.className,
         )}
         ref={forwardedRef}
@@ -109,10 +108,11 @@ type ArtifactGridItemElement = React.ComponentRef<'div'>;
 
 interface ArtifactGridItemProps extends React.ComponentPropsWithoutRef<'div'> {
   image: StaticImageWithMetadata;
+  eager?: boolean;
 }
 
 const ArtifactGridItem = React.forwardRef<ArtifactGridItemElement, ArtifactGridItemProps>(
-  ({ image, ...props }, forwardedRef) => {
+  ({ image, eager, ...props }, forwardedRef) => {
     return (
       <div
         {...props}
@@ -133,6 +133,7 @@ const ArtifactGridItem = React.forwardRef<ArtifactGridItemElement, ArtifactGridI
             fill
             quality={90}
             sizes="35vw"
+            loading={eager ? 'eager' : undefined}
             className={cx('absolute', 'inset-[6vw]', 'sm:inset-[3vw]', 'wide:inset-[1.5vw]')}
           />
         </div>

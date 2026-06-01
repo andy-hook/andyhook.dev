@@ -428,12 +428,22 @@ RouterImage.displayName = 'RouterImage';
 /* -----------------------------------------------------------------------------------------------*/
 
 const getSpinnerVariantFromPath = (path: string) => {
-  if (path === '/radix') return 'radix';
-  if (path === '/aragon') return 'aragon';
-  if (path === '/blocks') return 'blocks';
-  if (path === '/dash') return 'dash';
-  if (path === '/scroll') return 'scroll';
-  return 'light';
+  switch (path) {
+    case '/radix':
+      return 'radix';
+    case '/aragon':
+      return 'aragon';
+    case '/blocks':
+      return 'blocks';
+    case '/dash':
+      return 'dash';
+    case '/scroll':
+      return 'scroll';
+    case '/artifacts':
+      return 'artifacts';
+    default:
+      return 'light';
+  }
 };
 
 const isModifiedEvent = (event: React.MouseEvent) => {
