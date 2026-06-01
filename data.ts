@@ -71,7 +71,7 @@ export const experience: Experience[] = [
     company: 'Scroll AI',
     tenure: 'Present',
     description:
-      'I worked across nearly every user surface of the product, including rich-text editing, CRDT-based collaboration, sharing and permissions systems, authentication and entitlements, browser extensions, Google Sheets autofill workflows, and billing infrastructure.',
+      'I worked across nearly every user surface of the product, including rich-text editing, CRDT-based collaboration, chat rendering, sharing and permissions, authentication and entitlements, browser extensions, spreadsheet autofill interfaces, billing, and more.',
     link: 'https://scroll.ai',
   },
   {
@@ -81,7 +81,7 @@ export const experience: Experience[] = [
     company: 'WorkOS',
     tenure: 'Mar 2022 – May 2024',
     description:
-      'WorkOS acquired Modulz in March 2022. I continued as maintainer of Radix Primitives, shipping the stable v1 release which later grew to ecosystem dominance (130M monthly installs). I later joined a horizontal front-end team, leading the dashboard re-architecture and supporting the rollout of User Management.',
+      'WorkOS acquired Modulz in March 2022. I continued as maintainer of Radix Primitives, shipping the stable v1 release which is now used by millions of developers. I later joined a horizontal product team, leading the dashboard re-architecture and supporting the rollout of User Management.',
     link: 'https://workos.com',
   },
   {
