@@ -69,7 +69,7 @@ export const experience: Experience[] = [
     logoAsset: ScrollMark,
     title: 'Senior Software Engineer',
     company: 'Scroll AI',
-    tenure: 'Present',
+    tenure: 'Sept 2024 – June 2026',
     description:
       'I worked across nearly every user surface of the product, including rich-text editing, CRDT-based collaboration, chat rendering, sharing and permissions, authentication and entitlements, browser extensions, spreadsheet autofill interfaces, billing, and more.',
     link: 'https://scroll.ai',
@@ -81,7 +81,7 @@ export const experience: Experience[] = [
     company: 'WorkOS',
     tenure: 'Mar 2022 – May 2024',
     description:
-      'WorkOS acquired Modulz in March 2022. I continued as maintainer of Radix Primitives, shipping the stable v1 release which is now used by millions of developers. I later joined a horizontal product team, leading the dashboard re-architecture and supporting the rollout of User Management.',
+      'Acquired in March 2022. I continued as maintainer of Radix UI, shipping the stable v1 release which grew to eco-system dominance (130m monthly). I later joined a horizontal product team, leading the dashboard re-architecture and supporting the rollout of User Management.',
     link: 'https://workos.com',
   },
   {
@@ -91,7 +91,7 @@ export const experience: Experience[] = [
     company: 'Modulz',
     tenure: 'Apr 2021 – Mar 2022',
     description:
-      'Core maintainer of Radix Primitives, an popular headless UI library used by millions of developers. Worked closely with the team to scope, shape, research and implement WAI-ARIA compliant accessible UI patterns and DX centric component APIs.',
+      'Core maintainer of Radix UI, a popular headless UI library used by millions of developers. Worked closely with the team to scope, shape, research and implement WAI-ARIA compliant accessible UI patterns and DX centric component APIs.',
     link: 'https://modulz.app',
   },
   {
@@ -107,7 +107,7 @@ export const experience: Experience[] = [
   {
     year: '2018',
     logoAsset: BrightMark,
-    title: 'UI Engineer',
+    title: 'UX Engineer',
     company: 'Bright Interactive',
     tenure: 'Sep 2018 – Jan 2021',
     description:
