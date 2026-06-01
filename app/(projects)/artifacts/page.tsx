@@ -49,7 +49,6 @@ export default function ArtifactsPage() {
           <ArtifactGridItem image={sketchbookFemaleStudyImage} />
           <ArtifactGridItem image={sketchbookTattooImage} />
           <ArtifactGridItem image={sketchbookHeadspaceImage} />
-
           <ArtifactGridItem image={sketchbookMapImage} />
           <ArtifactGridItem image={sketchbookSnowmanImage} />
         </ArtifactGrid>
@@ -81,7 +80,7 @@ const ArtifactGrid = React.forwardRef<ArtifactGridElement, ArtifactGridProps>(
           'lg:[--gap:40px]',
           'xl:[--gap:50px]',
           'widest:[--gap:70px]',
-          'z-10 relative bg-slate-12 p-[calc(var(--gap))] overflow-hidden',
+          'z-10 relative bg-slate-12 p-4 md:p-12 lg:p-16 2xl:p-[6vw] overflow-hidden',
           props.className,
         )}
         ref={forwardedRef}
