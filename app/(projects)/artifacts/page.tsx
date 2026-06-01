@@ -115,7 +115,7 @@ const ArtifactGridItem = React.forwardRef<ArtifactGridItemElement, ArtifactGridI
           <div className={cx('absolute', 'inset-[6vw]', 'sm:inset-[3vw]', 'wide:inset-[1.5vw]')}>
             <div
               className={cx(
-                'bg-slate-2 absolute text-slate-12 z-10 font-body font-semibold text-sm py-2 px-2.5 rounded-full flex items-center gap-1.5',
+                'bg-slate-2 absolute text-slate-12 z-10 font-body font-semibold text-sm py-2 pl-3 pr-2.5 rounded-full flex items-center gap-1.5',
                 'bottom-6 right-6',
               )}
             >
