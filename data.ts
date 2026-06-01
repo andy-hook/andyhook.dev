@@ -344,6 +344,7 @@ export const testimonials: Testimonial[] = [
 export const projects: Project[] = [
   {
     id: 'radix',
+    type: 'professional',
     title: 'Radix',
     subtitle: "The world's most popular headless library",
     externalUrl: 'https://www.radix-ui.com',
@@ -365,6 +366,7 @@ export const projects: Project[] = [
   },
   {
     id: 'scroll',
+    type: 'professional',
     title: 'Scroll',
     subtitle: 'Powerful knowledge agents',
     role: 'Software Engineer',
@@ -395,6 +397,7 @@ export const projects: Project[] = [
   },
   {
     id: 'aragon',
+    type: 'professional',
     title: 'Aragon',
     subtitle: 'Collaboration without borders',
     role: 'Senior UI Engineer',
@@ -422,6 +425,7 @@ export const projects: Project[] = [
   },
   {
     id: 'dash',
+    type: 'professional',
     title: 'Dash',
     subtitle: 'Modern digital asset management',
     role: 'UI Engineer',
@@ -442,6 +446,7 @@ export const projects: Project[] = [
   },
   {
     id: 'artifacts',
+    type: 'personal',
     title: 'Artifacts',
     subtitle: 'Assorted art studies from the archive',
     role: 'Fine Art Studies & Illustration',
@@ -452,6 +457,7 @@ export const projects: Project[] = [
   },
   {
     id: 'blocks',
+    type: 'personal',
     title: 'Blocks',
     subtitle: 'Ethereum inside your browser',
     role: 'Front-End Developer',

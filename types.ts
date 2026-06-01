@@ -74,6 +74,7 @@ export interface TeamMember extends Person {
 
 export interface Project {
   id: ProjectId;
+  type: 'professional' | 'personal';
   title: string;
   subtitle: string;
   role: string;

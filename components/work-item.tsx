@@ -4,7 +4,7 @@ import * as React from 'react';
 import Link from 'next/link';
 import { AnimatePresence, motion } from 'motion/react';
 import { cva, cx } from '@/cva.config';
-import { ArrowUpRightIcon } from '@heroicons/react/16/solid';
+import { ArrowUpRightIcon, BookOpenIcon } from '@heroicons/react/16/solid';
 
 import { screens } from '@/theme';
 import { ScrambleText } from '@/components/scramble-text';
@@ -109,6 +109,18 @@ export const WorkItem = React.forwardRef<WorkItemElement, WorkItemProps>(
                   }}
                   transition={{ duration: 0.1 }}
                 >
+                  {project.type === 'personal' && (
+                    <div
+                      className={cx(
+                        'bg-slate-2 absolute text-slate-12 z-10 font-body font-semibold text-sm py-2 px-2.5 rounded-full flex items-center gap-1.5',
+                        isLarge ? 'top-5 right-5 lg:top-8 lg:right-8' : 'top-5 right-5',
+                      )}
+                    >
+                      <BookOpenIcon className="size-4 text-slate-10" />
+                      <span className="capsize">Hobby</span>
+                    </div>
+                  )}
+
                   {project.externalUrl && (
                     <motion.div
                       variants={{
