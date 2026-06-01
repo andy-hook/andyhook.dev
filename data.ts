@@ -443,7 +443,7 @@ export const projects: Project[] = [
   {
     id: 'artifacts',
     title: 'Artifacts',
-    subtitle: 'Assorted works from the archive',
+    subtitle: 'Assorted art studies from the archive',
     role: 'Fine Art Studies & Illustration',
     tenure: '2002 - 2022',
     thumbnail: sketchbookThumbImage,
