@@ -277,7 +277,7 @@ const ProjectHero = React.forwardRef<ProjectHeroElement, ProjectHeroProps>(
         {heroImage && (
           <Gutter size="small">
             <div className="mx-auto relative z-10">
-              <div className="rounded-3xl overflow-hidden shadow-slate-1 shadow-2xl">
+              <div className="rounded-xl lg:rounded-3xl overflow-hidden shadow-slate-1 shadow-2xl">
                 <RouterImage
                   image={heroImage}
                   quality={90}
