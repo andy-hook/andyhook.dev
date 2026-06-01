@@ -1,25 +1,11 @@
 import * as React from 'react';
 import { getProjectMetadata } from '../_components/metadata';
 import { RouterImage, RouterTransition } from '@/app/router';
-import {
-  sketchbookAnglesImage,
-  sketchbookCoupleImage,
-  sketchbookFacesImage,
-  sketchbookFemaleStudyImage,
-  sketchbookHeadspaceImage,
-  sketchbookMaleStudyImage,
-  sketchbookMapImage,
-  sketchbookRasputinImage,
-  sketchbookScarfImage,
-  sketchbookSnowmanImage,
-  sketchbookSuitImage,
-  sketchbookTattooImage,
-  sketchbookTreeMarkImage,
-} from '@/images';
 import { StaticImageWithMetadata } from '@/types';
 import * as Project from '../_components/project';
-import { getProjectById } from '@/data';
+import { artifacts, getProjectById } from '@/data';
 import { cx } from '@/cva.config';
+import { InformationCircleIcon } from '@heroicons/react/16/solid';
 
 const GRID_PRECISION = 40;
 
@@ -38,19 +24,9 @@ export default function ArtifactsPage() {
         tenure={project.tenure}
       >
         <ArtifactGrid>
-          <ArtifactGridItem eager image={sketchbookCoupleImage} />
-          <ArtifactGridItem eager image={sketchbookScarfImage} />
-          <ArtifactGridItem eager image={sketchbookMaleStudyImage} />
-          <ArtifactGridItem eager image={sketchbookSuitImage} />
-          <ArtifactGridItem image={sketchbookFacesImage} />
-          <ArtifactGridItem image={sketchbookAnglesImage} />
-          <ArtifactGridItem image={sketchbookTreeMarkImage} />
-          <ArtifactGridItem image={sketchbookRasputinImage} />
-          <ArtifactGridItem image={sketchbookFemaleStudyImage} />
-          <ArtifactGridItem image={sketchbookTattooImage} />
-          <ArtifactGridItem image={sketchbookHeadspaceImage} />
-          <ArtifactGridItem image={sketchbookMapImage} />
-          <ArtifactGridItem image={sketchbookSnowmanImage} />
+          {artifacts.map(({ year, src }, index) => (
+            <ArtifactGridItem key={src.src.src} eager={index < 4} image={src} year={year} />
+          ))}
         </ArtifactGrid>
       </Project.Header>
     </Project.Root>
@@ -109,10 +85,11 @@ type ArtifactGridItemElement = React.ComponentRef<'div'>;
 interface ArtifactGridItemProps extends React.ComponentPropsWithoutRef<'div'> {
   image: StaticImageWithMetadata;
   eager?: boolean;
+  year: string;
 }
 
 const ArtifactGridItem = React.forwardRef<ArtifactGridItemElement, ArtifactGridItemProps>(
-  ({ image, eager, ...props }, forwardedRef) => {
+  ({ image, eager, year, ...props }, forwardedRef) => {
     return (
       <div
         {...props}
@@ -128,14 +105,25 @@ const ArtifactGridItem = React.forwardRef<ArtifactGridItemElement, ArtifactGridI
         ref={forwardedRef}
       >
         <div className="absolute shadow-md bg-white" style={{ inset: 'calc(var(--gap) / 2)' }}>
-          <RouterImage
-            image={image}
-            fill
-            quality={90}
-            sizes="35vw"
-            loading={eager ? 'eager' : undefined}
-            className={cx('absolute', 'inset-[6vw]', 'sm:inset-[3vw]', 'wide:inset-[1.5vw]')}
-          />
+          <div className={cx('absolute', 'inset-[6vw]', 'sm:inset-[3vw]', 'wide:inset-[1.5vw]')}>
+            <div
+              className={cx(
+                'bg-slate-2 absolute text-slate-12 z-10 font-body font-semibold text-sm py-2 px-2.5 rounded-full flex items-center gap-1.5',
+                'bottom-6 right-6',
+              )}
+            >
+              <span className="capsize">{year}</span>
+              <InformationCircleIcon className="size-4 text-slate-10" />
+            </div>
+            <RouterImage
+              image={image}
+              fill
+              quality={90}
+              sizes="35vw"
+              loading={eager ? 'eager' : undefined}
+              className="absolute inset-0"
+            />
+          </div>
         </div>
       </div>
     );

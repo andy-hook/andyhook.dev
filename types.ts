@@ -96,10 +96,7 @@ export interface SocialLink {
   url: string;
 }
 
-export interface Data {
-  experience: Experience[];
-  people: Person[];
-  testimonials: Testimonial[];
-  projects: Project[];
-  social: Record<string, SocialLink>;
+export interface Artifact {
+  year: string;
+  src: StaticImageWithMetadata;
 }

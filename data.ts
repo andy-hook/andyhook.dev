@@ -4,11 +4,11 @@ import {
   Testimonial,
   Project,
   SocialLink,
-  Data,
   TestimonialId,
   PersonId,
   ProjectId,
   SocialName,
+  Artifact,
 } from './types';
 
 // Company logos
@@ -61,6 +61,19 @@ import {
   henryOswaldAvatarImage,
   sketchbookThumbImage,
   sketchbookThumbSmallImage,
+  sketchbookAnglesImage,
+  sketchbookCoupleImage,
+  sketchbookFacesImage,
+  sketchbookFemaleStudyImage,
+  sketchbookHeadspaceImage,
+  sketchbookMaleStudyImage,
+  sketchbookMapImage,
+  sketchbookRasputinImage,
+  sketchbookScarfImage,
+  sketchbookSnowmanImage,
+  sketchbookSuitImage,
+  sketchbookTattooImage,
+  sketchbookTreeMarkImage,
 } from './images';
 
 export const experience: Experience[] = [
@@ -516,14 +529,21 @@ export const social: Record<SocialName, SocialLink> = {
   },
 };
 
-// Export the complete data structure
-export const data: Data = {
-  experience,
-  people,
-  testimonials,
-  projects,
-  social,
-};
+export const artifacts: Artifact[] = [
+  { year: '2022', src: sketchbookCoupleImage },
+  { year: '2016', src: sketchbookScarfImage },
+  { year: '2012', src: sketchbookMaleStudyImage },
+  { year: '2012', src: sketchbookSuitImage },
+  { year: '2010', src: sketchbookFacesImage },
+  { year: '2013', src: sketchbookAnglesImage },
+  { year: '2013', src: sketchbookTreeMarkImage },
+  { year: '2006', src: sketchbookRasputinImage },
+  { year: '2012', src: sketchbookFemaleStudyImage },
+  { year: '2015', src: sketchbookTattooImage },
+  { year: '2016', src: sketchbookHeadspaceImage },
+  { year: '2010', src: sketchbookMapImage },
+  { year: '2012', src: sketchbookSnowmanImage },
+];
 
 // Utility functions
 export function getTestimonialById(id: TestimonialId) {
