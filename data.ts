@@ -4,11 +4,11 @@ import {
   Testimonial,
   Project,
   SocialLink,
-  Data,
   TestimonialId,
   PersonId,
   ProjectId,
   SocialName,
+  Artifact,
 } from './types';
 
 // Company logos
@@ -61,6 +61,19 @@ import {
   henryOswaldAvatarImage,
   sketchbookThumbImage,
   sketchbookThumbSmallImage,
+  sketchbookAnglesImage,
+  sketchbookCoupleImage,
+  sketchbookFacesImage,
+  sketchbookFemaleStudyImage,
+  sketchbookHeadspaceImage,
+  sketchbookMaleStudyImage,
+  sketchbookMapImage,
+  sketchbookRasputinImage,
+  sketchbookScarfImage,
+  sketchbookSnowmanImage,
+  sketchbookSuitImage,
+  sketchbookTattooImage,
+  sketchbookTreeMarkImage,
 } from './images';
 
 export const experience: Experience[] = [
@@ -450,7 +463,7 @@ export const projects: Project[] = [
     title: 'Artifacts',
     subtitle: 'Assorted art studies from the archive',
     role: 'Fine Art Studies & Illustration',
-    tenure: '2002 - 2022',
+    tenure: '2004 - 2022',
     thumbnail: sketchbookThumbImage,
     thumbnailSmall: sketchbookThumbSmallImage,
     testimonial: getTestimonialById('ze'),
@@ -516,14 +529,21 @@ export const social: Record<SocialName, SocialLink> = {
   },
 };
 
-// Export the complete data structure
-export const data: Data = {
-  experience,
-  people,
-  testimonials,
-  projects,
-  social,
-};
+export const artifacts: Artifact[] = [
+  { name: 'Snow day', year: '2022', src: sketchbookCoupleImage },
+  { name: 'Midnight', year: '2016', src: sketchbookScarfImage },
+  { name: 'Male study', year: '2018', src: sketchbookMaleStudyImage },
+  { name: 'Suit', year: '2012', src: sketchbookSuitImage },
+  { name: 'Faces', year: '2010', src: sketchbookFacesImage },
+  { name: 'Angles', year: '2013', src: sketchbookAnglesImage },
+  { name: 'Ashtree', year: '2013', src: sketchbookTreeMarkImage },
+  { name: 'Rasputin', year: '2006', src: sketchbookRasputinImage },
+  { name: 'Female study', year: '2018', src: sketchbookFemaleStudyImage },
+  { name: 'Energy', year: '2015', src: sketchbookTattooImage },
+  { name: 'Headspace', year: '2016', src: sketchbookHeadspaceImage },
+  { name: 'Here be dragons', year: '2010', src: sketchbookMapImage },
+  { name: 'Snowman', year: '2012', src: sketchbookSnowmanImage },
+];
 
 // Utility functions
 export function getTestimonialById(id: TestimonialId) {

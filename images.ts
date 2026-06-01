@@ -526,8 +526,8 @@ const scrollHeroImage = {
 
 const sketchbookScarfImage = {
   src: sketchbookScarf,
-  alt: 'TEMP',
-  color: '#00C8F8',
+  alt: 'Portrait of a woman wearing a teal scarf',
+  color: '#185951',
 };
 
 const sketchbookMaleStudyImage = {
