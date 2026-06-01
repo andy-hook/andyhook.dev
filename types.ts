@@ -97,6 +97,7 @@ export interface SocialLink {
 }
 
 export interface Artifact {
+  name: string;
   year: string;
   src: StaticImageWithMetadata;
 }

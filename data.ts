@@ -530,19 +530,19 @@ export const social: Record<SocialName, SocialLink> = {
 };
 
 export const artifacts: Artifact[] = [
-  { year: '2022', src: sketchbookCoupleImage },
-  { year: '2016', src: sketchbookScarfImage },
-  { year: '2012', src: sketchbookMaleStudyImage },
-  { year: '2012', src: sketchbookSuitImage },
-  { year: '2010', src: sketchbookFacesImage },
-  { year: '2013', src: sketchbookAnglesImage },
-  { year: '2013', src: sketchbookTreeMarkImage },
-  { year: '2006', src: sketchbookRasputinImage },
-  { year: '2012', src: sketchbookFemaleStudyImage },
-  { year: '2015', src: sketchbookTattooImage },
-  { year: '2016', src: sketchbookHeadspaceImage },
-  { year: '2010', src: sketchbookMapImage },
-  { year: '2012', src: sketchbookSnowmanImage },
+  { name: 'Snow day', year: '2022', src: sketchbookCoupleImage },
+  { name: 'Midnight', year: '2016', src: sketchbookScarfImage },
+  { name: 'Male study', year: '2012', src: sketchbookMaleStudyImage },
+  { name: 'Suit', year: '2012', src: sketchbookSuitImage },
+  { name: 'Faces', year: '2010', src: sketchbookFacesImage },
+  { name: 'Angles', year: '2013', src: sketchbookAnglesImage },
+  { name: 'Ashtree', year: '2013', src: sketchbookTreeMarkImage },
+  { name: 'Rasputin', year: '2006', src: sketchbookRasputinImage },
+  { name: 'Female study', year: '2012', src: sketchbookFemaleStudyImage },
+  { name: 'Energy', year: '2015', src: sketchbookTattooImage },
+  { name: 'Headspace', year: '2016', src: sketchbookHeadspaceImage },
+  { name: 'Here be dragons', year: '2010', src: sketchbookMapImage },
+  { name: 'Snowman', year: '2012', src: sketchbookSnowmanImage },
 ];
 
 // Utility functions

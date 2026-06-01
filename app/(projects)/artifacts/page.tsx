@@ -24,8 +24,14 @@ export default function ArtifactsPage() {
         tenure={project.tenure}
       >
         <ArtifactGrid>
-          {artifacts.map(({ year, src }, index) => (
-            <ArtifactGridItem key={src.src.src} eager={index < 4} image={src} year={year} />
+          {artifacts.map(({ name, year, src }, index) => (
+            <ArtifactGridItem
+              key={src.src.src}
+              eager={index < 4}
+              image={src}
+              name={name}
+              year={year}
+            />
           ))}
         </ArtifactGrid>
       </Project.Header>
@@ -85,11 +91,12 @@ type ArtifactGridItemElement = React.ComponentRef<'div'>;
 interface ArtifactGridItemProps extends React.ComponentPropsWithoutRef<'div'> {
   image: StaticImageWithMetadata;
   eager?: boolean;
+  name: string;
   year: string;
 }
 
 const ArtifactGridItem = React.forwardRef<ArtifactGridItemElement, ArtifactGridItemProps>(
-  ({ image, eager, year, ...props }, forwardedRef) => {
+  ({ image, eager, name, year, ...props }, forwardedRef) => {
     return (
       <div
         {...props}
@@ -112,7 +119,9 @@ const ArtifactGridItem = React.forwardRef<ArtifactGridItemElement, ArtifactGridI
                 'bottom-6 right-6',
               )}
             >
-              <span className="capsize">{year}</span>
+              <span className="capsize">
+                {name} · {year}
+              </span>
               <InformationCircleIcon className="size-4 text-slate-10" />
             </div>
             <RouterImage
