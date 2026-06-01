@@ -144,12 +144,15 @@ interface ProjectHeaderProps extends React.ComponentPropsWithoutRef<'section'> {
   subtitle: string;
   role: string;
   tenure: string;
-  team: TeamMember[];
-  additionalTeam: number;
+  team?: TeamMember[];
+  additionalTeam?: number;
 }
 
 const ProjectHeader = React.forwardRef<ProjectHeaderElement, ProjectHeaderProps>(
-  ({ children, title, subtitle, role, tenure, team, additionalTeam, ...props }, forwardedRef) => {
+  (
+    { children, title, subtitle, role, tenure, team = [], additionalTeam = 0, ...props },
+    forwardedRef,
+  ) => {
     const projectMeta = [
       [
         UserIcon,
@@ -257,13 +260,13 @@ interface ProjectHeroProps extends Omit<
   React.ComponentPropsWithoutRef<typeof RouterTransition>,
   'children' | 'multiplier'
 > {
-  heroImage: StaticImageWithMetadata;
-  technologies: string[];
-  intro: string;
+  heroImage?: StaticImageWithMetadata;
+  technologies?: string[];
+  intro?: string;
 }
 
 const ProjectHero = React.forwardRef<ProjectHeroElement, ProjectHeroProps>(
-  ({ heroImage, technologies, intro, className, ...props }, forwardedRef) => {
+  ({ heroImage, technologies = [], intro, className, ...props }, forwardedRef) => {
     return (
       <RouterTransition
         multiplier={10}
@@ -271,20 +274,22 @@ const ProjectHero = React.forwardRef<ProjectHeroElement, ProjectHeroProps>(
         {...props}
         ref={forwardedRef}
       >
-        <Gutter size="small">
-          <div className="mx-auto relative z-10">
-            <div className="rounded-3xl overflow-hidden shadow-slate-1 shadow-2xl">
-              <RouterImage
-                image={heroImage}
-                quality={90}
-                fill
-                className="aspect-[50/35] md:aspect-[448/205]"
-                priority
-                sizes="100vw"
-              />
+        {heroImage && (
+          <Gutter size="small">
+            <div className="mx-auto relative z-10">
+              <div className="rounded-3xl overflow-hidden shadow-slate-1 shadow-2xl">
+                <RouterImage
+                  image={heroImage}
+                  quality={90}
+                  fill
+                  className="aspect-[50/35] md:aspect-[448/205]"
+                  priority
+                  sizes="100vw"
+                />
+              </div>
             </div>
-          </div>
-        </Gutter>
+          </Gutter>
+        )}
 
         <Gutter collapse>
           <Container width="wide">
@@ -302,18 +307,22 @@ const ProjectHero = React.forwardRef<ProjectHeroElement, ProjectHeroProps>(
                   <Line orientation="vertical" className="absolute left-0 -top-16 -bottom-12" />
                   <Hatch className="absolute -left-5 xl:-left-10 w-5 md:-left-7 md:w-7 xl:w-10 top-0 bottom-0" />
 
-                  <ul className="font-body text-sm sm:text-base lg:text-xl font-normal text-slate-11 flex flex-col gap-4 sm:gap-5 lg:gap-6 row-start-2 lg:row-start-auto">
-                    {technologies.map((technology) => (
-                      <li key={technology} className="capsize">
-                        {technology}
-                      </li>
-                    ))}
-                  </ul>
+                  {technologies.length > 0 && (
+                    <ul className="font-body text-sm sm:text-base lg:text-xl font-normal text-slate-11 flex flex-col gap-4 sm:gap-5 lg:gap-6 row-start-2 lg:row-start-auto">
+                      {technologies.map((technology) => (
+                        <li key={technology} className="capsize">
+                          {technology}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
 
-                <p className="col-span-2 font-body font-medium text-slate-12 text-base sm:text-lg leading-relaxed md:leading-relaxed xl:leading-relaxed md:text-xl lg:text-2xl xl:text-[26px] lg:leading-relaxed capsize text-pretty row-start-1 lg:row-start-auto">
-                  {intro}
-                </p>
+                {intro && (
+                  <p className="col-span-2 font-body font-medium text-slate-12 text-base sm:text-lg leading-relaxed md:leading-relaxed xl:leading-relaxed md:text-xl lg:text-2xl xl:text-[26px] lg:leading-relaxed capsize text-pretty row-start-1 lg:row-start-auto">
+                    {intro}
+                  </p>
+                )}
               </div>
             </div>
           </Container>

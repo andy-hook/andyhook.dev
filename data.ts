@@ -446,14 +446,9 @@ export const projects: Project[] = [
     subtitle: 'Assorted works from the archive',
     role: 'Fine Art Studies & Illustration',
     tenure: '2002 - 2022',
-    technologies: [],
-    intro: '',
     thumbnail: sketchbookThumbImage,
     thumbnailSmall: sketchbookThumbSmallImage,
-    heroImage: blocksHeroImage,
     testimonial: getTestimonialById('ze'),
-    team: [],
-    additionalTeam: 0,
   },
   {
     id: 'blocks',
@@ -475,8 +470,6 @@ export const projects: Project[] = [
     thumbnailSmall: blocksThumbSmallImage,
     heroImage: blocksHeroImage,
     testimonial: getTestimonialById('ben'),
-    team: [],
-    additionalTeam: 0,
   },
 ];
 

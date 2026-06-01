@@ -78,14 +78,14 @@ export interface Project {
   subtitle: string;
   role: string;
   tenure: string;
-  technologies: string[];
-  intro: string;
+  technologies?: string[];
+  intro?: string;
   thumbnail: StaticImageWithMetadata;
   thumbnailSmall: StaticImageWithMetadata;
-  heroImage: StaticImageWithMetadata;
+  heroImage?: StaticImageWithMetadata;
   testimonial: Testimonial;
-  team: TeamMember[];
-  additionalTeam: number;
+  team?: TeamMember[];
+  additionalTeam?: number;
   externalUrl?: string;
 }
 
