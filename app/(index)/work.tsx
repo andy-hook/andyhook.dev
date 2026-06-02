@@ -16,8 +16,6 @@ const radix = getProjectById('radix');
 const aragon = getProjectById('aragon');
 const scroll = getProjectById('scroll');
 const dash = getProjectById('dash');
-const blocks = getProjectById('blocks');
-const artifacts = getProjectById('artifacts');
 
 type WorkElement = React.ComponentRef<'section'>;
 
@@ -122,21 +120,6 @@ export const Work = React.forwardRef<WorkElement, WorkProps>((props, forwardedRe
                       className="absolute -top-5 xl:-top-10 h-1/2 w-5 md:w-7 xl:w-10 -right-5 md:-right-7 xl:-right-10"
                     />
                     <WorkItem project={dash} className="relative" priority />
-                  </li>
-
-                  <li className="relative sm:-mt-[28%]">
-                    <Line className="absolute -left-24 right-0 top-0" />
-
-                    <WorkItem project={artifacts} priority />
-                  </li>
-
-                  <li className="relative">
-                    <Line
-                      orientation="horizontal"
-                      className="absolute -left-10 sm:-left-5 md:-left-7 xl:-left-10 -right-24 top-0"
-                    />
-
-                    <WorkItem project={blocks} priority />
                   </li>
                 </ul>
               </HoverGroup.Root>
