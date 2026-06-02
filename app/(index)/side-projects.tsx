@@ -32,7 +32,7 @@ export const SideProjects = React.forwardRef<SideProjectsElement, SideProjectsPr
                   the joy of exploring. There are no requirements, no deadlines, just{' '}
                   <span className="text-slate-12">curiosity</span>,{' '}
                   <span className="text-slate-12">practice</span>, and{' '}
-                  <span className="text-slate-12">craft</span>.
+                  <span className="text-slate-12">craft</span>
                 </div>
               </h2>
             </div>
