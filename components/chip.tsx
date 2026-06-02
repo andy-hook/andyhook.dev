@@ -8,12 +8,15 @@ import { Slot } from '@/components/primitives/slot';
 
 type ChipElement = React.ComponentRef<'div'>;
 
-interface ChipProps extends React.ComponentPropsWithoutRef<'div'> {}
+interface ChipProps extends React.ComponentPropsWithoutRef<'div'> {
+  asChild?: boolean;
+}
 
 export const Chip = React.forwardRef<ChipElement, ChipProps>(
-  ({ children, className, ...props }, forwardedRef) => {
+  ({ children, className, asChild, ...props }, forwardedRef) => {
+    const Comp = asChild ? Slot : 'div';
     return (
-      <div
+      <Comp
         {...props}
         className={cx(
           'bg-slate-2 absolute text-slate-12 z-10 font-body font-semibold text-sm py-2 px-3.5 rounded-full flex items-center gap-1.5',
@@ -22,7 +25,7 @@ export const Chip = React.forwardRef<ChipElement, ChipProps>(
         ref={forwardedRef}
       >
         {children}
-      </div>
+      </Comp>
     );
   },
 );

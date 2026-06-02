@@ -2,6 +2,10 @@
 
 import * as React from 'react';
 import { cx } from '@/cva.config';
+import { MouseHover } from '@/components/primitives/mouse-hover';
+import * as Chip from '@/components/chip';
+import { InformationCircleIcon } from '@heroicons/react/16/solid';
+import { AnimatePresence, motion } from 'motion/react';
 
 const GRID_PRECISION = 40;
 
@@ -44,10 +48,13 @@ type ArtifactGridItemElement = React.ComponentRef<'li'>;
 interface ArtifactGridItemProps extends React.ComponentPropsWithoutRef<'li'> {
   width: number;
   height: number;
+  label: string;
 }
 
 export const ArtifactGridItem = React.forwardRef<ArtifactGridItemElement, ArtifactGridItemProps>(
-  ({ children, className, width, height, ...props }, forwardedRef) => {
+  ({ children, className, width, height, label, ...props }, forwardedRef) => {
+    const [hovered, setHovered] = React.useState(false);
+
     return (
       <li
         {...props}
@@ -62,11 +69,40 @@ export const ArtifactGridItem = React.forwardRef<ArtifactGridItemElement, Artifa
         className={cx('relative aspect-[var(--width)_/_var(--height)]', className)}
         ref={forwardedRef}
       >
-        <div className="absolute shadow-md bg-white" style={{ inset: 'calc(var(--gap) / 2)' }}>
-          <div className={cx('absolute', 'inset-[6vw]', 'sm:inset-[3vw]', 'wide:inset-[1.5vw]')}>
-            {children}
+        <MouseHover onValueChange={setHovered} asChild>
+          <div className="absolute shadow-md bg-white" style={{ inset: 'calc(var(--gap) / 2)' }}>
+            <div className={cx('absolute', 'inset-[6vw]', 'sm:inset-[3vw]', 'wide:inset-[1.5vw]')}>
+              <AnimatePresence>
+                {hovered && (
+                  <Chip.Root className="top-6 right-6" asChild>
+                    <motion.div
+                      initial="hidden"
+                      animate="visible"
+                      exit="hidden"
+                      variants={{
+                        hidden: { y: -2, opacity: 0 },
+                        visible: { y: 0, opacity: 1 },
+                      }}
+                      transition={{
+                        type: 'spring',
+                        stiffness: 500,
+                        damping: 25,
+                        mass: 0.25,
+                      }}
+                    >
+                      <Chip.Text>{label}</Chip.Text>
+                      <Chip.Icon side="right">
+                        <InformationCircleIcon />
+                      </Chip.Icon>
+                    </motion.div>
+                  </Chip.Root>
+                )}
+              </AnimatePresence>
+
+              {children}
+            </div>
           </div>
-        </div>
+        </MouseHover>
       </li>
     );
   },

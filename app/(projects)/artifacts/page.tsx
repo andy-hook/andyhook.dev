@@ -3,8 +3,6 @@ import { RouterImage, RouterTransition } from '@/app/router';
 import * as Project from '../_components/project';
 import { artifacts, getProjectById } from '@/data';
 import { cx } from '@/cva.config';
-import { InformationCircleIcon } from '@heroicons/react/16/solid';
-import * as Chip from '@/components/chip';
 import * as ArtifactGrid from './_components/artifact-grid';
 
 export const metadata = getProjectMetadata('artifacts');
@@ -38,15 +36,8 @@ export default function ArtifactsPage() {
                 key={`${name}-${year}`}
                 width={src.src.width}
                 height={src.src.height}
+                label={`${name} · ${year}`}
               >
-                <Chip.Root className="bottom-6 right-6">
-                  <Chip.Text>
-                    {name} · {year}
-                  </Chip.Text>
-                  <Chip.Icon side="right">
-                    <InformationCircleIcon />
-                  </Chip.Icon>
-                </Chip.Root>
                 <RouterImage
                   image={src}
                   fill
