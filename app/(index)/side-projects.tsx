@@ -10,11 +10,11 @@ import { WorkItem } from '@/components/work-item';
 const blocks = getProjectById('blocks');
 const artifacts = getProjectById('artifacts');
 
-type TestimonialsElement = React.ComponentRef<'section'>;
+type SideProjectsElement = React.ComponentRef<'section'>;
 
-interface TestimonialsProps extends React.ComponentPropsWithoutRef<'section'> {}
+interface SideProjectsProps extends React.ComponentPropsWithoutRef<'section'> {}
 
-export const SideProjects = React.forwardRef<TestimonialsElement, TestimonialsProps>(
+export const SideProjects = React.forwardRef<SideProjectsElement, SideProjectsProps>(
   (props, forwardedRef) => {
     return (
       <section {...props} ref={forwardedRef}>
