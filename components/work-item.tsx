@@ -117,7 +117,7 @@ export const WorkItem = React.forwardRef<WorkItemElement, WorkItemProps>(
                       )}
                     >
                       <BookOpenIcon className="size-4 text-slate-10" />
-                      <span className="capsize">Hobby</span>
+                      <span className="capsize">Exploration</span>
                     </div>
                   )}
 

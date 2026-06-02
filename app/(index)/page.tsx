@@ -4,6 +4,7 @@ import { Work } from './work';
 import { Experience } from './experience';
 import { Testimonials } from './testimonials';
 import { RouterTransition } from '../router';
+import { SideProjects } from './side-projects';
 
 export default function Home() {
   return (
@@ -16,6 +17,10 @@ export default function Home() {
 
       <RouterTransition multiplier={10}>
         <Testimonials id="testimonials" className="py-12 md:py-14 lg:py-18 xl:py-24" />
+      </RouterTransition>
+
+      <RouterTransition multiplier={10}>
+        <SideProjects id="side-projects" className="py-12 md:py-14 lg:py-18 xl:pt-24" />
       </RouterTransition>
     </div>
   );
