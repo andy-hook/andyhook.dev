@@ -4,6 +4,7 @@ import * as Project from '../_components/project';
 import { artifacts, getProjectById } from '@/data';
 import { cx } from '@/cva.config';
 import * as ArtifactGrid from './_components/artifact-grid';
+import { screens } from '@/theme';
 
 export const metadata = getProjectMetadata('artifacts');
 const project = getProjectById('artifacts');
@@ -22,11 +23,6 @@ export default function ArtifactsPage() {
         <RouterTransition
           multiplier={15}
           className={cx(
-            '[--gap:20px]',
-            'md:[--gap:30px]',
-            'lg:[--gap:40px]',
-            'xl:[--gap:50px]',
-            'widest:[--gap:70px]',
             'z-10 relative bg-slate-12 p-4 md:p-12 lg:p-16 2xl:p-[6vw] overflow-hidden',
           )}
         >
@@ -42,7 +38,7 @@ export default function ArtifactsPage() {
                   image={src}
                   fill
                   quality={90}
-                  sizes="35vw"
+                  sizes={`(min-width: ${screens.wide}px) 35vw, (min-width: ${screens.sm}px) 50vw, 100vw`}
                   loading={index < 4 ? 'eager' : undefined}
                   className="absolute inset-0"
                 />
