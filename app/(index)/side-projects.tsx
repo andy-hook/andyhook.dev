@@ -18,9 +18,9 @@ export const SideProjects = React.forwardRef<SideProjectsElement, SideProjectsPr
   (props, forwardedRef) => {
     return (
       <section {...props} ref={forwardedRef}>
-        <Gutter className="relative pt-12 md:pt-20 lg:pt-24 xl:pt-32">
+        <Gutter>
           <Container>
-            <div className="mb-12 md:mb-14 lg:mb-20 xl:mb-24 lg:text-center relative z-10 md:pl-7 lg:pl-0">
+            <div className="mb-12 md:mb-14 lg:mb-20 xl:mb-24 lg:text-center relative z-10 md:pl-7 lg:pl-0 pt-12 md:pt-20 lg:pt-24 xl:pt-32">
               <h2 className="text-slate-8 font-display font-normal tracking-tighter text-3xl lg:text-4xl xl:text-5xl capsize leading-tight lg:leading-tight xl:leading-tight max-w-[25em] lg:mx-auto">
                 <div className="text-balance">
                   <span className="text-slate-12">Side projects</span> are where I reconnect with
@@ -33,13 +33,14 @@ export const SideProjects = React.forwardRef<SideProjectsElement, SideProjectsPr
             </div>
           </Container>
 
-          <Container width="wide" className="relative">
+          <Container width="wide">
             <div className="relative">
               <Line
-                className="absolute xl:bottom-10 bottom-5 hidden md:block md:bottom-7 -left-full -right-full"
+                className="absolute xl:top-10 top-5 hidden md:block md:top-7 -left-full -right-full"
                 solid
                 contrast="low"
               />
+
               <div className="border-y md:border-x border-slate-3 from-slate-3/25 to-slate-2/50 bg-gradient-to-br rounded-3xl shadow-slate-1 shadow-2xl relative overflow-hidden">
                 <Line
                   orientation="vertical"
