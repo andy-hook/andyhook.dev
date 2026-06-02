@@ -38,7 +38,7 @@ export default function ArtifactsPage() {
                   image={src}
                   fill
                   quality={90}
-                  sizes={`(min-width: ${screens.sm}px) 50vw, (min-width: ${screens.wide}px) 35vw, 100vw`}
+                  sizes={`(min-width: ${screens.wide}px) 35vw, (min-width: ${screens.sm}px) 50vw, 100vw`}
                   loading={index < 4 ? 'eager' : undefined}
                   className="absolute inset-0"
                 />
