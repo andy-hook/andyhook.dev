@@ -113,6 +113,9 @@ import sketchbookHeadspace from '@/public/images/sketchbook/sketchbook-headspace
 import sketchbookTattoo from '@/public/images/sketchbook/sketchbook-tattoo.jpg';
 import sketchbookSuit from '@/public/images/sketchbook/sketchbook-suit.jpg';
 import sketchbookSnowman from '@/public/images/sketchbook/sketchbook-snowman.jpg';
+import sketchbookSandsTime from '@/public/images/sketchbook/sketchbook-sands-time.jpg';
+import sketchbookPatchWork from '@/public/images/sketchbook/sketchbook-patch-work.jpg';
+import sketchbookOrc from '@/public/images/sketchbook/sketchbook-orc.jpg';
 
 /* -------------------------------------------------------------------------------------------------
  * Aragon Images
@@ -602,6 +605,24 @@ const sketchbookSnowmanImage = {
   color: '#E9EBEC',
 };
 
+const sketchbookSandsTimeImage = {
+  src: sketchbookSandsTime,
+  alt: 'Sketch showing a sand timer with wings',
+  color: '#e2dfe0',
+};
+
+const sketchbookPatchWorkImage = {
+  src: sketchbookPatchWork,
+  alt: 'Abstract colourful portrait of a man',
+  color: '#d2cfcf',
+};
+
+const sketchbookOrcImage = {
+  src: sketchbookOrc,
+  alt: 'Sketch of a creature with protruding horns',
+  color: '#b7b3b2',
+};
+
 export {
   aragonIntroImage,
   aragonComponentsImage,
@@ -682,4 +703,7 @@ export {
   sketchbookTattooImage,
   sketchbookSuitImage,
   sketchbookSnowmanImage,
+  sketchbookSandsTimeImage,
+  sketchbookPatchWorkImage,
+  sketchbookOrcImage,
 };
