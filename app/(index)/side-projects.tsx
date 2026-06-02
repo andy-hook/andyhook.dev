@@ -19,11 +19,6 @@ export const SideProjects = React.forwardRef<SideProjectsElement, SideProjectsPr
     return (
       <section {...props} ref={forwardedRef}>
         <Gutter className="relative pt-12 md:pt-20 lg:pt-24 xl:pt-32">
-          <Line
-            className="absolute top-0 hidden md:block -left-full -right-full"
-            solid
-            contrast="low"
-          />
           <Container>
             <div className="mb-12 md:mb-14 lg:mb-20 xl:mb-24 lg:text-center relative z-10 md:pl-7 lg:pl-0">
               <h2 className="text-slate-8 font-display font-normal tracking-tighter text-3xl lg:text-4xl xl:text-5xl capsize leading-tight lg:leading-tight xl:leading-tight max-w-[25em] lg:mx-auto">
