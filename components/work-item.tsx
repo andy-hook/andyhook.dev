@@ -12,6 +12,7 @@ import * as HoverGroup from '@/components/primitives/hover-group';
 import { Project } from '@/types';
 import { RouterImage, RouterLink } from '@/app/router';
 import { FocusRing } from './focus-ring';
+import * as Chip from '@/components/chip';
 
 const MOTION_TRANSITION = {
   type: 'spring',
@@ -110,15 +111,14 @@ export const WorkItem = React.forwardRef<WorkItemElement, WorkItemProps>(
                   transition={{ duration: 0.1 }}
                 >
                   {project.type === 'personal' && (
-                    <div
-                      className={cx(
-                        'bg-slate-2 absolute text-slate-12 z-10 font-body font-semibold text-sm py-2 px-2.5 rounded-full flex items-center gap-1.5',
-                        isLarge ? 'top-5 right-5 lg:top-8 lg:right-8' : 'top-5 right-5',
-                      )}
+                    <Chip.Root
+                      className={isLarge ? 'top-5 right-5 lg:top-8 lg:right-8' : 'top-5 right-5'}
                     >
-                      <BookOpenIcon className="size-4 text-slate-10" />
-                      <span className="capsize">Exploration</span>
-                    </div>
+                      <Chip.Icon side="left">
+                        <BookOpenIcon />
+                      </Chip.Icon>
+                      <Chip.Text>Exploration</Chip.Text>
+                    </Chip.Root>
                   )}
 
                   {project.externalUrl && (

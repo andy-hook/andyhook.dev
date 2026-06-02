@@ -6,6 +6,7 @@ import * as Project from '../_components/project';
 import { artifacts, getProjectById } from '@/data';
 import { cx } from '@/cva.config';
 import { InformationCircleIcon } from '@heroicons/react/16/solid';
+import * as Chip from '@/components/chip';
 
 const GRID_PRECISION = 40;
 
@@ -113,17 +114,14 @@ const ArtifactGridItem = React.forwardRef<ArtifactGridItemElement, ArtifactGridI
       >
         <div className="absolute shadow-md bg-white" style={{ inset: 'calc(var(--gap) / 2)' }}>
           <div className={cx('absolute', 'inset-[6vw]', 'sm:inset-[3vw]', 'wide:inset-[1.5vw]')}>
-            <div
-              className={cx(
-                'bg-slate-2 absolute text-slate-12 z-10 font-body font-semibold text-sm py-2 pl-3 pr-2.5 rounded-full flex items-center gap-1.5',
-                'bottom-6 right-6',
-              )}
-            >
-              <span className="capsize">
+            <Chip.Root className="bottom-6 right-6">
+              <Chip.Text>
                 {name} · {year}
-              </span>
-              <InformationCircleIcon className="size-4 text-slate-10" />
-            </div>
+              </Chip.Text>
+              <Chip.Icon side="right">
+                <InformationCircleIcon />
+              </Chip.Icon>
+            </Chip.Root>
             <RouterImage
               image={image}
               fill
