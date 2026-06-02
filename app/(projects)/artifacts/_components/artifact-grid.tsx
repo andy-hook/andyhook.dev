@@ -23,6 +23,11 @@ export const ArtifactGrid = React.forwardRef<ArtifactGridElement, ArtifactGridPr
       <ul
         {...props}
         className={cx(
+          '[--gap:20px]',
+          'md:[--gap:30px]',
+          'lg:[--gap:40px]',
+          'xl:[--gap:50px]',
+          'widest:[--gap:70px]',
           'grid-cols-[repeat(auto-fill,_minmax(100%,_1fr))]',
           'sm:grid-cols-[repeat(auto-fill,_minmax(50%,_1fr))]',
           'wide:grid-cols-[repeat(auto-fill,_minmax(33%,_1fr))]',
