@@ -37,7 +37,8 @@ export type PersonId =
   | 'itamar'
   | 'ben-g'
   | 'elik'
-  | 'henry';
+  | 'henry'
+  | 'jo';
 
 export type TestimonialId = PersonId;
 

@@ -69,6 +69,7 @@ import itamarRavidAvatar from '@/public/images/avatars/itamar-ravid.png';
 import benGadAvatar from '@/public/images/avatars/ben-gad.png';
 import elikEizenbergAvatar from '@/public/images/avatars/elik-eizenberg.png';
 import henryOswaldAvatar from '@/public/images/avatars/henry-oswald.png';
+import joDawesAvatar from '@/public/images/avatars/jo-dawes.png';
 
 /* -------------------------------------------------------------------------------------------------
  * Thumbnails
@@ -419,6 +420,12 @@ const henryOswaldAvatarImage = {
   color: '#818181',
 };
 
+const joDawesAvatarImage = {
+  src: joDawesAvatar,
+  alt: 'Jo Dawes',
+  color: '#B5B8AF',
+};
+
 /* -------------------------------------------------------------------------------------------------
  * Thumbnail Images
  * -----------------------------------------------------------------------------------------------*/
@@ -672,6 +679,7 @@ export {
   benGadAvatarImage,
   elikEizenbergAvatarImage,
   henryOswaldAvatarImage,
+  joDawesAvatarImage,
   //
   radixThumbImage,
   radixThumbSmallImage,

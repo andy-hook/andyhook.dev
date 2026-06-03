@@ -271,7 +271,7 @@ const SidebarMenuContent = React.forwardRef<SidebarMenuContentElement, SidebarMe
 
         <div className="h-full flex flex-col justify-between gap-12 md:gap-14 lg:gap-20 xl:gap-24">
           <div className="grow flex items-center">
-            <div className="mt-[15vh] pt-8 md:pt-12 lg:pt-14 xl:pt-16 grow">
+            <div className="mt-[10vh] pt-8 md:pt-12 lg:pt-14 xl:pt-16 grow">
               <h3 className="font-body text-sm lg:text-base xl:text-lg font-medium capsize text-slate-light-9 mb-7 md:mb-8 lg:mb-10 xl:mb-12">
                 Works
               </h3>
