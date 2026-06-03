@@ -112,7 +112,10 @@ export const WorkItem = React.forwardRef<WorkItemElement, WorkItemProps>(
                 >
                   {project.type === 'personal' && (
                     <Chip.Root
-                      className={isLarge ? 'top-5 right-5 lg:top-8 lg:right-8' : 'top-5 right-5'}
+                      className={cx(
+                        'absolute',
+                        isLarge ? 'top-5 right-5 lg:top-8 lg:right-8' : 'top-5 right-5',
+                      )}
                     >
                       <Chip.Icon side="left">
                         <BookOpenIcon />

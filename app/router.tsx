@@ -114,7 +114,7 @@ const RouterProvider: React.FC<React.PropsWithChildren> = (props) => {
         }
       }}
     >
-      <div className={cx(state !== 'idle' && 'pointer-events-none', 'overflow-hidden')}>
+      <div className={cx(state !== 'idle' && 'pointer-events-none overflow-hidden')}>
         {children}
       </div>
       <AnimatePresence>

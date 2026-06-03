@@ -22,9 +22,7 @@ export default function ArtifactsPage() {
       >
         <RouterTransition
           multiplier={15}
-          className={cx(
-            'z-10 relative bg-slate-12 p-4 md:p-12 lg:p-16 2xl:p-[6vw] overflow-hidden',
-          )}
+          className={cx('z-10 relative bg-slate-12 p-4 md:p-12 lg:p-16 2xl:p-[6vw]')}
         >
           <ArtifactGrid.Root>
             {artifacts.map(({ name, year, src }, index) => (
