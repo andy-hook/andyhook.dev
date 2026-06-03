@@ -119,6 +119,7 @@ import sketchbookPatchWork from '@/public/images/sketchbook/sketchbook-patch-wor
 import sketchbookOrc from '@/public/images/sketchbook/sketchbook-orc.jpg';
 import sketchbookNavalCarving from '@/public/images/sketchbook/sketchbook-naval-carving.jpg';
 import sketchbookQuickFigureStudies from '@/public/images/sketchbook/sketchbook-quick-figure-studies.jpg';
+import sketchbookStillLife from '@/public/images/sketchbook/sketchbook-still-life.jpg';
 
 /* -------------------------------------------------------------------------------------------------
  * Aragon Images
@@ -644,6 +645,12 @@ const sketchbookQuickFigureStudiesImage = {
   color: '#a9a2ab',
 };
 
+const sketchbookStillLifeImage = {
+  src: sketchbookStillLife,
+  alt: 'Charcoal still life of boxes and bottles',
+  color: '#afa69e',
+};
+
 export {
   aragonIntroImage,
   aragonComponentsImage,
@@ -730,4 +737,5 @@ export {
   sketchbookOrcImage,
   sketchbookNavalCarvingImage,
   sketchbookQuickFigureStudiesImage,
+  sketchbookStillLifeImage,
 };
