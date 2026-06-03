@@ -117,6 +117,9 @@ import sketchbookSnowman from '@/public/images/sketchbook/sketchbook-snowman.jpg
 import sketchbookSandsTime from '@/public/images/sketchbook/sketchbook-sands-time.jpg';
 import sketchbookPatchWork from '@/public/images/sketchbook/sketchbook-patch-work.jpg';
 import sketchbookOrc from '@/public/images/sketchbook/sketchbook-orc.jpg';
+import sketchbookNavalCarving from '@/public/images/sketchbook/sketchbook-naval-carving.jpg';
+import sketchbookQuickFigureStudies from '@/public/images/sketchbook/sketchbook-quick-figure-studies.jpg';
+import sketchbookStillLife from '@/public/images/sketchbook/sketchbook-still-life.jpg';
 
 /* -------------------------------------------------------------------------------------------------
  * Aragon Images
@@ -630,6 +633,24 @@ const sketchbookOrcImage = {
   color: '#b7b3b2',
 };
 
+const sketchbookNavalCarvingImage = {
+  src: sketchbookNavalCarving,
+  alt: 'Pen sketch of naval detailing on the hull',
+  color: '#dddde2',
+};
+
+const sketchbookQuickFigureStudiesImage = {
+  src: sketchbookQuickFigureStudies,
+  alt: 'Charcoal female figure studies',
+  color: '#a9a2ab',
+};
+
+const sketchbookStillLifeImage = {
+  src: sketchbookStillLife,
+  alt: 'Charcoal still life of boxes and bottles',
+  color: '#afa69e',
+};
+
 export {
   aragonIntroImage,
   aragonComponentsImage,
@@ -714,4 +735,7 @@ export {
   sketchbookSandsTimeImage,
   sketchbookPatchWorkImage,
   sketchbookOrcImage,
+  sketchbookNavalCarvingImage,
+  sketchbookQuickFigureStudiesImage,
+  sketchbookStillLifeImage,
 };
