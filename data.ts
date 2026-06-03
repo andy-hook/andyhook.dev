@@ -77,6 +77,7 @@ import {
   sketchbookSandsTimeImage,
   sketchbookPatchWorkImage,
   sketchbookOrcImage,
+  joDawesAvatarImage,
 } from './images';
 
 export const experience: Experience[] = [
@@ -265,6 +266,12 @@ export const people: Person[] = [
     avatar: henryOswaldAvatarImage,
     bio: 'https://www.linkedin.com/in/henryoswald/',
   },
+  {
+    id: 'jo',
+    name: 'Jo Dawes',
+    avatar: joDawesAvatarImage,
+    bio: 'https://www.linkedin.com/in/jopetty/',
+  },
 ];
 
 export const testimonials: Testimonial[] = [
@@ -353,6 +360,16 @@ export const testimonials: Testimonial[] = [
     role: 'CEO & Founder',
     company: 'Scroll AI',
     full: "Andy is self-reliant, smart, and technically very strong. He doesn't just build what is asked, but thinks through what users are trying to do, where the product might feel confusing, and how to make the final experience simpler, clearer, and more useful.",
+    excerpt: 'TBC',
+  },
+  {
+    id: 'jo',
+    name: getPersonById('jo').name,
+    avatar: getPersonById('jo').avatar,
+    bio: getPersonById('jo').bio,
+    role: 'Staff Tech Writer',
+    company: 'Unity',
+    full: "Andy has an amazing depth of knowledge in design and front-end development and is continually improving himself. If you ever have the chance to work with him you'll be in capable hands: he's one of the best out there.",
     excerpt: 'TBC',
   },
 ];
@@ -469,7 +486,7 @@ export const projects: Project[] = [
     tenure: '2004 - 2022',
     thumbnail: sketchbookThumbImage,
     thumbnailSmall: sketchbookThumbSmallImage,
-    testimonial: getTestimonialById('ze'),
+    testimonial: getTestimonialById('jo'),
   },
   {
     id: 'blocks',
