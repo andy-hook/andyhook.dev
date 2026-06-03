@@ -19,7 +19,7 @@ export const Chip = React.forwardRef<ChipElement, ChipProps>(
       <Comp
         {...props}
         className={cx(
-          'bg-slate-2 absolute text-slate-12 z-10 font-body font-semibold text-xs lg:text-sm py-2 px-3.5 rounded-full flex items-center gap-1 lg:gap-1.5',
+          'bg-slate-2 text-slate-12 z-10 font-body font-semibold text-xs lg:text-sm py-2 px-3.5 rounded-full flex items-center gap-1 lg:gap-1.5',
           className,
         )}
         ref={forwardedRef}

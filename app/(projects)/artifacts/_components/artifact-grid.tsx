@@ -79,28 +79,29 @@ export const ArtifactGridItem = React.forwardRef<ArtifactGridItemElement, Artifa
             <div className={cx('absolute', 'inset-[6vw]', 'sm:inset-[3vw]', 'wide:inset-[1.5vw]')}>
               <AnimatePresence>
                 {hovered && (
-                  <Chip.Root className="top-6 right-6" asChild>
-                    <motion.div
-                      initial="hidden"
-                      animate="visible"
-                      exit="hidden"
-                      variants={{
-                        hidden: { y: -2, opacity: 0 },
-                        visible: { y: 0, opacity: 1 },
-                      }}
-                      transition={{
-                        type: 'spring',
-                        stiffness: 500,
-                        damping: 25,
-                        mass: 0.25,
-                      }}
-                    >
+                  <motion.div
+                    initial="hidden"
+                    animate="visible"
+                    exit="hidden"
+                    variants={{
+                      hidden: { y: -2, opacity: 0 },
+                      visible: { y: 0, opacity: 1 },
+                    }}
+                    transition={{
+                      type: 'spring',
+                      stiffness: 500,
+                      damping: 25,
+                      mass: 0.25,
+                    }}
+                    className="z-10 sticky top-0 inset-x-0 p-6 flex justify-end"
+                  >
+                    <Chip.Root>
                       <Chip.Text>{label}</Chip.Text>
                       <Chip.Icon side="right">
                         <InformationCircleIcon />
                       </Chip.Icon>
-                    </motion.div>
-                  </Chip.Root>
+                    </Chip.Root>
+                  </motion.div>
                 )}
               </AnimatePresence>
 
