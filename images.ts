@@ -117,6 +117,7 @@ import sketchbookSnowman from '@/public/images/sketchbook/sketchbook-snowman.jpg
 import sketchbookSandsTime from '@/public/images/sketchbook/sketchbook-sands-time.jpg';
 import sketchbookPatchWork from '@/public/images/sketchbook/sketchbook-patch-work.jpg';
 import sketchbookOrc from '@/public/images/sketchbook/sketchbook-orc.jpg';
+import sketchbookNavalCarving from '@/public/images/sketchbook/sketchbook-naval-carving.jpg';
 
 /* -------------------------------------------------------------------------------------------------
  * Aragon Images
@@ -630,6 +631,12 @@ const sketchbookOrcImage = {
   color: '#b7b3b2',
 };
 
+const sketchbookNavalCarvingImage = {
+  src: sketchbookNavalCarving,
+  alt: 'Pen sketch of naval detailing on the hull',
+  color: '#dddde2',
+};
+
 export {
   aragonIntroImage,
   aragonComponentsImage,
@@ -714,4 +721,5 @@ export {
   sketchbookSandsTimeImage,
   sketchbookPatchWorkImage,
   sketchbookOrcImage,
+  sketchbookNavalCarvingImage,
 };
