@@ -655,7 +655,7 @@ const sketchbookStillLifeImage = {
 const sketchbookSteampunkChurchImage = {
   src: sketchbookSteampunkChurch,
   alt: 'Painting of a church with a steampunk theme',
-  color: '#afa69e',
+  color: '#a8a7b2',
 };
 
 export {
