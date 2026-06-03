@@ -81,6 +81,7 @@ import {
   sketchbookNavalCarvingImage,
   sketchbookQuickFigureStudiesImage,
   sketchbookStillLifeImage,
+  sketchbookSteampunkChurchImage,
 } from './images';
 
 export const experience: Experience[] = [
@@ -567,11 +568,12 @@ export const artifacts: Artifact[] = [
   { name: 'Here be dragons', year: '2010', src: sketchbookMapImage },
   { name: 'Snowman', year: '2012', src: sketchbookSnowmanImage },
   { name: 'Sands of time', year: '2005', src: sketchbookSandsTimeImage },
-  { name: 'Patch work of a man', year: '2004', src: sketchbookPatchWorkImage },
+  { name: 'Steampunk', year: '2007', src: sketchbookSteampunkChurchImage },
   { name: 'Orc', year: '2004', src: sketchbookOrcImage },
   { name: 'Naval carvings', year: '2006', src: sketchbookNavalCarvingImage },
   { name: 'Short figure studies', year: '2005', src: sketchbookQuickFigureStudiesImage },
   { name: 'Still life', year: '2004', src: sketchbookStillLifeImage },
+  { name: 'Patch work of a man', year: '2004', src: sketchbookPatchWorkImage },
 ];
 
 // Utility functions

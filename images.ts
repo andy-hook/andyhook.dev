@@ -120,6 +120,7 @@ import sketchbookOrc from '@/public/images/sketchbook/sketchbook-orc.jpg';
 import sketchbookNavalCarving from '@/public/images/sketchbook/sketchbook-naval-carving.jpg';
 import sketchbookQuickFigureStudies from '@/public/images/sketchbook/sketchbook-quick-figure-studies.jpg';
 import sketchbookStillLife from '@/public/images/sketchbook/sketchbook-still-life.jpg';
+import sketchbookSteampunkChurch from '@/public/images/sketchbook/sketchbook-steampunk-church.jpg';
 
 /* -------------------------------------------------------------------------------------------------
  * Aragon Images
@@ -651,6 +652,12 @@ const sketchbookStillLifeImage = {
   color: '#afa69e',
 };
 
+const sketchbookSteampunkChurchImage = {
+  src: sketchbookSteampunkChurch,
+  alt: 'Painting of a church with a steampunk theme',
+  color: '#a8a7b2',
+};
+
 export {
   aragonIntroImage,
   aragonComponentsImage,
@@ -738,4 +745,5 @@ export {
   sketchbookNavalCarvingImage,
   sketchbookQuickFigureStudiesImage,
   sketchbookStillLifeImage,
+  sketchbookSteampunkChurchImage,
 };
