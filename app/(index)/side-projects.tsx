@@ -22,7 +22,7 @@ export const SideProjects = React.forwardRef<SideProjectsElement, SideProjectsPr
           <Container>
             <div className="mb-12 md:mb-14 lg:mb-20 xl:mb-24 lg:text-center relative z-10 md:pl-7 lg:pl-0 pt-12 md:pt-20 lg:pt-24 xl:pt-32">
               <h2 className="text-slate-8 font-display font-normal tracking-tighter text-3xl lg:text-4xl xl:text-5xl capsize leading-tight lg:leading-tight xl:leading-tight max-w-[25em] lg:mx-auto">
-                <div className="text-balance">
+                <div className="text-balance text-transparent bg-gradient-to-br from-slate-11 via-slate-9 to-slate-8 bg-clip-text">
                   <span className="text-slate-12">Side projects</span> are where I reconnect with
                   the joy of exploring. There are no requirements, no deadlines, just{' '}
                   <span className="text-slate-12">curiosity</span>,{' '}
