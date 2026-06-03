@@ -79,6 +79,7 @@ import {
   sketchbookOrcImage,
   joDawesAvatarImage,
   sketchbookNavalCarvingImage,
+  sketchbookQuickFigureStudiesImage,
 } from './images';
 
 export const experience: Experience[] = [
@@ -568,6 +569,7 @@ export const artifacts: Artifact[] = [
   { name: 'Patch work of a man', year: '2004', src: sketchbookPatchWorkImage },
   { name: 'Orc', year: '2004', src: sketchbookOrcImage },
   { name: 'Naval carvings', year: '2006', src: sketchbookNavalCarvingImage },
+  { name: 'Short figure studies', year: '2005', src: sketchbookQuickFigureStudiesImage },
 ];
 
 // Utility functions

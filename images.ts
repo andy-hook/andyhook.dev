@@ -118,6 +118,7 @@ import sketchbookSandsTime from '@/public/images/sketchbook/sketchbook-sands-tim
 import sketchbookPatchWork from '@/public/images/sketchbook/sketchbook-patch-work.jpg';
 import sketchbookOrc from '@/public/images/sketchbook/sketchbook-orc.jpg';
 import sketchbookNavalCarving from '@/public/images/sketchbook/sketchbook-naval-carving.jpg';
+import sketchbookQuickFigureStudies from '@/public/images/sketchbook/sketchbook-quick-figure-studies.jpg';
 
 /* -------------------------------------------------------------------------------------------------
  * Aragon Images
@@ -637,6 +638,12 @@ const sketchbookNavalCarvingImage = {
   color: '#dddde2',
 };
 
+const sketchbookQuickFigureStudiesImage = {
+  src: sketchbookQuickFigureStudies,
+  alt: 'Charcoal female figure studies',
+  color: '#a9a2ab',
+};
+
 export {
   aragonIntroImage,
   aragonComponentsImage,
@@ -722,4 +729,5 @@ export {
   sketchbookPatchWorkImage,
   sketchbookOrcImage,
   sketchbookNavalCarvingImage,
+  sketchbookQuickFigureStudiesImage,
 };
