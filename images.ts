@@ -122,6 +122,7 @@ import sketchbookQuickFigureStudies from '@/public/images/sketchbook/sketchbook-
 import sketchbookStillLife from '@/public/images/sketchbook/sketchbook-still-life.jpg';
 import sketchbookSteampunkChurch from '@/public/images/sketchbook/sketchbook-steampunk-church.jpg';
 import sketchbookJulius from '@/public/images/sketchbook/sketchbook-julius.jpg';
+import sketchbookHardSurface from '@/public/images/sketchbook/sketchbook-hard-surface.jpg';
 
 /* -------------------------------------------------------------------------------------------------
  * Aragon Images
@@ -665,6 +666,12 @@ const sketchbookJuliusImage = {
   color: '#dbdedb',
 };
 
+const sketchbookHardSurfaceImage = {
+  src: sketchbookHardSurface,
+  alt: 'Abstract pen and water colour illustration of geometric shapes',
+  color: '#acabab',
+};
+
 export {
   aragonIntroImage,
   aragonComponentsImage,
@@ -754,4 +761,5 @@ export {
   sketchbookStillLifeImage,
   sketchbookSteampunkChurchImage,
   sketchbookJuliusImage,
+  sketchbookHardSurfaceImage,
 };
