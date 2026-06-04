@@ -82,6 +82,9 @@ import {
   sketchbookQuickFigureStudiesImage,
   sketchbookStillLifeImage,
   sketchbookSteampunkChurchImage,
+  sketchbookJuliusImage,
+  sketchbookHardSurfaceImage,
+  sketchbookContrastImage,
 } from './images';
 
 export const experience: Experience[] = [
@@ -573,6 +576,9 @@ export const artifacts: Artifact[] = [
   { name: 'Naval carvings', year: '2006', src: sketchbookNavalCarvingImage },
   { name: 'Short figure studies', year: '2005', src: sketchbookQuickFigureStudiesImage },
   { name: 'Still life', year: '2004', src: sketchbookStillLifeImage },
+  { name: 'Contrast', year: '2005', src: sketchbookContrastImage },
+  { name: 'Hard surface', year: '2007', src: sketchbookHardSurfaceImage },
+  { name: 'Julius', year: '2007', src: sketchbookJuliusImage },
   { name: 'Patch work of a man', year: '2004', src: sketchbookPatchWorkImage },
 ];
 
