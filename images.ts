@@ -123,6 +123,7 @@ import sketchbookStillLife from '@/public/images/sketchbook/sketchbook-still-lif
 import sketchbookSteampunkChurch from '@/public/images/sketchbook/sketchbook-steampunk-church.jpg';
 import sketchbookJulius from '@/public/images/sketchbook/sketchbook-julius.jpg';
 import sketchbookHardSurface from '@/public/images/sketchbook/sketchbook-hard-surface.jpg';
+import sketchbookContrast from '@/public/images/sketchbook/sketchbook-contrast.jpg';
 
 /* -------------------------------------------------------------------------------------------------
  * Aragon Images
@@ -672,6 +673,12 @@ const sketchbookHardSurfaceImage = {
   color: '#acabab',
 };
 
+const sketchbookContrastImage = {
+  src: sketchbookContrast,
+  alt: 'Charcoal study showing a woman enveloped in darkness with light shining',
+  color: '#565757',
+};
+
 export {
   aragonIntroImage,
   aragonComponentsImage,
@@ -762,4 +769,5 @@ export {
   sketchbookSteampunkChurchImage,
   sketchbookJuliusImage,
   sketchbookHardSurfaceImage,
+  sketchbookContrastImage,
 };
