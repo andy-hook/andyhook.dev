@@ -121,6 +121,7 @@ import sketchbookNavalCarving from '@/public/images/sketchbook/sketchbook-naval-
 import sketchbookQuickFigureStudies from '@/public/images/sketchbook/sketchbook-quick-figure-studies.jpg';
 import sketchbookStillLife from '@/public/images/sketchbook/sketchbook-still-life.jpg';
 import sketchbookSteampunkChurch from '@/public/images/sketchbook/sketchbook-steampunk-church.jpg';
+import sketchbookJulius from '@/public/images/sketchbook/sketchbook-julius.jpg';
 
 /* -------------------------------------------------------------------------------------------------
  * Aragon Images
@@ -658,6 +659,12 @@ const sketchbookSteampunkChurchImage = {
   color: '#a8a7b2',
 };
 
+const sketchbookJuliusImage = {
+  src: sketchbookJulius,
+  alt: 'Pencil portrait of a young ceasar',
+  color: '#dbdedb',
+};
+
 export {
   aragonIntroImage,
   aragonComponentsImage,
@@ -746,4 +753,5 @@ export {
   sketchbookQuickFigureStudiesImage,
   sketchbookStillLifeImage,
   sketchbookSteampunkChurchImage,
+  sketchbookJuliusImage,
 };
