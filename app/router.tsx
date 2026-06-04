@@ -114,13 +114,7 @@ const RouterProvider: React.FC<React.PropsWithChildren> = (props) => {
         }
       }}
     >
-      <div
-        className={cx(
-          state !== 'idle' && 'pointer-events-none overflow-hidden',
-          // TODO: Figure out how to make this work with sticky
-          'overflow-hidden',
-        )}
-      >
+      <div className={cx(state !== 'idle' && 'pointer-events-none overflow-hidden')}>
         {children}
       </div>
       <AnimatePresence>

@@ -45,10 +45,10 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="overflow-x-clip">
       <Theme asChild>
         <body
-          className={cx(displayFont.variable, bodyFont.variable, 'relative overflow-x-hidden z-0')}
+          className={cx(displayFont.variable, bodyFont.variable, 'relative overflow-x-clip z-0')}
         >
           <DeviceProvider>
             <TooltipPrimitive.DelayProvider delay={{ open: 250, close: 0 }} timeoutMs={250}>
