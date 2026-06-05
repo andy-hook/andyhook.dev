@@ -27,6 +27,7 @@ export default function BlocksPage() {
         additionalTeam={project.additionalTeam}
         role={project.role}
         tenure={project.tenure}
+        exploration
       >
         <Project.Hero
           heroImage={project.heroImage}

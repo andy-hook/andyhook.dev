@@ -489,7 +489,7 @@ export const projects: Project[] = [
     type: 'personal',
     title: 'Artifacts',
     subtitle: 'Assorted art studies from the archive',
-    role: 'Fine Art Studies & Illustration',
+    role: 'Art Studies & Illustration',
     tenure: '2004 - 2022',
     thumbnail: sketchbookThumbImage,
     thumbnailSmall: sketchbookThumbSmallImage,
