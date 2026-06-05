@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { UserIcon, CalendarIcon } from '@heroicons/react/16/solid';
+import { UserIcon, CalendarIcon, BookOpenIcon } from '@heroicons/react/16/solid';
 
 import { projects } from '@/data';
 
@@ -146,29 +146,46 @@ interface ProjectHeaderProps extends React.ComponentPropsWithoutRef<'section'> {
   tenure: string;
   team?: TeamMember[];
   additionalTeam?: number;
+  exploration?: boolean;
 }
 
 const ProjectHeader = React.forwardRef<ProjectHeaderElement, ProjectHeaderProps>(
   (
-    { children, title, subtitle, role, tenure, team = [], additionalTeam = 0, ...props },
+    {
+      children,
+      title,
+      subtitle,
+      role,
+      tenure,
+      team = [],
+      additionalTeam = 0,
+      exploration,
+      ...props
+    },
     forwardedRef,
   ) => {
-    const projectMeta = [
-      [
-        UserIcon,
-        <>
-          <span className="sr-only">Role: </span>
-          {role}
-        </>,
-      ],
-      [
-        CalendarIcon,
-        <>
-          <span className="sr-only">Tenure: </span>
-          {tenure}
-        </>,
-      ],
-    ] as const;
+    const projectMeta = React.useMemo(() => {
+      const meta = [
+        [
+          UserIcon,
+          <>
+            <span className="sr-only">Role: </span>
+            {role}
+          </>,
+        ],
+        [
+          CalendarIcon,
+          <>
+            <span className="sr-only">Tenure: </span>
+            {tenure}
+          </>,
+        ],
+      ] as const;
+
+      if (exploration) return [[BookOpenIcon, 'Exploration'], ...meta] as const;
+
+      return meta;
+    }, [exploration, role, tenure]);
 
     const renderedTeam = team.map(({ avatar, name, role }) => ({
       avatar,

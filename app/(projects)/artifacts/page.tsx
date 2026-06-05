@@ -19,6 +19,7 @@ export default function ArtifactsPage() {
         additionalTeam={project.additionalTeam}
         role={project.role}
         tenure={project.tenure}
+        exploration
       >
         <RouterTransition
           multiplier={15}
