@@ -85,7 +85,7 @@ export const Copy = React.forwardRef<CopyElement, CopyProps>(
           <Floating.FloatingPortal>
             <div
               aria-hidden
-              className="size-20 pointer-events-none"
+              className="size-20 pointer-events-none z-20"
               style={floatingStyles}
               ref={refs.setFloating}
               {...getFloatingProps()}
