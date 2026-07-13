@@ -287,7 +287,7 @@ export const testimonials: Testimonial[] = [
     name: getPersonById('vlad').name,
     avatar: getPersonById('vlad').avatar,
     bio: getPersonById('vlad').bio,
-    role: 'Co-founder',
+    role: 'Founding Design',
     company: 'paper.design',
     full: 'Full quote here.',
     excerpt:
