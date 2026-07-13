@@ -133,7 +133,7 @@ export const experience: Experience[] = [
     logoAsset: BrightMark,
     title: 'UX Engineer',
     company: 'Bright Interactive',
-    tenure: 'Sep 2018 – Jan 2021',
+    tenure: 'Sep 2018 – May 2020',
     description:
       'Built the user interface of the Dash digital asset management platform. Crafted a front-end that is intuitive, reliable and extremely fast. Dash was built as an Angular SPA with Typescript, RxJS and supported by a micro-service back-end running on AWS.',
     link: 'https://builtbybright.com',
@@ -409,7 +409,7 @@ export const projects: Project[] = [
     type: 'professional',
     title: 'Scroll',
     subtitle: 'Powerful knowledge agents',
-    role: 'Software Engineer',
+    role: 'Sr Software Engineer',
     tenure: 'Sept 2024 – June 2026',
     technologies: [
       'React',
@@ -430,8 +430,8 @@ export const projects: Project[] = [
       { ...getPersonById('elik'), role: 'Lead Product' },
       { ...getPersonById('ben-g'), role: 'Lead Product' },
       { ...getPersonById('itamar'), role: 'Lead Engineer' },
-      { ...getPersonById('jenna'), role: 'Software Engineer' },
-      { ...getPersonById('henry'), role: 'Software Engineer' },
+      { ...getPersonById('jenna'), role: 'Sr Software Engineer' },
+      { ...getPersonById('henry'), role: 'Sr Software Engineer' },
     ],
     additionalTeam: 2,
   },
