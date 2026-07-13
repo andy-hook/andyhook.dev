@@ -115,7 +115,7 @@ export const experience: Experience[] = [
     company: 'Modulz',
     tenure: 'Apr 2021 – Mar 2022',
     description:
-      'Core maintainer of Radix UI, a popular headless UI library used by thousands of React developers. Worked closely with the team to scope, shape, research and implement WAI-ARIA compliant accessible UI patterns and DX centric component APIs.',
+      'I was core maintainer of Radix UI, a popular headless UI library touching millions of end-users. I worked closely with the team to scope, shape, research and implement WAI-ARIA compliant accessible UI patterns and DX-centric component APIs.',
     link: 'https://modulz.app',
   },
   {
