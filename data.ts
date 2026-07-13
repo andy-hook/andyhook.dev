@@ -105,7 +105,7 @@ export const experience: Experience[] = [
     company: 'WorkOS',
     tenure: 'Mar 2022 – May 2024',
     description:
-      'Acquired Modulz in March 2022. Continued to maintain Radix UI, shipping the stable v1 release which grew to eco-system dominance (130m monthly). I later joined a horizontal product team, leading the dashboard re-architecture and supporting the rollout of User Management.',
+      'WorkOS acquired Modulz in March 2022. I continued to maintain Radix UI, shipping the stable v1 release which grew to eco-system dominance (130m monthly). I later joined a horizontal product team, leading the dashboard re-architecture and supporting the rollout of User Management.',
     link: 'https://workos.com',
   },
   {
@@ -428,8 +428,8 @@ export const projects: Project[] = [
     testimonial: getTestimonialById('elik'),
     team: [
       { ...getPersonById('elik'), role: 'Lead Product' },
+      { ...getPersonById('ben-g'), role: 'Lead Product' },
       { ...getPersonById('itamar'), role: 'Lead Engineer' },
-      { ...getPersonById('ben-g'), role: 'Product Designer' },
       { ...getPersonById('jenna'), role: 'Software Engineer' },
       { ...getPersonById('henry'), role: 'Software Engineer' },
     ],

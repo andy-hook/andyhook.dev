@@ -313,7 +313,7 @@ const Background = React.forwardRef<BackgroundElement, BackgroundProps>(
               y="50%"
             >
               <rect width="1" height="100%" y="1" className="fill-slate-3/75" />
-              <rect width="100%" height="1" className="fill-slate-3/80" />
+              <rect width="100%" height="1" className="fill-slate-3/40" />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill={`url(#${patternId})`} />
