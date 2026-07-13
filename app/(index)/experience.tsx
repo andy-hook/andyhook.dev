@@ -25,23 +25,21 @@ export const Experience = React.forwardRef<ExperienceElement, ExperienceProps>(
 
               <div className="text-slate-11 font-body font-normal leading-relaxed sm:leading-relaxed lg:leading-relaxed text-sm sm:text-base lg:text-lg space-y-10 lg:row-span-2 mb-14 lg:mb-0">
                 <p className="capsize">
-                  I’m a front-end focused software engineer with more than 15 years of experience
-                  building high-quality digital products across AI, developer tooling, SaaS, and
-                  collaborative web applications.
+                  I’m a design-minded software engineer with more than 15 years of experience
+                  building high-quality interfaces and design systems across AI, developer tooling,
+                  SaaS, and collaborative web applications.
                 </p>
 
                 <p className="capsize">
-                  My background spans product architecture, design engineering, accessibility,
-                  performance, and developer experience. I’ve worked on everything from AI-powered
-                  editing environments and authentication platforms to widely adopted component
-                  systems used by millions of developers.
+                  My work spans UI architecture, design engineering, accessibility, performance, and
+                  developer experience. I’ve worked on everything from AI-powered rich-text
+                  environments and authentication products to widely adopted component systems that
+                  power interfaces used by millions.
                 </p>
 
                 <p className="capsize">
-                  Design remains a core strength. I bring a deep understanding of usability,
-                  interaction design, and interface quality, allowing me to bridge product thinking
-                  and engineering execution while building software that is both technically robust
-                  and intuitive to use.
+                  I bring a deep understanding of usability and interaction design to product work,
+                  simplifying complex surfaces into software that feels robust and intuitive.
                 </p>
               </div>
 
