@@ -411,15 +411,7 @@ export const projects: Project[] = [
     subtitle: 'Powerful knowledge agents',
     role: 'Sr Software Engineer',
     tenure: 'Sept 2024 – June 2026',
-    technologies: [
-      'React',
-      'Typescript',
-      'Next.js',
-      'Zero Sync',
-      'ProseMirror',
-      'tRPC',
-      'Temporal',
-    ],
+    technologies: ['React', 'Typescript', 'Next.js', 'Zero Sync', 'ProseMirror', 'tRPC'],
     intro:
       'Scroll transforms your company’s knowledge into powerful domain experts. Connect your organizational documents, spreadsheets, videos, and internal resources and deploy powerful knowledge agents across your product surfaces. Scroll delivers instant, reliable answers and streamlines workflows.',
     thumbnail: scrollThumbImage,
