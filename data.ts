@@ -367,7 +367,8 @@ export const testimonials: Testimonial[] = [
     role: 'CEO & Founder',
     company: 'Scroll AI',
     full: "Andy is self-reliant, smart, and technically very strong. He doesn't just build what is asked, but thinks through what users are trying to do, where the product might feel confusing, and how to make the final experience simpler, clearer, and more useful.",
-    excerpt: 'TBC',
+    excerpt:
+      "Andy doesn't just build what is asked, but thinks through what users are trying to do, where the product might feel confusing, and how to make the final experience simpler, clearer, and more useful.",
   },
   {
     id: 'jo',

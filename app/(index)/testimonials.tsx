@@ -11,8 +11,8 @@ import { Gutter } from '@/components/gutter';
 const vlad = getTestimonialById('vlad');
 const benoit = getTestimonialById('benoit');
 const michael = getTestimonialById('michael');
-const andrew = getTestimonialById('andrew');
 const brett = getTestimonialById('brett');
+const elik = getTestimonialById('elik');
 
 type TestimonialsElement = React.ComponentRef<'section'>;
 
@@ -160,12 +160,12 @@ const TestimonialGrid = React.forwardRef<TestimonialGridElement, TestimonialGrid
             </li>
 
             <li className="lg:col-start-2 lg:row-start-2 px-5 py-7 md:p-7 xl:p-10 relative">
-              <TestimonialGridItem content={michael.excerpt}>
+              <TestimonialGridItem content={elik.excerpt}>
                 <Author
-                  name={michael.name}
-                  company={michael.company}
-                  role={michael.role}
-                  avatar={michael.avatar}
+                  name={elik.name}
+                  company={elik.company}
+                  role={elik.role}
+                  avatar={elik.avatar}
                 />
               </TestimonialGridItem>
 
@@ -173,12 +173,12 @@ const TestimonialGrid = React.forwardRef<TestimonialGridElement, TestimonialGrid
             </li>
 
             <li className="lg:col-start-3 lg:row-start-2 px-5 py-7 md:p-7 xl:p-10 relative">
-              <TestimonialGridItem content={andrew.excerpt}>
+              <TestimonialGridItem content={michael.excerpt}>
                 <Author
-                  name={andrew.name}
-                  company={andrew.company}
-                  role={andrew.role}
-                  avatar={andrew.avatar}
+                  name={michael.name}
+                  company={michael.company}
+                  role={michael.role}
+                  avatar={michael.avatar}
                 />
               </TestimonialGridItem>
 
