@@ -35,8 +35,8 @@ const bodyFont = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: 'Andy Hook – Senior Software Engineer',
-  description: 'Building high-performance user interfaces out of the UK',
+  title: 'Andy Hook – Senior Design Engineer',
+  description: 'Turning complex problems into intuitive interfaces',
 };
 
 export default async function RootLayout({
@@ -313,7 +313,7 @@ const Background = React.forwardRef<BackgroundElement, BackgroundProps>(
               y="50%"
             >
               <rect width="1" height="100%" y="1" className="fill-slate-3/75" />
-              <rect width="100%" height="1" className="fill-slate-3/80" />
+              <rect width="100%" height="1" className="fill-slate-3/40" />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill={`url(#${patternId})`} />

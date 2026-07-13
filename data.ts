@@ -95,7 +95,7 @@ export const experience: Experience[] = [
     company: 'Scroll AI',
     tenure: 'Sept 2024 – June 2026',
     description:
-      'I worked across nearly every user surface of the product, including rich-text editing, CRDT-based collaboration, chat rendering, sharing and permissions, authentication and entitlements, browser extensions, spreadsheet autofill interfaces, billing, and more.',
+      'I worked across nearly every user surface of the product, including rich-text editing, chat rendering, sharing, permissions, authentication, entitlements, browser extensions, spreadsheet autofill interfaces, billing, and more.',
     link: 'https://scroll.ai',
   },
   {
@@ -105,7 +105,7 @@ export const experience: Experience[] = [
     company: 'WorkOS',
     tenure: 'Mar 2022 – May 2024',
     description:
-      'Acquired in March 2022. I continued as maintainer of Radix UI, shipping the stable v1 release which grew to eco-system dominance (130m monthly). I later joined a horizontal product team, leading the dashboard re-architecture and supporting the rollout of User Management.',
+      'WorkOS acquired Modulz in March 2022. I continued to maintain Radix UI, shipping the stable v1 release which grew to eco-system dominance (130m monthly). I later joined a horizontal product team, leading the dashboard re-architecture and supporting the rollout of User Management.',
     link: 'https://workos.com',
   },
   {
@@ -115,7 +115,7 @@ export const experience: Experience[] = [
     company: 'Modulz',
     tenure: 'Apr 2021 – Mar 2022',
     description:
-      'Core maintainer of Radix UI, a popular headless UI library used by millions of developers. Worked closely with the team to scope, shape, research and implement WAI-ARIA compliant accessible UI patterns and DX centric component APIs.',
+      'Core maintainer of Radix UI, a popular headless UI library that powers interfaces used by millions. Worked closely with the team to scope, shape, research and implement WAI-ARIA compliant accessible UI patterns and DX centric component APIs.',
     link: 'https://modulz.app',
   },
   {
@@ -133,7 +133,7 @@ export const experience: Experience[] = [
     logoAsset: BrightMark,
     title: 'UX Engineer',
     company: 'Bright Interactive',
-    tenure: 'Sep 2018 – Jan 2021',
+    tenure: 'Sep 2018 – May 2020',
     description:
       'Built the user interface of the Dash digital asset management platform. Crafted a front-end that is intuitive, reliable and extremely fast. Dash was built as an Angular SPA with Typescript, RxJS and supported by a micro-service back-end running on AWS.',
     link: 'https://builtbybright.com',
@@ -165,7 +165,7 @@ export const experience: Experience[] = [
     company: 'Freelance',
     tenure: 'Jul 2009 – Feb 2012',
     description:
-      'Worked directly with a variety of clients on a range of creative web projects and campaigns, from visual conception through to delivery of completed assets and deployed front end code.',
+      'Worked directly with a variety of clients on a range of creative web projects and campaigns, from visual conception through to delivery of completed assets and deployed code.',
     link: 'https://andyhook.dev',
   },
 ];
@@ -287,7 +287,7 @@ export const testimonials: Testimonial[] = [
     name: getPersonById('vlad').name,
     avatar: getPersonById('vlad').avatar,
     bio: getPersonById('vlad').bio,
-    role: 'Co-founder',
+    role: 'Founding Design',
     company: 'paper.design',
     full: 'Full quote here.',
     excerpt:
@@ -367,7 +367,8 @@ export const testimonials: Testimonial[] = [
     role: 'CEO & Founder',
     company: 'Scroll AI',
     full: "Andy is self-reliant, smart, and technically very strong. He doesn't just build what is asked, but thinks through what users are trying to do, where the product might feel confusing, and how to make the final experience simpler, clearer, and more useful.",
-    excerpt: 'TBC',
+    excerpt:
+      "Andy doesn't just build what is asked, but thinks through what users are trying to do, where the product might feel confusing, and how to make the final experience simpler, clearer, and more useful.",
   },
   {
     id: 'jo',
@@ -409,17 +410,9 @@ export const projects: Project[] = [
     type: 'professional',
     title: 'Scroll',
     subtitle: 'Powerful knowledge agents',
-    role: 'Software Engineer',
+    role: 'Sr Software Engineer',
     tenure: 'Sept 2024 – June 2026',
-    technologies: [
-      'React',
-      'Typescript',
-      'Next.js',
-      'Zero Sync',
-      'ProseMirror',
-      'tRPC',
-      'Temporal',
-    ],
+    technologies: ['React', 'Typescript', 'Next.js', 'Zero Sync', 'ProseMirror', 'tRPC'],
     intro:
       'Scroll transforms your company’s knowledge into powerful domain experts. Connect your organizational documents, spreadsheets, videos, and internal resources and deploy powerful knowledge agents across your product surfaces. Scroll delivers instant, reliable answers and streamlines workflows.',
     thumbnail: scrollThumbImage,
@@ -428,10 +421,10 @@ export const projects: Project[] = [
     testimonial: getTestimonialById('elik'),
     team: [
       { ...getPersonById('elik'), role: 'Lead Product' },
+      { ...getPersonById('ben-g'), role: 'Lead Product' },
       { ...getPersonById('itamar'), role: 'Lead Engineer' },
-      { ...getPersonById('ben-g'), role: 'Product Designer' },
-      { ...getPersonById('jenna'), role: 'Software Engineer' },
-      { ...getPersonById('henry'), role: 'Software Engineer' },
+      { ...getPersonById('jenna'), role: 'Sr Software Engineer' },
+      { ...getPersonById('henry'), role: 'Sr Software Engineer' },
     ],
     additionalTeam: 2,
   },
