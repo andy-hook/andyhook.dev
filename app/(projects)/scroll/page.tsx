@@ -1,4 +1,3 @@
-import * as React from 'react';
 import * as Project from '../_components/project';
 import { getProjectMetadata } from '../_components/metadata';
 import { getProjectById } from '@/data';
@@ -47,19 +46,18 @@ export default function ScrollPage() {
           AI-enhanced source ingestion pipelines and rich-text editing technology to deliver
           streamed conversations and highly accurate responses.
         </p>
+
         <p className="capsize">
-          I worked across nearly every user surface of the product, including rich-text editing,{' '}
-          <TooltipLink href="https://crdt.tech">CRDT-based</TooltipLink> collaboration, sharing and
-          permissions systems, authentication and entitlements, browser extensions, Spreadsheet
-          autofill interfaces, and billing presentation.
+          I worked across nearly every user surface of the product, including rich-text editing,
+          sharing, permissions, authentication, entitlements, browser extensions, spreadsheet
+          autofill interfaces, billing and more.
         </p>
 
         <p className="capsize">
-          Although my primary focus was crafting intuitive front-end experiences, I also contributed
-          across the stack. My work included implementing both client and server-side image
-          cropping, advanced drag-and-drop organization, nested file and folder management,
-          interactive chat suggestion and citation rendering, and an intuitive source sync
-          interface.
+          Although my primary focus was crafting an intuitive front-end, I also contributed across
+          the stack. My work included implementing both client and server-side image cropping,
+          advanced drag-and-drop organization, nested file and folder management, interactive chat
+          suggestion and citation rendering, and an intuitive source sync interface.
         </p>
       </ContentSection>
 
