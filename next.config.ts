@@ -19,7 +19,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/cv',
-        destination: '/andy-hook-uk-software-engineer.pdf',
+        destination: '/andy-hook-uk-senior-design-engineer.pdf',
         permanent: true,
       },
     ];
