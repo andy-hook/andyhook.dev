@@ -95,7 +95,7 @@ export const experience: Experience[] = [
     company: 'Scroll AI',
     tenure: 'Sept 2024 – June 2026',
     description:
-      'I worked across nearly every user surface of the product, including rich-text editing, CRDT-based collaboration, chat rendering, sharing and permissions, authentication and entitlements, browser extensions, spreadsheet autofill interfaces, billing, and more.',
+      'I worked across nearly every user surface of the product, including rich-text editing, chat rendering, sharing, permissions, authentication, entitlements, browser extensions, spreadsheet autofill interfaces, billing, and more.',
     link: 'https://scroll.ai',
   },
   {
@@ -165,7 +165,7 @@ export const experience: Experience[] = [
     company: 'Freelance',
     tenure: 'Jul 2009 – Feb 2012',
     description:
-      'Worked directly with a variety of clients on a range of creative web projects and campaigns, from visual conception through to delivery of completed assets and deployed front end code.',
+      'Worked directly with a variety of clients on a range of creative web projects and campaigns, from visual conception through to delivery of completed assets and deployed code.',
     link: 'https://andyhook.dev',
   },
 ];
