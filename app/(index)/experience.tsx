@@ -31,10 +31,10 @@ export const Experience = React.forwardRef<ExperienceElement, ExperienceProps>(
                 </p>
 
                 <p className="capsize">
-                  My work spans UI architecture, design engineering, accessibility, performance, and
-                  developer experience. I’ve worked on everything from AI-powered rich-text
+                  My expertise spans UI architecture, design engineering, accessibility,
+                  performance, and developer experience. My work ranges from AI-powered rich-text
                   environments and authentication products to widely adopted component systems that
-                  power interfaces used by millions.
+                  power some of the most popular interfaces used by millions.
                 </p>
 
                 <p className="capsize">
