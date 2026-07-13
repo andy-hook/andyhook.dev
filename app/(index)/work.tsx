@@ -44,7 +44,7 @@ export const Work = React.forwardRef<WorkElement, WorkProps>((props, forwardedRe
               </RouterTransition>
               <RouterTransition multiplier={4}>
                 <h1 className="text-slate-12 font-display relative z-10 font-normal mb-10 sm:mb-12 lg:mb-16 xl:mb-18 tracking-tighter leading-tight capsize text-balance">
-                  Turning complex problems into simple interfaces
+                  Turning complex problems into intuitive interfaces
                 </h1>
               </RouterTransition>
 

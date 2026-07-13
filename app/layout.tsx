@@ -36,7 +36,7 @@ const bodyFont = Manrope({
 
 export const metadata: Metadata = {
   title: 'Andy Hook – Senior Design Engineer',
-  description: 'Turning complex problems into simple interfaces',
+  description: 'Turning complex problems into intuitive interfaces',
 };
 
 export default async function RootLayout({
