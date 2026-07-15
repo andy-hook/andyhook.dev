@@ -105,7 +105,7 @@ export const experience: Experience[] = [
     company: 'WorkOS',
     tenure: 'Mar 2022 – May 2024',
     description:
-      'WorkOS acquired Modulz in March 2022. I continued to maintain Radix UI, shipping the stable v1 release which grew to 130m monthly installs. I later joined a horizontal product team, leading the dashboard re-architecture and supporting the rollout of User Management.',
+      'WorkOS acquired Modulz in March 2022. I continued to maintain Radix UI, shipping the stable 1.0 release which grew to 130m monthly installs. I later joined a horizontal product team, leading the dashboard re-architecture and supporting the rollout of User Management.',
     link: 'https://workos.com',
   },
   {
@@ -115,7 +115,7 @@ export const experience: Experience[] = [
     company: 'Modulz',
     tenure: 'Apr 2021 – Mar 2022',
     description:
-      'I was core maintainer of Radix UI, a popular headless UI library touching millions of end-users. I worked closely with the team to scope, shape, research and implement WAI-ARIA compliant accessible UI patterns and DX-centric component APIs.',
+      'I was a core maintainer of Radix UI, a popular headless UI library touching millions of end-users. I worked closely with the team to scope, shape, research and implement WAI-ARIA compliant accessible UI patterns and DX-centric component APIs.',
     link: 'https://modulz.app',
   },
   {
