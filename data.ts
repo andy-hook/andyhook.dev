@@ -105,7 +105,7 @@ export const experience: Experience[] = [
     company: 'WorkOS',
     tenure: 'Mar 2022 – May 2024',
     description:
-      'WorkOS acquired Modulz in March 2022. I continued to maintain Radix UI, shipping the stable v1 release which grew to 130m monthly installs. I later joined a horizontal product team, leading the dashboard re-architecture and supporting the rollout of User Management.',
+      'WorkOS acquired Modulz in March 2022. I continued to maintain Radix UI, shipping the stable 1.0 release which grew to 130m monthly installs. I later joined a horizontal product team, leading the dashboard re-architecture and supporting the rollout of User Management.',
     link: 'https://workos.com',
   },
   {
