@@ -26,8 +26,8 @@ import * as HoverGroup from '@/components/primitives/hover-group';
 import { ScrambleText } from '@/components/scramble-text';
 
 const MOTION_TRANSITION = {
-  ease: cubicBezier(0.5, 0.2, 0.2, 1),
-  duration: 0.35,
+  ease: cubicBezier(0.5, 0.4, 0.1, 1),
+  duration: 0.3,
 };
 
 function useFloating({ open, onOpenChange }: { open: boolean; onOpenChange(open: boolean): void }) {
@@ -276,21 +276,7 @@ const SidebarMenuContent = React.forwardRef<SidebarMenuContentElement, SidebarMe
                 Works
               </h3>
 
-              <motion.ul
-                className="-my-[0.35em] text-3xl lg:text-4xl xxl:text-4.5xl group/list font-display font-medium tracking-tighter"
-                variants={{
-                  hidden: {
-                    transition: {
-                      staggerChildren: 0.01,
-                    },
-                  },
-                  visible: {
-                    transition: {
-                      staggerChildren: 0.02,
-                    },
-                  },
-                }}
-              >
+              <ul className="-my-[0.35em] text-3xl lg:text-4xl xxl:text-4.5xl group/list font-display font-medium tracking-tighter">
                 {[...selectedProjects, ...sideProjects].map((project) => {
                   return (
                     <motion.li
@@ -310,32 +296,17 @@ const SidebarMenuContent = React.forwardRef<SidebarMenuContentElement, SidebarMe
                     </motion.li>
                   );
                 })}
-              </motion.ul>
+              </ul>
 
               <div className="mt-8 lg:mt-10 xxl:mt-14 max-w-72">
-                <motion.ul
-                  className="text-sm lg:text-base xxl:text-lg -my-1 -mx-3 group/list text-slate-light-11"
-                  variants={{
-                    hidden: {
-                      transition: {
-                        staggerChildren: 0.01,
-                      },
-                    },
-                    visible: {
-                      transition: {
-                        staggerChildren: 0.01,
-                        delayChildren: 0.06,
-                      },
-                    },
-                  }}
-                >
+                <ul className="text-sm lg:text-base xxl:text-lg -my-1 -mx-3 group/list text-slate-light-11">
                   <SidebarSubListItem href="/">Home</SidebarSubListItem>
                   <SidebarSubListItem href="/#experience">Experience</SidebarSubListItem>
                   <SidebarSubListItem href="/#testimonials">Recommendations</SidebarSubListItem>
                   <SidebarSubListItem href="/cv" newTab external>
                     Download CV
                   </SidebarSubListItem>
-                </motion.ul>
+                </ul>
               </div>
             </div>
           </div>
