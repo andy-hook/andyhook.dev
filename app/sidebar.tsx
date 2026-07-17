@@ -19,11 +19,12 @@ import { MouseHover } from '@/components/primitives/mouse-hover';
 import { ProjectId } from '@/types';
 import { getColorProject, getColorSlateDark } from '@/theme';
 import { selectedProjects, sideProjects } from '@/data';
-import { RouterLink, useRouterState } from './router';
+import { RouterLink } from './router';
 import { useDevice } from '@/components/utils/use-device';
 import { FocusRing } from '@/components/focus-ring';
 import * as HoverGroup from '@/components/primitives/hover-group';
 import { ScrambleText } from '@/components/scramble-text';
+import { usePathname } from 'next/navigation';
 
 const MOTION_TRANSITION = {
   ease: cubicBezier(0.5, 0.4, 0.1, 1),
@@ -70,14 +71,14 @@ const [SidebarProvider, useSidebarContext] = createContext<SidebarContextValue>(
 export const Sidebar = ({ children }: { children: React.ReactNode }) => {
   const [open, setOpen] = React.useState(false);
   const [sidebarWidth, setSidebarWidth] = React.useState<number>();
+  const pathname = usePathname();
   const id = React.useId();
   const floating = useFloating({ open, onOpenChange: setOpen });
-  const routerState = useRouterState();
 
   // Close sidebar when navigating
   React.useEffect(() => {
-    if (routerState === 'cover') setOpen(false);
-  }, [routerState]);
+    setOpen(false);
+  }, [pathname]);
 
   // Match fixed element offset applied by floating ui lockScroll
   useLayoutEffect(() => {
@@ -127,7 +128,7 @@ const SidebarTrigger = React.forwardRef<SidebarTriggerElement, SidebarTriggerPro
         <button
           {...props}
           className={cx(
-            'p-4 lg:p-5 rounded-full fixed top-5 right-5 md:top-7 md:right-7 lg:top-10 lg:right-10 before:content-[""] before:absolute before:-inset-2 before:rounded-full before:bg-gradient-to-tl before:from-slate-2 before:to-slate-5 before:scale-75 hover:before:scale-90 before:transition',
+            'p-4 lg:p-5 rounded-full before:content-[""] before:absolute before:-inset-2 before:rounded-full before:bg-gradient-to-tl before:from-slate-2 before:to-slate-5 before:scale-75 hover:before:scale-90 before:transition',
             className,
           )}
           ref={composedRefs}

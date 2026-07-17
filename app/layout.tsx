@@ -18,7 +18,7 @@ import * as TooltipPrimitive from '@/components/primitives/tooltip';
 import { SocialLink } from '@/components/social-link';
 import { DeviceProvider } from '@/components/utils/use-device';
 import { Theme } from './theme';
-import { RouterProvider, RouterTransition } from './router';
+import { RouterTransition } from './router';
 import { Breadcrumbs } from './breadcrumbs';
 
 const displayFont = IBM_Plex_Serif({
@@ -52,29 +52,28 @@ export default async function RootLayout({
         >
           <DeviceProvider>
             <TooltipPrimitive.DelayProvider delay={{ open: 250, close: 0 }} timeoutMs={250}>
-              <RouterProvider>
-                <Sidebar.Root>
-                  <Sidebar.Animation className="relative z-10">
-                    <Header />
+              <Sidebar.Root>
+                <Sidebar.Animation className="relative z-10">
+                  <Header />
+                </Sidebar.Animation>
+
+                <Sidebar.Trigger className="z-30 fixed top-5 right-5 md:top-7 md:right-7 lg:top-10 lg:right-10" />
+
+                <Sidebar.Menu className="z-20" />
+                <Sidebar.Overlay className="z-10" />
+
+                <main className="relative z-0">
+                  <Sidebar.Animation>
+                    {children}
+
+                    <RouterTransition multiplier={10}>
+                      <Footer />
+                    </RouterTransition>
                   </Sidebar.Animation>
+                </main>
 
-                  <Sidebar.Trigger className="z-30" />
-                  <Sidebar.Menu className="z-20" />
-                  <Sidebar.Overlay className="z-10" />
-
-                  <main className="relative z-0">
-                    <Sidebar.Animation>
-                      {children}
-
-                      <RouterTransition multiplier={10}>
-                        <Footer />
-                      </RouterTransition>
-                    </Sidebar.Animation>
-                  </main>
-
-                  <Background className="absolute inset-0 -z-10" />
-                </Sidebar.Root>
-              </RouterProvider>
+                <Background className="absolute inset-0 -z-10" />
+              </Sidebar.Root>
             </TooltipPrimitive.DelayProvider>
           </DeviceProvider>
         </body>

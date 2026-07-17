@@ -26,7 +26,10 @@ export const Work = React.forwardRef<WorkElement, WorkProps>((props, forwardedRe
     <section {...props} ref={forwardedRef} className={cx('relative z-10', props.className)}>
       <Gutter>
         <Container className="relative mb-14 sm:mb-16 lg:mb-24 xxl:mb-24">
-          <div className="max-w-[14em] text-3xl sm:text-4xl lg:text-5xl xxl:text-6xl relative">
+          <RouterTransition
+            multiplier={1}
+            className="max-w-[14em] text-3xl sm:text-4xl lg:text-5xl xxl:text-6xl relative"
+          >
             <Hatch
               orientation="vertical"
               className="hidden wide:block absolute w-7 -left-7 xl:w-10 top-10 md:left-0 bottom-0"
@@ -60,12 +63,14 @@ export const Work = React.forwardRef<WorkElement, WorkProps>((props, forwardedRe
                 </ul>
               </RouterTransition>
             </div>
-          </div>
+          </RouterTransition>
 
-          <HeroMark
-            aria-hidden
+          <RouterTransition
+            multiplier={12}
             className="absolute w-[1400px] -right-[450px] -top-[300px] md:-top-[300px] md:w-[1500px] md:-right-[500px] lg:-top-[300px] lg:w-[2000px] lg:-right-[500px] xl:w-[2700px] xl:-right-[850px] xl:-top-[500px] -z-10"
-          />
+          >
+            <HeroMark aria-hidden />
+          </RouterTransition>
         </Container>
       </Gutter>
 
