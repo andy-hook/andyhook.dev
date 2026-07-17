@@ -21,8 +21,8 @@ import { ExternalLink } from '@/components/external-link';
 import { FocusRing } from '@/components/focus-ring';
 
 const MOTION_TRANSITION = {
-  ease: cubicBezier(0.5, 0.2, 0.2, 1),
-  duration: 0.3,
+  ease: cubicBezier(0.5, 0.4, 0.1, 1),
+  duration: 0.25,
   opacity: { ease: 'linear', duration: 0.15 },
 };
 
