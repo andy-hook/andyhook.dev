@@ -9,18 +9,18 @@ import { SideProjects } from './side-projects';
 export default function Home() {
   return (
     <div>
-      <Work className="pb-12 md:pb-14 lg:pb-18 xl:pb-24" />
+      <Work className="pb-12 md:pb-14 lg:pb-18 xl:pb-20 xxl:pb-24" />
 
       <RouterTransition multiplier={10}>
-        <Experience id="experience" className="py-12 md:py-14 lg:py-18 xl:py-24" />
+        <Experience id="experience" className="py-12 md:py-14 lg:py-18 xl:py-20 xxl:py-24" />
       </RouterTransition>
 
       <RouterTransition multiplier={10}>
-        <Testimonials id="testimonials" className="py-12 md:py-14 lg:py-18 xl:py-24" />
+        <Testimonials id="testimonials" className="py-12 md:py-14 lg:py-18 xl:py-20 xxl:py-24" />
       </RouterTransition>
 
       <RouterTransition multiplier={10}>
-        <SideProjects id="side-projects" className="py-12 md:py-14 lg:py-18 xl:pt-24" />
+        <SideProjects id="side-projects" className="py-12 md:py-14 lg:py-18 xl:py-20 xxl:pt-24" />
       </RouterTransition>
     </div>
   );

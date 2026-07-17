@@ -94,7 +94,7 @@ const Header = React.forwardRef<HeaderElement, HeaderProps>(
     return (
       <header
         className={cx(
-          'pt-10 md:pt-12 lg:pt-14 xl:pt-16 pb-20 sm:pb-20 md:pb-24 lg:pb-28 xl:pb-28 w-full',
+          'pt-10 md:pt-12 lg:pt-14 xxl:pt-16 pb-20 sm:pb-20 md:pb-24 lg:pb-28 xxl:pb-28 w-full',
           className,
         )}
         {...props}
@@ -140,7 +140,7 @@ const Footer = React.forwardRef<FooterElement, FooterProps>((props, forwardedRef
               Get in touch
             </div>
 
-            <div className="font-display text-slate-12 text-3xl sm:text-4xl lg:text-5xl xl:text-6xl tracking-tighter capsize relative z-10">
+            <div className="font-display text-slate-12 text-3xl sm:text-4xl lg:text-5xl xxl:text-6xl tracking-tighter capsize relative z-10">
               <Copy>hello@andyhook.dev</Copy>
             </div>
 

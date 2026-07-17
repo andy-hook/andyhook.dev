@@ -18,7 +18,7 @@ export const ContentSection = React.forwardRef<ContentSectionElement, ContentSec
         <RouterTransition multiplier={10}>
           <Gutter>
             <Container className="md:px-7 xl:px-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-7 xl:gap-10 items-start">
-              <h2 className="font-display tracking-tighter text-slate-12 text-3xl sm:text-4xl xl:text-5xl leading-tight lg:leading-tight xl:leading-tight capsize relative">
+              <h2 className="font-display tracking-tighter text-slate-12 text-3xl lg:text-4xl xl:text-[40px] xxl:text-5xl leading-tight lg:leading-tight xl:leading-tight xxl:leading-tight capsize relative">
                 <Line
                   className="absolute top-[0.7em] -left-[100vw] right-24"
                   solid
@@ -37,7 +37,7 @@ export const ContentSection = React.forwardRef<ContentSectionElement, ContentSec
                 <div className="relative text-balance">{title}</div>
               </h2>
 
-              <div className="font-body text-sm sm:text-base lg:text-lg leading-relaxed sm:leading-relaxed lg:leading-relaxed text-slate-11 space-y-10">
+              <div className="font-body text-sm sm:text-base xxl:text-lg leading-relaxed sm:leading-relaxed xxl:leading-relaxed text-slate-11 space-y-10">
                 {children}
               </div>
             </Container>

@@ -26,7 +26,7 @@ const workItemTitle = cva({
   variants: {
     size: {
       small: 'text-lg lg:text-xl mb-3 mt-6 lg:mt-7',
-      large: 'mb-3 xl:mb-4 mt-6 xl:mt-8 text-lg lg:text-xl xl:text-2xl ',
+      large: 'mb-3 xxl:mb-4 mt-6 xxl:mt-8 text-lg lg:text-xl xxl:text-2xl ',
     },
   },
 });
@@ -36,7 +36,7 @@ const workItemSubtitle = cva({
   variants: {
     size: {
       small: '',
-      large: 'xl:text-xl',
+      large: 'xxl:text-xl',
     },
   },
 });

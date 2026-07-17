@@ -5,7 +5,7 @@ const gutter = cva({
   variants: {
     size: {
       small: 'lg:px-4',
-      normal: 'md:px-7 lg:px-8',
+      normal: 'md:px-8 lg:px-16',
     },
     collapse: {
       true: '',

@@ -15,8 +15,7 @@ const container = cva({
 });
 
 interface ContainerProps
-  extends React.ComponentPropsWithoutRef<'div'>,
-    VariantProps<typeof container> {}
+  extends React.ComponentPropsWithoutRef<'div'>, VariantProps<typeof container> {}
 
 export const Container = React.forwardRef<ContainerElement, ContainerProps>(
   ({ children, className, width = 'normal', ...props }, forwardedRef) => {
