@@ -25,8 +25,8 @@ export const Work = React.forwardRef<WorkElement, WorkProps>((props, forwardedRe
   return (
     <section {...props} ref={forwardedRef} className={cx('relative z-10', props.className)}>
       <Gutter>
-        <Container className="relative mb-14 sm:mb-16 md:mb-22 lg:mb-24 xl:mb-24">
-          <div className="max-w-[14em] text-3xl sm:text-4xl lg:text-5xl xl:text-6xl relative">
+        <Container className="relative mb-14 sm:mb-16 lg:mb-24 xxl:mb-24">
+          <div className="max-w-[14em] text-3xl sm:text-4xl lg:text-5xl xxl:text-6xl relative">
             <Hatch
               orientation="vertical"
               className="hidden wide:block absolute w-7 -left-7 xl:w-10 top-10 md:left-0 bottom-0"
@@ -38,12 +38,12 @@ export const Work = React.forwardRef<WorkElement, WorkProps>((props, forwardedRe
 
             <div className="md:ml-7 xl:ml-10">
               <RouterTransition multiplier={1}>
-                <div className="capsize font-body text-base sm:text-lg text-slate-10 mb-8 sm:mb-9 md:mb-10 xl:mb-11">
+                <div className="capsize font-body text-base sm:text-lg text-slate-10 mb-8 sm:mb-9 md:mb-10 xxl:mb-11">
                   Senior Design Engineer
                 </div>
               </RouterTransition>
               <RouterTransition multiplier={4}>
-                <h1 className="text-slate-12 font-display relative z-10 font-normal mb-10 sm:mb-12 lg:mb-16 xl:mb-18 tracking-tighter leading-tight capsize text-balance">
+                <h1 className="text-slate-12 font-display relative z-10 font-normal mb-10 sm:mb-12 lg:mb-14 xxl:mb-18 tracking-tighter leading-tight capsize text-balance">
                   Turning complex problems into intuitive interfaces
                 </h1>
               </RouterTransition>

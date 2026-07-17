@@ -24,8 +24,8 @@ export const Testimonials = React.forwardRef<TestimonialsElement, TestimonialsPr
       <section {...props} ref={forwardedRef}>
         <Gutter>
           <Container>
-            <div className="mb-12 md:mb-14 xl:mb-20 lg:text-center relative z-10 md:pl-7 lg:pl-0">
-              <h2 className="text-slate-12 font-display mb-8 lg:mb-7 xl:mb-8 font-normal tracking-tighter text-3xl lg:text-4xl xl:text-5xl capsize leading-tight lg:leading-tight xl:leading-tight">
+            <div className="mb-12 md:mb-14 xl:mb-16 xxl:mb-20 lg:text-center relative z-10 md:pl-7 lg:pl-0">
+              <h2 className="text-slate-12 font-display mb-8 lg:mb-7 xxl:mb-8 font-normal tracking-tighter text-3xl lg:text-4xl lg:text-[40px] xxl:text-5xl capsize leading-tight lg:leading-tight xxl:leading-tight">
                 <div className="text-balance">Trusted by world-class teams</div>
               </h2>
 

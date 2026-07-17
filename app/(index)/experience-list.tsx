@@ -122,7 +122,7 @@ export const ExperienceList = React.forwardRef<ExperienceListElement, Experience
 
                                   <span className="grid grid-cols-1 md:grid-cols-2 grid-rows-2 md:grid-rows-1 gap-y-2 md:items-center col-start-3 sm:col-start-auto sm:row-start-auto pt-1 md:pt-0">
                                     <motion.h3
-                                      className="text-sm sm:text-base md:text-lg xl:text-xl text-slate-12 font-body capsize col-span-2 md:col-span-1 font-medium"
+                                      className="text-sm sm:text-base md:text-lg xxl:text-xl text-slate-12 font-body capsize col-span-2 md:col-span-1 font-medium"
                                       animate={{
                                         color: getCompanyTitleColor(openItem, hoveredItem, key),
                                         y: animateCompanyName ? (open ? '0.5em' : '0%') : undefined,

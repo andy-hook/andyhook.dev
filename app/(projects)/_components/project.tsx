@@ -52,7 +52,7 @@ const ProjectRoot: React.FC<ProjectProps> = (props) => {
                 />
                 <Hatch className="hidden wide:block absolute -left-6 md:left-0 top-0 w-6 md:w-7 xl:w-10 h-36" />
 
-                <Quote className="font-body text-lg sm:leading-relaxed sm:text-xl lg:text-2xl xl:text-3xl text-slate-12 leading-relaxed lg:leading-relaxed xl:leading-relaxed capsize font-medium text-pretty lg:col-span-2 lg:col-start-2">
+                <Quote className="font-body text-lg sm:leading-relaxed sm:text-xl lg:text-2xl xxl:text-3xl text-slate-12 leading-relaxed lg:leading-relaxed xxl:leading-relaxed capsize font-medium text-pretty lg:col-span-2 lg:col-start-2">
                   {testimonial.full}
                 </Quote>
 
@@ -196,7 +196,7 @@ const ProjectHeader = React.forwardRef<ProjectHeaderElement, ProjectHeaderProps>
       <section {...props} ref={forwardedRef}>
         <Gutter>
           <Container className="mb-12 md:mb-14 lg:mb-16 xl:mb-20">
-            <h1 className="flex flex-col items-start gap-5 sm:gap-[0.55em] font-display relative z-10 md:pl-7 xl:pl-10 font-normal tracking-tighter text-3xl sm:text-4xl lg:text-5xl xl:text-6xl">
+            <h1 className="flex flex-col items-start gap-5 sm:gap-[0.55em] font-display relative z-10 md:pl-7 xl:pl-10 xxl:pl-10 font-normal tracking-tighter text-3xl sm:text-4xl lg:text-5xl xxl:text-6xl">
               <div className="relative">
                 <RouterTransition multiplier={4}>
                   <Line
@@ -234,13 +234,13 @@ const ProjectHeader = React.forwardRef<ProjectHeaderElement, ProjectHeaderProps>
                   orientation="vertical"
                 />
 
-                <ul className="flex-col sm:flex-row flex gap-3 sm:gap-9 lg:gap-12">
+                <ul className="flex-col sm:flex-row flex gap-3 sm:gap-7 lg:gap-12">
                   {projectMeta.map(([Icon, text], i) => (
-                    <li className="flex items-center gap-3 sm:gap-4" key={i}>
-                      <div className="p-1.5 sm:p-2 rounded-full border border-slate-7 bg-gradient-to-br from-slate-3">
-                        <Icon className="text-slate-12 size-3 sm:size-4" />
+                    <li className="flex items-center gap-3 md:gap-4" key={i}>
+                      <div className="p-1.5 md:p-2 rounded-full border border-slate-7 bg-gradient-to-br from-slate-3">
+                        <Icon className="text-slate-12 size-3 md:size-4" />
                       </div>
-                      <div className="font-body text-sm sm:text-base lg:text-lg font-normal text-slate-11 capsize">
+                      <div className="font-body text-sm md:text-base xxl:text-lg font-normal text-slate-11 capsize">
                         {text}
                       </div>
                     </li>
@@ -250,7 +250,7 @@ const ProjectHeader = React.forwardRef<ProjectHeaderElement, ProjectHeaderProps>
                 {renderedTeam.length > 0 ? (
                   <TeamList
                     team={team}
-                    className="hidden md:flex"
+                    className="hidden lg:flex"
                     additionalCount={additionalTeam}
                   />
                 ) : null}
@@ -325,7 +325,7 @@ const ProjectHero = React.forwardRef<ProjectHeroElement, ProjectHeroProps>(
                   <Hatch className="absolute -left-5 xl:-left-10 w-5 md:-left-7 md:w-7 xl:w-10 top-0 bottom-0" />
 
                   {technologies.length > 0 && (
-                    <ul className="font-body text-sm sm:text-base lg:text-xl font-normal text-slate-11 flex flex-col gap-4 sm:gap-5 lg:gap-6 row-start-2 lg:row-start-auto">
+                    <ul className="font-body text-sm sm:text-base xl:text-xl font-normal text-slate-11 flex flex-col gap-4 sm:gap-5 xl:gap-6 row-start-2 lg:row-start-auto">
                       {technologies.map((technology) => (
                         <li key={technology} className="capsize">
                           {technology}
@@ -336,7 +336,7 @@ const ProjectHero = React.forwardRef<ProjectHeroElement, ProjectHeroProps>(
                 </div>
 
                 {intro && (
-                  <p className="col-span-2 font-body font-medium text-slate-12 text-base sm:text-lg leading-relaxed md:leading-relaxed xl:leading-relaxed md:text-xl lg:text-2xl xl:text-[26px] lg:leading-relaxed capsize text-pretty row-start-1 lg:row-start-auto">
+                  <p className="col-span-2 font-body font-medium text-slate-12 text-base sm:text-lg leading-relaxed md:leading-relaxed xl:leading-relaxed md:text-xl xl:text-2xl xxl:text-[26px] xxl:leading-relaxed capsize text-pretty row-start-1 lg:row-start-auto">
                     {intro}
                   </p>
                 )}

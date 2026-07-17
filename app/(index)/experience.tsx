@@ -19,11 +19,11 @@ export const Experience = React.forwardRef<ExperienceElement, ExperienceProps>(
         <Gutter>
           <Container>
             <div className="mb-20 lg:mb-24 grid lg:grid-rows-[auto_1fr] grid-cols-1 lg:grid-cols-2 md:gap-x-0 md:px-7 xl:px-10 relative items-start">
-              <h2 className="text-slate-12 font-display font-normal tracking-tighter text-3xl lg:text-4xl xl:text-5xl leading-tight lg:leading-tight xl:leading-tight capsize mb-10 lg:mb-12 xl:mb-16 pr-20">
+              <h2 className="text-slate-12 font-display font-normal tracking-tighter text-3xl lg:text-4xl xl:text-[40px] xxl:text-5xl leading-tight lg:leading-tight xl:leading-tight xxl:leading-tight capsize mb-10 lg:mb-12 xl:mb-14 xxl:mb-16 pr-20">
                 <div className="text-balance">More than 15 years of experience</div>
               </h2>
 
-              <div className="text-slate-11 font-body font-normal leading-relaxed sm:leading-relaxed lg:leading-relaxed text-sm sm:text-base lg:text-lg space-y-10 lg:row-span-2 mb-14 lg:mb-0">
+              <div className="text-slate-11 font-body font-normal leading-relaxed sm:leading-relaxed lg:leading-relaxed text-sm sm:text-base xxl:text-lg space-y-10 lg:row-span-2 mb-14 lg:mb-0">
                 <p className="capsize">
                   I’m a design engineer with more than 15 years of experience building high-quality
                   interfaces and design systems across AI, developer tooling, SaaS, and
