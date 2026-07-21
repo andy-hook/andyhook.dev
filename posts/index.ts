@@ -1,15 +1,10 @@
-import type { MDXProps } from 'mdx/types';
-import type { ComponentType } from 'react';
-
-import MarkdownReference, { metadata as markdownReference } from '@/posts/markdown-reference.mdx';
+import MarkdownReference, {
+  metadata as markdownReferenceMetadata,
+} from '@/posts/markdown-reference.mdx';
 import type { Post } from '@/types';
 
-type RegisteredPost = Post & {
-  Content: ComponentType<MDXProps>;
-};
-
-const posts: RegisteredPost[] = [
-  { slug: 'markdown-reference', ...markdownReference, Content: MarkdownReference },
+const posts = [
+  { slug: 'markdown-reference', ...markdownReferenceMetadata, Content: MarkdownReference },
 ];
 
 export function formatPostDate(date: Date): string {
@@ -28,6 +23,6 @@ export function getPostSlugs(): string[] {
   return posts.map((post) => post.slug);
 }
 
-export function getPostBySlug(slug: string): RegisteredPost | undefined {
+export function getPostBySlug(slug: string) {
   return posts.find((post) => post.slug === slug);
 }

@@ -22,7 +22,7 @@ export const Breadcrumbs = React.forwardRef<BreadcrumbsElement, BreadcrumbsProps
   ({ className, ...props }, forwardedRef) => {
     const pathname = usePathname();
     const knownProject = getProjectByPathname(pathname);
-    const knownPost = getPostBySlug(pathname.slice(1));
+    const knownPost = getPostBySlug(pathname);
     const isRootPath = pathname === '/';
 
     return (
@@ -55,20 +55,11 @@ export const Breadcrumbs = React.forwardRef<BreadcrumbsElement, BreadcrumbsProps
           </RouterLink>
         </FocusRing>
 
-        {knownProject && (
+        {(knownProject || knownPost) && (
           <>
             <span className="mx-3 capsize font-body font-medium text-base text-slate-9">/</span>
             <span className={cx('text-slate-12 font-body font-bold text-base capsize')}>
-              {knownProject.title}
-            </span>
-          </>
-        )}
-
-        {knownPost && (
-          <>
-            <span className="mx-3 capsize font-body font-medium text-base text-slate-9">/</span>
-            <span className={cx('text-slate-12 font-body font-bold text-base capsize')}>
-              Writing
+              {knownProject ? knownProject.title : 'Writing'}
             </span>
           </>
         )}
