@@ -297,7 +297,6 @@ const ProjectHero = React.forwardRef<ProjectHeroElement, ProjectHeroProps>(
               <div className="rounded-xl lg:rounded-3xl overflow-hidden shadow-slate-1 shadow-2xl">
                 <RouterImage
                   image={heroImage}
-                  quality={90}
                   fill
                   className="aspect-[50/35] md:aspect-[448/205]"
                   priority

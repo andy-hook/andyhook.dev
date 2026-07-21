@@ -104,7 +104,7 @@ interface RouterImageProps extends Omit<
 
 const RouterImage = React.forwardRef<RouterImageElement, RouterImageProps>(
   (props, forwardedRef) => {
-    const { image, className, style, ...imageProps } = props;
+    const { image, className, style, quality = 90, ...imageProps } = props;
     const ref = React.useRef<RouterImageElement>(null);
     const composedRefs = useComposedRefs(forwardedRef, ref);
     const [isLoaded, setIsLoaded] = React.useState(false);
@@ -123,6 +123,7 @@ const RouterImage = React.forwardRef<RouterImageElement, RouterImageProps>(
           <NextImage
             ref={composedRefs}
             {...imageProps}
+            quality={quality}
             src={image.src}
             alt={image.alt}
             draggable={false}

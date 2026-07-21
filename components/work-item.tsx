@@ -171,7 +171,6 @@ export const WorkItem = React.forwardRef<WorkItemElement, WorkItemProps>(
                       image={thumb.image}
                       priority={priority}
                       className="w-full"
-                      quality={90}
                       sizes={thumb.sizes}
                     />
                   </motion.div>

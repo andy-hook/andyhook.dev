@@ -7,15 +7,17 @@ import { ExternalFavicon } from '@/components/external-favicon';
 type TooltipLinkElement = React.ComponentRef<typeof ExternalLink>;
 
 interface TooltipLinkProps extends React.ComponentPropsWithoutRef<typeof ExternalLink> {
-  href: string;
+  href?: string;
 }
 
 export const TooltipLink = React.forwardRef<TooltipLinkElement, TooltipLinkProps>(
   (props, forwardedRef) => {
     const parsedUrl = React.useMemo(
-      () => props.href.replace(/^(?:https?:\/\/)?(?:www\.)?|\/$/g, ''),
+      () => (props.href ? props.href.replace(/^(?:https?:\/\/)?(?:www\.)?|\/$/g, '') : ''),
       [props.href],
     );
+
+    if (!props.href) return props.children;
 
     return (
       <Tooltip

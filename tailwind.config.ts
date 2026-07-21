@@ -46,6 +46,7 @@ const config: Config = {
     fontFamily: {
       display: ['var(--font-display)'],
       body: ['var(--font-body)'],
+      code: ['var(--font-code)'],
     },
     fontMetrics: {
       display: ibmPlexSerifMetrics,

@@ -5,7 +5,7 @@ import { getProjectById } from '@/data';
 import { ContentSection } from '../_components/content-section';
 import { ImageSection } from '../_components/image-section';
 import { ImageGroupSection } from '../_components/image-group-section';
-import { TooltipLink } from '../_components/tooltip-link';
+import { TooltipLink } from '@/components/tooltip-link';
 import {
   aragonIntroImage,
   aragonComponentsImage,

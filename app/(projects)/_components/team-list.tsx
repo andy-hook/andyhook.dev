@@ -62,7 +62,7 @@ export const TeamList = React.forwardRef<TeamListElement, TeamListProps>(
                 href={member.bio}
                 className="size-9 bg-slate-6 rounded-full overflow-hidden border-4 border-slate-2 relative block"
               >
-                <RouterImage image={member.avatar} quality={90} sizes="50px" />
+                <RouterImage image={member.avatar} sizes="50px" />
               </RouterLink>
             </TeamListItem>
           ))}
