@@ -18,7 +18,7 @@ import { Line } from '@/components/line';
 import { MouseHover } from '@/components/primitives/mouse-hover';
 import { ProjectId } from '@/types';
 import { getColorProject, getColorSlateDark } from '@/theme';
-import { selectedProjects, sideProjects } from '@/data';
+import { getProjectByPathname, selectedProjects, sideProjects } from '@/data';
 import { RouterLink } from './router';
 import { useDevice } from '@/components/utils/use-device';
 import { FocusRing } from '@/components/focus-ring';
@@ -274,31 +274,33 @@ const SidebarMenuContent = React.forwardRef<SidebarMenuContentElement, SidebarMe
 
         <div className="h-full flex flex-col justify-between gap-12 md:gap-14 lg:gap-20 xl:gap-24">
           <div className="grow flex items-center">
-            <div className="mt-[10vh] pt-8 md:pt-12 lg:pt-14 xxl:pt-16 grow">
+            <div className="mt-[5vh] md:mt-[10vh] pt-8 md:pt-12 lg:pt-14 xxl:pt-16 grow">
               <h3 className="font-body text-sm lg:text-base xxl:text-lg font-medium capsize text-slate-light-9 mb-7 md:mb-8 lg:mb-10 xxl:mb-12">
                 Works
               </h3>
 
-              <ul className="-my-[0.35em] text-3xl lg:text-4xl xxl:text-4.5xl group/list font-display font-medium tracking-tighter">
-                {[...selectedProjects, ...sideProjects].map((project) => {
-                  return (
-                    <motion.li
-                      key={project.id}
-                      variants={{
-                        hidden: { x: 100, opacity: 0 },
-                        visible: { x: 0, opacity: 1 },
-                      }}
-                      transition={MOTION_TRANSITION}
-                      className="will-change-motion"
-                    >
-                      <SidebarProjectLink
-                        path={project.externalUrl ?? `/${project.id}`}
-                        title={project.title}
-                        projectId={project.id}
-                      />
-                    </motion.li>
-                  );
-                })}
+              <ul className="-my-[0.35em] text-3xl lg:text-4xl xxl:text-4.5xl font-display font-medium tracking-tighter">
+                <HoverGroup.Root>
+                  {[...selectedProjects, ...sideProjects].map((project) => {
+                    return (
+                      <motion.li
+                        key={project.id}
+                        variants={{
+                          hidden: { x: 100, opacity: 0 },
+                          visible: { x: 0, opacity: 1 },
+                        }}
+                        transition={MOTION_TRANSITION}
+                        className="will-change-motion"
+                      >
+                        <SidebarProjectLink
+                          path={project.externalUrl ?? `/${project.id}`}
+                          title={project.title}
+                          projectId={project.id}
+                        />
+                      </motion.li>
+                    );
+                  })}
+                </HoverGroup.Root>
               </ul>
 
               <div className="mt-8 lg:mt-10 xxl:mt-14 max-w-72">
@@ -456,16 +458,21 @@ interface SidebarProjectLinkProps extends Omit<
 const SidebarProjectLink = React.forwardRef<SidebarProjectLinkElement, SidebarProjectLinkProps>(
   ({ className, path, title, projectId, onClick, ...props }, forwardedRef) => {
     const context = useSidebarContext();
-    const [hovered, setHovered] = React.useState(false);
+    const pathname = usePathname();
     const isExternal = path.startsWith('https://');
+    const [mode, setMode] = React.useState<'hovered' | 'dimmed' | 'initial'>('initial');
+    const currentPage = !isExternal && pathname === path;
+    const hasActiveProject = Boolean(getProjectByPathname(pathname));
+    const activeHover = mode === 'hovered' || (currentPage && mode === 'initial');
+    const dimmed = mode === 'dimmed' || (hasActiveProject && mode === 'initial' && !currentPage);
 
     return (
-      <FocusRing className="outline-offset-0 focus-visible:outline-offset-1" scheme="light">
-        <MouseHover onValueChange={setHovered} asChild>
+      <HoverGroup.Item value={projectId} onModeChange={setMode}>
+        <FocusRing className="outline-offset-0 focus-visible:outline-offset-1" scheme="light">
           <RouterLink
             href={path}
             className={cx(
-              'flex gap-5 lg:gap-5 items-center py-[0.35em] px-[0.35em] -mx-[0.35em] group/item mr-12 lg:mr-16 rounded-md',
+              'flex gap-5 lg:gap-5 items-center py-[0.35em] px-[0.35em] -mx-[0.35em] mr-12 lg:mr-16 rounded-md',
               className,
             )}
             {...props}
@@ -478,7 +485,7 @@ const SidebarProjectLink = React.forwardRef<SidebarProjectLinkElement, SidebarPr
             <motion.div
               className="grow relative flex"
               initial="initial"
-              animate={hovered ? 'hovered' : 'initial'}
+              animate={activeHover ? 'hovered' : 'initial'}
             >
               <motion.div
                 variants={{
@@ -491,7 +498,10 @@ const SidebarProjectLink = React.forwardRef<SidebarProjectLinkElement, SidebarPr
                   damping: 40,
                   mass: 1,
                 }}
-                className="relative text-slate-light-12 group-hover/list:text-slate-light-9 group-hover/item:!text-slate-light-12 transition-colors duration-200 capsize will-change-motion"
+                className={cx(
+                  'relative transition-colors duration-200 capsize will-change-motion',
+                  dimmed ? 'text-slate-light-9' : 'text-slate-light-12',
+                )}
               >
                 {isExternal && (
                   <motion.div
@@ -535,8 +545,8 @@ const SidebarProjectLink = React.forwardRef<SidebarProjectLinkElement, SidebarPr
               </div>
             </motion.div>
           </RouterLink>
-        </MouseHover>
-      </FocusRing>
+        </FocusRing>
+      </HoverGroup.Item>
     );
   },
 );
