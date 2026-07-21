@@ -1,0 +1,96 @@
+import { blocksHeroImage } from '@/images';
+
+export const metadata = {
+  title: 'Markdown and MDX reference',
+  description:
+    'A kitchen-sink post for typography, GitHub-flavoured markdown, code blocks, and MDX components.',
+  date: new Date('2026-07-21'),
+};
+
+This page shows how common markdown patterns look in the writing layout. It is meant for **review while authoring** real posts—not as published reading material. The title above the article body comes from post metadata; everything below is what you write in the `.mdx` file.
+
+## Headings and body copy
+
+Sections use second- and third-level headings. Keep hierarchy **shallow and predictable** so the page title remains the only primary heading in the chrome.
+
+### Third-level heading
+
+Paragraphs use the body typeface at a comfortable measure. They should carry most of the argument: a few sentences that establish context, **one that states the point**, and a short closing line that connects to what follows. [Inline links](https://example.com) use the same tooltip pattern as elsewhere on the site.
+
+You can emphasise words with **bold** or *italic* text, combine them when needed, and mark `inline code` such as prop names or shell commands without breaking the flow of the sentence.
+
+## Lists
+
+Unordered lists work well for related points that do not imply sequence. In longer posts, a **short lead-in sentence** like this one helps the list feel anchored rather than floating.
+
+- Clarify the problem before describing the solution.
+- Prefer concrete examples over abstract labels.
+- Link out when a term has a canonical definition elsewhere.
+
+Ordered lists suit steps or priorities:
+
+1. Export `metadata` from the MDX file.
+2. Register the slug in `posts/index.ts`.
+3. Preview at `/{slug}` before sharing.
+
+## Blockquote
+
+Use blockquotes for pull quotes or material you are citing verbatim:
+
+> Design systems succeed when they reduce arbitrary decisions without removing the judgement calls that actually matter.
+
+## Horizontal rule
+
+A rule can separate major sections when a heading would feel too heavy.
+
+---
+
+## Code
+
+Fenced blocks pick up syntax highlighting at build time. **Always set a language tag** on the fence when you want colour; omit it only for directory trees or pseudo-code.
+
+```tsx
+type FocusProxyProps = {
+  tabIndex: number;
+  'aria-hidden'?: boolean;
+};
+
+export function FocusProxy({ tabIndex, ...props }: FocusProxyProps) {
+  return <span tabIndex={tabIndex} {...props} />;
+}
+```
+
+Shell examples are common in technical posts:
+
+```bash
+pnpm install
+pnpm run build
+```
+
+Use a plain fence when language does not matter:
+
+```
+posts/
+  index.ts
+  hello-world.mdx
+  markdown-reference.mdx
+app/(writing)/[slug]/page.tsx
+```
+
+## GitHub-flavoured markdown
+
+`remark-gfm` adds a few extras beyond standard markdown.
+
+Strikethrough for deprecated terms: ~~legacy API~~ preferred endpoint.
+
+Task lists for checklists:
+
+- [x] Metadata export
+- [x] Slug registered
+- [ ] RSS feed
+
+## Figure (MDX)
+
+Full-width figures break out of the narrow column and reuse **registered image metadata** from the shared catalogue:
+
+<Figure image={blocksHeroImage} />

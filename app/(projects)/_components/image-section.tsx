@@ -35,7 +35,7 @@ export const ImageSection = React.forwardRef<ImageSectionElement, ImageSectionPr
                 />
 
                 <div className="rounded-xl lg:rounded-3xl overflow-hidden relative">
-                  <RouterImage image={image} className="w-full" quality={90} sizes="100vw" />
+                  <RouterImage image={image} className="w-full" sizes="100vw" />
                 </div>
               </div>
             </Container>

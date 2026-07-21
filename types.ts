@@ -102,3 +102,13 @@ export interface Artifact {
   year: string;
   src: StaticImageWithMetadata;
 }
+
+export type PostMetadata = {
+  title: string;
+  date: Date;
+  description: string;
+};
+
+export type Post = PostMetadata & {
+  slug: string;
+};

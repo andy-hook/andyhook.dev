@@ -2,7 +2,7 @@ import './globals.css';
 
 import * as React from 'react';
 import type { Metadata } from 'next';
-import { Manrope, IBM_Plex_Serif } from 'next/font/google';
+import { Manrope, IBM_Plex_Serif, IBM_Plex_Mono } from 'next/font/google';
 import { cx } from '@/cva.config';
 
 import { Container } from '@/components/container';
@@ -34,6 +34,13 @@ const bodyFont = Manrope({
   variable: '--font-body',
 });
 
+const codeFont = IBM_Plex_Mono({
+  weight: ['400'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-code',
+});
+
 export const metadata: Metadata = {
   title: 'Andy Hook – Senior Design Engineer',
   description: 'Turning complex problems into intuitive interfaces',
@@ -48,7 +55,12 @@ export default async function RootLayout({
     <html lang="en" className="overflow-x-clip">
       <Theme asChild>
         <body
-          className={cx(displayFont.variable, bodyFont.variable, 'relative overflow-x-clip z-0')}
+          className={cx(
+            displayFont.variable,
+            bodyFont.variable,
+            codeFont.variable,
+            'relative overflow-x-clip z-0',
+          )}
         >
           <DeviceProvider>
             <TooltipPrimitive.DelayProvider delay={{ open: 250, close: 0 }} timeoutMs={250}>

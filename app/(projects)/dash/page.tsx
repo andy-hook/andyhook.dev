@@ -14,7 +14,7 @@ import {
   dashUIDetailImage,
   dashUIAdminImage,
 } from '@/images';
-import { TooltipLink } from '../_components/tooltip-link';
+import { TooltipLink } from '@/components/tooltip-link';
 
 export const metadata = getProjectMetadata('dash');
 const project = getProjectById('dash');

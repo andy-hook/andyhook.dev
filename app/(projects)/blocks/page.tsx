@@ -5,7 +5,7 @@ import { getProjectById } from '@/data';
 import { ImageGroupSection } from '../_components/image-group-section';
 import { ContentSection } from '../_components/content-section';
 import { ImageSection } from '../_components/image-section';
-import { TooltipLink } from '../_components/tooltip-link';
+import { TooltipLink } from '@/components/tooltip-link';
 import {
   blocksDetailImage,
   blocksHomeImage,

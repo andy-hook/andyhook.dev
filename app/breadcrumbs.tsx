@@ -8,6 +8,7 @@ import { RouterLink } from './router';
 import { ArrowLeftIcon } from '@heroicons/react/16/solid';
 import { usePathname } from 'next/navigation';
 import { getProjectByPathname } from '@/data';
+import { getPostBySlug } from '@/posts';
 
 /* -------------------------------------------------------------------------------------------------
  * Breadcrumbs
@@ -21,6 +22,7 @@ export const Breadcrumbs = React.forwardRef<BreadcrumbsElement, BreadcrumbsProps
   ({ className, ...props }, forwardedRef) => {
     const pathname = usePathname();
     const knownProject = getProjectByPathname(pathname);
+    const knownPost = getPostBySlug(pathname);
     const isRootPath = pathname === '/';
 
     return (
@@ -53,11 +55,11 @@ export const Breadcrumbs = React.forwardRef<BreadcrumbsElement, BreadcrumbsProps
           </RouterLink>
         </FocusRing>
 
-        {knownProject && (
+        {(knownProject || knownPost) && (
           <>
             <span className="mx-3 capsize font-body font-medium text-base text-slate-9">/</span>
             <span className={cx('text-slate-12 font-body font-bold text-base capsize')}>
-              {knownProject.title}
+              {knownProject ? knownProject.title : 'Writing'}
             </span>
           </>
         )}

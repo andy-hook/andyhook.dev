@@ -52,7 +52,7 @@ export const Author = React.forwardRef<AuthorElement, AuthorProps>(
         ref={forwardedRef}
       >
         <div className={authorAvatar({ size })}>
-          <RouterImage image={avatar} quality={90} sizes="50px" />
+          <RouterImage image={avatar} sizes="50px" />
         </div>
         <dl className="flex flex-wrap">
           <dt className="sr-only">Name</dt>

@@ -7,6 +7,7 @@ const container = cva({
   base: 'mx-auto',
   variants: {
     width: {
+      narrow: 'max-w-2xl',
       normal: 'max-w-7xl',
       wide: 'max-w-wide',
       widest: 'max-w-widest',
