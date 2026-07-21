@@ -58,6 +58,7 @@ function useFloating({ open, onOpenChange }: { open: boolean; onOpenChange(open:
 type SidebarContextValue = {
   open: boolean;
   sidebarWidth: number | undefined;
+  onClose(): void;
   onExitAnimationComplete(): void;
   headingId: string;
   descriptionId: string;
@@ -92,6 +93,7 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
     <SidebarProvider
       open={open}
       sidebarWidth={sidebarWidth}
+      onClose={() => setOpen(false)}
       onExitAnimationComplete={() => setSidebarWidth(undefined)}
       headingId={id}
       descriptionId={id}
@@ -380,7 +382,8 @@ interface SidebarSubListItemProps extends React.ComponentPropsWithoutRef<typeof 
 
 const SidebarSubListItem = React.forwardRef<SidebarSubListItemElement, SidebarSubListItemProps>(
   (props, forwardedRef) => {
-    const { children, ...itemProps } = props;
+    const { children, onClick, ...itemProps } = props;
+    const context = useSidebarContext();
     const scrambleRef = React.useRef<React.ComponentRef<typeof ScrambleText>>(null);
     return (
       <motion.li
@@ -402,7 +405,15 @@ const SidebarSubListItem = React.forwardRef<SidebarSubListItemElement, SidebarSu
               }}
               asChild
             >
-              <RouterLink {...itemProps} ref={forwardedRef} className="py-1 px-3 block">
+              <RouterLink
+                {...itemProps}
+                ref={forwardedRef}
+                className="py-1 px-3 block"
+                onClick={(event) => {
+                  onClick?.(event);
+                  context.onClose();
+                }}
+              >
                 <ScrambleText ref={scrambleRef}>{children}</ScrambleText>
               </RouterLink>
             </MouseHover>
@@ -443,7 +454,8 @@ interface SidebarProjectLinkProps extends Omit<
 }
 
 const SidebarProjectLink = React.forwardRef<SidebarProjectLinkElement, SidebarProjectLinkProps>(
-  ({ className, path, title, projectId, ...props }, forwardedRef) => {
+  ({ className, path, title, projectId, onClick, ...props }, forwardedRef) => {
+    const context = useSidebarContext();
     const [hovered, setHovered] = React.useState(false);
     const isExternal = path.startsWith('https://');
 
@@ -458,6 +470,10 @@ const SidebarProjectLink = React.forwardRef<SidebarProjectLinkElement, SidebarPr
             )}
             {...props}
             ref={forwardedRef}
+            onClick={(event) => {
+              onClick?.(event);
+              context.onClose();
+            }}
           >
             <motion.div
               className="grow relative flex"
