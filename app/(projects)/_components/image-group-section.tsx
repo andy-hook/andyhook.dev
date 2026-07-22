@@ -6,7 +6,8 @@ import { Gutter } from '@/components/gutter';
 import { Container } from '@/components/container';
 import { Line } from '@/components/line';
 import { Hatch } from '@/components/hatch';
-import { RouterImage, RouterTransition } from '@/app/router';
+import { MediaImage } from '@/components/media-image';
+import { RouteTransition } from '@/components/route-transition';
 
 const imageGroupSectionBackground = cva({
   base: 'bg-gradient-to-br px-4 md:px-12 lg:px-16 rounded-2xl md:rounded-3xl overflow-hidden',
@@ -33,7 +34,7 @@ export const ImageGroupSection = React.forwardRef<ImageGroupSectionElement, Imag
   ({ images, project, ...props }, forwardedRef) => {
     return (
       <section {...props} ref={forwardedRef}>
-        <RouterTransition multiplier={10}>
+        <RouteTransition multiplier={10}>
           <Gutter size="small">
             <div className={imageGroupSectionBackground({ project })}>
               <Container width="widest" className="relative py-4 md:py-12 lg:py-24 2xl:py-[6vw]">
@@ -82,7 +83,7 @@ export const ImageGroupSection = React.forwardRef<ImageGroupSectionElement, Imag
                           solid
                         />
                         <div className="rounded lg:rounded-xl overflow-hidden shadow-xl relative">
-                          <RouterImage image={image} className="w-full" sizes="100vw" />
+                          <MediaImage image={image} className="w-full" sizes="100vw" />
                         </div>
                       </div>
                     );
@@ -91,7 +92,7 @@ export const ImageGroupSection = React.forwardRef<ImageGroupSectionElement, Imag
               </Container>
             </div>
           </Gutter>
-        </RouterTransition>
+        </RouteTransition>
       </section>
     );
   },

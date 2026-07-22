@@ -14,7 +14,8 @@ import { TeamList } from './team-list';
 
 import * as HoverGroup from '@/components/primitives/hover-group';
 
-import { RouterImage, RouterTransition } from '../../router';
+import { MediaImage } from '@/components/media-image';
+import { RouteTransition } from '@/components/route-transition';
 import { ProjectId, StaticImageWithMetadata, TeamMember, Testimonial } from '@/types';
 import { cx } from '@/cva.config';
 
@@ -41,7 +42,7 @@ const ProjectRoot: React.FC<ProjectProps> = (props) => {
       {children}
 
       <section>
-        <RouterTransition multiplier={10}>
+        <RouteTransition multiplier={10}>
           <Gutter>
             <Container>
               <figure className="gap-9 sm:gap-14 lg:gap-8 xl:gap-10 md:px-7 xl:px-10 relative grid grid-cols-1 lg:grid-cols-3 items-start">
@@ -68,11 +69,11 @@ const ProjectRoot: React.FC<ProjectProps> = (props) => {
               </figure>
             </Container>
           </Gutter>
-        </RouterTransition>
+        </RouteTransition>
       </section>
 
       <section>
-        <RouterTransition multiplier={10}>
+        <RouteTransition multiplier={10}>
           <Gutter collapse>
             <Container width="wide">
               <div className="p-5 md:p-7 xl:p-10 border-y sm:border-x rounded-3xl relative border-slate-3 from-slate-3/25 to-slate-2/50 bg-gradient-to-br shadow-slate-1 shadow-2xl">
@@ -127,7 +128,7 @@ const ProjectRoot: React.FC<ProjectProps> = (props) => {
               </div>
             </Container>
           </Gutter>
-        </RouterTransition>
+        </RouteTransition>
       </section>
     </div>
   );
@@ -198,17 +199,17 @@ const ProjectHeader = React.forwardRef<ProjectHeaderElement, ProjectHeaderProps>
           <Container className="mb-12 md:mb-14 lg:mb-16 xl:mb-20">
             <h1 className="flex flex-col items-start gap-5 sm:gap-[0.55em] font-display relative z-10 md:pl-7 xl:pl-10 xxl:pl-10 font-normal tracking-tighter text-3xl sm:text-4xl lg:text-5xl xxl:text-6xl">
               <div className="relative">
-                <RouterTransition multiplier={4}>
+                <RouteTransition multiplier={4}>
                   <Line
                     className="hidden md:block absolute -left-[100vw] -right-24 bottom-0"
                     solid
                     contrast="low"
                   />
                   <div className="relative capsize text-slate-12">{title}</div>
-                </RouterTransition>
+                </RouteTransition>
               </div>
 
-              <RouterTransition multiplier={6} className="relative">
+              <RouteTransition multiplier={6} className="relative">
                 <div className="capsize md:leading-tight text-balance">
                   <div className="font-light text-transparent bg-gradient-to-br from-slate-11 via-slate-9 to-slate-8 bg-clip-text">
                     {subtitle}
@@ -221,13 +222,13 @@ const ProjectHeader = React.forwardRef<ProjectHeaderElement, ProjectHeaderProps>
                   solid
                   contrast="low"
                 />
-              </RouterTransition>
+              </RouteTransition>
             </h1>
           </Container>
         </Gutter>
         <Gutter collapse>
           <Container>
-            <RouterTransition multiplier={10}>
+            <RouteTransition multiplier={10}>
               <div className="flex justify-between items-center px-5 md:px-7 xl:px-10 py-5 lg:py-6 border-t md:border-x border-slate-3 rounded-t-3xl bg-gradient-to-br from-slate-3/10 to-slate-2/20 shadow-slate-1 shadow-2xl relative">
                 <Hatch
                   className="absolute left-0 top-0 bottom-0 hidden md:block md:w-7 xl:w-10"
@@ -255,7 +256,7 @@ const ProjectHeader = React.forwardRef<ProjectHeaderElement, ProjectHeaderProps>
                   />
                 ) : null}
               </div>
-            </RouterTransition>
+            </RouteTransition>
           </Container>
         </Gutter>
 
@@ -271,10 +272,10 @@ ProjectHeader.displayName = 'ProjectHeader';
  * ProjectHero
  * -----------------------------------------------------------------------------------------------*/
 
-type ProjectHeroElement = React.ComponentRef<typeof RouterTransition>;
+type ProjectHeroElement = React.ComponentRef<typeof RouteTransition>;
 
 interface ProjectHeroProps extends Omit<
-  React.ComponentPropsWithoutRef<typeof RouterTransition>,
+  React.ComponentPropsWithoutRef<typeof RouteTransition>,
   'children' | 'multiplier'
 > {
   heroImage?: StaticImageWithMetadata;
@@ -285,7 +286,7 @@ interface ProjectHeroProps extends Omit<
 const ProjectHero = React.forwardRef<ProjectHeroElement, ProjectHeroProps>(
   ({ heroImage, technologies = [], intro, className, ...props }, forwardedRef) => {
     return (
-      <RouterTransition
+      <RouteTransition
         multiplier={10}
         className={cx('relative z-10', className)}
         {...props}
@@ -295,7 +296,7 @@ const ProjectHero = React.forwardRef<ProjectHeroElement, ProjectHeroProps>(
           <Gutter size="small">
             <div className="mx-auto relative z-10">
               <div className="rounded-xl lg:rounded-3xl overflow-hidden shadow-slate-1 shadow-2xl">
-                <RouterImage
+                <MediaImage
                   image={heroImage}
                   fill
                   className="aspect-[50/35] md:aspect-[448/205]"
@@ -343,7 +344,7 @@ const ProjectHero = React.forwardRef<ProjectHeroElement, ProjectHeroProps>(
             </div>
           </Container>
         </Gutter>
-      </RouterTransition>
+      </RouteTransition>
     );
   },
 );

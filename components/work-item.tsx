@@ -1,7 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import Link from 'next/link';
 import { AnimatePresence, motion } from 'motion/react';
 import { cva, cx } from '@/cva.config';
 import { ArrowUpRightIcon, BookOpenIcon } from '@heroicons/react/16/solid';
@@ -10,7 +9,8 @@ import { screens } from '@/theme';
 import { ScrambleText } from '@/components/scramble-text';
 import * as HoverGroup from '@/components/primitives/hover-group';
 import { Project } from '@/types';
-import { RouterImage, RouterLink } from '@/app/router';
+import { Link } from '@/components/link';
+import { MediaImage } from '@/components/media-image';
 import { FocusRing } from './focus-ring';
 import * as Chip from '@/components/chip';
 
@@ -94,7 +94,7 @@ export const WorkItem = React.forwardRef<WorkItemElement, WorkItemProps>(
               : 'outline-offset-0 focus-visible:outline-offset-3 rounded-md',
           )}
         >
-          <RouterLink
+          <Link
             href={project.externalUrl ?? `/${project.id}`}
             className={cx('block relative', isLarge && 'p-5 md:p-7 xl:p-10', className)}
             {...props}
@@ -166,7 +166,7 @@ export const WorkItem = React.forwardRef<WorkItemElement, WorkItemProps>(
                   )}
 
                   <motion.div variants={{ hovered: { scale: 1.02 } }}>
-                    <RouterImage
+                    <MediaImage
                       aria-hidden
                       image={thumb.image}
                       priority={priority}
@@ -202,7 +202,7 @@ export const WorkItem = React.forwardRef<WorkItemElement, WorkItemProps>(
                 </ScrambleText>
               </motion.div>
             </motion.div>
-          </RouterLink>
+          </Link>
         </FocusRing>
       </HoverGroup.Item>
     );

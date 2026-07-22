@@ -8,7 +8,7 @@ import { SocialLink } from '@/components/social-link';
 import * as HoverGroup from '@/components/primitives/hover-group';
 import { WorkItem } from '@/components/work-item';
 import { getProjectById } from '@/data';
-import { RouterTransition } from '../router';
+import { RouteTransition } from '@/components/route-transition';
 import { cx } from '@/cva.config';
 import { Gutter } from '@/components/gutter';
 
@@ -26,7 +26,7 @@ export const Work = React.forwardRef<WorkElement, WorkProps>((props, forwardedRe
     <section {...props} ref={forwardedRef} className={cx('relative z-10', props.className)}>
       <Gutter>
         <Container className="relative mb-14 sm:mb-16 lg:mb-24 xxl:mb-24">
-          <RouterTransition
+          <RouteTransition
             multiplier={1}
             className="max-w-[14em] text-3xl sm:text-4xl lg:text-5xl xxl:text-6xl relative"
           >
@@ -40,18 +40,18 @@ export const Work = React.forwardRef<WorkElement, WorkProps>((props, forwardedRe
             />
 
             <div className="md:ml-7 xl:ml-10">
-              <RouterTransition multiplier={1}>
+              <RouteTransition multiplier={1}>
                 <div className="capsize font-body text-base sm:text-lg text-slate-10 mb-8 sm:mb-9 md:mb-10 xxl:mb-11">
                   Senior Design Engineer
                 </div>
-              </RouterTransition>
-              <RouterTransition multiplier={4}>
+              </RouteTransition>
+              <RouteTransition multiplier={4}>
                 <h1 className="text-slate-12 font-display relative z-10 font-normal mb-10 sm:mb-12 lg:mb-14 xxl:mb-18 tracking-tighter leading-tight capsize text-balance">
                   Turning complex problems into intuitive interfaces
                 </h1>
-              </RouterTransition>
+              </RouteTransition>
 
-              <RouterTransition multiplier={6}>
+              <RouteTransition multiplier={6}>
                 <ul className="flex gap-2 sm:gap-3 lg:gap-4 relative">
                   {(['github', 'linkedin', 'dribbble', 'twitter', 'instagram'] as const).map(
                     (platform) => (
@@ -61,22 +61,22 @@ export const Work = React.forwardRef<WorkElement, WorkProps>((props, forwardedRe
                     ),
                   )}
                 </ul>
-              </RouterTransition>
+              </RouteTransition>
             </div>
-          </RouterTransition>
+          </RouteTransition>
 
-          <RouterTransition
+          <RouteTransition
             multiplier={12}
             className="absolute w-[1400px] -right-[450px] -top-[300px] md:-top-[300px] md:w-[1500px] md:-right-[500px] lg:-top-[300px] lg:w-[2000px] lg:-right-[500px] xl:w-[2700px] xl:-right-[850px] xl:-top-[500px] -z-10"
           >
             <HeroMark aria-hidden />
-          </RouterTransition>
+          </RouteTransition>
         </Container>
       </Gutter>
 
       <Gutter collapse>
         <Container width="wide" className="relative">
-          <RouterTransition multiplier={10}>
+          <RouteTransition multiplier={10}>
             <Line
               className="absolute xl:top-10 hidden md:block md:top-7 -left-full -right-full"
               solid
@@ -129,7 +129,7 @@ export const Work = React.forwardRef<WorkElement, WorkProps>((props, forwardedRe
                 </ul>
               </HoverGroup.Root>
             </div>
-          </RouterTransition>
+          </RouteTransition>
         </Container>
       </Gutter>
     </section>

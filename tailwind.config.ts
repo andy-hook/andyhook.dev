@@ -56,6 +56,21 @@ const config: Config = {
       ...defaultTheme.spacing,
     },
     extend: {
+      keyframes: {
+        'route-enter': {
+          from: {
+            opacity: '0',
+            transform: 'translateY(var(--route-distance, 60px))',
+          },
+          to: {
+            opacity: '1',
+            transform: 'translateY(0)',
+          },
+        },
+      },
+      animation: {
+        'route-enter': 'route-enter 550ms cubic-bezier(0.22, 1, 0.36, 1) 150ms both',
+      },
       willChange: {
         motion: 'transform, opacity',
       },

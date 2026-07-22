@@ -7,7 +7,8 @@ import { Tooltip } from '@/components/tooltip';
 import { motion } from 'motion/react';
 import { MouseHover } from '@/components/primitives/mouse-hover';
 import { useComposedRefs } from '@/components/utils/compose-refs';
-import { RouterImage, RouterLink } from '@/app/router';
+import { Link } from '@/components/link';
+import { MediaImage } from '@/components/media-image';
 import { ImageWithMetadata } from '@/types';
 import { FocusRing } from '@/components/focus-ring';
 
@@ -58,12 +59,12 @@ export const TeamList = React.forwardRef<TeamListElement, TeamListProps>(
                 </div>
               }
             >
-              <RouterLink
+              <Link
                 href={member.bio}
                 className="size-9 bg-slate-6 rounded-full overflow-hidden border-4 border-slate-2 relative block"
               >
-                <RouterImage image={member.avatar} sizes="50px" />
-              </RouterLink>
+                <MediaImage image={member.avatar} sizes="50px" />
+              </Link>
             </TeamListItem>
           ))}
           <motion.li

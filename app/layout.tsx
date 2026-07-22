@@ -18,7 +18,7 @@ import * as TooltipPrimitive from '@/components/primitives/tooltip';
 import { SocialLink } from '@/components/social-link';
 import { DeviceProvider } from '@/components/utils/use-device';
 import { Theme } from './theme';
-import { RouterTransition } from './router';
+import { RouteTransition } from '@/components/route-transition';
 import { Breadcrumbs } from './breadcrumbs';
 
 const displayFont = IBM_Plex_Serif({
@@ -78,9 +78,9 @@ export default async function RootLayout({
                   <Sidebar.Animation>
                     {children}
 
-                    <RouterTransition multiplier={10}>
+                    <RouteTransition multiplier={10}>
                       <Footer />
-                    </RouterTransition>
+                    </RouteTransition>
                   </Sidebar.Animation>
                 </main>
 
