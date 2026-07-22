@@ -3,7 +3,7 @@ import { Line } from '@/components/line';
 import { Hatch } from '@/components/hatch';
 import { Gutter } from '@/components/gutter';
 import { Container } from '@/components/container';
-import { RouterTransition } from '@/app/router';
+import { RouteTransition } from '@/components/route-transition';
 
 type ContentSectionElement = React.ComponentRef<'section'>;
 
@@ -15,7 +15,7 @@ export const ContentSection = React.forwardRef<ContentSectionElement, ContentSec
   ({ children, title, ...props }, forwardedRef) => {
     return (
       <section {...props} ref={forwardedRef}>
-        <RouterTransition multiplier={10}>
+        <RouteTransition multiplier={10}>
           <Gutter>
             <Container className="md:px-7 xl:px-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-7 xl:gap-10 items-start">
               <h2 className="font-display tracking-tighter text-slate-12 text-3xl lg:text-4xl xl:text-[40px] xxl:text-5xl leading-tight lg:leading-tight xl:leading-tight xxl:leading-tight capsize relative">
@@ -42,7 +42,7 @@ export const ContentSection = React.forwardRef<ContentSectionElement, ContentSec
               </div>
             </Container>
           </Gutter>
-        </RouterTransition>
+        </RouteTransition>
       </section>
     );
   },

@@ -9,14 +9,6 @@ import NextImage from 'next/image';
 import { useComposedRefs } from '@/components/utils/compose-refs';
 import { ImageWithMetadata } from '@/types';
 
-const SNAPPY_TRANSITION = {
-  type: 'spring',
-  stiffness: 300,
-  damping: 40,
-  mass: 1,
-  delay: 0.15,
-} as const;
-
 /* -------------------------------------------------------------------------------------------------
  * RouterLink
  * -----------------------------------------------------------------------------------------------*/
@@ -53,41 +45,6 @@ const RouterLink = React.forwardRef<RouterLinkElement, RouterLinkProps>((props, 
 });
 
 RouterLink.displayName = 'RouterLink';
-
-/* -------------------------------------------------------------------------------------------------
- * RouterTransition
- * -----------------------------------------------------------------------------------------------*/
-
-type RouterTransitionElement = React.ComponentRef<typeof motion.div>;
-
-const BASE_DISTANCE = 6;
-interface RouterTransitionProps extends React.ComponentPropsWithoutRef<typeof motion.div> {
-  multiplier: number;
-}
-
-const RouterTransition = React.forwardRef<RouterTransitionElement, RouterTransitionProps>(
-  (props, forwardedRef) => {
-    const { multiplier, ...transitionProps } = props;
-    const ref = React.useRef<RouterTransitionElement>(null);
-    const composedRefs = useComposedRefs(forwardedRef, ref);
-
-    return (
-      <motion.div
-        variants={{
-          idle: { y: 0, opacity: 0 },
-          enter: { y: [BASE_DISTANCE * multiplier, 0], opacity: 1 },
-        }}
-        initial="idle"
-        animate="enter"
-        transition={SNAPPY_TRANSITION}
-        {...transitionProps}
-        className={cx('will-change-motion', transitionProps.className)}
-        ref={composedRefs}
-      />
-    );
-  },
-);
-RouterTransition.displayName = 'RouterTransition';
 
 /* -------------------------------------------------------------------------------------------------
  * RouterImage
@@ -142,4 +99,4 @@ RouterImage.displayName = 'RouterImage';
 
 /* -----------------------------------------------------------------------------------------------*/
 
-export { RouterLink, RouterTransition, RouterImage };
+export { RouterLink, RouterImage };

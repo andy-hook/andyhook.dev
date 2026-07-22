@@ -2,7 +2,8 @@ import * as React from 'react';
 import { Gutter } from '@/components/gutter';
 import { Line } from '@/components/line';
 import { Container } from '@/components/container';
-import { RouterImage, RouterTransition } from '@/app/router';
+import { RouterImage } from '@/app/router';
+import { RouteTransition } from '@/components/route-transition';
 import { ImageWithMetadata } from '@/types';
 
 type ImageSectionElement = React.ComponentRef<'section'>;
@@ -15,7 +16,7 @@ export const ImageSection = React.forwardRef<ImageSectionElement, ImageSectionPr
   ({ image, ...props }, forwardedRef) => {
     return (
       <section {...props} ref={forwardedRef}>
-        <RouterTransition multiplier={10}>
+        <RouteTransition multiplier={10}>
           <Gutter collapse>
             <Container width="widest">
               <div className="relative">
@@ -40,7 +41,7 @@ export const ImageSection = React.forwardRef<ImageSectionElement, ImageSectionPr
               </div>
             </Container>
           </Gutter>
-        </RouterTransition>
+        </RouteTransition>
       </section>
     );
   },

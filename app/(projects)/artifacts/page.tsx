@@ -1,5 +1,6 @@
 import { getProjectMetadata } from '../_components/metadata';
-import { RouterImage, RouterTransition } from '@/app/router';
+import { RouterImage } from '@/app/router';
+import { RouteTransition } from '@/components/route-transition';
 import * as Project from '../_components/project';
 import { artifacts, getProjectById } from '@/data';
 import { cx } from '@/cva.config';
@@ -21,7 +22,7 @@ export default function ArtifactsPage() {
         tenure={project.tenure}
         exploration
       >
-        <RouterTransition
+        <RouteTransition
           multiplier={15}
           className={cx('z-10 relative bg-slate-12 p-4 md:p-12 lg:p-16 2xl:p-[6vw]')}
         >
@@ -43,7 +44,7 @@ export default function ArtifactsPage() {
               </ArtifactGrid.Item>
             ))}
           </ArtifactGrid.Root>
-        </RouterTransition>
+        </RouteTransition>
       </Project.Header>
     </Project.Root>
   );
