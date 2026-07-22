@@ -19,7 +19,7 @@ import { MouseHover } from '@/components/primitives/mouse-hover';
 import { ProjectId } from '@/types';
 import { getColorProject, getColorSlateDark } from '@/theme';
 import { getProjectByPathname, selectedProjects, sideProjects } from '@/data';
-import { RouterLink } from './router';
+import { Link } from '@/components/link';
 import { useDevice } from '@/components/utils/use-device';
 import { FocusRing } from '@/components/focus-ring';
 import * as HoverGroup from '@/components/primitives/hover-group';
@@ -376,9 +376,9 @@ SidebarSubList.displayName = 'SidebarSubList';
 
 /* -----------------------------------------------------------------------------------------------*/
 
-type SidebarSubListItemElement = React.ComponentRef<typeof RouterLink>;
+type SidebarSubListItemElement = React.ComponentRef<typeof Link>;
 
-interface SidebarSubListItemProps extends React.ComponentPropsWithoutRef<typeof RouterLink> {
+interface SidebarSubListItemProps extends React.ComponentPropsWithoutRef<typeof Link> {
   children: string;
 }
 
@@ -407,7 +407,7 @@ const SidebarSubListItem = React.forwardRef<SidebarSubListItemElement, SidebarSu
               }}
               asChild
             >
-              <RouterLink
+              <Link
                 {...itemProps}
                 ref={forwardedRef}
                 className="py-1 px-3 block"
@@ -417,7 +417,7 @@ const SidebarSubListItem = React.forwardRef<SidebarSubListItemElement, SidebarSu
                 }}
               >
                 <ScrambleText ref={scrambleRef}>{children}</ScrambleText>
-              </RouterLink>
+              </Link>
             </MouseHover>
           </FocusRing>
         </div>
@@ -444,10 +444,10 @@ const sidebarProjectLinkLine = cva({
   },
 });
 
-type SidebarProjectLinkElement = React.ComponentRef<typeof RouterLink>;
+type SidebarProjectLinkElement = React.ComponentRef<typeof Link>;
 
 interface SidebarProjectLinkProps extends Omit<
-  React.ComponentPropsWithoutRef<typeof RouterLink>,
+  React.ComponentPropsWithoutRef<typeof Link>,
   'href'
 > {
   projectId: ProjectId;
@@ -469,7 +469,7 @@ const SidebarProjectLink = React.forwardRef<SidebarProjectLinkElement, SidebarPr
     return (
       <HoverGroup.Item value={projectId} onModeChange={setMode}>
         <FocusRing className="outline-offset-0 focus-visible:outline-offset-1" scheme="light">
-          <RouterLink
+          <Link
             href={path}
             className={cx(
               'flex gap-5 lg:gap-5 items-center py-[0.35em] px-[0.35em] -mx-[0.35em] mr-12 lg:mr-16 rounded-md',
@@ -544,7 +544,7 @@ const SidebarProjectLink = React.forwardRef<SidebarProjectLinkElement, SidebarPr
                 </div>
               </div>
             </motion.div>
-          </RouterLink>
+          </Link>
         </FocusRing>
       </HoverGroup.Item>
     );

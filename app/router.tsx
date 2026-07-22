@@ -1,50 +1,12 @@
 'use client';
 
 import * as React from 'react';
-import NextLink from 'next/link';
+import NextImage from 'next/image';
 import { motion } from 'motion/react';
 import { cx } from '@/cva.config';
-import NextImage from 'next/image';
 
 import { useComposedRefs } from '@/components/utils/compose-refs';
 import { ImageWithMetadata } from '@/types';
-
-/* -------------------------------------------------------------------------------------------------
- * RouterLink
- * -----------------------------------------------------------------------------------------------*/
-
-type RouterLinkElement = React.ComponentRef<typeof NextLink>;
-type NextLinkProps = React.ComponentPropsWithoutRef<typeof NextLink>;
-interface RouterLinkProps extends NextLinkProps {
-  href: string;
-  newTab?: boolean;
-  external?: boolean;
-}
-
-const RouterLink = React.forwardRef<RouterLinkElement, RouterLinkProps>((props, forwardedRef) => {
-  const { newTab, external, ...linkProps } = props;
-
-  const isExternal = external ?? props.href.startsWith('https://');
-  const externalProps =
-    isExternal || newTab
-      ? { target: '_blank', rel: isExternal ? 'noopener noreferrer' : undefined }
-      : {};
-
-  if (isExternal) return <a {...linkProps} {...externalProps} ref={forwardedRef} />;
-
-  return (
-    <NextLink
-      {...linkProps}
-      ref={forwardedRef}
-      onClick={(event) => {
-        props.onClick?.(event);
-      }}
-      {...externalProps}
-    />
-  );
-});
-
-RouterLink.displayName = 'RouterLink';
 
 /* -------------------------------------------------------------------------------------------------
  * RouterImage
@@ -99,4 +61,4 @@ RouterImage.displayName = 'RouterImage';
 
 /* -----------------------------------------------------------------------------------------------*/
 
-export { RouterLink, RouterImage };
+export { RouterImage };

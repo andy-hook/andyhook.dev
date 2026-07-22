@@ -4,7 +4,7 @@ import * as React from 'react';
 import { cx } from '@/cva.config';
 
 import { FocusRing } from '@/components/focus-ring';
-import { RouterLink } from './router';
+import { Link } from '@/components/link';
 import { ArrowLeftIcon } from '@heroicons/react/16/solid';
 import { usePathname } from 'next/navigation';
 import { getProjectByPathname } from '@/data';
@@ -32,7 +32,7 @@ export const Breadcrumbs = React.forwardRef<BreadcrumbsElement, BreadcrumbsProps
         className={cx('flex items-center transition-transform', className)}
       >
         <FocusRing className="outline-offset-0 focus-visible:outline-offset-1">
-          <RouterLink
+          <Link
             href="/"
             className={cx(
               'p-2 -m-2 rounded-md flex items-center relative',
@@ -52,7 +52,7 @@ export const Breadcrumbs = React.forwardRef<BreadcrumbsElement, BreadcrumbsProps
             >
               Andy Hook
             </span>
-          </RouterLink>
+          </Link>
         </FocusRing>
 
         {(knownProject || knownPost) && (
