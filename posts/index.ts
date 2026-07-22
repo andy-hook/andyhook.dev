@@ -26,3 +26,8 @@ export function getPostSlugs(): string[] {
 export function getPostBySlug(slug: string) {
   return posts.find((post) => post.slug === slug);
 }
+
+export function getPostByPathname(pathname: string) {
+  const parsedPathname = pathname.replace('/', '');
+  return posts.find((post) => post.slug === parsedPathname);
+}

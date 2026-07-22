@@ -8,7 +8,7 @@ import { Link } from '@/components/link';
 import { ArrowLeftIcon } from '@heroicons/react/16/solid';
 import { usePathname } from 'next/navigation';
 import { getProjectByPathname } from '@/data';
-import { getPostBySlug } from '@/posts';
+import { getPostByPathname } from '@/posts';
 
 /* -------------------------------------------------------------------------------------------------
  * Breadcrumbs
@@ -22,7 +22,7 @@ export const Breadcrumbs = React.forwardRef<BreadcrumbsElement, BreadcrumbsProps
   ({ className, ...props }, forwardedRef) => {
     const pathname = usePathname();
     const knownProject = getProjectByPathname(pathname);
-    const knownPost = getPostBySlug(pathname);
+    const knownPost = getPostByPathname(pathname);
     const isRootPath = pathname === '/';
 
     return (
