@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Gutter } from '@/components/gutter';
 import { Line } from '@/components/line';
 import { Container } from '@/components/container';
-import { RouterImage } from '@/app/router';
+import { Image } from '@/components/image';
 import { RouteTransition } from '@/components/route-transition';
 import { ImageWithMetadata } from '@/types';
 
@@ -36,7 +36,7 @@ export const ImageSection = React.forwardRef<ImageSectionElement, ImageSectionPr
                 />
 
                 <div className="rounded-xl lg:rounded-3xl overflow-hidden relative">
-                  <RouterImage image={image} className="w-full" sizes="100vw" />
+                  <Image image={image} className="w-full" sizes="100vw" />
                 </div>
               </div>
             </Container>

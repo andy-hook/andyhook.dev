@@ -3,7 +3,7 @@ import { cva, cx } from '@/cva.config';
 import { Gutter } from './gutter';
 import { Line } from './line';
 import { Container } from './container';
-import { RouterImage } from '@/app/router';
+import { Image } from '@/components/image';
 import { ImageWithMetadata } from '@/types';
 
 /* -------------------------------------------------------------------------------------------------
@@ -225,7 +225,7 @@ export const Figure = React.forwardRef<FigureElement, FigureProps>(
               />
 
               <div className="rounded-xl lg:rounded-3xl overflow-hidden relative">
-                <RouterImage image={image} className="w-full" sizes="100vw" />
+                <Image image={image} className="w-full" sizes="100vw" />
               </div>
             </div>
           </Container>

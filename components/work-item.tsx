@@ -10,7 +10,7 @@ import { ScrambleText } from '@/components/scramble-text';
 import * as HoverGroup from '@/components/primitives/hover-group';
 import { Project } from '@/types';
 import { Link } from '@/components/link';
-import { RouterImage } from '@/app/router';
+import { Image } from '@/components/image';
 import { FocusRing } from './focus-ring';
 import * as Chip from '@/components/chip';
 
@@ -166,7 +166,7 @@ export const WorkItem = React.forwardRef<WorkItemElement, WorkItemProps>(
                   )}
 
                   <motion.div variants={{ hovered: { scale: 1.02 } }}>
-                    <RouterImage
+                    <Image
                       aria-hidden
                       image={thumb.image}
                       priority={priority}

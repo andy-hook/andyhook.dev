@@ -3,13 +3,13 @@
 import * as React from 'react';
 
 import { useLayoutEffect } from '@/components/utils/use-layout-effect';
-import { RouterImage } from '@/app/router';
+import { Image } from '@/components/image';
 
 type ImageLoadingStatus = 'idle' | 'loading' | 'loaded' | 'error';
 
-type ExternalFaviconElement = React.ComponentRef<typeof RouterImage>;
+type ExternalFaviconElement = React.ComponentRef<typeof Image>;
 
-interface ExternalFaviconProps extends React.ComponentPropsWithoutRef<typeof RouterImage> {}
+interface ExternalFaviconProps extends React.ComponentPropsWithoutRef<typeof Image> {}
 
 export const ExternalFavicon = React.forwardRef<ExternalFaviconElement, ExternalFaviconProps>(
   ({ image: imageProp, ...props }, forwardedRef) => {
@@ -19,7 +19,7 @@ export const ExternalFavicon = React.forwardRef<ExternalFaviconElement, External
     const image = { ...imageProp, src: imageSrc };
 
     return imageLoadingStatus === 'loaded' ? (
-      <RouterImage image={image} {...props} ref={forwardedRef} />
+      <Image image={image} {...props} ref={forwardedRef} />
     ) : null;
   },
 );

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { cva, cx } from '@/cva.config';
-import { RouterImage } from '@/app/router';
+import { Image } from '@/components/image';
 import { ImageWithMetadata } from '@/types';
 
 const authorAvatar = cva({
@@ -52,7 +52,7 @@ export const Author = React.forwardRef<AuthorElement, AuthorProps>(
         ref={forwardedRef}
       >
         <div className={authorAvatar({ size })}>
-          <RouterImage image={avatar} sizes="50px" />
+          <Image image={avatar} sizes="50px" />
         </div>
         <dl className="flex flex-wrap">
           <dt className="sr-only">Name</dt>
