@@ -3,13 +3,13 @@
 import * as React from 'react';
 
 import { useLayoutEffect } from '@/components/utils/use-layout-effect';
-import { Image } from '@/components/image';
+import { MediaImage } from '@/components/media-image';
 
 type ImageLoadingStatus = 'idle' | 'loading' | 'loaded' | 'error';
 
-type ExternalFaviconElement = React.ComponentRef<typeof Image>;
+type ExternalFaviconElement = React.ComponentRef<typeof MediaImage>;
 
-interface ExternalFaviconProps extends React.ComponentPropsWithoutRef<typeof Image> {}
+interface ExternalFaviconProps extends React.ComponentPropsWithoutRef<typeof MediaImage> {}
 
 export const ExternalFavicon = React.forwardRef<ExternalFaviconElement, ExternalFaviconProps>(
   ({ image: imageProp, ...props }, forwardedRef) => {
@@ -19,7 +19,7 @@ export const ExternalFavicon = React.forwardRef<ExternalFaviconElement, External
     const image = { ...imageProp, src: imageSrc };
 
     return imageLoadingStatus === 'loaded' ? (
-      <Image image={image} {...props} ref={forwardedRef} />
+      <MediaImage image={image} {...props} ref={forwardedRef} />
     ) : null;
   },
 );

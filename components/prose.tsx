@@ -3,7 +3,7 @@ import { cva, cx } from '@/cva.config';
 import { Gutter } from './gutter';
 import { Line } from './line';
 import { Container } from './container';
-import { Image } from '@/components/image';
+import { MediaImage } from '@/components/media-image';
 import { ImageWithMetadata } from '@/types';
 
 /* -------------------------------------------------------------------------------------------------
@@ -225,7 +225,7 @@ export const Figure = React.forwardRef<FigureElement, FigureProps>(
               />
 
               <div className="rounded-xl lg:rounded-3xl overflow-hidden relative">
-                <Image image={image} className="w-full" sizes="100vw" />
+                <MediaImage image={image} className="w-full" sizes="100vw" />
               </div>
             </div>
           </Container>

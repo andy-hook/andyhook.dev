@@ -1,5 +1,5 @@
 import { getProjectMetadata } from '../_components/metadata';
-import { Image } from '@/components/image';
+import { MediaImage } from '@/components/media-image';
 import { RouteTransition } from '@/components/route-transition';
 import * as Project from '../_components/project';
 import { artifacts, getProjectById } from '@/data';
@@ -34,7 +34,7 @@ export default function ArtifactsPage() {
                 height={src.src.height}
                 label={`${name} · ${year}`}
               >
-                <Image
+                <MediaImage
                   image={src}
                   fill
                   sizes={`(min-width: ${screens.wide}px) 35vw, (min-width: ${screens.sm}px) 50vw, 100vw`}

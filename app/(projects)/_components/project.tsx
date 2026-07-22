@@ -14,7 +14,7 @@ import { TeamList } from './team-list';
 
 import * as HoverGroup from '@/components/primitives/hover-group';
 
-import { Image } from '@/components/image';
+import { MediaImage } from '@/components/media-image';
 import { RouteTransition } from '@/components/route-transition';
 import { ProjectId, StaticImageWithMetadata, TeamMember, Testimonial } from '@/types';
 import { cx } from '@/cva.config';
@@ -296,7 +296,7 @@ const ProjectHero = React.forwardRef<ProjectHeroElement, ProjectHeroProps>(
           <Gutter size="small">
             <div className="mx-auto relative z-10">
               <div className="rounded-xl lg:rounded-3xl overflow-hidden shadow-slate-1 shadow-2xl">
-                <Image
+                <MediaImage
                   image={heroImage}
                   fill
                   className="aspect-[50/35] md:aspect-[448/205]"

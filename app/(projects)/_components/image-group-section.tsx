@@ -6,7 +6,7 @@ import { Gutter } from '@/components/gutter';
 import { Container } from '@/components/container';
 import { Line } from '@/components/line';
 import { Hatch } from '@/components/hatch';
-import { Image } from '@/components/image';
+import { MediaImage } from '@/components/media-image';
 import { RouteTransition } from '@/components/route-transition';
 
 const imageGroupSectionBackground = cva({
@@ -83,7 +83,7 @@ export const ImageGroupSection = React.forwardRef<ImageGroupSectionElement, Imag
                           solid
                         />
                         <div className="rounded lg:rounded-xl overflow-hidden shadow-xl relative">
-                          <Image image={image} className="w-full" sizes="100vw" />
+                          <MediaImage image={image} className="w-full" sizes="100vw" />
                         </div>
                       </div>
                     );

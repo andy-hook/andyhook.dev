@@ -8,7 +8,7 @@ import { motion } from 'motion/react';
 import { MouseHover } from '@/components/primitives/mouse-hover';
 import { useComposedRefs } from '@/components/utils/compose-refs';
 import { Link } from '@/components/link';
-import { Image } from '@/components/image';
+import { MediaImage } from '@/components/media-image';
 import { ImageWithMetadata } from '@/types';
 import { FocusRing } from '@/components/focus-ring';
 
@@ -63,7 +63,7 @@ export const TeamList = React.forwardRef<TeamListElement, TeamListProps>(
                 href={member.bio}
                 className="size-9 bg-slate-6 rounded-full overflow-hidden border-4 border-slate-2 relative block"
               >
-                <Image image={member.avatar} sizes="50px" />
+                <MediaImage image={member.avatar} sizes="50px" />
               </Link>
             </TeamListItem>
           ))}
