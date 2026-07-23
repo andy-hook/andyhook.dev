@@ -233,7 +233,7 @@ const SidebarMenu = React.forwardRef<SidebarMenuElement, SidebarMenuProps>(
                       <div className="flex justify-center w-4 lg:w-5 h-full ">
                         <div className="h-full w-[3px] flex justify-center before:content-[''] before:h-full before:w-px before:bg-slate-light-5 relative">
                           <ScrollArea.Scrollbar className="w-full">
-                            <ScrollArea.Thumb className="bg-slate-light-8 bg-gradient-to-br from-slate-light-6 to-slate-light-8 rounded-full before:content-[''] before:absolute before:-inset-3" />
+                            <ScrollArea.Thumb className="bg-slate-light-6 bg-gradient-to-br from-slate-light-9 to-slate-light-8 rounded-full before:content-[''] before:absolute before:-inset-3" />
                           </ScrollArea.Scrollbar>
                         </div>
                       </div>
