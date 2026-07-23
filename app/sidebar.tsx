@@ -28,8 +28,6 @@ const MOTION_TRANSITION = {
   duration: 0.25,
 };
 
-const dialogHandle = Dialog.createHandle();
-
 /* -------------------------------------------------------------------------------------------------
  * Sidebar
  * -----------------------------------------------------------------------------------------------*/
@@ -37,7 +35,6 @@ const dialogHandle = Dialog.createHandle();
 type SidebarContextValue = {
   open: boolean;
   onClose(): void;
-  handle: typeof dialogHandle;
 };
 
 const SIDEBAR_NAME = 'Sidebar';
@@ -54,8 +51,8 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
   }, [pathname]);
 
   return (
-    <Dialog.Root open={open} onOpenChange={setOpen} handle={dialogHandle}>
-      <SidebarProvider open={open} onClose={() => setOpen(false)} handle={dialogHandle}>
+    <Dialog.Root open={open} onOpenChange={setOpen}>
+      <SidebarProvider open={open} onClose={() => setOpen(false)}>
         {children}
       </SidebarProvider>
     </Dialog.Root>
@@ -83,7 +80,6 @@ const SidebarTrigger = React.forwardRef<SidebarTriggerElement, SidebarTriggerPro
       >
         <Dialog.Trigger
           {...props}
-          handle={context.handle}
           className={cx(
             'p-4 lg:p-5 rounded-full before:content-[""] before:absolute before:-inset-2 before:rounded-full before:bg-gradient-to-tl before:from-slate-2 before:to-slate-5 before:scale-75 hover:before:scale-90 before:transition',
             className,
