@@ -5,7 +5,7 @@ import * as Floating from '@floating-ui/react';
 import { cva, cx } from '@/cva.config';
 import { ArrowUpRightIcon } from '@heroicons/react/16/solid';
 
-import * as ScrollArea from '@/components/primitives/scroll-area';
+import { ScrollArea } from '@base-ui/react/scroll-area';
 
 import { useLayoutEffect } from '@/components/utils/use-layout-effect';
 
@@ -194,47 +194,52 @@ const SidebarMenu = React.forwardRef<SidebarMenuElement, SidebarMenuProps>(
               ref={composedRefs}
               {...props}
             >
-              <ScrollArea.Root asChild className="h-full">
-                <motion.div
-                  key="content"
-                  initial="hidden"
-                  animate="visible"
-                  exit="hidden"
-                  variants={{
-                    hidden: { x: '100%' },
-                    visible: { x: '0%' },
-                  }}
-                  style={{ originX: 1, originY: 0.5 }}
-                  transition={MOTION_TRANSITION}
-                  className="pl-2 pr-2 py-2 md:pr-4 md:py-4 will-change-motion"
-                >
-                  <div className="bg-slate-light-1 rounded-3xl shadow-lg h-full">
-                    <motion.div
-                      key="contentInner"
-                      className="h-full relative will-change-motion"
-                      style={{ marginRight: context.sidebarWidth }}
-                      variants={{
-                        hidden: { opacity: 0, x: 100 },
-                        visible: { opacity: 1, x: 0 },
-                      }}
-                      transition={MOTION_TRANSITION}
-                    >
-                      <ScrollArea.Viewport className="h-full grid">
+              <ScrollArea.Root
+                className="h-full"
+                render={
+                  <motion.div
+                    key="content"
+                    initial="hidden"
+                    animate="visible"
+                    exit="hidden"
+                    variants={{
+                      hidden: { x: '100%' },
+                      visible: { x: '0%' },
+                    }}
+                    style={{ originX: 1, originY: 0.5 }}
+                    transition={MOTION_TRANSITION}
+                    className="pl-2 pr-2 py-2 md:pr-4 md:py-4 will-change-motion"
+                  />
+                }
+              >
+                <div className="bg-slate-light-1 rounded-3xl shadow-lg h-full">
+                  <motion.div
+                    key="contentInner"
+                    className="h-full relative will-change-motion"
+                    style={{ marginRight: context.sidebarWidth }}
+                    variants={{
+                      hidden: { opacity: 0, x: 100 },
+                      visible: { opacity: 1, x: 0 },
+                    }}
+                    transition={MOTION_TRANSITION}
+                  >
+                    <ScrollArea.Viewport className="h-full grid">
+                      <ScrollArea.Content>
                         <SidebarMenuContent />
-                      </ScrollArea.Viewport>
+                      </ScrollArea.Content>
+                    </ScrollArea.Viewport>
 
-                      <div className="absolute px-4 lg:px-5 right-4 bottom-8 top-24 md:right-4 md:bottom-10 lg:right-6 lg:bottom-14 lg:top-32 xl:bottom-16">
-                        <div className="flex justify-center w-4 lg:w-5 h-full ">
-                          <div className="h-full w-[3px] flex justify-center before:content-[''] before:h-full before:w-px before:bg-slate-light-5 relative">
-                            <ScrollArea.Scrollbar className="w-full">
-                              <ScrollArea.Thumb className="bg-slate-light-8 bg-gradient-to-br from-slate-light-6 to-slate-light-8 rounded-full before:content-[''] before:absolute before:-inset-3" />
-                            </ScrollArea.Scrollbar>
-                          </div>
+                    <div className="absolute px-4 lg:px-5 right-4 bottom-8 top-24 md:right-4 md:bottom-10 lg:right-6 lg:bottom-14 lg:top-32 xl:bottom-16">
+                      <div className="flex justify-center w-4 lg:w-5 h-full ">
+                        <div className="h-full w-[3px] flex justify-center before:content-[''] before:h-full before:w-px before:bg-slate-light-5 relative">
+                          <ScrollArea.Scrollbar className="w-full">
+                            <ScrollArea.Thumb className="bg-slate-light-6 bg-gradient-to-br from-slate-light-9 to-slate-light-8 rounded-full before:content-[''] before:absolute before:-inset-3" />
+                          </ScrollArea.Scrollbar>
                         </div>
                       </div>
-                    </motion.div>
-                  </div>
-                </motion.div>
+                    </div>
+                  </motion.div>
+                </div>
               </ScrollArea.Root>
             </div>
           </Floating.FloatingFocusManager>
