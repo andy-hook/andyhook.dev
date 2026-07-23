@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import * as Floating from '@floating-ui/react';
+import { Dialog } from '@base-ui/react/dialog';
 import { cva, cx } from '@/cva.config';
 import { ArrowUpRightIcon } from '@heroicons/react/16/solid';
 
@@ -9,7 +9,7 @@ import { ScrollArea } from '@base-ui/react/scroll-area';
 
 import { useLayoutEffect } from '@/components/utils/use-layout-effect';
 
-import { AnimatePresence, cubicBezier, motion, useInView } from 'motion/react';
+import { cubicBezier, motion, useInView } from 'motion/react';
 import { createContext } from '@/components/utils/create-context';
 import { useComposedRefs } from '@/components/utils/compose-refs';
 import { Copy } from '@/components/copy';
@@ -31,38 +31,28 @@ const MOTION_TRANSITION = {
   duration: 0.25,
 };
 
-function useFloating({ open, onOpenChange }: { open: boolean; onOpenChange(open: boolean): void }) {
-  const { context, refs } = Floating.useFloating({
-    open,
-    onOpenChange,
-  });
-
-  const { setReference, setFloating } = refs;
-
-  const { getReferenceProps, getFloatingProps } = Floating.useInteractions([
-    Floating.useClick(context),
-    Floating.useRole(context),
-    Floating.useDismiss(context, { outsidePressEvent: 'mousedown' }),
-  ]);
-
-  return React.useMemo(
-    () => ({ context, getReferenceProps, getFloatingProps, setReference, setFloating }),
-    [context, getReferenceProps, getFloatingProps, setReference, setFloating],
-  );
-}
+const dialogHandle = Dialog.createHandle();
 
 /* -------------------------------------------------------------------------------------------------
  * Sidebar
  * -----------------------------------------------------------------------------------------------*/
 
+type SidebarOverlayConfig = {
+  className?: string;
+  ref?: React.Ref<HTMLDivElement>;
+};
+
 type SidebarContextValue = {
   open: boolean;
   sidebarWidth: number | undefined;
+  modal: boolean | 'trap-focus';
   onClose(): void;
   onExitAnimationComplete(): void;
-  headingId: string;
-  descriptionId: string;
-  floating: ReturnType<typeof useFloating>;
+  handle: typeof dialogHandle;
+  actionsRef: React.RefObject<Dialog.Root.Actions | null>;
+  overlayConfig: SidebarOverlayConfig | null;
+  setOverlayConfig(config: SidebarOverlayConfig | null): void;
+  setModal(modal: boolean | 'trap-focus'): void;
 };
 
 const SIDEBAR_NAME = 'Sidebar';
@@ -72,16 +62,28 @@ const [SidebarProvider, useSidebarContext] = createContext<SidebarContextValue>(
 export const Sidebar = ({ children }: { children: React.ReactNode }) => {
   const [open, setOpen] = React.useState(false);
   const [sidebarWidth, setSidebarWidth] = React.useState<number>();
+  const [modal, setModal] = React.useState<boolean | 'trap-focus'>(true);
+  const [overlayConfig, setOverlayConfig] = React.useState<SidebarOverlayConfig | null>(null);
+  const actionsRef = React.useRef<Dialog.Root.Actions>(null);
   const pathname = usePathname();
-  const id = React.useId();
-  const floating = useFloating({ open, onOpenChange: setOpen });
+
+  const handleOpenChange = React.useCallback(
+    (nextOpen: boolean, eventDetails: Dialog.Root.ChangeEventDetails) => {
+      if (!nextOpen) {
+        eventDetails.preventUnmountOnClose();
+      }
+
+      setOpen(nextOpen);
+    },
+    [],
+  );
 
   // Close sidebar when navigating
   React.useEffect(() => {
-    setOpen(false);
+    actionsRef.current?.close();
   }, [pathname]);
 
-  // Match fixed element offset applied by floating ui lockScroll
+  // Match fixed element offset applied by dialog scroll lock
   useLayoutEffect(() => {
     if (open) {
       const scrollbarWidth = parseInt(document.body.style.paddingRight) || undefined;
@@ -90,17 +92,28 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
   }, [open]);
 
   return (
-    <SidebarProvider
+    <Dialog.Root
       open={open}
-      sidebarWidth={sidebarWidth}
-      onClose={() => setOpen(false)}
-      onExitAnimationComplete={() => setSidebarWidth(undefined)}
-      headingId={id}
-      descriptionId={id}
-      floating={floating}
+      onOpenChange={handleOpenChange}
+      handle={dialogHandle}
+      modal={modal}
+      actionsRef={actionsRef}
     >
-      {children}
-    </SidebarProvider>
+      <SidebarProvider
+        open={open}
+        sidebarWidth={sidebarWidth}
+        modal={modal}
+        onClose={() => actionsRef.current?.close()}
+        onExitAnimationComplete={() => setSidebarWidth(undefined)}
+        handle={dialogHandle}
+        actionsRef={actionsRef}
+        overlayConfig={overlayConfig}
+        setOverlayConfig={setOverlayConfig}
+        setModal={setModal}
+      >
+        {children}
+      </SidebarProvider>
+    </Dialog.Root>
   );
 };
 
@@ -117,42 +130,41 @@ interface SidebarTriggerProps extends React.ComponentPropsWithoutRef<'button'> {
 const SidebarTrigger = React.forwardRef<SidebarTriggerElement, SidebarTriggerProps>(
   ({ className, ...props }, forwardedRef) => {
     const context = useSidebarContext();
-    const composedRefs = useComposedRefs(
-      (node) => context.floating.setReference(node),
-      forwardedRef,
-    );
 
     return (
       <FocusRing
         className="outline-offset-0 focus-visible:outline-offset-2"
         scheme={context.open ? 'light' : 'dark'}
       >
-        <button
+        <Dialog.Trigger
           {...props}
+          handle={context.handle}
           className={cx(
             'p-4 lg:p-5 rounded-full before:content-[""] before:absolute before:-inset-2 before:rounded-full before:bg-gradient-to-tl before:from-slate-2 before:to-slate-5 before:scale-75 hover:before:scale-90 before:transition',
             className,
           )}
-          ref={composedRefs}
+          ref={forwardedRef}
           style={{ marginRight: context.sidebarWidth }}
           aria-label="Sidebar menu"
-          {...context.floating.getReferenceProps()}
-        >
-          <div className="relative">
-            <div className="size-5 flex flex-col justify-center">
-              <div className="space-y-[6px]">
-                <motion.div
-                  animate={{ rotate: context.open ? 45 : 0, y: context.open ? 4 : 0 }}
-                  className="h-[2px] bg-slate-12 rounded-full"
-                />
-                <motion.div
-                  animate={{ rotate: context.open ? -45 : 0, y: context.open ? -4 : 0 }}
-                  className="h-[2px] bg-slate-12 rounded-full"
-                />
+          render={
+            <button>
+              <div className="relative">
+                <div className="size-5 flex flex-col justify-center">
+                  <div className="space-y-[6px]">
+                    <motion.div
+                      animate={{ rotate: context.open ? 45 : 0, y: context.open ? 4 : 0 }}
+                      className="h-[2px] bg-slate-12 rounded-full"
+                    />
+                    <motion.div
+                      animate={{ rotate: context.open ? -45 : 0, y: context.open ? -4 : 0 }}
+                      className="h-[2px] bg-slate-12 rounded-full"
+                    />
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </button>
+            </button>
+          }
+        />
       </FocusRing>
     );
   },
@@ -170,81 +182,103 @@ interface SidebarMenuProps extends React.ComponentPropsWithoutRef<'div'> {}
 
 const SidebarMenu = React.forwardRef<SidebarMenuElement, SidebarMenuProps>(
   ({ className, ...props }, forwardedRef) => {
-    const context = useSidebarContext();
-    const composedRefs = useComposedRefs(
-      (node) => context.floating.setFloating(node),
-      forwardedRef,
-    );
+    const { open, sidebarWidth, overlayConfig, onExitAnimationComplete, actionsRef } =
+      useSidebarContext();
+    const composedRefs = useComposedRefs(forwardedRef);
+
+    const handleExitAnimationComplete = React.useCallback(() => {
+      if (!open) {
+        onExitAnimationComplete();
+        actionsRef.current?.unmount();
+      }
+    }, [actionsRef, onExitAnimationComplete, open]);
 
     return (
-      <AnimatePresence>
-        {context.open && (
-          <Floating.FloatingFocusManager
-            context={context.floating.context}
-            order={['reference', 'content']}
-          >
-            <div
-              className={cx(
-                'fixed right-0 top-0 bottom-0 w-full sm:w-[28rem] md:w-[30rem] lg:w-[35rem] xl:w-[38rem] outline-none selection:!bg-slate-4 selection:!text-slate-12',
-                className,
-              )}
-              {...context.floating.getFloatingProps()}
-              aria-labelledby={context.headingId}
-              aria-describedby={context.descriptionId}
-              ref={composedRefs}
-              {...props}
-            >
-              <ScrollArea.Root
-                className="h-full"
-                render={
-                  <motion.div
-                    key="content"
-                    initial="hidden"
-                    animate="visible"
-                    exit="hidden"
-                    variants={{
-                      hidden: { x: '100%' },
-                      visible: { x: '0%' },
-                    }}
-                    style={{ originX: 1, originY: 0.5 }}
-                    transition={MOTION_TRANSITION}
-                    className="pl-2 pr-2 py-2 md:pr-4 md:py-4 will-change-motion"
-                  />
-                }
-              >
-                <div className="bg-slate-light-1 rounded-3xl shadow-lg h-full">
-                  <motion.div
-                    key="contentInner"
-                    className="h-full relative will-change-motion"
-                    style={{ marginRight: context.sidebarWidth }}
-                    variants={{
-                      hidden: { opacity: 0, x: 100 },
-                      visible: { opacity: 1, x: 0 },
-                    }}
-                    transition={MOTION_TRANSITION}
-                  >
-                    <ScrollArea.Viewport className="h-full grid">
-                      <ScrollArea.Content>
-                        <SidebarMenuContent />
-                      </ScrollArea.Content>
-                    </ScrollArea.Viewport>
-
-                    <div className="absolute px-4 lg:px-5 right-4 bottom-8 top-24 md:right-4 md:bottom-10 lg:right-6 lg:bottom-14 lg:top-32 xl:bottom-16">
-                      <div className="flex justify-center w-4 lg:w-5 h-full ">
-                        <div className="h-full w-[3px] flex justify-center before:content-[''] before:h-full before:w-px before:bg-slate-light-5 relative">
-                          <ScrollArea.Scrollbar className="w-full">
-                            <ScrollArea.Thumb className="bg-slate-light-6 bg-gradient-to-br from-slate-light-9 to-slate-light-8 rounded-full before:content-[''] before:absolute before:-inset-3" />
-                          </ScrollArea.Scrollbar>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                </div>
-              </ScrollArea.Root>
-            </div>
-          </Floating.FloatingFocusManager>
+      <Dialog.Portal>
+        {overlayConfig && (
+          <Dialog.Backdrop
+            ref={overlayConfig.ref}
+            className={cx('fixed inset-0', overlayConfig.className)}
+            render={
+              <motion.div
+                initial="hidden"
+                animate={open ? 'visible' : 'hidden'}
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1 },
+                }}
+                transition={{ duration: 0.15 }}
+                className="absolute inset-0 bg-gradient-to-tl from-slate-1 to-slate-1/80 will-change-motion"
+                onAnimationComplete={(definition) => {
+                  if (definition === 'hidden') {
+                    handleExitAnimationComplete();
+                  }
+                }}
+              />
+            }
+          />
         )}
-      </AnimatePresence>
+
+        <Dialog.Popup
+          {...props}
+          ref={composedRefs}
+          className={cx(
+            'fixed right-0 top-0 bottom-0 w-full sm:w-[28rem] md:w-[30rem] lg:w-[35rem] xl:w-[38rem] outline-none selection:!bg-slate-4 selection:!text-slate-12',
+            className,
+          )}
+        >
+          <ScrollArea.Root
+            className="h-full"
+            render={
+              <motion.div
+                key="content"
+                initial="hidden"
+                animate={open ? 'visible' : 'hidden'}
+                exit="hidden"
+                variants={{
+                  hidden: { x: '100%' },
+                  visible: { x: '0%' },
+                }}
+                style={{ originX: 1, originY: 0.5 }}
+                transition={MOTION_TRANSITION}
+                className="pl-2 pr-2 py-2 md:pr-4 md:py-4 will-change-motion"
+              />
+            }
+          >
+            <div className="bg-slate-light-1 rounded-3xl shadow-lg h-full">
+              <motion.div
+                key="contentInner"
+                className="h-full relative will-change-motion"
+                style={{ marginRight: sidebarWidth }}
+                initial="hidden"
+                animate={open ? 'visible' : 'hidden'}
+                exit="hidden"
+                variants={{
+                  hidden: { opacity: 0, x: 100 },
+                  visible: { opacity: 1, x: 0 },
+                }}
+                transition={MOTION_TRANSITION}
+              >
+                <ScrollArea.Viewport className="h-full grid">
+                  <ScrollArea.Content>
+                    <SidebarMenuContent />
+                  </ScrollArea.Content>
+                </ScrollArea.Viewport>
+
+                <div className="absolute px-4 lg:px-5 right-4 bottom-8 top-24 md:right-4 md:bottom-10 lg:right-6 lg:bottom-14 lg:top-32 xl:bottom-16">
+                  <div className="flex justify-center w-4 lg:w-5 h-full ">
+                    <div className="h-full w-[3px] flex justify-center before:content-[''] before:h-full before:w-px before:bg-slate-light-5 relative">
+                      <ScrollArea.Scrollbar className="w-full">
+                        <ScrollArea.Thumb className="bg-slate-light-6 bg-gradient-to-br from-slate-light-9 to-slate-light-8 rounded-full before:content-[''] before:absolute before:-inset-3" />
+                      </ScrollArea.Scrollbar>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </ScrollArea.Root>
+        </Dialog.Popup>
+      </Dialog.Portal>
     );
   },
 );
@@ -259,8 +293,6 @@ interface SidebarMenuContentProps extends React.ComponentPropsWithoutRef<'div'> 
 
 const SidebarMenuContent = React.forwardRef<SidebarMenuContentElement, SidebarMenuContentProps>(
   ({ className, ...props }, forwardedRef) => {
-    const context = useSidebarContext();
-
     return (
       <div
         {...props}
@@ -270,12 +302,8 @@ const SidebarMenuContent = React.forwardRef<SidebarMenuContentElement, SidebarMe
         )}
         ref={forwardedRef}
       >
-        <h2 className="sr-only" id={context.headingId}>
-          Navigation
-        </h2>
-        <p className="sr-only" id={context.descriptionId}>
-          Select an item to navigate
-        </p>
+        <Dialog.Title className="sr-only">Navigation</Dialog.Title>
+        <Dialog.Description className="sr-only">Select an item to navigate</Dialog.Description>
 
         <div className="h-full flex flex-col justify-between gap-12 md:gap-14 lg:gap-20 xl:gap-24">
           <div className="grow flex items-center">
@@ -567,35 +595,23 @@ type SidebarOverlayElement = React.ComponentRef<'div'>;
 interface SidebarOverlayProps extends React.ComponentPropsWithoutRef<'div'> {}
 
 const SidebarOverlay = React.forwardRef<SidebarOverlayElement, SidebarOverlayProps>(
-  (props, forwardedRef) => {
-    const context = useSidebarContext();
+  ({ className }, forwardedRef) => {
+    const { setModal, setOverlayConfig } = useSidebarContext();
     const device = useDevice();
 
-    return (
-      <AnimatePresence>
-        {context.open && (
-          <Floating.FloatingOverlay lockScroll={!device.isMobile} {...props} ref={forwardedRef}>
-            <motion.div
-              key="overlay"
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
-              variants={{
-                hidden: { opacity: 0 },
-                visible: { opacity: 1 },
-              }}
-              transition={{ duration: 0.15 }}
-              className="absolute inset-0 bg-gradient-to-tl from-slate-1 to-slate-1/80 will-change-motion"
-              onAnimationComplete={(definition) => {
-                if (definition === 'hidden') {
-                  context.onExitAnimationComplete();
-                }
-              }}
-            />
-          </Floating.FloatingOverlay>
-        )}
-      </AnimatePresence>
-    );
+    React.useEffect(() => {
+      setModal(device.isMobile ? 'trap-focus' : true);
+    }, [device.isMobile, setModal]);
+
+    React.useEffect(() => {
+      setOverlayConfig({ className, ref: forwardedRef });
+
+      return () => {
+        setOverlayConfig(null);
+      };
+    }, [className, forwardedRef, setOverlayConfig]);
+
+    return null;
   },
 );
 
