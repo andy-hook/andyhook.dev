@@ -7,8 +7,6 @@ import { ArrowUpRightIcon } from '@heroicons/react/16/solid';
 
 import { ScrollArea } from '@base-ui/react/scroll-area';
 
-import { useLayoutEffect } from '@/components/utils/use-layout-effect';
-
 import { cubicBezier, motion, useInView } from 'motion/react';
 import { createContext } from '@/components/utils/create-context';
 import { useComposedRefs } from '@/components/utils/compose-refs';
@@ -44,10 +42,8 @@ type SidebarOverlayConfig = {
 
 type SidebarContextValue = {
   open: boolean;
-  sidebarWidth: number | undefined;
   modal: boolean | 'trap-focus';
   onClose(): void;
-  onExitAnimationComplete(): void;
   handle: typeof dialogHandle;
   actionsRef: React.RefObject<Dialog.Root.Actions | null>;
   overlayConfig: SidebarOverlayConfig | null;
@@ -61,7 +57,6 @@ const [SidebarProvider, useSidebarContext] = createContext<SidebarContextValue>(
 
 export const Sidebar = ({ children }: { children: React.ReactNode }) => {
   const [open, setOpen] = React.useState(false);
-  const [sidebarWidth, setSidebarWidth] = React.useState<number>();
   const [modal, setModal] = React.useState<boolean | 'trap-focus'>(true);
   const [overlayConfig, setOverlayConfig] = React.useState<SidebarOverlayConfig | null>(null);
   const actionsRef = React.useRef<Dialog.Root.Actions>(null);
@@ -83,14 +78,6 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
     actionsRef.current?.close();
   }, [pathname]);
 
-  // Match fixed element offset applied by dialog scroll lock
-  useLayoutEffect(() => {
-    if (open) {
-      const scrollbarWidth = parseInt(document.body.style.paddingRight) || undefined;
-      setSidebarWidth(open ? scrollbarWidth : undefined);
-    }
-  }, [open]);
-
   return (
     <Dialog.Root
       open={open}
@@ -101,10 +88,8 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
     >
       <SidebarProvider
         open={open}
-        sidebarWidth={sidebarWidth}
         modal={modal}
         onClose={() => actionsRef.current?.close()}
-        onExitAnimationComplete={() => setSidebarWidth(undefined)}
         handle={dialogHandle}
         actionsRef={actionsRef}
         overlayConfig={overlayConfig}
@@ -144,7 +129,6 @@ const SidebarTrigger = React.forwardRef<SidebarTriggerElement, SidebarTriggerPro
             className,
           )}
           ref={forwardedRef}
-          style={{ marginRight: context.sidebarWidth }}
           aria-label="Sidebar menu"
           render={
             <button>
@@ -182,16 +166,14 @@ interface SidebarMenuProps extends React.ComponentPropsWithoutRef<'div'> {}
 
 const SidebarMenu = React.forwardRef<SidebarMenuElement, SidebarMenuProps>(
   ({ className, ...props }, forwardedRef) => {
-    const { open, sidebarWidth, overlayConfig, onExitAnimationComplete, actionsRef } =
-      useSidebarContext();
+    const { open, overlayConfig, actionsRef } = useSidebarContext();
     const composedRefs = useComposedRefs(forwardedRef);
 
     const handleExitAnimationComplete = React.useCallback(() => {
       if (!open) {
-        onExitAnimationComplete();
         actionsRef.current?.unmount();
       }
-    }, [actionsRef, onExitAnimationComplete, open]);
+    }, [actionsRef, open]);
 
     return (
       <Dialog.Portal>
@@ -249,7 +231,6 @@ const SidebarMenu = React.forwardRef<SidebarMenuElement, SidebarMenuProps>(
               <motion.div
                 key="contentInner"
                 className="h-full relative will-change-motion"
-                style={{ marginRight: sidebarWidth }}
                 initial="hidden"
                 animate={open ? 'visible' : 'hidden'}
                 exit="hidden"
