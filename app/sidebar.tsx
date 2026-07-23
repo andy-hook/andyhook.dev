@@ -7,7 +7,7 @@ import { ArrowUpRightIcon } from '@heroicons/react/16/solid';
 
 import { ScrollArea } from '@base-ui/react/scroll-area';
 
-import { cubicBezier, motion, useInView } from 'motion/react';
+import { motion, useInView } from 'motion/react';
 import { createContext } from '@/components/utils/create-context';
 import { useComposedRefs } from '@/components/utils/compose-refs';
 import { Copy } from '@/components/copy';
@@ -22,11 +22,6 @@ import { FocusRing } from '@/components/focus-ring';
 import * as HoverGroup from '@/components/primitives/hover-group';
 import { ScrambleText } from '@/components/scramble-text';
 import { usePathname } from 'next/navigation';
-
-const MOTION_TRANSITION = {
-  ease: cubicBezier(0.5, 0.4, 0.1, 1),
-  duration: 0.25,
-};
 
 /* -------------------------------------------------------------------------------------------------
  * Sidebar
@@ -515,9 +510,9 @@ SidebarProjectLink.displayName = 'SidebarProjectLink';
  * SidebarAnimation
  * -----------------------------------------------------------------------------------------------*/
 
-type SidebarAnimationElement = React.ComponentRef<typeof motion.div>;
+type SidebarAnimationElement = React.ComponentRef<'div'>;
 
-interface SidebarAnimationProps extends React.ComponentPropsWithoutRef<typeof motion.div> {}
+interface SidebarAnimationProps extends React.ComponentPropsWithoutRef<'div'> {}
 
 const SidebarAnimation = React.forwardRef<SidebarAnimationElement, SidebarAnimationProps>(
   ({ className, ...props }, forwardedRef) => {
@@ -527,10 +522,12 @@ const SidebarAnimation = React.forwardRef<SidebarAnimationElement, SidebarAnimat
     const isInView = useInView(ref);
 
     return (
-      <motion.div
-        transition={MOTION_TRANSITION}
-        animate={{ x: context.open && isInView ? -30 : 0 }}
-        className={cx('will-change-motion', className)}
+      <div
+        className={cx(
+          'will-change-motion transition-transform duration-250 ease-gentle',
+          context.open && isInView && '-translate-x-[30px]',
+          className,
+        )}
         {...props}
         ref={composedRefs}
       />
