@@ -45,7 +45,6 @@ type SidebarContextValue = {
   modal: boolean | 'trap-focus';
   onClose(): void;
   handle: typeof dialogHandle;
-  actionsRef: React.RefObject<Dialog.Root.Actions | null>;
   overlayConfig: SidebarOverlayConfig | null;
   setOverlayConfig(config: SidebarOverlayConfig | null): void;
   setModal(modal: boolean | 'trap-focus'): void;
@@ -59,39 +58,20 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
   const [open, setOpen] = React.useState(false);
   const [modal, setModal] = React.useState<boolean | 'trap-focus'>(true);
   const [overlayConfig, setOverlayConfig] = React.useState<SidebarOverlayConfig | null>(null);
-  const actionsRef = React.useRef<Dialog.Root.Actions>(null);
   const pathname = usePathname();
-
-  const handleOpenChange = React.useCallback(
-    (nextOpen: boolean, eventDetails: Dialog.Root.ChangeEventDetails) => {
-      if (!nextOpen) {
-        eventDetails.preventUnmountOnClose();
-      }
-
-      setOpen(nextOpen);
-    },
-    [],
-  );
 
   // Close sidebar when navigating
   React.useEffect(() => {
-    actionsRef.current?.close();
+    setOpen(false);
   }, [pathname]);
 
   return (
-    <Dialog.Root
-      open={open}
-      onOpenChange={handleOpenChange}
-      handle={dialogHandle}
-      modal={modal}
-      actionsRef={actionsRef}
-    >
+    <Dialog.Root open={open} onOpenChange={setOpen} handle={dialogHandle} modal={modal}>
       <SidebarProvider
         open={open}
         modal={modal}
-        onClose={() => actionsRef.current?.close()}
+        onClose={() => setOpen(false)}
         handle={dialogHandle}
-        actionsRef={actionsRef}
         overlayConfig={overlayConfig}
         setOverlayConfig={setOverlayConfig}
         setModal={setModal}
@@ -135,13 +115,17 @@ const SidebarTrigger = React.forwardRef<SidebarTriggerElement, SidebarTriggerPro
               <div className="relative">
                 <div className="size-5 flex flex-col justify-center">
                   <div className="space-y-[6px]">
-                    <motion.div
-                      animate={{ rotate: context.open ? 45 : 0, y: context.open ? 4 : 0 }}
-                      className="h-[2px] bg-slate-12 rounded-full"
+                    <div
+                      className={cx(
+                        'h-0.5 bg-slate-12 rounded-full transition-transform duration-300 ease-spring',
+                        context.open && 'rotate-45 translate-y-1',
+                      )}
                     />
-                    <motion.div
-                      animate={{ rotate: context.open ? -45 : 0, y: context.open ? -4 : 0 }}
-                      className="h-[2px] bg-slate-12 rounded-full"
+                    <div
+                      className={cx(
+                        'h-0.5 bg-slate-12 rounded-full transition-transform duration-300 ease-spring',
+                        context.open && '-rotate-45 -translate-y-1',
+                      )}
                     />
                   </div>
                 </div>
@@ -166,38 +150,21 @@ interface SidebarMenuProps extends React.ComponentPropsWithoutRef<'div'> {}
 
 const SidebarMenu = React.forwardRef<SidebarMenuElement, SidebarMenuProps>(
   ({ className, ...props }, forwardedRef) => {
-    const { open, overlayConfig, actionsRef } = useSidebarContext();
+    const { overlayConfig } = useSidebarContext();
     const composedRefs = useComposedRefs(forwardedRef);
-
-    const handleExitAnimationComplete = React.useCallback(() => {
-      if (!open) {
-        actionsRef.current?.unmount();
-      }
-    }, [actionsRef, open]);
 
     return (
       <Dialog.Portal>
         {overlayConfig && (
           <Dialog.Backdrop
             ref={overlayConfig.ref}
-            className={cx('fixed inset-0', overlayConfig.className)}
-            render={
-              <motion.div
-                initial="hidden"
-                animate={open ? 'visible' : 'hidden'}
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: { opacity: 1 },
-                }}
-                transition={{ duration: 0.15 }}
-                className="absolute inset-0 bg-gradient-to-tl from-slate-1 to-slate-1/80 will-change-motion"
-                onAnimationComplete={(definition) => {
-                  if (definition === 'hidden') {
-                    handleExitAnimationComplete();
-                  }
-                }}
-              />
-            }
+            className={cx(
+              'fixed inset-0 bg-gradient-to-tl from-slate-1 to-slate-1/80',
+              'transition-opacity duration-150',
+              'data-[starting-style]:opacity-0',
+              'data-[ending-style]:opacity-0',
+              overlayConfig.className,
+            )}
           />
         )}
 
@@ -205,41 +172,25 @@ const SidebarMenu = React.forwardRef<SidebarMenuElement, SidebarMenuProps>(
           {...props}
           ref={composedRefs}
           className={cx(
-            'fixed right-0 top-0 bottom-0 w-full sm:w-[28rem] md:w-[30rem] lg:w-[35rem] xl:w-[38rem] outline-none selection:!bg-slate-4 selection:!text-slate-12',
+            'group/popup fixed right-0 top-0 bottom-0 w-full sm:w-[28rem] md:w-[30rem] lg:w-[35rem] xl:w-[38rem] outline-none selection:!bg-slate-4 selection:!text-slate-12',
+            'transition-[transform,opacity] duration-250 ease-gentle',
+            'data-[starting-style]:translate-x-full',
+            'data-[ending-style]:translate-x-full',
+            'will-change-motion',
             className,
           )}
         >
           <ScrollArea.Root
-            className="h-full"
-            render={
-              <motion.div
-                key="content"
-                initial="hidden"
-                animate={open ? 'visible' : 'hidden'}
-                exit="hidden"
-                variants={{
-                  hidden: { x: '100%' },
-                  visible: { x: '0%' },
-                }}
-                style={{ originX: 1, originY: 0.5 }}
-                transition={MOTION_TRANSITION}
-                className="pl-2 pr-2 py-2 md:pr-4 md:py-4 will-change-motion"
-              />
-            }
+            className={cx(
+              'h-full pl-2 pr-2 py-2 md:pr-4 md:py-4',
+              'transition-[opacity,transform] duration-250 ease-gentle',
+              'group-data-[starting-style]/popup:translate-x-24',
+              'group-data-[ending-style]/popup:translate-x-24',
+              'will-change-motion',
+            )}
           >
             <div className="bg-slate-light-1 rounded-3xl shadow-lg h-full">
-              <motion.div
-                key="contentInner"
-                className="h-full relative will-change-motion"
-                initial="hidden"
-                animate={open ? 'visible' : 'hidden'}
-                exit="hidden"
-                variants={{
-                  hidden: { opacity: 0, x: 100 },
-                  visible: { opacity: 1, x: 0 },
-                }}
-                transition={MOTION_TRANSITION}
-              >
+              <div className="h-full relative">
                 <ScrollArea.Viewport className="h-full grid">
                   <ScrollArea.Content>
                     <SidebarMenuContent />
@@ -255,7 +206,7 @@ const SidebarMenu = React.forwardRef<SidebarMenuElement, SidebarMenuProps>(
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </ScrollArea.Root>
         </Dialog.Popup>
@@ -297,21 +248,13 @@ const SidebarMenuContent = React.forwardRef<SidebarMenuContentElement, SidebarMe
                 <HoverGroup.Root>
                   {[...selectedProjects, ...sideProjects].map((project) => {
                     return (
-                      <motion.li
-                        key={project.id}
-                        variants={{
-                          hidden: { x: 100, opacity: 0 },
-                          visible: { x: 0, opacity: 1 },
-                        }}
-                        transition={MOTION_TRANSITION}
-                        className="will-change-motion"
-                      >
+                      <li key={project.id}>
                         <SidebarProjectLink
                           path={project.externalUrl ?? `/${project.id}`}
                           title={project.title}
                           projectId={project.id}
                         />
-                      </motion.li>
+                      </li>
                     );
                   })}
                 </HoverGroup.Root>
@@ -402,14 +345,7 @@ const SidebarSubListItem = React.forwardRef<SidebarSubListItemElement, SidebarSu
     const context = useSidebarContext();
     const scrambleRef = React.useRef<React.ComponentRef<typeof ScrambleText>>(null);
     return (
-      <motion.li
-        className="group/item"
-        variants={{
-          hidden: { x: 100, opacity: 0 },
-          visible: { x: 0, opacity: 1 },
-        }}
-        transition={MOTION_TRANSITION}
-      >
+      <li className="group/item">
         <div className="group-hover/list:text-slate-light-9 group-hover/item:!text-slate-light-12 transition-colors">
           <FocusRing
             className="-outline-offset-3 focus-visible:outline-offset-0 rounded-lg"
@@ -435,7 +371,7 @@ const SidebarSubListItem = React.forwardRef<SidebarSubListItemElement, SidebarSu
             </MouseHover>
           </FocusRing>
         </div>
-      </motion.li>
+      </li>
     );
   },
 );
