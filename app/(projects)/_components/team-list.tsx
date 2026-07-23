@@ -39,7 +39,7 @@ export const TeamList = React.forwardRef<TeamListElement, TeamListProps>(
     const [expanded, setExpanded] = React.useState(false);
 
     return (
-      <Tooltip.Provider delay={200}>
+      <>
         <MouseHover
           asChild
           onValueChange={(hovered) => {
@@ -76,9 +76,13 @@ export const TeamList = React.forwardRef<TeamListElement, TeamListProps>(
                   style={{ zIndex: team.length - i }}
                 >
                   <Tooltip.Trigger handle={tooltipHandle} id={member.name} payload={member}>
-                    <FocusRing className="outline-offset-0 focus-visible:outline-offset-0.5">
-                      <Link href={member.bio} aria-label={`${member.name}, ${member.role}`}>
-                        <div className="size-9 bg-slate-6 rounded-full overflow-hidden border-4 border-slate-2 relative block">
+                    <FocusRing className="outline-offset-0 focus-visible:outline-offset-0.5 block">
+                      <Link
+                        href={member.bio}
+                        aria-label={`${member.name}, ${member.role}`}
+                        className="size-9 rounded-full relative block after:content-[''] after:absolute after:inset-0"
+                      >
+                        <div className="rounded-full overflow-hidden relative border-4 border-slate-2">
                           <MediaImage image={member.avatar} sizes="50px" />
                         </div>
                       </Link>
@@ -121,7 +125,7 @@ export const TeamList = React.forwardRef<TeamListElement, TeamListProps>(
             </Tooltip.Content>
           )}
         </Tooltip.Root>
-      </Tooltip.Provider>
+      </>
     );
   },
 );

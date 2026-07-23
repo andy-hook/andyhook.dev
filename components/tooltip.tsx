@@ -9,7 +9,17 @@ import { cx } from '@/cva.config';
  * TooltipProvider
  * -----------------------------------------------------------------------------------------------*/
 
-export const TooltipProvider = TooltipPrimitive.Provider;
+type TooltipProviderProps = React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Provider>;
+
+export const TooltipProvider: React.FC<TooltipProviderProps> = ({
+  delay = 200,
+  timeout = 0,
+  ...props
+}) => {
+  return <TooltipPrimitive.Provider delay={delay} timeout={timeout} {...props} />;
+};
+
+TooltipProvider.displayName = 'TooltipProvider';
 
 /* -------------------------------------------------------------------------------------------------
  * TooltipRoot
@@ -71,8 +81,7 @@ export const TooltipContent = React.forwardRef<TooltipContentElement, TooltipCon
           alignOffset={alignOffset}
           className={cx(
             'h-[var(--positioner-height)] w-[var(--positioner-width)] max-w-[var(--available-width)]',
-            'transition-[top,left,right,bottom,transform] duration-[200ms] ease-snappy',
-            'data-[instant]:transition-none',
+            'transition-[top,left,right,bottom,transform] duration-200 ease-snappy',
           )}
         >
           <TooltipPrimitive.Popup
@@ -83,14 +92,13 @@ export const TooltipContent = React.forwardRef<TooltipContentElement, TooltipCon
               'relative w-[var(--popup-width,auto)]',
               'origin-[var(--transform-origin)] overflow-hidden',
               'bg-slate-light-1 rounded-lg shadow-lg p-4',
-              'transition-[width,height,opacity,transform] duration-[200ms] ease-snappy',
+              'transition-[width,height,opacity,transform] duration-200 ease-snappy',
               'data-[starting-style]:opacity-0',
               'data-[starting-style]:scale-[0.85]',
               'data-[starting-style]:-translate-y-2',
               'data-[ending-style]:opacity-0',
               'data-[ending-style]:scale-95',
               'data-[ending-style]:translate-y-0',
-              'data-[instant]:transition-none',
               className,
             )}
           >
@@ -144,8 +152,6 @@ export const TooltipViewport = React.forwardRef<TooltipViewportElement, TooltipV
           "[&[data-activation-direction~='right']_[data-previous][data-ending-style]]:opacity-0",
           "[&[data-activation-direction~='up']_[data-previous][data-ending-style]]:opacity-0",
           "[&[data-activation-direction~='down']_[data-previous][data-ending-style]]:opacity-0",
-          '[[data-instant]_&_[data-previous]]:transition-none',
-          '[[data-instant]_&_[data-current]]:transition-none',
           className,
         )}
       >

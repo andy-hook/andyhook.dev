@@ -22,7 +22,7 @@ export const FocusRing = React.forwardRef<FocusRingElement, FocusRingProps>(
         ref={forwardedRef}
         {...focusRingsProps}
         className={cx(
-          'outline outline-2 outline-transparent transition-[outline-color,outline-offset,border-radius] duration-75 ease-in',
+          'outline outline-2 outline-transparent transition-[outline-color,outline-offset,border-radius] duration-[50ms] ease-in',
           isDarkScheme ? 'focus-visible:outline-slate-12' : 'focus-visible:outline-slate-light-12',
           props.className,
         )}
