@@ -146,5 +146,5 @@ export const colorTheme = {
 
 export const curves = {
   snappy: 'cubic-bezier(0.22, 1, 0.36, 1)',
-  gentle: 'cubic-bezier(0.5,0.4,0.1,1)',
+  gentle: 'cubic-bezier(0.5, 0.4, 0.1, 1)',
 };
