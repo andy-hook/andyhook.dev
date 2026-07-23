@@ -65,7 +65,7 @@ type SidebarTriggerElement = React.ComponentRef<'button'>;
 interface SidebarTriggerProps extends React.ComponentPropsWithoutRef<'button'> {}
 
 const SidebarTrigger = React.forwardRef<SidebarTriggerElement, SidebarTriggerProps>(
-  ({ className, ...props }, forwardedRef) => {
+  (props, forwardedRef) => {
     const context = useSidebarContext();
 
     return (
@@ -77,7 +77,7 @@ const SidebarTrigger = React.forwardRef<SidebarTriggerElement, SidebarTriggerPro
           {...props}
           className={cx(
             'p-4 lg:p-5 rounded-full before:content-[""] before:absolute before:-inset-2 before:rounded-full before:bg-gradient-to-tl before:from-slate-2 before:to-slate-5 before:scale-75 hover:before:scale-90 before:transition',
-            className,
+            props.className,
           )}
           ref={forwardedRef}
           aria-label="Sidebar menu"
@@ -110,6 +110,67 @@ const SidebarTrigger = React.forwardRef<SidebarTriggerElement, SidebarTriggerPro
 );
 
 SidebarTrigger.displayName = 'SidebarTrigger';
+
+/* -------------------------------------------------------------------------------------------------
+ * SidebarMenu
+ * -----------------------------------------------------------------------------------------------*/
+
+type SidebarMenuElement = React.ComponentRef<'div'>;
+
+interface SidebarMenuProps extends React.ComponentPropsWithoutRef<'div'> {}
+
+const SidebarMenu = React.forwardRef<SidebarMenuElement, SidebarMenuProps>(
+  ({ className, ...props }, forwardedRef) => {
+    const composedRefs = useComposedRefs(forwardedRef);
+
+    return (
+      <Dialog.Popup
+        {...props}
+        ref={composedRefs}
+        className={cx(
+          'group/popup fixed right-0 top-0 bottom-0 w-full sm:w-[28rem] md:w-[30rem] lg:w-[35rem] xl:w-[38rem] outline-none selection:!bg-slate-4 selection:!text-slate-12',
+          'transition-[transform,opacity] duration-250 ease-gentle',
+          'data-[starting-style]:translate-x-full',
+          'data-[ending-style]:translate-x-full',
+          'will-change-motion',
+          className,
+        )}
+      >
+        <ScrollArea.Root
+          className={cx(
+            'h-full sm:pl-2 sm:pr-2 sm:py-2 md:pr-4 md:py-4',
+            'transition-[opacity,transform] duration-250 ease-gentle',
+            'group-data-[starting-style]/popup:translate-x-24',
+            'group-data-[ending-style]/popup:translate-x-24',
+            'will-change-motion',
+          )}
+        >
+          <div className="bg-slate-light-1 sm:rounded-3xl shadow-lg h-full">
+            <div className="h-full relative">
+              <ScrollArea.Viewport className="h-full grid">
+                <ScrollArea.Content>
+                  <SidebarMenuContent />
+                </ScrollArea.Content>
+              </ScrollArea.Viewport>
+
+              <div className="absolute px-4 lg:px-5 right-4 bottom-8 top-24 md:right-4 md:bottom-10 lg:right-6 lg:bottom-14 lg:top-32 xl:bottom-16">
+                <div className="flex justify-center w-4 lg:w-5 h-full ">
+                  <div className="h-full w-[3px] flex justify-center before:content-[''] before:h-full before:w-px before:bg-slate-light-5 relative">
+                    <ScrollArea.Scrollbar className="w-full">
+                      <ScrollArea.Thumb className="bg-slate-light-6 bg-gradient-to-br from-slate-light-9 to-slate-light-8 rounded-full before:content-[''] before:absolute before:-inset-3" />
+                    </ScrollArea.Scrollbar>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ScrollArea.Root>
+      </Dialog.Popup>
+    );
+  },
+);
+
+SidebarMenu.displayName = 'SidebarMenu';
 
 /* -------------------------------------------------------------------------------------------------
  * SidebarPortal
@@ -158,67 +219,6 @@ const SidebarBackdrop = React.forwardRef<SidebarBackdropElement, SidebarBackdrop
 );
 
 SidebarBackdrop.displayName = 'SidebarBackdrop';
-
-/* -------------------------------------------------------------------------------------------------
- * SidebarMenu
- * -----------------------------------------------------------------------------------------------*/
-
-type SidebarMenuElement = React.ComponentRef<'div'>;
-
-interface SidebarMenuProps extends React.ComponentPropsWithoutRef<'div'> {}
-
-const SidebarMenu = React.forwardRef<SidebarMenuElement, SidebarMenuProps>(
-  ({ className, ...props }, forwardedRef) => {
-    const composedRefs = useComposedRefs(forwardedRef);
-
-    return (
-      <Dialog.Popup
-        {...props}
-        ref={composedRefs}
-        className={cx(
-          'group/popup fixed right-0 top-0 bottom-0 w-full sm:w-[28rem] md:w-[30rem] lg:w-[35rem] xl:w-[38rem] outline-none selection:!bg-slate-4 selection:!text-slate-12',
-          'transition-[transform,opacity] duration-250 ease-gentle',
-          'data-[starting-style]:translate-x-full',
-          'data-[ending-style]:translate-x-full',
-          'will-change-motion',
-          className,
-        )}
-      >
-          <ScrollArea.Root
-            className={cx(
-              'h-full pl-2 pr-2 py-2 md:pr-4 md:py-4',
-              'transition-[opacity,transform] duration-250 ease-gentle',
-              'group-data-[starting-style]/popup:translate-x-24',
-              'group-data-[ending-style]/popup:translate-x-24',
-              'will-change-motion',
-            )}
-          >
-            <div className="bg-slate-light-1 rounded-3xl shadow-lg h-full">
-              <div className="h-full relative">
-                <ScrollArea.Viewport className="h-full grid">
-                  <ScrollArea.Content>
-                    <SidebarMenuContent />
-                  </ScrollArea.Content>
-                </ScrollArea.Viewport>
-
-                <div className="absolute px-4 lg:px-5 right-4 bottom-8 top-24 md:right-4 md:bottom-10 lg:right-6 lg:bottom-14 lg:top-32 xl:bottom-16">
-                  <div className="flex justify-center w-4 lg:w-5 h-full ">
-                    <div className="h-full w-[3px] flex justify-center before:content-[''] before:h-full before:w-px before:bg-slate-light-5 relative">
-                      <ScrollArea.Scrollbar className="w-full">
-                        <ScrollArea.Thumb className="bg-slate-light-6 bg-gradient-to-br from-slate-light-9 to-slate-light-8 rounded-full before:content-[''] before:absolute before:-inset-3" />
-                      </ScrollArea.Scrollbar>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </ScrollArea.Root>
-      </Dialog.Popup>
-    );
-  },
-);
-
-SidebarMenu.displayName = 'SidebarMenu';
 
 /* -----------------------------------------------------------------------------------------------*/
 
