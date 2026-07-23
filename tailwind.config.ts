@@ -75,6 +75,9 @@ const config: Config = {
       transitionTimingFunction: {
         ...curves,
       },
+      transitionDuration: {
+        250: '250ms',
+      },
       willChange: {
         motion: 'transform, opacity',
       },
