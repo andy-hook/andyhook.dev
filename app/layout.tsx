@@ -14,7 +14,7 @@ import { Hatch } from '@/components/hatch';
 import { Gutter } from '@/components/gutter';
 import { Copy } from '@/components/copy';
 
-import * as TooltipPrimitive from '@/components/primitives/tooltip';
+import * as Tooltip from '@/components/tooltip';
 import { SocialLink } from '@/components/social-link';
 import { DeviceProvider } from '@/components/utils/use-device';
 import { Theme } from './theme';
@@ -63,7 +63,7 @@ export default async function RootLayout({
           )}
         >
           <DeviceProvider>
-            <TooltipPrimitive.DelayProvider delay={{ open: 250, close: 0 }} timeoutMs={250}>
+            <Tooltip.Provider delay={200} timeout={0}>
               <Sidebar.Root>
                 <Sidebar.Animation className="relative z-10">
                   <Header />
@@ -86,7 +86,7 @@ export default async function RootLayout({
 
                 <Background className="absolute inset-0 -z-10" />
               </Sidebar.Root>
-            </TooltipPrimitive.DelayProvider>
+            </Tooltip.Provider>
           </DeviceProvider>
         </body>
       </Theme>

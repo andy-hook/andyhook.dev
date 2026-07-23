@@ -143,3 +143,7 @@ export const colorTheme = {
   4: `var(${THEME_4_PROPERTY})`,
   5: `var(${THEME_5_PROPERTY})`,
 };
+
+export const curves = {
+  snappy: 'cubic-bezier(0.22, 1, 0.36, 1)',
+};

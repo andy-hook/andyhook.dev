@@ -1,6 +1,8 @@
+'use client';
+
 import * as React from 'react';
 
-import { Tooltip } from '@/components/tooltip';
+import * as Tooltip from '@/components/tooltip';
 import { ExternalLink } from '@/components/external-link';
 import { ExternalFavicon } from '@/components/external-favicon';
 
@@ -20,8 +22,11 @@ export const TooltipLink = React.forwardRef<TooltipLinkElement, TooltipLinkProps
     if (!props.href) return props.children;
 
     return (
-      <Tooltip
-        content={
+      <Tooltip.Root>
+        <Tooltip.Trigger>
+          <ExternalLink {...props} ref={forwardedRef} />
+        </Tooltip.Trigger>
+        <Tooltip.Content>
           <div className="font-body font-medium text-sm text-slate-light-11 flex items-center gap-2">
             <div className="relative bg-slate-light-5 rounded-full overflow-hidden size-3">
               <ExternalFavicon
@@ -34,10 +39,8 @@ export const TooltipLink = React.forwardRef<TooltipLinkElement, TooltipLinkProps
               <div className="truncate max-w-64">{parsedUrl}</div>
             </div>
           </div>
-        }
-      >
-        <ExternalLink {...props} ref={forwardedRef} />
-      </Tooltip>
+        </Tooltip.Content>
+      </Tooltip.Root>
     );
   },
 );

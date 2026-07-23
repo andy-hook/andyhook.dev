@@ -28,7 +28,7 @@ import { usePathname } from 'next/navigation';
 
 const MOTION_TRANSITION = {
   ease: cubicBezier(0.5, 0.4, 0.1, 1),
-  duration: 0.3,
+  duration: 0.25,
 };
 
 function useFloating({ open, onOpenChange }: { open: boolean; onOpenChange(open: boolean): void }) {
@@ -579,8 +579,8 @@ const SidebarOverlay = React.forwardRef<SidebarOverlayElement, SidebarOverlayPro
                 hidden: { opacity: 0 },
                 visible: { opacity: 1 },
               }}
-              transition={MOTION_TRANSITION}
-              className="absolute inset-0 bg-gradient-to-tl from-slate-1 to-slate-1/75 will-change-motion"
+              transition={{ duration: 0.15 }}
+              className="absolute inset-0 bg-gradient-to-tl from-slate-1 to-slate-1/80 will-change-motion"
               onAnimationComplete={(definition) => {
                 if (definition === 'hidden') {
                   context.onExitAnimationComplete();
