@@ -71,8 +71,10 @@ export default async function RootLayout({
 
                 <Sidebar.Trigger className="z-30 fixed top-5 right-5 md:top-7 md:right-7 lg:top-10 lg:right-10" />
 
-                <Sidebar.Menu className="z-20" />
-                <Sidebar.Overlay className="z-10" />
+                <Sidebar.Portal>
+                  <Sidebar.Backdrop className="z-10" />
+                  <Sidebar.Menu className="z-20" />
+                </Sidebar.Portal>
 
                 <main className="relative z-0">
                   <Sidebar.Animation>

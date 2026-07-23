@@ -18,7 +18,6 @@ import { ProjectId } from '@/types';
 import { getColorProject, getColorSlateDark } from '@/theme';
 import { getProjectByPathname, selectedProjects, sideProjects } from '@/data';
 import { Link } from '@/components/link';
-import { useDevice } from '@/components/utils/use-device';
 import { FocusRing } from '@/components/focus-ring';
 import * as HoverGroup from '@/components/primitives/hover-group';
 import { ScrambleText } from '@/components/scramble-text';
@@ -35,19 +34,10 @@ const dialogHandle = Dialog.createHandle();
  * Sidebar
  * -----------------------------------------------------------------------------------------------*/
 
-type SidebarOverlayConfig = {
-  className?: string;
-  ref?: React.Ref<HTMLDivElement>;
-};
-
 type SidebarContextValue = {
   open: boolean;
-  modal: boolean | 'trap-focus';
   onClose(): void;
   handle: typeof dialogHandle;
-  overlayConfig: SidebarOverlayConfig | null;
-  setOverlayConfig(config: SidebarOverlayConfig | null): void;
-  setModal(modal: boolean | 'trap-focus'): void;
 };
 
 const SIDEBAR_NAME = 'Sidebar';
@@ -56,8 +46,6 @@ const [SidebarProvider, useSidebarContext] = createContext<SidebarContextValue>(
 
 export const Sidebar = ({ children }: { children: React.ReactNode }) => {
   const [open, setOpen] = React.useState(false);
-  const [modal, setModal] = React.useState<boolean | 'trap-focus'>(true);
-  const [overlayConfig, setOverlayConfig] = React.useState<SidebarOverlayConfig | null>(null);
   const pathname = usePathname();
 
   // Close sidebar when navigating
@@ -66,16 +54,8 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
   }, [pathname]);
 
   return (
-    <Dialog.Root open={open} onOpenChange={setOpen} handle={dialogHandle} modal={modal}>
-      <SidebarProvider
-        open={open}
-        modal={modal}
-        onClose={() => setOpen(false)}
-        handle={dialogHandle}
-        overlayConfig={overlayConfig}
-        setOverlayConfig={setOverlayConfig}
-        setModal={setModal}
-      >
+    <Dialog.Root open={open} onOpenChange={setOpen} handle={dialogHandle}>
+      <SidebarProvider open={open} onClose={() => setOpen(false)} handle={dialogHandle}>
         {children}
       </SidebarProvider>
     </Dialog.Root>
@@ -141,6 +121,54 @@ const SidebarTrigger = React.forwardRef<SidebarTriggerElement, SidebarTriggerPro
 SidebarTrigger.displayName = 'SidebarTrigger';
 
 /* -------------------------------------------------------------------------------------------------
+ * SidebarPortal
+ * -----------------------------------------------------------------------------------------------*/
+
+type SidebarPortalElement = React.ComponentRef<typeof Dialog.Portal>;
+
+interface SidebarPortalProps extends React.ComponentPropsWithoutRef<typeof Dialog.Portal> {}
+
+const SidebarPortal = React.forwardRef<SidebarPortalElement, SidebarPortalProps>(
+  ({ children, ...props }, forwardedRef) => {
+    return (
+      <Dialog.Portal {...props} ref={forwardedRef}>
+        {children}
+      </Dialog.Portal>
+    );
+  },
+);
+
+SidebarPortal.displayName = 'SidebarPortal';
+
+/* -------------------------------------------------------------------------------------------------
+ * SidebarBackdrop
+ * -----------------------------------------------------------------------------------------------*/
+
+type SidebarBackdropElement = React.ComponentRef<typeof Dialog.Backdrop>;
+
+interface SidebarBackdropProps extends React.ComponentPropsWithoutRef<typeof Dialog.Backdrop> {}
+
+const SidebarBackdrop = React.forwardRef<SidebarBackdropElement, SidebarBackdropProps>(
+  ({ className, ...props }, forwardedRef) => {
+    return (
+      <Dialog.Backdrop
+        {...props}
+        ref={forwardedRef}
+        className={cx(
+          'fixed inset-0 bg-gradient-to-tl from-slate-1 to-slate-1/80',
+          'transition-opacity duration-150',
+          'data-[starting-style]:opacity-0',
+          'data-[ending-style]:opacity-0',
+          className,
+        )}
+      />
+    );
+  },
+);
+
+SidebarBackdrop.displayName = 'SidebarBackdrop';
+
+/* -------------------------------------------------------------------------------------------------
  * SidebarMenu
  * -----------------------------------------------------------------------------------------------*/
 
@@ -150,36 +178,21 @@ interface SidebarMenuProps extends React.ComponentPropsWithoutRef<'div'> {}
 
 const SidebarMenu = React.forwardRef<SidebarMenuElement, SidebarMenuProps>(
   ({ className, ...props }, forwardedRef) => {
-    const { overlayConfig } = useSidebarContext();
     const composedRefs = useComposedRefs(forwardedRef);
 
     return (
-      <Dialog.Portal>
-        {overlayConfig && (
-          <Dialog.Backdrop
-            ref={overlayConfig.ref}
-            className={cx(
-              'fixed inset-0 bg-gradient-to-tl from-slate-1 to-slate-1/80',
-              'transition-opacity duration-150',
-              'data-[starting-style]:opacity-0',
-              'data-[ending-style]:opacity-0',
-              overlayConfig.className,
-            )}
-          />
+      <Dialog.Popup
+        {...props}
+        ref={composedRefs}
+        className={cx(
+          'group/popup fixed right-0 top-0 bottom-0 w-full sm:w-[28rem] md:w-[30rem] lg:w-[35rem] xl:w-[38rem] outline-none selection:!bg-slate-4 selection:!text-slate-12',
+          'transition-[transform,opacity] duration-250 ease-gentle',
+          'data-[starting-style]:translate-x-full',
+          'data-[ending-style]:translate-x-full',
+          'will-change-motion',
+          className,
         )}
-
-        <Dialog.Popup
-          {...props}
-          ref={composedRefs}
-          className={cx(
-            'group/popup fixed right-0 top-0 bottom-0 w-full sm:w-[28rem] md:w-[30rem] lg:w-[35rem] xl:w-[38rem] outline-none selection:!bg-slate-4 selection:!text-slate-12',
-            'transition-[transform,opacity] duration-250 ease-gentle',
-            'data-[starting-style]:translate-x-full',
-            'data-[ending-style]:translate-x-full',
-            'will-change-motion',
-            className,
-          )}
-        >
+      >
           <ScrollArea.Root
             className={cx(
               'h-full pl-2 pr-2 py-2 md:pr-4 md:py-4',
@@ -209,8 +222,7 @@ const SidebarMenu = React.forwardRef<SidebarMenuElement, SidebarMenuProps>(
               </div>
             </div>
           </ScrollArea.Root>
-        </Dialog.Popup>
-      </Dialog.Portal>
+      </Dialog.Popup>
     );
   },
 );
@@ -504,37 +516,6 @@ const SidebarProjectLink = React.forwardRef<SidebarProjectLinkElement, SidebarPr
 SidebarProjectLink.displayName = 'SidebarProjectLink';
 
 /* -------------------------------------------------------------------------------------------------
- * SidebarOverlay
- * -----------------------------------------------------------------------------------------------*/
-
-type SidebarOverlayElement = React.ComponentRef<'div'>;
-
-interface SidebarOverlayProps extends React.ComponentPropsWithoutRef<'div'> {}
-
-const SidebarOverlay = React.forwardRef<SidebarOverlayElement, SidebarOverlayProps>(
-  ({ className }, forwardedRef) => {
-    const { setModal, setOverlayConfig } = useSidebarContext();
-    const device = useDevice();
-
-    React.useEffect(() => {
-      setModal(device.isMobile ? 'trap-focus' : true);
-    }, [device.isMobile, setModal]);
-
-    React.useEffect(() => {
-      setOverlayConfig({ className, ref: forwardedRef });
-
-      return () => {
-        setOverlayConfig(null);
-      };
-    }, [className, forwardedRef, setOverlayConfig]);
-
-    return null;
-  },
-);
-
-SidebarOverlay.displayName = 'SidebarOverlay';
-
-/* -------------------------------------------------------------------------------------------------
  * SidebarAnimation
  * -----------------------------------------------------------------------------------------------*/
 
@@ -566,7 +547,8 @@ SidebarAnimation.displayName = 'SidebarAnimation';
 /* -----------------------------------------------------------------------------------------------*/
 
 export const Root = Sidebar;
+export const Portal = SidebarPortal;
+export const Backdrop = SidebarBackdrop;
 export const Menu = SidebarMenu;
-export const Overlay = SidebarOverlay;
 export const Trigger = SidebarTrigger;
 export const Animation = SidebarAnimation;
