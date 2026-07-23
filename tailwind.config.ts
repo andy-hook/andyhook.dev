@@ -10,6 +10,7 @@ import {
   colorSocial,
   colorTheme,
   containerWidths,
+  curves,
   screens,
 } from './theme';
 
@@ -69,7 +70,10 @@ const config: Config = {
         },
       },
       animation: {
-        'route-enter': 'route-enter 550ms cubic-bezier(0.22, 1, 0.36, 1) 150ms both',
+        'route-enter': `route-enter 550ms ${curves.snappy} 150ms both`,
+      },
+      transitionTimingFunction: {
+        ...curves,
       },
       willChange: {
         motion: 'transform, opacity',
