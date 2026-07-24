@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import { createPortal } from 'react-dom';
-import { motion } from 'motion/react';
 import { cx } from '@/cva.config';
 import { CheckIcon } from '@heroicons/react/16/solid';
 import { ScrambleText } from './scramble-text';
@@ -101,7 +100,12 @@ const CopyFloating = React.forwardRef<CopyFloatingElement, CopyFloatingProps>(
   ({ open, copied, scheme, onHideComplete, className, ...props }, forwardedRef) => {
     const ref = React.useRef<HTMLDivElement>(null);
     const composedRefs = useComposedRefs(ref, forwardedRef);
+    const [entered, setEntered] = React.useState(false);
     const isLightScheme = scheme === 'light';
+
+    React.useLayoutEffect(() => {
+      requestAnimationFrame(() => setEntered(true));
+    }, []);
 
     React.useEffect(() => {
       const badge = ref.current;
@@ -116,6 +120,8 @@ const CopyFloating = React.forwardRef<CopyFloatingElement, CopyFloatingProps>(
       return () => document.removeEventListener('pointermove', handleMove);
     }, []);
 
+    const isVisible = entered && open;
+
     return (
       <div
         aria-hidden
@@ -126,42 +132,40 @@ const CopyFloating = React.forwardRef<CopyFloatingElement, CopyFloatingProps>(
         )}
         {...props}
       >
-        <motion.div
-          variants={{
-            visible: { scale: 1 },
-            hidden: { scale: 0 },
-            copied: { scale: 0.5 },
-          }}
-          initial="hidden"
-          animate={open ? (copied ? 'copied' : 'visible') : 'hidden'}
+        <div
           className={cx(
             'absolute inset-0 rounded-full shadow-sm flex items-center justify-center',
+            'transition-transform duration-200 ease-spring',
+            isVisible ? (copied ? 'scale-50' : 'scale-100') : 'scale-0',
             copied ? 'bg-green' : isLightScheme ? 'bg-slate-light-1' : 'bg-slate-1',
           )}
-          onAnimationComplete={(variant) => {
-            if (variant === 'hidden' && !open) onHideComplete();
+          onTransitionEnd={(event) => {
+            if (event.target !== event.currentTarget) return;
+            if (event.propertyName !== 'transform') return;
+            if (!open) onHideComplete();
           }}
         >
-          <motion.div
+          <span
             className={cx(
               'font-body font-bold text-base tracking-tighter capsize',
+              'transition-transform duration-200 ease-spring',
               isLightScheme ? 'text-slate-light-12' : 'text-slate-12',
+              copied ? 'scale-0' : 'scale-100',
             )}
-            animate={{ scale: copied ? 0 : 1 }}
           >
             Copy
-          </motion.div>
+          </span>
 
-          {copied && (
-            <motion.div
-              className="absolute inset-0 flex items-center justify-center"
-              initial={{ scale: 0, rotate: 45 }}
-              animate={{ scale: 1, rotate: 0 }}
-            >
-              <CheckIcon className="size-14 text-white" />
-            </motion.div>
-          )}
-        </motion.div>
+          <span
+            className={cx(
+              'absolute inset-0 flex items-center justify-center',
+              'transition-transform duration-200 ease-spring',
+              copied ? 'scale-100 rotate-0' : 'scale-0 rotate-45',
+            )}
+          >
+            <CheckIcon className="size-14 text-white" />
+          </span>
+        </div>
       </div>
     );
   },
