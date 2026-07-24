@@ -98,7 +98,7 @@ interface CopyFloatingProps extends React.ComponentPropsWithoutRef<'div'> {
 }
 
 const CopyFloating = React.forwardRef<CopyFloatingElement, CopyFloatingProps>(
-  ({ open, copied, scheme, onHideComplete, className, style, ...props }, forwardedRef) => {
+  ({ open, copied, scheme, onHideComplete, className, ...props }, forwardedRef) => {
     const ref = React.useRef<HTMLDivElement>(null);
     const composedRefs = useComposedRefs(ref, forwardedRef);
     const isLightScheme = scheme === 'light';
@@ -120,12 +120,10 @@ const CopyFloating = React.forwardRef<CopyFloatingElement, CopyFloatingProps>(
       <div
         aria-hidden
         ref={composedRefs}
-        className={cx('size-20 pointer-events-none z-20', className)}
-        style={{
-          position: 'fixed',
-          transform: 'translate(-50%, -50%)',
-          ...style,
-        }}
+        className={cx(
+          'size-20 pointer-events-none z-20 fixed -translate-x-1/2 -translate-y-1/2',
+          className,
+        )}
         {...props}
       >
         <motion.div
