@@ -135,7 +135,8 @@ const CopyFloating = React.forwardRef<CopyFloatingElement, CopyFloatingProps>(
         <div
           className={cx(
             'absolute inset-0 rounded-full shadow-sm flex items-center justify-center',
-            'transition-transform duration-200 ease-spring',
+            'transition-transform duration-300',
+            isVisible ? 'ease-spring' : 'ease-snappy',
             isVisible ? (copied ? 'scale-50' : 'scale-100') : 'scale-0',
             copied ? 'bg-green' : isLightScheme ? 'bg-slate-light-1' : 'bg-slate-1',
           )}
@@ -148,7 +149,7 @@ const CopyFloating = React.forwardRef<CopyFloatingElement, CopyFloatingProps>(
           <span
             className={cx(
               'font-body font-bold text-base tracking-tighter capsize',
-              'transition-transform duration-200 ease-spring',
+              'transition-transform duration-300 ease-spring',
               isLightScheme ? 'text-slate-light-12' : 'text-slate-12',
               copied ? 'scale-0' : 'scale-100',
             )}
@@ -159,7 +160,7 @@ const CopyFloating = React.forwardRef<CopyFloatingElement, CopyFloatingProps>(
           <span
             className={cx(
               'absolute inset-0 flex items-center justify-center',
-              'transition-transform duration-200 ease-spring',
+              'transition-transform duration-300 ease-spring',
               copied ? 'scale-100 rotate-0' : 'scale-0 rotate-45',
             )}
           >
