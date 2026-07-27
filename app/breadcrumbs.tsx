@@ -9,6 +9,7 @@ import { ArrowLeftIcon } from '@heroicons/react/16/solid';
 import { usePathname } from 'next/navigation';
 import { getProjectByPathname } from '@/data';
 import { getPostByPathname } from '@/posts';
+import { scrollPaths } from '@/scroll-paths';
 
 /* -------------------------------------------------------------------------------------------------
  * Breadcrumbs
@@ -23,7 +24,9 @@ export const Breadcrumbs = React.forwardRef<BreadcrumbsElement, BreadcrumbsProps
     const pathname = usePathname();
     const knownProject = getProjectByPathname(pathname);
     const knownPost = getPostByPathname(pathname);
-    const isRootPath = pathname === '/';
+    const parsedPathname = pathname.slice(1);
+    const isHomeScrollPath = Object.values(scrollPaths).includes(parsedPathname);
+    const isRootPath = pathname === '/' || isHomeScrollPath;
 
     return (
       <div
