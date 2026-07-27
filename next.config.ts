@@ -1,6 +1,7 @@
 import createMDX from '@next/mdx';
 import type { NextConfig } from 'next';
 import path from 'path';
+import { scrollPaths } from './scroll-paths';
 
 const nextConfig: NextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
@@ -27,10 +28,7 @@ const nextConfig: NextConfig = {
     ];
   },
   async rewrites() {
-    return [
-      { source: '/experience', destination: '/' },
-      { source: '/testimonials', destination: '/' },
-    ];
+    return Object.values(scrollPaths).map((path) => ({ source: `/${path}`, destination: '/' }));
   },
 };
 
