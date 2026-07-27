@@ -53,15 +53,18 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en" className="overflow-x-clip">
-      <Theme asChild>
-        <body
-          className={cx(
-            displayFont.variable,
-            bodyFont.variable,
-            codeFont.variable,
-            'relative overflow-x-clip z-0',
-          )}
-        >
+      <Theme
+        render={
+          <body
+            className={cx(
+              displayFont.variable,
+              bodyFont.variable,
+              codeFont.variable,
+              'relative overflow-x-clip z-0',
+            )}
+          />
+        }
+      >
           <DeviceProvider>
             <Tooltip.Provider delay={200} timeout={0}>
               <Sidebar.Root>
@@ -90,7 +93,6 @@ export default async function RootLayout({
               </Sidebar.Root>
             </Tooltip.Provider>
           </DeviceProvider>
-        </body>
       </Theme>
     </html>
   );

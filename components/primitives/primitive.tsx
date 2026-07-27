@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Slot } from '@/components/primitives/slot';
+import { useRender } from '@base-ui/react/use-render';
+import type { useRender as UseRender } from '@base-ui/react/use-render';
 
 const NODES = [
   'a',
@@ -20,13 +21,14 @@ const NODES = [
   'ul',
 ] as const;
 
-type Primitives = { [E in (typeof NODES)[number]]: PrimitiveForwardRefComponent<E> };
 type PrimitivePropsWithRef<E extends React.ElementType> = React.ComponentPropsWithRef<E> & {
-  asChild?: boolean;
+  render?: UseRender.RenderProp;
 };
 
 interface PrimitiveForwardRefComponent<E extends React.ElementType>
   extends React.ForwardRefExoticComponent<PrimitivePropsWithRef<E>> {}
+
+type Primitives = { [E in (typeof NODES)[number]]: PrimitiveForwardRefComponent<E> };
 
 /* -------------------------------------------------------------------------------------------------
  * Primitive
@@ -34,10 +36,14 @@ interface PrimitiveForwardRefComponent<E extends React.ElementType>
 
 export const Primitive = NODES.reduce((primitive, node) => {
   const Node = React.forwardRef((props: PrimitivePropsWithRef<typeof node>, forwardedRef: any) => {
-    const { asChild, ...primitiveProps } = props;
-    const Comp: any = asChild ? Slot : node;
+    const { render, ...primitiveProps } = props;
 
-    return <Comp {...primitiveProps} ref={forwardedRef} />;
+    return useRender({
+      defaultTagName: node,
+      render,
+      ref: forwardedRef,
+      props: primitiveProps,
+    });
   });
 
   Node.displayName = `Primitive.${node}`;

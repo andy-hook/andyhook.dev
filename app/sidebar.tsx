@@ -368,20 +368,20 @@ const SidebarSubListItem = React.forwardRef<SidebarSubListItemElement, SidebarSu
               onValueChange={(hovered) => {
                 if (hovered) scrambleRef.current?.replay();
               }}
-              asChild
-            >
-              <Link
-                {...itemProps}
-                ref={forwardedRef}
-                className="py-1 px-3 block"
-                onClick={(event) => {
-                  props.onClick?.(event);
-                  context.onNavigate(itemProps.href);
-                }}
-              >
-                <ScrambleText ref={scrambleRef}>{children}</ScrambleText>
-              </Link>
-            </MouseHover>
+              render={
+                <Link
+                  {...itemProps}
+                  ref={forwardedRef}
+                  className="py-1 px-3 block"
+                  onClick={(event) => {
+                    props.onClick?.(event);
+                    context.onNavigate(itemProps.href);
+                  }}
+                >
+                  <ScrambleText ref={scrambleRef}>{children}</ScrambleText>
+                </Link>
+              }
+            />
           </FocusRing>
         </div>
       </li>

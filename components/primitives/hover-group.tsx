@@ -51,7 +51,7 @@ type Mode = 'hovered' | 'dimmed' | 'initial';
 type HoverGroupItemElement = React.ComponentRef<typeof MouseHover>;
 interface HoverGroupItemProps {
   value: string;
-  children: React.ReactNode;
+  children: React.ReactElement;
   onModeChange(mode: Mode): void;
 }
 
@@ -70,11 +70,9 @@ const HoverGroupItem = React.forwardRef<HoverGroupItemElement, HoverGroupItemPro
         onValueChange={(hovered) => {
           context.onValueChange(hovered ? value : '');
         }}
-        asChild
+        render={children}
         ref={forwardedRef}
-      >
-        {children}
-      </MouseHover>
+      />
     );
   },
 );

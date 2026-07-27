@@ -74,41 +74,47 @@ export const ArtifactGridItem = React.forwardRef<ArtifactGridItemElement, Artifa
         className={cx('relative aspect-[var(--width)_/_var(--height)]', className)}
         ref={forwardedRef}
       >
-        <MouseHover onValueChange={setHovered} asChild>
-          <div className="absolute shadow-md bg-white" style={{ inset: 'calc(var(--gap) / 2)' }}>
-            <div className={cx('absolute', 'inset-[6vw]', 'sm:inset-[3vw]', 'wide:inset-[1.5vw]')}>
-              <AnimatePresence>
-                {hovered && (
-                  <motion.div
-                    initial="hidden"
-                    animate="visible"
-                    exit="hidden"
-                    variants={{
-                      hidden: { y: -2, opacity: 0 },
-                      visible: { y: 0, opacity: 1 },
-                    }}
-                    transition={{
-                      type: 'spring',
-                      stiffness: 500,
-                      damping: 25,
-                      mass: 0.25,
-                    }}
-                    className="z-10 sticky top-0 inset-x-0 p-6 flex justify-end"
-                  >
-                    <Chip.Root>
-                      <Chip.Text>{label}</Chip.Text>
-                      <Chip.Icon side="right">
-                        <InformationCircleIcon />
-                      </Chip.Icon>
-                    </Chip.Root>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+        <MouseHover
+          onValueChange={setHovered}
+          render={
+            <div
+              className="absolute shadow-md bg-white"
+              style={{ inset: 'calc(var(--gap) / 2)' }}
+            >
+              <div className={cx('absolute', 'inset-[6vw]', 'sm:inset-[3vw]', 'wide:inset-[1.5vw]')}>
+                <AnimatePresence>
+                  {hovered && (
+                    <motion.div
+                      initial="hidden"
+                      animate="visible"
+                      exit="hidden"
+                      variants={{
+                        hidden: { y: -2, opacity: 0 },
+                        visible: { y: 0, opacity: 1 },
+                      }}
+                      transition={{
+                        type: 'spring',
+                        stiffness: 500,
+                        damping: 25,
+                        mass: 0.25,
+                      }}
+                      className="z-10 sticky top-0 inset-x-0 p-6 flex justify-end"
+                    >
+                      <Chip.Root>
+                        <Chip.Text>{label}</Chip.Text>
+                        <Chip.Icon side="right">
+                          <InformationCircleIcon />
+                        </Chip.Icon>
+                      </Chip.Root>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
 
-              {children}
+                {children}
+              </div>
             </div>
-          </div>
-        </MouseHover>
+          }
+        />
       </li>
     );
   },
