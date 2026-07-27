@@ -29,7 +29,7 @@ import { usePathname } from 'next/navigation';
 
 type SidebarContextValue = {
   open: boolean;
-  onClose(): void;
+  onNavigate: (href: string) => void;
 };
 
 const SIDEBAR_NAME = 'Sidebar';
@@ -47,7 +47,12 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
-      <SidebarProvider open={open} onClose={() => setOpen(false)}>
+      <SidebarProvider
+        open={open}
+        onNavigate={(href) => {
+          if (pathname === href) setOpen(false);
+        }}
+      >
         {children}
       </SidebarProvider>
     </Dialog.Root>
@@ -266,8 +271,12 @@ const SidebarMenuContent = React.forwardRef<SidebarMenuContentElement, SidebarMe
               <div className="mt-8 lg:mt-10 xxl:mt-14 max-w-72">
                 <ul className="text-sm lg:text-base xxl:text-lg -my-1 -mx-3 group/list text-slate-light-11">
                   <SidebarSubListItem href="/">Home</SidebarSubListItem>
-                  <SidebarSubListItem href="/#experience">Experience</SidebarSubListItem>
-                  <SidebarSubListItem href="/#testimonials">Recommendations</SidebarSubListItem>
+                  <SidebarSubListItem href="/experience" scroll={false}>
+                    Experience
+                  </SidebarSubListItem>
+                  <SidebarSubListItem href="/testimonials" scroll={false}>
+                    Recommendations
+                  </SidebarSubListItem>
                   <SidebarSubListItem href="/cv" newTab external>
                     Download CV
                   </SidebarSubListItem>
@@ -340,11 +349,12 @@ type SidebarSubListItemElement = React.ComponentRef<typeof Link>;
 
 interface SidebarSubListItemProps extends React.ComponentPropsWithoutRef<typeof Link> {
   children: string;
+  href: string;
 }
 
 const SidebarSubListItem = React.forwardRef<SidebarSubListItemElement, SidebarSubListItemProps>(
   (props, forwardedRef) => {
-    const { children, onClick, ...itemProps } = props;
+    const { children, ...itemProps } = props;
     const context = useSidebarContext();
     const scrambleRef = React.useRef<React.ComponentRef<typeof ScrambleText>>(null);
     return (
@@ -365,8 +375,8 @@ const SidebarSubListItem = React.forwardRef<SidebarSubListItemElement, SidebarSu
                 ref={forwardedRef}
                 className="py-1 px-3 block"
                 onClick={(event) => {
-                  onClick?.(event);
-                  context.onClose();
+                  props.onClick?.(event);
+                  context.onNavigate(itemProps.href);
                 }}
               >
                 <ScrambleText ref={scrambleRef}>{children}</ScrambleText>
@@ -409,7 +419,7 @@ interface SidebarProjectLinkProps extends Omit<
 }
 
 const SidebarProjectLink = React.forwardRef<SidebarProjectLinkElement, SidebarProjectLinkProps>(
-  ({ className, path, title, projectId, onClick, ...props }, forwardedRef) => {
+  ({ className, path, title, projectId, ...props }, forwardedRef) => {
     const context = useSidebarContext();
     const pathname = usePathname();
     const isExternal = path.startsWith('https://');
@@ -429,11 +439,11 @@ const SidebarProjectLink = React.forwardRef<SidebarProjectLinkElement, SidebarPr
               className,
             )}
             {...props}
-            ref={forwardedRef}
             onClick={(event) => {
-              onClick?.(event);
-              context.onClose();
+              props.onClick?.(event);
+              context.onNavigate(path);
             }}
+            ref={forwardedRef}
           >
             <motion.div
               className="grow relative flex"
