@@ -17,6 +17,7 @@ import { MouseHover } from '@/components/primitives/mouse-hover';
 import { ProjectId } from '@/types';
 import { getColorProject, getColorSlateDark } from '@/theme';
 import { getProjectByPathname, selectedProjects, sideProjects } from '@/data';
+import { scrollPaths } from '@/scroll-paths';
 import { Link } from '@/components/link';
 import { FocusRing } from '@/components/focus-ring';
 import * as HoverGroup from '@/components/primitives/hover-group';
@@ -271,10 +272,10 @@ const SidebarMenuContent = React.forwardRef<SidebarMenuContentElement, SidebarMe
               <div className="mt-8 lg:mt-10 xxl:mt-14 max-w-72">
                 <ul className="text-sm lg:text-base xxl:text-lg -my-1 -mx-3 group/list text-slate-light-11">
                   <SidebarSubListItem href="/">Home</SidebarSubListItem>
-                  <SidebarSubListItem href="/experience" scroll={false}>
+                  <SidebarSubListItem href={`/${scrollPaths.experience}`} scroll={false}>
                     Experience
                   </SidebarSubListItem>
-                  <SidebarSubListItem href="/testimonials" scroll={false}>
+                  <SidebarSubListItem href={`/${scrollPaths.testimonials}`} scroll={false}>
                     Recommendations
                   </SidebarSubListItem>
                   <SidebarSubListItem href="/cv" newTab external>

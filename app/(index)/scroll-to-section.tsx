@@ -2,25 +2,22 @@
 
 import * as React from 'react';
 import { usePathname } from 'next/navigation';
-
-const sectionIds: Record<string, string> = {
-  '/experience': 'experience',
-  '/testimonials': 'testimonials',
-};
+import { scrollPaths } from '@/scroll-paths';
 
 export function ScrollToSection() {
   const pathname = usePathname();
-  const sectionId = sectionIds[pathname];
+  const sectionId = pathname.slice(1);
+  const isScrollPath = Object.values(scrollPaths).includes(sectionId);
   const prevSectionId = React.useRef(sectionId);
 
   React.useEffect(() => {
-    if (!sectionId) return;
+    if (!isScrollPath) return;
 
     const isTransition = prevSectionId.current !== sectionId;
     const behavior = isTransition ? 'smooth' : 'instant';
     document.getElementById(sectionId)?.scrollIntoView({ behavior });
     prevSectionId.current = sectionId;
-  }, [sectionId]);
+  }, [sectionId, isScrollPath]);
 
   return null;
 }
