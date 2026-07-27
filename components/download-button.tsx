@@ -22,80 +22,83 @@ export const DownloadButton = React.forwardRef<DownloadButtonElement, DownloadBu
       <div className="relative" {...props} ref={forwardedRef}>
         <div className="-inset-2 sm:inset-auto sm:size-24 border border-slate-3 rounded-full absolute sm:-bottom-5 sm:-left-4" />
         <FocusRing className="outline-offset-0 focus-visible:outline-offset-2">
-          <MouseHover onValueChange={setHovered} asChild>
-            <motion.a
-              href="/cv"
-              className={cx(
-                'relative inline-flex py-4 lg:py-5 px-7 border rounded-full items-center gap-3 w-full sm:w-auto justify-center overflow-hidden',
-                className,
-              )}
-              initial="initial"
-              animate={hovered ? 'hovered' : 'initial'}
-              variants={{
-                initial: {
-                  borderColor: getColorSlateDark(5),
-                  backgroundColor: getColorSlateDark(2, 0.6),
-                },
-                hovered: {
-                  borderColor: getColorSlateDark(6),
-                  backgroundColor: getColorSlateDark(3, 0.3),
-                },
-              }}
-              transition={{ duration: 0.05 }}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div className="relative size-4 -ml-px">
-                {hovered && (
-                  <motion.div
-                    animate={{ opacity: [0, 1], x: ['-300%', '0%'] }}
-                    className="absolute top-0 left-0"
-                  >
-                    <DocumentArrowDownIcon className="size-4 text-slate-12" />
-                  </motion.div>
+          <MouseHover
+            onValueChange={setHovered}
+            render={
+              <motion.a
+                href="/cv"
+                className={cx(
+                  'relative inline-flex py-4 lg:py-5 px-7 border rounded-full items-center gap-3 w-full sm:w-auto justify-center overflow-hidden',
+                  className,
                 )}
-
-                <AnimatePresence initial={false}>
-                  {!hovered && (
+                initial="initial"
+                animate={hovered ? 'hovered' : 'initial'}
+                variants={{
+                  initial: {
+                    borderColor: getColorSlateDark(5),
+                    backgroundColor: getColorSlateDark(2, 0.6),
+                  },
+                  hovered: {
+                    borderColor: getColorSlateDark(6),
+                    backgroundColor: getColorSlateDark(3, 0.3),
+                  },
+                }}
+                transition={{ duration: 0.05 }}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="relative size-4 -ml-px">
+                  {hovered && (
                     <motion.div
-                      initial={{ opacity: 1, x: '0%' }}
-                      exit={{ opacity: 0, x: '50%' }}
+                      animate={{ opacity: [0, 1], x: ['-300%', '0%'] }}
                       className="absolute top-0 left-0"
                     >
-                      <DocumentTextIcon className="size-4 text-slate-10" />
+                      <DocumentArrowDownIcon className="size-4 text-slate-12" />
                     </motion.div>
                   )}
-                </AnimatePresence>
-              </div>
-              <motion.div
-                animate={hovered ? 'hover' : 'initial'}
-                className="inline-block font-body text-slate-12 text-sm md:text-base xl:text-lg font-medium capsize tracking-wide relative"
-                transition={{ duration: 0.2, delay: 0.07 }}
-                variants={{
-                  initial: { x: 0 },
-                  hover: { x: [0, 3, 0] },
-                }}
-                onAnimationStart={(variant) => {
-                  if (variant === 'hover') {
-                    setTimeout(() => {
-                      scrambleTextRef.current?.replay();
-                    }, 70);
-                  }
-                }}
-              >
-                <ScrambleText
-                  className="absolute inset-0 capsize text-nowrap"
-                  playOnMount={false}
-                  overflow
-                  ref={scrambleTextRef}
-                  aria-hidden
+
+                  <AnimatePresence initial={false}>
+                    {!hovered && (
+                      <motion.div
+                        initial={{ opacity: 1, x: '0%' }}
+                        exit={{ opacity: 0, x: '50%' }}
+                        className="absolute top-0 left-0"
+                      >
+                        <DocumentTextIcon className="size-4 text-slate-10" />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+                <motion.div
+                  animate={hovered ? 'hover' : 'initial'}
+                  className="inline-block font-body text-slate-12 text-sm md:text-base xl:text-lg font-medium capsize tracking-wide relative"
+                  transition={{ duration: 0.2, delay: 0.07 }}
+                  variants={{
+                    initial: { x: 0 },
+                    hover: { x: [0, 3, 0] },
+                  }}
+                  onAnimationStart={(variant) => {
+                    if (variant === 'hover') {
+                      setTimeout(() => {
+                        scrambleTextRef.current?.replay();
+                      }, 70);
+                    }
+                  }}
                 >
-                  Download full CV
-                </ScrambleText>
-                <div className="opacity-0">Download full CV</div>
-              </motion.div>
-            </motion.a>
-          </MouseHover>
+                  <ScrambleText
+                    className="absolute inset-0 capsize text-nowrap"
+                    playOnMount={false}
+                    overflow
+                    ref={scrambleTextRef}
+                    aria-hidden
+                  >
+                    Download full CV
+                  </ScrambleText>
+                  <div className="opacity-0">Download full CV</div>
+                </motion.div>
+              </motion.a>
+            }
+          />
         </FocusRing>
       </div>
     );
