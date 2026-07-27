@@ -26,6 +26,12 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async rewrites() {
+    return [
+      { source: '/experience', destination: '/' },
+      { source: '/testimonials', destination: '/' },
+    ];
+  },
 };
 
 const withMDX = createMDX({

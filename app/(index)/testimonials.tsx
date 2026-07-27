@@ -7,6 +7,7 @@ import { Quote } from '@/components/quote';
 import { Line } from '@/components/line';
 import { Author } from '@/components/author';
 import { Gutter } from '@/components/gutter';
+import { RouteTransition } from '@/components/route-transition';
 
 const vlad = getTestimonialById('vlad');
 const benoit = getTestimonialById('benoit');
@@ -22,59 +23,61 @@ export const Testimonials = React.forwardRef<TestimonialsElement, TestimonialsPr
   (props, forwardedRef) => {
     return (
       <section {...props} ref={forwardedRef}>
-        <Gutter>
-          <Container>
-            <div className="mb-12 md:mb-14 xl:mb-16 xxl:mb-20 lg:text-center relative z-10 md:pl-7 lg:pl-0">
-              <h2 className="text-slate-12 font-display mb-8 lg:mb-7 xxl:mb-8 font-normal tracking-tighter text-3xl lg:text-4xl lg:text-[40px] xxl:text-5xl capsize leading-tight lg:leading-tight xxl:leading-tight">
-                <div className="text-balance">Trusted by world-class teams</div>
-              </h2>
+        <RouteTransition multiplier={10}>
+          <Gutter>
+            <Container>
+              <div className="mb-12 md:mb-14 xl:mb-16 xxl:mb-20 lg:text-center relative z-10 md:pl-7 lg:pl-0">
+                <h2 className="text-slate-12 font-display mb-8 lg:mb-7 xxl:mb-8 font-normal tracking-tighter text-3xl lg:text-4xl lg:text-[40px] xxl:text-5xl capsize leading-tight lg:leading-tight xxl:leading-tight">
+                  <div className="text-balance">Trusted by world-class teams</div>
+                </h2>
 
-              <p className="text-slate-10 leading-relaxed sm:leading-relaxed lg:leading-relaxed text-sm sm:text-base font-body lg:text-lg capsize sm:text-pretty text-balance">
-                I’ve worked with some amazing people throughout the years, here is what they have to
-                say
-              </p>
-            </div>
-          </Container>
+                <p className="text-slate-10 leading-relaxed sm:leading-relaxed lg:leading-relaxed text-sm sm:text-base font-body lg:text-lg capsize sm:text-pretty text-balance">
+                  I’ve worked with some amazing people throughout the years, here is what they have
+                  to say
+                </p>
+              </div>
+            </Container>
 
-          <Container width="wide">
-            <div className="relative">
-              <svg
-                aria-hidden
-                viewBox="0 0 100 100"
-                fill="none"
-                className="text-slate-2 size-[700px] absolute -top-80 right-0 pointer-events-none"
-              >
-                <circle
-                  cx="50"
-                  cy="50"
-                  r="38"
-                  stroke="currentColor"
-                  strokeWidth="1"
-                  vectorEffect="non-scaling-stroke"
-                />
-              </svg>
+            <Container width="wide">
+              <div className="relative">
+                <svg
+                  aria-hidden
+                  viewBox="0 0 100 100"
+                  fill="none"
+                  className="text-slate-2 size-[700px] absolute -top-80 right-0 pointer-events-none"
+                >
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="38"
+                    stroke="currentColor"
+                    strokeWidth="1"
+                    vectorEffect="non-scaling-stroke"
+                  />
+                </svg>
 
-              <svg
-                aria-hidden
-                viewBox="0 0 100 100"
-                fill="none"
-                className="text-slate-4 size-[800px] -bottom-40 md:size-[900px] absolute md:-bottom-60 -left-8 pointer-events-none"
-              >
-                <circle
-                  cx="50"
-                  cy="50"
-                  r="38"
-                  stroke="currentColor"
-                  strokeWidth="1"
-                  vectorEffect="non-scaling-stroke"
-                  strokeDasharray="10 10"
-                />
-              </svg>
+                <svg
+                  aria-hidden
+                  viewBox="0 0 100 100"
+                  fill="none"
+                  className="text-slate-4 size-[800px] -bottom-40 md:size-[900px] absolute md:-bottom-60 -left-8 pointer-events-none"
+                >
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="38"
+                    stroke="currentColor"
+                    strokeWidth="1"
+                    vectorEffect="non-scaling-stroke"
+                    strokeDasharray="10 10"
+                  />
+                </svg>
 
-              <TestimonialGrid />
-            </div>
-          </Container>
-        </Gutter>
+                <TestimonialGrid />
+              </div>
+            </Container>
+          </Gutter>
+        </RouteTransition>
       </section>
     );
   },
