@@ -13,7 +13,7 @@ import { FocusRing } from '@/components/focus-ring';
 export const metadata = getProjectMetadata('artifacts');
 const project = getProjectById('artifacts');
 
-export default async function ArtifactsPage() {
+export default function ArtifactsPage() {
   return (
     <Project.Root projectId={project.id} testimonial={project.testimonial}>
       <Project.Header

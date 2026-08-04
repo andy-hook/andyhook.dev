@@ -15,19 +15,13 @@ interface MediaImageProps extends Omit<
   'src' | 'alt'
 > {
   image: ImageWithMetadata;
-  objectFit?: 'cover' | 'contain';
 }
 
 const MediaImage = React.forwardRef<MediaImageElement, MediaImageProps>((props, forwardedRef) => {
-  const { image, className, style, quality = 90, objectFit = 'cover', ...imageProps } = props;
+  const { image, className, style, quality = 90, ...imageProps } = props;
   const ref = React.useRef<MediaImageElement>(null);
   const composedRefs = useComposedRefs(forwardedRef, ref);
   const [isLoaded, setIsLoaded] = React.useState(false);
-
-  const imageClassName = cx(
-    'select-none relative',
-    objectFit === 'contain' ? 'object-contain' : 'object-cover',
-  );
 
   return (
     <div
@@ -51,7 +45,7 @@ const MediaImage = React.forwardRef<MediaImageElement, MediaImageProps>((props, 
             setIsLoaded(true);
             imageProps.onLoad?.(event);
           }}
-          className={imageClassName}
+          className="select-none object-cover relative"
         />
       </motion.div>
     </div>

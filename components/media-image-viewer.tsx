@@ -306,7 +306,6 @@ const MediaImageViewerContentImpl: React.FC<MediaImageViewerContentImplProps> = 
                 <MediaImage
                   image={slide.image}
                   fill
-                  objectFit="contain"
                   sizes={`min(100vw, calc(100vh * ${width} / ${height}))`}
                   priority={priority}
                   className="absolute inset-0 pointer-events-none"
