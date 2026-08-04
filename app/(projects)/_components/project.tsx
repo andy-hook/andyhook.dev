@@ -15,6 +15,7 @@ import { TeamList } from './team-list';
 import * as HoverGroup from '@/components/primitives/hover-group';
 
 import { MediaImage } from '@/components/media-image';
+import * as MediaImageViewer from '@/components/media-image-viewer';
 import { RouteTransition } from '@/components/route-transition';
 import { ProjectId, StaticImageWithMetadata, TeamMember, Testimonial } from '@/types';
 import { cx } from '@/cva.config';
@@ -38,99 +39,101 @@ const ProjectRoot: React.FC<ProjectProps> = (props) => {
   });
 
   return (
-    <div className="space-y-20 lg:space-y-24 xl:space-y-32">
-      {children}
+    <MediaImageViewer.Root>
+      <div className="space-y-20 lg:space-y-24 xl:space-y-32">
+        {children}
 
-      <section>
-        <RouteTransition multiplier={10}>
-          <Gutter>
-            <Container>
-              <figure className="gap-9 sm:gap-14 lg:gap-8 xl:gap-10 md:px-7 xl:px-10 relative grid grid-cols-1 lg:grid-cols-3 items-start">
-                <Line className="absolute -left-24 top-0 w-1/4" solid contrast="low" />
-                <Line
-                  orientation="vertical"
-                  className="hidden md:block absolute left-0 md:left-7 xl:left-10 -top-10 h-44"
-                />
-                <Hatch className="hidden wide:block absolute -left-6 md:left-0 top-0 w-6 md:w-7 xl:w-10 h-36" />
-
-                <Quote className="font-body text-lg sm:leading-relaxed sm:text-xl lg:text-2xl xxl:text-3xl text-slate-12 leading-relaxed lg:leading-relaxed xxl:leading-relaxed capsize font-medium text-pretty lg:col-span-2 lg:col-start-2">
-                  {testimonial.full}
-                </Quote>
-
-                <figcaption className="lg:row-start-1 relative">
-                  <Author
-                    name={testimonial.name}
-                    role={testimonial.role}
-                    company={testimonial.company}
-                    avatar={testimonial.avatar}
-                    size="large"
+        <section>
+          <RouteTransition multiplier={10}>
+            <Gutter>
+              <Container>
+                <figure className="gap-9 sm:gap-14 lg:gap-8 xl:gap-10 md:px-7 xl:px-10 relative grid grid-cols-1 lg:grid-cols-3 items-start">
+                  <Line className="absolute -left-24 top-0 w-1/4" solid contrast="low" />
+                  <Line
+                    orientation="vertical"
+                    className="hidden md:block absolute left-0 md:left-7 xl:left-10 -top-10 h-44"
                   />
-                </figcaption>
-              </figure>
-            </Container>
-          </Gutter>
-        </RouteTransition>
-      </section>
+                  <Hatch className="hidden wide:block absolute -left-6 md:left-0 top-0 w-6 md:w-7 xl:w-10 h-36" />
 
-      <section>
-        <RouteTransition multiplier={10}>
-          <Gutter collapse>
-            <Container width="wide">
-              <div className="p-5 md:p-7 xl:p-10 border-y sm:border-x rounded-3xl relative border-slate-3 from-slate-3/25 to-slate-2/50 bg-gradient-to-br shadow-slate-1 shadow-2xl">
-                <Line
-                  className="absolute top-5 md:top-7 xl:top-10 -left-[100vw] -right-[100vw]"
-                  solid
-                  contrast="low"
-                />
-                <Line
-                  className="absolute bottom-5 md:bottom-7 xl:bottom-10 -left-[100vw] -right-[100vw]"
-                  contrast="low"
-                  solid
-                />
+                  <Quote className="font-body text-lg sm:leading-relaxed sm:text-xl lg:text-2xl xxl:text-3xl text-slate-12 leading-relaxed lg:leading-relaxed xxl:leading-relaxed capsize font-medium text-pretty lg:col-span-2 lg:col-start-2">
+                    {testimonial.full}
+                  </Quote>
 
-                <HoverGroup.Root>
-                  <ul
-                    className="grid sm:grid-cols-3 gap-8 sm:gap-4 md:gap-6 lg:gap-8 xl:gap-10"
-                    aria-label="More projects"
-                  >
-                    {moreProjects.map((project, i) => {
-                      const firstItem = i === 0;
-                      const lastItem = i === moreProjects.length - 1;
+                  <figcaption className="lg:row-start-1 relative">
+                    <Author
+                      name={testimonial.name}
+                      role={testimonial.role}
+                      company={testimonial.company}
+                      avatar={testimonial.avatar}
+                      size="large"
+                    />
+                  </figcaption>
+                </figure>
+              </Container>
+            </Gutter>
+          </RouteTransition>
+        </section>
 
-                      return (
-                        <li key={project.id} className="relative">
-                          <div className="hidden sm:block">
-                            {!firstItem && (
-                              <Line
-                                orientation="vertical"
-                                className="absolute left-0 -top-8 -bottom-8 md:-top-10 md:-bottom-10 lg:-top-12 lg:-bottom-12"
-                              />
-                            )}
-                            {!lastItem && (
-                              <Line
-                                orientation="vertical"
-                                className="absolute right-0 -top-8 -bottom-8 md:-top-10 md:-bottom-10 lg:-top-12 lg:-bottom-12"
-                              />
-                            )}
-                          </div>
+        <section>
+          <RouteTransition multiplier={10}>
+            <Gutter collapse>
+              <Container width="wide">
+                <div className="p-5 md:p-7 xl:p-10 border-y sm:border-x rounded-3xl relative border-slate-3 from-slate-3/25 to-slate-2/50 bg-gradient-to-br shadow-slate-1 shadow-2xl">
+                  <Line
+                    className="absolute top-5 md:top-7 xl:top-10 -left-[100vw] -right-[100vw]"
+                    solid
+                    contrast="low"
+                  />
+                  <Line
+                    className="absolute bottom-5 md:bottom-7 xl:bottom-10 -left-[100vw] -right-[100vw]"
+                    contrast="low"
+                    solid
+                  />
 
-                          <div className="sm:hidden">
-                            {!firstItem && <Line className="absolute -left-7 -right-7 top-0" />}
-                            {!lastItem && <Line className="absolute -left-7 -right-7 bottom-0" />}
-                          </div>
+                  <HoverGroup.Root>
+                    <ul
+                      className="grid sm:grid-cols-3 gap-8 sm:gap-4 md:gap-6 lg:gap-8 xl:gap-10"
+                      aria-label="More projects"
+                    >
+                      {moreProjects.map((project, i) => {
+                        const firstItem = i === 0;
+                        const lastItem = i === moreProjects.length - 1;
 
-                          <WorkItem size="small" project={project} />
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </HoverGroup.Root>
-              </div>
-            </Container>
-          </Gutter>
-        </RouteTransition>
-      </section>
-    </div>
+                        return (
+                          <li key={project.id} className="relative">
+                            <div className="hidden sm:block">
+                              {!firstItem && (
+                                <Line
+                                  orientation="vertical"
+                                  className="absolute left-0 -top-8 -bottom-8 md:-top-10 md:-bottom-10 lg:-top-12 lg:-bottom-12"
+                                />
+                              )}
+                              {!lastItem && (
+                                <Line
+                                  orientation="vertical"
+                                  className="absolute right-0 -top-8 -bottom-8 md:-top-10 md:-bottom-10 lg:-top-12 lg:-bottom-12"
+                                />
+                              )}
+                            </div>
+
+                            <div className="sm:hidden">
+                              {!firstItem && <Line className="absolute -left-7 -right-7 top-0" />}
+                              {!lastItem && <Line className="absolute -left-7 -right-7 bottom-0" />}
+                            </div>
+
+                            <WorkItem size="small" project={project} />
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </HoverGroup.Root>
+                </div>
+              </Container>
+            </Gutter>
+          </RouteTransition>
+        </section>
+      </div>
+    </MediaImageViewer.Root>
   );
 };
 

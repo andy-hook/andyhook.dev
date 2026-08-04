@@ -15,44 +15,48 @@ interface MediaImageProps extends Omit<
   'src' | 'alt'
 > {
   image: ImageWithMetadata;
+  objectFit?: 'cover' | 'contain';
 }
 
-const MediaImage = React.forwardRef<MediaImageElement, MediaImageProps>(
-  (props, forwardedRef) => {
-    const { image, className, style, quality = 90, ...imageProps } = props;
-    const ref = React.useRef<MediaImageElement>(null);
-    const composedRefs = useComposedRefs(forwardedRef, ref);
-    const [isLoaded, setIsLoaded] = React.useState(false);
+const MediaImage = React.forwardRef<MediaImageElement, MediaImageProps>((props, forwardedRef) => {
+  const { image, className, style, quality = 90, objectFit = 'cover', ...imageProps } = props;
+  const ref = React.useRef<MediaImageElement>(null);
+  const composedRefs = useComposedRefs(forwardedRef, ref);
+  const [isLoaded, setIsLoaded] = React.useState(false);
 
-    return (
-      <div
-        style={{ backgroundColor: image.color ?? undefined, ...style }}
-        className={cx('relative', className)}
+  const imageClassName = cx(
+    'select-none relative',
+    objectFit === 'contain' ? 'object-contain' : 'object-cover',
+  );
+
+  return (
+    <div
+      style={{ backgroundColor: image.color ?? undefined, ...style }}
+      className={cx('relative', className)}
+    >
+      <motion.div
+        variants={{ visible: { opacity: 1 }, hidden: { opacity: 0 } }}
+        initial="hidden"
+        animate={isLoaded ? 'visible' : 'hidden'}
+        className={cx(props.fill && 'absolute inset-0')}
       >
-        <motion.div
-          variants={{ visible: { opacity: 1 }, hidden: { opacity: 0 } }}
-          initial="hidden"
-          animate={isLoaded ? 'visible' : 'hidden'}
-          className={cx(props.fill && 'absolute inset-0')}
-        >
-          <NextImage
-            ref={composedRefs}
-            {...imageProps}
-            quality={quality}
-            src={image.src}
-            alt={image.alt}
-            draggable={false}
-            onLoad={(event) => {
-              setIsLoaded(true);
-              imageProps.onLoad?.(event);
-            }}
-            className="select-none object-cover relative"
-          />
-        </motion.div>
-      </div>
-    );
-  },
-);
+        <NextImage
+          ref={composedRefs}
+          {...imageProps}
+          quality={quality}
+          src={image.src}
+          alt={image.alt}
+          draggable={false}
+          onLoad={(event) => {
+            setIsLoaded(true);
+            imageProps.onLoad?.(event);
+          }}
+          className={imageClassName}
+        />
+      </motion.div>
+    </div>
+  );
+});
 MediaImage.displayName = 'MediaImage';
 
 export { MediaImage };

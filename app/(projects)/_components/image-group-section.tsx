@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { cva } from '@/cva.config';
-import { ImageWithMetadata, ProjectId } from '@/types';
+import { ProjectId, StaticImageWithMetadata } from '@/types';
 
 import { Gutter } from '@/components/gutter';
 import { Container } from '@/components/container';
@@ -8,6 +8,8 @@ import { Line } from '@/components/line';
 import { Hatch } from '@/components/hatch';
 import { MediaImage } from '@/components/media-image';
 import { RouteTransition } from '@/components/route-transition';
+import * as MediaImageViewer from '@/components/media-image-viewer';
+import { FocusRing } from '@/components/focus-ring';
 
 const imageGroupSectionBackground = cva({
   base: 'bg-gradient-to-br px-4 md:px-12 lg:px-16 rounded-2xl md:rounded-3xl overflow-hidden',
@@ -26,7 +28,7 @@ const imageGroupSectionBackground = cva({
 type ImageGroupSectionElement = React.ComponentRef<'section'>;
 
 interface ImageGroupSectionProps extends React.ComponentPropsWithoutRef<'section'> {
-  images: ImageWithMetadata[];
+  images: StaticImageWithMetadata[];
   project: ProjectId;
 }
 
@@ -82,9 +84,13 @@ export const ImageGroupSection = React.forwardRef<ImageGroupSectionElement, Imag
                           className="absolute -left-full bottom-0 -right-full"
                           solid
                         />
-                        <div className="rounded lg:rounded-xl overflow-hidden shadow-xl relative">
-                          <MediaImage image={image} className="w-full" sizes="100vw" />
-                        </div>
+                        <FocusRing className="outline-offset-0 focus-visible:outline-offset-3 rounded lg:rounded-xl">
+                          <MediaImageViewer.Trigger image={image}>
+                            <div className="rounded lg:rounded-xl overflow-hidden shadow-xl relative">
+                              <MediaImage image={image} className="w-full" sizes="100vw" />
+                            </div>
+                          </MediaImageViewer.Trigger>
+                        </FocusRing>
                       </div>
                     );
                   })}

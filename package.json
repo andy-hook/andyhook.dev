@@ -21,7 +21,8 @@
     "react-dom": "19.1.0",
     "rehype-pretty-code": "^0.14.4",
     "remark-gfm": "^4.0.1",
-    "use-scramble": "^2.2.15"
+    "use-scramble": "^2.2.15",
+    "usehooks-ts": "^3.1.1"
   },
   "devDependencies": {
     "@capsizecss/metrics": "^3.2.0",

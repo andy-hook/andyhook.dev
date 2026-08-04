@@ -25,19 +25,18 @@ import { ScrambleText } from '@/components/scramble-text';
 import { usePathname } from 'next/navigation';
 
 /* -------------------------------------------------------------------------------------------------
- * Sidebar
+ * SidebarProvider
  * -----------------------------------------------------------------------------------------------*/
 
 type SidebarContextValue = {
   open: boolean;
+  onOpenChange: (open: boolean) => void;
   onNavigate: (href: string) => void;
 };
 
-const SIDEBAR_NAME = 'Sidebar';
+const [SidebarProviderImpl, useSidebarContext] = createContext<SidebarContextValue>('Sidebar');
 
-const [SidebarProvider, useSidebarContext] = createContext<SidebarContextValue>(SIDEBAR_NAME);
-
-export const Sidebar = ({ children }: { children: React.ReactNode }) => {
+export const SidebarProvider = ({ children }: { children: React.ReactNode }) => {
   const [open, setOpen] = React.useState(false);
   const pathname = usePathname();
 
@@ -47,15 +46,29 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
   }, [pathname]);
 
   return (
-    <Dialog.Root open={open} onOpenChange={setOpen}>
-      <SidebarProvider
-        open={open}
-        onNavigate={(href) => {
-          if (pathname === href) setOpen(false);
-        }}
-      >
-        {children}
-      </SidebarProvider>
+    <SidebarProviderImpl
+      open={open}
+      onOpenChange={setOpen}
+      onNavigate={(href) => {
+        if (pathname === href) setOpen(false);
+      }}
+    >
+      {children}
+    </SidebarProviderImpl>
+  );
+};
+
+SidebarProvider.displayName = 'SidebarProvider';
+
+/* -------------------------------------------------------------------------------------------------
+ * Sidebar
+ * -----------------------------------------------------------------------------------------------*/
+
+export const Sidebar = ({ children }: { children: React.ReactNode }) => {
+  const context = useSidebarContext();
+  return (
+    <Dialog.Root open={context.open} onOpenChange={context.onOpenChange}>
+      {children}
     </Dialog.Root>
   );
 };
@@ -81,14 +94,10 @@ const SidebarTrigger = React.forwardRef<SidebarTriggerElement, SidebarTriggerPro
       >
         <Dialog.Trigger
           {...props}
-          className={cx(
-            'p-4 lg:p-5 rounded-full before:content-[""] before:absolute before:-inset-2 before:rounded-full before:bg-gradient-to-tl before:from-slate-2 before:to-slate-5 before:scale-75 hover:before:scale-90 before:transition',
-            props.className,
-          )}
           ref={forwardedRef}
           aria-label="Sidebar menu"
           render={
-            <button>
+            <button className="p-4 lg:p-5 rounded-full before:content-[''] before:absolute before:-inset-2 before:rounded-full before:bg-gradient-to-tl before:from-slate-2 before:to-slate-5 before:scale-75 hover:before:scale-90 before:transition">
               <div className="relative">
                 <div className="size-5 flex flex-col justify-center">
                   <div className="space-y-[6px]">
@@ -550,6 +559,7 @@ SidebarAnimation.displayName = 'SidebarAnimation';
 
 /* -----------------------------------------------------------------------------------------------*/
 
+export const Provider = SidebarProvider;
 export const Root = Sidebar;
 export const Portal = SidebarPortal;
 export const Backdrop = SidebarBackdrop;

@@ -65,34 +65,36 @@ export default async function RootLayout({
           />
         }
       >
-          <DeviceProvider>
-            <Tooltip.Provider delay={200} timeout={0}>
-              <Sidebar.Root>
-                <Sidebar.Animation className="relative z-10">
-                  <Header />
-                </Sidebar.Animation>
+        <DeviceProvider>
+          <Tooltip.Provider delay={200} timeout={0}>
+            <Sidebar.Provider>
+              <Sidebar.Animation className="relative z-10">
+                <Header />
+              </Sidebar.Animation>
 
+              <Sidebar.Root>
                 <Sidebar.Trigger className="z-30 fixed top-5 right-5 md:top-7 md:right-7 lg:top-10 lg:right-10" />
 
                 <Sidebar.Portal>
                   <Sidebar.Backdrop className="z-10" />
                   <Sidebar.Menu className="z-20" />
                 </Sidebar.Portal>
-
-                <main className="relative z-0">
-                  <Sidebar.Animation>
-                    {children}
-
-                    <RouteTransition multiplier={10}>
-                      <Footer />
-                    </RouteTransition>
-                  </Sidebar.Animation>
-                </main>
-
-                <Background className="absolute inset-0 -z-10" />
               </Sidebar.Root>
-            </Tooltip.Provider>
-          </DeviceProvider>
+
+              <main className="relative z-0">
+                <Sidebar.Animation>
+                  {children}
+
+                  <RouteTransition multiplier={10}>
+                    <Footer />
+                  </RouteTransition>
+                </Sidebar.Animation>
+              </main>
+
+              <Background className="absolute inset-0 -z-10" />
+            </Sidebar.Provider>
+          </Tooltip.Provider>
+        </DeviceProvider>
       </Theme>
     </html>
   );

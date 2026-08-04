@@ -2,10 +2,9 @@
 
 import * as React from 'react';
 import { cx } from '@/cva.config';
-import { MouseHover } from '@/components/primitives/mouse-hover';
 import * as Chip from '@/components/chip';
 import { InformationCircleIcon } from '@heroicons/react/16/solid';
-import { AnimatePresence, motion } from 'motion/react';
+import { Primitive } from '@/components/primitives/primitive';
 
 const GRID_PRECISION = 40;
 
@@ -53,13 +52,10 @@ type ArtifactGridItemElement = React.ComponentRef<'li'>;
 interface ArtifactGridItemProps extends React.ComponentPropsWithoutRef<'li'> {
   width: number;
   height: number;
-  label: string;
 }
 
 export const ArtifactGridItem = React.forwardRef<ArtifactGridItemElement, ArtifactGridItemProps>(
-  ({ children, className, width, height, label, ...props }, forwardedRef) => {
-    const [hovered, setHovered] = React.useState(false);
-
+  ({ children, className, width, height, ...props }, forwardedRef) => {
     return (
       <li
         {...props}
@@ -74,47 +70,7 @@ export const ArtifactGridItem = React.forwardRef<ArtifactGridItemElement, Artifa
         className={cx('relative aspect-[var(--width)_/_var(--height)]', className)}
         ref={forwardedRef}
       >
-        <MouseHover
-          onValueChange={setHovered}
-          render={
-            <div
-              className="absolute shadow-md bg-white"
-              style={{ inset: 'calc(var(--gap) / 2)' }}
-            >
-              <div className={cx('absolute', 'inset-[6vw]', 'sm:inset-[3vw]', 'wide:inset-[1.5vw]')}>
-                <AnimatePresence>
-                  {hovered && (
-                    <motion.div
-                      initial="hidden"
-                      animate="visible"
-                      exit="hidden"
-                      variants={{
-                        hidden: { y: -2, opacity: 0 },
-                        visible: { y: 0, opacity: 1 },
-                      }}
-                      transition={{
-                        type: 'spring',
-                        stiffness: 500,
-                        damping: 25,
-                        mass: 0.25,
-                      }}
-                      className="z-10 sticky top-0 inset-x-0 p-6 flex justify-end"
-                    >
-                      <Chip.Root>
-                        <Chip.Text>{label}</Chip.Text>
-                        <Chip.Icon side="right">
-                          <InformationCircleIcon />
-                        </Chip.Icon>
-                      </Chip.Root>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-
-                {children}
-              </div>
-            </div>
-          }
-        />
+        {children}
       </li>
     );
   },
@@ -122,7 +78,53 @@ export const ArtifactGridItem = React.forwardRef<ArtifactGridItemElement, Artifa
 
 ArtifactGridItem.displayName = 'ArtifactGridItem';
 
+/* -------------------------------------------------------------------------------------------------
+ * ArtifactGridFrame
+ * -----------------------------------------------------------------------------------------------*/
+
+type ArtifactGridFrameElement = React.ComponentRef<typeof Primitive.div>;
+
+interface ArtifactGridFrameProps extends React.ComponentPropsWithoutRef<typeof Primitive.div> {
+  label: string;
+}
+
+export const ArtifactGridFrame = React.forwardRef<ArtifactGridFrameElement, ArtifactGridFrameProps>(
+  ({ children, className, label, ...props }, forwardedRef) => {
+    return (
+      <Primitive.div
+        {...props}
+        className={cx('group absolute shadow-md bg-slate-light-1', className)}
+        style={{ inset: 'calc(var(--gap) / 2)', ...props.style }}
+        ref={forwardedRef}
+      >
+        <div className={cx('absolute', 'inset-[6vw]', 'sm:inset-[3vw]', 'wide:inset-[1.5vw]')}>
+          <div
+            className={cx(
+              'z-10 sticky top-0 inset-x-0 p-6 flex justify-end pointer-events-none will-change-motion',
+              'opacity-0 -translate-y-1 transition-[opacity,transform] duration-150 ease-snappy',
+              'group-hover:opacity-100 group-hover:translate-y-0',
+              'group-focus-visible:opacity-100 group-focus-visible:translate-y-0',
+            )}
+          >
+            <Chip.Root>
+              <Chip.Text>{label}</Chip.Text>
+              <Chip.Icon side="right">
+                <InformationCircleIcon />
+              </Chip.Icon>
+            </Chip.Root>
+          </div>
+
+          {children}
+        </div>
+      </Primitive.div>
+    );
+  },
+);
+
+ArtifactGridFrame.displayName = 'ArtifactGridFrame';
+
 /* -----------------------------------------------------------------------------------------------*/
 
 export const Root = ArtifactGrid;
 export const Item = ArtifactGridItem;
+export const Frame = ArtifactGridFrame;

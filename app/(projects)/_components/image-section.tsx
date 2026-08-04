@@ -4,12 +4,14 @@ import { Line } from '@/components/line';
 import { Container } from '@/components/container';
 import { MediaImage } from '@/components/media-image';
 import { RouteTransition } from '@/components/route-transition';
-import { ImageWithMetadata } from '@/types';
+import { StaticImageWithMetadata } from '@/types';
+import * as MediaImageViewer from '@/components/media-image-viewer';
+import { FocusRing } from '@/components/focus-ring';
 
 type ImageSectionElement = React.ComponentRef<'section'>;
 
 interface ImageSectionProps extends React.ComponentPropsWithoutRef<'section'> {
-  image: ImageWithMetadata;
+  image: StaticImageWithMetadata;
 }
 
 export const ImageSection = React.forwardRef<ImageSectionElement, ImageSectionProps>(
@@ -35,9 +37,13 @@ export const ImageSection = React.forwardRef<ImageSectionElement, ImageSectionPr
                   contrast="low"
                 />
 
-                <div className="rounded-xl lg:rounded-3xl overflow-hidden relative">
-                  <MediaImage image={image} className="w-full" sizes="100vw" />
-                </div>
+                <FocusRing className="outline-offset-0 focus-visible:outline-offset-3 rounded lg:rounded-3xl">
+                  <MediaImageViewer.Trigger image={image}>
+                    <div className="rounded-xl lg:rounded-3xl overflow-hidden relative">
+                      <MediaImage image={image} className="w-full" sizes="100vw" />
+                    </div>
+                  </MediaImageViewer.Trigger>
+                </FocusRing>
               </div>
             </Container>
           </Gutter>
