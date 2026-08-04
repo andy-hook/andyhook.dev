@@ -14,6 +14,7 @@ export interface RemoteImageWithMetadata extends ImageMetadata {
 
 export interface StaticImageWithMetadata extends ImageMetadata {
   src: StaticImageData;
+  slug: string;
 }
 
 export type ImageWithMetadata = RemoteImageWithMetadata | StaticImageWithMetadata;

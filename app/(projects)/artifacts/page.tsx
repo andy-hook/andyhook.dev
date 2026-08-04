@@ -1,11 +1,14 @@
 import { getProjectMetadata } from '../_components/metadata';
-import { MediaImage } from '@/components/media-image';
 import { RouteTransition } from '@/components/route-transition';
 import * as Project from '../_components/project';
 import { artifacts, getProjectById } from '@/data';
 import { cx } from '@/cva.config';
-import * as ArtifactGrid from './_components/artifact-grid';
+import { MediaImage } from '@/components/media-image';
+import * as MediaImageViewer from '@/components/media-image-viewer';
 import { screens } from '@/theme';
+
+import * as ArtifactGrid from './_components/artifact-grid';
+import { FocusRing } from '@/components/focus-ring';
 
 export const metadata = getProjectMetadata('artifacts');
 const project = getProjectById('artifacts');
@@ -32,15 +35,21 @@ export default function ArtifactsPage() {
                 key={`${name}-${year}`}
                 width={src.src.width}
                 height={src.src.height}
-                label={`${name} · ${year}`}
               >
-                <MediaImage
-                  image={src}
-                  fill
-                  sizes={`(min-width: ${screens.wide}px) 35vw, (min-width: ${screens.sm}px) 50vw, 100vw`}
-                  loading={index < 4 ? 'eager' : undefined}
-                  className="absolute inset-0"
-                />
+                <FocusRing scheme="light">
+                  <ArtifactGrid.Frame
+                    label={`${name} · ${year}`}
+                    render={<MediaImageViewer.Trigger image={src} />}
+                  >
+                    <MediaImage
+                      image={src}
+                      fill
+                      sizes={`(min-width: ${screens.wide}px) 35vw, (min-width: ${screens.sm}px) 50vw, 100vw`}
+                      loading={index < 4 ? 'eager' : undefined}
+                      className="absolute inset-0"
+                    />
+                  </ArtifactGrid.Frame>
+                </FocusRing>
               </ArtifactGrid.Item>
             ))}
           </ArtifactGrid.Root>

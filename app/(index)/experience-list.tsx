@@ -5,7 +5,7 @@ import { PlusIcon } from '@heroicons/react/16/solid';
 import { Accordion } from '@base-ui/react/accordion';
 import { cx } from '@/cva.config';
 
-import { useScreen } from '@/components/utils/use-screen';
+import { useBreakpoint } from '@/components/utils/use-breakpoint';
 import { Line } from '@/components/line';
 import { Hatch } from '@/components/hatch';
 
@@ -24,7 +24,7 @@ export const ExperienceList = React.forwardRef<ExperienceListElement, Experience
   ({ className, ...props }, forwardedRef) => {
     const [openItem, onOpenItemChange] = React.useState('');
     const [hoveredItem, setHoveredItem] = React.useState('');
-    const animateCompanyName = useScreen({ max: 'md' });
+    const animateCompanyName = useBreakpoint({ max: 'md' });
 
     return (
       <div className={cx('relative', className)} {...props} ref={forwardedRef}>

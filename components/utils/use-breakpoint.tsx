@@ -4,7 +4,7 @@ import { screens } from '@/theme';
 
 type ScreenKey = keyof typeof screens;
 
-export function useScreen(targets: { min?: ScreenKey; max?: ScreenKey }) {
+export function useBreakpoint(targets: { min?: ScreenKey; max?: ScreenKey }) {
   const query = React.useMemo(() => {
     const min = targets.min ? `(min-width: ${screens[targets.min]}px)` : '';
     const max = targets.max ? `(max-width: ${screens[targets.max] - 1}px)` : '';
