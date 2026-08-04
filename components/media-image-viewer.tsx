@@ -357,9 +357,10 @@ const MediaImageViewerTrigger: React.FC<MediaImageViewerTriggerProps> = ({ image
     <Dialog.Trigger
       handle={mediaImageViewerHandle}
       {...props}
+      className={cx('block', props.className)}
       onClick={(event) => {
+        props.onClick?.(event);
         event.preventBaseUIHandler();
-
         window.history.pushState(null, '', `?image=${image.slug}`);
       }}
     />
