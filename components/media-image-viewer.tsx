@@ -353,9 +353,9 @@ const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({
   return (
     <div
       className={cx(
-        'fixed bottom-10 w-full z-20 flex items-center justify-center gap-2',
-        'transition-[opacity,transform] duration-200 ease-snappy',
-        visible ? 'opacity-100' : 'opacity-0 translate-y-2 scale-95 pointer-events-none',
+        'fixed bottom-10 w-full z-20 flex items-center justify-center',
+        'transition-transform duration-150 ease-gentle',
+        !visible && 'translate-y-32 scale-95 pointer-events-none',
       )}
       onPointerEnter={() => {
         interactingRef.current = true;
@@ -377,29 +377,42 @@ const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({
         scheduleHide();
       }}
     >
-      {canPaginate && (
-        <MediaImageViewerNavigation
-          size="sm"
-          aria-label="Previous"
-          onClick={() => handlePaginate(-1)}
-        >
-          <ChevronLeftIcon className="size-5" />
-        </MediaImageViewerNavigation>
-      )}
+      <div className="relative flex items-center justify-center gap-2">
+        <div
+          aria-hidden
+          className={cx(
+            'pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[200px] size-[600px]',
+            '[mask-image:radial-gradient(circle,black_30%,transparent_70%)]',
+            '[-webkit-mask-image:radial-gradient(circle,black_30%,transparent_70%)]',
+            'transition-[backdrop-filter] duration-150 ease-gentle',
+            visible ? 'backdrop-blur-3xl' : 'backdrop-blur-0',
+          )}
+        />
 
-      <Dialog.Close
-        render={
-          <MediaImageViewerNavigation aria-label="Close">
-            <XMarkIcon className="size-8" />
+        {canPaginate && (
+          <MediaImageViewerNavigation
+            size="sm"
+            aria-label="Previous"
+            onClick={() => handlePaginate(-1)}
+          >
+            <ChevronLeftIcon className="size-5" />
           </MediaImageViewerNavigation>
-        }
-      />
+        )}
 
-      {canPaginate && (
-        <MediaImageViewerNavigation size="sm" aria-label="Next" onClick={() => handlePaginate(1)}>
-          <ChevronRightIcon className="size-5" />
-        </MediaImageViewerNavigation>
-      )}
+        <Dialog.Close
+          render={
+            <MediaImageViewerNavigation aria-label="Close">
+              <XMarkIcon className="size-8" />
+            </MediaImageViewerNavigation>
+          }
+        />
+
+        {canPaginate && (
+          <MediaImageViewerNavigation size="sm" aria-label="Next" onClick={() => handlePaginate(1)}>
+            <ChevronRightIcon className="size-5" />
+          </MediaImageViewerNavigation>
+        )}
+      </div>
     </div>
   );
 };
