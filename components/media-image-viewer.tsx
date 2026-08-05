@@ -5,18 +5,20 @@ import { Dialog } from '@base-ui/react/dialog';
 import { AnimatePresence, animate, motion, useMotionValue } from 'motion/react';
 import { createContext } from './utils/create-context';
 import type { StaticImageWithMetadata } from '@/types';
-import { cx } from '@/cva.config';
+import { cx, cva, type VariantProps } from '@/cva.config';
 import { MediaImage } from './media-image';
 import { useSearchParams } from 'next/navigation';
 import { useEventCallback, useWindowSize } from 'usehooks-ts';
 import { FocusRing } from './focus-ring';
-import { useCoarsePointer } from './utils/use-coarse-pointer';
+import { XMarkIcon } from '@heroicons/react/24/solid';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/16/solid';
 
 type PaginateDirection = -1 | 1;
 
 const DRAG_DISTANCE_THRESHOLD = 48;
 const DRAG_VELOCITY_DISTANCE = 12;
 const SWIPE_VELOCITY = 800;
+const CONTROLS_IDLE_MS = 2000;
 
 const KEYBOARD_PAGINATE_DIRECTION: Record<string, PaginateDirection> = {
   ArrowLeft: -1,
@@ -92,6 +94,7 @@ const MediaImageViewerContent: React.FC<MediaImageViewerContentProps> = () => {
   const context = useMediaImageViewerContext();
   const searchParams = useSearchParams();
   const imageParam = searchParams.get('image');
+  const initialFocusRef = React.useRef<HTMLDivElement | null>(null);
 
   const initialIndex = imageParam
     ? context.images.findIndex((image) => image.slug === imageParam)
@@ -113,10 +116,12 @@ const MediaImageViewerContent: React.FC<MediaImageViewerContentProps> = () => {
             'data-[starting-style]:opacity-0 data-[starting-style]:translate-y-[5vh] data-[starting-style]:scale-110',
             'data-[ending-style]:opacity-0 data-[ending-style]:duration-150 data-[ending-style]:-translate-y-[1vh] data-[ending-style]:scale-105',
           )}
+          ref={initialFocusRef}
+          initialFocus={() => initialFocusRef.current}
         >
-          <Dialog.Title className="sr-only">Artifact viewer</Dialog.Title>
+          <Dialog.Title className="sr-only">Image viewer</Dialog.Title>
           <Dialog.Description className="sr-only">
-            Drag left or right to browse artifacts. Press Escape to close.
+            Use the left and right arrow keys to browse images. Press Escape to close.
           </Dialog.Description>
 
           <MediaImageViewerContentImpl initialIndex={initialIndex} />
@@ -140,6 +145,7 @@ const MediaImageViewerContentImpl: React.FC<MediaImageViewerContentImplProps> = 
   const context = useMediaImageViewerContext();
   const [index, setIndex] = React.useState(initialIndex);
   const [snapSlides, setSnapSlides] = React.useState(false);
+  const [controlsVisible, setControlsVisible] = React.useState(true);
 
   const windowSize = useWindowSize();
   const radius = getWindowRadius(context.images, index, {
@@ -207,33 +213,17 @@ const MediaImageViewerContentImpl: React.FC<MediaImageViewerContentImplProps> = 
   }, [paginate]);
 
   return (
-    <div className="relative flex-1 min-h-0 overflow-hidden touch-none [container-type:size]">
-      <div className="fixed bottom-10 w-full z-20 flex items-center justify-center">
-        <Dialog.Close
-          render={<FocusRing className="outline-offset-0 focus-visible:outline-offset-2" />}
-        >
-          <button className="relative p-4 lg:p-5 rounded-full before:content-[''] before:absolute before:-inset-2 before:rounded-full before:bg-gradient-to-tl before:from-slate-2 before:to-slate-5 before:scale-75 hover:before:scale-90 before:transition">
-            <div className="relative">
-              <div className="size-5 flex flex-col justify-center">
-                <div className="space-y-[6px]">
-                  <div
-                    className={cx(
-                      'h-0.5 bg-slate-12 rounded-full transition-transform duration-300 ease-spring',
-                      'rotate-45 translate-y-1',
-                    )}
-                  />
-                  <div
-                    className={cx(
-                      'h-0.5 bg-slate-12 rounded-full transition-transform duration-300 ease-spring',
-                      '-rotate-45 -translate-y-1',
-                    )}
-                  />
-                </div>
-              </div>
-            </div>
-          </button>
-        </Dialog.Close>
-      </div>
+    <div
+      className={cx(
+        'relative flex-1 min-h-0 overflow-hidden touch-none [container-type:size]',
+        !controlsVisible && 'cursor-none',
+      )}
+    >
+      <MediaImageViewerControls
+        onPaginate={(direction) => paginate(direction, { snap: false })}
+        visible={controlsVisible}
+        onVisibleChange={setControlsVisible}
+      />
 
       <MediaImageViewerTrack
         onCalculateOffset={(direction: PaginateDirection) => slotOffsets[radius + direction]}
@@ -309,6 +299,171 @@ const MediaImageViewerContentImpl: React.FC<MediaImageViewerContentImplProps> = 
 };
 
 /* -------------------------------------------------------------------------------------------------
+ * MediaImageViewerControls
+ * -----------------------------------------------------------------------------------------------*/
+
+interface MediaImageViewerControlsProps {
+  onPaginate: (direction: PaginateDirection) => void;
+  visible: boolean;
+  onVisibleChange: (visible: boolean) => void;
+}
+
+const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({
+  onPaginate,
+  visible,
+  onVisibleChange,
+}) => {
+  const context = useMediaImageViewerContext();
+  const canPaginate = context.images.length > 1;
+  const idleTimeoutRef = React.useRef(0);
+  const interactingRef = React.useRef(false);
+  const handlePaginate = useEventCallback(onPaginate);
+  const handleVisibleChange = useEventCallback((visible: boolean) => {
+    onVisibleChange(visible);
+  });
+
+  const scheduleHide = React.useCallback(() => {
+    window.clearTimeout(idleTimeoutRef.current);
+    if (interactingRef.current) return;
+    idleTimeoutRef.current = window.setTimeout(() => {
+      handleVisibleChange(false);
+    }, CONTROLS_IDLE_MS);
+  }, [handleVisibleChange]);
+
+  const reveal = React.useCallback(() => {
+    handleVisibleChange(true);
+    scheduleHide();
+  }, [handleVisibleChange, scheduleHide]);
+
+  React.useEffect(() => {
+    reveal();
+
+    window.addEventListener('pointermove', reveal);
+    window.addEventListener('pointerdown', reveal);
+    window.addEventListener('keydown', reveal);
+
+    return () => {
+      window.clearTimeout(idleTimeoutRef.current);
+      window.removeEventListener('pointermove', reveal);
+      window.removeEventListener('pointerdown', reveal);
+      window.removeEventListener('keydown', reveal);
+    };
+  }, [reveal]);
+
+  return (
+    <div
+      className={cx(
+        'fixed bottom-10 w-full z-20 flex items-center justify-center',
+        'transition-transform duration-150 ease-gentle',
+        !visible && 'translate-y-32 scale-95 pointer-events-none',
+      )}
+      onPointerEnter={() => {
+        interactingRef.current = true;
+        window.clearTimeout(idleTimeoutRef.current);
+        handleVisibleChange(true);
+      }}
+      onPointerLeave={() => {
+        interactingRef.current = false;
+        scheduleHide();
+      }}
+      onFocusCapture={() => {
+        interactingRef.current = true;
+        window.clearTimeout(idleTimeoutRef.current);
+        handleVisibleChange(true);
+      }}
+      onBlurCapture={(event) => {
+        if (event.currentTarget.contains(event.relatedTarget as Node | null)) return;
+        interactingRef.current = false;
+        scheduleHide();
+      }}
+    >
+      <div className="relative flex items-center justify-center gap-2">
+        <div
+          aria-hidden
+          className={cx(
+            'pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[200px] size-[600px]',
+            '[mask-image:radial-gradient(circle,black_30%,transparent_70%)]',
+            '[-webkit-mask-image:radial-gradient(circle,black_30%,transparent_70%)]',
+            'transition-[backdrop-filter] duration-150 ease-gentle',
+            visible ? 'backdrop-blur-3xl' : 'backdrop-blur-0',
+          )}
+        />
+
+        {canPaginate && (
+          <MediaImageViewerNavigation
+            size="sm"
+            aria-label="Previous"
+            onClick={() => handlePaginate(-1)}
+          >
+            <ChevronLeftIcon className="size-5" />
+          </MediaImageViewerNavigation>
+        )}
+
+        <Dialog.Close
+          render={
+            <MediaImageViewerNavigation aria-label="Close">
+              <XMarkIcon className="size-8" />
+            </MediaImageViewerNavigation>
+          }
+        />
+
+        {canPaginate && (
+          <MediaImageViewerNavigation size="sm" aria-label="Next" onClick={() => handlePaginate(1)}>
+            <ChevronRightIcon className="size-5" />
+          </MediaImageViewerNavigation>
+        )}
+      </div>
+    </div>
+  );
+};
+
+MediaImageViewerControls.displayName = 'MediaImageViewerControls';
+
+/* -------------------------------------------------------------------------------------------------
+ * MediaImageViewerNavigation
+ * -----------------------------------------------------------------------------------------------*/
+
+const mediaImageViewerNavigation = cva({
+  base: 'relative rounded-full text-slate-12 before:content-[""] before:absolute before:rounded-full before:bg-gradient-to-tl before:from-slate-2 before:to-slate-5 before:scale-75 hover:before:scale-90 before:transition',
+  variants: {
+    size: {
+      sm: 'p-3 before:-inset-1.5',
+      md: 'p-4 before:-inset-2',
+    },
+  },
+  defaultVariants: {
+    size: 'md',
+  },
+});
+
+type MediaImageViewerNavigationElement = React.ComponentRef<'button'>;
+
+interface MediaImageViewerNavigationProps
+  extends
+    React.ComponentPropsWithoutRef<'button'>,
+    VariantProps<typeof mediaImageViewerNavigation> {}
+
+const MediaImageViewerNavigation = React.forwardRef<
+  MediaImageViewerNavigationElement,
+  MediaImageViewerNavigationProps
+>(({ className, size, children, ...props }, forwardedRef) => {
+  return (
+    <FocusRing className="outline-offset-0 focus-visible:outline-offset-2">
+      <button
+        type="button"
+        {...props}
+        ref={forwardedRef}
+        className={mediaImageViewerNavigation({ size, className })}
+      >
+        <span className="relative">{children}</span>
+      </button>
+    </FocusRing>
+  );
+});
+
+MediaImageViewerNavigation.displayName = 'MediaImageViewerNavigation';
+
+/* -------------------------------------------------------------------------------------------------
  * MediaImageViewerTrack
  * -----------------------------------------------------------------------------------------------*/
 
@@ -323,7 +478,6 @@ const MediaImageViewerTrack: React.FC<MediaImageViewerTrackProps> = ({
   onCalculateOffset,
   onCommit,
 }) => {
-  const coarsePointer = useCoarsePointer();
   const handleCommit = useEventCallback(onCommit);
   const handleCalculateOffset = useEventCallback(onCalculateOffset);
   const dragX = useMotionValue(0);
@@ -341,7 +495,7 @@ const MediaImageViewerTrack: React.FC<MediaImageViewerTrackProps> = ({
     <motion.div
       className="absolute inset-0"
       style={{ x: dragX }}
-      drag={coarsePointer ? 'x' : false}
+      drag="x"
       dragConstraints={{ left: 0, right: 0 }}
       dragElastic={0.5}
       dragMomentum={false}
