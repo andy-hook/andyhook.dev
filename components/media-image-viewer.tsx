@@ -334,7 +334,7 @@ const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({ onP
       className={cx(
         'fixed bottom-10 w-full z-20 flex items-center justify-center gap-2',
         'transition-[opacity,transform] duration-200 ease-snappy',
-        visible ? 'opacity-100' : 'opacity-0 translate-y-1 pointer-events-none',
+        visible ? 'opacity-100' : 'opacity-0 translate-y-2 scale-95 pointer-events-none',
       )}
       onPointerEnter={() => {
         interactingRef.current = true;
