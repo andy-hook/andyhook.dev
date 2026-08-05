@@ -209,35 +209,7 @@ const MediaImageViewerContentImpl: React.FC<MediaImageViewerContentImplProps> = 
 
   return (
     <div className="relative flex-1 min-h-0 overflow-hidden touch-none [container-type:size]">
-      <div className="fixed bottom-10 w-full z-20 flex items-center justify-center gap-2">
-        {context.images.length > 1 && (
-          <MediaImageViewerNavigation
-            size="sm"
-            aria-label="Previous"
-            onClick={() => paginate(-1, { snap: false })}
-          >
-            <ChevronLeftIcon className="size-5" />
-          </MediaImageViewerNavigation>
-        )}
-
-        <Dialog.Close
-          render={
-            <MediaImageViewerNavigation aria-label="Close">
-              <XMarkIcon className="size-8" />
-            </MediaImageViewerNavigation>
-          }
-        />
-
-        {context.images.length > 1 && (
-          <MediaImageViewerNavigation
-            size="sm"
-            aria-label="Next"
-            onClick={() => paginate(1, { snap: false })}
-          >
-            <ChevronRightIcon className="size-5" />
-          </MediaImageViewerNavigation>
-        )}
-      </div>
+      <MediaImageViewerControls onPaginate={(direction) => paginate(direction, { snap: false })} />
 
       <MediaImageViewerTrack
         onCalculateOffset={(direction: PaginateDirection) => slotOffsets[radius + direction]}
@@ -311,6 +283,49 @@ const MediaImageViewerContentImpl: React.FC<MediaImageViewerContentImplProps> = 
     </div>
   );
 };
+
+/* -------------------------------------------------------------------------------------------------
+ * MediaImageViewerControls
+ * -----------------------------------------------------------------------------------------------*/
+
+interface MediaImageViewerControlsProps {
+  onPaginate: (direction: PaginateDirection) => void;
+}
+
+const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({ onPaginate }) => {
+  const context = useMediaImageViewerContext();
+  const canPaginate = context.images.length > 1;
+
+  return (
+    <div className="fixed bottom-10 w-full z-20 flex items-center justify-center gap-2">
+      {canPaginate && (
+        <MediaImageViewerNavigation
+          size="sm"
+          aria-label="Previous"
+          onClick={() => onPaginate(-1)}
+        >
+          <ChevronLeftIcon className="size-5" />
+        </MediaImageViewerNavigation>
+      )}
+
+      <Dialog.Close
+        render={
+          <MediaImageViewerNavigation aria-label="Close">
+            <XMarkIcon className="size-8" />
+          </MediaImageViewerNavigation>
+        }
+      />
+
+      {canPaginate && (
+        <MediaImageViewerNavigation size="sm" aria-label="Next" onClick={() => onPaginate(1)}>
+          <ChevronRightIcon className="size-5" />
+        </MediaImageViewerNavigation>
+      )}
+    </div>
+  );
+};
+
+MediaImageViewerControls.displayName = 'MediaImageViewerControls';
 
 /* -------------------------------------------------------------------------------------------------
  * MediaImageViewerNavigation
