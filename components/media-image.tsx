@@ -15,17 +15,18 @@ interface MediaImageProps extends Omit<
   'src' | 'alt'
 > {
   image: ImageWithMetadata;
+  withFallback?: boolean;
 }
 
 const MediaImage = React.forwardRef<MediaImageElement, MediaImageProps>((props, forwardedRef) => {
-  const { image, className, style, quality = 90, ...imageProps } = props;
+  const { image, className, style, quality = 90, withFallback = true, ...imageProps } = props;
   const ref = React.useRef<MediaImageElement>(null);
   const composedRefs = useComposedRefs(forwardedRef, ref);
   const [isLoaded, setIsLoaded] = React.useState(false);
 
   return (
     <div
-      style={{ backgroundColor: image.color ?? undefined, ...style }}
+      style={{ backgroundColor: withFallback ? (image.color ?? undefined) : undefined, ...style }}
       className={cx('relative', className)}
     >
       <motion.div

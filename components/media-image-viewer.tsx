@@ -4,19 +4,26 @@ import * as React from 'react';
 import { Dialog } from '@base-ui/react/dialog';
 import { AnimatePresence, animate, motion, useMotionValue } from 'motion/react';
 import { createContext } from './utils/create-context';
-import { useCoarsePointer } from './utils/use-coarse-pointer';
 import type { StaticImageWithMetadata } from '@/types';
 import { cx } from '@/cva.config';
 import { MediaImage } from './media-image';
 import { useSearchParams } from 'next/navigation';
-import { useWindowSize } from 'usehooks-ts';
+import { useEventCallback, useWindowSize } from 'usehooks-ts';
 import { FocusRing } from './focus-ring';
+import { useCoarsePointer } from './utils/use-coarse-pointer';
 
-const RENDER_OVERFLOW = 3;
+type PaginateDirection = -1 | 1;
 
 const DRAG_DISTANCE_THRESHOLD = 48;
 const DRAG_VELOCITY_DISTANCE = 12;
 const SWIPE_VELOCITY = 800;
+
+const KEYBOARD_PAGINATE_DIRECTION: Record<string, PaginateDirection> = {
+  ArrowLeft: -1,
+  ArrowUp: -1,
+  ArrowRight: 1,
+  ArrowDown: 1,
+};
 
 const SLIDE_TRANSITION = {
   duration: 0.3,
@@ -102,9 +109,9 @@ const MediaImageViewerContent: React.FC<MediaImageViewerContentProps> = () => {
         <Dialog.Popup
           className={cx(
             'fixed inset-0 bg-slate-1 outline-none flex flex-col z-50',
-            'transition-opacity duration-250 ease-gentle',
-            'data-[starting-style]:opacity-0',
-            'data-[ending-style]:opacity-0',
+            'transition-[opacity,transform] duration-300 ease-snappy',
+            'data-[starting-style]:opacity-0 data-[starting-style]:translate-y-[5vh] data-[starting-style]:scale-110',
+            'data-[ending-style]:opacity-0 data-[ending-style]:duration-150 data-[ending-style]:-translate-y-[1vh] data-[ending-style]:scale-105',
           )}
         >
           <Dialog.Title className="sr-only">Artifact viewer</Dialog.Title>
@@ -132,135 +139,111 @@ const MediaImageViewerContentImpl: React.FC<MediaImageViewerContentImplProps> = 
 }) => {
   const context = useMediaImageViewerContext();
   const [index, setIndex] = React.useState(initialIndex);
-  const [snapSlideX, setSnapSlideX] = React.useState(false);
-  // Pixel shift of the last navigation; drives enter/exit so edge slides travel with the track.
-  const [slideShift, setSlideShift] = React.useState(0);
+  const [snapSlides, setSnapSlides] = React.useState(false);
 
   const windowSize = useWindowSize();
-  const coarsePointer = useCoarsePointer();
-  const dragX = useMotionValue(0);
-  const radius = getWindowRadius(context.images.length);
+  const radius = getWindowRadius(context.images, index, {
+    width: windowSize.width,
+    height: windowSize.height,
+  });
 
   const windowSlides = React.useMemo(
     () => getWindow(context.images, index, radius),
     [context.images, index, radius],
   );
 
-  const { slotOffsets, fadeWidthPx } = React.useMemo(() => {
-    const widths = windowSlides.map(({ image }) => {
-      const { width, height } = image.src;
-      return fitSlide(windowSize.width, windowSize.height, width, height).width;
-    });
+  const { slideLayouts, slotOffsets, fadeWidthPx } = React.useMemo(() => {
+    const viewport = {
+      width: windowSize.width,
+      height: windowSize.height,
+    };
 
+    const layouts = windowSlides.map(({ image }) =>
+      fitSlide(viewport, {
+        width: image.src.width,
+        height: image.src.height,
+      }),
+    );
+
+    const widths = layouts.map((layout) => layout.width);
     const activeWidth = widths[radius] ?? 0;
 
     return {
+      slideLayouts: layouts,
       slotOffsets: computeSlotOffsets(widths, radius),
       fadeWidthPx: getFadeWidthPx(windowSize.width, activeWidth),
     };
   }, [windowSlides, windowSize.width, windowSize.height, radius]);
 
-  React.useLayoutEffect(() => {
-    if (snapSlideX) setSnapSlideX(false);
-  }, [snapSlideX, index]);
+  const paginate = React.useCallback(
+    (direction: PaginateDirection, { snap }: { snap: boolean }) => {
+      const count = context.images.length;
+      if (count <= 1) return;
 
-  const handleSelect = React.useCallback(
-    (logicalIndex: number, slug: string) => {
-      window.history.replaceState(null, '', `?image=${slug}`);
-      if (logicalIndex === index) return;
+      const nextIndex = (index + direction + count) % count;
+      const image = context.images[nextIndex];
+      if (!image) return;
 
-      const slideIndex = windowSlides.findIndex((slide) => slide.logicalIndex === logicalIndex);
-      setSlideShift(slideIndex === -1 ? 0 : (slotOffsets[slideIndex] ?? 0));
-      setIndex(logicalIndex);
+      window.history.replaceState(null, '', `?image=${image.slug}`);
+      setSnapSlides(snap);
+      setIndex(nextIndex);
     },
-    [index, slotOffsets, windowSlides],
+    [context.images, index],
   );
 
-  const settleDrag = React.useCallback(
-    (targetIndex: number, slug: string, slotOffset: number, releaseX: number) => {
-      dragX.set(releaseX + slotOffset);
-      setSnapSlideX(true);
-      handleSelect(targetIndex, slug);
-      animate(dragX, 0, SLIDE_TRANSITION);
-    },
-    [dragX, handleSelect],
-  );
+  React.useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.metaKey || event.ctrlKey || event.altKey) return;
+
+      const direction = KEYBOARD_PAGINATE_DIRECTION[event.key];
+      if (direction == null) return;
+
+      event.preventDefault();
+      paginate(direction, { snap: false });
+    };
+
+    window.addEventListener('keydown', onKeyDown, true);
+    return () => window.removeEventListener('keydown', onKeyDown, true);
+  }, [paginate]);
 
   return (
     <div className="relative flex-1 min-h-0 overflow-hidden touch-none [container-type:size]">
       <div className="fixed bottom-10 w-full z-20 flex items-center justify-center">
         <Dialog.Close
-          render={
-            <FocusRing className="outline-offset-0 focus-visible:outline-offset-2">
-              <button className="relative p-4 lg:p-5 rounded-full before:content-[''] before:absolute before:-inset-2 before:rounded-full before:bg-gradient-to-tl before:from-slate-2 before:to-slate-5 before:scale-75 hover:before:scale-90 before:transition">
-                <div className="relative">
-                  <div className="size-5 flex flex-col justify-center">
-                    <div className="space-y-[6px]">
-                      <div
-                        className={cx(
-                          'h-0.5 bg-slate-12 rounded-full transition-transform duration-300 ease-spring',
-                          'rotate-45 translate-y-1',
-                        )}
-                      />
-                      <div
-                        className={cx(
-                          'h-0.5 bg-slate-12 rounded-full transition-transform duration-300 ease-spring',
-                          '-rotate-45 -translate-y-1',
-                        )}
-                      />
-                    </div>
-                  </div>
+          render={<FocusRing className="outline-offset-0 focus-visible:outline-offset-2" />}
+        >
+          <button className="relative p-4 lg:p-5 rounded-full before:content-[''] before:absolute before:-inset-2 before:rounded-full before:bg-gradient-to-tl before:from-slate-2 before:to-slate-5 before:scale-75 hover:before:scale-90 before:transition">
+            <div className="relative">
+              <div className="size-5 flex flex-col justify-center">
+                <div className="space-y-[6px]">
+                  <div
+                    className={cx(
+                      'h-0.5 bg-slate-12 rounded-full transition-transform duration-300 ease-spring',
+                      'rotate-45 translate-y-1',
+                    )}
+                  />
+                  <div
+                    className={cx(
+                      'h-0.5 bg-slate-12 rounded-full transition-transform duration-300 ease-spring',
+                      '-rotate-45 -translate-y-1',
+                    )}
+                  />
                 </div>
-              </button>
-            </FocusRing>
-          }
-        ></Dialog.Close>
+              </div>
+            </div>
+          </button>
+        </Dialog.Close>
       </div>
 
-      <motion.div
-        className="absolute inset-0"
-        style={{ x: dragX }}
-        drag={coarsePointer ? 'x' : false}
-        dragConstraints={{ left: 0, right: 0 }}
-        dragElastic={0.4}
-        dragMomentum={false}
-        onDragStart={() => dragX.stop()}
-        onDragEnd={(_event, info) => {
-          const releaseX = dragX.get();
-          const { velocity } = info;
-
-          const goNext =
-            releaseX <= -DRAG_DISTANCE_THRESHOLD ||
-            (releaseX <= -DRAG_VELOCITY_DISTANCE && velocity.x <= -SWIPE_VELOCITY);
-          const goPrev =
-            releaseX >= DRAG_DISTANCE_THRESHOLD ||
-            (releaseX >= DRAG_VELOCITY_DISTANCE && velocity.x >= SWIPE_VELOCITY);
-
-          if (goNext) {
-            const next = windowSlides.find((slide) => slide.slot === 1);
-            const nextOffset = slotOffsets[radius + 1];
-            if (next && nextOffset != null) {
-              settleDrag(next.logicalIndex, next.image.slug, nextOffset, releaseX);
-              return;
-            }
-          }
-
-          if (goPrev) {
-            const prev = windowSlides.find((slide) => slide.slot === -1);
-            const prevOffset = slotOffsets[radius - 1];
-            if (prev && prevOffset != null) {
-              settleDrag(prev.logicalIndex, prev.image.slug, prevOffset, releaseX);
-              return;
-            }
-          }
-
-          animate(dragX, 0, SLIDE_TRANSITION);
-        }}
+      <MediaImageViewerTrack
+        onCalculateOffset={(direction: PaginateDirection) => slotOffsets[radius + direction]}
+        onCommit={(direction) => paginate(direction, { snap: true })}
       >
-        <AnimatePresence custom={slideShift} initial={false}>
+        <AnimatePresence initial={false}>
           {windowSlides.map((slide, slideIndex) => {
             const { width, height } = slide.image.src;
             const isActive = slide.slot === 0;
+            const layout = slideLayouts[slideIndex] ?? { width: 0, height: 0 };
             const offsetX = slotOffsets[slideIndex] ?? 0;
             const priority = Math.abs(slide.slot) <= 1;
 
@@ -268,72 +251,137 @@ const MediaImageViewerContentImpl: React.FC<MediaImageViewerContentImplProps> = 
               <motion.div
                 key={slide.image.slug}
                 aria-hidden={!isActive}
-                custom={slideShift}
                 variants={{
-                  enter: (shift: number) => ({
-                    x: offsetX + shift,
-                    opacity: 0,
-                  }),
-                  center: {
-                    x: offsetX,
-                    opacity: isActive ? 1 : 0.1,
-                  },
-                  exit: (shift: number) => ({
-                    x: offsetX - shift,
-                    opacity: 0,
-                  }),
+                  enter: () => ({ x: offsetX }),
+                  center: { x: offsetX },
+                  exit: () => ({ x: offsetX }),
                 }}
                 initial="enter"
                 animate="center"
                 exit="exit"
                 transition={{
-                  x: snapSlideX ? INSTANT_TRANSITION : SLIDE_TRANSITION,
-                  opacity: SLIDE_TRANSITION,
-                  zIndex: INSTANT_TRANSITION,
+                  x: snapSlides ? INSTANT_TRANSITION : SLIDE_TRANSITION,
+                  opacity: snapSlides ? INSTANT_TRANSITION : SLIDE_TRANSITION,
                 }}
-                transformTemplate={({ x }) => {
-                  const xValue = typeof x === 'number' ? `${x}px` : (x ?? '0px');
-                  return `translate3d(calc(-50% + ${xValue}), -50%, 0)`;
-                }}
+                transformTemplate={({ x }) => `translate3d(${roundTransformPx(x)}px, 0, 0)`}
                 style={{
-                  width: `min(100cqw, calc(100cqh * ${width} / ${height}))`,
-                  height: `min(100cqh, calc(100cqw * ${height} / ${width}))`,
+                  width: layout.width,
+                  height: layout.height,
                   left: '50%',
                   top: '50%',
+                  marginLeft: -Math.round(layout.width / 2),
+                  marginTop: -Math.round(layout.height / 2),
                 }}
-                className={cx('absolute overflow-hidden')}
+                className={cx('absolute overflow-hidden bg-slate-1', isActive ? 'z-10' : 'z-0')}
               >
                 <MediaImage
                   image={slide.image}
+                  withFallback={false}
                   fill
                   sizes={`min(100vw, calc(100vh * ${width} / ${height}))`}
                   priority={priority}
-                  className="absolute inset-0 pointer-events-none"
+                  className={cx(
+                    'absolute inset-0 pointer-events-none',
+                    isActive ? 'opacity-100' : 'opacity-10',
+                  )}
                 />
               </motion.div>
             );
           })}
         </AnimatePresence>
-      </motion.div>
+      </MediaImageViewerTrack>
 
-      {radius > 0 && fadeWidthPx > 0 && (
-        <>
-          {['left', 'right'].map((direction) => (
-            <div
-              key={direction}
-              aria-hidden
-              className={cx(
-                'pointer-events-none absolute inset-y-0 z-10  from-slate-1 via-slate-1/50 to-transparent',
-                direction === 'left' ? 'left-0 bg-gradient-to-r' : 'right-0 bg-gradient-to-l',
-              )}
-              style={{ width: fadeWidthPx }}
-            />
-          ))}
-        </>
-      )}
+      {radius > 0 &&
+        fadeWidthPx > 0 &&
+        ['left', 'right'].map((direction) => (
+          <div
+            key={direction}
+            aria-hidden
+            className={cx(
+              'pointer-events-none absolute inset-y-0 z-10  from-slate-1/90 via-slate-1/30 to-transparent',
+              direction === 'left' ? 'left-0 bg-gradient-to-r' : 'right-0 bg-gradient-to-l',
+            )}
+            style={{ width: fadeWidthPx }}
+          />
+        ))}
     </div>
   );
 };
+
+/* -------------------------------------------------------------------------------------------------
+ * MediaImageViewerTrack
+ * -----------------------------------------------------------------------------------------------*/
+
+interface MediaImageViewerTrackProps {
+  children: React.ReactNode;
+  onCalculateOffset: (direction: PaginateDirection) => number | undefined;
+  onCommit: (direction: PaginateDirection) => void;
+}
+
+const MediaImageViewerTrack: React.FC<MediaImageViewerTrackProps> = ({
+  children,
+  onCalculateOffset,
+  onCommit,
+}) => {
+  const coarsePointer = useCoarsePointer();
+  const handleCommit = useEventCallback(onCommit);
+  const handleCalculateOffset = useEventCallback(onCalculateOffset);
+  const dragX = useMotionValue(0);
+
+  const settleDrag = React.useCallback(
+    (direction: PaginateDirection, offset: number, releaseX: number) => {
+      dragX.set(releaseX + offset);
+      handleCommit(direction);
+      animate(dragX, 0, SLIDE_TRANSITION);
+    },
+    [dragX, handleCommit],
+  );
+
+  return (
+    <motion.div
+      className="absolute inset-0"
+      style={{ x: dragX }}
+      drag={coarsePointer ? 'x' : false}
+      dragConstraints={{ left: 0, right: 0 }}
+      dragElastic={0.5}
+      dragMomentum={false}
+      onDragStart={() => dragX.stop()}
+      onDragEnd={(_event, info) => {
+        const releaseX = dragX.get();
+        const { velocity } = info;
+
+        const goNext =
+          releaseX <= -DRAG_DISTANCE_THRESHOLD ||
+          (releaseX <= -DRAG_VELOCITY_DISTANCE && velocity.x <= -SWIPE_VELOCITY);
+        const goPrev =
+          releaseX >= DRAG_DISTANCE_THRESHOLD ||
+          (releaseX >= DRAG_VELOCITY_DISTANCE && velocity.x >= SWIPE_VELOCITY);
+
+        if (goNext) {
+          const offset = handleCalculateOffset(1);
+          if (offset != null) {
+            settleDrag(1, offset, releaseX);
+            return;
+          }
+        }
+
+        if (goPrev) {
+          const offset = handleCalculateOffset(-1);
+          if (offset != null) {
+            settleDrag(-1, offset, releaseX);
+            return;
+          }
+        }
+
+        animate(dragX, 0, SLIDE_TRANSITION);
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+MediaImageViewerTrack.displayName = 'MediaImageViewerTrack';
 
 /* -------------------------------------------------------------------------------------------------
  * MediaImageViewerTrigger
@@ -371,26 +419,75 @@ MediaImageViewerTrigger.displayName = 'MediaImageViewerTrigger';
 
 /* -----------------------------------------------------------------------------------------------*/
 
-function fitSlide(
-  viewportWidth: number,
-  viewportHeight: number,
-  intrinsicWidth: number,
-  intrinsicHeight: number,
-) {
-  const aspect = intrinsicWidth / intrinsicHeight;
+type Dimensions = {
+  width: number;
+  height: number;
+};
 
-  if (viewportWidth / viewportHeight > aspect) {
-    const height = viewportHeight;
-    return { width: height * aspect, height };
-  }
-
-  const width = viewportWidth;
-  return { width, height: width / aspect };
+function roundTransformPx(value: string | number | undefined) {
+  if (typeof value === 'number') return Math.round(value);
+  if (typeof value === 'string') return Math.round(parseFloat(value) || 0);
+  return 0;
 }
 
-function getWindowRadius(artifactCount: number): number {
-  if (artifactCount <= 1) return 0;
-  return Math.min(RENDER_OVERFLOW, Math.max(1, Math.floor((artifactCount - 1) / 2)));
+function fitSlide(viewport: Dimensions, intrinsic: Dimensions) {
+  const aspect = intrinsic.width / intrinsic.height;
+
+  if (viewport.width / viewport.height > aspect) {
+    const height = Math.round(viewport.height);
+    return { width: Math.round(height * aspect), height };
+  }
+
+  const width = Math.round(viewport.width);
+  return { width, height: Math.round(width / aspect) };
+}
+
+function getWindowRadius(
+  images: StaticImageWithMetadata[],
+  index: number,
+  viewport: Dimensions,
+): number {
+  const count = images.length;
+  if (count <= 1) return 0;
+
+  const maxRadius = Math.floor((count - 1) / 2);
+  if (viewport.width <= 0 || viewport.height <= 0) return Math.min(1, maxRadius);
+
+  return Math.max(
+    getSideRadius(images, index, -1, viewport, maxRadius),
+    getSideRadius(images, index, 1, viewport, maxRadius),
+  );
+}
+
+function getSideRadius(
+  images: StaticImageWithMetadata[],
+  index: number,
+  direction: PaginateDirection,
+  viewport: Dimensions,
+  maxRadius: number,
+): number {
+  const count = images.length;
+  const halfViewport = viewport.width / 2;
+  const centerImage = images[index];
+  if (!centerImage) return Math.min(1, maxRadius);
+
+  const intrinsic = {
+    width: centerImage.src.width,
+    height: centerImage.src.height,
+  };
+
+  let covered = fitSlide(viewport, intrinsic).width / 2;
+
+  let radius = 0;
+  while (radius < maxRadius) {
+    if (covered >= halfViewport) return radius + 1;
+    radius += 1;
+    const image = images[(index + direction * radius + count) % count];
+    if (!image) return radius;
+    covered += fitSlide(viewport, intrinsic).width;
+  }
+
+  return maxRadius;
 }
 
 function getWindow(images: StaticImageWithMetadata[], index: number, radius: number) {
@@ -398,12 +495,11 @@ function getWindow(images: StaticImageWithMetadata[], index: number, radius: num
 
   return Array.from({ length: radius * 2 + 1 }, (_, i) => {
     const slot = i - radius;
-    const logicalIndex = (index + slot + count) % count;
+    const imageIndex = (index + slot + count) % count;
 
     return {
       slot,
-      logicalIndex,
-      image: images[logicalIndex],
+      image: images[imageIndex],
     };
   });
 }
@@ -412,18 +508,18 @@ function computeSlotOffsets(widths: number[], centerIndex: number): number[] {
   const offsets = new Array<number>(widths.length).fill(0);
 
   for (let i = centerIndex + 1; i < widths.length; i++) {
-    offsets[i] = offsets[i - 1] + widths[i - 1] / 2 + widths[i] / 2;
+    offsets[i] = Math.round(offsets[i - 1] + widths[i - 1] / 2 + widths[i] / 2);
   }
 
   for (let i = centerIndex - 1; i >= 0; i--) {
-    offsets[i] = offsets[i + 1] - widths[i] / 2 - widths[i + 1] / 2;
+    offsets[i] = Math.round(offsets[i + 1] - widths[i] / 2 - widths[i + 1] / 2);
   }
 
   return offsets;
 }
 
 function getFadeWidthPx(viewportWidth: number, activeWidth: number): number {
-  return Math.max(0, (viewportWidth - activeWidth) / 2);
+  return Math.max(0, Math.round((viewportWidth - activeWidth) / 2));
 }
 
 /* -----------------------------------------------------------------------------------------------*/

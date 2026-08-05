@@ -4,7 +4,7 @@ import path from 'path';
 import { scrollPaths } from './scroll-paths';
 
 const nextConfig: NextConfig = {
-  allowedDevOrigins: ['192.168.68.50'],
+  allowedDevOrigins: ['192.168.68.*'],
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   images: {
     remotePatterns: [
