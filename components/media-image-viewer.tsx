@@ -10,7 +10,6 @@ import { MediaImage } from './media-image';
 import { useSearchParams } from 'next/navigation';
 import { useEventCallback, useWindowSize } from 'usehooks-ts';
 import { FocusRing } from './focus-ring';
-import { useCoarsePointer } from './utils/use-coarse-pointer';
 
 type PaginateDirection = -1 | 1;
 
@@ -323,7 +322,6 @@ const MediaImageViewerTrack: React.FC<MediaImageViewerTrackProps> = ({
   onCalculateOffset,
   onCommit,
 }) => {
-  const coarsePointer = useCoarsePointer();
   const handleCommit = useEventCallback(onCommit);
   const handleCalculateOffset = useEventCallback(onCalculateOffset);
   const dragX = useMotionValue(0);
@@ -341,7 +339,7 @@ const MediaImageViewerTrack: React.FC<MediaImageViewerTrackProps> = ({
     <motion.div
       className="absolute inset-0"
       style={{ x: dragX }}
-      drag={coarsePointer ? 'x' : false}
+      drag="x"
       dragConstraints={{ left: 0, right: 0 }}
       dragElastic={0.5}
       dragMomentum={false}
