@@ -18,6 +18,7 @@ type PaginateDirection = -1 | 1;
 const DRAG_DISTANCE_THRESHOLD = 48;
 const DRAG_VELOCITY_DISTANCE = 12;
 const SWIPE_VELOCITY = 800;
+const CONTROLS_IDLE_MS = 2000;
 
 const KEYBOARD_PAGINATE_DIRECTION: Record<string, PaginateDirection> = {
   ArrowLeft: -1,
@@ -93,6 +94,7 @@ const MediaImageViewerContent: React.FC<MediaImageViewerContentProps> = () => {
   const context = useMediaImageViewerContext();
   const searchParams = useSearchParams();
   const imageParam = searchParams.get('image');
+  const initialFocusRef = React.useRef<HTMLDivElement | null>(null);
 
   const initialIndex = imageParam
     ? context.images.findIndex((image) => image.slug === imageParam)
@@ -114,6 +116,8 @@ const MediaImageViewerContent: React.FC<MediaImageViewerContentProps> = () => {
             'data-[starting-style]:opacity-0 data-[starting-style]:translate-y-[5vh] data-[starting-style]:scale-110',
             'data-[ending-style]:opacity-0 data-[ending-style]:duration-150 data-[ending-style]:-translate-y-[1vh] data-[ending-style]:scale-105',
           )}
+          ref={initialFocusRef}
+          initialFocus={() => initialFocusRef.current}
         >
           <Dialog.Title className="sr-only">Image viewer</Dialog.Title>
           <Dialog.Description className="sr-only">
@@ -295,15 +299,65 @@ interface MediaImageViewerControlsProps {
 const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({ onPaginate }) => {
   const context = useMediaImageViewerContext();
   const canPaginate = context.images.length > 1;
+  const [visible, setVisible] = React.useState(true);
+  const idleTimeoutRef = React.useRef(0);
+  const interactingRef = React.useRef(false);
+
+  const scheduleHide = React.useCallback(() => {
+    window.clearTimeout(idleTimeoutRef.current);
+    if (interactingRef.current) return;
+    idleTimeoutRef.current = window.setTimeout(() => setVisible(false), CONTROLS_IDLE_MS);
+  }, []);
+
+  const reveal = React.useCallback(() => {
+    setVisible(true);
+    scheduleHide();
+  }, [scheduleHide]);
+
+  React.useEffect(() => {
+    reveal();
+
+    window.addEventListener('pointermove', reveal);
+    window.addEventListener('pointerdown', reveal);
+    window.addEventListener('keydown', reveal);
+
+    return () => {
+      window.clearTimeout(idleTimeoutRef.current);
+      window.removeEventListener('pointermove', reveal);
+      window.removeEventListener('pointerdown', reveal);
+      window.removeEventListener('keydown', reveal);
+    };
+  }, [reveal]);
 
   return (
-    <div className="fixed bottom-10 w-full z-20 flex items-center justify-center gap-2">
+    <div
+      className={cx(
+        'fixed bottom-10 w-full z-20 flex items-center justify-center gap-2',
+        'transition-[opacity,transform] duration-200 ease-snappy',
+        visible ? 'opacity-100' : 'opacity-0 translate-y-1 pointer-events-none',
+      )}
+      onPointerEnter={() => {
+        interactingRef.current = true;
+        window.clearTimeout(idleTimeoutRef.current);
+        setVisible(true);
+      }}
+      onPointerLeave={() => {
+        interactingRef.current = false;
+        scheduleHide();
+      }}
+      onFocusCapture={() => {
+        interactingRef.current = true;
+        window.clearTimeout(idleTimeoutRef.current);
+        setVisible(true);
+      }}
+      onBlurCapture={(event) => {
+        if (event.currentTarget.contains(event.relatedTarget as Node | null)) return;
+        interactingRef.current = false;
+        scheduleHide();
+      }}
+    >
       {canPaginate && (
-        <MediaImageViewerNavigation
-          size="sm"
-          aria-label="Previous"
-          onClick={() => onPaginate(-1)}
-        >
+        <MediaImageViewerNavigation size="sm" aria-label="Previous" onClick={() => onPaginate(-1)}>
           <ChevronLeftIcon className="size-5" />
         </MediaImageViewerNavigation>
       )}
