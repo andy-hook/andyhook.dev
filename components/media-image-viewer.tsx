@@ -5,11 +5,13 @@ import { Dialog } from '@base-ui/react/dialog';
 import { AnimatePresence, animate, motion, useMotionValue } from 'motion/react';
 import { createContext } from './utils/create-context';
 import type { StaticImageWithMetadata } from '@/types';
-import { cx } from '@/cva.config';
+import { cx, cva, type VariantProps } from '@/cva.config';
 import { MediaImage } from './media-image';
 import { useSearchParams } from 'next/navigation';
 import { useEventCallback, useWindowSize } from 'usehooks-ts';
 import { FocusRing } from './focus-ring';
+import { XMarkIcon } from '@heroicons/react/24/solid';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/16/solid';
 
 type PaginateDirection = -1 | 1;
 
@@ -113,9 +115,9 @@ const MediaImageViewerContent: React.FC<MediaImageViewerContentProps> = () => {
             'data-[ending-style]:opacity-0 data-[ending-style]:duration-150 data-[ending-style]:-translate-y-[1vh] data-[ending-style]:scale-105',
           )}
         >
-          <Dialog.Title className="sr-only">Artifact viewer</Dialog.Title>
+          <Dialog.Title className="sr-only">Image viewer</Dialog.Title>
           <Dialog.Description className="sr-only">
-            Drag left or right to browse artifacts. Press Escape to close.
+            Use the left and right arrow keys to browse images. Press Escape to close.
           </Dialog.Description>
 
           <MediaImageViewerContentImpl initialIndex={initialIndex} />
@@ -207,31 +209,34 @@ const MediaImageViewerContentImpl: React.FC<MediaImageViewerContentImplProps> = 
 
   return (
     <div className="relative flex-1 min-h-0 overflow-hidden touch-none [container-type:size]">
-      <div className="fixed bottom-10 w-full z-20 flex items-center justify-center">
+      <div className="fixed bottom-10 w-full z-20 flex items-center justify-center gap-2">
+        {context.images.length > 1 && (
+          <MediaImageViewerNavigation
+            size="sm"
+            aria-label="Previous"
+            onClick={() => paginate(-1, { snap: false })}
+          >
+            <ChevronLeftIcon className="size-5" />
+          </MediaImageViewerNavigation>
+        )}
+
         <Dialog.Close
-          render={<FocusRing className="outline-offset-0 focus-visible:outline-offset-2" />}
-        >
-          <button className="relative p-4 lg:p-5 rounded-full before:content-[''] before:absolute before:-inset-2 before:rounded-full before:bg-gradient-to-tl before:from-slate-2 before:to-slate-5 before:scale-75 hover:before:scale-90 before:transition">
-            <div className="relative">
-              <div className="size-5 flex flex-col justify-center">
-                <div className="space-y-[6px]">
-                  <div
-                    className={cx(
-                      'h-0.5 bg-slate-12 rounded-full transition-transform duration-300 ease-spring',
-                      'rotate-45 translate-y-1',
-                    )}
-                  />
-                  <div
-                    className={cx(
-                      'h-0.5 bg-slate-12 rounded-full transition-transform duration-300 ease-spring',
-                      '-rotate-45 -translate-y-1',
-                    )}
-                  />
-                </div>
-              </div>
-            </div>
-          </button>
-        </Dialog.Close>
+          render={
+            <MediaImageViewerNavigation aria-label="Close">
+              <XMarkIcon className="size-8" />
+            </MediaImageViewerNavigation>
+          }
+        />
+
+        {context.images.length > 1 && (
+          <MediaImageViewerNavigation
+            size="sm"
+            aria-label="Next"
+            onClick={() => paginate(1, { snap: false })}
+          >
+            <ChevronRightIcon className="size-5" />
+          </MediaImageViewerNavigation>
+        )}
       </div>
 
       <MediaImageViewerTrack
@@ -306,6 +311,50 @@ const MediaImageViewerContentImpl: React.FC<MediaImageViewerContentImplProps> = 
     </div>
   );
 };
+
+/* -------------------------------------------------------------------------------------------------
+ * MediaImageViewerNavigation
+ * -----------------------------------------------------------------------------------------------*/
+
+const mediaImageViewerNavigation = cva({
+  base: 'relative rounded-full text-slate-12 before:content-[""] before:absolute before:rounded-full before:bg-gradient-to-tl before:from-slate-2 before:to-slate-5 before:scale-75 hover:before:scale-90 before:transition',
+  variants: {
+    size: {
+      sm: 'p-3 before:-inset-1.5',
+      md: 'p-4 before:-inset-2',
+    },
+  },
+  defaultVariants: {
+    size: 'md',
+  },
+});
+
+type MediaImageViewerNavigationElement = React.ComponentRef<'button'>;
+
+interface MediaImageViewerNavigationProps
+  extends
+    React.ComponentPropsWithoutRef<'button'>,
+    VariantProps<typeof mediaImageViewerNavigation> {}
+
+const MediaImageViewerNavigation = React.forwardRef<
+  MediaImageViewerNavigationElement,
+  MediaImageViewerNavigationProps
+>(({ className, size, children, ...props }, forwardedRef) => {
+  return (
+    <FocusRing className="outline-offset-0 focus-visible:outline-offset-2">
+      <button
+        type="button"
+        {...props}
+        ref={forwardedRef}
+        className={mediaImageViewerNavigation({ size, className })}
+      >
+        <span className="relative">{children}</span>
+      </button>
+    </FocusRing>
+  );
+});
+
+MediaImageViewerNavigation.displayName = 'MediaImageViewerNavigation';
 
 /* -------------------------------------------------------------------------------------------------
  * MediaImageViewerTrack
