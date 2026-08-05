@@ -145,6 +145,7 @@ const MediaImageViewerContentImpl: React.FC<MediaImageViewerContentImplProps> = 
   const context = useMediaImageViewerContext();
   const [index, setIndex] = React.useState(initialIndex);
   const [snapSlides, setSnapSlides] = React.useState(false);
+  const [controlsVisible, setControlsVisible] = React.useState(true);
 
   const windowSize = useWindowSize();
   const radius = getWindowRadius(context.images, index, {
@@ -212,8 +213,17 @@ const MediaImageViewerContentImpl: React.FC<MediaImageViewerContentImplProps> = 
   }, [paginate]);
 
   return (
-    <div className="relative flex-1 min-h-0 overflow-hidden touch-none [container-type:size]">
-      <MediaImageViewerControls onPaginate={(direction) => paginate(direction, { snap: false })} />
+    <div
+      className={cx(
+        'relative flex-1 min-h-0 overflow-hidden touch-none [container-type:size]',
+        !controlsVisible && 'cursor-none',
+      )}
+    >
+      <MediaImageViewerControls
+        onPaginate={(direction) => paginate(direction, { snap: false })}
+        visible={controlsVisible}
+        onVisibleChange={setControlsVisible}
+      />
 
       <MediaImageViewerTrack
         onCalculateOffset={(direction: PaginateDirection) => slotOffsets[radius + direction]}
@@ -294,25 +304,36 @@ const MediaImageViewerContentImpl: React.FC<MediaImageViewerContentImplProps> = 
 
 interface MediaImageViewerControlsProps {
   onPaginate: (direction: PaginateDirection) => void;
+  visible: boolean;
+  onVisibleChange: (visible: boolean) => void;
 }
 
-const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({ onPaginate }) => {
+const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({
+  onPaginate,
+  visible,
+  onVisibleChange,
+}) => {
   const context = useMediaImageViewerContext();
   const canPaginate = context.images.length > 1;
-  const [visible, setVisible] = React.useState(true);
   const idleTimeoutRef = React.useRef(0);
   const interactingRef = React.useRef(false);
+  const handlePaginate = useEventCallback(onPaginate);
+  const handleVisibleChange = useEventCallback((visible: boolean) => {
+    onVisibleChange(visible);
+  });
 
   const scheduleHide = React.useCallback(() => {
     window.clearTimeout(idleTimeoutRef.current);
     if (interactingRef.current) return;
-    idleTimeoutRef.current = window.setTimeout(() => setVisible(false), CONTROLS_IDLE_MS);
-  }, []);
+    idleTimeoutRef.current = window.setTimeout(() => {
+      handleVisibleChange(false);
+    }, CONTROLS_IDLE_MS);
+  }, [handleVisibleChange]);
 
   const reveal = React.useCallback(() => {
-    setVisible(true);
+    handleVisibleChange(true);
     scheduleHide();
-  }, [scheduleHide]);
+  }, [handleVisibleChange, scheduleHide]);
 
   React.useEffect(() => {
     reveal();
@@ -339,7 +360,7 @@ const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({ onP
       onPointerEnter={() => {
         interactingRef.current = true;
         window.clearTimeout(idleTimeoutRef.current);
-        setVisible(true);
+        handleVisibleChange(true);
       }}
       onPointerLeave={() => {
         interactingRef.current = false;
@@ -348,7 +369,7 @@ const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({ onP
       onFocusCapture={() => {
         interactingRef.current = true;
         window.clearTimeout(idleTimeoutRef.current);
-        setVisible(true);
+        handleVisibleChange(true);
       }}
       onBlurCapture={(event) => {
         if (event.currentTarget.contains(event.relatedTarget as Node | null)) return;
@@ -357,7 +378,11 @@ const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({ onP
       }}
     >
       {canPaginate && (
-        <MediaImageViewerNavigation size="sm" aria-label="Previous" onClick={() => onPaginate(-1)}>
+        <MediaImageViewerNavigation
+          size="sm"
+          aria-label="Previous"
+          onClick={() => handlePaginate(-1)}
+        >
           <ChevronLeftIcon className="size-5" />
         </MediaImageViewerNavigation>
       )}
@@ -371,7 +396,7 @@ const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({ onP
       />
 
       {canPaginate && (
-        <MediaImageViewerNavigation size="sm" aria-label="Next" onClick={() => onPaginate(1)}>
+        <MediaImageViewerNavigation size="sm" aria-label="Next" onClick={() => handlePaginate(1)}>
           <ChevronRightIcon className="size-5" />
         </MediaImageViewerNavigation>
       )}
