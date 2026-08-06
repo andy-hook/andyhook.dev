@@ -432,15 +432,16 @@ MediaImageViewerControls.displayName = 'MediaImageViewerControls';
 
 const mediaImageViewerNavigation = cva({
   base: [
-    'relative rounded-full text-slate-12',
+    'relative rounded-full',
     'before:content-[""] before:border-2 before:border-slate-5 before:absolute before:rounded-full before:shadow-md',
     'before:bg-gradient-to-tl before:from-slate-2 before:to-slate-4 before:scale-75',
     'hover:before:scale-85 active:before:scale-75 before:transition before:ease-spring before:duration-300 before:active:duration-700',
+    'hover:text-slate-12',
   ].join(' '),
   variants: {
     size: {
-      sm: 'p-3 before:-inset-1.5',
-      md: 'p-4 before:-inset-2',
+      sm: 'p-3 before:-inset-1.5 text-slate-10',
+      md: 'p-4 before:-inset-2 text-slate-12',
     },
   },
   defaultVariants: {
