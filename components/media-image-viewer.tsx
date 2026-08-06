@@ -20,7 +20,7 @@ type PaginateDirection = -1 | 1;
 const DRAG_DISTANCE_THRESHOLD = 48;
 const DRAG_VELOCITY_DISTANCE = 12;
 const SWIPE_VELOCITY = 800;
-const CONTROLS_IDLE_MS = 2500;
+const CONTROLS_IDLE_MS = 250000;
 
 const KEYBOARD_PAGINATE_DIRECTION: Record<string, PaginateDirection> = {
   ArrowLeft: -1,
@@ -438,7 +438,7 @@ const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({
         <Gutter className="w-full">
           <Progress.Root
             value={current}
-            min={1}
+            min={0}
             max={count}
             className={cx(
               'flex w-full max-w-96 items-center gap-2.5 mx-auto',
@@ -449,6 +449,15 @@ const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({
             <Progress.Label className="sr-only">Image position</Progress.Label>
             <Progress.Track className="relative h-1 flex-1 overflow-hidden rounded-full bg-slate-5">
               <Progress.Indicator className="bg-slate-12 transition-[width] duration-300 ease-snappy" />
+
+              <div className="absolute inset-0 flex">
+                {context.images.map((image, i) => (
+                  <div
+                    key={image.slug}
+                    className={cx(' bg-slate-12 flex-1', i % 2 === 0 ? 'opacity-0' : 'opacity-10')}
+                  />
+                ))}
+              </div>
             </Progress.Track>
           </Progress.Root>
         </Gutter>
