@@ -30,7 +30,7 @@ export default function ArtifactsPage() {
           className={cx('z-10 relative bg-slate-12 p-4 md:p-12 lg:p-16 2xl:p-[6vw]')}
         >
           <ArtifactGrid.Root>
-            {artifacts.map(({ name, year, src, slug, accentColor }, index) => (
+            {artifacts.map(({ name, year, src, slug }, index) => (
               <ArtifactGrid.Item
                 key={`${name}-${year}`}
                 width={src.src.width}
@@ -39,13 +39,7 @@ export default function ArtifactsPage() {
                 <FocusRing scheme="light">
                   <ArtifactGrid.Frame
                     label={`${name} · ${year}`}
-                    render={
-                      <MediaImageViewer.Trigger
-                        image={src}
-                        slug={slug}
-                        accentColor={accentColor}
-                      />
-                    }
+                    render={<MediaImageViewer.Trigger image={src} slug={slug} />}
                   >
                     <MediaImage
                       image={src}

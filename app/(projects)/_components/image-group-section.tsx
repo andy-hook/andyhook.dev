@@ -85,11 +85,7 @@ export const ImageGroupSection = React.forwardRef<ImageGroupSectionElement, Imag
                           solid
                         />
                         <FocusRing className="outline-offset-0 focus-visible:outline-offset-3 rounded lg:rounded-xl">
-                          <MediaImageViewer.Trigger
-                            image={image}
-                            slug={image.slug}
-                            accentColor={image.accentColor}
-                          >
+                          <MediaImageViewer.Trigger image={image} slug={image.slug}>
                             <div className="rounded lg:rounded-xl overflow-hidden shadow-xl relative">
                               <MediaImage image={image} className="w-full" sizes="100vw" />
                             </div>

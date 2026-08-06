@@ -61,7 +61,9 @@ export default function ScrollPage() {
         </p>
       </ContentSection>
 
-      <ImageSection image={{ ...scrollIntroImage, slug: 'scroll-intro', accentColor: '#d24263' }} />
+      <ImageSection
+        image={{ ...scrollIntroImage, slug: 'scroll-intro' }}
+      />
 
       <ContentSection title="Optimistic UI as a baseline experience">
         <p className="capsize">
@@ -92,7 +94,10 @@ export default function ScrollPage() {
       </ContentSection>
 
       <ImageSection
-        image={{ ...scrollComponentsImage, slug: 'scroll-components', accentColor: '#e2768f' }}
+        image={{
+          ...scrollComponentsImage,
+          slug: 'scroll-components',
+        }}
       />
 
       <ContentSection title="AI-native, embracing new technology">
@@ -121,22 +126,35 @@ export default function ScrollPage() {
       <ImageGroupSection
         project="scroll"
         images={[
-          { ...scrollSignUpImage, slug: 'scroll-sign-up', accentColor: '#b352d9' },
-          { ...scrollKnowledgeBaseImage, slug: 'scroll-knowledge-base', accentColor: '#f6f5f9' },
-          { ...scrollSourceSingleImage, slug: 'scroll-source-single', accentColor: '#dddee2' },
-          { ...scrollPlaygroundNewImage, slug: 'scroll-playground-new', accentColor: '#ff9290' },
+          { ...scrollSignUpImage, slug: 'scroll-sign-up' },
+          {
+            ...scrollKnowledgeBaseImage,
+            slug: 'scroll-knowledge-base',
+          },
+          {
+            ...scrollSourceSingleImage,
+            slug: 'scroll-source-single',
+          },
+          {
+            ...scrollPlaygroundNewImage,
+            slug: 'scroll-playground-new',
+          },
           {
             ...scrollPlaygroundExistingImage,
             slug: 'scroll-playground-existing',
-            accentColor: '#f6f5f9',
           },
           {
             ...scrollPlaygroundSourceImage,
             slug: 'scroll-playground-source',
-            accentColor: '##dddee2',
           },
-          { ...scrollCustomizeImage, slug: 'scroll-customize', accentColor: '#f067d4' },
-          { ...scrollEmbeddedImage, slug: 'scroll-embedded', accentColor: '#73e2cc' },
+          {
+            ...scrollCustomizeImage,
+            slug: 'scroll-customize',
+          },
+          {
+            ...scrollEmbeddedImage,
+            slug: 'scroll-embedded',
+          },
         ]}
       />
     </Project.Root>

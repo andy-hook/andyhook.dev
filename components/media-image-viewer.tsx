@@ -17,7 +17,6 @@ import { Gutter } from './gutter';
 
 export type MediaImageViewerImage = StaticImageWithMetadata & {
   slug: string;
-  accentColor: string;
 };
 
 type PaginateDirection = -1 | 1;
@@ -460,7 +459,7 @@ const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({
                   <div
                     key={image.slug}
                     className={cx('flex-1', i % 2 === 0 ? 'opacity-40' : 'opacity-60')}
-                    style={{ backgroundColor: image.accentColor }}
+                    style={{ backgroundColor: image.color ?? 'white' }}
                   />
                 ))}
               </div>
@@ -609,21 +608,19 @@ interface MediaImageViewerTriggerProps extends React.ComponentPropsWithoutRef<
 > {
   image: StaticImageWithMetadata;
   slug: string;
-  accentColor: string;
 }
 
 const MediaImageViewerTrigger: React.FC<MediaImageViewerTriggerProps> = ({
   image,
   slug,
-  accentColor,
   ...props
 }) => {
   const { onImageAdd, onImageRemove } = useMediaImageViewerContext();
 
   React.useLayoutEffect(() => {
-    onImageAdd({ ...image, slug, accentColor });
+    onImageAdd({ ...image, slug });
     return () => onImageRemove(slug);
-  }, [image, slug, accentColor, onImageAdd, onImageRemove]);
+  }, [image, slug, onImageAdd, onImageRemove]);
 
   return (
     <Dialog.Trigger

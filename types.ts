@@ -102,7 +102,6 @@ export interface Artifact {
   year: string;
   src: StaticImageWithMetadata;
   slug: string;
-  accentColor: string;
 }
 
 export type PostMetadata = {

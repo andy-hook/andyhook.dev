@@ -65,7 +65,10 @@ export default function AragonPage() {
       </ContentSection>
 
       <ImageSection
-        image={{ ...aragonIntroImage, slug: 'aragon-intro', accentColor: '#00CCFF' }}
+        image={{
+          ...aragonIntroImage,
+          slug: 'aragon-intro',
+        }}
       />
 
       <ContentSection title="Delivering on the Aragon promise">
@@ -91,7 +94,10 @@ export default function AragonPage() {
       </ContentSection>
 
       <ImageSection
-        image={{ ...aragonComponentsImage, slug: 'aragon-components', accentColor: '#00CCFF' }}
+        image={{
+          ...aragonComponentsImage,
+          slug: 'aragon-components',
+        }}
       />
 
       <ContentSection title="Exceptional quality, predictable delivery">
@@ -124,32 +130,26 @@ export default function AragonPage() {
           {
             ...aragonNetworkDashboardHomeImage,
             slug: 'aragon-network-dashboard-home',
-            accentColor: '#FBFBFD',
           },
           {
             ...aragonNetworkDashboardProposalImage,
             slug: 'aragon-network-dashboard-proposal',
-            accentColor: '#FBFBFD',
           },
           {
             ...aragonNetworkDashboardAgreementImage,
             slug: 'aragon-network-dashboard-agreement',
-            accentColor: '#FBFBFD',
           },
           {
             ...aragonUpgradeHomeImage,
             slug: 'aragon-upgrade-home',
-            accentColor: '#FBFBFD',
           },
           {
             ...aragonUpgradeConverterImage,
             slug: 'aragon-upgrade-converter',
-            accentColor: '#FBFBFD',
           },
           {
             ...aragonUpgradeCompleteImage,
             slug: 'aragon-upgrade-complete',
-            accentColor: '#FBFBFD',
           },
         ]}
       />
