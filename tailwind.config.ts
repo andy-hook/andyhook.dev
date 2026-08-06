@@ -87,6 +87,10 @@ const config: Config = {
       fontSize: {
         '4.5xl': '2.5rem',
       },
+      scale: {
+        80: '0.8',
+        85: '0.85',
+      },
     },
   },
   plugins: [capsize],
