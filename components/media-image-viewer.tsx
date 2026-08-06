@@ -20,7 +20,7 @@ type PaginateDirection = -1 | 1;
 const DRAG_DISTANCE_THRESHOLD = 48;
 const DRAG_VELOCITY_DISTANCE = 12;
 const SWIPE_VELOCITY = 800;
-const CONTROLS_IDLE_MS = 250000;
+const CONTROLS_IDLE_MS = 2500;
 
 const KEYBOARD_PAGINATE_DIRECTION: Record<string, PaginateDirection> = {
   ArrowLeft: -1,
