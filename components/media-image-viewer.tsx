@@ -102,13 +102,16 @@ const MediaImageViewerContent: React.FC<MediaImageViewerContentProps> = () => {
   const imageParam = searchParams.get('image');
   const initialFocusRef = React.useRef<HTMLDivElement | null>(null);
 
-  const initialIndex = imageParam
-    ? context.images.findIndex((image) => image.slug === imageParam)
-    : 0;
+  const initialIndex = context.images.findIndex((image) => image.slug === imageParam);
+  const validSlugIndex = initialIndex !== -1;
+
+  React.useEffect(() => {
+    if (!validSlugIndex) window.history.replaceState(null, '', `?`);
+  }, [validSlugIndex]);
 
   return (
     <Dialog.Root
-      open={Boolean(imageParam)}
+      open={Boolean(validSlugIndex)}
       onOpenChange={(open) => {
         if (!open) window.history.pushState(null, '', `?`);
       }}
