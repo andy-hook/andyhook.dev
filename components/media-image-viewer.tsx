@@ -452,17 +452,14 @@ const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({
             )}
           >
             <Progress.Label className="sr-only">Image position</Progress.Label>
-            <Progress.Track className="relative h-1 flex-1 overflow-hidden rounded-full bg-slate-1 shadow-sm shadow-slate-1/20">
-              <Progress.Indicator
-                className="bg-slate-12 transition-[width,background-color] duration-300 ease-snappy z-10 relative shadow-sm"
-                style={{ backgroundColor: context.images[index].accentColor }}
-              />
+            <Progress.Track className="relative h-1.5 flex-1 overflow-hidden rounded-full bg-slate-1 will-change-transform shadow-md shadow-slate-1/20">
+              <Progress.Indicator className="bg-white transition-[width,background-color] duration-300 ease-snappy z-10 relative" />
 
               <div className="absolute inset-0 flex">
                 {context.images.map((image, i) => (
                   <div
                     key={image.slug}
-                    className={cx('flex-1', i % 2 === 0 ? 'opacity-30' : 'opacity-20')}
+                    className={cx('flex-1', i % 2 === 0 ? 'opacity-40' : 'opacity-60')}
                     style={{ backgroundColor: image.accentColor }}
                   />
                 ))}
