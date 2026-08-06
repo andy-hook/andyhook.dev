@@ -62,7 +62,7 @@ export default function ScrollPage() {
       </ContentSection>
 
       <ImageSection
-        image={{ ...scrollIntroImage, slug: 'scroll-intro' }}
+        image={{ ...scrollIntroImage, slug: 'scroll-intro', title: 'Device Mockups' }}
       />
 
       <ContentSection title="Optimistic UI as a baseline experience">
@@ -97,6 +97,7 @@ export default function ScrollPage() {
         image={{
           ...scrollComponentsImage,
           slug: 'scroll-components',
+          title: 'UI Components',
         }}
       />
 
@@ -126,34 +127,41 @@ export default function ScrollPage() {
       <ImageGroupSection
         project="scroll"
         images={[
-          { ...scrollSignUpImage, slug: 'scroll-sign-up' },
+          { ...scrollSignUpImage, slug: 'scroll-sign-up', title: 'Sign Up' },
           {
             ...scrollKnowledgeBaseImage,
             slug: 'scroll-knowledge-base',
+            title: 'Knowledge Base',
           },
           {
             ...scrollSourceSingleImage,
             slug: 'scroll-source-single',
+            title: 'Source Playback',
           },
           {
             ...scrollPlaygroundNewImage,
             slug: 'scroll-playground-new',
+            title: 'New Chat',
           },
           {
             ...scrollPlaygroundExistingImage,
             slug: 'scroll-playground-existing',
+            title: 'Active Chat',
           },
           {
             ...scrollPlaygroundSourceImage,
             slug: 'scroll-playground-source',
+            title: 'Cited Source',
           },
           {
             ...scrollCustomizeImage,
             slug: 'scroll-customize',
+            title: 'Customization',
           },
           {
             ...scrollEmbeddedImage,
             slug: 'scroll-embedded',
+            title: 'Publish Settings',
           },
         ]}
       />

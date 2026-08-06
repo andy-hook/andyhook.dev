@@ -296,19 +296,17 @@ const ProjectHero = React.forwardRef<ProjectHeroElement, ProjectHeroProps>(
         ref={forwardedRef}
       >
         {heroImage && (
-          <Gutter size="small">
-            <div className="mx-auto relative z-10">
-              <div className="rounded-xl lg:rounded-3xl overflow-hidden shadow-slate-1 shadow-2xl">
-                <MediaImage
-                  image={heroImage}
-                  fill
-                  className="aspect-[50/35] md:aspect-[448/205]"
-                  priority
-                  sizes="100vw"
-                />
-              </div>
+          <div className="mx-auto relative z-10">
+            <div className="rounded-xl lg:rounded-3xl overflow-hidden shadow-slate-1 shadow-2xl">
+              <MediaImage
+                image={heroImage}
+                fill
+                className="aspect-[50/35] md:aspect-[448/205]"
+                priority
+                sizes="100vw"
+              />
             </div>
-          </Gutter>
+          </div>
         )}
 
         <Gutter collapse>

@@ -55,7 +55,7 @@ export default function BlocksPage() {
       </ContentSection>
 
       <ImageSection
-        image={{ ...blocksIntroImage, slug: 'blocks-intro' }}
+        image={{ ...blocksIntroImage, slug: 'blocks-intro', title: 'Device Mockups' }}
       />
 
       <ContentSection title="Decentralized technology takes some practice">
@@ -92,12 +92,13 @@ export default function BlocksPage() {
       <ImageGroupSection
         project="blocks"
         images={[
-          { ...blocksHomeImage, slug: 'blocks-home' },
-          { ...blocksListImage, slug: 'blocks-list' },
-          { ...blocksDetailImage, slug: 'blocks-detail' },
+          { ...blocksHomeImage, slug: 'blocks-home', title: 'Home Screen' },
+          { ...blocksListImage, slug: 'blocks-list', title: 'Block List' },
+          { ...blocksDetailImage, slug: 'blocks-detail', title: 'Block Detail' },
           {
             ...blocksTransactionsImage,
             slug: 'blocks-transactions',
+            title: 'Transactions',
           },
         ]}
       />

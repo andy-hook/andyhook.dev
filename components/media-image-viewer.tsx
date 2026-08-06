@@ -400,6 +400,7 @@ const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({
             'pointer-events-none absolute -top-[150%] -left-[200%] -right-[200%] -bottom-[250%]',
             '[mask-image:radial-gradient(ellipse_at_center,black_25%,transparent_70%)]',
             'transition-opacity duration-200 ease-gentle',
+            'bg-slate-1/10',
             'backdrop-blur-3xl',
             visible ? 'opacity-100' : 'opacity-0',
           )}
@@ -454,7 +455,7 @@ const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({
             )}
           >
             <Progress.Label className="sr-only">Image position</Progress.Label>
-            <Progress.Track className="relative h-1.5 flex-1 overflow-hidden rounded-full bg-slate-1 will-change-transform shadow-md shadow-slate-1/20">
+            <Progress.Track className="relative h-1 flex-1 overflow-hidden rounded-full bg-slate-1 will-change-transform shadow-md shadow-slate-1/20">
               <Progress.Indicator className="bg-white transition-[width,background-color] duration-300 ease-snappy z-10 relative" />
 
               <div className="absolute inset-0 flex">
@@ -488,7 +489,7 @@ const mediaImageViewerNavigation = cva({
     'before:content-[""] before:border-2 before:border-slate-5 before:absolute before:rounded-full before:shadow-md',
     'before:bg-gradient-to-tl before:from-slate-2 before:to-slate-4 before:scale-75',
     'hover:before:scale-85 active:before:scale-75 before:transition before:ease-spring before:duration-300 before:active:duration-700',
-    'hover:text-slate-12',
+    'hover:text-slate-12 will-change-transform',
   ].join(' '),
   variants: {
     size: {

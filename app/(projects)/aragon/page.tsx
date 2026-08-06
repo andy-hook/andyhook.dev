@@ -68,6 +68,7 @@ export default function AragonPage() {
         image={{
           ...aragonIntroImage,
           slug: 'aragon-intro',
+          title: 'Device Mockups',
         }}
       />
 
@@ -97,6 +98,7 @@ export default function AragonPage() {
         image={{
           ...aragonComponentsImage,
           slug: 'aragon-components',
+          title: 'UI Components',
         }}
       />
 
@@ -130,26 +132,32 @@ export default function AragonPage() {
           {
             ...aragonNetworkDashboardHomeImage,
             slug: 'aragon-network-dashboard-home',
+            title: 'Open Proposals',
           },
           {
             ...aragonNetworkDashboardProposalImage,
             slug: 'aragon-network-dashboard-proposal',
+            title: 'Proposal Detail',
           },
           {
             ...aragonNetworkDashboardAgreementImage,
             slug: 'aragon-network-dashboard-agreement',
+            title: 'Agreement Detail',
           },
           {
             ...aragonUpgradeHomeImage,
             slug: 'aragon-upgrade-home',
+            title: 'Upgrade Portal',
           },
           {
             ...aragonUpgradeConverterImage,
             slug: 'aragon-upgrade-converter',
+            title: 'Token Converter',
           },
           {
             ...aragonUpgradeCompleteImage,
             slug: 'aragon-upgrade-complete',
+            title: 'Signing Steps',
           },
         ]}
       />
