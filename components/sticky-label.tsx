@@ -15,7 +15,7 @@ interface StickyLabelProps extends React.ComponentPropsWithoutRef<typeof Primiti
 export const StickyLabel = React.forwardRef<StickyLabelElement, StickyLabelProps>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
-      <Primitive.div {...props} className={cx('group', className)} ref={forwardedRef}>
+      <Primitive.div {...props} className={cx('group relative', className)} ref={forwardedRef}>
         {children}
       </Primitive.div>
     );
@@ -37,23 +37,25 @@ interface StickyLabelChipProps extends React.ComponentPropsWithoutRef<'div'> {
 export const StickyLabelChip = React.forwardRef<StickyLabelChipElement, StickyLabelChipProps>(
   ({ className, label, ...props }, forwardedRef) => {
     return (
-      <div
-        {...props}
-        className={cx(
-          'z-10 sticky top-0 inset-x-0 p-6 flex justify-end pointer-events-none will-change-motion',
-          'opacity-0 -translate-y-1 transition-[opacity,transform] duration-150 ease-snappy',
-          'group-hover:opacity-100 group-hover:translate-y-0',
-          'group-focus-visible:opacity-100 group-focus-visible:translate-y-0',
-          className,
-        )}
-        ref={forwardedRef}
-      >
-        <BaseChip.Root>
-          <BaseChip.Text>{label}</BaseChip.Text>
-          <BaseChip.Icon side="right">
-            <InformationCircleIcon />
-          </BaseChip.Icon>
-        </BaseChip.Root>
+      <div className="absolute inset-0 pointer-events-none">
+        <div
+          {...props}
+          className={cx(
+            'z-10 sticky top-0 inset-x-0 p-6 flex justify-end  will-change-motion',
+            'opacity-0 -translate-y-1 transition-[opacity,transform] duration-150 ease-snappy',
+            'group-hover:opacity-100 group-hover:translate-y-0',
+            'group-focus-visible:opacity-100 group-focus-visible:translate-y-0',
+            className,
+          )}
+          ref={forwardedRef}
+        >
+          <BaseChip.Root>
+            <BaseChip.Text>{label}</BaseChip.Text>
+            <BaseChip.Icon side="right">
+              <InformationCircleIcon />
+            </BaseChip.Icon>
+          </BaseChip.Root>
+        </div>
       </div>
     );
   },
