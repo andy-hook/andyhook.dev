@@ -37,7 +37,11 @@ export const ImageSection = React.forwardRef<ImageSectionElement, ImageSectionPr
                 />
 
                 <FocusRing className="outline-offset-0 focus-visible:outline-offset-3 rounded lg:rounded-3xl">
-                  <MediaImageViewer.Trigger image={image} slug={image.slug}>
+                  <MediaImageViewer.Trigger
+                    image={image}
+                    slug={image.slug}
+                    accentColor={image.accentColor}
+                  >
                     <div className="rounded-xl lg:rounded-3xl overflow-hidden relative">
                       <MediaImage image={image} className="w-full" sizes="100vw" />
                     </div>

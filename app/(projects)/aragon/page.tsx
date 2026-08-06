@@ -64,7 +64,9 @@ export default function AragonPage() {
         </p>
       </ContentSection>
 
-      <ImageSection image={{ ...aragonIntroImage, slug: 'aragon-intro' }} />
+      <ImageSection
+        image={{ ...aragonIntroImage, slug: 'aragon-intro', accentColor: '#00CCFF' }}
+      />
 
       <ContentSection title="Delivering on the Aragon promise">
         <p className="capsize">
@@ -88,7 +90,9 @@ export default function AragonPage() {
         </p>
       </ContentSection>
 
-      <ImageSection image={{ ...aragonComponentsImage, slug: 'aragon-components' }} />
+      <ImageSection
+        image={{ ...aragonComponentsImage, slug: 'aragon-components', accentColor: '#00CCFF' }}
+      />
 
       <ContentSection title="Exceptional quality, predictable delivery">
         <p className="capsize">
@@ -117,12 +121,36 @@ export default function AragonPage() {
       <ImageGroupSection
         project="aragon"
         images={[
-          { ...aragonNetworkDashboardHomeImage, slug: 'aragon-network-dashboard-home' },
-          { ...aragonNetworkDashboardProposalImage, slug: 'aragon-network-dashboard-proposal' },
-          { ...aragonNetworkDashboardAgreementImage, slug: 'aragon-network-dashboard-agreement' },
-          { ...aragonUpgradeHomeImage, slug: 'aragon-upgrade-home' },
-          { ...aragonUpgradeConverterImage, slug: 'aragon-upgrade-converter' },
-          { ...aragonUpgradeCompleteImage, slug: 'aragon-upgrade-complete' },
+          {
+            ...aragonNetworkDashboardHomeImage,
+            slug: 'aragon-network-dashboard-home',
+            accentColor: '#FBFBFD',
+          },
+          {
+            ...aragonNetworkDashboardProposalImage,
+            slug: 'aragon-network-dashboard-proposal',
+            accentColor: '#FBFBFD',
+          },
+          {
+            ...aragonNetworkDashboardAgreementImage,
+            slug: 'aragon-network-dashboard-agreement',
+            accentColor: '#FBFBFD',
+          },
+          {
+            ...aragonUpgradeHomeImage,
+            slug: 'aragon-upgrade-home',
+            accentColor: '#FBFBFD',
+          },
+          {
+            ...aragonUpgradeConverterImage,
+            slug: 'aragon-upgrade-converter',
+            accentColor: '#FBFBFD',
+          },
+          {
+            ...aragonUpgradeCompleteImage,
+            slug: 'aragon-upgrade-complete',
+            accentColor: '#FBFBFD',
+          },
         ]}
       />
     </Project.Root>

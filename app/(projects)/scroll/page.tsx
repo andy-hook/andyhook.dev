@@ -61,7 +61,9 @@ export default function ScrollPage() {
         </p>
       </ContentSection>
 
-      <ImageSection image={{ ...scrollIntroImage, slug: 'scroll-intro' }} />
+      <ImageSection
+        image={{ ...scrollIntroImage, slug: 'scroll-intro', accentColor: '#B62B82' }}
+      />
 
       <ContentSection title="Optimistic UI as a baseline experience">
         <p className="capsize">
@@ -91,7 +93,9 @@ export default function ScrollPage() {
         </p>
       </ContentSection>
 
-      <ImageSection image={{ ...scrollComponentsImage, slug: 'scroll-components' }} />
+      <ImageSection
+        image={{ ...scrollComponentsImage, slug: 'scroll-components', accentColor: '#B62B82' }}
+      />
 
       <ContentSection title="AI-native, embracing new technology">
         <p className="capsize">
@@ -119,14 +123,22 @@ export default function ScrollPage() {
       <ImageGroupSection
         project="scroll"
         images={[
-          { ...scrollSignUpImage, slug: 'scroll-sign-up' },
-          { ...scrollKnowledgeBaseImage, slug: 'scroll-knowledge-base' },
-          { ...scrollSourceSingleImage, slug: 'scroll-source-single' },
-          { ...scrollPlaygroundNewImage, slug: 'scroll-playground-new' },
-          { ...scrollPlaygroundExistingImage, slug: 'scroll-playground-existing' },
-          { ...scrollPlaygroundSourceImage, slug: 'scroll-playground-source' },
-          { ...scrollCustomizeImage, slug: 'scroll-customize' },
-          { ...scrollEmbeddedImage, slug: 'scroll-embedded' },
+          { ...scrollSignUpImage, slug: 'scroll-sign-up', accentColor: '#F6F6F9' },
+          { ...scrollKnowledgeBaseImage, slug: 'scroll-knowledge-base', accentColor: '#F6F6F9' },
+          { ...scrollSourceSingleImage, slug: 'scroll-source-single', accentColor: '#F6F6F9' },
+          { ...scrollPlaygroundNewImage, slug: 'scroll-playground-new', accentColor: '#F6F6F9' },
+          {
+            ...scrollPlaygroundExistingImage,
+            slug: 'scroll-playground-existing',
+            accentColor: '#F6F6F9',
+          },
+          {
+            ...scrollPlaygroundSourceImage,
+            slug: 'scroll-playground-source',
+            accentColor: '#F6F6F9',
+          },
+          { ...scrollCustomizeImage, slug: 'scroll-customize', accentColor: '#F6F6F9' },
+          { ...scrollEmbeddedImage, slug: 'scroll-embedded', accentColor: '#F6F6F9' },
         ]}
       />
     </Project.Root>

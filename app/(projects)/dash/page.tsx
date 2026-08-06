@@ -61,7 +61,7 @@ export default function DashPage() {
         </p>
       </ContentSection>
 
-      <ImageSection image={{ ...dashIntroImage, slug: 'dash-intro' }} />
+      <ImageSection image={{ ...dashIntroImage, slug: 'dash-intro', accentColor: '#E9E9E9' }} />
 
       <ContentSection title="Crafting a portable component system">
         <p className="capsize">
@@ -89,7 +89,9 @@ export default function DashPage() {
         </p>
       </ContentSection>
 
-      <ImageSection image={{ ...dashDesignSystemImage, slug: 'dash-design-system' }} />
+      <ImageSection
+        image={{ ...dashDesignSystemImage, slug: 'dash-design-system', accentColor: '#E9E9E9' }}
+      />
 
       <ContentSection title="Modern digital asset management">
         <p className="capsize">
@@ -113,11 +115,11 @@ export default function DashPage() {
       <ImageGroupSection
         project="dash"
         images={[
-          { ...dashUILoginImage, slug: 'dash-ui-login' },
-          { ...dashUISearchImage, slug: 'dash-ui-search' },
-          { ...dashUIEditImage, slug: 'dash-ui-edit' },
-          { ...dashUIDetailImage, slug: 'dash-ui-detail' },
-          { ...dashUIAdminImage, slug: 'dash-ui-admin' },
+          { ...dashUILoginImage, slug: 'dash-ui-login', accentColor: '#F3F3F7' },
+          { ...dashUISearchImage, slug: 'dash-ui-search', accentColor: '#F3F3F7' },
+          { ...dashUIEditImage, slug: 'dash-ui-edit', accentColor: '#F3F3F7' },
+          { ...dashUIDetailImage, slug: 'dash-ui-detail', accentColor: '#F3F3F7' },
+          { ...dashUIAdminImage, slug: 'dash-ui-admin', accentColor: '#F3F3F7' },
         ]}
       />
     </Project.Root>

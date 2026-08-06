@@ -54,7 +54,9 @@ export default function BlocksPage() {
         </p>
       </ContentSection>
 
-      <ImageSection image={{ ...blocksIntroImage, slug: 'blocks-intro' }} />
+      <ImageSection
+        image={{ ...blocksIntroImage, slug: 'blocks-intro', accentColor: '#1B1D24' }}
+      />
 
       <ContentSection title="Decentralized technology takes some practice">
         <p className="capsize">
@@ -90,10 +92,10 @@ export default function BlocksPage() {
       <ImageGroupSection
         project="blocks"
         images={[
-          { ...blocksHomeImage, slug: 'blocks-home' },
-          { ...blocksListImage, slug: 'blocks-list' },
-          { ...blocksDetailImage, slug: 'blocks-detail' },
-          { ...blocksTransactionsImage, slug: 'blocks-transactions' },
+          { ...blocksHomeImage, slug: 'blocks-home', accentColor: '#1B1D24' },
+          { ...blocksListImage, slug: 'blocks-list', accentColor: '#1B1D24' },
+          { ...blocksDetailImage, slug: 'blocks-detail', accentColor: '#1B1D24' },
+          { ...blocksTransactionsImage, slug: 'blocks-transactions', accentColor: '#1B1D24' },
         ]}
       />
     </Project.Root>

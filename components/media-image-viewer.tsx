@@ -15,7 +15,10 @@ import { XMarkIcon } from '@heroicons/react/24/solid';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/16/solid';
 import { Gutter } from './gutter';
 
-export type MediaImageViewerImage = StaticImageWithMetadata & { slug: string };
+export type MediaImageViewerImage = StaticImageWithMetadata & {
+  slug: string;
+  accentColor: string;
+};
 
 type PaginateDirection = -1 | 1;
 
@@ -605,19 +608,21 @@ interface MediaImageViewerTriggerProps extends React.ComponentPropsWithoutRef<
 > {
   image: StaticImageWithMetadata;
   slug: string;
+  accentColor: string;
 }
 
 const MediaImageViewerTrigger: React.FC<MediaImageViewerTriggerProps> = ({
   image,
   slug,
+  accentColor,
   ...props
 }) => {
   const { onImageAdd, onImageRemove } = useMediaImageViewerContext();
 
   React.useLayoutEffect(() => {
-    onImageAdd({ ...image, slug });
+    onImageAdd({ ...image, slug, accentColor });
     return () => onImageRemove(slug);
-  }, [image, slug, onImageAdd, onImageRemove]);
+  }, [image, slug, accentColor, onImageAdd, onImageRemove]);
 
   return (
     <Dialog.Trigger
