@@ -2,9 +2,7 @@
 
 import * as React from 'react';
 import { cx } from '@/cva.config';
-import * as Chip from '@/components/chip';
-import { InformationCircleIcon } from '@heroicons/react/16/solid';
-import { Primitive } from '@/components/primitives/primitive';
+import * as StickyLabel from '@/components/sticky-label';
 
 const GRID_PRECISION = 40;
 
@@ -82,41 +80,26 @@ ArtifactGridItem.displayName = 'ArtifactGridItem';
  * ArtifactGridFrame
  * -----------------------------------------------------------------------------------------------*/
 
-type ArtifactGridFrameElement = React.ComponentRef<typeof Primitive.div>;
+type ArtifactGridFrameElement = React.ComponentRef<typeof StickyLabel.Root>;
 
-interface ArtifactGridFrameProps extends React.ComponentPropsWithoutRef<typeof Primitive.div> {
+interface ArtifactGridFrameProps extends React.ComponentPropsWithoutRef<typeof StickyLabel.Root> {
   label: string;
 }
 
 export const ArtifactGridFrame = React.forwardRef<ArtifactGridFrameElement, ArtifactGridFrameProps>(
   ({ children, className, label, ...props }, forwardedRef) => {
     return (
-      <Primitive.div
+      <StickyLabel.Root
         {...props}
-        className={cx('group absolute shadow-md bg-slate-light-1', className)}
+        className={cx('absolute shadow-md bg-slate-light-1', className)}
         style={{ inset: 'calc(var(--gap) / 2)', ...props.style }}
         ref={forwardedRef}
       >
         <div className={cx('absolute', 'inset-[6vw]', 'sm:inset-[3vw]', 'wide:inset-[1.5vw]')}>
-          <div
-            className={cx(
-              'z-10 sticky top-0 inset-x-0 p-6 flex justify-end pointer-events-none will-change-motion',
-              'opacity-0 -translate-y-1 transition-[opacity,transform] duration-150 ease-snappy',
-              'group-hover:opacity-100 group-hover:translate-y-0',
-              'group-focus-visible:opacity-100 group-focus-visible:translate-y-0',
-            )}
-          >
-            <Chip.Root>
-              <Chip.Text>{label}</Chip.Text>
-              <Chip.Icon side="right">
-                <InformationCircleIcon />
-              </Chip.Icon>
-            </Chip.Root>
-          </div>
-
+          <StickyLabel.Chip label={label} />
           {children}
         </div>
-      </Primitive.div>
+      </StickyLabel.Root>
     );
   },
 );
