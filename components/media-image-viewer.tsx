@@ -15,6 +15,10 @@ import { XMarkIcon } from '@heroicons/react/24/solid';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/16/solid';
 import { Gutter } from './gutter';
 
+export type MediaImageViewerImage = StaticImageWithMetadata & {
+  slug: string;
+};
+
 type PaginateDirection = -1 | 1;
 
 const DRAG_DISTANCE_THRESHOLD = 48;
@@ -42,8 +46,8 @@ const mediaImageViewerHandle = Dialog.createHandle();
  * -----------------------------------------------------------------------------------------------*/
 
 type MediaImageViewerContextValue = {
-  images: StaticImageWithMetadata[];
-  onImageAdd: (image: StaticImageWithMetadata) => void;
+  images: MediaImageViewerImage[];
+  onImageAdd: (image: MediaImageViewerImage) => void;
   onImageRemove: (slug: string) => void;
 };
 
@@ -51,9 +55,9 @@ const [MediaImageViewerProvider, useMediaImageViewerContext] =
   createContext<MediaImageViewerContextValue>('MediaImageViewer');
 
 export const MediaImageViewer = ({ children }: { children: React.ReactNode }) => {
-  const [images, setImages] = React.useState(() => new Map<string, StaticImageWithMetadata>());
+  const [images, setImages] = React.useState(() => new Map<string, MediaImageViewerImage>());
 
-  const onImageAdd = React.useCallback((image: StaticImageWithMetadata) => {
+  const onImageAdd = React.useCallback((image: MediaImageViewerImage) => {
     setImages((prev) => {
       if (prev.get(image.slug) === image) return prev;
       return new Map(prev).set(image.slug, image);
@@ -447,14 +451,15 @@ const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({
             )}
           >
             <Progress.Label className="sr-only">Image position</Progress.Label>
-            <Progress.Track className="relative h-1 flex-1 overflow-hidden rounded-full bg-slate-5">
-              <Progress.Indicator className="bg-slate-12 transition-[width] duration-300 ease-snappy" />
+            <Progress.Track className="relative h-1.5 flex-1 overflow-hidden rounded-full bg-slate-1 will-change-transform shadow-md shadow-slate-1/20">
+              <Progress.Indicator className="bg-white transition-[width,background-color] duration-300 ease-snappy z-10 relative" />
 
               <div className="absolute inset-0 flex">
                 {context.images.map((image, i) => (
                   <div
                     key={image.slug}
-                    className={cx(' bg-slate-12 flex-1', i % 2 === 0 ? 'opacity-0' : 'opacity-10')}
+                    className={cx('flex-1', i % 2 === 0 ? 'opacity-40' : 'opacity-60')}
+                    style={{ backgroundColor: image.color ?? 'white' }}
                   />
                 ))}
               </div>
@@ -602,15 +607,20 @@ interface MediaImageViewerTriggerProps extends React.ComponentPropsWithoutRef<
   typeof Dialog.Trigger
 > {
   image: StaticImageWithMetadata;
+  slug: string;
 }
 
-const MediaImageViewerTrigger: React.FC<MediaImageViewerTriggerProps> = ({ image, ...props }) => {
+const MediaImageViewerTrigger: React.FC<MediaImageViewerTriggerProps> = ({
+  image,
+  slug,
+  ...props
+}) => {
   const { onImageAdd, onImageRemove } = useMediaImageViewerContext();
 
   React.useLayoutEffect(() => {
-    onImageAdd(image);
-    return () => onImageRemove(image.slug);
-  }, [image, onImageAdd, onImageRemove]);
+    onImageAdd({ ...image, slug });
+    return () => onImageRemove(slug);
+  }, [image, slug, onImageAdd, onImageRemove]);
 
   return (
     <Dialog.Trigger
@@ -620,7 +630,7 @@ const MediaImageViewerTrigger: React.FC<MediaImageViewerTriggerProps> = ({ image
       onClick={(event) => {
         props.onClick?.(event);
         event.preventBaseUIHandler();
-        window.history.pushState(null, '', `?image=${image.slug}`);
+        window.history.pushState(null, '', `?image=${slug}`);
       }}
     />
   );
@@ -654,7 +664,7 @@ function fitSlide(viewport: Dimensions, intrinsic: Dimensions) {
 }
 
 function getWindowRadius(
-  images: StaticImageWithMetadata[],
+  images: MediaImageViewerImage[],
   index: number,
   viewport: Dimensions,
 ): number {
@@ -671,7 +681,7 @@ function getWindowRadius(
 }
 
 function getSideRadius(
-  images: StaticImageWithMetadata[],
+  images: MediaImageViewerImage[],
   index: number,
   direction: PaginateDirection,
   viewport: Dimensions,
@@ -701,7 +711,7 @@ function getSideRadius(
   return maxRadius;
 }
 
-function getWindow(images: StaticImageWithMetadata[], index: number, radius: number) {
+function getWindow(images: MediaImageViewerImage[], index: number, radius: number) {
   const count = images.length;
 
   return Array.from({ length: radius * 2 + 1 }, (_, i) => {

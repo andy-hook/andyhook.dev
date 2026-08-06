@@ -61,7 +61,9 @@ export default function ScrollPage() {
         </p>
       </ContentSection>
 
-      <ImageSection image={scrollIntroImage} />
+      <ImageSection
+        image={{ ...scrollIntroImage, slug: 'scroll-intro' }}
+      />
 
       <ContentSection title="Optimistic UI as a baseline experience">
         <p className="capsize">
@@ -91,7 +93,12 @@ export default function ScrollPage() {
         </p>
       </ContentSection>
 
-      <ImageSection image={scrollComponentsImage} />
+      <ImageSection
+        image={{
+          ...scrollComponentsImage,
+          slug: 'scroll-components',
+        }}
+      />
 
       <ContentSection title="AI-native, embracing new technology">
         <p className="capsize">
@@ -119,14 +126,35 @@ export default function ScrollPage() {
       <ImageGroupSection
         project="scroll"
         images={[
-          scrollSignUpImage,
-          scrollKnowledgeBaseImage,
-          scrollSourceSingleImage,
-          scrollPlaygroundNewImage,
-          scrollPlaygroundExistingImage,
-          scrollPlaygroundSourceImage,
-          scrollCustomizeImage,
-          scrollEmbeddedImage,
+          { ...scrollSignUpImage, slug: 'scroll-sign-up' },
+          {
+            ...scrollKnowledgeBaseImage,
+            slug: 'scroll-knowledge-base',
+          },
+          {
+            ...scrollSourceSingleImage,
+            slug: 'scroll-source-single',
+          },
+          {
+            ...scrollPlaygroundNewImage,
+            slug: 'scroll-playground-new',
+          },
+          {
+            ...scrollPlaygroundExistingImage,
+            slug: 'scroll-playground-existing',
+          },
+          {
+            ...scrollPlaygroundSourceImage,
+            slug: 'scroll-playground-source',
+          },
+          {
+            ...scrollCustomizeImage,
+            slug: 'scroll-customize',
+          },
+          {
+            ...scrollEmbeddedImage,
+            slug: 'scroll-embedded',
+          },
         ]}
       />
     </Project.Root>
