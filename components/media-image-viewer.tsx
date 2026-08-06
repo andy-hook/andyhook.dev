@@ -18,7 +18,7 @@ type PaginateDirection = -1 | 1;
 const DRAG_DISTANCE_THRESHOLD = 48;
 const DRAG_VELOCITY_DISTANCE = 12;
 const SWIPE_VELOCITY = 800;
-const CONTROLS_IDLE_MS = 20000;
+const CONTROLS_IDLE_MS = 2500;
 
 const KEYBOARD_PAGINATE_DIRECTION: Record<string, PaginateDirection> = {
   ArrowLeft: -1,
@@ -145,7 +145,7 @@ const MediaImageViewerContentImpl: React.FC<MediaImageViewerContentImplProps> = 
   const context = useMediaImageViewerContext();
   const [index, setIndex] = React.useState(initialIndex);
   const [snapSlides, setSnapSlides] = React.useState(false);
-  const [controlsVisible, setControlsVisible] = React.useState(true);
+  const [controlsVisible, setControlsVisible] = React.useState(false);
 
   const windowSize = useWindowSize();
   const radius = getWindowRadius(context.images, index, {
@@ -316,6 +316,7 @@ const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({
   const context = useMediaImageViewerContext();
   const canPaginate = context.images.length > 1;
   const idleTimeoutRef = React.useRef(0);
+  const initialTimeoutRef = React.useRef(0);
   const interactingRef = React.useRef(false);
   const handlePaginate = useEventCallback(onPaginate);
   const handleVisibleChange = useEventCallback((visible: boolean) => {
@@ -336,13 +337,15 @@ const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({
   }, [handleVisibleChange, scheduleHide]);
 
   React.useEffect(() => {
-    reveal();
+    window.clearTimeout(initialTimeoutRef.current);
+    initialTimeoutRef.current = window.setTimeout(reveal, 300);
 
     window.addEventListener('pointermove', reveal);
     window.addEventListener('pointerdown', reveal);
     window.addEventListener('keydown', reveal);
 
     return () => {
+      window.clearTimeout(initialTimeoutRef.current);
       window.clearTimeout(idleTimeoutRef.current);
       window.removeEventListener('pointermove', reveal);
       window.removeEventListener('pointerdown', reveal);
@@ -373,7 +376,7 @@ const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({
           className={cx(
             'pointer-events-none absolute -top-[150%] -left-[200%] -right-[200%] -bottom-[250%]',
             '[mask-image:radial-gradient(ellipse_at_center,black_25%,transparent_70%)]',
-            'transition-opacity duration-150 ease-gentle',
+            'transition-opacity duration-200 ease-gentle',
             'backdrop-blur-3xl',
             visible ? 'opacity-100' : 'opacity-0',
           )}
@@ -382,7 +385,7 @@ const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({
         <div
           className={cx(
             'flex items-center justify-center gap-2',
-            'transition-[opacity,transform] duration-150 ease-gentle',
+            'transition-[opacity,transform] duration-200 ease-gentle',
             visible ? 'scale-100 opacity-100 translate-y-0' : 'scale-95 opacity-0 translate-y-2',
           )}
         >
