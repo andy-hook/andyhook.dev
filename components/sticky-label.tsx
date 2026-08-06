@@ -50,10 +50,10 @@ export const StickyLabelChip = React.forwardRef<StickyLabelChipElement, StickyLa
           ref={forwardedRef}
         >
           <BaseChip.Root>
-            <BaseChip.Text>{label}</BaseChip.Text>
-            <BaseChip.Icon side="right">
+            <BaseChip.Icon side="left">
               <InformationCircleIcon />
             </BaseChip.Icon>
+            <BaseChip.Text>{label}</BaseChip.Text>
           </BaseChip.Root>
         </div>
       </div>

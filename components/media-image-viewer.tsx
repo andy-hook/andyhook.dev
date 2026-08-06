@@ -400,6 +400,7 @@ const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({
             'pointer-events-none absolute -top-[150%] -left-[200%] -right-[200%] -bottom-[250%]',
             '[mask-image:radial-gradient(ellipse_at_center,black_25%,transparent_70%)]',
             'transition-opacity duration-200 ease-gentle',
+            'bg-slate-1/10',
             'backdrop-blur-3xl',
             visible ? 'opacity-100' : 'opacity-0',
           )}
