@@ -27,8 +27,12 @@ const imageGroupSectionBackground = cva({
 
 type ImageGroupSectionElement = React.ComponentRef<'section'>;
 
+type ImageGroupSectionImage = MediaImageViewer.MediaImageViewerImage & {
+  title: string;
+};
+
 interface ImageGroupSectionProps extends React.ComponentPropsWithoutRef<'section'> {
-  images: MediaImageViewer.MediaImageViewerImage[];
+  images: ImageGroupSectionImage[];
   project: ProjectId;
 }
 
@@ -87,7 +91,7 @@ export const ImageGroupSection = React.forwardRef<ImageGroupSectionElement, Imag
                         <StickyLabel.Root
                           render={<MediaImageViewer.Trigger image={image} slug={image.slug} />}
                         >
-                          <StickyLabel.Chip label={image.slug} />
+                          <StickyLabel.Chip label={image.title} />
                           <div className="rounded lg:rounded-xl overflow-hidden shadow-xl relative">
                             <MediaImage image={image} className="w-full" sizes="100vw" />
                           </div>

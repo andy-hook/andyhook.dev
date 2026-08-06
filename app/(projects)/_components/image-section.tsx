@@ -10,8 +10,12 @@ import * as StickyLabel from '@/components/sticky-label';
 
 type ImageSectionElement = React.ComponentRef<'section'>;
 
+type ImageSectionImage = MediaImageViewer.MediaImageViewerImage & {
+  title: string;
+};
+
 interface ImageSectionProps extends React.ComponentPropsWithoutRef<'section'> {
-  image: MediaImageViewer.MediaImageViewerImage;
+  image: ImageSectionImage;
 }
 
 export const ImageSection = React.forwardRef<ImageSectionElement, ImageSectionProps>(
@@ -41,7 +45,7 @@ export const ImageSection = React.forwardRef<ImageSectionElement, ImageSectionPr
                   <StickyLabel.Root
                     render={<MediaImageViewer.Trigger image={image} slug={image.slug} />}
                   >
-                    <StickyLabel.Chip label={image.slug} />
+                    <StickyLabel.Chip label={image.title} />
                     <div className="rounded-xl lg:rounded-3xl overflow-hidden relative">
                       <MediaImage image={image} className="w-full" sizes="100vw" />
                     </div>

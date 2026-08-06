@@ -62,7 +62,7 @@ export default function DashPage() {
       </ContentSection>
 
       <ImageSection
-        image={{ ...dashIntroImage, slug: 'dash-intro' }}
+        image={{ ...dashIntroImage, slug: 'dash-intro', title: 'Device Mockups' }}
       />
 
       <ContentSection title="Crafting a portable component system">
@@ -95,6 +95,7 @@ export default function DashPage() {
         image={{
           ...dashDesignSystemImage,
           slug: 'dash-design-system',
+          title: 'UI Components',
         }}
       />
 
@@ -120,11 +121,11 @@ export default function DashPage() {
       <ImageGroupSection
         project="dash"
         images={[
-          { ...dashUILoginImage, slug: 'dash-ui-login' },
-          { ...dashUISearchImage, slug: 'dash-ui-search' },
-          { ...dashUIEditImage, slug: 'dash-ui-edit' },
-          { ...dashUIDetailImage, slug: 'dash-ui-detail' },
-          { ...dashUIAdminImage, slug: 'dash-ui-admin' },
+          { ...dashUILoginImage, slug: 'dash-ui-login', title: 'Login Screen' },
+          { ...dashUISearchImage, slug: 'dash-ui-search', title: 'Asset Search' },
+          { ...dashUIEditImage, slug: 'dash-ui-edit', title: 'Bulk Edit' },
+          { ...dashUIDetailImage, slug: 'dash-ui-detail', title: 'Asset Detail' },
+          { ...dashUIAdminImage, slug: 'dash-ui-admin', title: 'Access Permissions' },
         ]}
       />
     </Project.Root>
