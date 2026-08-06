@@ -18,7 +18,7 @@ type PaginateDirection = -1 | 1;
 const DRAG_DISTANCE_THRESHOLD = 48;
 const DRAG_VELOCITY_DISTANCE = 12;
 const SWIPE_VELOCITY = 800;
-const CONTROLS_IDLE_MS = 2000;
+const CONTROLS_IDLE_MS = 20000;
 
 const KEYBOARD_PAGINATE_DIRECTION: Record<string, PaginateDirection> = {
   ArrowLeft: -1,
@@ -354,18 +354,8 @@ const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({
     <div
       className={cx(
         'fixed bottom-10 w-full z-20 flex items-center justify-center',
-        'transition-transform duration-150 ease-gentle',
-        !visible && 'translate-y-32 scale-95 pointer-events-none',
+        !visible && 'pointer-events-none',
       )}
-      onPointerEnter={() => {
-        interactingRef.current = true;
-        window.clearTimeout(idleTimeoutRef.current);
-        handleVisibleChange(true);
-      }}
-      onPointerLeave={() => {
-        interactingRef.current = false;
-        scheduleHide();
-      }}
       onFocusCapture={() => {
         interactingRef.current = true;
         window.clearTimeout(idleTimeoutRef.current);
@@ -377,41 +367,53 @@ const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({
         scheduleHide();
       }}
     >
-      <div className="relative flex items-center justify-center gap-2">
+      <div className="relative">
         <div
           aria-hidden
           className={cx(
-            'pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[200px] size-[600px]',
-            '[mask-image:radial-gradient(circle,black_30%,transparent_70%)]',
-            '[-webkit-mask-image:radial-gradient(circle,black_30%,transparent_70%)]',
-            'transition-[backdrop-filter] duration-150 ease-gentle',
-            visible ? 'backdrop-blur-3xl' : 'backdrop-blur-0',
+            'pointer-events-none absolute -top-[150%] -left-[200%] -right-[200%] -bottom-[250%]',
+            '[mask-image:radial-gradient(ellipse_at_center,black_25%,transparent_70%)]',
+            'transition-opacity duration-150 ease-gentle',
+            'backdrop-blur-3xl',
+            visible ? 'opacity-100' : 'opacity-0',
           )}
         />
 
-        {canPaginate && (
-          <MediaImageViewerNavigation
-            size="sm"
-            aria-label="Previous"
-            onClick={() => handlePaginate(-1)}
-          >
-            <ChevronLeftIcon className="size-5" />
-          </MediaImageViewerNavigation>
-        )}
-
-        <Dialog.Close
-          render={
-            <MediaImageViewerNavigation aria-label="Close">
-              <XMarkIcon className="size-8" />
+        <div
+          className={cx(
+            'flex items-center justify-center gap-2',
+            'transition-[opacity,transform] duration-150 ease-gentle',
+            visible ? 'scale-100 opacity-100 translate-y-0' : 'scale-95 opacity-0 translate-y-2',
+          )}
+        >
+          {canPaginate && (
+            <MediaImageViewerNavigation
+              size="sm"
+              aria-label="Previous"
+              onClick={() => handlePaginate(-1)}
+            >
+              <ChevronLeftIcon className="size-5" />
             </MediaImageViewerNavigation>
-          }
-        />
+          )}
 
-        {canPaginate && (
-          <MediaImageViewerNavigation size="sm" aria-label="Next" onClick={() => handlePaginate(1)}>
-            <ChevronRightIcon className="size-5" />
-          </MediaImageViewerNavigation>
-        )}
+          <Dialog.Close
+            render={
+              <MediaImageViewerNavigation aria-label="Close">
+                <XMarkIcon className="size-8" />
+              </MediaImageViewerNavigation>
+            }
+          />
+
+          {canPaginate && (
+            <MediaImageViewerNavigation
+              size="sm"
+              aria-label="Next"
+              onClick={() => handlePaginate(1)}
+            >
+              <ChevronRightIcon className="size-5" />
+            </MediaImageViewerNavigation>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -423,8 +425,15 @@ MediaImageViewerControls.displayName = 'MediaImageViewerControls';
  * MediaImageViewerNavigation
  * -----------------------------------------------------------------------------------------------*/
 
+//
+
 const mediaImageViewerNavigation = cva({
-  base: 'relative rounded-full text-slate-12 before:content-[""] before:absolute before:rounded-full before:bg-gradient-to-tl before:from-slate-2 before:to-slate-5 before:scale-75 hover:before:scale-90 before:transition',
+  base: [
+    'relative rounded-full text-slate-12',
+    'before:content-[""] before:border-2 before:border-slate-5 before:absolute before:rounded-full before:shadow-md',
+    'before:bg-gradient-to-tl before:from-slate-2 before:to-slate-4 before:scale-75',
+    'hover:before:scale-85 active:before:scale-75 before:transition before:ease-spring before:duration-300 before:active:duration-700',
+  ].join(' '),
   variants: {
     size: {
       sm: 'p-3 before:-inset-1.5',
