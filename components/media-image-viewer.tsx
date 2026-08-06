@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { Dialog } from '@base-ui/react/dialog';
+import { Progress } from '@base-ui/react/progress';
 import { AnimatePresence, animate, motion, useMotionValue } from 'motion/react';
 import { createContext } from './utils/create-context';
 import type { StaticImageWithMetadata } from '@/types';
@@ -12,6 +13,7 @@ import { useEventCallback, useWindowSize } from 'usehooks-ts';
 import { FocusRing } from './focus-ring';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/16/solid';
+import { Gutter } from './gutter';
 
 type PaginateDirection = -1 | 1;
 
@@ -220,6 +222,7 @@ const MediaImageViewerContentImpl: React.FC<MediaImageViewerContentImplProps> = 
       )}
     >
       <MediaImageViewerControls
+        index={index}
         onPaginate={(direction) => paginate(direction, { snap: false })}
         visible={controlsVisible}
         onVisibleChange={setControlsVisible}
@@ -271,7 +274,7 @@ const MediaImageViewerContentImpl: React.FC<MediaImageViewerContentImplProps> = 
                   sizes={`min(100vw, calc(100vh * ${width} / ${height}))`}
                   priority={priority}
                   className={cx(
-                    'absolute inset-0 pointer-events-none',
+                    'absolute inset-0 pointer-events-none transition-opacity duration-500 ease-snappy',
                     isActive ? 'opacity-100' : 'opacity-10',
                   )}
                 />
@@ -303,18 +306,22 @@ const MediaImageViewerContentImpl: React.FC<MediaImageViewerContentImplProps> = 
  * -----------------------------------------------------------------------------------------------*/
 
 interface MediaImageViewerControlsProps {
+  index: number;
   onPaginate: (direction: PaginateDirection) => void;
   visible: boolean;
   onVisibleChange: (visible: boolean) => void;
 }
 
 const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({
+  index,
   onPaginate,
   visible,
   onVisibleChange,
 }) => {
   const context = useMediaImageViewerContext();
-  const canPaginate = context.images.length > 1;
+  const count = context.images.length;
+  const canPaginate = count > 1;
+  const current = index + 1;
   const idleTimeoutRef = React.useRef(0);
   const initialTimeoutRef = React.useRef(0);
   const interactingRef = React.useRef(false);
@@ -338,7 +345,7 @@ const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({
 
   React.useEffect(() => {
     window.clearTimeout(initialTimeoutRef.current);
-    initialTimeoutRef.current = window.setTimeout(reveal, 300);
+    initialTimeoutRef.current = window.setTimeout(reveal, 200);
 
     window.addEventListener('pointermove', reveal);
     window.addEventListener('pointerdown', reveal);
@@ -356,9 +363,18 @@ const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({
   return (
     <div
       className={cx(
-        'fixed bottom-10 w-full z-20 flex items-center justify-center',
+        'fixed bottom-10 w-full z-20 flex flex-col items-center justify-center',
         !visible && 'pointer-events-none',
       )}
+      onPointerEnter={() => {
+        interactingRef.current = true;
+        window.clearTimeout(idleTimeoutRef.current);
+        handleVisibleChange(true);
+      }}
+      onPointerLeave={() => {
+        interactingRef.current = false;
+        scheduleHide();
+      }}
       onFocusCapture={() => {
         interactingRef.current = true;
         window.clearTimeout(idleTimeoutRef.current);
@@ -370,7 +386,7 @@ const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({
         scheduleHide();
       }}
     >
-      <div className="relative">
+      <div className={cx('relative', canPaginate && 'mb-5')}>
         <div
           aria-hidden
           className={cx(
@@ -384,7 +400,7 @@ const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({
 
         <div
           className={cx(
-            'flex items-center justify-center gap-2',
+            'flex items-center gap-2',
             'transition-[opacity,transform] duration-200 ease-gentle',
             visible ? 'scale-100 opacity-100 translate-y-0' : 'scale-95 opacity-0 translate-y-2',
           )}
@@ -418,6 +434,25 @@ const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({
           )}
         </div>
       </div>
+      {canPaginate && (
+        <Gutter className="w-full">
+          <Progress.Root
+            value={current}
+            min={1}
+            max={count}
+            className={cx(
+              'flex w-full max-w-96 items-center gap-2.5 mx-auto',
+              'transition-[opacity,transform] duration-200 ease-gentle',
+              visible ? 'scale-100 opacity-100 translate-y-0' : 'scale-95 opacity-0 translate-y-2',
+            )}
+          >
+            <Progress.Label className="sr-only">Image position</Progress.Label>
+            <Progress.Track className="relative h-1 flex-1 overflow-hidden rounded-full bg-slate-5">
+              <Progress.Indicator className="bg-slate-12 transition-[width] duration-300 ease-snappy" />
+            </Progress.Track>
+          </Progress.Root>
+        </Gutter>
+      )}
     </div>
   );
 };
