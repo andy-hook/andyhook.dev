@@ -64,7 +64,7 @@ export default function AragonPage() {
         </p>
       </ContentSection>
 
-      <ImageSection image={aragonIntroImage} />
+      <ImageSection image={{ ...aragonIntroImage, slug: 'aragon-intro' }} />
 
       <ContentSection title="Delivering on the Aragon promise">
         <p className="capsize">
@@ -88,7 +88,7 @@ export default function AragonPage() {
         </p>
       </ContentSection>
 
-      <ImageSection image={aragonComponentsImage} />
+      <ImageSection image={{ ...aragonComponentsImage, slug: 'aragon-components' }} />
 
       <ContentSection title="Exceptional quality, predictable delivery">
         <p className="capsize">
@@ -117,12 +117,12 @@ export default function AragonPage() {
       <ImageGroupSection
         project="aragon"
         images={[
-          aragonNetworkDashboardHomeImage,
-          aragonNetworkDashboardProposalImage,
-          aragonNetworkDashboardAgreementImage,
-          aragonUpgradeHomeImage,
-          aragonUpgradeConverterImage,
-          aragonUpgradeCompleteImage,
+          { ...aragonNetworkDashboardHomeImage, slug: 'aragon-network-dashboard-home' },
+          { ...aragonNetworkDashboardProposalImage, slug: 'aragon-network-dashboard-proposal' },
+          { ...aragonNetworkDashboardAgreementImage, slug: 'aragon-network-dashboard-agreement' },
+          { ...aragonUpgradeHomeImage, slug: 'aragon-upgrade-home' },
+          { ...aragonUpgradeConverterImage, slug: 'aragon-upgrade-converter' },
+          { ...aragonUpgradeCompleteImage, slug: 'aragon-upgrade-complete' },
         ]}
       />
     </Project.Root>

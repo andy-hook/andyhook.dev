@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { cva } from '@/cva.config';
-import { ProjectId, StaticImageWithMetadata } from '@/types';
+import { ProjectId } from '@/types';
 
 import { Gutter } from '@/components/gutter';
 import { Container } from '@/components/container';
@@ -28,7 +28,7 @@ const imageGroupSectionBackground = cva({
 type ImageGroupSectionElement = React.ComponentRef<'section'>;
 
 interface ImageGroupSectionProps extends React.ComponentPropsWithoutRef<'section'> {
-  images: StaticImageWithMetadata[];
+  images: MediaImageViewer.MediaImageViewerImage[];
   project: ProjectId;
 }
 
@@ -57,7 +57,7 @@ export const ImageGroupSection = React.forwardRef<ImageGroupSectionElement, Imag
                 <div className="space-y-4 md:space-y-12 lg:space-y-24 2xl:space-y-[6vw]">
                   {images.map((image) => {
                     return (
-                      <div className="relative" key={image.alt}>
+                      <div className="relative" key={image.slug}>
                         <Hatch
                           orientation="vertical"
                           className="absolute left-[-100vw] top-0 bottom-0 right-full opacity-10"
@@ -85,7 +85,7 @@ export const ImageGroupSection = React.forwardRef<ImageGroupSectionElement, Imag
                           solid
                         />
                         <FocusRing className="outline-offset-0 focus-visible:outline-offset-3 rounded lg:rounded-xl">
-                          <MediaImageViewer.Trigger image={image}>
+                          <MediaImageViewer.Trigger image={image} slug={image.slug}>
                             <div className="rounded lg:rounded-xl overflow-hidden shadow-xl relative">
                               <MediaImage image={image} className="w-full" sizes="100vw" />
                             </div>
