@@ -133,7 +133,10 @@ const MediaImageViewerContent: React.FC<MediaImageViewerContentProps> = () => {
             Use the left and right arrow keys to browse images. Press Escape to close.
           </Dialog.Description>
 
-          <MediaImageViewerContentImpl initialIndex={initialIndex} />
+          <MediaImageViewerContentImpl
+            initialIndex={initialIndex}
+            onKeyNavigate={() => initialFocusRef.current?.focus()}
+          />
         </Dialog.Popup>
       </Dialog.Portal>
     </Dialog.Root>
@@ -146,12 +149,15 @@ MediaImageViewerContent.displayName = 'MediaImageViewerContent';
 
 interface MediaImageViewerContentImplProps {
   initialIndex: number;
+  onKeyNavigate: () => void;
 }
 
 const MediaImageViewerContentImpl: React.FC<MediaImageViewerContentImplProps> = ({
   initialIndex,
+  onKeyNavigate,
 }) => {
   const context = useMediaImageViewerContext();
+  const handleKeyNavigate = useEventCallback(onKeyNavigate);
   const [index, setIndex] = React.useState(initialIndex);
   const [snapSlides, setSnapSlides] = React.useState(false);
   const [controlsVisible, setControlsVisible] = React.useState(false);
@@ -214,12 +220,13 @@ const MediaImageViewerContentImpl: React.FC<MediaImageViewerContentImplProps> = 
       if (direction == null) return;
 
       event.preventDefault();
+      handleKeyNavigate();
       paginate(direction, { snap: false });
     };
 
     window.addEventListener('keydown', onKeyDown, true);
     return () => window.removeEventListener('keydown', onKeyDown, true);
-  }, [paginate]);
+  }, [handleKeyNavigate, paginate]);
 
   return (
     <div
@@ -293,13 +300,22 @@ const MediaImageViewerContentImpl: React.FC<MediaImageViewerContentImplProps> = 
 
       {radius > 0 &&
         fadeWidthPx > 0 &&
-        ['left', 'right'].map((direction) => (
-          <div
-            key={direction}
+        (
+          [
+            { side: 'left', direction: -1 },
+            { side: 'right', direction: 1 },
+          ] as const
+        ).map((item) => (
+          <button
+            key={item.side}
+            type="button"
             aria-hidden
+            tabIndex={-1}
+            onClick={() => paginate(item.direction, { snap: false })}
             className={cx(
-              'pointer-events-none absolute inset-y-0 z-10  from-slate-1/90 via-slate-1/30 to-transparent',
-              direction === 'left' ? 'left-0 bg-gradient-to-r' : 'right-0 bg-gradient-to-l',
+              'absolute inset-y-0 z-10 outline-none cursor-pointer',
+              'from-slate-1/90 via-slate-1/30 to-transparent',
+              item.side === 'left' ? 'left-0 bg-gradient-to-r' : 'right-0 bg-gradient-to-l',
             )}
             style={{ width: fadeWidthPx }}
           />

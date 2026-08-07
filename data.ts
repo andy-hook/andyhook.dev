@@ -75,7 +75,6 @@ import {
   sketchbookTattooImage,
   sketchbookTreeMarkImage,
   sketchbookSandsTimeImage,
-  sketchbookPatchWorkImage,
   sketchbookOrcImage,
   joDawesAvatarImage,
   sketchbookNavalCarvingImage,
@@ -681,12 +680,6 @@ export const artifacts: Artifact[] = [
     year: '2007',
     src: sketchbookJuliusImage,
     slug: 'sketchbook-julius',
-  },
-  {
-    name: 'Patch work of a man',
-    year: '2004',
-    src: sketchbookPatchWorkImage,
-    slug: 'sketchbook-patch-work',
   },
 ];
 
