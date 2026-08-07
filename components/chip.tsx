@@ -16,7 +16,7 @@ export const Chip = React.forwardRef<ChipElement, ChipProps>(
       <Primitive.div
         {...props}
         className={cx(
-          'bg-slate-2 text-slate-12 z-10 font-body font-semibold text-xs lg:text-sm py-2 px-3.5 rounded-full flex items-center gap-1 lg:gap-1.5',
+          'bg-slate-2 text-slate-12 z-10 font-body font-semibold text-xs xxl:text-sm py-2 px-3.5 rounded-full flex items-center gap-1 xxl:gap-1.5',
           className,
         )}
         ref={forwardedRef}
@@ -71,7 +71,7 @@ export const ChipIcon = React.forwardRef<ChipIconElement, ChipIconProps>(
         {...props}
         render={render ?? children}
         className={cx(
-          'size-3.5 lg:size-4 text-slate-10',
+          'size-3.5 xxl:size-4 text-slate-10',
           side === 'left' ? '-ml-0.5' : '-mr-0.5',
           className,
         )}
