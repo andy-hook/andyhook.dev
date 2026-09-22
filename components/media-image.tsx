@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import NextImage from 'next/image';
-import { motion } from 'motion/react';
 import { cx } from '@/cva.config';
 
 import { useComposedRefs } from '@/components/utils/compose-refs';
@@ -29,11 +28,12 @@ const MediaImage = React.forwardRef<MediaImageElement, MediaImageProps>((props, 
       style={{ backgroundColor: withFallback ? (image.color ?? undefined) : undefined, ...style }}
       className={cx('relative', className)}
     >
-      <motion.div
-        variants={{ visible: { opacity: 1 }, hidden: { opacity: 0 } }}
-        initial="hidden"
-        animate={isLoaded ? 'visible' : 'hidden'}
-        className={cx(props.fill && 'absolute inset-0')}
+      <div
+        className={cx(
+          'transition-opacity duration-300',
+          props.fill && 'absolute inset-0',
+          isLoaded ? 'opacity-100' : 'opacity-0',
+        )}
       >
         <NextImage
           ref={composedRefs}
@@ -48,7 +48,7 @@ const MediaImage = React.forwardRef<MediaImageElement, MediaImageProps>((props, 
           }}
           className="select-none object-cover relative"
         />
-      </motion.div>
+      </div>
     </div>
   );
 });
