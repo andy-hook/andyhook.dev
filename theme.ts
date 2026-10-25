@@ -12,6 +12,7 @@ export const screens = {
   wide: containerWidths.wide + 64,
   widest: containerWidths.widest + 64,
   max: 2400,
+  ultrawide: 3000,
 };
 
 const THEME_1_PROPERTY = '--theme-1';
