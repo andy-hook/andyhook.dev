@@ -27,7 +27,7 @@ export const ArtifactGrid = React.forwardRef<ArtifactGridElement, ArtifactGridPr
           'grid-cols-[repeat(auto-fill,_minmax(100%,_1fr))]',
           'sm:grid-cols-[repeat(auto-fill,_minmax(50%,_1fr))]',
           'wide:grid-cols-[repeat(auto-fill,_minmax(33%,_1fr))]',
-          'max:grid-cols-[repeat(auto-fill,_minmax(25%,_1fr))]',
+          'ultrawide:grid-cols-[repeat(auto-fill,_minmax(25%,_1fr))]',
           'grid m-[calc(-1_*_var(--gap)_/_2)]',
           className,
         )}
@@ -101,7 +101,7 @@ export const ArtifactGridFrame = React.forwardRef<ArtifactGridFrameElement, Arti
             'inset-[6vw]',
             'sm:inset-[3vw]',
             'wide:inset-[1.5vw]',
-            'max:inset-[1.25vw]',
+            'ultrawide:inset-[1.25vw]',
           )}
         >
           <StickyLabel.Chip label={label} />

@@ -40,11 +40,6 @@ export const Work = React.forwardRef<WorkElement, WorkProps>((props, forwardedRe
             />
 
             <div className="md:ml-7 xl:ml-10">
-              <RouteTransition multiplier={1}>
-                <div className="capsize font-body text-base sm:text-lg text-slate-10 mb-8 sm:mb-9 md:mb-10 xxl:mb-11">
-                  Senior Design Engineer
-                </div>
-              </RouteTransition>
               <RouteTransition multiplier={4}>
                 <h1 className="text-slate-12 font-display relative z-10 font-normal mb-10 sm:mb-12 lg:mb-14 xxl:mb-18 tracking-tighter leading-tight capsize text-balance">
                   Turning complex problems into intuitive interfaces
