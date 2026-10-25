@@ -11,12 +11,19 @@ export function ScrollToSection() {
   const prevSectionId = React.useRef(sectionId);
 
   React.useEffect(() => {
+    const isTransition = prevSectionId.current !== sectionId;
+    prevSectionId.current = sectionId;
     if (!isScrollPath) return;
 
-    const isTransition = prevSectionId.current !== sectionId;
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+
     const behavior = isTransition ? 'smooth' : 'instant';
-    document.getElementById(sectionId)?.scrollIntoView({ behavior });
-    prevSectionId.current = sectionId;
+    section.scrollIntoView({ behavior });
+
+    const url = new URL(window.location.href);
+    url.pathname = '/';
+    window.history.replaceState(null, '', url);
   }, [sectionId, isScrollPath]);
 
   return null;
