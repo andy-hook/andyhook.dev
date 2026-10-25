@@ -512,7 +512,7 @@ MediaImageViewerControls.displayName = 'MediaImageViewerControls';
 const mediaImageViewerNavigation = cva({
   base: [
     'relative rounded-full',
-    'before:content-[""] before:border-2 before:border-slate-5 before:absolute before:rounded-full before:shadow-md',
+    'before:content-[""] before:absolute before:rounded-full before:shadow-md',
     'before:bg-gradient-to-tl before:from-slate-2 before:to-slate-4 before:scale-75',
     'hover:before:scale-85 active:before:scale-75 before:transition before:ease-spring before:duration-300 before:active:duration-700',
     'hover:text-slate-12 will-change-transform',
