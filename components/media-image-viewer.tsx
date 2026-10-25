@@ -485,7 +485,10 @@ const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({
                 {context.images.map((image, i) => (
                   <div
                     key={image.slug}
-                    className={cx('flex-1', i % 2 === 0 ? 'opacity-40' : 'opacity-60')}
+                    className={cx(
+                      'flex-1 first:rounded-l-full last:rounded-r-full',
+                      i % 2 === 0 ? 'opacity-40' : 'opacity-60',
+                    )}
                     style={{ backgroundColor: image.color ?? 'white' }}
                   />
                 ))}
