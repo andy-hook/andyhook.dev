@@ -478,7 +478,7 @@ const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({
                 className="relative z-10 h-full transition-transform duration-300 ease-snappy motion-reduce:transition-none"
                 style={{ width: `${100 / count}%`, transform: `translateX(${index * 100}%)` }}
               >
-                <div className="absolute -inset-0.5 rounded-full bg-white shadow-sm shadow-slate-1/30" />
+                <div className="absolute -top-[2px] -bottom-px -left-px -right-px rounded-full bg-white shadow-sm shadow-slate-1/30" />
               </div>
 
               <div className="absolute inset-0 flex overflow-hidden rounded-full">
