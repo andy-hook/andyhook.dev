@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { Dialog } from '@base-ui/react/dialog';
-import { Progress } from '@base-ui/react/progress';
+
 import { AnimatePresence, animate, motion, useMotionValue } from 'motion/react';
 import { createContext } from './utils/create-context';
 import type { StaticImageWithMetadata } from '@/types';
@@ -460,21 +460,28 @@ const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({
       </div>
       {canPaginate && (
         <Gutter className="w-full">
-          <Progress.Root
-            value={current}
-            min={0}
-            max={count}
+          <div
             className={cx(
               'flex w-full max-w-96 items-center gap-2.5 mx-auto',
               'transition-[opacity,transform] duration-200 ease-gentle',
               visible ? 'scale-100 opacity-100 translate-y-0' : 'scale-95 opacity-0 translate-y-2',
             )}
           >
-            <Progress.Label className="sr-only">Image position</Progress.Label>
-            <Progress.Track className="relative h-1 flex-1 overflow-hidden rounded-full bg-slate-1 will-change-transform shadow-md shadow-slate-1/20">
-              <Progress.Indicator className="bg-white transition-[width,background-color] duration-300 ease-snappy z-10 relative" />
+            <span role="status" className="sr-only">
+              Image {current} of {count}
+            </span>
+            <div
+              aria-hidden="true"
+              className="relative h-1 flex-1 rounded-full bg-slate-1 will-change-transform shadow-md shadow-slate-1/20"
+            >
+              <div
+                className="relative z-10 h-full transition-transform duration-300 ease-snappy motion-reduce:transition-none"
+                style={{ width: `${100 / count}%`, transform: `translateX(${index * 100}%)` }}
+              >
+                <div className="absolute -inset-0.5 rounded-full bg-white shadow-sm shadow-slate-1/30" />
+              </div>
 
-              <div className="absolute inset-0 flex">
+              <div className="absolute inset-0 flex overflow-hidden rounded-full">
                 {context.images.map((image, i) => (
                   <div
                     key={image.slug}
@@ -483,8 +490,8 @@ const MediaImageViewerControls: React.FC<MediaImageViewerControlsProps> = ({
                   />
                 ))}
               </div>
-            </Progress.Track>
-          </Progress.Root>
+            </div>
+          </div>
         </Gutter>
       )}
     </div>
